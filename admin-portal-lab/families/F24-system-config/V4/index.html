@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F24 V4 · Dense console · System Config</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
 .top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
@@ -88,7 +88,7 @@ body.v4 table{font-size:11px}
 <div class="tabs" role="tablist" aria-label="System configuration tabs" id="tabs"></div>
 <div id="panels"></div>
 <section class="audit" aria-labelledby="audit-h" id="audit"><h3 id="audit-h">Change audit (A15 · demo)</h3><ol id="audit-list"><li class="mono">No changes yet — guarded actions log who / when / why here.</li></ol></section>
-<p class="mono">Webhooks + audit explorer → <a href="../../../index.html#f25">F25 Integrations &amp; Audit</a> (not built in F24).</p>
+<p class="mono">Webhooks + audit explorer → <a href="../../../index.html#f25">F25 Integrations &amp; Audit</a> (lab cross-link · built in F25).</p>
 <nav class="lab-nav"><a href="../V1/index.html">V1</a> · <a href="../V2/index.html">V2</a> · <a href="../V3/index.html">V3</a> · <a href="../V4/index.html" aria-current="page">V4</a> · <a href="../V5/index.html">V5</a></nav>
 <div class="drawer" id="drawer" aria-label="Template drawer"></div></main>
 <div class="modal" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cm-title" hidden><div class="box" style="max-width:460px"><h3 id="cm-title">Confirm change</h3><p id="cm-body"></p><label class="mono" for="cm-reason">Reason (required for audit)</label><textarea id="cm-reason" rows="3" placeholder="Why this change is correct…"></textarea><div class="actions"><button type="button" class="button" id="cm-ok">Confirm</button><button type="button" class="button button-secondary" id="cm-no">Cancel</button></div></div></div>
@@ -237,5 +237,6 @@ function boot(){const h=(location.hash||'#health').slice(1);if(TAB_LABELS.some(t
 boot();
 window.addEventListener('hashchange',boot);
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body>
 </html>

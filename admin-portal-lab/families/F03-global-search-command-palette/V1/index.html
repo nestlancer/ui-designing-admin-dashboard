@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F03 V1 · Ground Truth Complete · Command menu</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
 .app{display:grid;grid-template-columns:228px 1fr;min-height:100vh}
@@ -46,7 +46,7 @@ body{min-height:100vh;background:var(--background);color:var(--foreground);font-
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:50;padding:10px 14px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow-sm);font-size:13px;max-width:min(520px,92vw)}
 .empty{padding:28px 16px;text-align:center;color:var(--muted-foreground);font-size:14px}
 .empty button{margin-top:10px}
-@media(max-width:820px){.app{grid-template-columns:1fr}.side{display:none}.backdrop{padding:8vh 10px 16px;align-items:stretch}.palette{max-height:none;height:calc(100vh - 12vh);border-radius:var(--radius-xl) var(--radius-xl) 0 0;margin-top:auto}}
+@media(max-width:820px){.app{grid-template-columns:1fr}.side{/* drawer via console-shell */}.backdrop{padding:8vh 10px 16px;align-items:stretch}.palette{max-height:none;height:calc(100vh - 12vh);border-radius:var(--radius-xl) var(--radius-xl) 0 0;margin-top:auto}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -191,5 +191,6 @@ document.addEventListener('keydown',e=>{
 openPalette();
 })();
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body>
 </html>

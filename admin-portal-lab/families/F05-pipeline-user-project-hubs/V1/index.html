@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F05 V1 · Ground Truth · Pipeline hubs</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
 .top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
@@ -98,6 +98,10 @@ function go(r){announce('Demo only — would navigate to '+r)}
 function setHub(h){hub=h;document.querySelectorAll('[data-hub]').forEach(b=>b.setAttribute('aria-current',b.dataset.hub===h?'page':'false'));
 $('hub-users').classList.toggle('active',h==='users');$('hub-projects').classList.toggle('active',h==='projects')}
 document.querySelectorAll('[data-hub]').forEach(b=>b.onclick=()=>setHub(b.dataset.hub));
+const hashHub=(location.hash||'').replace('#','');
+if(hashHub==='hub-projects'||hashHub==='project-hub-note')setHub('projects');
+else if(hashHub==='hub-users'||hashHub==='user-hub-note')setHub('users');
+
 
 function renderUsers(q=''){const list=$('user-list');list.innerHTML='';USERS.filter(u=>(u.name+' '+u.email).toLowerCase().includes(q.toLowerCase())).forEach(u=>{const b=document.createElement('button');b.type='button';b.role='option';b.setAttribute('aria-selected',String(userSel&&userSel.id===u.id));b.innerHTML=`<strong>${u.name}</strong><span class="id">${u.email} · ${u.meta}</span>`;b.onclick=()=>{userSel=u;renderUsers(q);showUser(u)};list.appendChild(b)})}
 function showUser(u){
@@ -142,5 +146,6 @@ function sync(){const d=document.documentElement.classList.contains('dark');cons
 document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');sync()};sync();
 })();
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body>
 </html>

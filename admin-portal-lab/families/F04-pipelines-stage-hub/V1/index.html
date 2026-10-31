@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F04 V1 · Ground Truth · Pipelines</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
 .app{display:grid;grid-template-columns:228px 1fr;min-height:100vh}
@@ -41,7 +41,7 @@ h1{margin:4px 0 8px;font-size:34px}.lede{margin:0 0 18px;color:var(--muted-foreg
 .lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;font-size:12px}
 .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;max-width:92vw;box-shadow:var(--shadow-sm)}
 .state-bar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-@media(max-width:960px){.app{grid-template-columns:1fr}.side{display:none}.grid{grid-template-columns:1fr 1fr}.consoles{grid-template-columns:1fr 1fr}}
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{/* drawer via console-shell */}.grid{grid-template-columns:1fr 1fr}.consoles{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.grid,.consoles{grid-template-columns:1fr}h1{font-size:28px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -55,7 +55,7 @@ h1{margin:4px 0 8px;font-size:34px}.lede{margin:0 0 18px;color:var(--muted-foreg
 <header class="top"><div class="crumb">Home › Operations › Pipelines</div><div class="spacer"></div>
 <button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
 <main id="main-content" class="main" tabindex="-1">
-<nav class="tabs" aria-label="Pipeline hubs"><a href="./index.html" aria-current="page">Stage pipeline</a><a href="../V1/index.html#user-hub-note" data-demo="/pipeline/users">User hub</a><a href="../V1/index.html#project-hub-note" data-demo="/pipeline/projects">Project hub</a></nav>
+<nav class="tabs" aria-label="Pipeline hubs"><a href="./index.html" aria-current="page">Stage pipeline</a><a href="../../F05-pipeline-user-project-hubs/V1/index.html">User hub</a><a href="../../F05-pipeline-user-project-hubs/V1/index.html#hub-projects">Project hub</a></nav>
 <span class="eyebrow">Operations</span>
 <h1>Pipelines</h1>
 <p class="lede">Stage pipeline for platform-wide triage. Use User hub or Project hub to drill into one client or one engagement.</p>
@@ -121,5 +121,6 @@ document.querySelectorAll('[data-state]').forEach(btn=>btn.onclick=()=>{
   grid.querySelectorAll('.count[data-count]').forEach(c=>{c.textContent=c.dataset.count;c.classList.remove('mono')});pc.textContent='No data';pc.classList.add('mono');pb.hidden=false;banner.classList.add('show');announce('Restored capture counts (Projects remains No data)')});
 })();
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F13 V2 · Approval Spine · Payments</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
 .top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
@@ -133,5 +133,6 @@ document.getElementById('bulk').querySelectorAll('[data-bulk]').forEach(b=>b.onc
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(document.getElementById('modal').classList.contains('open')){document.getElementById('modal').classList.remove('open');return}closeDetail();return}if(e.target.matches('input,textarea,select'))return;const pool=queuePool();if(e.key==='j'){focus=Math.min(focus+1,Math.max(pool.length-1,0));renderQueue();announce('Focus '+(pool[focus]?.short||focus))}if(e.key==='k'){focus=Math.max(focus-1,0);renderQueue();announce('Focus '+(pool[focus]?.short||focus))}if(e.key==='x'&&pool[focus]){const id=pool[focus].id;if(selected.has(id))selected.delete(id);else selected.add(id);syncBulk();renderQueue()}if(e.key==='e'&&pool[focus]){openModal(pool[focus].kind==='manual'?'approve':'verify',[pool[focus]])}});
 render();
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body>
 </html>

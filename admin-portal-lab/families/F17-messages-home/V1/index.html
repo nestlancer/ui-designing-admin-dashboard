@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F17 V1 · Ground Truth · Messages</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
 .shell{display:grid;grid-template-columns:var(--sidebar) 1fr;min-height:100vh}
@@ -45,7 +45,7 @@ h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreg
 .toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}
 .skeleton{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:linear-gradient(90deg,var(--muted) 25%,var(--card) 50%,var(--muted) 75%);background-size:200% 100%;animation:shimmer 1.2s infinite}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-@media(max-width:900px){.shell{grid-template-columns:1fr}.side{display:none}h1{font-size:26px}}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.side{/* drawer via console-shell */}h1{font-size:26px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -246,4 +246,5 @@ setView(boot,false);
 document.getElementById('recent-list').innerHTML=RECENT.map((t,i)=>rowHTML(t,i,false)).join('');
 wireRows();
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body></html>

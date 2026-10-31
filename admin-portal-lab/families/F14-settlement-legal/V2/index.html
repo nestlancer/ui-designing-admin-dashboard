@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F14 V2 · Section Progress · Settlement + Legal</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;padding-bottom:88px;background:var(--background);font-family:var(--font)}
 .top{height:52px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
@@ -95,4 +95,5 @@ document.getElementById('rev').onclick=()=>{const n=document.getElementById('a-n
 document.getElementById('save').onclick=()=>{const okL=!!document.getElementById('a-label').value.trim(); document.getElementById('e-label').hidden=okL; const ifsc=document.getElementById('a-ifsc').value.trim(); document.getElementById('e-ifsc').hidden=!ifsc||IFSC.test(ifsc); const g=document.getElementById('l-gstin').value.trim(); document.getElementById('e-gst').hidden=!g||GST.test(g); const p=document.getElementById('l-pan').value.trim(); document.getElementById('e-pan').hidden=!p||PAN.test(p); if(!okL|| (ifsc&&!IFSC.test(ifsc))|| (g&&!GST.test(g))|| (p&&!PAN.test(p))){document.getElementById('bar').dataset.state='invalid'; document.getElementById('st').textContent='Fix validation errors'; return} document.getElementById('bar').dataset.state='saved'; document.getElementById('st').textContent='Saved'; document.getElementById('audit').textContent='Last saved by Riya Kapoor · '+new Date().toLocaleString('en-IN')+' (demo)'; dirty=false; document.getElementById('save').disabled=true; setTimeout(()=>document.getElementById('bar').dataset.state='clean',1500)};
 document.getElementById('mx').onclick=()=>document.getElementById('modal').classList.remove('open'); document.getElementById('my').onclick=()=>{document.getElementById('modal').classList.remove('open'); document.getElementById('audit').textContent='Disabled by Riya Kapoor (demo)'};
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body></html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F13 V4 · Dense Settlement Day · Payments</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);font-size:12px}
 .top{height:48px;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--border);background:var(--card)}
@@ -104,5 +104,6 @@ document.getElementById('bulk').querySelectorAll('[data-bulk]').forEach(b=>b.onc
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('open');document.getElementById('drawer').classList.remove('open');return}if(e.target.matches('input,textarea'))return;const pl=pool();if(e.key==='j'){focus=Math.min(focus+1,pl.length-1);announce('Focus')}if(e.key==='k'){focus=Math.max(focus-1,0)}if(e.key==='x'&&pl[focus]){const id=pl[focus].id;selected.has(id)?selected.delete(id):selected.add(id);syncBulk();render()}if(e.key==='e'&&pl[focus])openModal(pl[focus].demo?'approve':'verify',[pl[focus]])});
 render();
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body>
 </html>

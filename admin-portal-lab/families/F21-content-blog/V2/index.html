@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>F21 V2 · Editor-spine · Blog</title>
 <script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../../../shared/console-shell.css">
 <style>
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
 .top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
@@ -228,4 +228,5 @@ if(location.hash==='editor') setSurface('editor');
 else{const h=location.hash.replace('#','');if(['posts','comments','pending','reported','analytics','taxonomy'].includes(h))tab=h;renderDesk();}
 document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;const map={'1':'posts','2':'comments','3':'pending','4':'reported','5':'analytics','6':'taxonomy'};if(map[e.key]&&surface==='desk'){tab=map[e.key];renderDesk();}});
 </script>
+<script src="../../../shared/console-shell.js" defer></script>
 </body></html>

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-labelledby="title desc">
-  <title id="title">Nestlancer Admin logo</title>
-  <desc id="desc">A teal hexagonal operator console mark with the letter N.</desc>
-  <path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/>
-  <path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

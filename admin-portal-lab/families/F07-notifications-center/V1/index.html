@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F07 V1 · Ground Truth · Notifications</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}
+.main{padding:18px;max-width:1180px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
+h1{margin:4px 0 6px;font-size:32px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:12px}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}
+.chip,.view,.tab{min-height:30px;padding:0 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit;margin:0 4px 4px 0}
+.chip[aria-pressed="true"],.view[aria-pressed="true"],.tab[aria-selected="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}
+.bulk{display:none;gap:8px;flex-wrap:wrap;align-items:center;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin:8px 0}.bulk.show{display:flex}
+.age,.tag,.badge-s{display:inline-flex;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text)}
+.age{border-color:var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}
+.kpi{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-width:100px;display:inline-block;margin:0 8px 8px 0}
+.kpi b{display:block;font:800 26px/1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:11px;color:var(--muted-foreground)}
+.row:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--ring);outline-offset:1px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+.kpis{margin-bottom:10px}
+.divider{margin:18px 0;padding:14px;border:2px dashed var(--brand-300);border-radius:var(--radius-lg);background:var(--primary-tint)}
+.divider h2{margin:0 0 6px;font-size:16px}
+.gate{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.list{display:flex;flex-direction:column;gap:6px}
+.row{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;width:100%;text-align:left;padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);cursor:pointer;color:inherit;font:inherit}
+.row[aria-selected="true"]{border-color:var(--brand-500);background:var(--primary-tint)}
+.ops{display:none}.ops.show{display:block}
+.composer{display:grid;gap:8px;max-width:560px;padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}
+.composer input,.composer textarea,.composer select{width:100%;min-height:40px;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--foreground);font:inherit}
+.composer textarea{min-height:90px}
+.modal{position:fixed;inset:0;background:rgba(26,36,51,.45);z-index:40;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal .box{width:min(440px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}
+.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
+.overflow{position:relative}.menu{display:none;position:absolute;right:0;top:100%;z-index:5;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);padding:4px;min-width:120px}
+.menu.open{display:block}
+.skip-sec{font-size:11px;margin:8px 0}
+@media(max-width:720px){h1{font-size:26px}.row{grid-template-columns:28px 1fr}}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+
+<span class="eyebrow">Operations · Notifications</span>
+<span class="meta">F07 · V1 · GROUND TRUTH · C7 divider + role gate</span>
+<h1>Notifications</h1>
+<p class="lede">Read your notifications, send platform messages, and audit the delivery log.</p>
+<div class="kpis"><div class="kpi"><b>580</b><span>Total Count</span></div><div class="kpi"><b>535</b><span>Unread Count</span></div></div>
+<a class="skip-sec skip-link" href="#inbox">Skip to inbox</a>
+<a class="skip-sec skip-link" href="#platform-ops">Skip to platform ops</a>
+<section id="inbox" aria-labelledby="inbox-h">
+<h2 id="inbox-h" style="font-size:18px;margin:12px 0 6px">My notifications</h2>
+<p class="mono">In-app notifications for your signed-in admin account — same categorical inbox as the client portal.</p>
+<div id="views"></div>
+<div id="chips"></div>
+<div class="bulk" id="bulk"><span id="bulk-count">0 selected</span>
+<button type="button" class="button button-secondary" data-bulk="read">Mark read</button>
+<button type="button" class="button button-secondary" data-bulk="archive">Archive</button>
+<button type="button" class="button button-secondary" data-bulk="tag">Tag</button>
+<button type="button" class="button button-secondary" id="mark-all">Mark all read</button>
+</div>
+<div class="list" id="list" role="listbox" aria-label="My notifications" aria-activedescendant=""></div>
+<p class="mono" id="page"></p>
+</section>
+<div class="divider" id="platform-ops">
+<h2>Platform ops · role-gated</h2>
+<p class="mono">Send / Broadcast / Segment can reach every client. Unlock with operator role confirmation (C7).</p>
+<div class="gate">
+<label><input type="checkbox" id="role-gate"> I have platform-notify permission</label>
+<button type="button" class="button" id="unlock-ops" disabled>Unlock platform ops</button>
+</div>
+</div>
+<section class="ops" id="ops" aria-label="Platform operations">
+<div id="ops-tabs" role="tablist">
+<button type="button" class="tab" role="tab" data-tab="send" aria-selected="true">Send</button>
+<button type="button" class="tab" role="tab" data-tab="broadcast" aria-selected="false">Broadcast</button>
+<button type="button" class="tab" role="tab" data-tab="segment" aria-selected="false">Segment</button>
+<button type="button" class="tab" role="tab" data-tab="delivery" aria-selected="false">Delivery report</button>
+<button type="button" class="tab" role="tab" data-tab="log" aria-selected="false">Platform log</button>
+</div>
+<div id="ops-panel"></div>
+<p id="receipt" class="mono" hidden style="margin-top:8px"></p>
+</section>
+<nav class="lab-nav"><a href="./index.html" aria-current="page">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f07">Gallery</a></nav>
+<div class="modal" id="confirm" hidden><div class="box" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+<h3 id="confirm-title">Confirm</h3>
+<p id="confirm-body"></p>
+<div style="display:flex;gap:8px;margin-top:12px">
+<button type="button" class="button" id="confirm-go">Confirm send</button>
+<button type="button" class="button button-secondary" id="confirm-cancel">Cancel</button>
+</div>
+</div></div>
+
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){}s()}})();</script>
+<script>
+const toast=document.getElementById('toast');
+function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2600)}
+
+const NOTIFS=[
+{id:'n1',title:'Your data export is ready',body:'Your requested data export is ready to download.',cat:'Account',age:'21d',unread:true,action:'Download'},
+{id:'n2',title:'Revenue export is ready',body:'Your requested export is ready to download.',cat:'Account',age:'23d',unread:true,action:'Download'},
+{id:'n3',title:'New contact inquiry',body:'A new contact form submission was received.',cat:'Account',age:'23d',unread:true,action:'Open'},
+{id:'n4',title:'New request submitted',body:'Arjun Mehta submitted "AUDIT-A03-20261007-1" (consulting).',cat:'Requests',age:'24d',unread:true,action:'Open'},
+{id:'n5',title:'New contact inquiry',body:'AUDIT-A10-20261007-1 submitted an inquiry about GENERAL.',cat:'Account',age:'24d',unread:false,action:'Open'},
+{id:'n6',title:'Quote accepted',body:'Arjun Mehta accepted the quote for AUDIT-P25-20261005-73dhk Project Fixture.',cat:'Quotes',age:'24d',unread:false,action:'Open'},
+{id:'n7',title:'Quote expiring soon',body:'Your quote expires within 24 hours.',cat:'Quotes',age:'12d',unread:true,action:'Open'},
+{id:'n8',title:'Payment received',body:'Installment marked verified.',cat:'Payments',age:'5d',unread:true,action:'Open'},
+{id:'n9',title:'New message',body:'Riya replied in a thread.',cat:'Messages',age:'2d',unread:true,action:'Open'},
+{id:'n10',title:'Project milestone due',body:'AUDIT-P25 milestone review tomorrow.',cat:'Projects',age:'1d',unread:true,action:'Open'}
+];
+const FILTERS=['All','Unread','Quotes','Payments','Messages','Projects','Requests','Account'];
+const LOG=[
+{title:'Quote expiring soon',msg:'Your quote "AUDIT-P24-20261005-03ipf-sent Request" expires within 24 hours.',to:'arjun.mehta@nestlancer.com · USER',sent:'12 days ago',read:'Yes',type:'quote.expiring'},
+{title:'Your data export is ready',msg:'Your requested data export is ready to download.',to:'admin@nestlancer.com · ADMIN',sent:'21 days ago',read:'No',type:'export.ready'},
+{title:'Revenue export is ready',msg:'Your requested export is ready to download.',to:'admin@nestlancer.com · ADMIN',sent:'23 days ago',read:'No',type:'export.ready'},
+{title:'New contact inquiry',msg:'A new contact form submission was received.',to:'admin@nestlancer.com · ADMIN',sent:'23 days ago',read:'Yes',type:'contact.inquiry'},
+{title:'New request submitted',msg:'Arjun Mehta submitted "AUDIT-A03-20261007-1" (consulting).',to:'admin@nestlancer.com · ADMIN',sent:'24 days ago',read:'Yes',type:'request.submitted'}
+];
+
+let filter='All', view='all', focus=0, selected=new Set(), surface='inbox', opsTab='send';
+function pool(){
+  let rows=NOTIFS.slice();
+  if(filter==='Unread') rows=rows.filter(r=>r.unread);
+  else if(filter!=='All') rows=rows.filter(r=>r.cat===filter);
+  if(view==='unread-mine') rows=rows.filter(r=>r.unread);
+  if(view==='failures') rows=rows.filter(r=>r.title.includes('export'));
+  if(view==='mentions') rows=rows.filter(r=>r.cat==='Messages'||r.cat==='Requests');
+  return rows;
+}
+function renderChips(el){
+  el.innerHTML=FILTERS.map(f=>`<button type="button" class="chip" data-f="${f}" aria-pressed="${f===filter}">${f}</button>`).join('');
+  el.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+}
+function renderViews(el){
+  const views=[['all','All inbox'],['unread-mine','Unread-mine'],['failures','Export failures'],['mentions','Mentions']];
+  el.innerHTML=views.map(([id,l])=>`<button type="button" class="view" data-v="${id}" aria-pressed="${id===view}">${l}</button>`).join('');
+  el.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{view=b.dataset.v;render()});
+}
+function bindBulk(root){
+  const bulk=root.querySelector('#bulk');
+  function sync(){bulk.classList.toggle('show',selected.size>0);const c=root.querySelector('#bulk-count');if(c)c.textContent=selected.size+' selected'}
+  root.querySelectorAll('[data-bulk]').forEach(b=>b.onclick=()=>{
+    if(!selected.size)return;
+    if(b.dataset.bulk==='read'){NOTIFS.forEach(n=>{if(selected.has(n.id))n.unread=false});announce('Marked '+selected.size+' read (demo · POST /read-selected)')}
+    if(b.dataset.bulk==='archive'){announce('Archived '+selected.size+' (demo)');}
+    if(b.dataset.bulk==='tag'){announce('Tagged '+selected.size+' (demo)');}
+    selected.clear();render();
+  });
+  return sync;
+}
+function bindKeys(getRows, onEnter){
+  document.addEventListener('keydown',e=>{
+    if(e.target.matches('input,textarea,select'))return;
+    const rows=getRows();
+    if(e.key==='j'){e.preventDefault();focus=Math.min(focus+1,rows.length-1);render()}
+    if(e.key==='k'){e.preventDefault();focus=Math.max(focus-1,0);render()}
+    if(e.key==='x'&&rows[focus]){e.preventDefault();selected.has(rows[focus].id)?selected.delete(rows[focus].id):selected.add(rows[focus].id);render()}
+    if(e.key==='Enter'&&rows[focus]&&onEnter){e.preventDefault();onEnter(rows[focus])}
+    if(e.key==='?')announce('j/k move · x select · Enter open · Esc close composer');
+  });
+}
+function openConfirm(kind,payload){
+  const dlg=document.getElementById('confirm');
+  if(!dlg){announce('Confirm gate missing');return}
+  dlg.hidden=false;dlg.classList.add('open');
+  document.getElementById('confirm-title').textContent=kind==='broadcast'?'Confirm broadcast to all users':'Confirm send';
+  document.getElementById('confirm-body').textContent=kind==='broadcast'
+    ? 'This will notify EVERY client inbox. Title: "'+(payload.title||'(empty)')+'". This action is audited. Demo only — never calls the live API.'
+    : 'Send to selected recipients. Title: "'+(payload.title||'(empty)')+'". Demo only.';
+  const go=document.getElementById('confirm-go');
+  go.onclick=()=>{dlg.hidden=true;dlg.classList.remove('open');announce((kind==='broadcast'?'Broadcast':'Send')+' receipt · demo · no live call');showReceipt(kind)};
+  document.getElementById('confirm-cancel').onclick=()=>{dlg.hidden=true;dlg.classList.remove('open')};
+}
+function showReceipt(kind){
+  const r=document.getElementById('receipt');
+  if(r){r.hidden=false;r.textContent='Send receipt: '+kind+' queued locally · maps to admin notifications API · not delivered.';}
+}
+
+const list=document.getElementById('list');
+const syncBulk=bindBulk(document);
+function renderOps(){
+  const p=document.getElementById('ops-panel');
+  if(opsTab==='send'){
+    p.innerHTML=`<h3>Send to user</h3><div class="composer">
+    <label>Search user<input id="user-search" placeholder="Search by name or email…"></label>
+    <label>Title<input id="title" placeholder="e.g. Quote ready for review"></label>
+    <label>Message<textarea id="msg" placeholder="Short message shown in the user's notification inbox"></textarea></label>
+    <div id="preview" class="mono">Preview appears here</div>
+    <button type="button" class="button" id="do-send">Send notification…</button></div>`;
+    const upd=()=>{document.getElementById('preview').textContent='Preview · '+(document.getElementById('title').value||'(no title)')+' — '+(document.getElementById('msg').value||'')};
+    p.querySelectorAll('input,textarea').forEach(i=>i.oninput=upd);
+    document.getElementById('do-send').onclick=()=>openConfirm('send',{title:document.getElementById('title').value});
+  } else if(opsTab==='broadcast'){
+    p.innerHTML=`<h3>Broadcast to all users</h3><div class="composer">
+    <p class="mono" style="color:var(--status-warning-text)">Safety: reaches every client inbox. Never one-click.</p>
+    <label>Title<input id="title" placeholder="e.g. Scheduled maintenance tonight"></label>
+    <label>Message<textarea id="msg" placeholder="Short message shown in every user’s inbox"></textarea></label>
+    <button type="button" class="button" id="do-bc">Broadcast to all users…</button></div>`;
+    document.getElementById('do-bc').onclick=()=>openConfirm('broadcast',{title:document.getElementById('title').value});
+  } else if(opsTab==='segment'){
+    p.innerHTML=`<h3>Send to segment</h3><div class="composer">
+    <label>Segment<select id="seg"><option>Clients only</option><option>Admins only</option><option>Active projects</option></select></label>
+    <label>Title<input id="title" placeholder="e.g. Quote ready for review"></label>
+    <label>Message<textarea id="msg" placeholder="Short message shown in the user's notification inbox"></textarea></label>
+    <button type="button" class="button" id="do-seg">Send to clients only…</button></div>`;
+    document.getElementById('do-seg').onclick=()=>openConfirm('send',{title:document.getElementById('title').value});
+  } else if(opsTab==='delivery'){
+    p.innerHTML=`<h3>Delivery report</h3><p class="mono">Check per-channel delivery outcomes for a notification you already sent.</p>
+    <label class="mono">Recent notification<select id="recent"><option>Choose a recent notification…</option>
+    <option>Quote expiring soon · 12 days ago · 01a1507d…28f1</option>
+    <option>Your data export is ready · 21 days ago · 01a12058…d3fc</option></select></label>
+    <p style="margin:8px 0"><input placeholder="Full notification UUID" style="min-height:36px;padding:6px;border:1px solid var(--border);border-radius:6px;width:min(360px,100%)">
+    <button type="button" class="button button-secondary" id="load-rep">Load report</button></p>
+    <p id="rep-out" class="mono">Select a recent notification above to load delivery channel results.</p>`;
+    document.getElementById('load-rep').onclick=()=>{document.getElementById('rep-out').textContent='Demo delivery · in-app: delivered · email: skipped · push: n/a';announce('Delivery report loaded (demo)')};
+  } else {
+    p.innerHTML=`<h3>Platform log</h3><p class="mono">Page 1 of 24 · 580 total records</p>
+    <table class="table"><thead><tr><th>Title</th><th>Message</th><th>Recipient</th><th>Sent</th><th>Read</th></tr></thead>
+    <tbody>${LOG.map(r=>`<tr><td>${r.title}</td><td class="mono">${r.msg.slice(0,60)}…</td><td class="mono">${r.to}</td><td class="mono">${r.sent}</td><td>${r.read}</td></tr>`).join('')}</tbody></table>
+    <p style="margin-top:8px"><button type="button" class="button button-secondary">Previous</button> <button type="button" class="button button-secondary">Next</button></p>`;
+  }
+}
+function render(){
+  renderChips(document.getElementById('chips'));
+  renderViews(document.getElementById('views'));
+  const rows=pool();
+  if(focus>=rows.length)focus=Math.max(0,rows.length-1);
+  list.innerHTML=rows.map((r,i)=>`<div class="row" role="option" id="row-${r.id}" tabindex="${i===focus?0:-1}" aria-selected="${i===focus}" data-id="${r.id}">
+    <input type="checkbox" ${selected.has(r.id)?'checked':''} aria-label="Select ${r.title}" data-sel>
+    <div><strong>${r.title}</strong> ${r.unread?'<span class="tag">Unread</span>':''} <span class="age">${r.age}</span>
+    <div class="mono">${r.cat} · ${r.body}</div></div>
+    <div class="overflow"><button type="button" class="button button-secondary" data-more aria-haspopup="true">⋯</button>
+    <div class="menu" role="menu"><button type="button" role="menuitem" data-act="open">${r.action}</button><button type="button" role="menuitem" data-act="read">Mark read</button></div></div>
+  </div>`).join('')||'<p class="mono">No notifications in this view.</p>';
+  list.querySelectorAll('.row').forEach((el,i)=>{
+    el.onclick=e=>{if(e.target.matches('input,button,.menu *'))return;focus=i;render()};
+    const cb=el.querySelector('[data-sel]');
+    cb.onclick=e=>{e.stopPropagation();selected.has(rows[i].id)?selected.delete(rows[i].id):selected.add(rows[i].id);syncBulk()};
+    const more=el.querySelector('[data-more]');const menu=el.querySelector('.menu');
+    more.onclick=e=>{e.stopPropagation();menu.classList.toggle('open')};
+    el.querySelectorAll('[data-act]').forEach(b=>b.onclick=e=>{e.stopPropagation();announce(b.dataset.act+' · '+rows[i].title);menu.classList.remove('open');if(b.dataset.act==='read'){rows[i].unread=false;render()}});
+  });
+  document.getElementById('page').textContent=`Showing 1–${rows.length} of ${rows.length} · roving tabindex active (C8)`;
+  syncBulk();
+  const f=list.querySelector(`[tabindex="0"]`);if(f)f.focus({preventScroll:true});
+}
+document.getElementById('role-gate').onchange=e=>{document.getElementById('unlock-ops').disabled=!e.target.checked};
+document.getElementById('unlock-ops').onclick=()=>{document.getElementById('ops').classList.add('show');announce('Platform ops unlocked for this session (demo role gate)');renderOps()};
+document.getElementById('ops-tabs').onclick=e=>{const t=e.target.closest('[data-tab]');if(!t)return;opsTab=t.dataset.tab;document.querySelectorAll('#ops-tabs .tab').forEach(x=>x.setAttribute('aria-selected',String(x===t)));renderOps()};
+document.getElementById('mark-all').onclick=()=>{NOTIFS.forEach(n=>n.unread=false);announce('Mark all read · demo · POST /read-all');render()};
+bindKeys(pool,r=>announce('Opened · '+r.title));
+render();
+
+</script>
+</body></html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F21 V2 · Editor-spine · Blog</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}
+.shell{display:grid;gap:0;min-height:calc(100vh - 52px)}
+.main{padding:18px;max-width:1200px;margin:0 auto;width:100%}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
+h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.kpis{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kpi{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-width:110px}
+.kpi b{display:block;font:800 26px/1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:11px;color:var(--muted-foreground)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab,.chip,.mode,.surf{min-height:32px;padding:0 11px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit}
+.tab[aria-selected="true"],.chip[aria-pressed="true"],.mode[aria-pressed="true"],.surf[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}
+.panel{padding:14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-top:10px}
+.empty{padding:28px;text-align:center;color:var(--muted-foreground);border:1px dashed var(--border);border-radius:var(--radius-md)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.filters input,.filters select{min-height:36px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.row-review{display:grid;gap:8px;padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-bottom:8px}
+.st{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text)}
+.st-warn{border-color:var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}
+.editor-wrap{display:grid;gap:12px;margin-top:16px;padding-top:16px;border-top:2px solid var(--border)}
+.editor-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.editor-grid{display:grid;gap:12px}.editor-grid.split{grid-template-columns:1fr 1fr}
+.field label{display:block;font-size:12px;font-weight:650;margin-bottom:4px}
+.field input,.field textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.field textarea{min-height:120px;font-family:var(--mono);font-size:12px;line-height:1.45}
+.preview-pane{padding:14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-height:200px;line-height:1.55}
+.preview-pane h2{font-size:20px;margin:12px 0 8px}
+.meta-route{font-size:11px;padding:8px 10px;border-radius:var(--radius-md);background:var(--status-warning-bg);border:1px solid var(--status-warning-border);color:var(--status-warning-text);margin:8px 0}
+.modal{position:fixed;inset:0;background:rgba(26,36,51,.48);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal .box{width:min(460px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}
+.modal textarea{width:100%;min-height:72px;margin-top:8px;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);font:inherit}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}
+.toast.show{display:block}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}
+.note{font-size:12px;color:var(--muted-foreground)}
+.chart-bar{height:8px;border-radius:4px;background:var(--brand-500);margin-top:4px}
+.tax-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.shell.v2-desk{grid-template-columns:240px 1fr}.shell.v2-edit{grid-template-columns:1fr}
+.rail{padding:12px;border-right:1px solid var(--border);background:var(--muted);font-size:12px}.rail.hidden{display:none}
+.queue-hero{padding:14px;border:2px solid var(--brand-300);border-radius:var(--radius-lg);background:var(--primary-tint);margin-bottom:12px}
+body.v4{font-size:13px}
+.drawer{position:fixed;right:0;top:52px;width:min(420px,92vw);height:calc(100vh - 52px);background:var(--card);border-left:1px solid var(--border);padding:12px;transform:translateX(100%);transition:transform .28s ease;z-index:40;overflow:auto}
+.drawer.open{transform:translateX(0)}
+.fade-zone{transition:opacity .32s ease,transform .32s ease}
+body.v5 .fade-zone.is-hidden{opacity:0;transform:translateY(6px);pointer-events:none;position:absolute;width:1px;height:1px;overflow:hidden}
+@media(max-width:720px){h1{font-size:26px}.editor-grid.split{grid-template-columns:1fr}.tax-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="v2">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<noscript><p class="main">Enable JavaScript for tabs — desk anchors: #posts #comments #editor.</p></noscript>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<div class="shell v2-desk" id="shell">
+<aside class="rail" id="rail" aria-label="Desk shortcuts"><p class="mono">F21 · V2</p><p><strong>EDITOR SPINE</strong></p><button type="button" class="surf" data-surf="desk" aria-pressed="true">Content desk</button><br><button type="button" class="surf" data-surf="editor" aria-pressed="false">Editor</button><p class="mono">C11 · /content/posts/new</p></aside>
+<main id="main-content" class="main" tabindex="-1">
+<span class="eyebrow">Content operations</span>
+<span class="meta">F21 · V2 · EDITOR SPINE</span>
+<h1>Blog</h1>
+<p class="lede">Publish stories, moderate reader discussion, and manage content performance and taxonomy.</p>
+<div class="actions">
+<a class="button button-secondary" href="https://nestlancer.com/blog" rel="noopener">View live blog</a>
+<button type="button" class="button" id="btn-new">New post</button>
+<button type="button" class="button button-secondary" id="btn-edit-demo">Edit captured post</button>
+</div>
+<div class="meta-route" role="note"><strong>C11 honesty:</strong> Live new-post route is <span class="mono">/content/posts/new</span> (192). Capture <span class="mono">171-content-new-post.html</span> was <strong>404</strong>.</div>
+<div class="kpis" aria-label="Blog KPIs">
+<div class="kpi"><b>—</b><span>Total posts</span></div><div class="kpi"><b>—</b><span>Published</span></div><div class="kpi"><b>—</b><span>Drafts</span></div><div class="kpi"><b>—</b><span>Pending comments</span></div>
+</div>
+<div id="queue-hero" class="queue-hero" hidden></div>
+<div class="fade-zone" id="desk-zone">
+<div class="tabs" role="tablist" aria-label="Content desk tabs" id="tabs"></div>
+<div id="panels"></div>
+</div>
+<section id="editor" class="editor-wrap fade-zone" aria-labelledby="ed-h" hidden>
+<div class="editor-head"><div><h2 id="ed-h" style="margin:0;font-size:22px">Edit post</h2><p class="mono" id="ed-route"></p></div><div class="tabs" role="tablist" aria-label="Editor modes" id="modes"></div></div>
+<div class="actions" id="ed-actions"></div>
+<div class="editor-grid" id="ed-grid"><div id="ed-fields"></div><article class="preview-pane" id="live-preview" aria-live="polite" hidden></article></div>
+</section>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a> · <a href="../V2/index.html" aria-current="page">V2</a> · <a href="../V3/index.html">V3</a> · <a href="../V4/index.html">V4</a> · <a href="../V5/index.html">V5</a> · <a href="../../../index.html#f21">Gallery</a></nav>
+</main>
+</div>
+<div class="drawer" id="drawer" aria-label="Preview drawer"></div>
+<div class="modal" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cm-title" hidden><div class="box"><h3 id="cm-title">Confirm</h3><p id="cm-body"></p><label class="mono" for="cm-reason">Review reason (C17)</label><textarea id="cm-reason" placeholder="Why this action is correct…"></textarea><div style="display:flex;gap:8px;margin-top:12px"><button type="button" class="button" id="cm-ok">Confirm</button><button type="button" class="button button-secondary" id="cm-no">Cancel</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){};s()}})();</script>
+<script>
+const POST_ID="01a10a1e-e219-73d9-855c-cf690f3b2b25";
+const FROZEN_MD="CI failures at 2 a.m. should not wait for a human to parse logs. **Agentic pipelines** interpret failures, propose fixes, and open draft PRs\u2014while keeping merge gates firmly human-controlled.\n\n## Human-in-the-loop architecture\n\n```\nfail job \u2192 agent reads logs + diff \u2192 proposes fix branch \u2192 engineer approves merge\n```\n\nNever auto-merge to main. Agents lack context on business risk, migrations, and customer commitments.\n\n## What agents handle well\n\n- Lint and formatter failures with deterministic fixes\n- Missing lockfile updates after dependency bumps\n- Flaky test triage: rerun vs quarantine recommendations\n- Typo fixes in error messages surfaced by snapshot tests\n\n## What requires escalation\n\n- Database migration failures\n- Security scanner blocks on new CVEs\n- Contract test breaks across service boundaries\n- Any change touching auth, payments, or PII retention\n\n## GitHub Actions wiring\n\n```yaml\non:\n  workflow_run:\n    workflows: [CI]\n    types: [completed]\njobs:\n  triage:\n    if: ${{ github.event.workflow_run.conclusion == 'failure' }}\n    steps:\n      - uses: actions/checkout@v4\n      - run: node scripts/agent-triage.mjs\n```\n\nStore prompts and tool configs in-repo for reviewability. Cap token spend per run.\n\nAgentic CI augments engineers\u2014it does not replace judgment on production-bound changes.\n\n## Instrumentation for agent pipelines\n\nLog every agent suggestion with PR link, diff size, and human acceptance outcome. Monthly review: which failure classes agents resolve reliably vs which still need runbook docs. Cap concurrent agent jobs so flaky retries do not starve human CI.";
+const FROZEN_EXCERPT="Patterns for AI agents that interpret failures, propose fixes, and escalate with human-in-the-loop gates.";
+const FROZEN_TITLE="Agentic CI/CD with GitHub Actions";
+const VARIANT="v2";
+const REVIEWS=[
+{id:'c-p1',where:'comments',author:'reader_884',post:'Agentic CI/CD with GitHub Actions',excerpt:'Could you clarify token caps for enterprise?',status:'Pending',flag:''},
+{id:'c-p2',where:'pending',author:'devfan@example.com',post:'GPS Fleet Tracking Portal',excerpt:'We run a similar stack — happy to share benchmarks.',status:'Pending',flag:''},
+{id:'c-r1',where:'reported',author:'anon_019',post:'Agentic CI/CD with GitHub Actions',excerpt:'This reads like undisclosed AI spam.',status:'Reported',flag:'Misleading'},
+];
+let tab='posts', postFilter='All', surface='desk', edKind='edit', edMode='write';
+let fields={title:FROZEN_TITLE,excerpt:FROZEN_EXCERPT,body:FROZEN_MD};
+const toast=document.getElementById('toast');
+function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2800)}
+function mdPreview(md){
+ let h=md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ h=h.replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>');
+ h=h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+ h=h.replace(/```([\s\S]*?)```/g,(m,c)=>'<pre><code>'+c.trim()+'</code></pre>');
+ h=h.replace(/^- (.+)$/gm,'<li>$1</li>');
+ h=h.replace(/(<li>[\s\S]*?<\/li>)+/g,m=>'<ul>'+m+'</ul>');
+ h=h.replace(/\n\n/g,'</p><p>');
+ return '<h1>'+fields.title+'</h1><p class="mono">'+fields.excerpt+'</p><p>'+h+'</p>';
+}
+function openConfirm(title,body,onOk){
+ const m=document.getElementById('confirm');document.getElementById('cm-title').textContent=title;document.getElementById('cm-body').textContent=body;document.getElementById('cm-reason').value='';m.hidden=false;m.classList.add('open');
+ document.getElementById('cm-ok').onclick=()=>{m.hidden=true;m.classList.remove('open');onOk(document.getElementById('cm-reason').value||'(no reason)');};
+ document.getElementById('cm-no').onclick=()=>{m.hidden=true;m.classList.remove('open');};
+}
+function setSurface(s){
+ surface=s;
+ const desk=document.getElementById('desk-zone');const ed=document.getElementById('editor');const shell=document.getElementById('shell');const rail=document.getElementById('rail');
+ document.querySelectorAll('[data-surf]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.surf===s)));
+ if(VARIANT==='v2'){
+  shell.classList.toggle('v2-edit',s==='editor');shell.classList.toggle('v2-desk',s!=='editor');
+  if(rail) rail.classList.toggle('hidden',s==='editor');
+ }
+ if(s==='editor'){desk.hidden=true;ed.hidden=false;location.hash='editor';renderEditor();}
+ else{desk.hidden=false;ed.hidden=true;location.hash=tab;renderDesk();}
+ if(VARIANT==='v5'){desk.classList.toggle('is-hidden',s==='editor');ed.classList.toggle('is-hidden',s!=='editor');}
+}
+function openEditor(kind){
+ edKind=kind;document.getElementById('ed-h').textContent=kind==='new'?'New post':'Edit post';
+ document.getElementById('ed-route').textContent=kind==='new'?'/content/posts/new':'/content/posts/'+POST_ID+'/edit';
+ fields=kind==='new'?{title:'',excerpt:'',body:''}:{title:FROZEN_TITLE,excerpt:FROZEN_EXCERPT,body:FROZEN_MD};
+ setSurface('editor');
+}
+function renderTabs(){
+ const names=['Posts','Comments','Pending','Reported','Analytics','Taxonomy'];
+ const ids=['posts','comments','pending','reported','analytics','taxonomy'];
+ document.getElementById('tabs').innerHTML=names.map((n,i)=>'<button type="button" class="tab" role="tab" id="tab-'+ids[i]+'" aria-selected="'+(ids[i]===tab)+'" data-tab="'+ids[i]+'">'+n+'</button>').join('');
+ document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;location.hash=tab;renderDesk();});
+}
+function postsPanel(){
+ return '<section id="posts" class="panel"><div class="filters"><input type="search" placeholder="Search posts by title…" aria-label="Search posts"><select aria-label="Status"><option>All</option><option>Published</option><option>Draft</option><option>Scheduled</option><option>Archived</option></select></div><div class="empty" role="status"><p><strong>No posts match your filters</strong></p><p class="mono">Status · All / Published / Draft / Scheduled / Archived</p></div></section>';
+}
+function commentsPanel(title,lede,pool){
+ const rows=REVIEWS.filter(r=>r.where===pool);
+ const st='<div class="filters"><input type="search" placeholder="Search comment, post, or reader…"><select aria-label="Status"><option>All statuses</option><option>Pending</option><option>Approved</option><option>Rejected</option><option>Spam</option></select></div>';
+ return '<section class="panel"><h2 style="margin:0 0 6px;font-size:18px">'+title+'</h2><p class="lede">'+lede+'</p>'+(pool==='comments'?st:'')+
+ (rows.length?rows.map(r=>'<div class="row-review"><div><span class="st st-warn">'+r.status+'</span> <strong>'+r.author+'</strong> on <em>'+r.post+'</em></div><p>'+r.excerpt+'</p><div class="actions"><button type="button" class="button button-secondary" data-act="approve" data-id="'+r.id+'">Approve</button><button type="button" class="button button-secondary" data-act="reject" data-id="'+r.id+'">Reject</button><button type="button" class="button button-secondary" data-act="spam" data-id="'+r.id+'">Mark spam</button></div></div>').join(''):'<div class="empty"><p class="mono">Queue is clear (demo)</p></div>')+'</section>';
+}
+function analyticsPanel(){
+ return '<section class="panel"><h2 style="font-size:18px">Analytics</h2><p class="note"><span class="mono">DEMO</span> · GET /api/v1/admin/blog/analytics</p><div class="kpi"><b>—</b><span>Views (7d)</span><div class="chart-bar" style="width:40%"></div></div><div class="kpi"><b>—</b><span>Avg read time</span><div class="chart-bar" style="width:55%"></div></div></section>';
+}
+function taxonomyPanel(){
+ return '<section class="panel"><h2 style="font-size:18px">Taxonomy & governance</h2><div class="tax-grid"><div><label class="mono">Categories</label><input type="text" placeholder="New category"><button type="button" class="button button-secondary">Add</button></div><div><label class="mono">Tags</label><input type="text" placeholder="New tag"><button type="button" class="button button-secondary">Add</button><button type="button" class="button button-secondary">Merge tags</button></div></div></section>';
+}
+function renderDesk(){
+ renderTabs();
+ const q=document.getElementById('queue-hero');
+ if(VARIANT==='v3'){q.hidden=false;q.innerHTML='<strong>Editorial queue first</strong> — pending & reported before posts (V3).';if(tab==='posts')tab='pending';}
+ else q.hidden=true;
+ let html='';
+ if(tab==='posts') html=postsPanel();
+ else if(tab==='comments') html=commentsPanel('All comments','Review reader discussion across every published post.','comments');
+ else if(tab==='pending') html=commentsPanel('Pending review','Approve legitimate contributions before they appear publicly.','pending');
+ else if(tab==='reported') html=commentsPanel('Reported comments','Investigate comments flagged by readers and take action.','reported');
+ else if(tab==='analytics') html=analyticsPanel();
+ else html=taxonomyPanel();
+ document.getElementById('panels').innerHTML=html;
+ wireReview();
+}
+function wireReview(){
+ document.querySelectorAll('[data-act]').forEach(btn=>btn.onclick=()=>{
+  openConfirm('Confirm moderation','C17 · '+btn.dataset.act+' comment '+btn.dataset.id+' — reason required.',reason=>{
+   announce('Receipt · demo · POST /api/v1/admin/comments/'+btn.dataset.id+'/'+btn.dataset.act+' · '+reason);
+  });
+ });
+}
+function syncPreview(){
+ const prev=document.getElementById('live-preview');
+ if(!prev.hidden) prev.innerHTML=mdPreview(fields.body);
+ if(VARIANT==='v4'){
+  const dr=document.getElementById('drawer');
+  if(!prev.hidden){dr.classList.add('open');dr.innerHTML='<h3 style="margin-top:0">Preview drawer</h3>'+prev.innerHTML;}
+  else dr.classList.remove('open');
+ }
+}
+function bindFields(){
+ ['f-title','f-excerpt','f-body'].forEach(id=>{const el=document.getElementById(id);if(!el)return;el.oninput=()=>{
+  fields.title=(document.getElementById('f-title')||{}).value??fields.title;
+  fields.excerpt=(document.getElementById('f-excerpt')||{}).value??fields.excerpt;
+  fields.body=(document.getElementById('f-body')||{}).value??fields.body;
+  syncPreview();
+ };});
+}
+function renderEditor(){
+ document.getElementById('modes').innerHTML=['Write','Split','Preview'].map(m=>{const k=m.toLowerCase();return '<button type="button" class="mode" data-mode="'+k+'" aria-pressed="'+(edMode===k)+'">'+m+'</button>';}).join('');
+ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{edMode=b.dataset.mode;renderEditor();if(VARIANT==='v5')announce('Mode · '+edMode);});
+ const pubLabel=edKind==='new'?'Create post':'Publish';
+ document.getElementById('ed-actions').innerHTML='<button type="button" class="button button-secondary" id="save">Save changes</button> <button type="button" class="button" id="publish">'+pubLabel+'</button> <button type="button" class="button button-secondary" id="schedule">Schedule…</button> <button type="button" class="button button-secondary" id="delete">Delete draft</button> <button type="button" class="button button-secondary" id="back-desk">Back to desk</button>';
+ const showPreview=edMode==='preview'||edMode==='split';
+ const showWrite=edMode==='write'||edMode==='split';
+ document.getElementById('ed-grid').classList.toggle('split',edMode==='split');
+ const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+ document.getElementById('ed-fields').innerHTML=showWrite?'<div class="field"><label>Title *</label><input id="f-title" value="'+esc(fields.title)+'"></div><div class="field"><label>Excerpt</label><textarea id="f-excerpt" placeholder="1–2 sentences for cards and SEO">'+esc(fields.excerpt)+'</textarea></div><div class="field"><label>Content (Markdown)</label><textarea id="f-body" placeholder="Write your post in Markdown…">'+esc(fields.body)+'</textarea></div><p class="mono">Slug · auto-generated-from-title</p>':'<p class="mono">Preview-only — use Write or Split to edit.</p>';
+ const prev=document.getElementById('live-preview');prev.hidden=!showPreview;syncPreview();bindFields();
+ document.getElementById('save').onclick=()=>announce('Saved · demo · PATCH /api/v1/admin/posts/'+POST_ID);
+ document.getElementById('publish').onclick=()=>openConfirm('Confirm publish','Guarded publish — visible on public blog.',r=>announce('Published · demo · POST …/publish · '+r));
+ document.getElementById('schedule').onclick=()=>openConfirm('Confirm schedule','Spec-backed · POST /api/v1/admin/posts/{id}/schedule',r=>announce('Scheduled · demo · '+r));
+ document.getElementById('delete').onclick=()=>openConfirm('Confirm delete','Permanently remove draft.',r=>announce('Delete receipt · demo · '+r));
+ document.getElementById('back-desk').onclick=()=>setSurface('desk');
+}
+document.getElementById('btn-new').onclick=()=>openEditor('new');
+document.getElementById('btn-edit-demo').onclick=()=>openEditor('edit');
+document.querySelectorAll('[data-surf]').forEach(b=>b.onclick=()=>setSurface(b.dataset.surf));
+if(location.hash==='editor') setSurface('editor');
+else{const h=location.hash.replace('#','');if(['posts','comments','pending','reported','analytics','taxonomy'].includes(h))tab=h;renderDesk();}
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;const map={'1':'posts','2':'comments','3':'pending','4':'reported','5':'analytics','6':'taxonomy'};if(map[e.key]&&surface==='desk'){tab=map[e.key];renderDesk();}});
+</script>
+</body></html>

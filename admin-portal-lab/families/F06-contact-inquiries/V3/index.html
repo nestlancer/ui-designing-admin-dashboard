@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F06 V3 · Card queue · Inquiries</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700}.brand svg{width:28px;height:28px}
+.main{padding:18px;max-width:1180px;margin:0 auto}
+h1{margin:0 0 6px;font-size:32px}.lede{color:var(--muted-foreground);font-size:14px;line-height:1.5;margin:0 0 12px}
+.chip,.view{min-height:30px;padding:0 9px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit;margin:0 4px 4px 0}
+.chip[aria-pressed="true"],.view[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}
+.age{padding:2px 6px;border-radius:999px;border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text);font-size:10px;font-weight:700}
+.tag{padding:2px 6px;border-radius:999px;border:1px solid var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text);font-size:10px;font-weight:700}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.bulk{display:none;gap:8px;flex-wrap:wrap;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin:8px 0}.bulk.show{display:flex}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:50;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:12px}
+.help{font-size:11px;color:var(--muted-foreground);margin:6px 0}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);padding:12px;text-align:left;cursor:pointer;color:inherit;font:inherit;position:relative}
+.card[aria-selected="true"]{outline:2px solid var(--ring)}
+.card .av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--primary-tint);font-weight:750;font-size:11px;margin-bottom:8px}
+.drawer{position:fixed;inset:0;background:rgba(26,36,51,.4);display:none;justify-content:flex-end;z-index:40}.drawer.open{display:flex}
+.panel{width:min(420px,100%);background:var(--card);padding:14px;overflow:auto}
+textarea{width:100%;min-height:90px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+@media(max-width:800px){h1{font-size:28px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="meta">F06 · V3 · CARDS</span>
+<h1>Inquiries</h1>
+<p class="lede">Public-site contact inbox — triage, reply, and archive like a support desk.</p>
+
+<div id="chips"></div>
+<div style="margin:8px 0"><button type="button" class="view" data-view="all" aria-pressed="true">All</button>
+<button type="button" class="view" data-view="needs">Needs me</button>
+<button type="button" class="view" data-view="unanswered">Unanswered 48h</button>
+<button type="button" class="view" data-view="vip">VIP / audit</button>
+<input id="search" placeholder="Search name, email, ticket…" style="min-height:36px;padding:0 8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);color:var(--foreground)"></div>
+<div class="bulk" id="bulk"><span id="bulk-count">0</span>
+<button type="button" class="button button-secondary" data-bulk="spam">Bulk spam sweep</button>
+<button type="button" class="button button-secondary" data-bulk="archive">Bulk archive</button>
+<button type="button" class="button button-secondary" data-bulk="read">Mark read</button></div>
+<div class="grid" id="list"></div>
+<p class="mono" id="page"></p>
+<div class="drawer" id="drawer"><div class="panel" id="pane"></div></div>
+
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f06">Gallery</a></nav>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+
+const ITEMS=[
+{id:'u2',name:'u2',email:'u2@spam.test',tag:'GENERAL',subject:'hello world test message spam after 2',time:'Oct 7, 2026, 7:05 AM',status:'new',age:'2d',av:'U2'},
+{id:'u1',name:'u1',email:'u1@spam.test',tag:'GENERAL',subject:'hello world test message spam after 1',time:'Oct 7, 2026, 7:05 AM',status:'new',age:'2d',av:'U1'},
+{id:'tspam',name:'t',email:'t@spam.test',tag:'GENERAL',subject:'hello world test message after recreate',time:'Oct 7, 2026, 7:05 AM',status:'new',age:'2d',av:'T'},
+{id:'t5',name:'t5',email:'t5@t.com',tag:'GENERAL',subject:'hello world test message spam 5',time:'Oct 7, 2026, 6:59 AM',status:'new',age:'2d',av:'T5'},
+{id:'t4',name:'t4',email:'t4@t.com',tag:'GENERAL',subject:'hello world test message spam 4',time:'Oct 7, 2026, 6:59 AM',status:'new',age:'2d',av:'T4'},
+{id:'t3',name:'t3',email:'t3@t.com',tag:'GENERAL',subject:'hello world test message spam 3',time:'Oct 7, 2026, 6:59 AM',status:'responded',age:'2d',av:'T3'},
+{id:'t2',name:'t2',email:'t2@t.com',tag:'GENERAL',subject:'hello world test message spam 2',time:'Oct 7, 2026, 6:59 AM',status:'read',age:'2d',av:'T2'},
+{id:'t1',name:'t1',email:'t1@t.com',tag:'GENERAL',subject:'hello world test message spam 1',time:'Oct 7, 2026, 6:58 AM',status:'new',age:'2d',av:'T1'},
+{id:'tt',name:'t',email:'t@t.com',tag:'GENERAL',subject:'hello world test message long enough',time:'Oct 7, 2026, 6:58 AM',status:'new',age:'2d',av:'T'},
+{id:'tex',name:'T',email:'t@example.com',tag:'OTHER',subject:'hi there test message long enough',time:'Oct 7, 2026, 5:00 AM',status:'read',age:'2d',av:'T'},
+{id:'a07',name:'AUDIT-A10-20261007-1',email:'audit+20261007@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe. Safe to delete.',time:'Oct 7, 2026, 12:57 AM',status:'new',age:'2d',av:'AU',vip:true},
+{id:'a06a',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe. Safe to delete.',time:'Oct 6, 2026, 8:04 AM',status:'read',age:'3d',av:'AU',vip:true},
+{id:'a06b',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 8:02 AM',status:'new',age:'3d',av:'AU',vip:true},
+{id:'a06c',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 8:01 AM',status:'new',age:'3d',av:'AU',vip:true},
+{id:'a06d',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 8:01 AM',status:'read',age:'3d',av:'AU',vip:true},
+{id:'a06e',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 7:58 AM',status:'new',age:'3d',av:'AU',vip:true},
+{id:'a06f',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 7:44 AM',status:'new',age:'3d',av:'AU',vip:true},
+{id:'a06g',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 7:32 AM',status:'read',age:'3d',av:'AU',vip:true},
+{id:'a06h',name:'AUDIT-A10-20261006-1',email:'audit+20261006@nestlancer.com',tag:'GENERAL',subject:'Automated contract probe…',time:'Oct 6, 2026, 4:55 AM',status:'new',age:'3d',av:'AU',vip:true},
+{id:'tkt',name:'Ticket sample',email:'visitor@example.com',tag:'GENERAL',subject:'GENERAL · TKT-01A1152E…',time:'Oct 6, 2026, 4:55 AM',status:'new',age:'3d',av:'TK'}
+];
+const CHIPS=[['all','All',20],['new','New',14],['read','Read',5],['responded','Responded',1],['spam','Spam',0],['archived','Archived',0]];
+
+
+let filter='all',view='all',focus=0,selected=new Set(),openId=null,visible=[];
+const toast=document.getElementById('toast');
+function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2800)}
+function pool(){let rows=ITEMS.slice();
+ if(filter==='new')rows=rows.filter(r=>r.status==='new');
+ else if(filter==='read')rows=rows.filter(r=>r.status==='read');
+ else if(filter==='responded')rows=rows.filter(r=>r.status==='responded');
+ else if(filter==='spam'||filter==='archived')rows=[];
+ if(view==='needs')rows=rows.filter(r=>r.status==='new');
+ if(view==='unanswered')rows=rows.filter(r=>r.status!=='responded');
+ if(view==='vip')rows=rows.filter(r=>r.vip);
+ let q=(document.getElementById('search')||{}).value||'';q=q.trim().toLowerCase();
+ if(q)rows=rows.filter(r=>(r.name+' '+r.email+' '+r.subject).toLowerCase().includes(q));
+ return rows}
+function wireChrome(){
+ const chips=document.getElementById('chips'); if(chips){chips.innerHTML='';CHIPS.forEach(([id,l,n])=>{const b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',String(filter===id));b.textContent=l+' '+n;b.onclick=()=>{filter=id;focus=0;render()};chips.appendChild(b)})}
+ document.querySelectorAll('[data-view]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.view===view));b.onclick=()=>{view=b.dataset.view;focus=0;render()}});
+ const bulk=document.getElementById('bulk'); if(bulk){bulk.classList.toggle('show',selected.size>0); const c=document.getElementById('bulk-count'); if(c)c.textContent=selected.size+' selected'}
+}
+function syncTheme(){const d=document.documentElement.classList.contains('dark');const b=document.querySelector('.theme-toggle');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');try{localStorage.setItem('nl-admin-theme',d?'dark':'light')}catch(e){}}
+document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');syncTheme()};syncTheme();
+document.addEventListener('keydown',e=>{
+ const tag=(e.target.tagName||'').toLowerCase(); const typing=tag==='input'||tag==='textarea';
+ if(e.key==='/'&&!typing){e.preventDefault();const s=document.getElementById('search'); if(s)s.focus(); return}
+ if(typing) return;
+ if(e.key==='j'){e.preventDefault();focus=Math.min(focus+1,visible.length-1);render();return}
+ if(e.key==='k'){e.preventDefault();focus=Math.max(focus-1,0);render();return}
+ if(e.key==='x'&&visible[focus]){e.preventDefault();const id=visible[focus].id; selected.has(id)?selected.delete(id):selected.add(id);render();return}
+ if(e.key==='Enter'&&visible[focus]){e.preventDefault();openItem(visible[focus]);return}
+ if(e.key==='e'&&visible[focus]){e.preventDefault();announce('Archived + next (demo)'); openId=visible[focus].id; advance();return}
+ if(e.key==='?'){e.preventDefault();announce('j/k move · x select · Enter open · e archive+next · / search')}
+});
+document.querySelectorAll('[data-bulk]').forEach(b=>b.onclick=()=>{announce('Bulk '+b.dataset.bulk+' (demo)');selected.clear();render()});
+const search=document.getElementById('search'); if(search) search.oninput=()=>{focus=0;render()};
+
+function openItem(item){openId=item.id; const d=document.getElementById('drawer'); d.classList.add('open');
+ document.getElementById('pane').innerHTML=`<button type="button" class="button button-secondary" id="close">Close</button>
+ <h2>Reply to ${item.name}</h2><div class="mono">${item.email}</div><p>${item.subject}</p>
+ <textarea id="composer" placeholder="Write a clear reply. This is emailed to the visitor."></textarea>
+ <button type="button" class="button" id="send">Send reply</button>
+ <button type="button" class="button button-secondary" id="spam">Mark spam</button>`;
+ document.getElementById('close').onclick=()=>d.classList.remove('open');
+ document.getElementById('send').onclick=()=>{item.status='responded';announce('Sent · next');advance()};
+ document.getElementById('spam').onclick=()=>{announce('Spam · next');advance()};
+}
+function advance(){document.getElementById('drawer').classList.remove('open'); const i=visible.findIndex(r=>r.id===openId); focus=Math.min(i+1,visible.length-1); render(); if(visible[focus]) openItem(visible[focus]);}
+function render(){visible=pool(); wireChrome(); const list=document.getElementById('list'); list.innerHTML='';
+ if(!visible.length){list.innerHTML='<p class="mono">Empty.</p>';return}
+ if(focus>=visible.length)focus=visible.length-1;
+ visible.forEach((item,i)=>{const b=document.createElement('button'); b.type='button'; b.className='card'; b.setAttribute('aria-selected',String(i===focus));
+  b.innerHTML=`<div class="av">${item.av}</div><strong>${item.name}</strong> <span class="age">${item.age}</span> <span class="tag">${item.tag}</span>
+  <div class="mono">${item.email}</div><p>${item.subject}</p>
+  <label><input type="checkbox" data-id="${item.id}" ${selected.has(item.id)?'checked':''}> select</label>`;
+  b.onclick=e=>{if(e.target.type==='checkbox'){e.stopPropagation(); const id=e.target.dataset.id; e.target.checked?selected.add(id):selected.delete(id); wireChrome(); return} focus=i; openItem(item); render()};
+  list.appendChild(b)});
+ document.getElementById('page').textContent='Showing 1–'+visible.length+' of '+visible.length+' · page size 20';
+}
+render();
+
+</script>
+</body></html>

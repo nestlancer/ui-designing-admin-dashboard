@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F22 V5 · Motion reorder · Portfolio</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}
+.shell{display:grid;min-height:calc(100vh - 52px)}
+.main{padding:18px;max-width:1280px;margin:0 auto;width:100%}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
+h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5;max-width:46rem}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.kpis{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kpi{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-width:108px}
+.kpi b{display:block;font:800 26px/1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:11px;color:var(--muted-foreground)}
+.panel{padding:14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-top:12px}
+.panel h2{margin:0 0 4px;font-size:17px}.panel .sub{margin:0 0 10px;color:var(--muted-foreground);font-size:12px}
+.timeline{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scroll-snap-type:x mandatory}
+.t-card{flex:0 0 min(200px,70vw);scroll-snap-align:start;padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted)}
+.t-card b{display:block;font-size:13px;margin-bottom:4px}.t-card .pos{font:700 10px var(--mono);color:var(--brand-700)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:var(--muted);font-size:12px;font-weight:650}
+.chip button{border:0;background:transparent;color:var(--status-error-text);font-size:11px;font-weight:700;padding:2px 4px;cursor:pointer}
+.cat-add{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:flex-end}
+.cat-add input{min-height:36px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit;min-width:180px}
+.hint{font-size:11px;color:var(--muted-foreground);margin:6px 0 0}
+table.data{width:100%;border-collapse:collapse;font-size:13px}table.data th,table.data td{padding:8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:middle}
+table.data th{font-size:10px;text-transform:uppercase;color:var(--muted-foreground);letter-spacing:.04em}
+.st{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-success-border);background:var(--status-success-bg);color:var(--status-success-text)}
+.reorder{display:inline-flex;flex-direction:column;gap:2px}.reorder button{width:28px;height:22px;padding:0;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--card);font-size:11px;line-height:1}
+tr.row-focus{background:var(--primary-tint);outline:2px solid var(--brand-200)}
+.menu-wrap{position:relative;display:inline-block}
+.menu{position:absolute;right:0;top:100%;z-index:20;min-width:148px;padding:6px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);box-shadow:var(--shadow-sm);display:none}
+.menu.open{display:grid;gap:2px}.menu button{text-align:left;padding:8px 10px;border:0;border-radius:var(--radius-sm);background:transparent;font:inherit;cursor:pointer}
+.menu button:hover{background:var(--muted)}
+.menu button.danger{color:var(--status-error-text)}
+.bar-row{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px}.bar{flex:1;height:6px;border-radius:3px;background:var(--muted);overflow:hidden}.bar i{display:block;height:100%;background:var(--brand-500)}
+.drawer{position:fixed;right:0;top:52px;width:min(400px,92vw);height:calc(100vh - 52px);background:var(--card);border-left:1px solid var(--border);padding:14px;transform:translateX(100%);transition:transform .28s ease;z-index:40;overflow:auto}
+.drawer.open{transform:translateX(0)}
+.modal{position:fixed;inset:0;background:rgba(26,36,51,.48);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal .box{width:min(480px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border);max-height:90vh;overflow:auto}
+.preview-box{margin:10px 0;padding:12px;border:1px dashed var(--border);border-radius:var(--radius-md);background:var(--muted);font-size:13px}
+.modal textarea{width:100%;min-height:72px;margin-top:8px;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);font:inherit}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}
+.toast.show{display:block}
+.form-grid{display:grid;gap:12px;margin-top:12px}.form-grid.two{grid-template-columns:1fr 1fr}
+.field label{display:block;font-size:12px;font-weight:650;margin-bottom:4px}
+.field input,.field textarea,.field select{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.field textarea{min-height:88px;font-family:var(--mono);font-size:12px}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}
+.state-demo{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.state-demo button{min-height:30px;padding:0 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 11px var(--font);cursor:pointer}
+.skeleton{background:linear-gradient(90deg,var(--muted),var(--card),var(--muted));background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:var(--radius-sm);height:14px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.empty{padding:24px;text-align:center;color:var(--muted-foreground);border:1px dashed var(--border);border-radius:var(--radius-md)}
+.error{padding:10px;border:1px solid var(--status-error-border);background:var(--status-error-bg);color:var(--status-error-text);border-radius:var(--radius-md);font-size:12px;margin:8px 0}
+/* V2 gallery */
+body.layout-gallery .shell{grid-template-columns:1fr min(300px,34vw);gap:0}
+body.layout-gallery .rail{border-left:1px solid var(--border);padding:14px;background:var(--muted);overflow:auto}
+body.layout-gallery .timeline{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));overflow:visible}
+body.layout-gallery .t-card{flex:unset}
+body.layout-gallery #tl-section{display:none}
+body.layout-gallery .gallery-hero{display:block}
+.gallery-hero{display:none}
+/* V3 ledger */
+body.layout-ledger .shell{grid-template-columns:1fr}
+body.layout-ledger .side-panels{display:none}
+body.layout-ledger .ledger-only .panel{margin-top:8px}
+/* V4 dense */
+body.layout-dense{font-size:13px}body.layout-dense h1{font-size:26px}
+body.layout-dense .shell{grid-template-columns:1fr min(260px,30vw)}
+body.layout-dense .rail-analytics{border-left:1px solid var(--border);padding:10px;background:var(--card);position:sticky;top:52px;height:calc(100vh - 52px);overflow:auto;font-size:12px}
+body.layout-dense .panel{padding:10px;margin-top:8px}
+body.layout-dense table.data{font-size:12px}body.layout-dense table.data th,body.layout-dense table.data td{padding:5px 6px}
+body.layout-dense .main-col .analytics-inline{display:none}
+/* V5 motion */
+body.layout-motion tr{transition:transform .32s var(--ease-spring),background .2s ease}
+body.layout-motion tr.reorder-flash{background:var(--primary-tint);transform:scale(1.01)}
+body.layout-motion .t-card{transition:transform .28s ease,box-shadow .28s ease}
+body.layout-motion .t-card.lift{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
+@media(max-width:900px){
+ body.layout-gallery .shell,body.layout-dense .shell{grid-template-columns:1fr}
+ body.layout-gallery .rail,body.layout-dense .rail-analytics{border-left:0;border-top:1px solid var(--border)}
+}
+@media(max-width:720px){
+ h1{font-size:26px}.form-grid.two{grid-template-columns:1fr}
+ table.data.desktop{display:none}.cards{display:grid!important;gap:8px}
+}.cards{display:none}.cards .c{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body class="v5 layout-motion">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<noscript><p class="main">Enable JavaScript for reorder menus — anchors: #items #categories #new-item.</p></noscript>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<div class="shell" id="shell">
+<div class="main-col">
+<main id="main-content" class="main" tabindex="-1">
+<span class="eyebrow">Content · /portfolio</span>
+<span class="meta">F22 · V5 · MOTION</span>
+<h1>Portfolio</h1>
+<p class="lede">Manage showcase projects. The live timeline below mirrors what visitors see on the public site.</p>
+<div class="actions">
+<a class="button button-secondary" href="https://nestlancer.com/portfolio" rel="noopener">View public page</a>
+<button type="button" class="button button-primary" id="btn-new">New item</button>
+<button type="button" class="button button-secondary" id="btn-states">Demo states</button>
+</div>
+<div class="kpis" aria-label="Portfolio KPIs" id="kpis"></div>
+<div id="state-banner"></div>
+<section class="panel gallery-hero" aria-label="Public showcase timeline" id="gallery-hero">
+<h2>Public timeline</h2><p class="sub">Visitor order — reorder in Manage items updates this spine.</p>
+<div class="timeline" id="timeline-hero"></div>
+</section>
+<section class="panel" id="tl-section" aria-labelledby="tl-h">
+<h2 id="tl-h">Live timeline</h2><p class="sub">Mirrors public showcase order.</p>
+<div class="timeline" id="timeline" role="list"></div>
+</section>
+<div class="main-studio side-panels" id="studio-panels">
+<section class="panel" id="categories" aria-labelledby="cat-h">
+<h2 id="cat-h">Categories</h2><p class="sub">Organize portfolio items by category.</p>
+<div class="chips" id="cat-chips"></div>
+<div class="cat-add"><div class="field"><label for="cat-in">New category</label><input id="cat-in" type="text" placeholder="Category name" autocomplete="off"></div>
+<button type="button" class="button button-secondary" id="cat-add" disabled>Add category</button></div>
+<p class="hint" id="cat-hint">Enter a category name to enable Add category.</p>
+</section>
+<section class="panel analytics-inline" aria-labelledby="an-h">
+<h2 id="an-h">Global portfolio engagement metrics.</h2>
+<div class="kpis" id="an-kpis"></div>
+<table class="data" aria-label="Top items"><thead><tr><th>Item</th><th>Views</th><th>Likes</th></tr></thead><tbody id="top-body"></tbody></table>
+</section>
+<section class="panel ledger-only" id="items" aria-labelledby="items-h">
+<h2 id="items-h">Manage items</h2><p class="sub">Create, edit, publish, and remove portfolio entries.</p>
+<p class="mono" id="reorder-hint">Focus a row · ↑/↓ reorder · Overflow for Analytics/Edit/Unpublish/Delete</p>
+<div id="items-mount"></div>
+</section>
+</div>
+<section class="panel" id="new-item" hidden aria-labelledby="new-h">
+<h2 id="new-h">New portfolio item</h2><p class="sub">Curate the public case study. Client project data stays private.</p>
+<button type="button" class="button button-secondary" id="back-port">← Back to portfolio</button>
+<form class="form-grid" id="new-form" onsubmit="return false">
+<div class="field"><label for="f-title">Title *</label><input id="f-title" required></div>
+<div class="field"><label for="f-slug">Slug</label><input id="f-slug" class="mono"></div>
+<div class="field"><label for="f-short">Short description *</label><textarea id="f-short" required></textarea></div>
+<div class="field"><label for="f-format">Content format</label><select id="f-format"><option>Markdown</option><option>HTML</option></select></div>
+<div class="field"><label for="f-full">Full description *</label><textarea id="f-full" required></textarea></div>
+<div class="form-grid two">
+<div class="field"><label for="f-cat">Category</label><select id="f-cat"></select></div>
+<div class="field"><label for="f-tags">Tags (comma-separated)</label><input id="f-tags"></div>
+</div>
+<label><input type="checkbox" id="f-feat"> Featured on homepage</label>
+<p class="sub">Client (marketing only) — Display name and context for the case study. Use a confidential label when the real client should stay private.</p>
+<div class="form-grid two">
+<div class="field"><label for="f-client">Client name</label><input id="f-client"></div>
+<div class="field"><label for="f-ind">Industry</label><input id="f-ind"></div>
+</div>
+<div class="field"><label for="f-web">Website</label><input id="f-web" type="url"></div>
+<div class="field"><label for="f-review">Client review</label><textarea id="f-review"></textarea></div>
+<label><input type="checkbox" id="f-show-review"> Show on public showcase</label>
+<p class="hint">Enable the review section to add a curated client quote to the public case study page.</p>
+<p class="sub">Project details</p>
+<div class="form-grid two">
+<div class="field"><label for="f-dur">Duration</label><input id="f-dur"></div>
+<div class="field"><label for="f-tech">Technologies (comma-separated)</label><input id="f-tech"></div>
+</div>
+<p class="sub">Links</p>
+<div class="form-grid two">
+<div class="field"><label for="f-live">Live URL</label><input id="f-live" type="url"></div>
+<div class="field"><label for="f-gh">GitHub URL</label><input id="f-gh" type="url"></div>
+</div>
+<p class="sub">SEO</p>
+<div class="field"><label for="f-meta-t">Meta title</label><input id="f-meta-t"></div>
+<div class="field"><label for="f-meta-d">Meta description</label><textarea id="f-meta-d"></textarea></div>
+<button type="button" class="button button-primary" id="create-item">Create item</button>
+</form>
+</section>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a> · <a href="../V2/index.html">V2</a> · <a href="../V3/index.html">V3</a> · <a href="../V4/index.html">V4</a> · <a href="../V5/index.html" aria-current="page">V5</a> · <a href="../../../index.html#f22">Gallery</a></nav>
+</main>
+</div>
+<aside class="rail side-panels" id="rail-dock" hidden aria-label="Curation rail"></aside>
+<aside class="rail-analytics" id="rail-analytics" hidden aria-label="Analytics rail"></aside>
+</div>
+<div class="drawer" id="drawer" aria-label="Item analytics" aria-hidden="true">
+<button type="button" class="button button-secondary" id="drawer-close">Close</button>
+<h2 style="margin:12px 0 4px;font-size:18px">Item analytics</h2>
+<p class="mono" id="drawer-title"></p>
+<div class="kpis" id="drawer-kpis"></div>
+<p class="hint">No engagement data yet.</p>
+</div>
+<div class="modal" id="preview-modal" role="dialog" aria-modal="true" aria-labelledby="pv-title" hidden>
+<div class="box"><h3 id="pv-title">Preview public change</h3><p id="pv-body"></p><div class="preview-box" id="pv-box"></div>
+<button type="button" class="button button-primary" id="pv-continue">Continue to confirm</button>
+<button type="button" class="button button-secondary" id="pv-cancel">Cancel</button></div></div>
+<div class="modal" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cm-title" hidden>
+<div class="box"><h3 id="cm-title">Confirm</h3><p id="cm-body"></p><label class="mono" for="cm-reason">Review reason (C17)</label><textarea id="cm-reason" placeholder="Why this action is correct…"></textarea>
+<div style="display:flex;gap:8px;margin-top:12px"><button type="button" class="button button-primary" id="cm-ok">Confirm</button><button type="button" class="button button-secondary" id="cm-no">Cancel</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){};s()}})();</script>
+<script>
+const VARIANT="v5";
+const ITEMS=[
+{id:'i1',title:'B2B Client Portal UX',slug:'b2b-client-portal-ux',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:7,likes:0,featured:true},
+{id:'i2',title:'E-Commerce Mobile App',slug:'e-commerce-mobile-app',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:4,likes:0,featured:true},
+{id:'i3',title:'SaaS Analytics Platform',slug:'saas-analytics-platform',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:3,likes:0,featured:true},
+{id:'i4',title:'Fintech Payments Hub',slug:'fintech-payments-hub',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:3,likes:0,featured:true},
+{id:'i5',title:'HealthTech Dashboard',slug:'healthtech-dashboard',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:2,likes:0,featured:false},
+{id:'i6',title:'Fitness Tracking App',slug:'fitness-tracking-app',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:2,likes:0,featured:false},
+{id:'i7',title:'Marketplace Redesign',slug:'marketplace-redesign',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:2,likes:0,featured:false},
+{id:'i8',title:'Brand Identity System',slug:'brand-identity-system',status:'PUBLISHED',projectDate:'Oct 2026',updated:'10/28/2026',views:2,likes:0,featured:false}
+];
+let categories=['Web Development','Mobile App','UI/UX Design','E-Commerce'];
+let focusIdx=0, uiState='ready', openMenuId=null, pendingAction=null;
+const toast=document.getElementById('toast');
+function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2800)}
+function kpis(){return{onPage:ITEMS.length,published:ITEMS.filter(x=>x.status==='PUBLISHED').length,draft:ITEMS.filter(x=>x.status==='DRAFT').length,featured:ITEMS.filter(x=>x.featured).length}}
+function renderKpis(){
+ const k=kpis();
+ document.getElementById('kpis').innerHTML=[
+  ['On this page',k.onPage],['Published',k.published],['Draft',k.draft],['Featured',k.featured]
+ ].map(([l,v])=>`<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join('');
+ document.getElementById('an-kpis').innerHTML=`<div class="kpi"><b>25</b><span>Total views</span></div><div class="kpi"><b>0</b><span>Total likes</span></div><div class="kpi"><b>8</b><span>Top items</span></div>`;
+}
+function renderTop(){
+ document.getElementById('top-body').innerHTML=ITEMS.map(r=>`<tr><td>${r.title}</td><td style="font-variant-numeric:tabular-nums">${r.views}</td><td>${r.likes}</td></tr>`).join('');
+}
+function renderTimeline(targetId){
+ const el=document.getElementById(targetId); if(!el) return;
+ el.innerHTML=ITEMS.map((r,i)=>`<div class="t-card" role="listitem"><span class="pos">#${i+1}</span><b>${r.title}</b><span class="mono">${r.slug}</span>${r.featured?' · Featured':''}</div>`).join('');
+ if(VARIANT==='v5') el.querySelectorAll('.t-card').forEach((c,i)=>{c.onmouseenter=()=>c.classList.add('lift');c.onmouseleave=()=>c.classList.remove('lift')});
+}
+function renderCats(){
+ document.getElementById('cat-chips').innerHTML=categories.map((c,i)=>`<span class="chip">${c} <button type="button" data-rm="${i}" aria-label="Remove ${c}">Remove</button></span>`).join('');
+ document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>guardAction('Remove category','Visitors will no longer filter by “'+categories[+b.dataset.rm]+'”.',()=>{categories.splice(+b.dataset.rm,1);renderCats();fillCatSelect();announce('Category removed (demo)')}));
+ const inp=document.getElementById('cat-in'), add=document.getElementById('cat-add');
+ inp.oninput=()=>{add.disabled=!inp.value.trim();document.getElementById('cat-hint').textContent=inp.value.trim()?'Ready to add category.':'Enter a category name to enable Add category.'};
+ add.onclick=()=>{const v=inp.value.trim();if(!v)return;categories.push(v);inp.value='';add.disabled=true;document.getElementById('cat-hint').textContent='Enter a category name to enable Add category.';renderCats();fillCatSelect();announce('Category added (demo)');};
+}
+function fillCatSelect(){document.getElementById('f-cat').innerHTML=categories.map(c=>`<option>${c}</option>`).join('')}
+function moveRow(i,dir){
+ const j=i+dir; if(j<0||j>=ITEMS.length)return;
+ const a=ITEMS[i];ITEMS[i]=ITEMS[j];ITEMS[j]=a; focusIdx=j;
+ if(VARIANT==='v5'){const tr=document.querySelector(`tr[data-i="${j}"]`); if(tr){tr.classList.add('reorder-flash');setTimeout(()=>tr.classList.remove('reorder-flash'),400)}}
+ renderItems();renderTimeline('timeline');renderTimeline('timeline-hero');announce('Moved to position '+(j+1));
+}
+function renderItems(){
+ if(uiState==='empty'){document.getElementById('items-mount').innerHTML='<div class="empty">No portfolio items yet — create your first showcase entry.</div>';return}
+ if(uiState==='skeleton'){document.getElementById('items-mount').innerHTML='<div class="skeleton" style="height:120px;margin:8px 0"></div><div class="skeleton" style="height:120px"></div>';return}
+ if(uiState==='error'){document.getElementById('items-mount').innerHTML='<div class="error">Could not load portfolio items. Retry or check API logs.</div><button type="button" class="button button-secondary" id="retry">Retry</button>';document.getElementById('retry').onclick=()=>{uiState='ready';renderAll()};return}
+ const rows=ITEMS.map((r,i)=>{
+  const actions=`<div class="menu-wrap"><button type="button" class="button button-secondary" data-menu="${i}" aria-haspopup="true" aria-expanded="false">Actions ▾</button>
+   <div class="menu" id="menu-${i}" role="menu">
+    <button type="button" role="menuitem" data-act="analytics" data-i="${i}">Analytics</button>
+    <button type="button" role="menuitem" data-act="edit" data-i="${i}">Edit</button>
+    <button type="button" role="menuitem" data-act="feature" data-i="${i}">${r.featured?'Unfeature':'Feature'}</button>
+    <button type="button" role="menuitem" data-act="unpublish" data-i="${i}">Unpublish</button>
+    <button type="button" role="menuitem" class="danger" data-act="delete" data-i="${i}">Delete</button>
+   </div></div>`;
+  return `<tr data-i="${i}" tabindex="${i===focusIdx?0:-1}" class="${i===focusIdx?'row-focus':''}" aria-selected="${i===focusIdx}">
+  <td><div class="reorder"><button type="button" aria-label="Move up" data-up="${i}" ${i===0?'disabled':''}>↑</button><button type="button" aria-label="Move down" data-down="${i}" ${i===ITEMS.length-1?'disabled':''}>↓</button></div></td>
+  <td><strong>${r.title}</strong><div class="mono">${r.slug}</div></td><td><span class="st">${r.status}</span></td><td>${r.projectDate}</td><td class="mono">${r.updated}</td><td>${actions}</td></tr>`;
+ }).join('');
+ document.getElementById('items-mount').innerHTML=`<table class="data desktop"><thead><tr><th>Order</th><th>Title</th><th>Status</th><th>Project date</th><th>Updated</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table>
+ <div class="cards">${ITEMS.map((r,i)=>`<div class="c"><strong>${r.title}</strong> <span class="st">${r.status}</span><div class="mono">${r.updated}</div><button class="button button-secondary" data-act="analytics" data-i="${i}">Analytics</button></div>`).join('')}</div>`;
+ document.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>moveRow(+b.dataset.up,-1));
+ document.querySelectorAll('[data-down]').forEach(b=>b.onclick=()=>moveRow(+b.dataset.down,1));
+ document.querySelectorAll('tr[data-i]').forEach(tr=>{tr.onclick=e=>{if(e.target.closest('button'))return;focusIdx=+tr.dataset.i;renderItems()};tr.onkeydown=e=>{if(e.key==='ArrowUp'){e.preventDefault();moveRow(focusIdx,-1)}if(e.key==='ArrowDown'){e.preventDefault();moveRow(focusIdx,1)}}});
+ document.querySelectorAll('[data-menu]').forEach(btn=>{btn.onclick=e=>{e.stopPropagation();const id=btn.dataset.menu;document.querySelectorAll('.menu').forEach(m=>m.classList.remove('open'));const m=document.getElementById('menu-'+id);const o=!m.classList.contains('open');m.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o));openMenuId=o?id:null}});
+ document.querySelectorAll('[data-act]').forEach(b=>b.onclick=e=>{e.stopPropagation();closeMenus();handleAct(b.dataset.act,+b.dataset.i)});
+}
+function closeMenus(){document.querySelectorAll('.menu').forEach(m=>m.classList.remove('open'));document.querySelectorAll('[data-menu]').forEach(b=>b.setAttribute('aria-expanded','false'));openMenuId=null}
+document.addEventListener('click',()=>closeMenus());
+function handleAct(act,i){
+ const r=ITEMS[i];
+ if(act==='analytics'){openDrawer(r);return}
+ if(act==='edit'){showNew(false,r);return}
+ if(act==='feature'){guardAction(r.featured?'Unfeature item':'Feature item','Public homepage will '+(r.featured?'stop highlighting':'highlight')+' “'+r.title+'”.',()=>{r.featured=!r.featured;renderAll();announce('Featured toggled (demo)')});return}
+ if(act==='unpublish'){guardAction('Unpublish item','“'+r.title+'” will leave the public showcase.',()=>{r.status='DRAFT';renderAll();announce('Unpublished — receipt logged (demo)')});return}
+ if(act==='delete'){guardAction('Delete item','“'+r.title+'” will be permanently removed.',()=>{ITEMS.splice(i,1);focusIdx=Math.min(focusIdx,ITEMS.length-1);renderAll();announce('Deleted — undo window simulated (demo)')});return}
+}
+function openDrawer(r){
+ const d=document.getElementById('drawer');d.classList.add('open');d.setAttribute('aria-hidden','false');
+ document.getElementById('drawer-title').textContent=r.title+' · '+r.slug;
+ document.getElementById('drawer-kpis').innerHTML=`<div class="kpi"><b>${r.views}</b><span>Total views</span></div><div class="kpi"><b>${r.likes}</b><span>Total likes</span></div>`;
+ if(VARIANT==='v3'){/* drawer primary in v3 */}
+}
+document.getElementById('drawer-close').onclick=()=>{document.getElementById('drawer').classList.remove('open');document.getElementById('drawer').setAttribute('aria-hidden','true')};
+function guardAction(title,body,onOk){
+ pendingAction={title,body,onOk};
+ const pm=document.getElementById('preview-modal');document.getElementById('pv-title').textContent='Preview public change';
+ document.getElementById('pv-body').textContent=title;document.getElementById('pv-box').innerHTML='<strong>Visitor impact</strong><p>'+body+'</p><p class="mono">/portfolio · static lab preview</p>';
+ pm.hidden=false;pm.classList.add('open');
+}
+document.getElementById('pv-cancel').onclick=()=>{document.getElementById('preview-modal').hidden=true;document.getElementById('preview-modal').classList.remove('open');pendingAction=null};
+document.getElementById('pv-continue').onclick=()=>{
+ if(!pendingAction)return; const {title,body,onOk}=pendingAction;
+ document.getElementById('preview-modal').hidden=true;document.getElementById('preview-modal').classList.remove('open');
+ const m=document.getElementById('confirm');document.getElementById('cm-title').textContent=title;document.getElementById('cm-body').textContent=body;document.getElementById('cm-reason').value='';m.hidden=false;m.classList.add('open');
+ document.getElementById('cm-ok').onclick=()=>{m.hidden=true;m.classList.remove('open');onOk(document.getElementById('cm-reason').value||'(no reason)');pendingAction=null};
+ document.getElementById('cm-no').onclick=()=>{m.hidden=true;m.classList.remove('open');pendingAction=null};
+};
+function showNew(isNew,r){
+ document.getElementById('new-item').hidden=false;document.getElementById('studio-panels').hidden=true;
+ document.getElementById('new-h').textContent=isNew?'New portfolio item':'Edit portfolio item';
+ if(isNew){document.getElementById('new-form').reset()} else {
+  document.getElementById('f-title').value=r.title;document.getElementById('f-slug').value=r.slug;
+ }
+ location.hash='new-item';
+}
+document.getElementById('btn-new').onclick=()=>showNew(true);
+document.getElementById('back-port').onclick=()=>{document.getElementById('new-item').hidden=true;document.getElementById('studio-panels').hidden=false;location.hash='items'};
+document.getElementById('create-item').onclick=()=>guardAction('Create item','New case study will appear on the public showcase after publish.',()=>announce('Create item queued (demo)'));
+document.getElementById('btn-states').onclick=()=>{
+ document.getElementById('state-banner').innerHTML=`<div class="state-demo"><button type="button" data-ui="ready">Ready</button><button type="button" data-ui="empty">Empty</button><button type="button" data-ui="skeleton">Skeleton</button><button type="button" data-ui="error">Error</button></div>`;
+ document.querySelectorAll('[data-ui]').forEach(b=>b.onclick=()=>{uiState=b.dataset.ui;renderItems()});
+};
+function dockRail(){
+ if(VARIANT==='v2'){
+  document.body.classList.add('layout-gallery');
+  const rail=document.getElementById('rail-dock');rail.hidden=false;
+  if(!rail.dataset.docked){
+   rail.appendChild(document.getElementById('categories'));
+   rail.appendChild(document.querySelector('.analytics-inline'));
+   rail.dataset.docked='1';
+  }
+ }
+ if(VARIANT==='v3') document.body.classList.add('layout-ledger');
+ if(VARIANT==='v4'){
+  document.body.classList.add('layout-dense');
+  const ra=document.getElementById('rail-analytics');ra.hidden=false;
+  if(!ra.dataset.docked){
+   ra.appendChild(document.querySelector('.analytics-inline'));
+   ra.dataset.docked='1';
+  }
+ }
+ if(VARIANT==='v5') document.body.classList.add('layout-motion');
+}
+function renderAll(){renderKpis();renderTop();renderTimeline('timeline');renderTimeline('timeline-hero');renderCats();renderItems();fillCatSelect();dockRail()}
+renderAll();
+</script>
+</body></html>

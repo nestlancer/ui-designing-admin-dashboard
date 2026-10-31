@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F18 V1 · Ground Truth · Messages thread</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+:root{--thread-header:52px;--composer-min:120px}.page{min-height:100dvh;display:flex;flex-direction:column;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.top{height:var(--thread-header);display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;text-decoration:none;color:inherit}.brand img{width:28px;height:28px}
+.crumbs{flex:1;min-width:0;font-size:11px;color:var(--muted-foreground);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.crumbs a{color:var(--muted-foreground);text-decoration:none}.crumbs strong{color:var(--foreground)}
+.workspace{flex:1;display:grid;grid-template-columns:minmax(0,1fr);min-height:0}
+.workspace.members-open{grid-template-columns:minmax(0,1fr) min(300px,38vw)}
+.thread-head{padding:14px 16px 10px;border-bottom:1px solid var(--border);background:var(--card)}
+.thread-head h1{margin:0 0 4px;font-size:22px;line-height:1.2}.thread-head .sub{margin:0 0 10px;color:var(--muted-foreground);font-size:12px}
+.meta-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.badge-type{padding:2px 8px;border-radius:var(--radius-sm);background:var(--primary-tint);color:var(--brand-800);font:700 10px var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.thread-id{font:600 10px var(--mono);color:var(--muted-foreground);cursor:help;border-bottom:1px dotted var(--border)}
+.actions{display:flex;flex-wrap:wrap;gap:6px}
+.actions .button{min-height:32px;padding:5px 10px;font-size:11px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{min-height:28px;padding:0 10px;border:1px solid var(--border);border-radius:999px;background:var(--muted);font-size:11px;cursor:pointer;color:inherit}
+.chip:hover{border-color:var(--primary);color:var(--primary)}
+.stream-wrap{flex:1;overflow-y:auto;padding:12px 16px 8px;min-height:200px}
+.stream-wrap[data-state=skeleton] .stream{opacity:.35;pointer-events:none}
+.stream-wrap[data-state=empty] .stream{display:none}
+.stream-wrap[data-state=error] .stream{display:none}
+.surface-msg{margin:0 0 12px;padding:14px;border:1px dashed var(--status-neutral-border);border-radius:var(--radius-md);background:var(--muted);text-align:center;font-size:12px;color:var(--muted-foreground)}
+.surface-msg strong{display:block;color:var(--foreground);margin-bottom:4px}
+.day{display:flex;align-items:center;gap:10px;margin:8px 0 14px;color:var(--muted-foreground);font:700 10px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.day::before,.day::after{content:"";flex:1;height:1px;background:var(--border)}
+.msg{max-width:min(560px,92%);margin-bottom:12px;display:grid;gap:4px}
+.msg.mine{margin-left:auto;text-align:right}
+.msg-head{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted-foreground)}
+.msg.mine .msg-head{justify-content:flex-end;flex-direction:row-reverse}
+.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;background:var(--primary);color:#fff;flex:0 0 28px}.dark .avatar{color:var(--background)}
+.msg.mine .avatar{background:var(--brand-600)}
+.bubble{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);font-size:13px;line-height:1.45;text-align:left;display:inline-block}
+.msg.mine .bubble{background:var(--primary-tint);border-color:var(--brand-200)}
+.time{font:600 10px var(--mono);color:var(--muted-foreground)}
+.read{font:700 10px var(--mono);color:var(--primary)}
+.msg-actions{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.msg.mine .msg-actions{justify-content:flex-end}
+.msg-actions button{min-height:26px;padding:2px 8px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--muted-foreground);font-size:10px;font-weight:650;cursor:pointer}
+.msg-actions button:hover{background:var(--muted);color:var(--foreground)}
+.edit-box{display:grid;gap:8px;margin-top:6px;text-align:left}
+.edit-box textarea{min-height:72px;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--foreground);font:inherit;width:100%}
+.composer{border-top:1px solid var(--border);padding:12px 16px 14px;background:var(--card)}
+.reply-banner{display:none;margin-bottom:8px;padding:8px 10px;border-left:3px solid var(--primary);border-radius:var(--radius-sm);background:var(--muted);font-size:11px;text-align:left}
+.reply-banner.show{display:block}
+.reply-banner strong{display:block;font-size:10px;color:var(--muted-foreground);text-transform:uppercase;letter-spacing:.05em}
+.search-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.search-row input{flex:1;min-width:140px;min-height:34px;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);font:inherit}
+.composer-main{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
+.composer-main textarea{flex:1;min-width:200px;min-height:72px;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--foreground);font:inherit}
+.attach{font-size:11px;color:var(--muted-foreground)}
+.composer-tools{display:flex;flex-wrap:wrap;gap:6px;width:100%;margin-top:8px}
+.members{border-left:1px solid var(--border);background:var(--muted);display:none;flex-direction:column;min-height:0}
+.workspace.members-open .members{display:flex}
+.members-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:14px;border-bottom:1px solid var(--border)}
+.members-head h2{margin:0;font-size:15px}
+.member-list{padding:10px;display:grid;gap:8px;overflow-y:auto}
+.member{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}
+.member div{flex:1;min-width:0}.member strong{display:block;font-size:12px}.member span{font-size:10px;color:var(--muted-foreground)}
+.role{font:700 9px var(--mono);padding:2px 6px;border-radius:var(--radius-sm);background:var(--muted);color:var(--foreground);text-transform:uppercase}
+.members-foot{margin-top:auto;padding:12px;border-top:1px solid var(--border)}
+.preview{margin:12px 16px 0;border:1px dashed var(--status-neutral-border);border-radius:var(--radius-md);background:var(--muted)}
+.preview summary{padding:10px 12px;cursor:pointer;font:700 11px var(--mono)}
+.preview-body{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 12px}
+.preview-body button{min-height:30px;padding:4px 9px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--card);font-size:10px;cursor:pointer}
+.footer{padding:10px 16px;border-top:1px solid var(--border);font-size:10px;color:var(--muted-foreground);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:12px;display:none;max-width:calc(100% - 24px)}.toast.show{display:block}
+.msg.highlight .bubble{outline:2px solid var(--primary);outline-offset:2px}
+@media(max-width:767px){.workspace.members-open{grid-template-columns:1fr}.members{position:fixed;inset:0;z-index:45;display:flex!important}.thread-head h1{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="page">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top">
+<a class="brand" href="../../../index.html" aria-label="Nestlancer Admin dashboard"><img src="../../../assets/nestlancer-mark.svg" alt="Nestlancer Admin logo"><span>Nestlancer Admin</span></a>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../index.html#f17">Messages</a> › <strong>Thread</strong></nav>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button>
+</header>
+<div class="workspace" id="workspace">
+<div class="thread-column" id="main-content" tabindex="-1">
+<header class="thread-head">
+<p class="meta-row"><span class="badge-type">Direct conversation</span><span class="thread-id" id="thread-id" title="01a10a2d-850b-7147-b023-efb5e17d8b73">01a10a2d…8b73</span></p>
+<h1>Thread with Amit Verma</h1>
+<p class="sub">Operator workspace · captured thread · reply without losing place.</p>
+<div class="actions">
+<a class="button button-secondary" href="../../../index.html#f17">← Back to inbox</a>
+<button type="button" class="button button-secondary" id="mark-read">Mark read</button>
+<button type="button" class="button button-secondary" id="toggle-members" aria-expanded="false" aria-controls="members-panel">Members</button>
+<a class="button button-secondary" href="../../../index.html#f19">Flagged queue</a>
+</div>
+<div class="chips" id="chips" aria-label="Quick replies"></div>
+</header>
+<div class="stream-wrap" id="stream-wrap" data-state="default">
+<div class="surface-msg" id="surface-empty" hidden><strong>No messages in this preview</strong>Empty thread state · composer remains reachable.</div>
+<div class="surface-msg" id="surface-skeleton" hidden><strong>Loading thread…</strong>Skeleton preview · no request in flight.</div>
+<div class="surface-msg" id="surface-error" hidden><strong>Thread unavailable</strong>Simulated error · captured bubbles unchanged.<button type="button" class="button button-secondary" id="retry-stream" style="margin-top:8px">Retry preview</button></div>
+<div class="stream" id="stream" role="log" aria-live="polite" aria-label="Message stream"></div>
+</div>
+<section class="composer" aria-label="Message composer">
+<div class="reply-banner" id="reply-banner"><strong>Replying to You</strong><span id="reply-quote"></span></div>
+<div class="search-row">
+<label class="sr-only" for="conv-search">Search in conversation</label>
+<input id="conv-search" type="search" placeholder="Search in conversation" autocomplete="off">
+<button type="button" class="button button-secondary" id="search-btn">Search</button>
+</div>
+<div class="composer-main">
+<label class="sr-only" for="message">Reply</label>
+<textarea id="message" name="message" placeholder="Reply as operator…" aria-describedby="attach-hint"></textarea>
+<div>
+<label class="attach"><input type="file" id="attachment" name="message-attachment" aria-describedby="attach-hint"> Attach file</label>
+<p class="mono" id="attach-hint" style="font-size:10px;margin:4px 0 0">Maps to project attachments endpoint (demo).</p>
+<button type="button" class="button button-primary" id="send" style="margin-top:8px;width:100%">Send</button>
+</div>
+</div>
+<div class="composer-tools">
+<button type="button" class="button button-secondary" id="composer-reply">Reply</button>
+<button type="button" class="button button-secondary" id="composer-flag">Flag</button>
+</div>
+</section>
+<details class="preview"><summary>Preview states · demo only</summary>
+<div class="preview-body">
+<button type="button" data-ui="default">Default (162)</button>
+<button type="button" data-ui="mark-read">Mark-read (163)</button>
+<button type="button" data-ui="reply">Reply (164)</button>
+<button type="button" data-ui="edit">Edit (165)</button>
+<button type="button" data-ui="sent">Send receipt</button>
+<button type="button" data-ui="empty">Empty thread</button>
+<button type="button" data-ui="skeleton">Skeleton</button>
+<button type="button" data-ui="error">Error</button>
+<button type="button" data-ui="members-open">Open members</button>
+</div>
+</details>
+</div>
+<aside class="members" id="members-panel" aria-label="Thread members">
+<div class="members-head"><div><h2>In the room</h2><p class="mono" style="margin:4px 0 0;font-size:10px">Shot 079 · participants + roles</p></div>
+<button type="button" class="icon-button" id="close-members" aria-label="Close members panel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+<div class="member-list" id="member-list"></div>
+<div class="members-foot"><button type="button" class="button button-secondary" id="close-room" style="width:100%">Close the room</button></div>
+</aside>
+</div>
+<footer class="footer"><span>F18 · V1 · Ground Truth · members closed by default</span>
+<nav class="lab-nav" aria-label="Variant navigation"><a href="../../../index.html">Gallery</a><a href="../V2/index.html">V2 →</a></nav></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{
+const THREAD_ID='01a10a2d-850b-7147-b023-efb5e17d8b73';
+const MESSAGES=[
+{id:'m1',author:'You',initials:'Y',mine:true,body:'Hi Amit — welcome to Nestlancer. Let us know if you have questions about your request.',time:'Oct 5 3:48 AM',read:true},
+{id:'m2',author:'Amit Verma',initials:'AV',mine:false,body:"Thanks — we're Verma Properties based in Delhi. Looking forward to working together.",time:'Oct 5 3:48 AM',read:false}
+];
+const CHIPS=['Checking availability…','Confirmed for Thursday','Need more details'];
+const MEMBERS=[
+{name:'Riya Kapoor',email:'admin@nestlancer.com',role:'Administrator',initials:'RK'},
+{name:'Amit Verma',email:'amit.verma@nestlancer.com',role:'Client',initials:'AV'}
+];
+let ui='default',editId=null,replyTo=null,sentReceipt=false;
+const $=id=>document.getElementById(id),$$=s=>[...document.querySelectorAll(s)];
+const toast=m=>{$('toast').textContent=m;$('toast').classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').classList.remove('show'),2800)};
+const themeBtn=document.querySelector('.theme-toggle'),root=document.documentElement;
+const syncTheme=()=>{const d=root.classList.contains('dark');themeBtn.setAttribute('aria-pressed',String(d));themeBtn.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};syncTheme();
+themeBtn.onclick=()=>{root.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}syncTheme()};
+$('thread-id').onclick=()=>{navigator.clipboard?.writeText(THREAD_ID);toast('Copied thread ID')};
+function renderChips(){ $('chips').innerHTML=CHIPS.map(c=>`<button type="button" class="chip">${c}</button>`).join(''); $$('.chip').forEach(b=>b.onclick=()=>{$('message').value=b.textContent;$('message').focus()})}
+function renderMembers(){ $('member-list').innerHTML=MEMBERS.map(m=>`<div class="member"><span class="avatar" aria-hidden="true">${m.initials}</span><div><strong>${m.name}</strong><span>${m.email}</span></div><span class="role">${m.role}</span></div>`).join('')}
+function renderStream(){
+  const q=($('conv-search').value||'').trim().toLowerCase();
+  const show=ui!=='empty'&&ui!=='skeleton'&&ui!=='error';
+  $('stream').hidden=!show;
+  $('surface-empty').hidden=ui!=='empty';$('surface-skeleton').hidden=ui!=='skeleton';$('surface-error').hidden=ui!=='error';
+  $('stream-wrap').dataset.state=ui==='empty'?'empty':ui==='skeleton'?'skeleton':ui==='error'?'error':'default';
+  if(!show){$('stream').innerHTML='';return}
+  let html=`<div class="day" role="separator">Monday, Oct 5</div>`;
+  MESSAGES.forEach(m=>{
+    const editing=editId===m.id&&ui==='edit';
+    const hit=q&&m.body.toLowerCase().includes(q);
+    html+=`<article class="msg ${m.mine?'mine':''} ${hit?'highlight':''}" data-id="${m.id}" tabindex="0">
+      <div class="msg-head"><span class="avatar" aria-hidden="true">${m.initials}</span><strong>${m.author}</strong></div>
+      <div class="bubble">${editing?`<div class="edit-box"><label class="sr-only" for="edit-area">Edit message</label><textarea id="edit-area">${m.body}</textarea><div><button type="button" class="button button-primary" id="save-edit">Save</button> <button type="button" class="button button-secondary" id="cancel-edit">Cancel</button></div></div>`:m.body}</div>
+      <div class="time"><time class="mono">${m.time}</time>${m.mine&&m.read?' · <span class="read" aria-label="Read">✓</span>':''}${sentReceipt&&m.id==='m1'?' · <span class="mono">delivered</span>':''}</div>
+      ${editing?'':`<div class="msg-actions">${m.mine?'<button type="button" data-act="reply">Reply</button><button type="button" data-act="edit">Edit</button><button type="button" data-act="delete">Delete</button>':'<button type="button" data-act="reply">Reply</button><button type="button" data-act="flag">Flag</button>'}</div>`}
+    </article>`;
+  });
+  $('stream').innerHTML=html;
+  $('stream').querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>act(b.dataset.act,b.closest('[data-id]').dataset.id));
+  const se=$('save-edit');if(se){se.onclick=()=>{MESSAGES[0].body=$('edit-area').value;editId=null;ui='default';renderAll();toast('Message saved (demo · PATCH /messages/{id})')};$('cancel-edit').onclick=()=>{editId=null;ui='default';renderAll()}}
+}
+function act(kind,id){
+  const m=MESSAGES.find(x=>x.id===id);
+  if(kind==='edit'){editId=id;ui='edit';renderAll();return}
+  if(kind==='reply'){replyTo=m;ui='reply';$('reply-banner').classList.add('show');$('reply-quote').textContent=m.body;renderAll();$('message').focus();return}
+  if(kind==='delete'){toast('Delete guarded — confirm in prod (demo)');return}
+  if(kind==='flag'){toast('Flagged · review in F19 (demo · POST …/flag)');return}
+}
+function renderComposer(){
+  const rep=ui==='reply'||ui==='edit'&&false;
+  $('reply-banner').classList.toggle('show',ui==='reply'&&!!replyTo);
+  if(ui==='reply'&&replyTo)$('reply-quote').textContent=replyTo.body;
+  $('mark-read').classList.toggle('button-primary',ui==='mark-read');
+}
+function renderAll(){renderStream();renderComposer()}
+function setUi(mode){
+  ui=mode;
+  if(mode==='edit'){editId='m1';replyTo=null;$('reply-banner').classList.remove('show')}
+  else if(mode==='reply'){editId=null;replyTo=MESSAGES[0];$('reply-banner').classList.add('show');$('reply-quote').textContent=replyTo.body}
+  else if(mode!=='sent'){editId=null;if(mode!=='mark-read'){replyTo=null;$('reply-banner').classList.remove('show')}}
+  if(mode==='members-open')openMembers(true);
+  renderAll();
+}
+function openMembers(open){$('workspace').classList.toggle('members-open',open);$('toggle-members').setAttribute('aria-expanded',String(open))}
+$('toggle-members').onclick=()=>openMembers(!$('workspace').classList.contains('members-open'));
+$('close-members').onclick=()=>openMembers(false);
+$('mark-read').onclick=()=>{MESSAGES.forEach(m=>m.read=true);ui='mark-read';renderAll();toast('Marked read (demo · POST …/read)')};
+$('send').onclick=()=>{const t=$('message').value.trim();if(!t)return toast('Enter a message');toast('Sent (demo · thread reply)');sentReceipt=true;replyTo=null;ui='default';$('reply-banner').classList.remove('show');$('message').value='';renderAll();$('stream').lastElementChild?.scrollIntoView({behavior:'smooth'})};
+$('composer-reply').onclick=()=>act('reply','m2');
+$('composer-flag').onclick=()=>toast('Flag opens moderation context · F19');
+$('search-btn').onclick=()=>renderStream();
+$('conv-search').onkeydown=e=>{if(e.key==='Enter')renderStream()};
+$('close-room').onclick=()=>toast('Close the room (demo · POST …/threads/{id}/archive)');
+$('retry-stream').onclick=()=>setUi('default');
+document.querySelectorAll('[data-ui]').forEach(b=>b.onclick=()=>{if(b.dataset.ui==='sent'){sentReceipt=true;renderAll();toast('Send receipt state');return}setUi(b.dataset.ui)});
+document.addEventListener('keydown',e=>{
+  if(e.target.matches('input,textarea')||editId)return;
+  if(e.key==='m')openMembers(true);
+  if(e.key==='r')act('reply','m2');
+  if(e.key==='/' ){e.preventDefault();$('conv-search').focus()}
+});
+renderChips();renderMembers();renderAll();
+})();
+</script>
+</body>
+</html>

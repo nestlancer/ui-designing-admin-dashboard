@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F04 V1 · Ground Truth · Pipelines</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.app{display:grid;grid-template-columns:228px 1fr;min-height:100vh}
+.side{background:var(--sidebar-bg);border-right:1px solid var(--border);padding:14px 12px}
+.brand{display:flex;gap:10px;align-items:center;margin-bottom:16px}.brand svg{width:32px;height:32px}.brand strong{font-size:13px;display:block}.brand span{font-size:11px;color:var(--muted-foreground)}
+.nav a{display:block;padding:8px 10px;border-radius:var(--radius-md);color:inherit;text-decoration:none;font-size:13px}
+.nav a[aria-current="page"]{background:var(--sidebar-active);color:var(--brand-700);font-weight:650}
+.top{height:52px;display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.crumb{font-size:12px;color:var(--muted-foreground)}.spacer{flex:1}
+.main{padding:20px;max-width:1120px}
+.tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--border)}
+.tabs a{padding:10px 14px;text-decoration:none;color:var(--muted-foreground);font-size:13px;font-weight:650;border-bottom:2px solid transparent}
+.tabs a[aria-current="page"]{color:var(--brand-700);border-color:var(--brand-600)}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
+h1{margin:4px 0 8px;font-size:34px}.lede{margin:0 0 18px;color:var(--muted-foreground);font-size:14px;line-height:1.55;max-width:62ch}
+.banner{display:none;margin-bottom:14px;padding:10px 12px;border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text);border-radius:var(--radius-md);font-size:13px}
+.banner.show{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.sec{margin:28px 0 10px}.sec h2{margin:0 0 6px;font-size:20px}.sec p{margin:0 0 12px;color:var(--muted-foreground);font-size:13px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card-stage{padding:14px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);display:flex;flex-direction:column;gap:8px;min-height:150px}
+.card-stage .count{font:800 32px/1 var(--font);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.card-stage .count.mono{font-family:var(--mono);font-size:18px}
+.card-stage h3{margin:0;font-size:15px}.job{margin:0;font-size:12px;color:var(--muted-foreground)}.guide{margin:0;font-size:12px;color:var(--foreground)}
+.open{margin-top:auto;align-self:start;font-size:12px;font-weight:700;color:var(--brand-700);background:none;border:0;padding:0;cursor:pointer;min-height:24px}
+.badge-err{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:999px;border:1px solid var(--status-error-border);background:var(--status-error-bg);color:var(--status-error-text);font-size:11px;font-weight:650}
+.consoles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.console{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);text-align:left;cursor:pointer;color:inherit;font:inherit;min-height:88px}
+.console strong{display:block;font-size:13px;margin-bottom:4px}.console span{font-size:12px;color:var(--muted-foreground)}
+.api details{border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-bottom:8px}
+.api summary{cursor:pointer;padding:12px 14px;font-size:13px;font-weight:650;list-style:none;display:flex;justify-content:space-between;gap:8px}
+.api summary::-webkit-details-marker{display:none}
+.api .body{padding:0 14px 12px;font-size:12px;color:var(--muted-foreground)}
+.api code{font-family:var(--mono);font-size:11px;color:var(--foreground)}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;font-size:12px}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;max-width:92vw;box-shadow:var(--shadow-sm)}
+.state-bar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{display:none}.grid{grid-template-columns:1fr 1fr}.consoles{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid,.consoles{grid-template-columns:1fr}h1{font-size:28px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="app">
+<aside class="side" aria-label="Console sidebar"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="logo"><title id="logo">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Nestlancer Admin</strong><span>Operator console</span></div></div>
+<nav class="nav"><a href="#">Dashboard</a><a href="./index.html" aria-current="page">Pipelines</a><a href="#">Requests</a><a href="#">Payments</a></nav></aside>
+<div>
+<header class="top"><div class="crumb">Home › Operations › Pipelines</div><div class="spacer"></div>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<nav class="tabs" aria-label="Pipeline hubs"><a href="./index.html" aria-current="page">Stage pipeline</a><a href="../V1/index.html#user-hub-note" data-demo="/pipeline/users">User hub</a><a href="../V1/index.html#project-hub-note" data-demo="/pipeline/projects">Project hub</a></nav>
+<span class="eyebrow">Operations</span>
+<h1>Pipelines</h1>
+<p class="lede">Stage pipeline for platform-wide triage. Use User hub or Project hub to drill into one client or one engagement.</p>
+<div class="banner show" id="degraded" role="status"><span><strong>Degraded:</strong> Projects stage count unavailable — <code class="mono" style="font-family:var(--mono)">GET /api/v1/admin/projects*</code> is not answering. Other stages use frozen capture counts.</span><button type="button" class="button button-secondary" id="retry-projects">Retry Projects</button></div>
+<div class="state-bar" aria-label="Lab state previews">
+<button type="button" class="button button-secondary" data-state="ok">Preview healthy</button>
+<button type="button" class="button button-secondary" data-state="skeleton">Preview skeleton</button>
+<button type="button" class="button button-secondary" data-state="error">Preview stage error</button>
+</div>
+
+<section class="sec" aria-labelledby="delivery"><h2 id="delivery">Client delivery</h2>
+<p>End-to-end flow from first contact through paid delivery. Each stage feeds the next — manage the full client journey in order. Serves: Clients requesting Nestlancer services.</p>
+<div class="grid" id="delivery-grid">
+<article class="card-stage" data-stage="inquiries"><div class="count" data-count="23">23</div><h3>Inquiries</h3><p class="job">Website contact form leads</p><p class="guide">Qualify lead and convert to request</p><button class="open" type="button" data-route="/contact">Open →</button></article>
+<article class="card-stage" data-stage="requests"><div class="count" data-count="46">46</div><h3>Requests</h3><p class="job">Scoped service requests</p><p class="guide">Triage, assign, and prepare quote</p><button class="open" type="button" data-route="/requests">Open →</button></article>
+<article class="card-stage" data-stage="quotes"><div class="count" data-count="36">36</div><h3>Quotes</h3><p class="job">Pricing proposals</p><p class="guide">Send quote and track acceptance</p><button class="open" type="button" data-route="/quotes">Open →</button></article>
+<article class="card-stage" data-stage="projects" id="projects-card"><div class="count mono" id="projects-count">No data</div><span class="badge-err" id="projects-badge">Unavailable</span><h3>Projects</h3><p class="job">Active delivery work</p><p class="guide">Manage milestones and deliverables</p><button class="open" type="button" data-route="/projects">Open →</button></article>
+<article class="card-stage" data-stage="payments"><div class="count" data-count="48">48</div><h3>Payments</h3><p class="job">Milestone payments and payouts</p><p class="guide">Release funds and resolve disputes</p><button class="open" type="button" data-route="/payments">Open →</button></article>
+<article class="card-stage" data-stage="messages"><div class="count mono">—</div><h3>Messages</h3><p class="job">Project communication</p><p class="guide">Monitor threads and system broadcasts</p><button class="open" type="button" data-route="/messages">Open →</button></article>
+</div></section>
+
+<section class="sec" aria-labelledby="trust"><h2 id="trust">Users &amp; trust</h2>
+<p>Manage all client and operator accounts, enforce platform safety, and maintain an audit trail.</p>
+<div class="grid">
+<article class="card-stage"><div class="count" data-count="34">34</div><h3>Users</h3><p class="job">Accounts, roles, sessions</p><p class="guide">Review profile, role, and sessions</p><button class="open" type="button" data-route="/users">Open →</button></article>
+<article class="card-stage"><div class="count mono">—</div><h3>Moderation</h3><p class="job">Flagged messages and abuse</p><p class="guide">Dismiss, escalate, or remove content</p><button class="open" type="button" data-route="/moderation">Open →</button></article>
+<article class="card-stage"><div class="count mono">—</div><h3>Audit logs</h3><p class="job">Auth and admin action history</p><p class="guide">Investigate security events</p><button class="open" type="button" data-route="/audit">Open →</button></article>
+</div></section>
+
+<section class="sec" aria-labelledby="consoles"><h2 id="consoles">Standalone consoles</h2>
+<p>Independent tools — not sequential pipeline stages</p>
+<div class="consoles" id="consoles-grid"></div></section>
+
+<section class="sec api" aria-labelledby="api"><h2 id="api">Admin API reference</h2>
+<p>157 endpoints across 16 feature areas · base path <code>/api/v1</code></p>
+<div id="api-list"></div></section>
+
+<p id="user-hub-note" class="lede">User hub interiors are owned by F05 — this tab deep-links to <code>/pipeline/users</code>.</p>
+<p id="project-hub-note" class="lede">Project hub interiors are owned by F05 — this tab deep-links to <code>/pipeline/projects</code> (currently degraded in production).</p>
+<nav class="lab-nav" aria-label="Variants"><a href="./index.html" aria-current="page">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f04">Gallery</a></nav>
+</main></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+(()=>{
+const consoles=[['Dashboard','KPIs, revenue, alerts','/dashboard'],['Analytics','Deep metrics and trends','/analytics'],['Blog','Posts, comments, and taxonomy','/content'],['Portfolio','Public showcase items','/portfolio'],['Media','Files and quarantine','/media'],['System','Config, jobs, flags','/system'],['Webhooks','Outbound integrations','/integrations']];
+const api=[['Inquiries',6],['Requests',11],['Quotes',10],['Projects',20],['Payments',16],['Messages',6],['Users',21],['Moderation',6],['Audit logs',14],['Dashboard',8],['Analytics',8],['Blog',16],['Portfolio',10],['Media',19],['System',14],['Webhooks',14]];
+const cg=document.getElementById('consoles-grid');
+consoles.forEach(([n,j,r])=>{const b=document.createElement('button');b.type='button';b.className='console';b.innerHTML=`<strong>${n}</strong><span>${j}</span>`;b.onclick=()=>go(r);cg.appendChild(b)});
+const al=document.getElementById('api-list');
+api.forEach(([n,c])=>{const d=document.createElement('details');d.innerHTML=`<summary><span>${n}</span><span class="meta" style="font-family:var(--mono)">${c} endpoints ▸</span></summary><div class="body">Reference-only sample paths for <strong>${n}</strong>. Conceptual feed: <code>GET /api/v1/docs-specs</code>. Lab does not fetch live specs.<br><code>/api/v1/…</code> · count frozen from capture (${c}).</div>`;al.appendChild(d)});
+const toast=document.getElementById('toast');
+function announce(m){toast.hidden=false;toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.hidden=true,2800)}
+function go(route){announce('Demo only — would navigate to '+route)}
+document.querySelectorAll('.open,[data-demo]').forEach(el=>el.addEventListener('click',e=>{const r=el.getAttribute('data-route')||el.getAttribute('data-demo');if(r){e.preventDefault();go(r)}}));
+function sync(){const d=document.documentElement.classList.contains('dark');const b=document.querySelector('.theme-toggle');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');try{localStorage.setItem('nl-admin-theme',d?'dark':'light')}catch(e){}}
+document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');sync()};sync();
+const banner=document.getElementById('degraded');const pc=document.getElementById('projects-count');const pb=document.getElementById('projects-badge');
+document.getElementById('retry-projects').onclick=()=>{announce('Retry preview — Projects still unavailable (no invented count).');pc.textContent='No data';pb.hidden=false;banner.classList.add('show')};
+document.querySelectorAll('[data-state]').forEach(btn=>btn.onclick=()=>{
+  const s=btn.dataset.state;const grid=document.getElementById('delivery-grid');
+  if(s==='skeleton'){grid.querySelectorAll('.count').forEach(c=>{c.textContent='···';c.classList.add('mono')});announce('Skeleton preview on delivery counts');return}
+  if(s==='error'){banner.classList.add('show');pc.textContent='Error';pb.hidden=false;announce('Stage error preview');return}
+  grid.querySelectorAll('.count[data-count]').forEach(c=>{c.textContent=c.dataset.count;c.classList.remove('mono')});pc.textContent='No data';pc.classList.add('mono');pb.hidden=false;banner.classList.add('show');announce('Restored capture counts (Projects remains No data)')});
+})();
+</script>
+</body>
+</html>

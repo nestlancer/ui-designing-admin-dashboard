@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F08 V5 · Motion · Requests</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}.main{padding:18px;max-width:1200px;margin:0 auto}h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5}.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:12px}.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}.chip,.view{min-height:30px;padding:0 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit;margin:0 4px 4px 0}.chip[aria-pressed="true"],.view[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}.bulk{display:none;gap:8px;flex-wrap:wrap;align-items:center;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin:8px 0}.bulk.show{display:flex}.age,.st{display:inline-flex;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}.st{border-color:var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text)}.cap,.strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.card{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-width:110px}.card b{display:block;font:800 24px/1 var(--font);font-variant-numeric:tabular-nums}.card span{font-size:11px;color:var(--muted-foreground)}input,select,textarea{min-height:36px;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--foreground);font:inherit}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left}tr[aria-selected="true"]{background:var(--primary-tint)}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-bottom:6px;transition:transform .28s ease,opacity .28s ease}.row.go{transform:translateX(40px);opacity:.3}.drawer{position:fixed;inset:0;background:rgba(26,36,51,.4);z-index:40;display:none;justify-content:flex-end}.drawer.open{display:flex}.panel{width:min(560px,100%);background:var(--card);padding:16px;overflow:auto}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="meta">F08 · V5 · MOTION</span>
+<h1>Requests</h1>
+<p class="lede">Advance choreography + loop transitions · reduced-motion safe.</p>
+<div id="cap"></div><div id="strip"></div>
+<div id="views"></div><div id="chips"></div>
+<div class="bulk" id="bulk"><span id="bulk-count">0</span>
+<button class="button button-secondary" data-bulk="assign">Assign</button>
+<button class="button button-secondary" data-bulk="advance">Advance</button>
+<button class="button button-secondary" data-bulk="tag">Tag</button>
+<button class="button button-secondary" data-bulk="export">Export</button></div>
+<div id="list" role="listbox"></div>
+<p class="mono" id="page"></p>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="./index.html" aria-current="page">V5</a><a href="../../../index.html#f08">Gallery</a></nav>
+<div class="drawer" id="drawer"><div class="panel" id="panel"></div></div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){}s()}})();</script>
+<script>
+const toast=document.getElementById('toast');function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2600)}
+
+const REQS=[
+{id:'01a10fa4…',fid:'01a10fa4-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P23-LINE-20261005-7r0l Request',status:'Submitted',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 6, 2026',age:'24d',sla:'stale'},
+{id:'01a10fa3…',fid:'01a10fa3-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P23-SUPP-20261005-6grw Request',status:'Submitted',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 6, 2026',age:'24d',sla:'stale'},
+{id:'01a10f84…',fid:'01a10f84-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P24-20261005-6y6fa-draft Request',status:'Client drafts only',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 6, 2026',age:'24d',sla:'ok'},
+{id:'01a10f82…',fid:'01a10f82-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P24-20261005-6v89t-draft Request',status:'Client drafts only',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 6, 2026',age:'24d',sla:'ok'},
+{id:'01a10cc1…',fid:'01a10cc1-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P23-LINE-20261005-di5p Request',status:'Submitted',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'stale'},
+{id:'01a10cc0…',fid:'01a10cc0-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P23-SUPP-20261005-bwrn Request',status:'Submitted',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'stale'},
+{id:'01a10b3a…',fid:'01a10b3a-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P24-20261005-03ipf-draft Request',status:'Client drafts only',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'ok'},
+{id:'01a10abe…',fid:'01a10abe-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P23-LINE-20261005-aazy Request',status:'Submitted',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'stale'},
+{id:'01a10abd…',fid:'01a10abd-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P23-SUPP-20261005-8p13 Request',status:'Submitted',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'stale'},
+{id:'01a10aa7…',fid:'01a10aa7-aaaa-bbbb-cccc-dddddddddddd',title:'AUDIT-P24-20261005-uc3d4-draft Request',status:'Client drafts only',cat:'web Development',client:'arjun.mehta@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'ok'},
+{id:'01a10a2c…',fid:'01a10a2c-01c3-7079-93e9-9d001541ced8',title:'UPI Merchant Collections Mobile App',status:'Under Review',cat:'mobile App',client:'ananya.iyer@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'warn'},
+{id:'01a10a2c2',fid:'01a10a2c-1a04-75bb-8e80-fc143257fa02',title:'Live Shipment Tracking Dashboard',status:'Under Review',cat:'web Development',client:'rahul.desai@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'warn'},
+{id:'01a10a2b…',fid:'01a10a2b-c237-7000-b708-715e75b6dd22',title:'Patel Digital Agency Website Redesign',status:'Submitted',cat:'design',client:'samira.patel@nestlancer.com',created:'Oct 5, 2026',age:'25d',sla:'ready',detail:true}
+];
+const STATUSES=['Inbox (needs review)','Submitted','Under review','Changes requested','Quoted','Converted to project','Rejected','Cancelled','Client drafts only','All statuses'];
+const DETAIL={title:'Patel Digital Agency Website Redesign',status:'Submitted',client:'Samira Patel (samira.patel@nestlancer.com)',cat:'Design',created:'Oct 5, 2026, 3:46 AM',budget:'₹20,00,000.00 – ₹40,00,000.00',start:'Aug 1, 2026',deadline:'Sep 15, 2026',reqs:['Portfolio gallery with case-study templates','Sanity CMS for blog and team pages','Core Web Vitals optimisation','Contact form with Zoho CRM sync'],note:'Good fit for agency portfolio track. Discovery call with Samira scheduled for 22 June.'};
+let filter='All statuses',view='all',focus=0,selected=new Set(),mode='queue',edit=false,quoteNew=false;
+function pool(){let r=REQS.slice();
+ if(filter==='Submitted')r=r.filter(x=>x.status==='Submitted');
+ else if(filter==='Under review')r=r.filter(x=>x.status==='Under Review');
+ else if(filter==='Client drafts only')r=r.filter(x=>x.status==='Client drafts only');
+ else if(filter==='Inbox (needs review)')r=r.filter(x=>x.status==='Submitted'||x.status==='Under Review');
+ else if(filter!=='All statuses')r=[];
+ if(view==='needs')r=r.filter(x=>x.status==='Submitted'||x.status==='Under Review');
+ if(view==='stale')r=r.filter(x=>x.sla==='stale');
+ if(view==='unassigned')r=r.filter(x=>!x.detail);
+ if(view==='vip')r=r.filter(x=>x.detail||x.title.includes('Patel')||x.title.includes('UPI'));
+ return r}
+function capacityHTML(){return `<section class="cap" aria-label="Capacity dashboard"><div class="card"><b>7</b><span>Active projects</span></div><div class="card"><b>16</b><span>Queued requests</span></div><div class="card"><b>28%</b><span>Capacity used</span></div><div class="card"><b>25</b><span>Max active</span></div>
+<div class="card" style="min-width:220px"><label class="mono">Max active projects<br><input id="maxa" type="number" min="1" max="200" placeholder="" style="width:100px" aria-describedby="cap-help"></label>
+<label class="mono" style="margin-left:8px">Warning threshold<br><input id="warn" type="number" min="1" max="100" style="width:100px"></label>
+<button type="button" class="button" id="cap-save" disabled style="margin-top:8px">Update capacity settings</button>
+<p class="mono" id="cap-help">Enter a max active count or warning threshold to enable save.</p></div></section>`}
+function stripHTML(){return `<div class="strip"><div class="card"><b>46</b><span>Total</span></div><div class="card"><b>6</b><span>By Category</span></div><div class="card"><b>0 minutes</b><span>Average Response Time</span></div><div class="card"><b>43.9%</b><span>Conversion Rate</span></div></div>`}
+function bindCap(){const a=document.getElementById('maxa'),w=document.getElementById('warn'),s=document.getElementById('cap-save');
+ const chk=()=>{s.disabled=!(a.value||w.value)};a.oninput=w.oninput=chk;s.onclick=()=>{if(s.disabled)return;announce('Capacity settings updated (demo · settings/capacity)');a.value='';w.value='';chk()}}
+function detailHTML(){return `<article id="detail">
+<button type="button" class="button button-secondary" id="back">← Back to requests</button>
+<h2 style="margin:10px 0 4px;font-size:22px">${DETAIL.title}</h2>
+<p class="lede">Review the client brief, then open the full-screen quote builder to scope phases and pricing.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+<span class="st">${DETAIL.status}</span>
+<button type="button" class="button" id="quote-builder">Open quote builder</button>
+<button type="button" class="button button-secondary" id="toggle-edit">${edit?'Cancel edit':'Edit'}</button>
+<button type="button" class="button button-secondary" id="del">Delete</button>
+<button type="button" class="button button-secondary" id="advance">Advance + next</button>
+</div>
+${edit?`<div style="display:grid;gap:8px;max-width:560px;margin-bottom:12px"><label>Title<input id="et" value="${DETAIL.title}"></label><label>Description<textarea id="ed" rows="3">Agency website redesign brief…</textarea></label>
+<button type="button" class="button" id="save-edit">Save changes</button></div>`:''}
+<div class="card" style="margin-bottom:10px"><strong>Ready to quote</strong><p class="mono">Use the full-screen quote builder to split the project into phases, drag to reorder, duplicate phases, and set pricing — with the client brief always visible.</p></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div class="card"><h3 style="margin:0 0 8px;font-size:14px">Actions</h3>
+<label class="mono">Status<select id="st"><option>Change status…</option><option>Draft</option><option>Under review</option><option>Quoted</option><option>Accepted</option><option>Rejected</option><option>Converted to project</option><option>Changes requested</option><option>Cancelled</option><option>Expired quote</option></select></label>
+<button type="button" class="button button-secondary" style="margin-top:6px" onclick="announce('Status update (demo)')">Update</button>
+<label class="mono" style="display:block;margin-top:8px">Assignee<select><option>Assign…</option><option>Riya Kapoor</option></select></label>
+<button type="button" class="button button-secondary" style="margin-top:6px" onclick="announce('Assigned (demo)')">Assign</button>
+</div>
+<div class="card"><h3 style="margin:0 0 8px;font-size:14px">Client</h3>
+<p><strong>Contact</strong><br>${DETAIL.client}</p>
+<p><strong>Category</strong> ${DETAIL.cat}<br><strong>Created</strong> <span class="mono">${DETAIL.created}</span></p>
+<p><strong>Budget</strong> ${DETAIL.budget}<br><strong>Preferred start</strong> ${DETAIL.start}<br><strong>Deadline</strong> ${DETAIL.deadline}</p>
+</div></div>
+<div class="card" style="margin-top:10px"><h3 style="margin:0 0 8px;font-size:14px">Requirements</h3><ul>${DETAIL.reqs.map(x=>`<li>${x}</li>`).join('')}</ul>
+<p class="mono">Attachments · No attachments.</p>
+<h3 style="font-size:14px">Status history</h3><p class="mono">Submitted for review · Request created</p>
+<label class="mono">Internal notes<textarea rows="2">${DETAIL.note}</textarea></label>
+<button type="button" class="button button-secondary" style="margin-top:6px" onclick="announce('Note added (demo)')">Add note</button>
+</div>
+${quoteNew?`<div class="card" style="margin-top:10px;border-color:var(--brand-300)"><h3 style="margin:0 0 8px">Quote-new entry</h3><p class="mono">Prefill from request · maps to POST /admin/requests/{id}/quotes · opens F10 builder (demo).</p>
+<button type="button" class="button" onclick="announce('Quote draft created · deep-link F10 (demo)')">Create quote from request</button>
+<button type="button" class="button button-secondary" onclick="quoteNew=false;render()">Dismiss</button></div>`:''}
+</article>`}
+
+function openDetail(r){edit=false;quoteNew=!!r.detail;document.getElementById('drawer').classList.add('open');document.getElementById('panel').innerHTML=detailHTML();
+ document.getElementById('back').onclick=()=>document.getElementById('drawer').classList.remove('open');
+ document.getElementById('toggle-edit').onclick=()=>{edit=!edit;document.getElementById('panel').innerHTML=detailHTML();wire()};
+ wire();
+}
+function wire(){
+ document.getElementById('quote-builder').onclick=()=>{quoteNew=true;document.getElementById('panel').innerHTML=detailHTML();wire()};
+ const se=document.getElementById('save-edit');if(se)se.onclick=()=>{edit=false;announce('Saved');document.getElementById('panel').innerHTML=detailHTML();wire()};
+ document.getElementById('advance').onclick=()=>advance();
+ document.getElementById('del').onclick=()=>announce('Delete guarded');
+}
+function advance(){
+ const rows=pool();const el=document.querySelector(`[data-rid="${rows[focus]?.id}"]`);
+ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if(el)el.classList.add('go');
+ setTimeout(()=>{announce('Advanced · loop');document.getElementById('drawer').classList.remove('open');focus=Math.min(focus+1,pool().length-1);render();if(pool()[focus])openDetail(pool()[focus])},reduce?0:280);
+}
+function render(){
+ document.getElementById('cap').innerHTML=capacityHTML();document.getElementById('strip').innerHTML=stripHTML();bindCap();
+ document.getElementById('chips').innerHTML=STATUSES.map(s=>`<button class="chip" data-f="${s}" aria-pressed="${s===filter}">${s}</button>`).join('');
+ document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+ document.getElementById('views').innerHTML=[['all','All'],['needs','Needs me'],['stale','Stale'],['unassigned','Unassigned'],['vip','VIP']].map(([id,l])=>`<button class="view" data-v="${id}" aria-pressed="${id===view}">${l}</button>`).join('');
+ document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{view=b.dataset.v;render()});
+ const rows=pool();
+ document.getElementById('list').innerHTML=rows.map((r,i)=>`<div class="row" data-rid="${r.id}" role="option" tabindex="${i===focus?0:-1}" aria-selected="${i===focus}" data-i="${i}"><input type="checkbox" data-id="${r.id}" ${selected.has(r.id)?'checked':''}><div><span class="mono" title="${r.fid}">${r.id}</span> <span class="age">${r.age}</span><div><strong>${r.title}</strong></div><div class="mono">${r.status} · ${r.client}</div></div><button class="button button-secondary" data-open="${i}">Review</button></div>`).join('');
+ document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{focus=+b.dataset.open;openDetail(rows[focus])});
+ document.querySelectorAll('.row').forEach(el=>el.onclick=e=>{if(e.target.matches('input,button'))return;focus=+el.dataset.i;render()});
+ document.querySelectorAll('[data-id]').forEach(cb=>cb.onchange=()=>{selected.has(cb.dataset.id)?selected.delete(cb.dataset.id):selected.add(cb.dataset.id);document.getElementById('bulk').classList.toggle('show',selected.size>0);document.getElementById('bulk-count').textContent=selected.size});
+ document.getElementById('page').textContent=`Showing 1–${rows.length} of ${rows.length}`;
+ document.querySelectorAll('[data-bulk]').forEach(b=>b.onclick=()=>{if(b.dataset.bulk==='advance')advance();else announce(b.dataset.bulk);selected.clear();render()});
+}
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;const rows=pool();if(e.key==='j'){focus=Math.min(focus+1,rows.length-1);render()}if(e.key==='k'){focus=Math.max(focus-1,0);render()}if(e.key==='e')advance();if(e.key==='Enter'&&rows[focus])openDetail(rows[focus]);if(e.key==='Escape')document.getElementById('drawer').classList.remove('open')});
+render();
+
+</script>
+</body></html>

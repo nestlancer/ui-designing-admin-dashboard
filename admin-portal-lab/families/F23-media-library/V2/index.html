@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F23 V2 · Grid-spine · Media Library</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}
+.main{padding:12px 18px 24px;max-width:none;margin:0}
+body.v2 .filters{position:sticky;top:52px;z-index:20;background:var(--background);padding:8px 0;border-bottom:1px solid var(--border)}
+body.v2 .grid{grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+body.v2 .asset svg{height:112px}
+body.v2 .buckets{margin:0 0 6px}
+body.v2 .upload{padding:14px;margin:6px 0}
+body.v2 .panel{border:none;padding:0;background:transparent}
+body.v2 .drawer{width:min(440px,100%)}h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab,.chip,.sort,.bucket{min-height:32px;padding:0 11px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit}
+.tab[aria-selected="true"],.chip[aria-pressed="true"],.sort[aria-pressed="true"],.bucket[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}
+.panel{padding:14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-top:8px}
+.buckets{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.bucket-card{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-width:140px}
+.bucket-card b{display:block;font:800 20px/1 var(--font);font-variant-numeric:tabular-nums}
+.upload{border:2px dashed var(--border);border-radius:var(--radius-lg);padding:20px;text-align:center;background:var(--muted);margin:10px 0}
+.upload.drag{border-color:var(--brand-400);background:var(--primary-tint)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+.filters select{min-height:32px;padding:4px 8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:10px}
+.asset{border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);padding:8px;cursor:pointer;text-align:left;color:inherit;font:inherit;width:100%}
+.asset:focus-visible{outline:2px solid var(--brand-500);outline-offset:2px}
+.asset svg{width:100%;height:88px;border-radius:var(--radius-sm);display:block}
+.asset .name{font-size:12px;font-weight:650;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st{display:inline-flex;padding:2px 6px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text)}
+.st-warn{border-color:var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}
+.st-bad{border-color:var(--status-danger-border);background:var(--status-danger-bg);color:var(--status-danger-text)}
+.list{display:none;width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.list th,.list td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
+.list tr[data-i]{cursor:pointer}.list tr[aria-selected="true"]{background:var(--primary-tint)}
+.bulk{display:none;gap:8px;flex-wrap:wrap;align-items:center;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin:8px 0}.bulk.show{display:flex}
+.empty{padding:32px 16px;text-align:center;color:var(--muted-foreground)}
+.drawer-wrap{position:fixed;inset:0;background:rgba(26,36,51,.45);z-index:40;display:none;justify-content:flex-end}.drawer-wrap.open{display:flex}
+.drawer{width:min(520px,100%);height:100%;overflow:auto;background:var(--card);border-left:1px solid var(--border);padding:16px}
+.preview-box{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);margin:10px 0}
+.modal{position:fixed;inset:0;background:rgba(26,36,51,.48);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}
+.modal .box{width:min(480px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}
+.modal label{display:block;font-size:12px;font-weight:650;margin:10px 0 4px}
+.modal input,.modal textarea{width:100%;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.modal textarea{min-height:64px}
+.kpi-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.kpi{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-width:120px}
+.kpi b{display:block;font:800 24px/1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:11px;color:var(--muted-foreground)}
+.type-row{display:grid;gap:6px;margin:10px 0;font-size:13px}
+.bar{height:8px;border-radius:4px;background:var(--brand-500);margin-top:4px;max-width:100%}
+.upload-log{font-size:12px;margin-top:8px}
+.q-review{padding:12px;border:1px solid var(--status-warning-border);border-radius:var(--radius-md);background:var(--status-warning-bg);margin-bottom:10px}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}
+@media(max-width:720px){h1{font-size:26px}.grid{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="v2">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<noscript><p class="main">Enable JavaScript for tabs and drawer — anchors: #storage #quarantine #analytics.</p></noscript>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="meta">F23 · V2 · GRID-SPINE</span>
+<span class="eyebrow" style="color:var(--brand-600);font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase">Content · Media Library</span>
+<h1>Media Library</h1>
+<p class="lede">Browse public and private storage, preview assets, and manage quarantine and analytics.</p>
+<div class="tabs" role="tablist" aria-label="Media library tabs" id="tabs"></div>
+<div id="panels"></div>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="./index.html" aria-current="page">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f23">Gallery</a></nav>
+</main>
+<div class="drawer-wrap" id="drawer-wrap" aria-hidden="true"><div class="drawer" id="drawer" role="dialog" aria-labelledby="dr-title"></div></div>
+<div class="modal" id="modal-share" role="dialog" aria-modal="true" aria-labelledby="sh-title" hidden><div class="box"><h3 id="sh-title">Create share link</h3><p class="mono">Maps to POST /api/v1/media/{id}/share (demo)</p><label for="sh-exp">Expires after</label><select id="sh-exp"><option>7 days</option><option>30 days</option><option>Never</option></select><label for="sh-pw">Password (optional)</label><input id="sh-pw" type="text" autocomplete="off" placeholder="Leave empty for public link"><label for="sh-url">Share URL</label><input id="sh-url" readonly class="mono"><div style="display:flex;gap:8px;margin-top:14px"><button type="button" class="button" id="sh-copy">Copy link</button><button type="button" class="button button-secondary" data-close="modal-share">Close</button></div></div></div>
+<div class="modal" id="modal-meta" role="dialog" aria-modal="true" aria-labelledby="md-title" hidden><div class="box"><h3 id="md-title">Edit asset metadata</h3><label for="md-name">Display name</label><input id="md-name"><label for="md-alt">Alt text</label><input id="md-alt"><label for="md-tags">Tags (comma-separated)</label><input id="md-tags"><label for="md-vis">Visibility</label><select id="md-vis"><option>PUBLIC</option><option>PRIVATE</option></select><div style="display:flex;gap:8px;margin-top:14px"><button type="button" class="button" id="md-save">Save metadata</button><button type="button" class="button button-secondary" data-close="modal-meta">Cancel</button></div></div></div>
+<div class="modal" id="modal-del" role="dialog" aria-modal="true" aria-labelledby="dl-title" hidden><div class="box"><h3 id="dl-title">Delete asset?</h3><div id="dl-preview" class="preview-box"></div><p id="dl-body" class="mono"></p><label for="dl-reason">Confirm reason (C17)</label><textarea id="dl-reason" placeholder="Why delete is correct…"></textarea><div style="display:flex;gap:8px;margin-top:12px"><button type="button" class="button" id="dl-ok" disabled>Delete permanently</button><button type="button" class="button button-secondary" data-close="modal-del">Cancel</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){};s()}})();</script>
+<script>
+const toast=document.getElementById('toast');function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2600)}
+function thumb(type,h=120){const c={IMAGE:'#0c7963',DOCUMENT:'#64748b',VIDEO:'#0e7490',ARCHIVE:'#475569'}[type]||'#64748b';
+ if(type==='IMAGE')return `<svg viewBox="0 0 160 100" aria-hidden="true"><rect width="160" height="100" fill="${c}" opacity=".15"/><circle cx="48" cy="38" r="14" fill="${c}"/><path d="M8 92 52 52 88 72 152 28" stroke="${c}" stroke-width="6" fill="none"/></svg>`;
+ if(type==='VIDEO')return `<svg viewBox="0 0 160 100" aria-hidden="true"><rect width="160" height="100" rx="8" fill="${c}" opacity=".2"/><polygon points="68,30 68,70 108,50" fill="${c}"/></svg>`;
+ if(type==='ARCHIVE')return `<svg viewBox="0 0 160 100" aria-hidden="true"><rect x="40" y="20" width="80" height="60" rx="6" fill="${c}" opacity=".25"/><rect x="52" y="10" width="56" height="16" rx="4" fill="${c}"/></svg>`;
+ return `<svg viewBox="0 0 160 100" aria-hidden="true"><rect width="160" height="100" fill="${c}" opacity=".12"/><path d="M36 24h88v8H36zm0 20h68v8H36zm0 20h88v8H36z" fill="${c}"/></svg>`}
+
+const ASSETS=[
+{id:'a1',name:'hero-nestlancer-v3.jpeg',type:'IMAGE',mime:'image/jpeg',size:'164 KB',vis:'PUBLIC',src:'Projects',status:'READY',bucket:'public',hash:'sha256:9f2a…c01',when:'Oct 5, 2026',uploader:'admin@nestlancer.com'},
+{id:'a2',name:'delivery-pack.zip',type:'ARCHIVE',mime:'application/zip',size:'412 B',vis:'PRIVATE',src:'Deliveries',status:'READY',bucket:'private',hash:'sha256:1bb3…88e',when:'Oct 5, 2026',uploader:'riya.kapoor@nestlancer.com'},
+{id:'a3',name:'contract-appendix.pdf',type:'DOCUMENT',mime:'application/pdf',size:'22.1 KB',vis:'PRIVATE',src:'Projects',status:'READY',bucket:'private',hash:'sha256:44de…aa0',when:'Oct 4, 2026',uploader:'admin@nestlancer.com'},
+{id:'a4',name:'walkthrough-demo.mp4',type:'VIDEO',mime:'video/mp4',size:'1.2 MB',vis:'PUBLIC',src:'Uploads only',status:'PROCESSING',bucket:'public',hash:'sha256:7c11…3f2',when:'Oct 5, 2026',uploader:'admin@nestlancer.com'},
+{id:'a5',name:'message-attach-screenshot.jpeg',type:'IMAGE',mime:'image/jpeg',size:'89 KB',vis:'PRIVATE',src:'Message attachments',status:'READY',bucket:'private',hash:'sha256:0aa2…19b',when:'Oct 3, 2026',uploader:'arjun.mehta@nestlancer.com'},
+{id:'a6',name:'readme-audit.md',type:'DOCUMENT',mime:'text/markdown',size:'431 B',vis:'PUBLIC',src:'Uploads only',status:'READY',bucket:'public',hash:'sha256:fe90…002',when:'Oct 5, 2026',uploader:'admin@nestlancer.com'},
+{id:'a7',name:'brand-icons.zip',type:'ARCHIVE',mime:'application/zip',size:'1.1 KB',vis:'PUBLIC',src:'Projects',status:'READY',bucket:'public',hash:'sha256:3310…7cd',when:'Oct 2, 2026',uploader:'admin@nestlancer.com'},
+{id:'a8',name:'invoice-batch.pdf',type:'DOCUMENT',mime:'application/pdf',size:'18 KB',vis:'PUBLIC',src:'Deliveries',status:'READY',bucket:'public',hash:'sha256:8821…4aa',when:'Oct 5, 2026',uploader:'admin@nestlancer.com'},
+{id:'a9',name:'upload-fail.tmp',type:'DOCUMENT',mime:'application/octet-stream',size:'0 B',vis:'PRIVATE',src:'Uploads only',status:'FAILED',bucket:'private',hash:'—',when:'Oct 5, 2026',uploader:'admin@nestlancer.com'},
+{id:'a10',name:'sync-progress.jpeg',type:'IMAGE',mime:'image/jpeg',size:'52 KB',vis:'PUBLIC',src:'Message attachments',status:'UPLOADING',bucket:'public',hash:'pending…',when:'Oct 5, 2026',uploader:'admin@nestlancer.com'},
+{id:'a11',name:'portfolio-thumb.jpeg',type:'IMAGE',mime:'image/jpeg',size:'76 KB',vis:'PUBLIC',src:'Projects',status:'READY',bucket:'public',hash:'sha256:aa19…88c',when:'Oct 1, 2026',uploader:'admin@nestlancer.com'},
+{id:'a12',name:'legal-identity.pdf',type:'DOCUMENT',mime:'application/pdf',size:'41 KB',vis:'PRIVATE',src:'Projects',status:'READY',bucket:'private',hash:'sha256:5512…0ef',when:'Sep 28, 2026',uploader:'admin@nestlancer.com'}
+];
+const QFIX=[
+{id:'q1',name:'suspicious-macro.doc.zip',type:'ARCHIVE',mime:'application/zip',size:'2.4 KB',reason:'Encrypted archive matched YARA rule NL-MEDIA-017',context:'Message attachments · thread 01a10f…',hash:'sha256:dead…beef',when:'Oct 5, 2026'},
+{id:'q2',name:'phish-landing.jpeg',type:'IMAGE',mime:'image/jpeg',size:'240 KB',reason:'URL blocklist embedded in EXIF',context:'Uploads only · uploader flagged',hash:'sha256:bad0…cafe',when:'Oct 4, 2026'}
+];
+let tab='storage',bucket='all',typeF='All types',srcF='All sources',statusF='All statuses',sort='Newest',folders=false,listView=false,selected=new Set(),focus=0,openId=null,qFixtures=false,uploadPct=0;
+
+function statusClass(s){return s==='FAILED'||s==='QUARANTINED'?'st-bad':s==='PROCESSING'||s==='UPLOADING'?'st-warn':'st'}
+function filtered(){let r=ASSETS.slice();
+ if(bucket==='public')r=r.filter(x=>x.bucket==='public');
+ if(bucket==='private')r=r.filter(x=>x.bucket==='private');
+ if(typeF!=='All types')r=r.filter(x=>x.type===typeF);
+ if(srcF!=='All sources')r=r.filter(x=>x.src===srcF);
+ if(statusF!=='All statuses')r=r.filter(x=>x.status===statusF);
+ if(sort==='Oldest')r=r.slice().reverse();
+ if(sort==='Name A–Z')r=r.slice().sort((a,b)=>a.name.localeCompare(b.name));
+ if(sort==='Largest')r=r.slice().sort((a,b)=>parseFloat(b.size)-parseFloat(a.size));
+ return r}
+function bindTabs(){document.getElementById('tabs').innerHTML=['storage','quarantine','analytics'].map(t=>{
+ const L={storage:'Storage',quarantine:'Quarantine',analytics:'Analytics'}[t];
+ return `<button type="button" class="tab" role="tab" aria-selected="${tab===t}" data-tab="${t}">${L}</button>`}).join('');
+ document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()})}
+
+function storagePanel(){const rows=filtered();
+ return `<section id="storage" class="panel" aria-label="Storage">
+<div class="tabs" role="group" aria-label="Browse"><button type="button" class="bucket" data-b="all" aria-pressed="${bucket==='all'}">All storage</button><button type="button" class="bucket" data-b="public" aria-pressed="${bucket==='public'}">Public library</button><button type="button" class="bucket" data-b="private" aria-pressed="${bucket==='private'}">Private</button></div>
+<div class="buckets"><div class="bucket-card"><span class="mono">Public</span><b>118 files · 19 MB</b></div><div class="bucket-card"><span class="mono">Private</span><b>28 files · 309.1 KB</b></div></div>
+<div class="upload" id="drop"><strong>Drag &amp; drop to upload</strong><p class="mono" style="margin:6px 0">Images, documents, video, and archives</p><button type="button" class="button button-secondary" id="browse-files">Browse files</button><input type="file" id="file-in" hidden multiple><p class="upload-log mono" id="up-log"></p></div>
+<div class="filters"><span class="mono">All types</span>${['All types','IMAGE','DOCUMENT','VIDEO','ARCHIVE'].map(t=>`<button type="button" class="chip" data-type="${t}" aria-pressed="${typeF===t}">${t==='All types'?t:t}</button>`).join('')}
+<span class="mono" style="margin-left:8px">All sources</span>${['All sources','Message attachments','Projects','Deliveries','Uploads only'].map(s=>`<button type="button" class="chip" data-src="${s}" aria-pressed="${srcF===s}">${s}</button>`).join('')}
+<button type="button" class="chip" id="fold" aria-pressed="${folders}">Folders</button>
+<span class="mono">All statuses</span>${['All statuses','READY','PROCESSING','QUARANTINED','FAILED','UPLOADING'].map(s=>`<button type="button" class="chip" data-st="${s}" aria-pressed="${statusF===s}">${s}</button>`).join('')}
+${['Newest','Oldest','Largest','Name A–Z'].map(s=>`<button type="button" class="sort" data-sort="${s}" aria-pressed="${sort===s}">${s}</button>`).join('')}
+<button type="button" class="chip" id="view-toggle" aria-pressed="${listView}">View all files</button></div>
+<div class="bulk" id="bulk"><span id="bulk-count">0 selected</span>
+<button type="button" class="button button-secondary" data-bulk="tag">Tag</button>
+<button type="button" class="button button-secondary" data-bulk="move">Move</button>
+<button type="button" class="button button-secondary" data-bulk="quarantine">Quarantine</button>
+<button type="button" class="button button-secondary" data-bulk="delete">Delete (gated)</button></div>
+<p class="mono">Showing 1–${rows.length} of 146 · keyboard: j/k focus · Enter open drawer · x select</p>
+<div class="grid" id="grid" ${listView?'hidden':''}>${rows.map((a,i)=>`<button type="button" class="asset" data-id="${a.id}" data-i="${i}" aria-selected="${i===focus}"><span style="float:right"><input type="checkbox" data-sel="${a.id}" ${selected.has(a.id)?'checked':''} aria-label="Select ${a.name}" onclick="event.stopPropagation()"></span>${thumb(a.type)}<div class="name">${a.name}</div><span class="${statusClass(a.status)}">${a.status}</span> <span class="mono">${a.size}</span></button>`).join('')}</div>
+<table class="list" id="list" style="display:${listView?'table':'none'}"><thead><tr><th></th><th>Name</th><th>Type</th><th>Source</th><th>Status</th><th>Size</th></tr></thead><tbody>
+${rows.map((a,i)=>`<tr data-id="${a.id}" data-i="${i}" aria-selected="${i===focus}"><td><input type="checkbox" data-sel="${a.id}" ${selected.has(a.id)?'checked':''}></td><td>${a.name}</td><td>${a.type}</td><td>${a.src}</td><td><span class="${statusClass(a.status)}">${a.status}</span></td><td class="mono">${a.size}</td></tr>`).join('')}</tbody></table>
+</section>`}
+
+function quarantinePanel(){const items=qFixtures?QFIX:[];
+ return `<section id="quarantine" class="panel" aria-label="Quarantine">
+<label class="mono" style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><input type="checkbox" id="q-fix"> Lab demo fixtures (C17/A1)</label>
+${items.length?items.map(q=>`<article class="q-review"><strong>${q.name}</strong> <span class="st-bad">QUARANTINED</span>
+<p class="mono">${q.reason}</p><p><strong>Context</strong> ${q.context}</p><p class="mono">${q.hash} · ${q.when}</p>
+<div style="display:flex;flex-wrap:gap:8px;margin-top:8px"><button type="button" class="button" data-qact="release" data-qid="${q.id}">Release</button><button type="button" class="button button-secondary" data-qact="reprocess" data-qid="${q.id}">Reprocess</button><button type="button" class="button button-secondary" data-qact="delete" data-qid="${q.id}">Delete</button></div></article>`).join(''):`<div class="empty"><h2 style="margin:0 0 8px;font-size:20px">No quarantined media</h2><p>Files flagged by security scanning will appear here for release, reprocess, or delete.</p></div>`}
+</section>`}
+
+function analyticsPanel(){const days=[];for(let d=1;d<=30;d++){const ds=`2026-10-${String(d).padStart(2,'0')}`;days.push(`${ds}: ${d===5?'146':'0'} uploads`)}
+ return `<section id="analytics" class="panel" aria-label="Analytics">
+<div class="kpi-row"><div class="kpi"><b>146</b><span>Total files</span></div><div class="kpi"><b>19.3 MB</b><span>Storage used</span></div><div class="kpi"><b>0</b><span>Quarantined</span></div><div class="kpi"><b>0</b><span>Processing</span></div></div>
+<div class="type-row"><div><span class="mono">image/jpeg</span> 118 (19 MB)<div class="bar" style="width:92%"></div></div>
+<div><span class="mono">text/markdown</span> 1 (431 B)<div class="bar" style="width:4%"></div></div>
+<div><span class="mono">application/zip</span> 12 (4.2 KB)<div class="bar" style="width:18%"></div></div>
+<div><span class="mono">application/pdf</span> 15 (304.5 KB)<div class="bar" style="width:22%"></div></div></div>
+<h3 style="font-size:15px;margin:16px 0 8px">Uploads · last 30 days</h3><ul class="mono" style="columns:2;gap:24px;font-size:11px;margin:0;padding-left:18px">${days.map(d=>`<li>${d}</li>`).join('')}</ul>
+<h3 style="font-size:15px;margin:16px 0 8px">Storage maintenance</h3><p class="mono">POST /api/v1/admin/media/cleanup?dryRun=true — orphan scan (demo)</p><button type="button" class="button button-secondary" id="maint">Run dry-run cleanup</button>
+</section>`}
+
+function openDrawer(id){const a=ASSETS.find(x=>x.id===id)||QFIX.find(x=>x.id===id);if(!a)return;openId=id;
+ document.getElementById('drawer-wrap').classList.add('open');document.getElementById('drawer-wrap').setAttribute('aria-hidden','false');
+ document.getElementById('drawer').innerHTML=`<button type="button" class="button button-secondary" id="dr-close">Close</button>
+<h2 id="dr-title" style="margin:10px 0 4px;font-size:20px">${a.name}</h2><p class="mono">${a.mime||''} · ${a.size||''} · ${a.vis||'QUARANTINED'}</p>
+<div class="preview-box">${thumb(a.type||'ARCHIVE')}</div>
+<dl style="font-size:13px;display:grid;grid-template-columns:auto 1fr;gap:6px 12px"><dt>Status</dt><dd><span class="${statusClass(a.status||'QUARANTINED')}">${a.status||'QUARANTINED'}</span></dd>
+<dt>Source</dt><dd>${a.src||a.context||'—'}</dd><dt>Uploader</dt><dd class="mono">${a.uploader||'—'}</dd><dt>Uploaded</dt><dd>${a.when}</dd><dt>Hash</dt><dd class="mono">${a.hash}</dd></dl>
+${a.reason?`<p class="q-review"><strong>Scan reason</strong><br>${a.reason}</p>`:''}
+<div style="display:flex;flex-wrap:gap:8px;margin-top:12px"><button type="button" class="button" id="act-share">Create share link</button><button type="button" class="button button-secondary" id="act-meta">Edit metadata</button><button type="button" class="button button-secondary" id="act-del">Delete…</button></div>`;
+ document.getElementById('dr-close').onclick=closeDrawer;
+ const sh=document.getElementById('act-share');if(sh)sh.onclick=()=>{document.getElementById('sh-url').value=`https://cdn.nestlancer.com/s/${a.id}?demo=1`;showModal('modal-share')};
+ const me=document.getElementById('act-meta');if(me)me.onclick=()=>{document.getElementById('md-name').value=a.name;document.getElementById('md-alt').value='';document.getElementById('md-tags').value='';document.getElementById('md-vis').value=a.vis||'PUBLIC';showModal('modal-meta')};
+ const de=document.getElementById('act-del');if(de)de.onclick=()=>{document.getElementById('dl-preview').innerHTML=thumb(a.type||'DOCUMENT');document.getElementById('dl-body').textContent=`Permanent delete · ${a.name} · ${a.hash}`;document.getElementById('dl-reason').value='';document.getElementById('dl-ok').disabled=true;showModal('modal-del')};
+ document.getElementById('dr-close').focus()}
+function closeDrawer(){document.getElementById('drawer-wrap').classList.remove('open');document.getElementById('drawer-wrap').setAttribute('aria-hidden','true');openId=null}
+function showModal(id){const m=document.getElementById(id);m.hidden=false;m.classList.add('open')}
+function hideModal(id){const m=document.getElementById(id);m.classList.remove('open');m.hidden=true}
+
+function bindStorage(){document.querySelectorAll('[data-b]').forEach(b=>b.onclick=()=>{bucket=b.dataset.b;render()});
+ document.querySelectorAll('[data-type]').forEach(b=>b.onclick=()=>{typeF=b.dataset.type;render()});
+ document.querySelectorAll('[data-src]').forEach(b=>b.onclick=()=>{srcF=b.dataset.src;render()});
+ document.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{statusF=b.dataset.st;render()});
+ document.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{sort=b.dataset.sort;render()});
+ const fold=document.getElementById('fold');if(fold)fold.onclick=()=>{folders=!folders;announce(folders?'Folders view (demo)':'Flat library');render()};
+ const vt=document.getElementById('view-toggle');if(vt)vt.onclick=()=>{listView=!listView;render()};
+ const drop=document.getElementById('drop'),fi=document.getElementById('file-in'),bf=document.getElementById('browse-files');
+ if(bf&&fi){bf.onclick=()=>fi.click();fi.onchange=()=>simulateUpload(fi.files?.[0]?.name||'file');['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag');if(ev==='drop')simulateUpload('dropped-asset.bin')}))}
+ document.querySelectorAll('.asset,tr[data-id]').forEach(el=>{el.onclick=e=>{if(e.target.matches('input'))return;openDrawer(el.dataset.id);focus=+el.dataset.i||0}});
+ document.querySelectorAll('[data-sel]').forEach(cb=>cb.onchange=()=>{selected.has(cb.dataset.sel)?selected.delete(cb.dataset.sel):selected.add(cb.dataset.sel);const bulk=document.getElementById('bulk');if(bulk){bulk.classList.toggle('show',selected.size>0);document.getElementById('bulk-count').textContent=selected.size+' selected'}});
+ document.querySelectorAll('[data-bulk]').forEach(b=>b.onclick=()=>{if(b.dataset.bulk==='delete'){announce('Bulk delete requires preview confirm (demo)');return}announce(b.dataset.bulk+' · '+selected.size+' assets (demo)');selected.clear();render()})}
+function simulateUpload(name){const log=document.getElementById('up-log');if(!log)return;uploadPct=0;log.textContent='Uploading '+name+'… 0%';const t=setInterval(()=>{uploadPct+=20;log.textContent='Uploading '+name+'… '+uploadPct+'%';if(uploadPct>=100){clearInterval(t);log.textContent='Upload complete · POST upload/confirm (demo)';announce('Upload complete')}},400)}
+function bindQuarantine(){const q=document.getElementById('q-fix');if(q){q.checked=qFixtures;q.onchange=()=>{qFixtures=q.checked;render()}}
+ document.querySelectorAll('[data-qact]').forEach(b=>b.onclick=()=>{const reason=prompt('Review reason (C17):','Verified false positive');if(!reason)return;announce(b.dataset.qact+' · '+b.dataset.qid+' · '+reason+' (demo)');render()})}
+function bindAnalytics(){const m=document.getElementById('maint');if(m)m.onclick=()=>announce('Dry-run cleanup scheduled (demo)')}
+
+function render(){bindTabs();const p=document.getElementById('panels');
+ p.innerHTML=tab==='storage'?storagePanel():tab==='quarantine'?quarantinePanel():analyticsPanel();
+ if(tab==='storage')bindStorage();if(tab==='quarantine')bindQuarantine();if(tab==='analytics')bindAnalytics()}
+
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>hideModal(b.dataset.close));
+document.getElementById('sh-copy').onclick=()=>{navigator.clipboard?.writeText(document.getElementById('sh-url').value);announce('Share link copied')};
+document.getElementById('md-save').onclick=()=>{hideModal('modal-meta');announce('Metadata saved · PATCH /admin/media/{id} (demo)')};
+document.getElementById('dl-reason').oninput=e=>{document.getElementById('dl-ok').disabled=!e.target.value.trim()};
+document.getElementById('dl-ok').onclick=()=>{hideModal('modal-del');closeDrawer();announce('Asset deleted (demo)');render()};
+document.getElementById('drawer-wrap').onclick=e=>{if(e.target.id==='drawer-wrap')closeDrawer()};
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select'))return;if(e.key==='Escape'){closeDrawer();['modal-share','modal-meta','modal-del'].forEach(hideModal)}if(tab!=='storage')return;const rows=filtered();
+ if(e.key==='j'){focus=Math.min(focus+1,rows.length-1);render()}if(e.key==='k'){focus=Math.max(focus-1,0);render()}if(e.key==='x'&&rows[focus]){const id=rows[focus].id;selected.has(id)?selected.delete(id):selected.add(id);render()}if(e.key==='Enter'&&rows[focus])openDrawer(rows[focus].id)});
+render();
+</script>
+</body></html>

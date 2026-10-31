@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F04 V3 · Jump Grid · Pipelines</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700}.brand svg{width:28px;height:28px}
+.main{padding:22px 18px;max-width:1100px;margin:0 auto}
+.tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:1px solid var(--border)}.tabs a{padding:10px 12px;text-decoration:none;color:var(--muted-foreground);font-size:13px;font-weight:650;border-bottom:2px solid transparent}.tabs a[aria-current="page"]{color:var(--brand-700);border-color:var(--brand-600)}
+h1{margin:0 0 8px;font-size:34px}.lede{color:var(--muted-foreground);font-size:14px;line-height:1.55}
+#filter{width:100%;max-width:420px;min-height:44px;margin:14px 0;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);color:var(--foreground);font-size:14px}
+.hint{font-size:12px;color:var(--muted-foreground);margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{padding:14px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);text-align:left;cursor:pointer;color:inherit;font:inherit;min-height:120px;display:flex;flex-direction:column;gap:4px}
+.tile:hover,.tile:focus-visible{border-color:var(--brand-500);outline:2px solid var(--ring);outline-offset:1px}
+.tile .g{font-size:11px;font-weight:750;letter-spacing:.04em;text-transform:uppercase;color:var(--sidebar-section)}
+.tile .c{font:800 28px/1 var(--font);font-variant-numeric:tabular-nums}.tile .c.sm{font:700 15px var(--mono)}
+.tile strong{font-size:14px}.tile span{font-size:12px;color:var(--muted-foreground)}
+.badge{align-self:start;padding:2px 7px;border-radius:999px;border:1px solid var(--status-error-border);background:var(--status-error-bg);color:var(--status-error-text);font-size:11px;font-weight:650}
+.empty{padding:24px;color:var(--muted-foreground)}.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px}
+.api{margin-top:18px;font-size:12px;color:var(--muted-foreground)}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<nav class="tabs" aria-label="Pipeline hubs"><a href="./index.html" aria-current="page">Stage pipeline</a><a href="#" data-r="/pipeline/users">User hub</a><a href="#" data-r="/pipeline/projects">Project hub</a></nav>
+<span class="meta">F04 · V3 · JUMP GRID</span>
+<h1>Pipelines</h1>
+<p class="lede">Stage pipeline for platform-wide triage. One jump-grid for delivery, trust, and consoles — type to filter.</p>
+<label class="meta" for="filter">Filter jumps</label>
+<input id="filter" type="search" placeholder="Filter stages, trust, consoles…" aria-controls="grid">
+<p class="hint" id="hint">Showing all jumps · Projects remains No data</p>
+<div class="grid" id="grid"></div>
+<p class="api">Admin API reference relocated behind filter term “api” — 157 endpoints · base path <code style="font-family:var(--mono)">/api/v1</code>. Type <kbd>api</kbd> to list areas.</p>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="../V2/index.html">V2</a><a href="./index.html" aria-current="page">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f04">Gallery</a></nav>
+</main>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+<script>
+(()=>{
+const tiles=[
+{g:'Client delivery',c:'23',n:'Inquiries',j:'Website contact form leads',r:'/contact'},
+{g:'Client delivery',c:'46',n:'Requests',j:'Scoped service requests',r:'/requests'},
+{g:'Client delivery',c:'36',n:'Quotes',j:'Pricing proposals',r:'/quotes'},
+{g:'Client delivery',c:'No data',n:'Projects',j:'Active delivery work',r:'/projects',bad:true,sm:true},
+{g:'Client delivery',c:'48',n:'Payments',j:'Milestone payments and payouts',r:'/payments'},
+{g:'Client delivery',c:'—',n:'Messages',j:'Project communication',r:'/messages',sm:true},
+{g:'Users & trust',c:'34',n:'Users',j:'Accounts, roles, sessions',r:'/users'},
+{g:'Users & trust',c:'—',n:'Moderation',j:'Flagged messages and abuse',r:'/moderation',sm:true},
+{g:'Users & trust',c:'—',n:'Audit logs',j:'Auth and admin action history',r:'/audit',sm:true},
+{g:'Standalone consoles',c:'',n:'Dashboard',j:'KPIs, revenue, alerts',r:'/dashboard'},
+{g:'Standalone consoles',c:'',n:'Analytics',j:'Deep metrics and trends',r:'/analytics'},
+{g:'Standalone consoles',c:'',n:'Blog',j:'Posts, comments, and taxonomy',r:'/content'},
+{g:'Standalone consoles',c:'',n:'Portfolio',j:'Public showcase items',r:'/portfolio'},
+{g:'Standalone consoles',c:'',n:'Media',j:'Files and quarantine',r:'/media'},
+{g:'Standalone consoles',c:'',n:'System',j:'Config, jobs, flags',r:'/system'},
+{g:'Standalone consoles',c:'',n:'Webhooks',j:'Outbound integrations',r:'/integrations'},
+{g:'Admin API reference',c:'6',n:'Inquiries API',j:'6 endpoints',r:'api:Inquiries',api:true},
+{g:'Admin API reference',c:'11',n:'Requests API',j:'11 endpoints',r:'api:Requests',api:true},
+{g:'Admin API reference',c:'20',n:'Projects API',j:'20 endpoints · area exists; list outage',r:'api:Projects',api:true},
+{g:'Admin API reference',c:'16',n:'Payments API',j:'16 endpoints',r:'api:Payments',api:true},
+{g:'Admin API reference',c:'21',n:'Users API',j:'21 endpoints',r:'api:Users',api:true},
+{g:'Admin API reference',c:'157',n:'All areas',j:'16 feature areas · /api/v1',r:'api:all',api:true,sm:true}
+];
+const grid=document.getElementById('grid'), filter=document.getElementById('filter'), hint=document.getElementById('hint'), toast=document.getElementById('toast');
+function go(r){toast.hidden=false;toast.textContent=r.startsWith('api:')?'Demo reference — '+r.slice(4)+' (no live fetch)':'Demo only — would navigate to '+r;clearTimeout(go.t);go.t=setTimeout(()=>toast.hidden=true,2600)}
+function render(){const q=filter.value.trim().toLowerCase();const list=tiles.filter(t=>{const blob=(t.g+' '+t.n+' '+t.j+' '+(t.api?'api':'')).toLowerCase();if(!q)return !t.api;if(q==='api'||q.includes('api'))return t.api||blob.includes(q);return !t.api && blob.includes(q)});hint.textContent=list.length?`Showing ${list.length} jumps`:'No matches';grid.innerHTML='';if(!list.length){grid.innerHTML='<div class="empty">No matches. Clear the filter to see the stage map.</div>';return}
+list.forEach(t=>{const b=document.createElement('button');b.type='button';b.className='tile';b.innerHTML=`<span class="g">${t.g}</span>${t.c!==''?`<span class="c${t.sm?' sm':''}">${t.c}</span>`:''}${t.bad?'<span class="badge">Unavailable</span>':''}<strong>${t.n}</strong><span>${t.j}</span>`;b.onclick=()=>go(t.r);grid.appendChild(b)})}
+filter.oninput=render;render();
+document.querySelectorAll('[data-r]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.getAttribute('data-r'))}));
+function sync(){const d=document.documentElement.classList.contains('dark');const b=document.querySelector('.theme-toggle');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');try{localStorage.setItem('nl-admin-theme',d?'dark':'light')}catch(e){}}
+document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');sync()};sync();
+})();
+</script>
+</body>
+</html>

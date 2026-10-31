@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F12 V5 · Motion · Project delivery</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}.main{padding:18px;max-width:1180px;margin:0 auto}h1{margin:4px 0 6px;font-size:28px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5}.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:12px}.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}.tab,.statebtn{min-height:32px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit;margin:0 4px 4px 0}.tab[aria-selected="true"],.statebtn[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}.st{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}.banner{padding:12px;border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text);border-radius:var(--radius-md);margin-bottom:12px}.card{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-bottom:10px}.sum{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.sum .card{min-width:120px;margin:0}.sum b{display:block;font:800 18px/1.1 var(--font)}.prov{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:1px dashed var(--border);padding:1px 5px;border-radius:4px;color:var(--muted-foreground)}.modal{position:fixed;inset:0;background:rgba(26,36,51,.45);z-index:40;display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.modal .box{width:min(480px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border);max-height:90vh;overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.panel{animation:in .3s ease}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.bar{height:8px;background:var(--muted);border-radius:99px;overflow:hidden;margin:8px 0}.bar>i{display:block;height:100%;width:40%;background:var(--brand-500);transition:width .6s ease}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="meta">F12 · V5 · MOTION</span>
+<div id="states" style="margin-bottom:8px"></div>
+<div id="app"></div>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="./index.html" aria-current="page">V5</a><a href="../../../index.html#f12">Gallery</a></nav>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal" id="dlg" hidden><div class="box" role="dialog" aria-modal="true" aria-labelledby="dt"><h3 id="dt"></h3><div id="db"></div><button type="button" class="button button-secondary" id="dc" style="margin-top:12px">Close</button></div></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){}s()}})();</script>
+<script>
+const toast=document.getElementById('toast');function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2600)}
+
+let mode='error', tab='overview'; // error = live truth first
+const TABS=['overview','milestones','progress','analytics','invoices'];
+const MILES=[
+{n:'Discovery & settlement mapping',p:100,due:'2026-11-01'},
+{n:'Webhook ingestion pipeline',p:80,due:'2026-12-15'},
+{n:'Outbox + replay UI',p:40,due:'2027-02-01'},
+{n:'Admin reconciliation board',p:20,due:'2027-06-01'},
+{n:'Hardening & handoff',p:0,due:'2027-10-05'}
+];
+function openDlg(title, html){
+  const d=document.getElementById('dlg');d.hidden=false;d.classList.add('open');
+  document.getElementById('dt').textContent=title;document.getElementById('db').innerHTML=html;
+  document.getElementById('dc').onclick=()=>{d.hidden=true;d.classList.remove('open')};
+}
+function errorHTML(){
+  return `<div class="banner" role="alert"><strong>A11 · Live truth</strong> — Project detail API is down (finding #1). Captured HTML: Project not found / Network Error.</div>
+  <p class="mono"><a href="#">← Back to projects</a></p>
+  <h1>Project not found</h1>
+  <p class="lede">This project id does not exist or is no longer available.</p>
+  <p><strong>Network Error</strong></p>
+  <p class="mono">Provenance: HTML 189 (live). Rebuilt delivery UI is screenshot-spec — open only as explicit preview.</p>
+  <button type="button" class="button" id="retry">Retry</button>
+  <button type="button" class="button button-secondary" id="preview">Preview intended delivery UI (shot+spec)</button>`;
+}
+function headerHTML(){
+  return `<div class="banner" role="status"><span class="prov">SHOT+SPEC PREVIEW</span> Not live data — rebuilt from screenshots 053/083–094 + projects/progress specs. API remain exist-but-down. <button type="button" class="button button-secondary" id="to-error">Show live error entry</button></div>
+  <p class="mono"><a href="#">← Back to projects</a> · <span class="prov">shot 053</span></p>
+  <span class="st">Revision Requested</span>
+  <h1>Razorpay Settlement Reconciliation Engine</h1>
+  <p class="lede">Manage delivery and lifecycle for this client project.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+  <button type="button" class="button button-secondary" data-dlg="archive">Archive</button>
+  <button type="button" class="button button-secondary" data-dlg="template">Use as template</button>
+  <button type="button" class="button button-secondary" onclick="announce('Export (demo)')">Export</button>
+  </div>
+  <div class="sum">
+  <div class="card"><span class="mono">Status</span><b><span class="st">Revision Requested</span></b></div>
+  <div class="card"><span class="mono">Client</span><b style="font-size:13px;font-weight:650">ananya.iyer@nestlancer.com</b></div>
+  <div class="card"><span class="mono">Target End</span><b style="font-size:14px">Oct 5, 2027</b></div>
+  <div class="card"><span class="mono">Milestones</span><b>5</b></div>
+  <div class="card"><span class="mono">Deliverables</span><b>1</b></div>
+  <div class="card"><span class="mono">Operator</span><b style="font-size:12px">admin@nestlancer.com</b></div>
+  </div>
+  <div id="tabs" role="tablist"></div>`;
+}
+function tabHTML(){
+  if(tab==='overview') return `<div class="card"><span class="prov">shot 053</span>
+  <h3 style="margin:6px 0;font-size:15px">Project details</h3>
+  <p><strong>Project ID</strong> <span class="mono" title="01a10a2c-2c98-70ad-9d65-19c80c4cb784">01a10a2c-2c98-70ad-9d65-19c80c4cb784</span></p>
+  <p><strong>Created / Updated</strong> <span class="mono">Oct 5, 2026, 3:47 AM</span></p>
+  <p><strong>Overall Progress</strong> <span style="font:800 28px/1 var(--font);font-variant-numeric:tabular-nums">40%</span></p>
+  <p>Node.js microservice for reconciling Razorpay settlement reports — webhook ingestion, transactional outboxes, and an admin replay UI for re-processing failed settlements.</p>
+  <p><strong>Client</strong> ananya.iyer@nestlancer.com · <strong>Quote ID</strong> <span class="mono">01a10a2c-26a7-727f-9252-a3154d836492</span></p>
+  <p><button type="button" class="button button-secondary" data-dlg="status">Update status</button>
+  <button type="button" class="button button-secondary" data-dlg="operator">Change operator</button></p>
+  <p class="mono">Public showcase: portfolio drafts can only be created from completed projects.</p></div>`;
+  if(tab==='milestones') return `<div class="card"><span class="prov">shot 090</span>
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h3 style="margin:0;font-size:15px">Milestones & files</h3>
+  <div><button type="button" class="button" data-dlg="milestone">Add milestone</button>
+  <button type="button" class="button button-secondary" data-dlg="upload">Upload deliverable</button>
+  <button type="button" class="button button-secondary" data-dlg="preview">Deliverable preview</button></div></div>
+  <table><thead><tr><th>Milestone</th><th>Progress</th><th>Due</th></tr></thead><tbody>
+  ${MILES.map(m=>`<tr><td>${m.n}</td><td><span style="font-variant-numeric:tabular-nums;font-weight:700">${m.p}%</span></td><td class="mono">${m.due}</td></tr>`).join('')}
+  </tbody></table>
+  <p class="mono">Files: 1 deliverable attached · preview via shot 084</p></div>`;
+  if(tab==='progress') return `<div class="card"><span class="prov">shot 089 + 094</span>
+  <h3 style="margin:0 0 8px;font-size:15px">Daily progress</h3>
+  <p class="mono">Oct 30, 2026 · Operator Riya Kapoor</p>
+  <ul><li>Settled replay UI edge cases for failed webhook batches.</li><li>Synced milestone % with client review notes.</li></ul>
+  <button type="button" class="button" data-dlg="daily">New daily template entry</button></div>`;
+  if(tab==='analytics') return `<div class="card"><span class="prov">shot 086</span>
+  <h3 style="margin:0 0 8px;font-size:15px">Analytics</h3>
+  <div class="sum"><div class="card"><b>40%</b><span class="mono">Progress</span></div><div class="card"><b>5</b><span class="mono">Milestones</span></div><div class="card"><b>12</b><span class="mono">Daily entries</span></div><div class="card"><b>1</b><span class="mono">Open revision</span></div></div>
+  <p class="mono">Maps to GET /api/v1/admin/progress/projects/{id}/analytics (exist-but-down).</p></div>`;
+  return `<div class="card"><span class="prov">spec</span> <span class="prov">demo amounts</span>
+  <h3 style="margin:6px 0;font-size:15px">Invoices & payments</h3>
+  <p class="mono">No dedicated invoice shot — schedule from payments/projects specs. Amounts demo-labelled.</p>
+  <table><thead><tr><th>Installment</th><th>Amount</th><th>Status</th><th>Due</th></tr></thead>
+  <tbody><tr><td>Deposit</td><td style="font-variant-numeric:tabular-nums;font-weight:700">₹2,50,000.00 <span class="prov">demo</span></td><td><span class="st">Paid</span></td><td class="mono">on accept</td></tr>
+  <tr><td>Mid</td><td style="font-variant-numeric:tabular-nums;font-weight:700">₹2,50,000.00 <span class="prov">demo</span></td><td><span class="st">Pending</span></td><td class="mono">milestone 3</td></tr>
+  <tr><td>Final</td><td style="font-variant-numeric:tabular-nums;font-weight:700">₹2,50,000.00 <span class="prov">demo</span></td><td><span class="st">Pending</span></td><td class="mono">handoff</td></tr></tbody></table>
+  <button type="button" class="button" data-dlg="pay">Record manual payment</button></div>`;
+}
+function dlgBody(kind){
+  const map={
+    archive:`<p class="prov">shot 087</p><p>Archive this project? Clients lose delivery access. Confirm to continue (demo).</p><button type="button" class="button" onclick="announce('Archived (demo)')">Confirm archive</button>`,
+    template:`<p class="prov">shot 092</p><p>Use as template for future projects. Copies milestones structure (demo).</p><button type="button" class="button" onclick="announce('Template saved (demo)')">Create template</button>`,
+    status:`<p class="prov">shot 091</p><label class="mono">Status<select><option>Revision Requested</option><option>In progress</option><option>Pending payment</option><option>Completed</option></select></label><p><button type="button" class="button" onclick="announce('Status updated (demo)')">Update status</button></p>`,
+    operator:`<p class="prov">shot 088</p><p>Current: Riya Kapoor · admin@nestlancer.com</p><label class="mono">New operator<select><option>Riya Kapoor</option><option>Unassigned</option></select></label><p><button type="button" class="button" onclick="announce('Operator changed (demo)')">Change operator</button></p>`,
+    milestone:`<p class="prov">shot 083</p><label class="mono">Title<input placeholder="Milestone title"></label><label class="mono">Due date<input type="date"></label><p><button type="button" class="button" onclick="announce('Milestone added (demo)')">Add milestone</button></p>`,
+    upload:`<p class="prov">shot 085</p><label class="mono">File<input type="text" placeholder="Styled dropzone — deliverable.pdf" readonly></label><p><button type="button" class="button" onclick="announce('Upload queued (demo)')">Upload</button></p>`,
+    preview:`<p class="prov">shot 084</p><p>Deliverable preview: reconciliation-board-v1.pdf</p><button type="button" class="button button-secondary" onclick="announce('Download (demo)')">Download</button>`,
+    daily:`<p class="prov">shot 094</p><label class="mono">Notes<textarea rows="3" placeholder="Daily progress notes"></textarea></label><p><button type="button" class="button" onclick="announce('Progress saved (demo)')">Save entry</button></p>`,
+    pay:`<p class="prov">shot 093</p><label class="mono">Amount (₹)<input placeholder="0.00"></label><label class="mono">Reference<input class="mono" placeholder="UTR / receipt"></label><p><button type="button" class="button" onclick="announce('Manual payment recorded (demo)')">Record payment</button></p>`
+  };
+  return map[kind]||'';
+}
+function wirePreview(){
+  document.getElementById('tabs').innerHTML=TABS.map(t=>`<button type="button" class="tab" role="tab" data-tab="${t}" aria-selected="${t===tab}">${({overview:'Overview',milestones:'Milestones & files',progress:'Daily progress',analytics:'Analytics',invoices:'Invoices'})[t]}</button>`).join('');
+  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
+  document.querySelectorAll('[data-dlg]').forEach(b=>b.onclick=()=>openDlg(b.dataset.dlg, dlgBody(b.dataset.dlg)));
+  const e=document.getElementById('to-error');if(e)e.onclick=()=>{mode='error';render()};
+}
+
+const _tab=tabHTML;
+tabHTML=function(){
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const extra=tab==='overview'?`<div class="bar" aria-hidden="true"><i id="pbar"></i></div>`:'';
+  return `<div class="panel">${extra}${_tab()}</div>`;
+};
+const _wire=wirePreview;
+wirePreview=function(){ _wire(); const b=document.getElementById('pbar'); if(b){ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches; b.style.width=reduce?'40%':'0%'; requestAnimationFrame(()=>b.style.width='40%'); } };
+document.getElementById('states').innerHTML=['error','preview'].map(s=>`<button type="button" class="statebtn" data-m="${s}" aria-pressed="${s===mode}">${s}</button>`).join('');
+document.getElementById('states').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;mode=b.dataset.m;render()};
+
+function render(){
+  const root=document.getElementById('app');
+  if(mode==='error'){
+    root.innerHTML=errorHTML();
+    document.getElementById('retry').onclick=()=>{announce('Retry… still Network Error (demo)');};
+    document.getElementById('preview').onclick=()=>{mode='preview';tab='overview';render()};
+    return;
+  }
+  root.innerHTML=headerHTML()+`<div id="panel">${tabHTML()}</div>`;
+  wirePreview();
+}
+render();
+</script>
+</body></html>

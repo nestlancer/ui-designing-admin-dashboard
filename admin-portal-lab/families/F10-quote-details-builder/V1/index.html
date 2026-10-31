@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F10 V1 · Ground Truth · Quote builder</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}.main{padding:18px;max-width:1180px;margin:0 auto}h1{margin:4px 0 6px;font-size:28px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5}.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:12px}.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}.st{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}.step{min-height:34px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit;margin:0 4px 4px 0}.step[aria-current="step"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}.card{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-bottom:10px}input,select,textarea{min-height:36px;padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--foreground);font:inherit;max-width:100%}.total{font:800 36px/1 var(--font);font-variant-numeric:tabular-nums;color:var(--brand-800)}.modal{position:fixed;inset:0;background:rgba(26,36,51,.45);z-index:40;display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.modal .box{width:min(440px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:start;margin-bottom:12px}.rail{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="meta">F10 · V1 · GROUND TRUTH</span>
+<div class="head"><div>
+<p class="mono"><a href="#">← All quotes</a> · <a href="#">View source request →</a></p>
+<span class="st">DRAFT</span>
+<h1>AUDIT-P24-20261005-uc3d4-draft Request</h1>
+<p class="lede">Review pricing, edit draft quotes, and send to the client when ready.</p>
+<p class="mono">Status · ID <span title="01a10aa7-baf8-722a-91e9-d824f7349ae4">01a10aa7…</span></p>
+</div><div style="text-align:right"><div class="mono">Live total</div><div class="total" id="live">₹1,250.00</div>
+<button type="button" class="button" id="send">Send to client</button></div></div>
+<div class="rail" id="steps" role="tablist"></div>
+<div id="panel"></div>
+<div class="card" style="display:flex;flex-wrap:wrap;gap:8px">
+<button type="button" class="button button-secondary" id="back">Back</button>
+<button type="button" class="button button-secondary" id="next">Next</button>
+<button type="button" class="button button-secondary" onclick="announce('Save changes (demo)')">Save changes</button>
+<button type="button" class="button" id="send2">Send</button>
+</div>
+<p id="receipt" class="mono" hidden>Send receipt recorded · demo only.</p>
+<p class="mono">Tip: For multi-phase quotes, use the request quote editor — client brief stays visible beside the full-width workspace.</p>
+
+<nav class="lab-nav"><a href="./index.html" aria-current="page">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f10">Gallery</a></nav>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal" id="confirm" hidden><div class="box" role="dialog" aria-modal="true" aria-labelledby="ct"><h3 id="ct">Confirm send</h3><p id="cb"></p><div style="display:flex;gap:8px;margin-top:12px"><button type="button" class="button" id="cg">Confirm send</button><button type="button" class="button button-secondary" id="cc">Cancel</button></div></div></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){}s()}})();</script>
+<script>
+const toast=document.getElementById('toast');function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2600)}
+
+let step=1, phases=[{name:'Deliverables',lines:[{title:'AUDIT-P24 draft line item safely renders <img src=x onerror=alert(1)>',qty:1,unit:1250}]}], preset='50/50', libOpen=false, marginOk=true;
+const LIB=[('Discovery & Scoping', 'discovery', '₹15,000.00'), ('Frontend Development', 'frontend', '₹35,000.00'), ('Backend & API', 'backend', '₹40,000.00'), ('QA & Testing', 'qa', '₹12,000.00'), ('DevOps & Deployment', 'devops', '₹18,000.00'), ('Project Management', 'pm', '₹10,000.00')];
+function money(n){return '₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function subtotal(){return phases.reduce((s,p)=>s+p.lines.reduce((a,l)=>a+l.qty*l.unit,0),0)}
+function openSend(){const d=document.getElementById('confirm');d.hidden=false;d.classList.add('open');document.getElementById('cb').textContent='Send quote AUDIT-P24-20261005-uc3d4-draft Request · total '+money(subtotal())+' to client. Audited. Demo only — never calls live API.';document.getElementById('cg').onclick=()=>{d.hidden=true;d.classList.remove('open');announce('Send receipt · demo · POST /admin/quotes/{id}/send');const r=document.getElementById('receipt');if(r){r.hidden=false}};document.getElementById('cc').onclick=()=>{d.hidden=true;d.classList.remove('open')}}
+function dupPhase(){const p=phases[0];phases.push({name:p.name+' (copy)',lines:p.lines.map(l=>({...l}))});announce('Duplicate phase · live total '+money(subtotal()));if(typeof render==='function')render()}
+function insertLib(i){const b=LIB[i];phases[0].lines.push({title:b[0],qty:1,unit:parseInt(b[2].replace(/[₹,]/g,''))||0});announce('Inserted '+b[0]+' · duplicate detection: check similar titles (demo §4.2)');if(typeof render==='function')render()}
+function marginCheck(){const m=subtotal();marginOk=m>=1000;const el=document.getElementById('margin');if(el)el.textContent=marginOk?'Margin guardrail: OK (demo threshold ≥ ₹1,000)':'Margin guardrail: BELOW threshold — review before send (demo §4.2)';return marginOk}
+
+function panelHTML(){
+  marginCheck();
+  const tot=money(subtotal());
+  let body='';
+  if(step===1){
+    body=`<div class="card"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><h3 style="margin:0;font-size:15px">Project phases & deliverables</h3>
+    <div><button type="button" class="button button-secondary" id="tog-lib">${libOpen?'Hide library':'Line-item library'}</button>
+    <button type="button" class="button button-secondary" onclick="phases.push({name:'Phase '+(phases.length+1),lines:[]});render()">Add phase</button>
+    <button type="button" class="button button-secondary" onclick="dupPhase()">Duplicate phase</button></div></div>
+    <p class="mono">Split the project into phases (Discovery, Build, Launch). Each phase can have multiple line items with qty and unit price.</p>
+    ${phases.map((p,pi)=>`<div style="margin:10px 0;padding:8px;border:1px dashed var(--border);border-radius:8px"><strong>${p.name}</strong>
+    <table><thead><tr><th>#</th><th>Deliverable</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>
+    ${p.lines.map((l,li)=>`<tr><td>${li+1}</td><td>${l.title.replace(/</g,'&lt;')}</td><td>${l.qty}</td><td class="mono">${money(l.unit)}</td><td class="mono">${money(l.qty*l.unit)}</td></tr>`).join('')||'<tr><td colspan="5" class="mono">No line items — empty state</td></tr>'}
+    </tbody></table>
+    <button type="button" class="button button-secondary" onclick="phases[${pi}].lines.push({title:'New deliverable',qty:1,unit:0});render()">+ Add line</button>
+    <span class="mono">Phase subtotal: ${money(p.lines.reduce((a,l)=>a+l.qty*l.unit,0))}</span></div>`).join('')}
+    ${libOpen?`<div class="card"><h3 style="margin:0 0 8px;font-size:14px">Line-item library</h3><p class="mono">Reusable quote blocks. Quote templates API is retired (410) — use this library instead.</p>
+    ${LIB.map((b,i)=>`<div style="display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)"><div><strong>${b[0]}</strong><div class="mono">${b[1]} · 1 × ${b[2]}</div></div><button type="button" class="button button-secondary" onclick="insertLib(${i})">Insert</button></div>`).join('')}</div>`:''}
+    </div>`;
+  } else if(step===2){
+    body=`<div class="card"><h3 style="margin:0 0 8px;font-size:15px">Payment schedule</h3>
+    <p class="mono">Choose how the client pays across the engagement. The backend stores this on the quote — send it explicitly when creating or updating.</p>
+    <label style="display:block;padding:8px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer"><input type="radio" name="pre" value="50/50" checked> <strong>50% deposit / 50% on completion</strong><div class="mono">Half upfront to start, half after final delivery approval.</div></label><label style="display:block;padding:8px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer"><input type="radio" name="pre" value="30/70" > <strong>30% deposit / 70% on completion</strong><div class="mono">Lower upfront commitment; majority due after delivery approval.</div></label><label style="display:block;padding:8px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer"><input type="radio" name="pre" value="30/40/30" > <strong>30% / 40% / 30% phased</strong><div class="mono">Deposit, mid-project payment, and final payment.</div></label><label style="display:block;padding:8px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer"><input type="radio" name="pre" value="25x4" > <strong>25% × 4 milestones</strong><div class="mono">Four equal installments across the project.</div></label><label style="display:block;padding:8px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer"><input type="radio" name="pre" value="100" > <strong>100% upfront</strong><div class="mono">Full amount due on quote acceptance (small/fixed packages).</div></label><label style="display:block;padding:8px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer"><input type="radio" name="pre" value="custom" > <strong>Custom %</strong><div class="mono">Shot 097 baseline · enter custom splits (spec-backed).</div></label>
+    <div id="custom" hidden class="card"><label class="mono">Custom splits (shot 097)<input id="cust" placeholder="e.g. 40 / 30 / 30"></label></div>
+    <table><thead><tr><th>Installment</th><th>%</th><th>Amount</th><th>Due</th></tr></thead>
+    <tbody><tr><td>Deposit</td><td>50%</td><td class="mono">${money(subtotal()*0.5)}</td><td>on accept</td></tr>
+    <tr><td>Final payment</td><td>50%</td><td class="mono">${money(subtotal()*0.5)}</td><td>on prior approved</td></tr></tbody></table>
+    <p class="mono">Currency INR · Tax (%) 0 · Valid until 2026-10-19</p></div>`;
+  } else {
+    body=`<div class="card"><h3 style="margin:0 0 8px;font-size:15px">Terms & review</h3>
+    <p><strong>Standard Nestlancer terms (included on this quote)</strong><br><span class="mono">Fixed for this quote version. Create a revised quote if platform terms change.</span></p>
+    <label class="mono">Project-specific terms (optional)<textarea maxlength="2000" rows="3" placeholder="0/2000"></textarea></label>
+    <label style="display:block;margin:8px 0"><input type="checkbox"> Require signed service agreement</label>
+    <label class="mono">Internal notes (not sent to client)<textarea rows="2">Internal AUDIT-P24 draft quote. Do not use production data.</textarea></label>
+    <div class="card" style="margin-top:10px"><strong>Review totals</strong>
+    <p>1 priced line pattern · ${phases.length} phase(s)</p>
+    <p>Subtotal <span class="mono">${tot}</span> · Tax (0%) ₹0.00 · <strong>Live total ${tot}</strong></p>
+    <p id="margin" class="mono"></p>
+    <p class="mono">Duplicate detection: scan library inserts for near-duplicate titles before send (demo §4.2).</p>
+    </div></div>`;
+  }
+  return body;
+}
+function wirePanel(){
+  const t=document.getElementById('tog-lib');if(t)t.onclick=()=>{libOpen=!libOpen;render()};
+  document.querySelectorAll('input[name=pre]').forEach(r=>{r.checked=r.value===preset;r.onchange=()=>{preset=r.value;const c=document.getElementById('custom');if(c)c.hidden=preset!=='custom';announce('Schedule '+preset)}});
+  const c=document.getElementById('custom');if(c)c.hidden=preset!=='custom';
+  marginCheck();
+}
+
+function render(){
+  document.getElementById('live').textContent=money(subtotal());
+  document.getElementById('steps').innerHTML=[1,2,3].map(n=>`<button type="button" class="step" aria-current="${n===step?'step':'false'}" data-s="${n}">${n}. ${['Scope','Pricing','Terms'][n-1]}</button>`).join('');
+  document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{step=+b.dataset.s;render()});
+  document.getElementById('panel').innerHTML=panelHTML();wirePanel();
+  document.getElementById('back').onclick=()=>{step=Math.max(1,step-1);render()};
+  document.getElementById('next').onclick=()=>{step=Math.min(3,step+1);render()};
+}
+document.getElementById('send').onclick=document.getElementById('send2').onclick=()=>{if(!marginCheck())announce('Blocked by margin guardrail (demo)');else openSend()};
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='ArrowRight'){step=Math.min(3,step+1);render()}if(e.key==='ArrowLeft'){step=Math.max(1,step-1);render()}});
+render();
+
+</script>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F03 V2 · Grouped Command Hubs · Command menu</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.frame{min-height:100vh;display:flex;flex-direction:column}
+.top{height:52px;display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.brand svg{width:28px;height:28px}
+.search-trigger{margin-left:auto;min-height:36px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font-size:13px;cursor:pointer}
+.stage{padding:28px 20px;max-width:880px}.stage h1{margin:0 0 8px;font-size:34px}.stage p{color:var(--muted-foreground);font-size:14px;line-height:1.55}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:12px}
+.backdrop{position:fixed;inset:0;background:rgba(26,36,51,.45);display:grid;place-items:start center;padding:10vh 12px;z-index:40}
+.palette{width:min(720px,100%);background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;max-height:min(78vh,700px);overflow:hidden}
+.head{padding:14px;border-bottom:1px solid var(--border)}
+.head h2{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted-foreground)}
+input[type=search]{width:100%;min-height:44px;border:1px solid var(--border);border-radius:var(--radius-md);padding:0 12px;background:var(--background);color:var(--foreground);font-size:15px}
+.hubs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.hub{min-height:32px;padding:0 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font-size:12px;font-weight:650;cursor:pointer;color:var(--foreground)}
+.hub[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}
+.hintline{margin-top:8px;font-size:12px;color:var(--muted-foreground)}
+.list{flex:1;overflow:auto;padding:8px}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:var(--radius-md);background:transparent;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.item[aria-selected="true"],.item:hover{background:var(--primary-tint)}
+.lbl{font-size:14px;font-weight:650}.sub{display:block;font-size:12px;color:var(--muted-foreground);margin-top:2px}
+.meta{font:650 11px var(--mono);color:var(--muted-foreground)}.badge{font-size:11px;padding:2px 7px;border-radius:999px;border:1px solid var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text);font-weight:650}
+.foot{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--border);background:var(--muted);font-size:12px;color:var(--muted-foreground)}.foot b{font-family:var(--mono);color:var(--foreground)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:50;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;max-width:92vw}
+.empty{padding:24px;text-align:center;color:var(--muted-foreground)}
+@media(max-width:640px){.backdrop{padding:0;align-items:end}.palette{max-height:92vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="frame">
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div>
+<button class="search-trigger" id="open" type="button">Search pages… ⌘K</button>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="stage" tabindex="-1"><span class="meta">F03 · V2 · HUBS</span><h1>Command menu</h1><p>Hub chips partition Queues, People, Money, Pages, and Actions. Typing searches across every hub; empty query respects the active hub.</p>
+<nav class="lab-nav" aria-label="Variants"><a href="../V1/index.html">V1</a><a href="./index.html" aria-current="page">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f03">Gallery</a></nav></main>
+</div>
+<div class="backdrop" id="backdrop" hidden>
+<div class="palette" role="dialog" aria-modal="true" aria-labelledby="pt" id="command-menu">
+<div class="head"><h2 id="pt">Command menu</h2>
+<input id="q" type="search" placeholder="Search or jump to…" aria-label="Command search" role="combobox" aria-expanded="true" aria-controls="results" aria-autocomplete="list" aria-activedescendant="">
+<div class="hubs" role="toolbar" aria-label="Result hubs">
+<button type="button" class="hub" data-hub="Queues" aria-pressed="true">Queues</button>
+<button type="button" class="hub" data-hub="People" aria-pressed="false">People</button>
+<button type="button" class="hub" data-hub="Money" aria-pressed="false">Money</button>
+<button type="button" class="hub" data-hub="Pages" aria-pressed="false">Pages</button>
+<button type="button" class="hub" data-hub="Actions" aria-pressed="false">Actions</button>
+</div>
+<p class="hintline" id="hub-hint">Queues hub · completeness jumps</p>
+</div>
+<div class="list" id="results" role="listbox" aria-label="Command results"></div>
+<div class="foot"><span><b>↑↓</b> navigate</span><span><b>↵</b> select</span><span><b>[ ]</b> hubs</span><span><b>esc</b> close</span></div>
+</div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+(()=>{
+const ITEMS=[
+{hub:'Queues',id:'q1',label:'Requests · pending',sub:'GET /api/v1/admin/requests',route:'/requests',badge:'11'},
+{hub:'Queues',id:'q2',label:'Inquiries · new',sub:'GET /api/v1/admin/contact',route:'/contact',badge:'17'},
+{hub:'Queues',id:'q3',label:'Payments · awaiting verification',sub:'GET /api/v1/admin/payments',route:'/payments?view=verification',badge:'16'},
+{hub:'Queues',id:'q4',label:'Payments · disputes',sub:'GET /api/v1/admin/payments/disputes',route:'/payments/disputes'},
+{hub:'People',id:'p1',label:'Riya Kapoor',sub:'GET /api/v1/admin/users/search',route:'/users/demo-riya',meta:'demo'},
+{hub:'People',id:'p2',label:'Patel Digital Agency',sub:'GET /api/v1/admin/users/search',route:'/users/demo-patel',meta:'demo'},
+{hub:'Money',id:'m1',label:'Payments',sub:'Pages',route:'/payments'},
+{hub:'Money',id:'m2',label:'Settlement accounts',route:'/payments/accounts'},
+{hub:'Money',id:'m3',label:'Company legal identity',route:'/company-legal'},
+{hub:'Money',id:'m4',label:'Payment verification queue item',sub:'Mono ID jump',route:'/payments?view=verification',meta:'verify'},
+{hub:'Pages',id:'g1',label:'Dashboard',route:'/dashboard'},
+{hub:'Pages',id:'g2',label:'Pipelines',route:'/pipeline'},
+{hub:'Pages',id:'g3',label:'Pipeline · User hub',route:'/pipeline/users'},
+{hub:'Pages',id:'g4',label:'Pipeline · Project hub',route:'/pipeline/projects'},
+{hub:'Pages',id:'g5',label:'Inquiries',route:'/contact'},
+{hub:'Pages',id:'g6',label:'Requests',route:'/requests'},
+{hub:'Pages',id:'g7',label:'Quotes',route:'/quotes'},
+{hub:'Pages',id:'g8',label:'Projects',route:'/projects'},
+{hub:'Pages',id:'g9',label:'Users',route:'/users'},
+{hub:'Pages',id:'g10',label:'Messages',route:'/messages'},
+{hub:'Pages',id:'g11',label:'Moderation',route:'/moderation'},
+{hub:'Pages',id:'g12',label:'Analytics',route:'/analytics'},
+{hub:'Pages',id:'g13',label:'Blog',route:'/content'},
+{hub:'Pages',id:'g14',label:'Portfolio',route:'/portfolio'},
+{hub:'Pages',id:'g15',label:'Media Library',route:'/media'},
+{hub:'Pages',id:'g16',label:'System Config',route:'/system'},
+{hub:'Pages',id:'g17',label:'Webhooks',route:'/integrations'},
+{hub:'Pages',id:'g18',label:'Audit Logs',route:'/audit'},
+{hub:'Pages',id:'g19',label:'Request 01a10a2b…dd22',sub:'Captured detail',route:'/requests/01a10a2b-c237-7000-b708-715e75b6dd22',meta:'01a10a2b…'},
+{hub:'Actions',id:'a1',label:'Create blog post',route:'/content/posts/new'},
+{hub:'Actions',id:'a2',label:'New portfolio item',route:'/portfolio/new'},
+{hub:'Actions',id:'a3',label:'Message client',route:'/messages/new'},
+{hub:'Actions',id:'a4',label:'New group chat',route:'/messages/new-group',demo:true},
+{hub:'Actions',id:'a5',label:'Switch to dark mode',route:'local:theme',local:true}
+];
+const hubs=['Queues','People','Money','Pages','Actions'];
+let hub='Queues', active=0, visible=[], open=false, lastFocus=null;
+const $=id=>document.getElementById(id);
+const backdrop=$('backdrop'), q=$('q'), results=$('results'), toast=$('toast');
+function announce(m){toast.hidden=false;toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.hidden=true,3000)}
+function setHub(h){hub=h;document.querySelectorAll('.hub').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.hub===hub)));$('hub-hint').textContent=`${hub} hub · ${ITEMS.filter(i=>i.hub===hub).length} items`;active=0;render()}
+function pool(){const query=q.value.trim().toLowerCase();if(query)return ITEMS.filter(i=>[i.label,i.sub,i.route,i.hub,i.meta].filter(Boolean).join(' ').toLowerCase().includes(query));return ITEMS.filter(i=>i.hub===hub)}
+function render(){visible=pool();results.innerHTML='';if(!visible.length){results.innerHTML=`<div class="empty">No matches.<br><button type="button" class="button button-secondary" id="clr">Clear query</button></div>`;const c=$('clr');if(c)c.onclick=()=>{q.value='';render();q.focus()};q.setAttribute('aria-activedescendant','');return}if(active>=visible.length)active=visible.length-1;visible.forEach((item,i)=>{const b=document.createElement('button');b.type='button';b.className='item';b.id='opt-'+item.id;b.role='option';b.setAttribute('aria-selected',String(i===active));b.innerHTML=`<span><span class="lbl">${item.label}</span>${item.sub?`<span class="sub">${item.sub}</span>`:''}</span><span>${item.badge?`<span class="badge">${item.badge}</span>`:`<span class="meta">${item.meta||item.route}</span>`}</span>`;b.onmouseenter=()=>{active=i;render()};b.onclick=()=>select(item);results.appendChild(b)});q.setAttribute('aria-activedescendant','opt-'+visible[active].id);const el=document.getElementById('opt-'+visible[active].id);if(el)el.scrollIntoView({block:'nearest'})}
+function select(item){if(!item)return;if(item.local){document.documentElement.classList.toggle('dark');sync();announce('Theme toggled locally (demo).');return}announce(`Demo only — would navigate to ${item.route}`)}
+function openP(){if(open)return;open=true;lastFocus=document.activeElement;backdrop.hidden=false;q.value='';setHub(hub);setTimeout(()=>q.focus(),10)}
+function closeP(){if(!open)return;open=false;backdrop.hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+function sync(){const d=document.documentElement.classList.contains('dark');const b=document.querySelector('.theme-toggle');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');try{localStorage.setItem('nl-admin-theme',d?'dark':'light')}catch(e){}}
+document.querySelectorAll('.hub').forEach(b=>b.onclick=()=>setHub(b.dataset.hub));
+$('open').onclick=openP;document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');sync()};sync();
+backdrop.onmousedown=e=>{if(e.target===backdrop)closeP()};q.oninput=()=>{active=0;render()};
+document.onkeydown=e=>{const mod=e.metaKey||e.ctrlKey;if(mod&&e.key.toLowerCase()==='k'){e.preventDefault();open?closeP():openP();return}if(!open)return;if(e.key==='Escape'){e.preventDefault();closeP();return}if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,visible.length-1);render();return}if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);render();return}if(e.key==='Enter'){e.preventDefault();select(visible[active]);return}if(e.key==='['){e.preventDefault();setHub(hubs[(hubs.indexOf(hub)+hubs.length-1)%hubs.length]);return}if(e.key===']'){e.preventDefault();setHub(hubs[(hubs.indexOf(hub)+1)%hubs.length]);return}};
+openP();
+})();
+</script>
+</body>
+</html>

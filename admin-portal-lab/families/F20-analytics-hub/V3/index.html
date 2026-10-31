@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F20 V3 · Table-led · Analytics hub</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand img{width:28px;height:28px}.main{padding:18px;max-width:1200px;margin:0 auto}h1{margin:4px 0 6px;font-size:32px;font-variant-numeric:tabular-nums}.lede{margin:0 0 14px;color:var(--muted-foreground);font-size:14px;line-height:1.5;max-width:42rem}.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}.eyebrow{color:var(--primary);font:800 10px var(--mono);letter-spacing:.08em;text-transform:uppercase}.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:12px 0}.tabs,.ranges{display:flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted)}.tab,.rng{min-height:32px;padding:6px 10px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--muted-foreground);font-size:12px;font-weight:700;cursor:pointer}.tab[aria-selected="true"],.rng[aria-selected="true"]{background:var(--card);color:var(--primary);box-shadow:var(--shadow-xs)}.panel{display:none}.panel.active{display:block}.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0}.kpi{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}.kpi b{display:block;font:800 26px/1.1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:11px;color:var(--muted-foreground)}.kpi .delta{font:700 10px var(--mono);color:var(--primary);margin-top:4px;display:block}.card{margin:12px 0;padding:14px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card)}.card h2{margin:0 0 4px;font-size:15px}.chart-mini .chart{min-height:150px;opacity:.95}.table-lead{border:2px solid var(--border)}.table-lead h2{font-size:16px}.card p.sub{margin:0 0 10px;color:var(--muted-foreground);font-size:11px}.chart{width:100%;height:auto;min-height:200px}.chart text{fill:var(--muted-foreground);font-family:var(--mono);font-size:9px}.chart .axis-label{font-size:10px;font-weight:700;fill:var(--foreground)}.chart .gridline{stroke:var(--border);stroke-width:1}.chart .axis{stroke:var(--muted-foreground);stroke-width:1}.chart .bar{fill:var(--primary)}.chart .bar2{fill:var(--brand-600)}.chart .zero{fill:var(--status-neutral-border)}.sparse{margin:6px 0 0;color:var(--status-warning-text);font-size:11px}.caption{margin:4px 0 0;color:var(--muted-foreground);font-size:11px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left}th{font-size:10px;text-transform:uppercase;color:var(--muted-foreground);letter-spacing:.04em}td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:650}.honesty{margin:8px 0;padding:10px;border-radius:var(--radius-md);background:var(--muted);font-size:11px}.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none}.toast.show{display:block}@media(max-width:640px){h1{font-size:28px}table.resp thead{display:none}table.resp tr{display:block;border-bottom:1px solid var(--border);padding:8px 0}table.resp td{display:grid;grid-template-columns:92px 1fr;gap:6px;border:0;padding:4px 0}table.resp td::before{content:attr(data-label);color:var(--muted-foreground);font-size:9px;font-weight:700;text-transform:uppercase}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><img src="../../../assets/nestlancer-mark.svg" alt="Nestlancer Admin logo"><span>Nestlancer Admin</span></div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="eyebrow">Analytics · /analytics</span>
+<span class="meta">F20 · V3 · TABLE-LED</span>
+<h1>Analytics hub</h1>
+<p class="lede">Revenue, users, projects, and requests — KPI strips, charts, and breakdowns.</p>
+<div class="toolbar">
+<div class="tabs" role="tablist" aria-label="Analytics area">
+<button class="tab" id="tab-revenue" role="tab" type="button" aria-selected="true" aria-controls="panel-revenue" data-area="revenue">Revenue</button>
+<button class="tab" id="tab-users" role="tab" type="button" aria-selected="false" aria-controls="panel-users" data-area="users" tabindex="-1">Users</button>
+<button class="tab" id="tab-projects" role="tab" type="button" aria-selected="false" aria-controls="panel-projects" data-area="projects" tabindex="-1">Projects</button>
+<button class="tab" id="tab-requests" role="tab" type="button" aria-selected="false" aria-controls="panel-requests" data-area="requests" tabindex="-1">Requests</button>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+<div class="ranges" role="tablist" aria-label="Date range"><button class="rng" role="tab" data-range="7" aria-selected="false" tabindex="-1">7d</button><button class="rng" role="tab" data-range="30" aria-selected="true">30d</button><button class="rng" role="tab" data-range="90" aria-selected="false" tabindex="-1">90d</button><button class="rng" role="tab" data-range="365" aria-selected="false" tabindex="-1">1y</button></div>
+<button class="button button-secondary" type="button" id="csv-btn">Download CSV</button>
+</div>
+</div>
+<p class="mono" id="period-line">Period · Oct 1, 2026 — Oct 30, 2026 · 30d window</p>
+
+<section class="panel active" id="panel-revenue" role="tabpanel" aria-labelledby="tab-revenue">
+<div class="kpi-row">
+<div class="kpi"><span>Completed payments (total)</span><b id="rev-total">₹7,08,160.00</b><span>INR · captured completed payments</span><span class="delta" id="rev-delta">Period trend ₹0.00 · -100 · down</span></div>
+<div class="kpi"><span>Period trend</span><b id="rev-trend">₹0.00</b><span>vs prior window (captured)</span></div>
+</div>
+<div class="card table-lead"><h2>Revenue by category (primary)</h2><p class="sub">Table leads · chart summarises below</p>
+<table class="resp" id="tbl-revenue"><thead><tr><th>Category</th><th>Amount (INR)</th></tr></thead><tbody>
+<tr><td data-label="Category">webDevelopment</td><td class="num" data-label="Amount">₹6,66,100.00</td></tr>
+<tr><td data-label="Category">custom</td><td class="num" data-label="Amount">₹30,060.00</td></tr>
+<tr><td data-label="Category">marketing</td><td class="num" data-label="Amount">₹12,000.00</td></tr>
+</tbody></table></div>
+<div class="card chart-mini"><h2>Revenue over time (summary)</h2><p class="sub">Completed payments for the selected period</p>
+<figure><svg class="chart" id="chart-revenue" viewBox="0 0 640 230" role="img" aria-labelledby="rev-svg-t rev-svg-d"><title id="rev-svg-t">Revenue in INR over time</title><desc id="rev-svg-d">30 daily points; one non-zero day; latest ₹0.00.</desc><g aria-hidden="true"><path class="gridline" d="M58 180H620M58 145H620M58 110H620M58 75H620"/><text x="52" y="183" text-anchor="end">₹0</text><text x="52" y="113" text-anchor="end">₹4L</text><text x="52" y="43" text-anchor="end">₹8L</text><text class="axis-label" x="16" y="115" transform="rotate(-90 16 115)">Revenue (INR)</text><line class="axis" x1="58" y1="180" x2="620" y2="180"/></g><g id="rev-plot"></g><g id="rev-xlabels"></g><text class="axis-label" x="339" y="222" text-anchor="middle" id="rev-x-axis">Day (Oct 2026)</text></svg>
+<figcaption class="caption" id="rev-caption">30 points · latest ₹0.00</figcaption><p class="sparse" id="rev-sparse">30 daily points · one non-zero day (Oct 5 ₹7,08,160.00); zeros shown as baseline dots — not a trend line.</p></figure></div>
+</section>
+
+<section class="panel" id="panel-users" role="tabpanel" aria-labelledby="tab-users" hidden>
+<div class="kpi-row">
+<div class="kpi"><span>Total users</span><b>34</b></div>
+<div class="kpi"><span>Active</span><b>34</b></div>
+<div class="kpi"><span>New this month</span><b>34</b></div>
+<div class="kpi"><span>By role</span><b style="font-size:18px">User: 33 · Admin: 1</b></div>
+</div>
+<p class="honesty">C16-style honesty: Total, Active, and New this month are all <strong>34</strong> in the capture — likely test data or a counting bug; values are not smoothed or “fixed” in this lab.</p>
+<div class="card"><h2>User activity</h2><p class="sub">Active users over time · count (users)</p>
+<figure><svg class="chart" id="chart-users" viewBox="0 0 640 230" role="img" aria-labelledby="usr-svg-t usr-svg-d"><title id="usr-svg-t">Active users over time</title><desc id="usr-svg-d">Sparse flat series at 34 users.</desc><g aria-hidden="true"><path class="gridline" d="M58 180H620M58 145H620M58 110H620"/><text x="52" y="183" text-anchor="end">0</text><text x="52" y="113" text-anchor="end">20</text><text x="52" y="43" text-anchor="end">40</text><text class="axis-label" x="16" y="115" transform="rotate(-90 16 115)">Users (count)</text><line class="axis" x1="58" y1="180" x2="620" y2="180"/></g><g id="usr-plot"></g><g id="usr-xlabels"></g><text class="axis-label" x="339" y="222" text-anchor="middle">Week (Sep–Oct 2026)</text></svg>
+<figcaption class="caption">5 points · flat at 34 — not growth</figcaption><p class="sparse">Sparse capture: activity reads as a flat line at 34; chart uses separated markers, not an implied ramp.</p></figure></div>
+<table class="resp"><thead><tr><th>Role</th><th>Count</th></tr></thead><tbody><tr><td data-label="Role">User</td><td class="num" data-label="Count">33</td></tr><tr><td data-label="Role">Admin</td><td class="num" data-label="Count">1</td></tr></tbody></table>
+</section>
+
+<section class="panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+<div class="kpi-row">
+<div class="kpi"><span>Total projects</span><b>18</b></div>
+<div class="kpi"><span>ACTIVE</span><b>4</b></div>
+<div class="kpi"><span>COMPLETED</span><b>10</b></div>
+<div class="kpi"><span>ON HOLD</span><b>0</b></div>
+<div class="kpi"><span>CANCELLED</span><b>0</b></div>
+<div class="kpi"><span>Avg completion</span><b>0</b></div>
+<div class="kpi"><span>On-time rate</span><b>100%</b></div>
+</div>
+<div class="card"><h2>Projects by status</h2><p class="sub">Count by lifecycle status</p>
+<figure><svg class="chart" viewBox="0 0 640 230" role="img" aria-labelledby="prj-svg-t"><title id="prj-svg-t">Project counts by status</title><desc>ACTIVE 4, COMPLETED 10, others 0.</desc><g aria-hidden="true"><text x="52" y="183" text-anchor="end">0</text><text x="52" y="113" text-anchor="end">5</text><text x="52" y="43" text-anchor="end">10</text><text class="axis-label" x="16" y="115" transform="rotate(-90 16 115)">Projects (count)</text><line class="axis" x1="58" y1="180" x2="620" y2="180"/></g>
+<rect class="bar" x="120" y="88" width="36" height="92"><title>ACTIVE: 4</title></rect><text x="138" y="200" text-anchor="middle" class="axis-label">ACTIVE</text>
+<rect class="bar2" x="220" y="40" width="36" height="140"><title>COMPLETED: 10</title></rect><text x="238" y="200" text-anchor="middle" class="axis-label">COMPLETED</text>
+<rect class="zero" x="320" y="179" width="36" height="1"><title>ON HOLD: 0</title></rect><text x="338" y="200" text-anchor="middle">ON HOLD</text>
+<rect class="zero" x="420" y="179" width="36" height="1"><title>CANCELLED: 0</title></rect><text x="438" y="200" text-anchor="middle">CANCELLED</text>
+<text class="axis-label" x="339" y="222" text-anchor="middle">Status</text></svg>
+<figcaption class="caption">4 categories · numeric labels in bars</figcaption></figure></div>
+<table class="resp"><thead><tr><th>Status</th><th>Count</th></tr></thead><tbody>
+<tr><td data-label="Status">ACTIVE</td><td class="num" data-label="Count">4</td></tr><tr><td data-label="Status">COMPLETED</td><td class="num" data-label="Count">10</td></tr><tr><td data-label="Status">ON HOLD</td><td class="num" data-label="Count">0</td></tr><tr><td data-label="Status">CANCELLED</td><td class="num" data-label="Count">0</td></tr>
+</tbody></table>
+</section>
+
+<section class="panel" id="panel-requests" role="tabpanel" aria-labelledby="tab-requests" hidden>
+<div class="kpi-row">
+<div class="kpi"><span>Total requests</span><b>46</b></div>
+<div class="kpi"><span>Conversion rate</span><b>43.9%</b></div>
+<div class="kpi"><span>Avg response time</span><b>0 minutes</b></div>
+<div class="kpi"><span>Open pipeline</span><b>13</b></div>
+</div>
+<div class="card table-lead"><h2>Requests by status (primary)</h2><table class="resp" id="tbl-requests"><thead><tr><th>Status</th><th>Count</th></tr></thead><tbody>
+<tr><td data-label="Status">Draft</td><td class="num" data-label="Count">5</td></tr>
+<tr><td data-label="Status">Submitted</td><td class="num" data-label="Count">11</td></tr>
+<tr><td data-label="Status">Converted</td><td class="num" data-label="Count">18</td></tr>
+<tr><td data-label="Status">Rejected</td><td class="num" data-label="Count">3</td></tr>
+<tr><td data-label="Status">Expired Quote</td><td class="num" data-label="Count">7</td></tr>
+</tbody></table></div>
+<div class="card chart-mini"><h2>New requests over time (summary)</h2><p class="sub">Inbound volume · last 30 days</p>
+<figure><svg class="chart" id="chart-requests" viewBox="0 0 640 230" role="img" aria-labelledby="req-svg-t req-svg-d"><title id="req-svg-t">Requests per day</title><desc id="req-svg-d">30 points; Oct 5=36, Oct 6=10.</desc><g aria-hidden="true"><path class="gridline" d="M58 180H620M58 145H620M58 110H620"/><text x="52" y="183" text-anchor="end">0</text><text x="52" y="113" text-anchor="end">20</text><text x="52" y="43" text-anchor="end">40</text><text class="axis-label" x="16" y="115" transform="rotate(-90 16 115)">Requests (count)</text><line class="axis" x1="58" y1="180" x2="620" y2="180"/></g><g id="req-plot"></g><g id="req-xlabels"></g><text class="axis-label" x="339" y="222" text-anchor="middle">Day (Oct 2026)</text></svg>
+<figcaption class="caption">30 points · latest 0</figcaption><p class="sparse">Two non-zero days only: Oct 5 = 36, Oct 6 = 10 (total captured inbound 46).</p></figure></div>
+</section>
+
+<noscript><div class="card"><h2>No-JS data summary</h2><p class="mono">Revenue total ₹7,08,160.00 · Users 34 · Projects 18 · Requests 46 · All charts have table equivalents above.</p></div></noscript>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="../V2/index.html">V2</a><a href="./index.html" aria-current="page">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a></nav>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){}s()}})();</script>
+<script>
+const toast=document.getElementById('toast');function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',2600)}
+const NS='http://www.w3.org/2000/svg';
+function svgEl(n,a,t){const e=document.createElementNS(NS,n);Object.entries(a||{}).forEach(([k,v])=>e.setAttribute(k,v));if(t!==undefined)e.textContent=t;return e}
+function plotBars(g,labels,values,max,cls){g.replaceChildren();const L=58,W=562,step=W/values.length;values.forEach((v,i)=>{const x=L+i*step+step/2;if(v>0){const h=140*v/max,r=svgEl('rect',{x:x-Math.min(8,step*.3),y:180-h,width:Math.min(16,step*.55),height:h,class:cls});r.append(svgEl('title',{},`${labels[i]}: ${max<=50?v:'₹'+v.toLocaleString('en-IN')+'.00'}`));g.append(r)}else g.append(svgEl('circle',{cx:x,cy:180,r:1.8,class:'zero'}))});return step}
+function xLabels(g,labels,step){g.replaceChildren();[0,Math.floor((labels.length-1)/2),labels.length-1].forEach(i=>g.append(svgEl('text',{x:58+(i+.5)*step,y:200,'text-anchor':'middle'},labels[i])))}
+const ranges={'7':{sub:'Oct 24, 2026 — Oct 30, 2026 · 7d window',revTotal:'₹0.00',revTrend:'₹0.00',revDelta:'→ flat · 0 INR in range',caption:'7 points · latest ₹0.00',sparse:'7 daily points · no completed payments in range.',x:'Day (Oct 24–30, 2026)',labels:['10-24','10-25','10-26','10-27','10-28','10-29','10-30'],values:Array(7).fill(0)},'30':{sub:'Oct 1, 2026 — Oct 30, 2026 · 30d window',revTotal:'₹7,08,160.00',revTrend:'₹0.00',revDelta:'Period trend ₹0.00 · -100 · down',caption:'30 points · latest ₹0.00',sparse:'30 daily points · one non-zero day (Oct 5 ₹7,08,160.00); zeros shown as baseline dots — not a trend line.',x:'Day (Oct 2026)',labels:Array.from({length:30},(_,i)=>'10-'+String(i+1).padStart(2,'0')),values:Array.from({length:30},(_,i)=>i===4?708160:0)},'90':{sub:'Aug 2, 2026 — Oct 30, 2026 · 90d window',revTotal:'₹7,08,160.00',revTrend:'₹0.00',revDelta:'Period trend ₹0.00 · -100 · down',caption:'3 points · latest ₹7,08,160.00 (monthly buckets)',sparse:'3 monthly points · only Oct non-zero — not a continuous trend.',x:'Month (Aug–Oct 2026)',labels:['26-08','26-09','26-10'],values:[0,0,708160]},'365':{sub:'Oct 31, 2025 — Oct 30, 2026 · 1y window',revTotal:'₹7,08,160.00',revTrend:'₹0.00',revDelta:'Period trend ₹0.00 · -100 · down',caption:'13 points · latest ₹7,08,160.00',sparse:'13 monthly points · only Oct 2026 non-zero.',x:'Month (Oct 2025–Oct 2026)',labels:['25-10','25-11','25-12','26-01','26-02','26-03','26-04','26-05','26-06','26-07','26-08','26-09','26-10'],values:Array.from({length:13},(_,i)=>i===12?708160:0)}};
+let area='revenue',range='30';
+function renderRevenue(){const r=ranges[range];document.getElementById('period-line').textContent='Period · '+r.sub;document.getElementById('rev-total').textContent=r.revTotal;document.getElementById('rev-trend').textContent=r.revTrend;document.getElementById('rev-delta').textContent=r.revDelta;document.getElementById('rev-caption').textContent=r.caption;document.getElementById('rev-sparse').textContent=r.sparse;document.getElementById('rev-x-axis').textContent=r.x;const step=plotBars(document.getElementById('rev-plot'),r.labels,r.values,800000,'bar');xLabels(document.getElementById('rev-xlabels'),r.labels,step);document.getElementById('rev-svg-d').textContent=r.caption+'. '+r.sparse}
+function renderRequests(){const labels=Array.from({length:30},(_,i)=>'10-'+String(i+1).padStart(2,'0')),values=Array.from({length:30},(_,i)=>i===4?36:i===5?10:0);const step=plotBars(document.getElementById('req-plot'),labels,values,40,'bar2');xLabels(document.getElementById('req-xlabels'),labels,step)}
+function renderUsers(){const labels=['09-27','10-04','10-11','10-18','10-25'],values=[34,34,34,34,34];const step=plotBars(document.getElementById('usr-plot'),labels,values,40,'bar');xLabels(document.getElementById('usr-xlabels'),labels,step)}
+function setArea(a){area=a;document.querySelectorAll('.tab').forEach(t=>{const on=t.dataset.area===a;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1});document.querySelectorAll('.panel').forEach(p=>{const on=p.id==='panel-'+a;p.classList.toggle('active',on);p.hidden=!on});announce(a+' tab')}
+function setRange(k){range=k;document.querySelectorAll('.rng').forEach(b=>{const on=b.dataset.range===k;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});renderRevenue();announce(k==='365'?'1y range':k+' range')}
+document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>setArea(t.dataset.area);t.onkeydown=e=>{const tabs=[...document.querySelectorAll('.tab')],i=tabs.indexOf(t);let n;if(e.key==='ArrowRight')n=(i+1)%tabs.length;if(e.key==='ArrowLeft')n=(i-1+tabs.length)%tabs.length;if(n!==undefined){e.preventDefault();tabs[n].focus();setArea(tabs[n].dataset.area)}}});
+document.querySelectorAll('.rng').forEach(b=>{b.onclick=()=>setRange(b.dataset.range);b.onkeydown=e=>{const rs=[...document.querySelectorAll('.rng')],i=rs.indexOf(b);let n;if(e.key==='ArrowRight')n=(i+1)%rs.length;if(e.key==='ArrowLeft')n=(i-1+rs.length)%rs.length;if(n!==undefined){e.preventDefault();rs[n].focus();setRange(rs[n].dataset.range)}}});
+document.getElementById('csv-btn').onclick=()=>{let rows=[],name='analytics';if(area==='revenue'){rows=[['category','amount_inr'],['webDevelopment','666100.00'],['custom','30060.00'],['marketing','12000.00']];name='revenue-by-category'}else if(area==='users'){rows=[['metric','value'],['total','34'],['active','34'],['new_this_month','34'],['role_user','33'],['role_admin','1']];name='users-summary'}else if(area==='projects'){rows=[['status','count'],['ACTIVE','4'],['COMPLETED','10'],['ON_HOLD','0'],['CANCELLED','0'],['total','18'],['on_time_pct','100']];name='projects-status'}else{rows=[['status','count'],['Draft','5'],['Submitted','11'],['Converted','18'],['Rejected','3'],['Expired Quote','7'],['total','46'],['conversion_pct','43.9'],['open_pipeline','13']];name='requests-status'}
+const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nestlancer-'+name+'-capture.csv';a.click();URL.revokeObjectURL(a.href);announce('CSV downloaded · '+name+' (frozen capture)')}
+renderRevenue();renderRequests();renderUsers();
+</script>
+</body></html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F24 V1 · Ground Truth · System Config</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand img{width:28px;height:28px}
+.main{padding:18px;max-width:1180px;margin:0 auto;width:100%}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
+h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5;max-width:46rem}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0}
+.kpi{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}
+.kpi b{display:block;font:800 24px/1.1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:11px;color:var(--muted-foreground)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab{min-height:34px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit}
+.tab[aria-selected="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800);box-shadow:inset 0 -2px 0 var(--brand-500)}
+.panel{margin-top:8px;padding:14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}
+.panel h2{margin:0 0 4px;font-size:17px}
+.sub{margin:0 0 10px;color:var(--muted-foreground);font-size:12px;line-height:1.45}
+.note{padding:10px;border-radius:var(--radius-md);background:var(--muted);border:1px solid var(--border);font-size:12px;margin:8px 0}
+.status-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}
+.stat{padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background)}
+.stat .badge{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-success-border);background:var(--status-success-bg);color:var(--status-success-text)}
+.stat .badge-warn{border-color:var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}
+.stat .badge-info{border-color:var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text)}
+.diag pre{max-height:220px;overflow:auto;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:11px/1.45 var(--mono);white-space:pre-wrap}
+.field{margin:10px 0}.field label{display:block;font-size:12px;font-weight:650;margin-bottom:4px}
+.field input,.field textarea,.field select{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.field textarea{min-height:88px;font-family:var(--mono);font-size:11px;line-height:1.45}
+.cfg-group{margin:14px 0}.cfg-group h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted-foreground)}
+.flag{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:8px;background:var(--background)}
+.flag strong{font-size:13px}.flag p{margin:4px 0 0;font-size:12px;color:var(--muted-foreground)}
+.switch{position:relative;width:44px;height:24px;flex-shrink:0}.switch input{opacity:0;width:0;height:0}
+.switch span{position:absolute;inset:0;background:var(--muted-foreground);border-radius:999px;cursor:pointer;transition:background .2s}
+.switch span::after{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s}
+.switch input:checked+span{background:var(--brand-500)}.switch input:checked+span::after{transform:translateX(20px)}
+.switch input:focus-visible+span{outline:2px solid var(--ring);outline-offset:2px}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{font-size:10px;text-transform:uppercase;color:var(--muted-foreground);letter-spacing:.04em}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.audit{margin:14px 0;padding:12px;border:1px dashed var(--border);border-radius:var(--radius-md);background:var(--muted)}
+.audit h3{margin:0 0 8px;font-size:13px}
+.audit ol{margin:0;padding-left:18px;font-size:12px;line-height:1.5}
+.audit li{margin:4px 0}
+.modal{position:fixed;inset:0;background:rgba(26,36,51,.48);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal .box{width:min(920px,100%);max-height:92vh;overflow:auto;padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}
+.modal .split{display:grid;gap:12px}.modal .split.two{grid-template-columns:1fr 1fr}
+.preview-pane{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);min-height:160px;font-size:13px;line-height:1.5}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none;max-width:92vw}
+.toast.show{display:block}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{min-height:30px;padding:0 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 11px var(--font);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800)}
+.hidden{display:none!important}
+@media(max-width:720px){h1{font-size:26px}.modal .split.two{grid-template-columns:1fr}table.resp thead{display:none}table.resp tr{display:block;border-bottom:1px solid var(--border);padding:8px 0}table.resp td{display:grid;grid-template-columns:88px 1fr;gap:4px;border:0;padding:4px 0}table.resp td::before{content:attr(data-label);color:var(--muted-foreground);font-size:9px;font-weight:700;text-transform:uppercase}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="v1">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<noscript><p class="main">Enable JavaScript for tabs — anchors: #health #config #features #jobs #templates #operations.</p></noscript>
+<header class="top"><div class="brand"><img src="../../../assets/nestlancer-mark.svg" alt="Nestlancer Admin logo"><span>Nestlancer Admin</span></div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="eyebrow">System · /system</span>
+<span class="meta">F24 · V1 · GROUND TRUTH</span>
+<h1>System Configuration</h1>
+<p class="lede">Runtime health, platform settings, feature flags, jobs, templates, and operator controls.</p>
+<div class="kpis" aria-label="System summary">
+<div class="kpi"><span>Service</span><b>Healthy</b><span class="mono">admin</span></div>
+<div class="kpi"><span>Config keys</span><b>14</b><span>All saved</span></div>
+<div class="kpi"><span>Feature flags</span><b>5/12</b><span>Enabled / total</span></div>
+<div class="kpi"><span>Templates</span><b>62</b><span>10 email · 52 notification</span></div>
+</div>
+<div class="tabs" role="tablist" aria-label="System configuration tabs" id="tabs"></div>
+<div id="panels"></div>
+<section class="audit" aria-labelledby="audit-h" id="audit"><h3 id="audit-h">Change audit (A15 · demo)</h3><ol id="audit-list"><li class="mono">No changes yet — guarded actions log who / when / why here.</li></ol></section>
+<p class="mono">Webhooks + audit explorer → <a href="../../../index.html#f25">F25 Integrations &amp; Audit</a> (not built in F24).</p>
+<nav class="lab-nav"><a href="../V1/index.html" aria-current="page">V1</a> · <a href="../V2/index.html">V2</a> · <a href="../V3/index.html">V3</a> · <a href="../V4/index.html">V4</a> · <a href="../V5/index.html">V5</a></nav>
+</main>
+<div class="modal" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cm-title" hidden><div class="box" style="max-width:460px"><h3 id="cm-title">Confirm change</h3><p id="cm-body"></p><label class="mono" for="cm-reason">Reason (required for audit)</label><textarea id="cm-reason" rows="3" placeholder="Why this change is correct…"></textarea><div class="actions"><button type="button" class="button" id="cm-ok">Confirm</button><button type="button" class="button button-secondary" id="cm-no">Cancel</button></div></div></div>
+<div class="modal" id="editor" role="dialog" aria-modal="true" aria-labelledby="ed-title" hidden><div class="box"><h3 id="ed-title">Template</h3><p class="sub" id="ed-sub"></p><div class="split two" id="ed-body"></div><div class="actions" id="ed-foot"></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){};s()}})();</script>
+<script>
+const VARIANT='v1';
+const TAB_LABELS=[{id:'health',label:'Health'},{id:'config',label:'Config 14'},{id:'features',label:'Features 12'},{id:'jobs',label:'Jobs'},{id:'templates',label:'Templates 62'},{id:'operations',label:'Operations'}];
+let tab='health';
+const CONFIGS=[
+{group:'SYSTEM',key:'system.rate_limits',label:'Rate limits',value:'{\n  "admin": { "limit": 300, "windowSeconds": 60 }\n}'},
+{group:'SYSTEM',key:'system.file_upload',label:'File upload',value:'{\n  "maxFileSizeMB": 50,\n  "maxChunkSizeMB": 5,\n  "allowedMimeTypes": ["image/jpeg"]\n}'},
+{group:'SYSTEM',key:'system.pagination',label:'Pagination',value:'{\n  "maxLimit": 100,\n  "defaultPage": 1,\n  "defaultLimit": 20\n}'},
+{group:'SYSTEM',key:'system.jwt',label:'Jwt',value:'{\n  "refreshTokenExpiryDays": 7,\n  "maxRefreshTokensPerUser": 10,\n  "accessTokenExpiryMinutes": 15\n}'},
+{group:'SYSTEM',key:'system.security',label:'Security',value:'{\n  "maxLoginAttempts": 5,\n  "passwordMaxLength": 128,\n  "passwordMinLength": 8,\n  "lockoutDurationMinutes": 15\n}'},
+{group:'SYSTEM',key:'system.currency',label:'Currency',value:'{\n  "symbol": "₹",\n  "default": "INR",\n  "subunit": "paise",\n  "subunitMultiplier": 100\n}'},
+{group:'SYSTEM',key:'system.media',label:'Media',value:'{\n  "maxVersions": 10,\n  "imageSizeLimit": 10485760,\n  "thumbnailSizes": { "large": 600 }\n}'},
+{group:'SYSTEM',key:'system.notifications',label:'Notifications',value:'{\n  "batchSize": 50,\n  "expiryDays": 90,\n  "maxUnreadCount": 100\n}'},
+{group:'REQUESTS',key:'request.categories',label:'Categories',value:'[\n  { "id": "webDevelopment", "label": "Web development" }\n]'},
+{group:'OTHER',key:'blog.settings',label:'Settings',value:'{}'},
+{group:'OTHER',key:'media.settings',label:'Settings',value:'{}'},
+{group:'OTHER',key:'payment.settings',label:'Settings',value:'{}'},
+{group:'OTHER',key:'system.maintenance_banner',label:'Managed elsewhere',value:'— edited under Operations tab (104 note)',managed:true},
+{group:'OTHER',key:'system.announcements_history',label:'Managed elsewhere',value:'— edited under Operations tab (104 note)',managed:true}
+];
+const FLAGS=[
+{id:'enforce_2fa',name:'Enforce 2FA for all admin accounts',on:false},
+{id:'outbound_webhooks',name:'Enable outbound webhook delivery',on:false},
+{id:'virus_scan',name:'Enable virus scanning for uploaded files',on:true},
+{id:'maintenance_mode_flag',name:'Enable system-wide maintenance mode',on:false},
+{id:'api_rate_limit',name:'Enable API rate limiting',on:true},
+{id:'email_notifications',name:'Enable email notification delivery',on:true},
+{id:'push_notifications',name:'Enable push notification delivery',on:false},
+{id:'advanced_analytics',name:'Enable advanced analytics dashboard',on:false},
+{id:'blog_comments',name:'Enable blog commenting system',on:true},
+{id:'portfolio_public',name:'Make portfolio items publicly visible',on:true},
+{id:'chunked_upload',name:'Enable chunked file upload support',on:false},
+{id:'cdn_processing',name:'Enable CDN processing for media files',on:false}
+];
+const JOBS=[
+{queue:'email.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'notification.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'audit.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'media.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'webhook.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'cdn.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'analytics.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'document.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'export.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'payments.webhook.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'system.webhook.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'},
+{queue:'projects.lifecycle.queue',status:'COMPLETED',created:'10/10/2026, 8:09:54 AM'}
+];
+const EMAIL_TEMPLATES=[
+{slug:'verification',id:'a1b2c3d4-e5f6-7890-abcd-ef1234567890',subject:'Verify your Nestlancer account',body:'<h1 style="color:#0d9488">Verify your email</h1><p>Hi {{userName}}, confirm your email.</p><p><a href="{{link}}">Verify email</a></p><p>This link expires in 24 hours.</p>'},
+{slug:'welcome',id:'b2c3d4e5-f6a7-8901-bcde-f12345678901',subject:'Welcome to Nestlancer!',body:'<p>Welcome {{userName}}!</p>'},
+{slug:'password-reset',id:'c3d4e5f6-a7b8-9012-cdef-123456789012',subject:'Reset your Nestlancer password',body:'<p>Reset link: {{link}}</p>'},
+{slug:'quote-sent',id:'d4e5f6a7-b8c9-0123-def0-234567890123',subject:'New quote for your project: {{projectTitle}}',body:'<p>Quote details inside.</p>'},
+{slug:'payment-receipt',id:'e5f6a7b8-c9d0-1234-ef01-345678901234',subject:'Payment receipt for {{projectTitle}}',body:'<p>Amount: {{amount}}</p>'},
+{slug:'project-update',id:'f6a7b8c9-d0e1-2345-f012-456789012345',subject:'Update on your project: {{projectTitle}}',body:'<p>{{message}}</p>'},
+{slug:'milestone-completed',id:'a7b8c9d0-e1f2-3456-0123-567890123456',subject:'Milestone completed: {{milestoneName}}',body:'<p>Great progress!</p>'},
+{slug:'new-message',id:'b8c9d0e1-f2a3-4567-1234-678901234567',subject:'New message in {{projectTitle}}',body:'<p>{{excerpt}}</p>'},
+{slug:'account-suspended',id:'c9d0e1f2-a3b4-5678-2345-789012345678',subject:'Your Nestlancer account has been suspended',body:'<p>Contact support.</p>'},
+{slug:'contact-received',id:'d0e1f2a3-b4c5-6789-3456-890123456789',subject:'We received your message – Ticket #{{ticketId}}',body:'<p>We will reply soon.</p>'}
+];
+const NOTIF_SEED=['account-deleted-user','account-deletion-cancelled','account-deletion-scheduled','account-finish-app-reminder','quote-ready-client','payment-failed-client','project-assigned-freelancer','message-received','milestone-due-reminder','review-requested','dispute-opened-admin','webhook-delivery-failed','media-scan-complete','export-ready-download','announcement-published'];
+const NOTIF_TEMPLATES=[...NOTIF_SEED];
+for(let i=NOTIF_TEMPLATES.length;i<52;i++) NOTIF_TEMPLATES.push('notification-event-'+(i+1).toString().padStart(2,'0'));
+let tmplChannel='email',tmplQ='',diagOpen=false,configQ='';
+let maint={enabled:false,message:'System is under maintenance. Please check back later.',end:''};
+let ann={title:'',message:'',severity:'INFO',dismiss:true};
+const auditLog=[];
+const toast=document.getElementById('toast');
+function announce(m){toast.className='toast show';toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.className='toast',3200)}
+function pushAudit(action,reason,detail){const row={who:'Riya Kapoor (demo)',when:new Date().toISOString().slice(0,19).replace('T',' '),why:reason||'(no reason)',what:action+' · '+detail};auditLog.unshift(row);const ol=document.getElementById('audit-list');ol.innerHTML=auditLog.slice(0,8).map(r=>'<li><strong>'+r.what+'</strong><br><span class="mono">'+r.who+' · '+r.when+' · '+r.why+'</span></li>').join('')}
+function openConfirm(title,body,onOk){const m=document.getElementById('confirm');document.getElementById('cm-title').textContent=title;document.getElementById('cm-body').textContent=body;document.getElementById('cm-reason').value='';m.hidden=false;m.classList.add('open');document.getElementById('cm-ok').onclick=()=>{const reason=document.getElementById('cm-reason').value.trim();if(!reason){announce('Reason required for audit');return}m.hidden=true;m.classList.remove('open');onOk(reason)};document.getElementById('cm-no').onclick=()=>{m.hidden=true;m.classList.remove('open')}}
+function renderTabs(){document.getElementById('tabs').innerHTML=TAB_LABELS.map(t=>'<button type="button" class="tab" role="tab" id="tab-'+t.id+'" aria-selected="'+(tab===t.id)+'" data-tab="'+t.id+'">'+t.label+'</button>').join('');document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;location.hash=tab;render()})}
+function healthPanel(){const diag=diagOpen?`{
+  "status": "healthy",
+  "timestamp": "2026-10-10T12:01:22.083Z",
+  "server": { "hostname": "[redacted]", "platform": "[redacted]", "nodeVersion": "[redacted]" },
+  "dependencies": { "database": { "connected": true }, "cache": { "connected": true }, "queue": { "connected": true } },
+  "featureFlags": { "newDashboard": true, "advancedAnalytics": false, "betaFeatures": true }
+}`:'(collapsed — shot 059)';return `<section id="health" class="panel"><h2>Health</h2><p class="sub">Gateway + admin service signals · <span class="mono">DEMO</span> labelled (105 / gateway spec).</p>
+<div class="status-row"><div class="stat"><span class="badge">Reachable</span><div><strong>Gateway</strong></div><span class="mono">Admin health probe</span></div>
+<div class="stat"><span class="badge badge-info">admin</span><div><strong>Service</strong></div><span class="mono">Responding identity</span></div>
+<div class="stat"><span class="badge">Off</span><div><strong>Maintenance</strong></div><span class="mono">Client access gate</span></div>
+<div class="stat"><span class="badge badge-warn">5/12</span><div><strong>Flags enabled</strong></div><span class="mono">Live feature surface</span></div></div>
+<div class="panel" style="margin-top:10px"><div class="actions" style="justify-content:space-between"><div><strong>Diagnostics</strong><p class="sub">Raw payload for troubleshooting · GET /api/v1/health/system</p></div><button type="button" class="button button-secondary" id="diag-toggle">${diagOpen?'Hide diagnostics':'Load diagnostics'}</button></div>
+<div class="diag ${diagOpen?'':'hidden'}"><pre aria-live="polite">${diag}</pre><p class="mono">Provenance: shot 105 · no production secrets</p></div></div>
+<div class="panel" style="margin-top:10px"><h2 style="font-size:15px">Cache management</h2><p class="sub">Flush Redis globally or invalidate one key · POST /api/system/cache/clear</p>
+<div class="actions"><button type="button" class="button button-secondary" data-act="cache-all">Clear all cache</button></div>
+<div class="field"><label for="cache-key">Exact cache key</label><input id="cache-key" placeholder="user_profile_*"><button type="button" class="button button-secondary" data-act="cache-key">Clear key</button></div></div>
+<div class="panel" style="margin-top:10px"><h2 style="font-size:15px">System logs</h2><p class="sub">CSV export · GET /api/system/logs/download</p><button type="button" class="button button-secondary" data-act="logs">Download logs</button></div></section>`}
+function configPanel(){const filtered=CONFIGS.filter(c=>!configQ||c.key.includes(configQ)||c.label.toLowerCase().includes(configQ.toLowerCase()));let g='';let cur='';filtered.forEach(c=>{if(c.group!==cur){cur=c.group;g+=`<div class="cfg-group"><h3>${cur}</h3>`}g+=`<div class="field"><label>${c.label} <span class="mono">${c.key}</span></label><textarea data-key="${c.key}" ${c.managed?'readonly':''}>${c.value.replace(/</g,'&lt;')}</textarea>${c.managed?'':'<button type="button" class="button button-secondary" data-save="'+c.key+'">Save key</button>'}</div>`;if(!filtered[filtered.indexOf(c)+1]||filtered[filtered.indexOf(c)+1].group!==cur)g+='</div>'});return `<section id="config" class="panel"><div class="actions" style="justify-content:space-between"><div><h2>Platform configuration</h2><p class="sub">Tunable runtime keys · JSON parsed on save · shot 104</p></div><span class="badge">All saved</span></div>
+<div class="note">Maintenance mode and announcement history are edited under the <strong>Operations</strong> tab — not as raw JSON here (104).</div>
+<input type="search" placeholder="Search keys or labels…" aria-label="Search config keys" id="cfg-search" value="${configQ}">
+<p class="mono">12 editable · 2 managed elsewhere · 14 total keys</p>${g}</section>`}
+function featuresPanel(){const on=FLAGS.filter(f=>f.on).length;return `<section id="features" class="panel"><div class="actions" style="justify-content:space-between"><div><h2>Feature flags</h2><p class="sub">Guarded toggles · PATCH /api/system/features/{flag} · shot 060</p></div><span class="mono">${on} on · ${12-on} off</span></div>
+<input type="search" id="flag-search" placeholder="Search by name, description, or id…" aria-label="Search feature flags">
+<div id="flag-list">${FLAGS.map(f=>'<div class="flag"><div><strong>'+f.name+'</strong><p class="mono">'+f.id+'</p></div><label class="switch"><input type="checkbox" role="switch" aria-label="'+f.name+'" data-flag="'+f.id+'" '+(f.on?'checked':'')+'><span></span></label></div>').join('')}</div></section>`}
+function jobsPanel(){return `<section id="jobs" class="panel"><div class="actions" style="justify-content:space-between"><div><h2>Background jobs</h2><p class="sub">Inspect async work · retry/cancel are confirm-gated demo (report: live ammo never touched) · shot 061</p></div><span class="mono">12 jobs</span></div>
+<table class="resp"><thead><tr><th>Job</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead><tbody>${JOBS.map((j,i)=>'<tr><td data-label="Job"><strong>'+j.queue+'</strong><div class="mono">'+j.queue+'</div></td><td data-label="Status"><span class="badge">'+j.status+'</span></td><td data-label="Created">'+j.created+'</td><td data-label="Actions"><button type="button" class="button button-secondary" data-retry="'+i+'">Retry</button> <button type="button" class="button button-secondary" data-cancel="'+i+'">Cancel</button></td></tr>').join('')}</tbody></table></section>`}
+function templatesPanel(){const list=tmplChannel==='email'?EMAIL_TEMPLATES:NOTIF_TEMPLATES.map((slug,i)=>({slug,event:slug.replace(/-/g,'.'),title:slug.replace(/-/g,' '),message:'Sample message for '+slug,channels:'["IN_APP"]'}));const q=tmplQ.toLowerCase();const filtered=list.filter(t=>(t.slug||'').toLowerCase().includes(q)||(t.subject||'').toLowerCase().includes(q));return `<section id="templates" class="panel"><h2>Templates</h2><p class="sub">62 total · 10 email · 52 notification · shot 063 · full notification names partially in capture (107)</p>
+<div class="chips" role="tablist" aria-label="Template channel"><button type="button" class="chip" data-channel="email" aria-pressed="${tmplChannel==='email'}">Email (10)</button><button type="button" class="chip" data-channel="notification" aria-pressed="${tmplChannel==='notification'}">Notifications (52)</button></div>
+<input type="search" id="tmpl-search" placeholder="Search ${tmplChannel} templates…" value="${tmplQ}" aria-label="Search templates">
+<p class="mono">Showing ${filtered.length} of ${tmplChannel==='email'?10:52} ${tmplChannel} templates · 62 catalog total</p>
+<table class="resp"><thead><tr><th>Template</th><th>${tmplChannel==='email'?'Subject':'Title'}</th><th>Actions</th></tr></thead><tbody>${filtered.map(t=>tmplChannel==='email'?`<tr><td data-label="Template"><strong>${t.slug}</strong><div class="mono">${t.id}</div></td><td data-label="Subject">${t.subject}</td><td data-label="Actions"><button type="button" class="button button-secondary" data-edit-email="${t.slug}">Edit &amp; preview</button></td></tr>`:`<tr><td data-label="Template"><strong>${t.slug}</strong><div class="mono">${t.event}</div></td><td data-label="Title">${t.title}</td><td data-label="Actions"><button type="button" class="button button-secondary" data-edit-notif="${t.slug}">Edit</button></td></tr>`).join('')}</tbody></table></section>`}
+function opsPanel(){return `<section id="operations" class="panel"><h2>Operations</h2><p class="sub">Announcements + maintenance · shot 062 · spec DTOs</p>
+<div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+<div class="panel"><h2 style="font-size:15px">Platform announcements</h2><p class="sub">POST /api/system/announcements</p>
+<div class="field"><label for="ann-title">Announcement title</label><input id="ann-title" maxlength="200"></div>
+<div class="field"><label for="ann-body">Message body (max 1000 characters)</label><textarea id="ann-body" maxlength="1000"></textarea></div>
+<div class="field"><label for="ann-sev">Severity</label><select id="ann-sev"><option>INFO</option><option>WARNING</option><option>CRITICAL</option></select></div>
+<label class="flag"><span>Users can dismiss</span><span class="switch"><input type="checkbox" id="ann-dismiss" checked role="switch"><span></span></span></label>
+<button type="button" class="button" data-act="announce">Send announcement</button></div>
+<div class="panel"><h2 style="font-size:15px">Maintenance mode</h2><p class="sub">POST /api/system/maintenance</p>
+<p>Live status: <span class="badge">${maint.enabled?'Enabled':'Disabled'}</span></p>
+<label class="flag"><span>Enable maintenance</span><span class="switch"><input type="checkbox" id="maint-on" role="switch" ${maint.enabled?'checked':''}><span></span></span></label>
+<div class="field"><label for="maint-msg">Message shown to users</label><input id="maint-msg" value="${maint.message.replace(/"/g,'&quot;')}"></div>
+<div class="field"><label for="maint-end">Estimated end (optional)</label><input id="maint-end" type="datetime-local"></div>
+<button type="button" class="button button-secondary" data-act="maint-apply">Apply maintenance settings</button></div></div></section>`}
+function render(){renderTabs();let html='';if(tab==='health')html=healthPanel();else if(tab==='config')html=configPanel();else if(tab==='features')html=featuresPanel();else if(tab==='jobs')html=jobsPanel();else if(tab==='templates')html=templatesPanel();else html=opsPanel();document.getElementById('panels').innerHTML=html;wire()}
+function wire(){
+ document.getElementById('diag-toggle')?.addEventListener('click',()=>{diagOpen=!diagOpen;render()});
+ document.querySelectorAll('[data-save]').forEach(btn=>btn.onclick=()=>openConfirm('Save configuration','PATCH /api/system/config · key '+btn.dataset.save,reason=>{pushAudit('Config save',reason,btn.dataset.save);announce('Receipt · demo · saved '+btn.dataset.save)}));
+ document.querySelectorAll('[data-act="cache-all"]').forEach(b=>b.onclick=()=>openConfirm('Clear all cache','POST /api/system/cache/clear — flush Redis globally',r=>{pushAudit('Cache flush',r,'all');announce('Receipt · demo · cache clear enqueued')}));
+ document.querySelectorAll('[data-act="cache-key"]').forEach(b=>b.onclick=()=>{const k=document.getElementById('cache-key')?.value||'';openConfirm('Clear cache key','POST /api/system/cache/clear/'+k,r=>{pushAudit('Cache key',r,k||'(empty)');announce('Receipt · demo · key clear')})});
+ document.querySelectorAll('[data-act="logs"]').forEach(b=>b.onclick=()=>openConfirm('Download logs','GET /api/system/logs/download — CSV export',r=>{pushAudit('Logs download',r,'recent window');announce('Receipt · demo · download URL generated')}));
+ document.querySelectorAll('[data-retry]').forEach(b=>b.onclick=()=>openConfirm('Retry job','POST /api/system/jobs/{id}/retry — demo only; production retry never touched in audit',r=>{pushAudit('Job retry',r,JOBS[b.dataset.retry].queue);announce('Receipt · demo · retry queued (not live)')}));
+ document.querySelectorAll('[data-cancel]').forEach(b=>b.onclick=()=>openConfirm('Cancel job','DELETE /api/system/jobs/{id}',r=>{pushAudit('Job cancel',r,JOBS[b.dataset.cancel].queue);announce('Receipt · demo · cancel requested')}));
+ document.querySelectorAll('[data-flag]').forEach(inp=>{inp.onchange=e=>{const id=inp.dataset.flag;const f=FLAGS.find(x=>x.id===id);const next=inp.checked;inp.checked=f.on;openConfirm('Toggle feature flag','PATCH /api/system/features/'+id+' → '+(next?'enabled':'disabled'),reason=>{f.on=next;inp.checked=next;pushAudit('Feature toggle',reason,id+' → '+next);announce('Receipt · demo · flag updated');render()})}});
+ document.getElementById('cfg-search')?.addEventListener('input',e=>{configQ=e.target.value;render()});
+ document.querySelectorAll('[data-channel]').forEach(c=>c.onclick=()=>{tmplChannel=c.dataset.channel;tmplQ='';render()});
+ document.getElementById('tmpl-search')?.addEventListener('input',e=>{tmplQ=e.target.value;render()});
+ document.querySelectorAll('[data-edit-email]').forEach(b=>b.onclick=()=>openEmailEditor(b.dataset.editEmail));
+ document.querySelectorAll('[data-edit-notif]').forEach(b=>b.onclick=()=>openNotifEditor(b.dataset.editNotif));
+ document.querySelectorAll('[data-act="announce"]').forEach(b=>b.onclick=()=>openConfirm('Send announcement','POST /api/system/announcements — broadcasts to all active users',r=>{pushAudit('Announcement',r,document.getElementById('ann-title')?.value||'(untitled)');announce('Receipt · demo · announcement queued')}));
+ document.querySelectorAll('[data-act="maint-apply"]').forEach(b=>b.onclick=()=>openConfirm('Apply maintenance settings','POST /api/system/maintenance',r=>{maint.enabled=document.getElementById('maint-on')?.checked;maint.message=document.getElementById('maint-msg')?.value||maint.message;pushAudit('Maintenance',r,maint.enabled?'enabled':'disabled');announce('Receipt · demo · maintenance updated');render()}));
+}
+function openEmailEditor(slug){const t=EMAIL_TEMPLATES.find(x=>x.slug===slug);const m=document.getElementById('editor');document.getElementById('ed-title').textContent=slug;document.getElementById('ed-sub').textContent='Edit template + preview · shot 106 · GET/PATCH /api/system/email-templates/{id}';document.getElementById('ed-body').innerHTML=`<div><div class="field"><label>Subject</label><input id="ed-subj" value="${t.subject.replace(/"/g,'&quot;')}"></div><div class="field"><label>Body (HTML or plain text)</label><textarea id="ed-body-html">${t.body.replace(/</g,'&lt;')}</textarea></div><div class="field"><label>Send test</label><div class="actions"><input placeholder="you@company.com" id="ed-test"><button type="button" class="button button-secondary" id="ed-send-test">Send test</button></div></div></div><div><p class="mono">Preview · demo render</p><div class="preview-pane" id="ed-preview"></div></div>`;const sync=()=>{document.getElementById('ed-preview').innerHTML=document.getElementById('ed-body-html').value.replace(/&lt;/g,'<')};document.getElementById('ed-body-html').oninput=sync;sync();document.getElementById('ed-foot').innerHTML='<button type="button" class="button button-secondary" id="ed-close">Close</button><button type="button" class="button" id="ed-save">Save template</button>';document.getElementById('ed-close').onclick=()=>{m.hidden=true;m.classList.remove('open')};document.getElementById('ed-send-test').onclick=()=>openConfirm('Send test email','POST /api/system/email-templates/{id}/test',r=>{pushAudit('Template test',r,slug);announce('Receipt · demo · test send queued')});document.getElementById('ed-save').onclick=()=>openConfirm('Save template','PATCH /api/system/email-templates/{id}',r=>{pushAudit('Email template save',r,slug);announce('Receipt · demo · template saved');m.hidden=true;m.classList.remove('open')});m.hidden=false;m.classList.add('open')}
+function openNotifEditor(slug){const m=document.getElementById('editor');document.getElementById('ed-title').textContent='Edit notification template';document.getElementById('ed-sub').textContent=slug+' · shot 107';document.getElementById('ed-body').innerHTML=`<div class="field"><label>Template name (slug)</label><input value="${slug}"></div><div class="field"><label>Event key</label><input value="${slug.replace(/-/g,'.')}"></div><div class="field"><label>Title / subject</label><input value="${slug.replace(/-/g,' ')}"></div><div class="field"><label>Message body</label><textarea>Sample copy for ${slug}.</textarea></div><div class="field"><label>Channels JSON</label><textarea>["IN_APP"]</textarea></div>`;document.getElementById('ed-foot').innerHTML='<button type="button" class="button button-secondary" id="ed-close">Cancel</button><button type="button" class="button" id="ed-save">Save template</button>';document.getElementById('ed-close').onclick=()=>{m.hidden=true;m.classList.remove('open')};document.getElementById('ed-save').onclick=()=>openConfirm('Save notification template','Demo · notification templates API slice (email-templates pattern in admin spec)',r=>{pushAudit('Notification template save',r,slug);announce('Receipt · demo · saved');m.hidden=true;m.classList.remove('open')});m.hidden=false;m.classList.add('open')}
+function boot(){const h=(location.hash||'#health').slice(1);if(TAB_LABELS.some(t=>t.id===h))tab=h;render()}
+boot();
+window.addEventListener('hashchange',boot);
+</script>
+</body>
+</html>

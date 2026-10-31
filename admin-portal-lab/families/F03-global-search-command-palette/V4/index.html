@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F03 V4 · Minimal Instant · Command menu</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:linear-gradient(180deg,var(--muted),var(--background));color:var(--foreground);font-family:var(--font)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700}.brand svg{width:28px;height:28px}
+#open{margin-left:auto;min-height:40px;padding:0 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);cursor:pointer}
+h1{margin:0 0 8px;font-size:36px}p{color:var(--muted-foreground);line-height:1.55;font-size:14px}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:12px}
+.backdrop{position:fixed;inset:0;background:rgba(26,36,51,.35);z-index:40;display:flex;justify-content:center;padding-top:8vh}
+.palette{width:min(560px,100%);background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;max-height:min(70vh,560px);display:flex;flex-direction:column}
+#q{width:100%;min-height:52px;border:0;border-bottom:1px solid var(--border);padding:0 16px;background:transparent;color:var(--foreground);font-size:16px}
+#q:focus{outline:none;box-shadow:inset 0 0 0 2px var(--ring)}
+.list{overflow:auto;padding:6px}.item{display:flex;justify-content:space-between;gap:10px;align-items:center;width:100%;min-height:42px;padding:8px 12px;border:0;border-radius:var(--radius-md);background:transparent;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.item[aria-selected="true"]{background:var(--primary-tint)}.lbl{font-size:14px;font-weight:600}.mark{background:var(--brand-100);color:var(--brand-800);border-radius:2px}
+.meta{font:650 11px var(--mono);color:var(--muted-foreground)}.foot{padding:8px 12px;border-top:1px solid var(--border);font-size:11px;color:var(--muted-foreground);display:flex;gap:12px}.foot b{font-family:var(--mono);color:var(--foreground)}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px}
+.empty{padding:28px;text-align:center;color:var(--muted-foreground);font-size:14px}
+@media(max-width:560px){.backdrop{padding:0;align-items:stretch}.palette{width:100%;max-height:100vh;border-radius:0;height:100%}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="wrap">
+<div class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div>
+<button id="open" type="button">Search pages… ⌘K</button>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></div>
+<main id="main-content" tabindex="-1"><span class="meta">F03 · V4 · MINIMAL</span><h1>Command menu</h1><p>Single ranked list. Empty query shows recents and completeness jumps only; typing flattens the full catalog with match highlights.</p>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="../V2/index.html">V2</a><a href="../V3/index.html">V3</a><a href="./index.html" aria-current="page">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f03">Gallery</a></nav></main>
+</div>
+<div class="backdrop" id="backdrop" hidden>
+<div class="palette" role="dialog" aria-modal="true" aria-label="Command menu" id="command-menu">
+<input id="q" type="search" placeholder="Search or jump to…" aria-label="Command search" role="combobox" aria-expanded="true" aria-controls="results" aria-autocomplete="list" aria-activedescendant="">
+<div class="list" id="results" role="listbox" aria-label="Command results"></div>
+<div class="foot"><span><b>↑↓</b> navigate</span><span><b>↵</b> select</span><span><b>esc</b> close</span></div>
+</div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+(()=>{
+const ALL=[
+{id:'r1',label:'Payments · awaiting verification',route:'/payments?view=verification',recent:true},
+{id:'r2',label:'Requests · pending',route:'/requests',recent:true},
+{id:'r3',label:'Inquiries · new',route:'/contact',recent:true},
+{id:'r4',label:'Payments · disputes',route:'/payments/disputes',recent:true},
+{id:'p1',label:'Riya Kapoor',route:'/users/demo-riya',recent:true},
+{id:'o1',label:'Dashboard',route:'/dashboard'},{id:'o2',label:'Pipelines',route:'/pipeline'},{id:'o3',label:'Pipeline · User hub',route:'/pipeline/users'},{id:'o4',label:'Pipeline · Project hub',route:'/pipeline/projects'},{id:'o5',label:'Inquiries',route:'/contact'},{id:'o6',label:'Requests',route:'/requests'},{id:'o7',label:'Quotes',route:'/quotes'},{id:'o8',label:'Projects',route:'/projects'},{id:'o9',label:'Users',route:'/users'},{id:'o10',label:'Payments',route:'/payments'},{id:'o11',label:'Settlement accounts',route:'/payments/accounts'},{id:'o12',label:'Company legal identity',route:'/company-legal'},{id:'o13',label:'Messages',route:'/messages'},{id:'o14',label:'Moderation',route:'/moderation'},{id:'o15',label:'Analytics',route:'/analytics'},{id:'c1',label:'Blog',route:'/content'},{id:'c2',label:'Portfolio',route:'/portfolio'},{id:'c3',label:'Media Library',route:'/media'},{id:'s1',label:'System Config',route:'/system'},{id:'s2',label:'Webhooks',route:'/integrations'},{id:'s3',label:'Audit Logs',route:'/audit'},{id:'x1',label:'Request 01a10a2b…dd22',route:'/requests/01a10a2b-c237-7000-b708-715e75b6dd22'},{id:'a1',label:'Create blog post',route:'/content/posts/new'},{id:'a2',label:'New portfolio item',route:'/portfolio/new'},{id:'a3',label:'Message client',route:'/messages/new'},{id:'a4',label:'New group chat',route:'/messages/new-group'},{id:'a5',label:'Switch to dark mode',route:'local:theme',local:true},{id:'p2',label:'Patel Digital Agency',route:'/users/demo-patel'}
+];
+let active=0,visible=[],open=false,lastFocus=null;
+const $=id=>document.getElementById(id);
+const backdrop=$('backdrop'),q=$('q'),results=$('results'),toast=$('toast');
+function announce(m){toast.hidden=false;toast.textContent=m;clearTimeout(announce.t);announce.t=setTimeout(()=>toast.hidden=true,2800)}
+function hl(text,query){if(!query)return text;const i=text.toLowerCase().indexOf(query.toLowerCase());if(i<0)return text;return text.slice(0,i)+'<span class="mark">'+text.slice(i,i+query.length)+'</span>'+text.slice(i+query.length)}
+function pool(){const s=q.value.trim();if(!s)return ALL.filter(i=>i.recent);return ALL.filter(i=>(i.label+' '+i.route).toLowerCase().includes(s.toLowerCase()))}
+function render(){visible=pool();results.innerHTML='';if(!visible.length){results.innerHTML='<div class="empty">No matches. Try another term.</div>';q.setAttribute('aria-activedescendant','');return}if(active>=visible.length)active=visible.length-1;const s=q.value.trim();visible.forEach((item,i)=>{const b=document.createElement('button');b.type='button';b.className='item';b.id='opt-'+item.id;b.role='option';b.setAttribute('aria-selected',String(i===active));b.innerHTML=`<span class="lbl">${hl(item.label,s)}</span><span class="meta">${item.route}</span>`;b.onmouseenter=()=>{active=i;render()};b.onclick=()=>select(item);results.appendChild(b)});q.setAttribute('aria-activedescendant','opt-'+visible[active].id);const el=document.getElementById('opt-'+visible[active].id);if(el)el.scrollIntoView({block:'nearest'})}
+function select(item){if(!item)return;if(item.local){document.documentElement.classList.toggle('dark');sync();announce('Theme toggled locally (demo).');return}announce('Demo only — would navigate to '+item.route)}
+function openP(){if(open)return;open=true;lastFocus=document.activeElement;backdrop.hidden=false;q.value='';active=0;render();setTimeout(()=>q.focus(),10)}
+function closeP(){if(!open)return;open=false;backdrop.hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+function sync(){const d=document.documentElement.classList.contains('dark');const b=document.querySelector('.theme-toggle');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');try{localStorage.setItem('nl-admin-theme',d?'dark':'light')}catch(e){}}
+$('open').onclick=openP;document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');sync()};sync();
+backdrop.onmousedown=e=>{if(e.target===backdrop)closeP()};q.oninput=()=>{active=0;render()};
+document.onkeydown=e=>{const mod=e.metaKey||e.ctrlKey;if(mod&&e.key.toLowerCase()==='k'){e.preventDefault();open?closeP():openP();return}if(!open)return;if(e.key==='Escape'){e.preventDefault();closeP();return}if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,visible.length-1);render();return}if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);render();return}if(e.key==='Enter'){e.preventDefault();select(visible[active])}};
+openP();
+})();
+</script>
+</body>
+</html>

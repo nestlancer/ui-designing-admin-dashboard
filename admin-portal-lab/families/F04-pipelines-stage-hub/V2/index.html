@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F04 V2 · Flow Spine · Pipelines</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font)}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand svg{width:28px;height:28px}
+.main{padding:22px 18px;max-width:1180px;margin:0 auto}
+.tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:1px solid var(--border)}.tabs a{padding:10px 12px;text-decoration:none;color:var(--muted-foreground);font-size:13px;font-weight:650;border-bottom:2px solid transparent}.tabs a[aria-current="page"]{color:var(--brand-700);border-color:var(--brand-600)}
+h1{margin:0 0 8px;font-size:34px}.lede{color:var(--muted-foreground);font-size:14px;line-height:1.55;max-width:70ch}
+.banner{margin:14px 0;padding:10px 12px;border-radius:var(--radius-md);border:1px solid var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text);font-size:13px}
+.flow{display:flex;gap:0;align-items:stretch;overflow:auto;padding:8px 0 18px}
+.stage{flex:0 0 180px;padding:14px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);position:relative}
+.stage + .stage{margin-left:28px}.stage + .stage:before{content:"";position:absolute;left:-22px;top:50%;width:18px;height:2px;background:var(--brand-500)}
+.count{font:800 32px/1 var(--font);font-variant-numeric:tabular-nums}.count.sm{font:700 16px var(--mono)}
+h3{margin:8px 0 4px;font-size:15px}.job,.guide{margin:0;font-size:12px;color:var(--muted-foreground)}.guide{color:var(--foreground);margin-top:6px}
+.open{margin-top:12px;border:0;background:none;color:var(--brand-700);font-weight:700;cursor:pointer;padding:0;font-size:12px}
+.badge{display:inline-flex;margin-top:6px;padding:2px 7px;border-radius:999px;border:1px solid var(--status-error-border);background:var(--status-error-bg);color:var(--status-error-text);font-size:11px;font-weight:650}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.mini{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}.mini .count{font-size:28px}
+.consoles{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.consoles button{min-height:40px;padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);cursor:pointer;font:650 12px var(--font);color:inherit}
+details{margin-top:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card)}
+summary{padding:12px 14px;cursor:pointer;font-weight:650;font-size:13px}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;font-size:12px}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:30;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px}
+h2{margin:22px 0 6px;font-size:18px}
+@media(max-width:700px){.row{grid-template-columns:1fr}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" role="img" aria-labelledby="lt"><title id="lt">Nestlancer Admin</title><path d="M20 2 35 10.5v19L20 38 5 29.5v-19Z" fill="#0c7963"/><path d="M12 28V12l16 16V12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Nestlancer Admin</div>
+<span class="spacer" style="flex:1"></span>
+<button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<nav class="tabs" aria-label="Pipeline hubs"><a href="./index.html" aria-current="page">Stage pipeline</a><a href="#" data-r="/pipeline/users">User hub</a><a href="#" data-r="/pipeline/projects">Project hub</a></nav>
+<span class="meta">F04 · V2 · FLOW</span>
+<h1>Pipelines</h1>
+<p class="lede">Stage pipeline for platform-wide triage. The delivery chain is the first screen — counts lead, then jump.</p>
+<div class="banner" role="status">Projects stage: <strong>No data</strong> — admin projects API outage. Retry does not invent a count.</div>
+<div class="flow" role="list" aria-label="Client delivery flow">
+<article class="stage" role="listitem"><div class="count">23</div><h3>Inquiries</h3><p class="job">Website contact form leads</p><p class="guide">Qualify lead and convert to request</p><button class="open" data-r="/contact">Open →</button></article>
+<article class="stage" role="listitem"><div class="count">46</div><h3>Requests</h3><p class="job">Scoped service requests</p><p class="guide">Triage, assign, and prepare quote</p><button class="open" data-r="/requests">Open →</button></article>
+<article class="stage" role="listitem"><div class="count">36</div><h3>Quotes</h3><p class="job">Pricing proposals</p><p class="guide">Send quote and track acceptance</p><button class="open" data-r="/quotes">Open →</button></article>
+<article class="stage" role="listitem"><div class="count sm">No data</div><span class="badge">Unavailable</span><h3>Projects</h3><p class="job">Active delivery work</p><p class="guide">Manage milestones and deliverables</p><button class="open" data-r="/projects">Open →</button></article>
+<article class="stage" role="listitem"><div class="count">48</div><h3>Payments</h3><p class="job">Milestone payments and payouts</p><p class="guide">Release funds and resolve disputes</p><button class="open" data-r="/payments">Open →</button></article>
+<article class="stage" role="listitem"><div class="count sm">—</div><h3>Messages</h3><p class="job">Project communication</p><p class="guide">Monitor threads and system broadcasts</p><button class="open" data-r="/messages">Open →</button></article>
+</div>
+<h2>Users &amp; trust</h2>
+<div class="row">
+<div class="mini"><div class="count">34</div><h3>Users</h3><p class="job">Accounts, roles, sessions</p><button class="open" data-r="/users">Open →</button></div>
+<div class="mini"><div class="count sm">—</div><h3>Moderation</h3><p class="job">Flagged messages and abuse</p><button class="open" data-r="/moderation">Open →</button></div>
+<div class="mini"><div class="count sm">—</div><h3>Audit logs</h3><p class="job">Auth and admin action history</p><button class="open" data-r="/audit">Open →</button></div>
+</div>
+<h2>Standalone consoles</h2>
+<div class="consoles" id="c"></div>
+<details><summary>Admin API reference · 157 endpoints · base <span style="font-family:var(--mono)">/api/v1</span></summary>
+<div style="padding:0 14px 14px;font-size:12px;color:var(--muted-foreground)" id="api"></div></details>
+<nav class="lab-nav"><a href="../V1/index.html">V1</a><a href="./index.html" aria-current="page">V2</a><a href="../V3/index.html">V3</a><a href="../V4/index.html">V4</a><a href="../V5/index.html">V5</a><a href="../../../index.html#f04">Gallery</a></nav>
+</main>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+<script>
+(()=>{
+const consoles=[['Dashboard','/dashboard'],['Analytics','/analytics'],['Blog','/content'],['Portfolio','/portfolio'],['Media','/media'],['System','/system'],['Webhooks','/integrations']];
+const api=[['Inquiries',6],['Requests',11],['Quotes',10],['Projects',20],['Payments',16],['Messages',6],['Users',21],['Moderation',6],['Audit logs',14],['Dashboard',8],['Analytics',8],['Blog',16],['Portfolio',10],['Media',19],['System',14],['Webhooks',14]];
+const c=document.getElementById('c');consoles.forEach(([n,r])=>{const b=document.createElement('button');b.type='button';b.textContent=n;b.onclick=()=>go(r);c.appendChild(b)});
+document.getElementById('api').innerHTML=api.map(([n,x])=>`<div><strong>${n}</strong> · <span style="font-family:var(--mono)">${x} endpoints</span></div>`).join('');
+const toast=document.getElementById('toast');function go(r){toast.hidden=false;toast.textContent='Demo only — would navigate to '+r;clearTimeout(go.t);go.t=setTimeout(()=>toast.hidden=true,2600)}
+document.querySelectorAll('[data-r]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.getAttribute('data-r'))}));
+function sync(){const d=document.documentElement.classList.contains('dark');const b=document.querySelector('.theme-toggle');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');try{localStorage.setItem('nl-admin-theme',d?'dark':'light')}catch(e){}}
+document.querySelector('.theme-toggle').onclick=()=>{document.documentElement.classList.toggle('dark');sync()};sync();
+})();
+</script>
+</body>
+</html>

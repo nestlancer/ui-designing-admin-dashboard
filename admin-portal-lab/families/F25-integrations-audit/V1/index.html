@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>F25 V1 · Ground Truth · Integrations &amp; Audit</title>
+<script>(()=>{try{const q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-admin-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css">
+<style>
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
+.top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
+.brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand img{width:28px;height:28px}
+.main{padding:18px;max-width:1180px;margin:0 auto;width:100%}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
+h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5;max-width:48rem}
+.mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground);word-break:break-all}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab{min-height:34px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted);font:650 12px var(--font);cursor:pointer;color:inherit}
+.tab[aria-selected="true"]{background:var(--primary-tint);border-color:var(--brand-200);color:var(--brand-800);box-shadow:inset 0 -2px 0 var(--brand-500)}
+.panel{display:none;margin-top:8px}.panel.active{display:block}
+.card{padding:14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);margin-bottom:12px}
+.card h2{margin:0 0 4px;font-size:17px}.sub{margin:0 0 10px;color:var(--muted-foreground);font-size:12px;line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:10px 0}
+.kpi{padding:10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background)}
+.kpi b{display:block;font:800 22px/1.1 var(--font);font-variant-numeric:tabular-nums}.kpi span{font-size:10px;color:var(--muted-foreground)}
+.badge{display:inline-flex;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;border:1px solid var(--status-success-border);background:var(--status-success-bg);color:var(--status-success-text)}
+.badge-warn{border-color:var(--status-warning-border);background:var(--status-warning-bg);color:var(--status-warning-text)}
+.badge-demo{border-color:var(--status-info-border);background:var(--status-info-bg);color:var(--status-info-text)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.filters label{font-size:11px;font-weight:650}
+.filters select,.filters input[type=search]{padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit;min-width:140px}
+table.audit{width:100%;border-collapse:collapse;font-size:12px}table.audit th,table.audit td{padding:8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+table.audit th{font-size:10px;text-transform:uppercase;color:var(--muted-foreground);letter-spacing:.04em}
+table.audit tbody tr{cursor:pointer}table.audit tbody tr:hover{background:var(--muted)}
+table.audit tbody tr:focus-visible{outline:2px solid var(--ring);outline-offset:-2px}
+.pag{font-size:11px;color:var(--muted-foreground);margin:6px 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.field{margin:8px 0}.field label{display:block;font-size:12px;font-weight:650;margin-bottom:4px}
+.field input,.field textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:inherit;font:inherit}
+.switch{position:relative;width:44px;height:24px;flex-shrink:0;display:inline-block;vertical-align:middle}.switch input{opacity:0;width:0;height:0}
+.switch span{position:absolute;inset:0;background:var(--muted-foreground);border-radius:999px;cursor:pointer}
+.switch span::after{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s}
+.switch input:checked+span{background:var(--brand-500)}.switch input:checked+span::after{transform:translateX(20px)}
+.pref{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.pref:last-child{border:0}.pref p{margin:4px 0 0;font-size:12px;color:var(--muted-foreground);max-width:36rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:4px 8px;border:1px solid var(--border);border-radius:var(--radius-md);font-size:11px;background:var(--muted)}
+.drawer{position:fixed;top:0;right:0;width:min(420px,100%);height:100%;background:var(--card);border-left:1px solid var(--border);z-index:55;transform:translateX(100%);transition:transform .25s var(--ease-out);padding:16px;overflow:auto}
+.drawer.open{transform:translateX(0)}.drawer h3{margin:0 0 8px;font-size:16px}
+.backdrop{position:fixed;inset:0;background:rgba(26,36,51,.4);z-index:54;display:none}.backdrop.open{display:block}
+.modal{position:fixed;inset:0;background:rgba(26,36,51,.48);z-index:56;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}.modal .box{width:min(440px,100%);padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:13px;display:none;max-width:92vw}
+.toast.show{display:block}
+.lab-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:12px}
+.empty{padding:24px;text-align:center;color:var(--muted-foreground);font-size:13px;border:1px dashed var(--border);border-radius:var(--radius-md)}
+@media(max-width:720px){
+h1{font-size:26px}
+table.audit thead{display:none}
+table.audit tbody tr{display:block;border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:8px;padding:8px;background:var(--card)}
+table.audit td{display:grid;grid-template-columns:92px 1fr;gap:4px;border:0;padding:4px 0}
+table.audit td::before{content:attr(data-label);color:var(--muted-foreground);font-size:9px;font-weight:700;text-transform:uppercase}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="v1">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<noscript><p class="main">Enable JavaScript for tabs — use in-page anchors: Webhooks, API Keys, Audit Logs sections below.</p></noscript>
+<header class="top"><div class="brand"><img src="../../../assets/nestlancer-mark.svg" alt="Nestlancer Admin logo"><span>Nestlancer Admin</span></div><span style="flex:1"></span><button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.9 12.5A9 9 0 1 1 11.5 3.1a7 7 0 0 0 9.4 9.4Z"/></svg></button></header>
+<main id="main-content" class="main" tabindex="-1">
+<span class="eyebrow">Trust · Integrations &amp; audit</span>
+<span class="meta">F25 · V1 · GROUND TRUTH</span>
+<div class="tabs" role="tablist" aria-label="Integrations and audit">
+<button type="button" class="tab" role="tab" id="tab-wh" aria-selected="true" aria-controls="panel-wh">Webhooks</button>
+<button type="button" class="tab" role="tab" id="tab-keys" aria-selected="false" aria-controls="panel-keys">API Keys</button>
+<button type="button" class="tab" role="tab" id="tab-audit" aria-selected="false" aria-controls="panel-audit">Audit Logs</button>
+</div>
+
+<section class="panel active" id="panel-wh" role="tabpanel" aria-labelledby="tab-wh">
+<h1>Webhooks</h1>
+<p class="lede">Outgoing webhook health, supported event catalog, and registered endpoints.</p>
+<div class="card"><h2>Integration health</h2><p class="sub mono">GET /admin/webhooks/health · Loaded from API (read-only)</p>
+<div class="kpis"><div class="kpi"><span>Delivery</span><b>ok</b></div><div class="kpi"><span>Service</span><b class="mono" style="font-size:14px">webhooks-admin</b></div></div></div>
+<div class="card"><h2>Delivery preferences</h2>
+<div class="pref"><div><strong>Retry failed deliveries</strong><p>Automatically retry 5xx responses with exponential backoff.</p></div><label class="switch"><input type="checkbox" checked aria-label="Retry failed deliveries"><span></span></label></div>
+<div class="pref"><div><strong>Require signing secret</strong><p>Reject payloads that fail HMAC signature verification.</p></div><label class="switch"><input type="checkbox" checked aria-label="Require signing secret"><span></span></label></div></div>
+<div class="card"><h2>Event catalog</h2><p class="sub mono">GET /admin/webhooks/events · Events 12 · Loaded from API (read-only)</p>
+<div class="chips" id="event-chips"></div></div>
+<div class="card"><h2>Configured webhooks</h2><p class="sub mono">GET /admin/webhooks · <span id="ep-count">0</span> endpoints</p>
+<div class="filters"><label>Status <select id="wh-status"><option>All statuses</option><option>Active</option><option>Failing</option></select></label><button type="button" class="button button-secondary" id="wh-clear">Clear</button><button type="button" class="button" id="add-wh">+ Add webhook</button></div>
+<div id="wh-empty" class="empty">No webhooks registered yet · Add a webhook to start receiving outbound events.</div>
+<div id="wh-demo-wrap" class="hidden"><p><span class="badge badge-demo">Lab demo fixture</span> Not a live registration — for delivery log + A12 test/retry only.</p>
+<table class="audit" id="wh-table"><thead><tr><th>Name</th><th>URL</th><th>Events</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+<div id="add-form" class="hidden card" style="margin-top:12px"><h2>New webhook</h2>
+<div class="field"><label for="wh-name">Name</label><input id="wh-name" autocomplete="off"></div>
+<div class="field"><label for="wh-url">URL</label><input id="wh-url" placeholder="https://"></div>
+<div class="field"><label for="wh-ev">Events (comma-separated)</label><input id="wh-ev" placeholder="payment.completed, project.updated"></div>
+<div class="actions"><button type="button" class="button" id="wh-create">Create webhook</button><button type="button" class="button button-secondary" id="wh-cancel">Cancel</button></div></div>
+<div class="card" id="delivery-card"><h2>Delivery log <span class="badge badge-demo">A12 demo</span></h2><p class="sub">Test delivery and retry replay — static lab receipts only.</p>
+<div class="actions"><button type="button" class="button button-secondary" id="test-del">Test delivery</button></div>
+<table class="audit" id="del-table"><thead><tr><th>Event</th><th>Status</th><th>HTTP</th><th>Attempted</th><th></th></tr></thead><tbody></tbody></table></div>
+<button type="button" class="button button-secondary" id="load-demo">Load lab demo endpoint</button>
+</div>
+</section>
+
+<section class="panel" id="panel-keys" role="tabpanel" aria-labelledby="tab-keys" hidden>
+<h1>API Keys</h1>
+<p class="lede">Issue, rotate, and revoke operator API keys — secrets masked by default (demo-labelled lifecycle).</p>
+<div class="card"><p class="sub mono">GET /admin/api-keys · Demo-only where endpoint thin in swagger</p>
+<table class="audit" id="keys-table"><thead><tr><th>Name</th><th>Prefix</th><th>Secret</th><th>Created</th><th>Status</th><th></th></tr></thead><tbody></tbody></table>
+<div class="actions"><button type="button" class="button" id="issue-key">Issue new key</button></div></div>
+</section>
+
+<section class="panel" id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" hidden>
+<h1>Audit Logs</h1>
+<p class="lede">Authentication logs, system audit (including impersonation), security aggregates, and sessions.</p>
+<div class="card"><h2>Security overview</h2>
+<div class="kpis"><div class="kpi"><span>Total users</span><b>34</b></div><div class="kpi"><span>Active</span><b>34</b></div><div class="kpi"><span>Suspended</span><b>0</b></div><div class="kpi"><span>Two factor enabled</span><b>0</b></div><div class="kpi"><span>Failed logins 24h</span><b>0</b></div><div class="kpi"><span>Active sessions</span><b>4</b></div></div></div>
+<div id="audit-sections"></div>
+</section>
+
+<nav class="lab-nav"><a href="../V1/index.html" aria-current="page">V1</a> · <a href="../V2/index.html">V2</a> · <a href="../V3/index.html">V3</a> · <a href="../V4/index.html">V4</a> · <a href="../V5/index.html">V5</a> · <a href="../../../index.html#f25">Gallery F25</a></nav>
+</main>
+<div class="backdrop" id="bd" hidden></div>
+<aside class="drawer" id="drawer" aria-labelledby="dr-title" aria-hidden="true"><button type="button" class="button button-secondary" id="dr-close" style="margin-bottom:8px">Close</button><h3 id="dr-title">Audit entry</h3><div id="dr-body" class="mono"></div><p class="sub" id="dr-link-note"></p></aside>
+<div class="modal" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cm-t" hidden><div class="box"><h3 id="cm-t">Confirm</h3><p id="cm-b"></p><div class="actions"><button type="button" class="button" id="cm-ok">Confirm</button><button type="button" class="button button-secondary" id="cm-no">Cancel</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>(()=>{const b=document.querySelector('.theme-toggle'),r=document.documentElement,s=()=>{const d=r.classList.contains('dark');b.setAttribute('aria-pressed',String(d));b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')};s();b.onclick=()=>{r.classList.toggle('dark');try{localStorage.setItem('nl-admin-theme',r.classList.contains('dark')?'dark':'light')}catch(e){};s()}})();</script>
+<script>
+const EVENTS=['payment.completed','payment.failed','project.created','project.updated','quote.sent','quote.accepted','message.received','user.registered','user.suspended','webhook.test','media.uploaded','audit.exported'];
+document.getElementById('event-chips').innerHTML=EVENTS.map(e=>`<span class="chip mono">${e}</span>`).join('');
+const toast=(m)=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)};
+const tabs=[['tab-wh','panel-wh'],['tab-keys','panel-keys'],['tab-audit','panel-audit']];
+tabs.forEach(([tb,pn])=>{document.getElementById(tb).onclick=()=>{tabs.forEach(([t,p])=>{const sel=t===tb;document.getElementById(t).setAttribute('aria-selected',sel);const el=document.getElementById(p);el.classList.toggle('active',sel);el.hidden=!sel})}});
+let demoLoaded=false;
+const deliveries=[{id:'d1',event:'payment.completed',status:'ok',http:'200',at:'10/30/2026, 1:42:11 PM'},{id:'d2',event:'project.updated',status:'failed',http:'502',at:'10/30/2026, 1:38:02 PM'}];
+function renderDel(){document.querySelector('#del-table tbody').innerHTML=deliveries.map(d=>`<tr><td class="mono" data-label="Event">${d.event}</td><td data-label="Status">${d.status==='ok'?'<span class="badge">ok</span>':'<span class="badge badge-warn">failed</span>'}</td><td data-label="HTTP">${d.http}</td><td data-label="Attempted">${d.at}</td><td data-label=""><button type="button" class="button button-secondary retry" data-id="${d.id}">Retry replay</button></td></tr>`).join('');
+document.querySelectorAll('.retry').forEach(btn=>btn.onclick=()=>toast('Demo: retry queued for delivery '+btn.dataset.id+' (no live API)'))}
+renderDel();
+document.getElementById('test-del').onclick=()=>{if(!demoLoaded){toast('Load lab demo endpoint first');return}toast('Demo: test delivery sent (A12 — no live API)')};
+document.getElementById('load-demo').onclick=()=>{demoLoaded=true;document.getElementById('wh-empty').classList.add('hidden');document.getElementById('wh-demo-wrap').classList.remove('hidden');document.getElementById('ep-count').textContent='1 (demo)';document.querySelector('#wh-table tbody').innerHTML='<tr><td>Lab demo endpoint</td><td class="mono">https://example.invalid/nestlancer-demo</td><td class="mono">payment.completed</td><td><span class="badge">active</span></td></tr>'};
+document.getElementById('add-wh').onclick=()=>document.getElementById('add-form').classList.remove('hidden');
+document.getElementById('wh-cancel').onclick=()=>document.getElementById('add-form').classList.add('hidden');
+document.getElementById('wh-create').onclick=()=>{document.getElementById('add-form').classList.add('hidden');toast('Demo: webhook create not persisted (capture showed 0 live endpoints)')};
+document.getElementById('wh-clear').onclick=()=>{document.getElementById('wh-status').selectedIndex=0;toast('Filters cleared')};
+const keys=[{name:'Production automation',prefix:'nl_live_',secret:'••••••••••••4f2a',created:'10/12/2026',status:'active'},{name:'Staging read-only',prefix:'nl_test_',secret:'••••••••••••9b1c',created:'10/18/2026',status:'active'}];
+function renderKeys(){document.querySelector('#keys-table tbody').innerHTML=keys.map((k,i)=>`<tr><td>${k.name}</td><td class="mono">${k.prefix}</td><td class="mono"><span id="sec-${i}">${k.secret}</span> <button type="button" class="button button-secondary rev" data-i="${i}">Reveal</button></td><td>${k.created}</td><td><span class="badge">${k.status}</span></td><td><button type="button" class="button button-secondary rot" data-i="${i}">Rotate</button> <button type="button" class="button button-secondary revk" data-i="${i}">Revoke</button></td></tr>`).join('');
+document.querySelectorAll('.rev').forEach(b=>b.onclick=()=>confirmAct('Reveal full secret? (demo — logged to audit)',()=>{document.getElementById('sec-'+b.dataset.i).textContent='nl_live_sk_demo_7c4f2a9b1c8e';toast('Secret revealed — demo only')}));
+document.querySelectorAll('.rot').forEach(b=>b.onclick=()=>confirmAct('Rotate this API key?',()=>toast('Demo: key rotated — old secret invalidated')));
+document.querySelectorAll('.revk').forEach(b=>b.onclick=()=>confirmAct('Revoke this API key?',()=>toast('Demo: key revoked')));
+}
+renderKeys();
+document.getElementById('issue-key').onclick=()=>confirmAct('Issue a new API key?',()=>toast('Demo: new key nl_live_•••• issued (copy once)'));
+let cmOk=()=>{};
+function confirmAct(msg,fn){document.getElementById('cm-b').textContent=msg;document.getElementById('confirm').classList.add('open');document.getElementById('confirm').hidden=false;cmOk=()=>{fn();document.getElementById('confirm').classList.remove('open');document.getElementById('confirm').hidden=true}}
+document.getElementById('cm-ok').onclick=()=>cmOk();
+document.getElementById('cm-no').onclick=()=>{document.getElementById('confirm').classList.remove('open');document.getElementById('confirm').hidden=true};
+const AUDIT_SECTIONS=[
+{id:'sys',title:'System audit logs',api:'GET /admin/audit',total:50,searchPh:'Search system audit logs…',actions:['All','LOGIN'],rows:[
+{actor:'admin@nestlancer.com',action:'LOGIN',cat:'auth',resource:'session/a8f3…',ip:'103.21.44.12',ua:'Chrome 141 · macOS',ts:'10/30/2026, 1:46:02 PM',session:'sess_31cde339-e2a1'},
+{actor:'priya.nair@nestlancer.com',action:'LOGIN',cat:'auth',resource:'session/b2c1…',ip:'49.36.88.201',ua:'Firefox 144 · Linux',ts:'10/30/2026, 1:12:44 PM',session:'sess_9aa02bc1-0044'},
+{actor:'admin@nestlancer.com',action:'LOGIN',cat:'auth',resource:'session/c9d0…',ip:'103.21.44.12',ua:'Chrome 141 · macOS',ts:'10/29/2026, 6:02:18 PM',session:'sess_71ef002a-9912'}
+]},
+{id:'auth',title:'Auth audit logs',api:'GET /admin/logs',total:50,searchPh:'Search auth audit logs…',actions:['All','LOGIN'],rows:[
+{actor:'riya.kapoor@nestlancer.com',action:'LOGIN',cat:'auth',resource:'session/d4e5…',ip:'122.170.19.88',ua:'Safari 18 · iOS',ts:'10/30/2026, 12:58:11 AM',session:'sess_44ab1200-77fe'},
+{actor:'admin@nestlancer.com',action:'LOGIN',cat:'auth',resource:'session/e6f7…',ip:'103.21.44.12',ua:'Chrome 141 · macOS',ts:'10/29/2026, 9:14:03 AM',session:'sess_0188aa10-2a01'}
+]},
+{id:'uadm',title:'User admin logs',api:'GET /admin/audit',total:33,searchPh:'Search user admin logs…',actions:['All','IMPERSONATION_END','IMPERSONATION_START'],rows:[
+{actor:'admin@nestlancer.com',action:'IMPERSONATION_START',cat:'admin',resource:'user/01a10a2a…',ip:'103.21.44.12',ua:'Chrome 141 · macOS',ts:'10/28/2026, 3:22:01 PM',session:'sess_31cde339-e2a1'},
+{actor:'admin@nestlancer.com',action:'IMPERSONATION_END',cat:'admin',resource:'user/01a10a2a…',ip:'103.21.44.12',ua:'Chrome 141 · macOS',ts:'10/28/2026, 3:45:18 PM',session:'sess_31cde339-e2a1'}
+]},
+{id:'imp',title:'Impersonation sessions',api:'GET /admin/impersonation/sessions',total:12,searchPh:'Search by admin, target user, reason, or status',actions:['All','Active','Ended'],rows:[
+{actor:'Admin 31cde339…',action:'Ended',cat:'impersonation',resource:'→ User 01a10a2a…',ip:'—',ua:'BV-REST',ts:'10/28/2026, 3:45:18 PM',session:'imp_8c4f…',reason:'BV-REST'},
+{actor:'Admin 31cde339…',action:'Ended',cat:'impersonation',resource:'→ User 02b20b3b…',ip:'—',ua:'Support ticket #4412',ts:'10/27/2026, 11:02:09 AM',session:'imp_2a91…',reason:'Support ticket #4412'}
+]}];
+function openDrawer(row,section){const dr=document.getElementById('drawer'),bd=document.getElementById('bd');dr.classList.add('open');dr.setAttribute('aria-hidden','false');bd.classList.add('open');bd.hidden=false;
+document.getElementById('dr-body').innerHTML=`<p><strong>Actor</strong> ${row.actor}</p><p><strong>Action</strong> ${row.action}</p><p><strong>Category</strong> ${row.cat}</p><p><strong>Resource</strong> ${row.resource}</p><p><strong>Session</strong> ${row.session||'—'}</p><p><strong>IP</strong> ${row.ip}</p><p><strong>User-Agent</strong> ${row.ua}</p><p><strong>Timestamp</strong> ${row.ts}</p>${row.reason?`<p><strong>Reason</strong> ${row.reason}</p>`:''}`;
+const note=document.getElementById('dr-link-note');note.textContent=row.actor.includes('@')?'Actor deep-link: user profile available when actor is a known admin user.':'Actor deep-link: session IDs only — no user profile for aggregate admin token.'}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('drawer').setAttribute('aria-hidden','true');document.getElementById('bd').classList.remove('open');document.getElementById('bd').hidden=true}
+document.getElementById('dr-close').onclick=closeDrawer;document.getElementById('bd').onclick=closeDrawer;
+function expandRows(rows,target=15){const o=[...rows];let i=0;while(o.length<target){const b=rows[i%rows.length];o.push({...b,resource:b.resource.replace('…','…'+String(o.length).padStart(2,'0')),ts:'10/27/2026, '+(7+o.length)+':15:00 AM'});i++}return o}
+const host=document.getElementById('audit-sections');
+AUDIT_SECTIONS.forEach(sec=>{const el=document.createElement('div');el.className='card';el.innerHTML=`<h2>${sec.title}</h2><p class="sub mono">${sec.api} · ${sec.total} entries</p>
+<div class="filters"><input type="search" placeholder="${sec.searchPh}" aria-label="${sec.title} search"><label>Action <select class="act-f">${sec.actions.map(a=>`<option>${a}</option>`).join('')}</select></label><button type="button" class="button button-secondary clr">Clear</button><button type="button" class="button button-secondary exp">Export CSV (demo · A7)</button></div>
+<p class="pag">Showing 1–20 of ${sec.total}</p>
+<table class="audit"><thead><tr><th>Actor</th><th>Action</th><th>Category</th><th>Resource</th><th>IP</th><th>User-Agent</th><th>Timestamp</th></tr></thead><tbody></tbody></table>`;
+const tb=el.querySelector('tbody');expandRows(sec.rows).slice(0,20).forEach(r=>{const tr=document.createElement('tr');tr.tabIndex=0;tr.innerHTML=`<td data-label="Actor">${r.actor}</td><td data-label="Action" class="mono">${r.action}</td><td data-label="Category">${r.cat}</td><td data-label="Resource" class="mono">${r.resource}</td><td data-label="IP" class="mono">${r.ip}</td><td data-label="User-Agent">${r.ua}</td><td data-label="Timestamp">${r.ts}</td>`;tr.onclick=()=>openDrawer(r,sec);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();openDrawer(r,sec)}};tb.appendChild(tr)});
+el.querySelector('.clr').onclick=()=>toast('Filters cleared');el.querySelector('.exp').onclick=()=>toast('Demo: CSV export queued for '+sec.title+' (A7 — no download in lab)');host.appendChild(el)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+</script>
+<style>.hidden{display:none!important}</style>
+</body>
+</html>

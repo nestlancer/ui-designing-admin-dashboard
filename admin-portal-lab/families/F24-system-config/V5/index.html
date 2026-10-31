@@ -9,7 +9,7 @@
 body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font);margin:0}
 .top{height:52px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:30}
 .brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}.brand img{width:28px;height:28px}
-.main{padding:18px;max-width:1180px;margin:0 auto;width:100%}
+.main{padding:18px;margin:0;width:100%}
 .eyebrow{font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-600)}
 h1{margin:4px 0 6px;font-size:30px}.lede{margin:0 0 12px;color:var(--muted-foreground);font-size:14px;line-height:1.5;max-width:46rem}
 .mono{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
@@ -208,7 +208,7 @@ function opsPanel(){return `<section id="operations" class="panel"><h2>Operation
 <div class="field"><label for="maint-msg">Message shown to users</label><input id="maint-msg" value="${maint.message.replace(/"/g,'&quot;')}"></div>
 <div class="field"><label for="maint-end">Estimated end (optional)</label><input id="maint-end" type="datetime-local"></div>
 <button type="button" class="button button-secondary" data-act="maint-apply">Apply maintenance settings</button></div></div></section>`}
-function render(){renderTabs();let html='';if(tab==='health')html=healthPanel();else if(tab==='config')html=configPanel();else if(tab==='features')html=featuresPanel();else if(tab==='jobs')html=jobsPanel();else if(tab==='templates')html=templatesPanel();else html=opsPanel();const pan=document.getElementById('panels');if(VARIANT==='v5'){pan.classList.add('is-swapping');setTimeout(()=>{pan.innerHTML=html;pan.classList.remove('is-swapping');wire()},120)}else{pan.innerHTML=html;wire()}
+function render(){renderTabs();let html='';if(tab==='health')html=healthPanel();else if(tab==='config')html=configPanel();else if(tab==='features')html=featuresPanel();else if(tab==='jobs')html=jobsPanel();else if(tab==='templates')html=templatesPanel();else html=opsPanel();const pan=document.getElementById('panels');if(VARIANT==='v5'){pan.classList.add('is-swapping');setTimeout(()=>{pan.innerHTML=html;pan.classList.remove('is-swapping');wire()},120)}else{pan.innerHTML=html;wire()}}
 function wire(){
  document.getElementById('diag-toggle')?.addEventListener('click',()=>{diagOpen=!diagOpen;render()});
  document.querySelectorAll('[data-save]').forEach(btn=>btn.onclick=()=>openConfirm('Save configuration','PATCH /api/system/config · key '+btn.dataset.save,reason=>{pushAudit('Config save',reason,btn.dataset.save);announce('Receipt · demo · saved '+btn.dataset.save)}));

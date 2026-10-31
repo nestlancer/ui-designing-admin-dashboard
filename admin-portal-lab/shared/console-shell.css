@@ -1,7 +1,74 @@
 /* Shared operator console sidebar — injected on lab pages missing F02 shell */
 :root{--nl-sidebar-w:228px}
-.nl-shell{min-height:100dvh;display:grid;grid-template-columns:var(--nl-sidebar-w) minmax(0,1fr);background:var(--background)}
-.nl-shell-main{min-width:0;display:flex;flex-direction:column;min-height:100dvh}
+.nl-shell{min-height:100dvh;display:grid;grid-template-columns:var(--nl-sidebar-w) minmax(0,1fr);background:var(--background);width:100%;max-width:100%;overflow-x:clip}
+.nl-shell-main{min-width:0;max-width:100%;display:flex;flex-direction:column;min-height:100dvh;overflow-x:clip}
+
+/* Full-width content column: kill centered max-width shells without forcing 100vw-like widths */
+.nl-shell-main > .main,
+.nl-shell-main > main.main,
+.nl-shell-main main#main-content,
+.nl-shell-main .main,
+.nl-shell-main .content,
+.nl-shell-main .stage,
+.nl-shell-main .gallery-main,
+.nl-shell-main > .wrap,
+.nl-shell-main > .shell,
+.nl-shell-main > .layout,
+.nl-shell-main > .split,
+.nl-shell-main > .grid,
+.nl-shell-main .wrap,
+.nl-shell-main .layout,
+.nl-shell-main .main-col,
+body.nl-console-enhanced .app > .main,
+body.nl-console-enhanced .shell > .main,
+body.nl-console-enhanced main.main,
+body.nl-console-enhanced #main-content.main,
+body.nl-console-enhanced .wrap,
+body.nl-console-enhanced .layout{
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  box-sizing:border-box;
+  min-width:0;
+}
+
+/* Stretch to the shell column, not the viewport */
+.nl-shell-main > .main,
+.nl-shell-main > main.main,
+.nl-shell-main > .wrap,
+.nl-shell-main > .shell,
+.nl-shell-main > .layout,
+.nl-shell-main > .content,
+.nl-shell-main > .split,
+.nl-shell-main > .grid,
+.nl-shell-main .main-col{
+  width:auto!important;
+  max-width:100%!important;
+}
+
+/* Nested page shells must shrink inside the console column */
+.nl-shell-main .shell,
+.nl-shell-main .app{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  box-sizing:border-box;
+}
+
+/* Injected console already brands the product — hide duplicate top brand */
+.nl-shell .top .brand,
+body.nl-console-enhanced .top .brand{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+
 .nl-sidebar{position:sticky;top:0;z-index:40;height:100dvh;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--border);background:var(--sidebar-bg)}
 .nl-sidebar-brand{height:52px;display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;flex-shrink:0}
 .nl-sidebar-brand svg{width:29px;height:29px;flex:0 0 29px}

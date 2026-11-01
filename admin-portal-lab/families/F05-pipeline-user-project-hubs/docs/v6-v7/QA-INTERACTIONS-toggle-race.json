@@ -1,8 +1,0 @@
-{
-  "checks": 707,
-  "axeScans": 12,
-  "violations": [],
-  "runtimeErrors": [],
-  "status": "FAIL",
-  "failure": "Error: Arrow section keyboard focus\n    at ok (/home/user/ui-designing-admin-dashboard/admin-portal-lab/families/F05-pipeline-user-project-hubs/docs/v6-v7/interactions-v67.cjs:3:127)\n    at /home/user/ui-designing-admin-dashboard/admin-portal-lab/families/F05-pipeline-user-project-hubs/docs/v6-v7/interactions-v67.cjs:45:265"
-}

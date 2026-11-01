@@ -155,7 +155,7 @@ The live admin console is already teal-led (`--primary 168 82% 26%`). The lab lo
   --shadow-xs:0 1px 2px rgba(26,36,51,.06); --shadow-sm:0 4px 14px rgba(26,36,51,.08);
   --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
-  --sidebar:232px; --header:52px; --content:1440px;
+  --sidebar:232px; --header:52px; --content:1440px; /* retained token; do not cap authenticated page canvas */
   --duration-fast:150ms; --duration-normal:280ms; --duration-slow:500ms;
   --ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
@@ -373,6 +373,14 @@ admin-portal-lab/
 - Mobile-first; no page-level horizontal scroll at 360 / 390 / 768 / 1024 / 1440.
 - Build order: **V1 first (Gate 2a pilot)** — all states, both themes, 5 widths, keyboard end-to-end — then V2→V5 one by one, with a self-critique after each variant. Freeze V1's patterns before the full run. Never stub; never "TODO states later" — every variant ships empty + loading + error states on day one.
 
+### 9.2a Owner review — full-width authenticated shell
+
+- For authenticated console pages **F02–F25**, the main page canvas must fill all available viewport width beside the sidebar, with modest responsive edge gutters. Do **not** center the page in a fixed/max-width container; the content expands immediately when the sidebar collapses. Individual reading columns, forms and overlays may retain sensible widths.
+- Keep the existing shared tokens unchanged: `--content:1440px` may still serve the gallery or standalone auth layouts, but must **not** cap the authenticated console page canvas.
+- Provide an obvious, keyboard-operable **Collapse sidebar / Expand sidebar** control in the persistent desktop header, with `aria-controls`, accurate `aria-expanded` and visible focus. The expanded shell retains the shared sidebar width; the compact state exposes recognisable icons with accessible names and hover labels. Remember the choice locally across reloads and family navigation, where storage is available.
+- On narrow screens use the existing full-width content and a separate off-canvas navigation drawer with open/close, Escape and focus handling. Do not force a desktop icon rail onto phones. This does not add a sidebar to **F01’s standalone sign-in** or stretch the F03 command-palette dialog itself.
+- Verify full-available-width geometry, collapse/expand, persistence and no page overflow in both themes, including wide desktop sizes such as **1920 and 2560px** as well as the existing 360–1440px checks.
+
 ### 9.3 Interaction & JS bar (required, not fluff)
 
 | Requirement | Detail |
@@ -394,7 +402,7 @@ Skip link · one `h1` · no skipped levels · landmarks `header/nav/main/aside/f
 
 | Component | Required states |
 |---|---|
-| Shell (sidebar + 52px header + breadcrumb + ⌘K + theme + bells + operator menu) | expanded/collapsed, mobile drawer, nav badges, dark (F02 owns it) |
+| Shell (sidebar + 52px header + breadcrumb + ⌘K + theme + bells + operator menu) | full-available-width content; persistent, labelled desktop collapse/expand control; icon rail with accessible names; mobile drawer; nav badges; dark (F02 owns it) |
 | Needs-attention strip + hero KPI | drill-down cells, age badges, zero-state |
 | Queues (requests/contact/verification/disputes/moderation) | bulk bar, keyboard triage, saved views, SLA badges, next-item loop, skeleton/empty/error |
 | Tables (users/quotes/payments/audit/media) | search + filter + sort + pagination + totals + row actions + ONE table + card-fallback + empty/error |
@@ -417,13 +425,13 @@ Skip link · one `h1` · no skipped levels · landmarks `header/nav/main/aside/f
 
 | Element | Desktop | Phone |
 |---|---|---|
-| Content container | ≤1440px (shell content col) | full width, 16–24px gutters |
+| Content container | **Fluid: 100% of the available viewport after the expanded/collapsed sidebar; no centered page-level max-width** | full width, 16–24px gutters |
 | H1 | 32–40px display (money/counts at stake) | 28–32px |
 | Body/meta | body 13–15px ops, meta ≥12px | body ≥14px |
 | Tables | full, sticky header where long | card-fallback or sticky-first-col scroll |
 | Page weight | ≤250 KB excl. images; images ≤350 KB/page, explicit dims, lazy below fold | same |
 
-No 80px headlines, no 600px hero art inside the console, no giant decorative numerals. Record measured H1/container at 360/390/768/1024/1440 in both themes per variant.
+No 80px headlines, no 600px hero art inside the console, no giant decorative numerals. Record measured H1/container at 360/390/768/1024/1440/1920/2560 in both themes per variant; on desktop measure both sidebar states.
 
 ---
 
@@ -453,7 +461,7 @@ Gate: PASS / FAIL
 - Confirm §1.3: no design-generation scripts; `DECISIONS.md` attests hand-authorship.
 - Anti-drift checks (manual): identical-skin side-by-side (fail if 2 siblings near-identical) · remote-URL check (no `http(s)` assets/fonts/scripts) · dead-link check (no `href="#"`) · token check (only §5 colours/radii/spacing; teal only, no blue) · scope check (only your family folder + shared-infra merges + family docs) · C/A coverage check from manifest.
 - Exercise every interaction in every variant: queues, bulk, keyboard triage, tabs, filters, search, sort, pagination, dialogs, drawers, theme, reduced-motion, no-JS fallback (content + links reachable), rapid-click races, broken-image placeholders.
-- Inspect at 360/390/768/1024/1440, light + dark, **if a browser is available**. If not, say so explicitly and do not claim screenshot QA.
+- Inspect at 360/390/768/1024/1440 plus wide 1920/2560, light + dark, **if a browser is available**. For authenticated pages verify full-width content with the desktop sidebar both expanded and collapsed, including persistence. If a browser is unavailable, say so explicitly and do not claim screenshot QA.
 - Apply the report's acceptance checklist (report §7.1 — hierarchy <2s, triage speed, queues, tables, nav, colour AA, type, dark parity, keyboard, empty/loading/error, safety, mobile, performance, legal/ops) to each variant. Classify findings **blocker · major · minor**. No blocker open at hand-off.
 - Write `docs/DELIVERY-REPORT.md`: file paths, run command, per-variant verification, and **1 family winner recommendation + why**.
 

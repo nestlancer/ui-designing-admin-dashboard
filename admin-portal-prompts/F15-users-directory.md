@@ -9,6 +9,8 @@
 
 ---
 
+> **Owner review — full-width, collapsible shell:** Authenticated console pages F02–F25 must use the full viewport width available beside the sidebar, with responsive gutters and no centered page-level max-width. Provide an obvious keyboard-accessible desktop Collapse/Expand control, a named icon rail, and persistent state across reloads/families; use a mobile drawer instead on small screens. Check 1920/2560 as well as 360–1440 in both themes. Keep shared tokens unchanged (`--content` must not cap console pages). Individual reading columns and dialogs may remain appropriately sized. F01 sign-in remains standalone, without an added sidebar. See master §9.2a.
+
 ## 1. YOUR ROLE
 
 1. **Product archaeologist** — reconstruct the directory exactly (KPIs, filters, 21-row table, add-user) first. 2. **Research analyst** — quote every F15 Finding/C/A/KEEP (incl. the suspect-34s). 3. **API analyst** — map directory to `users` spec (+`admin` aggregates). 4. **Design-template researcher** — ≥8 user directories **after** S/R/A. 5. **Designer + art director** — 5 ideas, same teal. 6. **Craftsperson** — self-contained, offline, no CDN. 7. **Harsh critic** — reject bulk-less directories, mouse-only admin, unverified add-user flows.

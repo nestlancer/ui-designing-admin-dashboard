@@ -51,6 +51,7 @@
 
 - `admin-portal-lab/shared/tokens.css` — **ONE locked teal scheme** (master §5.2). The first family to build creates it; every later run imports it as-is (never edit, never fork).
 - `admin-portal-lab/shared/base.css` — reset + primitives only, same create-if-missing rule.
+- **Owner review — full-width shell:** F02–F25 authenticated page canvases fill the available viewport beside the sidebar, not a centered max-width column. Desktop gets a visible, persistent collapse/expand control and an accessible icon rail; mobile retains a drawer. Test 1920/2560 as well as the usual widths. F01's standalone sign-in and appropriately sized dialogs are exceptions; do not change the locked tokens.
 - `admin-portal-lab/assets/` — one shared logo/icon set; add to it, never fork it.
 - `admin-portal-lab/index.html` — the gallery; each run adds/replaces only its own family's section.
 - `admin-portal-lab/manifest.json` — 5 records per family; merge-only, never delete other families' records.

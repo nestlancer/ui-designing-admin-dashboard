@@ -209,6 +209,62 @@
         "generators": 0
       },
       "redesign": "2026-11-01 creative pass: 5 art-directed variants (Monolith/Tide/Ops terminal/Editorial index/Choreography), teal ramp only, hand-authored"
+    },
+    "F02-dashboard-command-center": {
+      "slug": "F02-dashboard-command-center",
+      "title": "Dashboard · Command center",
+      "route": "/dashboard",
+      "snapshot": "2026-10-30 13:38 UTC; historical offline capture, not live data",
+      "variants": [
+        {
+          "id": "V1", "name": "Northstar", "path": "families/F02-dashboard-command-center/V1/index.html",
+          "aspect": "Money-first decision surface, six-cell attention strip, balanced performance and recent-record panels",
+          "axes": ["A balanced split", "B money-first", "C sections", "D airy", "E queue preview"],
+          "changes": ["C1", "C2", "C3", "C5", "C6", "C9", "C10", "C12", "C15", "C18", "C20"],
+          "adds": ["A9", "A11", "A13"],
+          "enterprise2026": ["historical-label", "error-focus", "dismissible-notice", "44px-coarse", "keyboard-dialog", "honest-transport"],
+          "api": ["GET /api/dashboard/overview", "GET /api/dashboard/revenue", "GET /api/dashboard/activity", "GET /api/v1/health"]
+        },
+        {
+          "id": "V2", "name": "The Brief", "path": "families/F02-dashboard-command-center/V2/index.html",
+          "aspect": "Ruled editorial decision note, separate verdict card and asymmetric collapsible handover marginalia",
+          "axes": ["A editorial rail", "B verdict-first", "C brief", "D ruled", "E disclosure"],
+          "changes": ["C1", "C2", "C3", "C5", "C6", "C9", "C10", "C12", "C15", "C18", "C20"],
+          "adds": ["A9", "A11", "A13"],
+          "enterprise2026": ["historical-label", "error-focus", "dismissible-notice", "44px-coarse", "keyboard-dialog", "honest-transport"],
+          "api": ["GET /api/dashboard/overview", "GET /api/dashboard/activity", "GET /api/dashboard/revenue", "GET /api/v1/health"]
+        },
+        {
+          "id": "V3", "name": "Queue Spine", "path": "families/F02-dashboard-command-center/V3/index.html",
+          "aspect": "Six-queue vertical triage spine beside metrics; arrow-key queue navigation and local preview",
+          "axes": ["A queue rail", "B queue-first", "C triage", "D compact list", "E arrow-key loop"],
+          "changes": ["C1", "C2", "C3", "C5", "C6", "C9", "C10", "C12", "C15", "C18", "C20"],
+          "adds": ["A9", "A11", "A13"],
+          "enterprise2026": ["historical-label", "error-focus", "dismissible-notice", "44px-coarse", "keyboard-dialog", "honest-transport"],
+          "api": ["GET /api/dashboard/overview", "GET /api/dashboard/revenue", "GET /api/v1/notifications/unread-count", "GET /api/v1/messages/unread-count"]
+        },
+        {
+          "id": "V4", "name": "Signal Board", "path": "families/F02-dashboard-command-center/V4/index.html",
+          "aspect": "Bento status overview with six unverified service checks, priority tile and local degraded/error demonstrations",
+          "axes": ["A bento matrix", "B status-first", "C health chapters", "D modular", "E state simulation"],
+          "changes": ["C1", "C2", "C3", "C5", "C6", "C9", "C10", "C12", "C15", "C18", "C20"],
+          "adds": ["A9", "A11", "A13"],
+          "enterprise2026": ["historical-label", "error-focus", "dismissible-notice", "44px-coarse", "keyboard-dialog", "honest-transport", "reduced-motion"],
+          "api": ["GET /api/dashboard/overview", "GET /api/dashboard/alerts", "GET /api/v1/health", "GET /api/v1/health/detailed"]
+        },
+        {
+          "id": "V5", "name": "Shift Ledger", "path": "families/F02-dashboard-command-center/V5/index.html",
+          "aspect": "Compact ledger strips, records before charts, paired semantic tables and inline row detail",
+          "axes": ["A paired ledgers", "B records-first", "C table-led", "D dense", "E inline detail"],
+          "changes": ["C1", "C2", "C3", "C5", "C6", "C9", "C10", "C12", "C15", "C18", "C20"],
+          "adds": ["A9", "A11", "A13"],
+          "enterprise2026": ["historical-label", "error-focus", "dismissible-notice", "44px-coarse", "keyboard-dialog", "honest-transport"],
+          "api": ["GET /api/dashboard/overview", "GET /api/dashboard/revenue", "GET /api/dashboard/activity", "GET /api/v1/health"]
+        }
+      ],
+      "coverage": {"C": "11/11 in 5/5 variants", "A9": "5/5", "A11": "5/5", "A13": "5/5", "generators": 0},
+      "demoOnly": "All interactions are local; API routes are integration references, not live requests. Unbuilt destinations show contextual previews.",
+      "winnerRecommendation": "V1 Northstar — clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
     }
   }
 }

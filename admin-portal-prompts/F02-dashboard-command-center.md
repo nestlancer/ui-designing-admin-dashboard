@@ -5,11 +5,13 @@
 >
 > **Scope: ONE page family — F02 · Dashboard · Command Center.** One of **25 independent family prompts** (F01–F25): 25 × 5 = **125 templates**, ONE locked teal scheme (master `admin-portal-prompt.md` §5). This prompt builds **`admin-portal-lab/families/F02-dashboard-command-center/V1…V5/`** — and nothing else. Never touch other families.
 >
-> **This family owns the lab's shell** (sidebar + 52px header + breadcrumb + ⌘K + theme + bells + operator menu + mobile drawer), its **dark-mode proof** and its **375px mobile proof** — the other 24 families inherit from here. Suggested **first** build.
+> **This family owns the lab's authenticated shell** (full-available-width page canvas, collapsible sidebar + 52px header + breadcrumb + ⌘K + theme + bells + operator menu + mobile drawer), its **dark-mode proof** and its **375px mobile proof** — the other authenticated families inherit from here; F01 sign-in remains standalone. Suggested **first** build.
 >
 > **Style parent:** `example-demo-prompt/*` (gates + hand-crafted discipline). Shared rules live in `admin-portal-prompt.md` — read it end-to-end first; **this file is the task**. **Do not push, commit, create or switch a branch.**
 
 ---
+
+> **Owner review — full-width, collapsible shell:** Authenticated console pages F02–F25 must use the full viewport width available beside the sidebar, with responsive gutters and no centered page-level max-width. Provide an obvious keyboard-accessible desktop Collapse/Expand control, a named icon rail, and persistent state across reloads/families; use a mobile drawer instead on small screens. Check 1920/2560 as well as 360–1440 in both themes. Keep shared tokens unchanged (`--content` must not cap console pages). Individual reading columns and dialogs may remain appropriately sized. F01 sign-in remains standalone, without an added sidebar. See master §9.2a.
 
 ## 1. YOUR ROLE
 
@@ -47,7 +49,7 @@ s 0 + *System healthy*), **6 KPI cards** (Revenue (month) ₹7,08,160.00 + *INR 
 | | |
 |---|---|
 | Routes | `/dashboard` |
-| Shell | **DEFINITIVE:** sidebar (measure width/bg/active at Gate S) + 52px header + breadcrumb + ⌘K trigger + theme toggle + bells (freeze captured counts) + shield + operator menu (→ `051` profile) + mobile drawer. C6 badges + C15 banner removal decided here. |
+| Shell | **DEFINITIVE:** full-available-width page canvas + sidebar (measure width/bg/active at Gate S) + 52px header with visible, persistent desktop collapse/expand + breadcrumb + ⌘K trigger + theme toggle + bells (freeze captured counts) + shield + operator menu (→ `051` profile) + mobile drawer. C6 badges + C15 banner removal decided here. |
 | Variants | **V1–V5** — each covers **all** states (range tabs switch in-page) |
 
 **States in scope (every variant covers all):**

@@ -9,6 +9,8 @@
 
 ---
 
+> **Owner review — full-width, collapsible shell:** Authenticated console pages F02–F25 must use the full viewport width available beside the sidebar, with responsive gutters and no centered page-level max-width. Provide an obvious keyboard-accessible desktop Collapse/Expand control, a named icon rail, and persistent state across reloads/families; use a mobile drawer instead on small screens. Check 1920/2560 as well as 360–1440 in both themes. Keep shared tokens unchanged (`--content` must not cap console pages). Individual reading columns and dialogs may remain appropriately sized. F01 sign-in remains standalone, without an added sidebar. See master §9.2a.
+
 ## 1. YOUR ROLE
 
 1. **Product archaeologist** — reconstruct the notifications surface exactly (personal filters + 6 ops tabs + builders + logs) first. 2. **Research analyst** — quote every F07 Finding/C/A/KEEP. 3. **API analyst** — map inbox + send/broadcast/segment + logs to `notifications` spec. 4. **Design-template researcher** — ≥8 notification centers + broadcast tools **after** S/R/A. 5. **Designer + art director** — 5 ideas, same teal. 6. **Craftsperson** — self-contained, offline, no CDN. 7. **Harsh critic** — reject mixed personal/platform surfaces, 129-button pages, misclick-able broadcasts.

@@ -1,0 +1,4 @@
+# F07 research and source boundary
+Studied screenshot 029 inbox and 030–034 platform ops (broadcast, delivery, log, segment, send). Captured totals 576 / 574 are historical, not a live status. Distinguish operator inbox from outbound platform messaging.
+
+Patterns: [Courier notification center](https://www.courier.com/guides/how-to-build-a-notification-center/chapter-1-introduction-to-notification-centers), [Courier scannability](https://www.courier.com/guides/how-to-build-a-notification-center/chapter-3-best-practices-for-notification-centers), [Knock features](https://docs.knock.app/getting-started/knocks-features), [Knock delivery semantics](https://docs.knock.app/concepts/broadcasts). Adapt persistent grouped inbox, batch controls, audience review and sent-vs-delivered labels. Spec includes personal notification read/read-all/read-selected and admin send/broadcast/segment/report; archive/tag actions are local-only. No real sends.

@@ -1,0 +1,2 @@
+# Notification contract boundary
+`backend-api-swagger/notifications.openapi.json` exposes personal notifications, unread-count, read/unread, read-all, read-selected, clear-read and admin notifications, stats, send, broadcast, segment, delivery-report, templates, resend. Archive/tag have no established direct endpoint: demo-only. No authenticated backend is attached; simulated previews are not delivery receipts.

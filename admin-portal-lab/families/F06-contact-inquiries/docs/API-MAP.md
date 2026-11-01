@@ -1,0 +1,2 @@
+# Contact contract boundary
+`backend-api-swagger/contact.openapi.json` has 7 paths: `/api/v1/contact/health`, `/api/v1/contact`, `/api/v1/admin/contact` (list), `/api/v1/admin/contact/{id}` (read), `/api/v1/admin/contact/{id}/status` (status), `/api/v1/admin/contact/{id}/respond` (reply), `/api/v1/admin/contact/{id}/spam` (spam). Archive is a status transition, not a dedicated route. Assignment and saved views are demo-only. The lab never calls these endpoints.

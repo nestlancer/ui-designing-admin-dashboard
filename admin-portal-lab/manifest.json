@@ -1,10 +1,10 @@
 {
   "lab": "admin-portal-lab",
-  "scheme": "ONE locked teal token file \u2014 shared/tokens.css (master admin-portal-prompt.md \u00a75.2)",
+  "scheme": "ONE locked teal token file — shared/tokens.css (master admin-portal-prompt.md §5.2)",
   "families": {
     "F04-pipelines-stage-hub": {
       "slug": "F04-pipelines-stage-hub",
-      "title": "Pipelines \u00b7 Operating workbench",
+      "title": "Pipelines · Operating workbench",
       "route": "/pipeline",
       "variants": [
         {
@@ -195,7 +195,7 @@
       ],
       "coverage": {
         "C": "7/7 in 5/5 variants",
-        "A11": "5/5 (P2 requires \u22653/5)",
+        "A11": "5/5 (P2 requires ≥3/5)",
         "P1Adds": "none newly classified",
         "retainedStageTrustConsolesReference": "5/5",
         "caseContextFilterSortPreparationStates": "5/5",
@@ -203,7 +203,7 @@
         "generators": 0
       },
       "demoOnly": "Historical volumes remain distinct from six synthetic DEMO cases. Example age is not SLA or stage dwell. Assignment and transfer approve/reject create validated local payload previews only; denied permission blocks preparation. No request, mutation or audit write runs. Unknown source is not zero. API history remains read-only with obsolete milestone creation visibly flagged; F05 is not implemented here.",
-      "winnerRecommendation": "V4 Switchboard \u2014 best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
+      "winnerRecommendation": "V4 Switchboard — best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
       "revision": 2,
       "evidence": {
         "research": "families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md",
@@ -218,7 +218,7 @@
     },
     "F03-global-search-command-palette": {
       "slug": "F03-global-search-command-palette",
-      "title": "Global search \u00b7 Command palette",
+      "title": "Global search · Command palette",
       "route": "Overlay on any console route",
       "variants": [
         {
@@ -368,11 +368,11 @@
         "generators": 0
       },
       "demoOnly": "All route/record/creation handoffs are local previews, not live APIs. No global search endpoint. Payment fixture is project context, not a verified individual payment. Group creation preview repairs captured 404 without guessing a route.",
-      "winnerRecommendation": "V3 Dossier \u2014 destination context and provenance before selecting; V1 Compass is the simplest default."
+      "winnerRecommendation": "V3 Dossier — destination context and provenance before selecting; V1 Compass is the simplest default."
     },
     "F01-auth-login": {
       "slug": "F01-auth-login",
-      "title": "Auth \u00b7 Operator sign-in",
+      "title": "Auth · Operator sign-in",
       "route": "/login",
       "variants": [
         {
@@ -580,7 +580,7 @@
     },
     "F02-dashboard-command-center": {
       "slug": "F02-dashboard-command-center",
-      "title": "Dashboard \u00b7 Command center",
+      "title": "Dashboard · Command center",
       "route": "/dashboard",
       "snapshot": "2026-10-30 13:38 UTC; historical offline capture, not live data",
       "variants": [
@@ -819,11 +819,11 @@
         "generators": 0
       },
       "demoOnly": "All interactions are local; API routes are integration references, not live requests. Unbuilt destinations show contextual previews.",
-      "winnerRecommendation": "V1 Northstar \u2014 clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
+      "winnerRecommendation": "V1 Northstar — clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
     },
     "F05-pipeline-user-project-hubs": {
       "slug": "F05-pipeline-user-project-hubs",
-      "title": "Pipeline hubs \u00b7 User + Project",
+      "title": "Pipeline hubs · User + Project",
       "routes": [
         "/pipeline/users",
         "/pipeline/projects"
@@ -1021,16 +1021,16 @@
       "coverage": {
         "C": "7/7 in 5/5",
         "A11": "5/5 P2",
-        "A13": "5/5 P3 \u00b7 reference coverage, NOT fabricated live health",
+        "A13": "5/5 P3 · reference coverage, NOT fabricated live health",
         "P1Adds": "none targeted",
         "bothHubs": "5/5",
         "sections": "6 user + 4 project per variant",
         "states": "full/empty/skeleton/error/degraded/permission preview + selected/unselected/partial",
         "generators": 0,
-        "pilotSequence": "V1 572 checks +120 axe scans PASS before V2\u2013V5 implementation"
+        "pilotSequence": "V1 572 checks +120 axe scans PASS before V2–V5 implementation"
       },
       "demoOnly": "Historical screenshot references and partial profiles, not a live directory. Section state previews/retries, navigation/command search, evidence filter/sort/pagination, copy and legal notices are local. Canonical destination/read contracts remain inert; unbuilt owner families show explicit integration handoffs. No authenticated API request, financial/security mutation or actual audit event.",
-      "winnerRecommendation": "V3 Whole story \u2014 clearest entity-first overview across both 360 hubs; V4 for focused evidence inspection.",
+      "winnerRecommendation": "V3 Whole story — clearest entity-first overview across both 360 hubs; V4 for focused evidence inspection.",
       "evidence": {
         "baseline": "families/F05-pipeline-user-project-hubs/docs/BASELINE-MAP.md",
         "research": "families/F05-pipeline-user-project-hubs/docs/TEMPLATE-RESEARCH.md",
@@ -1042,6 +1042,245 @@
         "directEntityWorkspaceReferences": 8,
         "researchTiming": "Initial9references before concepts (6entity+3support);2more entity-specific references in final completeness audit; see research timing disclosure."
       }
+    },
+    "F06-contact-inquiries": {
+      "slug": "F06-contact-inquiries",
+      "title": "Contact · inquiries triage",
+      "route": "/contact",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Split triage",
+          "path": "families/F06-contact-inquiries/V1/index.html",
+          "aspect": "Split triage · offline historical sample",
+          "changes": [
+            "C14",
+            "C19",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V2",
+          "name": "Conversation desk",
+          "path": "families/F06-contact-inquiries/V2/index.html",
+          "aspect": "Conversation desk · offline historical sample",
+          "changes": [
+            "C14",
+            "C19",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V3",
+          "name": "Card sweep",
+          "path": "families/F06-contact-inquiries/V3/index.html",
+          "aspect": "Card sweep · offline historical sample",
+          "changes": [
+            "C14",
+            "C19",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V4",
+          "name": "Reference ledger",
+          "path": "families/F06-contact-inquiries/V4/index.html",
+          "aspect": "Reference ledger · offline historical sample",
+          "changes": [
+            "C14",
+            "C19",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V5",
+          "name": "Focus loop",
+          "path": "families/F06-contact-inquiries/V5/index.html",
+          "aspect": "Focus loop · offline historical sample",
+          "changes": [
+            "C14",
+            "C19",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        }
+      ]
+    },
+    "F07-notifications-center": {
+      "slug": "F07-notifications-center",
+      "title": "Notifications · personal + platform",
+      "route": "/notifications",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Safe boundary",
+          "path": "families/F07-notifications-center/V1/index.html",
+          "aspect": "Safe boundary · offline historical sample",
+          "changes": [
+            "C7",
+            "C8",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A3"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V2",
+          "name": "Separate surfaces",
+          "path": "families/F07-notifications-center/V2/index.html",
+          "aspect": "Separate surfaces · offline historical sample",
+          "changes": [
+            "C7",
+            "C8",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A3"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V3",
+          "name": "Inbox spine",
+          "path": "families/F07-notifications-center/V3/index.html",
+          "aspect": "Inbox spine · offline historical sample",
+          "changes": [
+            "C7",
+            "C8",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A3"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V4",
+          "name": "Dense operations",
+          "path": "families/F07-notifications-center/V4/index.html",
+          "aspect": "Dense operations · offline historical sample",
+          "changes": [
+            "C7",
+            "C8",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A3"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        },
+        {
+          "id": "V5",
+          "name": "Signal focus",
+          "path": "families/F07-notifications-center/V5/index.html",
+          "aspect": "Signal focus · offline historical sample",
+          "changes": [
+            "C7",
+            "C8",
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A3"
+          ],
+          "status": "design preview · responsive/WCAG audit pending"
+        }
+      ]
     }
   }
 }

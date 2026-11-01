@@ -131,3 +131,12 @@ User approved the five original layouts but requested materially richer captured
 - Bounded gallery cards/notes and two manifest entries are additive; old DECISIONS content is an exact prefix. No Git repository or commits. Approved V1–V5 remain unchanged.
 - Raw payload V6 131,475 bytes / V7 135,856 bytes, including shared tokens and images; standalone 133,507 /137,896 bytes. Hard250KB passes; soft70KB misses are disclosed. Gzip numbers are estimates, not server compression claims.
 - Choose V6 for exact-record investigation and V7 for whole-case reading; no timed efficiency or universal-winner claim. See the revision DELIVERY and DATA-AUDIT for boundaries.
+
+## F06 · Contact inquiries (2026-11-02)
+All F06 variants were hand-authored; no design-generation script was used. One shared interaction file powers locally illustrated records. The captured total 20 is not recomputed from four examples. Assignment and saved views are demonstrative; no backend calls are made. V1 is the baseline-oriented pilot; V2–V5 intentionally change queue geometry and attention flow.
+
+## F07 · Notifications center (2026-11-02)
+All F07 variants were hand-authored; no design-generation script was used. A shared interaction file powers grouped illustrated events and safe outbound previews. The captured 576/574 totals are historical. Send/broadcast never claims success. Archive/tag is demo-only; delivery and log show explicit absence of verified offline data.
+
+## F06/F07 owner organization review (2026-11-02)
+The owner approved the sample data and five visual concepts for each family, but requested better information organization. We retained those data and concept axes. Added shared hierarchy styles and restructured F06 selected-inquiry reading order and F07 ops task/evidence order. See each family's `docs/ORGANIZATION-REVIEW.md`. No variant HTML/CSS generator was used.

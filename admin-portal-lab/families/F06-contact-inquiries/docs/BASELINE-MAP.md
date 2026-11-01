@@ -1,0 +1,2 @@
+# Captured baseline · F06
+007-contact.webp shows narrow inquiry list, counts All 20 / New 14 / Read 5 / Responded 1 / Spam 0 / Archived 0. 008-contact-reply.webp shows selected thread, status, reply composer and spam/archive actions. HTML snapshots 51 and 136–141 cover queue and filters; reply is screenshot-only. Four illustrated records are explicitly separated from totals; sample content is not a full transcription of 20 records.

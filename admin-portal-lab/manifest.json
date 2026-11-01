@@ -1,0 +1,214 @@
+{
+  "lab": "admin-portal-lab",
+  "scheme": "ONE locked teal token file — shared/tokens.css (master admin-portal-prompt.md §5.2)",
+  "families": {
+    "F01-auth-login": {
+      "slug": "F01-auth-login",
+      "title": "Auth · Operator sign-in",
+      "route": "/login",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Monolith",
+          "path": "families/F01-auth-login/V1/index.html",
+          "aspect": "Deep-teal full-bleed canvas with drifting contour SVG + dot grid; floating light card, 3-step progress line, display H1",
+          "axes": [
+            "A layout",
+            "C narrative",
+            "D density"
+          ],
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C15",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A11"
+          ],
+          "enterprise2026": [
+            "single-form",
+            "forgot-password(Gate-A)",
+            "consent-line",
+            "copyright-footer",
+            "error-focus",
+            "dismissible-notices",
+            "caps-lock",
+            "shared-device-hint",
+            "44px-coarse"
+          ],
+          "api": [
+            "POST /api/v1/auth/login",
+            "POST /api/v1/auth/verify-2fa",
+            "POST /api/v1/auth/forgot-password",
+            "POST /api/v1/auth/refresh",
+            "GET /api/v1/auth/health"
+          ]
+        },
+        {
+          "id": "V2",
+          "name": "Tide",
+          "path": "families/F01-auth-login/V2/index.html",
+          "aspect": "Asymmetric 46/54 split; animated wave lines (single dashoffset draw) on teal panel; vertical wordmark; mono posture ledger; two-step card",
+          "axes": [
+            "A layout",
+            "B hierarchy",
+            "C narrative"
+          ],
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C15",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A11"
+          ],
+          "enterprise2026": [
+            "progressive-disclosure",
+            "forgot-password(Gate-A)",
+            "consent-line",
+            "copyright-footer",
+            "error-focus",
+            "dismissible-notices",
+            "caps-lock",
+            "44px-coarse"
+          ],
+          "api": [
+            "POST /api/v1/auth/login",
+            "POST /api/v1/auth/verify-2fa",
+            "POST /api/v1/auth/forgot-password"
+          ]
+        },
+        {
+          "id": "V3",
+          "name": "Ops terminal",
+          "path": "families/F01-auth-login/V3/index.html",
+          "aspect": "Console-card: window chrome bar, mono prompt line with blinking caret, scan-dot backdrop, status readout; single-form",
+          "axes": [
+            "A layout",
+            "B hierarchy",
+            "E interaction"
+          ],
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C15",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A11"
+          ],
+          "enterprise2026": [
+            "progressive-disclosure",
+            "forgot-password(Gate-A)",
+            "consent-line",
+            "copyright-footer",
+            "error-focus",
+            "dismissible-notices",
+            "caps-lock",
+            "44px-coarse"
+          ],
+          "api": [
+            "POST /api/v1/auth/login",
+            "POST /api/v1/auth/verify-2fa",
+            "POST /api/v1/auth/forgot-password"
+          ]
+        },
+        {
+          "id": "V4",
+          "name": "Editorial index",
+          "path": "families/F01-auth-login/V4/index.html",
+          "aspect": "Editorial spread: oversized display headline + outlined ghost word, hard-offset-shadow paper form with index tag, ruled mono footer",
+          "axes": [
+            "A layout",
+            "D density",
+            "C narrative"
+          ],
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C15",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A11"
+          ],
+          "enterprise2026": [
+            "single-form",
+            "forgot-password(Gate-A)",
+            "consent-line",
+            "copyright-footer",
+            "error-focus",
+            "dismissible-notices",
+            "caps-lock",
+            "44px-coarse"
+          ],
+          "api": [
+            "POST /api/v1/auth/login",
+            "GET /api/v1/auth/health",
+            "POST /api/v1/auth/verify-2fa",
+            "POST /api/v1/auth/forgot-password"
+          ]
+        },
+        {
+          "id": "V5",
+          "name": "Choreography",
+          "path": "families/F01-auth-login/V5/index.html",
+          "aspect": "Centered card over pointer-parallax teal glow + concentric rings; animated step progress line (dashoffset stepper); sliding panels",
+          "axes": [
+            "E interaction",
+            "C narrative",
+            "B hierarchy"
+          ],
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C15",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "A11"
+          ],
+          "enterprise2026": [
+            "progressive-disclosure",
+            "forgot-password(Gate-A)",
+            "consent-line",
+            "copyright-footer",
+            "error-focus",
+            "dismissible-notices",
+            "caps-lock",
+            "44px-coarse",
+            "motion-signature"
+          ],
+          "api": [
+            "POST /api/v1/auth/login",
+            "POST /api/v1/auth/verify-2fa",
+            "POST /api/v1/auth/forgot-password"
+          ]
+        }
+      ],
+      "coverage": {
+        "C": "7/7 in 5/5 variants",
+        "A11": "5/5 (>=3/5 required)",
+        "generators": 0
+      },
+      "redesign": "2026-11-01 creative pass: 5 art-directed variants (Monolith/Tide/Ops terminal/Editorial index/Choreography), teal ramp only, hand-authored"
+    }
+  }
+}

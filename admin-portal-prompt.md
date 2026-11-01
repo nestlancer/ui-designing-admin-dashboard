@@ -181,6 +181,36 @@ The live admin console is already teal-led (`--primary 168 82% 26%`). The lab lo
 
 Every variant keeps the **same IA, labels, counts, ₹ figures, microcopy and legal text** found in this console's screenshots + HTML (verify field-by-field at Gate S). What changes is *hierarchy, triage speed, accessibility* per the report — **never** the story itself. **Never** rewrite queue semantics, invent operators/numbers, drop safety dialogs, trust strips, or honesty notes. The KEEP list (§7) must survive in every variant.
 
+### 5.4 Enterprise auth-door & form standards (added 2026-11-01 review)
+
+After shipping F01 and reviewing **12 live enterprise/operator login pages** (AWS Console sign-in, Google Cloud, Azure/M365 login.microsoftonline.com, Salesforce, Cloudflare, Datadog, Stripe Dashboard, Vercel, GitHub, Atlassian id, DigitalOcean, Heroku — full extraction table in `admin-portal-lab/families/F01-auth-login/docs/TEMPLATE-RESEARCH.md` Gate T-2), these enterprise standards are now part of the locked system for **all 125 templates**:
+
+1. **Progressive disclosure or single-page form** — both are enterprise-valid (Google/Microsoft use email→Next→password; AWS/Salesforce/Stripe/DO use one form). Pick per page job; **never change frozen labels**.
+2. **Recovery affordance** ("Forgot password?") wherever credentials are collected — Gate-A endpoint only (`auth.openapi.json` forgot/reset paths) or demo-labelled in DECISIONS.md.
+3. **Errors:** top-of-surface `role="alert"` summary that **receives focus**, plus per-field `aria-invalid` + `aria-describedby`; anti-enumeration copy (never "email not found").
+4. **Session-state notices** (expired / signed out in another tab) are **dismissible inline notices** announced via live region — never a full-page dead end (A11).
+5. **Consent line** under auth/creation submits: "By continuing, you agree to our Terms and Privacy Policy." Footer everywhere: **© 2026 Nestlancer** · Terms · Privacy · `host · admin.nestlancer.com` in mono · "Secured · HTTPS" trust chip.
+6. **Password craft:** Show/Hide toggle with `aria-pressed` + label swap, Caps Lock hint (`getModifierState`), shared-device hint beside any keep-me-signed-in control.
+7. **Autofocus** the first field on standalone surfaces; skip link everywhere; **44px targets on coarse pointers**; working dark parity + `?theme=` boot.
+8. **No invented identity providers:** no SSO/passkey/region/language pickers unless Gate-A-backed — the admin console stays credentials + TOTP (report decision); the "Client sign-in" boundary link is the only alternate path.
+
+### 5.5 Creative bar — "top-grade" (added 2026-11-01, second review)
+
+After the F01 creative pass, "top-grade" for this lab means **art-directed, not decorated**. Every variant gets its own design idea, hand-crafted:
+
+1. **One strong idea per variant** — a canvas (Monolith), a split with motion (Tide), a console metaphor (Ops terminal), an editorial spread (Editorial index), a choreographed center (Choreography). Neighbouring variants must not share layout geometry + narrative (Difference Test §8.2).
+2. **Background art stays inside the teal ramp** — contour lines, wave lines, dot grids, glow (single radial tint of `--brand-500`), outlined ghost type. No blue, no purple/neon, no gradient soup; at most ONE animated `stroke-dashoffset` element per page (steppers/timelines/waves).
+3. **Motion = transform/opacity only** (plus the one dashoffset exception): entrance stagger, slide/crossfade panels, pointer parallax on fine pointers, button lift. `prefers-reduced-motion` kills all of it.
+4. **Type is part of the art direction:** display H1 `clamp(28–40px+)` with tight tracking (-0.03em) where weight is at stake (C12); mono for ops/status/ledger surfaces (C9); 8px spacing rhythm; nothing below 11px.
+5. **Surfaces with attitude:** floating cards with deep soft shadows, hard offset shadows (teal) on paper forms, window chrome bars, vertical wordmarks, index tags — pick per concept, keep `--radius-*` tokens.
+6. **Enterprise states remain first-class:** `role=alert` error with focus, dismissible notices, caps-lock hint, consent line, © 2026 + Terms/Privacy + host mono + Secured·HTTPS footer, 44px+ coarse targets, dark parity, 360–1440, offline, no dead links.
+7. **The bar for "done":** open the variant and feel one clear idea; every state reachable; keyboard-clean; dark and 375px hold up. If it could be any SaaS login, it fails — rebuild the geometry or narrative (axis A/C), never the colour.
+8. **Theme-aware canvases & panels (2026-11-01 fix):** any full-bleed brand canvas/panel must adapt to BOTH themes via per-theme CSS vars (e.g. light = `brand-50` tint + deep-teal ink, dark = `brand-800` + white ink) — never a hardcoded colour that breaks the other theme. Smooth `background` transition on theme switch.
+9. **Shared logo set (2026-11-01):** use the client-lab assets in `admin-portal-lab/assets/` — `logo-mark-light.svg` / `logo-mark-dark.svg` as a theme-swapped `<img>` pair (see `shared/base.css` `.logo-for-light/.logo-for-dark`), `logo-full-*.svg` for lockups, `favicon.svg` as `<link rel="icon">` — every logo `<img>` needs `alt` (C20). Do not hand-draw replacement marks; do not import the client lab's `lab-core.css/js` (token clash).
+10. **Production-mindset pass (2026-11-01, third review — study the LIVE gates):** before art-directing an auth page, read `app.nestlancer.com/login` + `admin.nestlancer.com/login` and absorb the mindset, not the 2010 skin: (a) **editorial split** — form column on one side, brand/story on the other, never a bare centered card on a gradient; (b) **product proof** — show a mini product-stage mock (browser chrome, traffic dots, mono caption, animated progress) so the page sells the thing behind the door; (c) **live/operational signals** — ping "live" badges, PASS/PENDING state chips, host/policy mono meta lines, blinking carets — the page feels alive and auditable; (d) **type hierarchy** — Inter-style tight tracking (-0.04em) display headlines with a kinetic underline/highlight on one key word, IBM-Plex-Mono-style eyebrows/labels/meta; (e) **restrained ambient motion** — breathing aurora orbs, drifting grid, slow scanline, all `prefers-reduced-motion`-safe and transform/opacity only; (f) **icon tile** (`primary/10` + ring) above the H1; CTA gets a soft teal glow shadow + hover lift; (g) light AND dark are both first-class designed states (theme-aware canvas per item 8). 2026 market pattern to beat, not copy: split-screen with product proof, aurora/glass, kinetic type, mono labels — within OUR locked teal ramp and frozen copy.
+11. **Owner review #4 (2026-11-01, fourth pass):** (a) variants must never read "AI-generated/template" — add hand-placed, authored details: scribble SVG strokes (the one dashoffset), rotated stickers, offset paper layers, mono margin annotations, dotted leaders, hand-drawn arrows, wavy underlines; (b) a variant must NOT clone a live production page's layout — if the reference is admin.nestlancer.com/login, use a different geometry (e.g. bento console grid, not its split); (c) owner-approved exceptions to the teal-only canvas: **green on dark blue** (`#e9f0f8` light paper-blue / `#081426` dark navy, aurora greens `#2fbf71`/`#6ee7a8`/`#5ce09a`) for the ambient-background variants — scoped to those variants' local CSS vars only, `shared/tokens.css` stays verbatim; (d) form containers get real presence: offset hard shadow, top accent bar, focus-within ring, padded header tag — never a bare 4px-radius box; (e) every canvas stays theme-aware in BOTH modes (item 8).
+12. **Owner review #5 (2026-11-01): one realistic auth form.** Email + password live together on a single panel with a single submit ("Enter console") — like the live production gates — NOT a step-wise email→Next→password flow with a Change back-link (that read as lab-demo, not production). Validation is inline per-field (`aria-invalid` + `role=alert`), the error summary gets focus, and TOTP/2FA remains a separate challenge panel. Stepper UI shrinks to "1 · Sign-in / 2 · Verify". This is the "secure + classy" default for every auth surface.
+
 ---
 
 ## 6. GATES — do them in order, print each gate block, stop on FAIL
@@ -379,6 +409,7 @@ Skip link · one `h1` · no skipped levels · landmarks `header/nav/main/aside/f
 | Analytics charts | labelled axes, sparse-data states, CSV export |
 | Command palette | operator-complete actions, ↑↓↵ esc, jump-to-queue/user |
 | Toasts + degraded banner (A11) | polite live region, retry + support CTA, undo window where destructive |
+| Auth card (F01 door — enterprise standard §5.4) | email→Next→password steps OR single form · Show/Hide + Caps Lock · forgot link (Gate-A) · consent line · error `role=alert` with focus · dismissible expired/reset notices · 2FA step · reset-sent · © 2026 footer + Secured·HTTPS · dark + 375px + 44px coarse |
 
 ---
 

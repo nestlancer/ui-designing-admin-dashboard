@@ -69,6 +69,7 @@
 - **Do not** push, commit, or branch; **do not** modify the input captures (screenshots, HTML snapshots, reports, Swagger specs, example prompts, scripts).
 - Features come only from: the current UI (Gate S) + the report's CHANGE/ADD lists (Gate R) + the Swagger specs (Gate A). Nothing invented. Online templates (Gate T) are composition references only.
 - **The operator question** gates every family: one operator, 100 items, before lunch, without fear.
+- **Enterprise standards (2026-11-01, master §5.4):** every family prompt now carries an *Enterprise-standards addendum* — `role=alert` errors with focus, dismissible notices, password Show/Hide + Caps-Lock hint, consent line + © 2026 footer + Secured·HTTPS chip, 44px coarse targets, autofocus/skip-link, progressive disclosure allowed on auth/creation flows. Backed by 12 live enterprise login pages studied 2026-11-01 (AWS, GCP, Azure, Salesforce, Cloudflare, Datadog, Stripe, Vercel, GitHub, Atlassian, DigitalOcean, Heroku). Plus the **creative bar (master §5.5)**: every variant is art-directed with one strong idea — teal-ramp background art only, transform/opacity motion + at most one stroke-dashoffset element, display type, 8px rhythm; "if it could be any SaaS page, rebuild axis A/C, never the colour."
 
 ## Family → input map (quick reference)
 

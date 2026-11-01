@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operator sign-in · Admin</title>
+<meta name="description" content="Nestlancer Admin operator sign-in. For Nestlancer administrators and internal operators only.">
+<script>
+(function(){try{
+  var q=new URLSearchParams(location.search).get('theme');
+  var t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  if(t==='dark')document.documentElement.classList.add('dark');
+}catch(e){}})();
+</script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<link rel="stylesheet" href="../../../shared/tokens.css">
+<link rel="stylesheet" href="../../../shared/base.css">
+<style>
+/* V5 "CHOREOGRAPHY" (2026 pass 3) — motion-led: pointer spotlight follows the cursor over a deep
+   stage, logo mark orbits in a conic ring, every element enters on a staggered beat, step rail draws
+   itself. Canvas fully theme-aware (light: bright stage spotlight / dark: deep teal void). */
+:root{
+  --page-bg:#e9f0f8; --on-page:var(--foreground); --on-page-soft:var(--muted-foreground);
+  --spot:radial-gradient(560px circle at var(--mx,70%) var(--my,20%), rgba(47,191,113,.20), transparent 62%);
+  --grid-c:rgba(10,30,60,.09);
+  --ring:conic-gradient(from 0deg, #0f9d63, transparent 30%, transparent 55%, #0f9d63 80%, transparent);
+  --card-bg:var(--card); --card-line:var(--border);
+  --wordmark:#0f9d63; --trust-c:var(--status-success-text);
+  --toggle-bg:var(--card); --toggle-fg:var(--muted-foreground); --toggle-border:var(--border); --toggle-hover:var(--muted);
+}
+.dark{
+  --page-bg:#081426; --on-page:#e8f1fb; --on-page-soft:rgba(232,241,251,.6);
+  --spot:radial-gradient(620px circle at var(--mx,70%) var(--my,20%), rgba(47,191,113,.32), transparent 64%);
+  --grid-c:rgba(130,170,215,.09);
+  --ring:conic-gradient(from 0deg, #5ce09a, transparent 30%, transparent 55%, #14a07c 80%, transparent);
+  --card-bg:#0b1b30; --card-line:rgba(130,170,215,.20);
+  --wordmark:#5ce09a; --trust-c:#5ce09a;
+  --toggle-bg:rgba(255,255,255,.06); --toggle-fg:#bcd6ee; --toggle-border:rgba(130,170,215,.4); --toggle-hover:rgba(255,255,255,.14);
+}
+body{background:var(--page-bg); color:var(--on-page); overflow-x:hidden; transition:background var(--duration-normal) ease, color var(--duration-normal) ease}
+a{color:var(--wordmark)}
+
+.canvas{position:fixed; inset:0; z-index:0; pointer-events:none}
+.spot{position:absolute; inset:0; background:var(--spot); transition:background var(--duration-fast) linear}
+.grid-dots{position:absolute; inset:0; background-image:radial-gradient(var(--grid-c) 1px, transparent 1.6px); background-size:30px 30px; mask-image:radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 80%); -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 80%)}
+.star{position:absolute; width:3px; height:3px; border-radius:50%; background:var(--wordmark); opacity:.55; animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.12; transform:scale(.6)}}
+
+.topbar{position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; padding:20px clamp(18px,4vw,44px)}
+.brand-link{display:inline-flex; transition:opacity var(--duration-fast)}
+.brand-link:hover{opacity:.75; text-decoration:none}
+.logo-full{height:28px; width:auto}
+.icon-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:999px; border:1px solid var(--toggle-border); background:var(--toggle-bg); color:var(--toggle-fg); cursor:pointer; transition:background var(--duration-fast), border-color var(--duration-fast)}
+.icon-btn:hover{background:var(--toggle-hover)}
+.icon-btn svg{width:18px; height:18px}
+
+.stage{position:relative; z-index:1; min-height:calc(100vh - 78px); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 18px 44px}
+
+.orbit{position:relative; width:110px; height:110px; margin-bottom:20px}
+.orbit::before{content:""; position:absolute; inset:0; border-radius:50%; background:var(--ring); animation:spin 9s linear infinite; -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px)); mask:radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px))}
+.orbit::after{content:""; position:absolute; inset:12px; border-radius:50%; background:radial-gradient(circle, color-mix(in srgb, var(--primary) 24%, transparent), transparent 70%); filter:blur(10px); animation:pulse 3.2s ease-in-out infinite}
+.mark{position:absolute; inset:0; margin:auto; width:54px; height:55px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.5; transform:scale(.9)}}
+
+.wordmark-line{font-family:var(--mono); font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--wordmark); font-weight:700; margin-bottom:10px}
+h1.display{font-size:clamp(32px,4.8vw,46px); line-height:1.04; letter-spacing:-.045em; font-weight:800; text-align:center}
+.sub{font-size:13.5px; line-height:1.6; color:var(--on-page-soft); text-align:center; max-width:48ch; margin:12px auto 24px}
+
+.card{width:100%; max-width:430px; background:var(--card-bg); color:var(--foreground); border:1px solid var(--card-line); border-radius:var(--radius-xl); box-shadow:0 34px 90px rgba(0,0,0,.4); padding:26px 26px 20px; transition:background var(--duration-normal) ease, border-color var(--duration-normal) ease}
+
+.steps-rail{display:flex; align-items:center; gap:10px; margin-bottom:18px}
+.steps-rail .seg{flex:1; height:3px; border-radius:2px; background:var(--muted); overflow:hidden; position:relative}
+.steps-rail .seg i{position:absolute; inset:0; background:var(--primary); transform:scaleX(0); transform-origin:left; transition:transform var(--duration-slow) var(--ease-spring)}
+.steps-rail .seg.on i{transform:scaleX(1)}
+.steps-rail .lbl{font-family:var(--mono); font-size:10.5px; color:var(--muted-foreground); white-space:nowrap}
+.steps-rail .lbl.on{color:var(--primary)}
+.panels{position:relative; overflow:hidden}
+.panel{transition:transform var(--duration-normal) ease, opacity var(--duration-normal) ease}
+.panel.off{position:absolute; inset:0; transform:translateX(30px); opacity:0; pointer-events:none}
+.panel.back{transform:translateX(-30px)}
+.form{display:flex; flex-direction:column; gap:16px}
+.label-row{display:flex; align-items:baseline; justify-content:space-between; gap:10px}
+.forgot{font-size:12px}
+.input{height:46px; font-size:15px}
+.pw-row{position:relative}
+.pw-row .input{padding-right:78px}
+.pw-toggle{position:absolute; right:7px; top:50%; transform:translateY(-50%); height:32px; padding:0 11px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--muted); color:var(--muted-foreground); font-size:12px; font-weight:600; cursor:pointer; transition:background var(--duration-fast),color var(--duration-fast)}
+.pw-toggle:hover{color:var(--foreground); background:var(--border)}
+.caps-hint{font-size:12px; color:var(--status-warning-text); display:none; align-items:center; gap:6px}
+.caps-hint.on{display:inline-flex}
+.who{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted-foreground); background:var(--muted); border:1px solid var(--border); border-radius:var(--radius-md); padding:9px 12px}
+.who .mono{color:var(--foreground); font-weight:600}
+.who button{margin-left:auto}
+.row-between{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.remember{display:inline-flex; gap:9px; font-size:13px; cursor:pointer; align-items:flex-start}
+.remember input{width:16px; height:16px; margin-top:1px; accent-color:var(--primary)}
+.remember .hint{display:block; font-size:11px; color:var(--muted-foreground)}
+.alt-link{font-size:13px; color:var(--muted-foreground)}
+.btn{height:46px; font-size:15px; transition:background var(--duration-fast), transform var(--duration-fast), box-shadow var(--duration-fast)}
+.btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 30px color-mix(in srgb, var(--primary) 42%, transparent)}
+.btn-primary:active{transform:translateY(0)}
+.consent{font-size:11px; color:var(--muted-foreground); line-height:1.55}
+.demo-bar{display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-top:16px; padding-top:13px; border-top:1px solid var(--card-line); font-size:12px; color:var(--muted-foreground)}
+.chip{border:1px solid var(--border); background:var(--card); color:var(--muted-foreground); border-radius:999px; padding:4px 11px; font-size:11px; font-weight:600; cursor:pointer; transition:all var(--duration-fast)}
+.chip:hover{border-color:var(--ring)}
+.chip[aria-pressed="true"]{background:var(--primary-tint); color:var(--primary); border-color:var(--ring)}
+
+.foot{margin-top:24px; font-size:11px; color:var(--on-page-soft); display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; justify-content:center}
+.foot .mono{font-size:11px; color:var(--on-page)}
+.foot a{color:var(--wordmark)}
+.trust{display:inline-flex; align-items:center; gap:6px; color:var(--trust-c); font-weight:600}
+.trust svg{width:12px; height:12px}
+.variant-nav{display:flex; justify-content:space-between; gap:12px; margin-top:18px; font-size:12px; width:100%; max-width:430px}
+.variant-nav a{color:var(--wordmark)}
+.hidden{display:none!important}
+.spinner{width:15px; height:15px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite}
+.notice .dismiss{margin-left:auto; background:none; border:0; color:inherit; cursor:pointer; font-size:15px; line-height:1; padding:2px 5px; border-radius:var(--radius-sm)}
+.linklike{background:none;border:0;padding:0;color:var(--primary);font-size:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.notice-success{background:var(--status-success-bg);color:var(--status-success-text);border-color:var(--status-success-border)}
+/* choreographed entrance — every element lands on its own beat */
+.beat{opacity:0; transform:translateY(18px) scale(.985); animation:beat var(--duration-slow) var(--ease-spring) forwards}
+.b1{animation-delay:40ms}.b2{animation-delay:130ms}.b3{animation-delay:230ms}.b4{animation-delay:340ms}.b5{animation-delay:470ms}.b6{animation-delay:620ms}
+@keyframes beat{to{opacity:1; transform:none}}
+@media (max-width:520px){ .card{padding:22px 18px 16px; border-radius:var(--radius-lg)} .orbit{width:92px; height:92px} .mark{width:46px; height:47px} }
+@media (pointer:coarse){ .btn,.input{height:48px} .chip{min-height:38px} .pw-toggle{height:38px} .icon-btn{width:44px; height:44px} }
+@media (prefers-reduced-motion:reduce){ .beat,.orbit::before,.orbit::after,.star{animation:none!important; opacity:1; transform:none} .panel,.btn{transition:none} .spot{background:none} }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to sign-in</a>
+
+<div class="canvas" aria-hidden="true">
+  <div class="grid-dots"></div>
+  <div class="spot" id="spot"></div>
+  <span class="star" style="left:12%; top:22%"></span>
+  <span class="star" style="left:84%; top:16%; animation-delay:1.2s"></span>
+  <span class="star" style="left:22%; top:74%; animation-delay:2.1s"></span>
+  <span class="star" style="left:76%; top:70%; animation-delay:.6s"></span>
+  <span class="star" style="left:50%; top:8%; animation-delay:2.8s"></span>
+  <span class="star" style="left:8%; top:52%; animation-delay:1.7s"></span>
+  <span class="star" style="left:92%; top:46%; animation-delay:3.3s"></span>
+</div>
+
+<header class="topbar">
+  <a class="brand-link" href="https://nestlancer.com" aria-label="Nestlancer home">
+    <img class="logo-full logo-for-light" src="../../../assets/logo-full-light.svg" alt="Nestlancer" width="109" height="30">
+    <img class="logo-full logo-for-dark" src="../../../assets/logo-full-dark.svg" alt="Nestlancer" width="109" height="30">
+  </a>
+  <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.3 11.3 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <svg class="ic-moon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+
+<main class="stage" id="main-content">
+  <div class="orbit beat b1" aria-hidden="true">
+    <img class="mark logo-for-light" src="../../../assets/logo-mark-light.svg" alt="" width="54" height="55">
+    <img class="mark logo-for-dark" src="../../../assets/logo-mark-dark.svg" alt="" width="54" height="55">
+  </div>
+  <p class="wordmark-line beat b2">Nestlancer · Ops</p>
+  <h1 class="display beat b3">Operator sign-in</h1>
+  <p class="sub beat b3">For Nestlancer administrators and internal operators only. Client accounts use the main app.</p>
+
+  <section class="card beat b4" aria-label="Sign-in form">
+    <div class="steps-rail" aria-hidden="true">
+      <span class="lbl on" id="lbl-1">1 · Sign-in</span><span class="seg on" id="seg-1"><i></i></span>
+      <span class="lbl" id="lbl-2">2 · Verify</span><span class="seg" id="seg-2"><i></i></span>
+    </div>
+
+    <div id="notice-zone" aria-live="polite"></div>
+
+    <div class="panels">
+          <div class="panel" id="panel-login">
+            <form id="login-form" class="form" method="post" action="/api/v1/auth/login" novalidate>
+              <div class="field">
+                <label for="admin-email">Work email</label>
+                <input class="input" id="admin-email" type="email" name="email" autocomplete="username" inputmode="email" required placeholder="you@company.com" enterkeyhint="next" aria-describedby="email-err" autofocus>
+                <p class="field-error hidden" id="email-err" role="alert">Enter your work email — the address you were given for the console.</p>
+              </div>
+              <div class="field">
+                <div class="label-row">
+                  <label for="current-password">Password</label>
+                  <button type="button" class="forgot linklike" id="forgot-btn">Forgot password?</button>
+                </div>
+                <div class="pw-row">
+                  <input class="input" id="current-password" type="password" name="password" autocomplete="current-password" required placeholder="Enter your password" enterkeyhint="done" aria-describedby="pw-err caps-hint">
+                  <button type="button" class="pw-toggle" id="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button>
+                </div>
+                <p class="field-error hidden" id="pw-err" role="alert">Enter your password.</p>
+                <p class="caps-hint" id="caps-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> Caps Lock is on</p>
+              </div>
+              <div class="row-between">
+                <label class="remember"><span><input type="checkbox" name="rememberMe"> Keep me signed in</span><span class="hint">On a shared machine, leave this off — sessions still end at TTL 8h / 30d.</span></label>
+                <span class="alt-link">Client account? <a href="https://app.nestlancer.com/login">Client sign-in</a></span>
+              </div>
+              <button class="btn btn-primary btn-block" id="submit-btn" type="submit"><span class="spinner hidden" aria-hidden="true"></span><span id="submit-label">Enter console</span></button>
+              <p class="consent">By continuing, you agree to our <a href="https://app.nestlancer.com/terms">Terms</a> and <a href="https://app.nestlancer.com/privacy">Privacy Policy</a>.</p>
+            </form>
+          </div>
+          <div class="panel off" id="panel-twofa" aria-hidden="true">
+            <form id="twofa-form" class="form" method="post" action="/api/v1/auth/verify-2fa" novalidate aria-labelledby="twofa-h">
+              <h2 id="twofa-h" style="font-size:22px;font-weight:800;letter-spacing:-.02em">Two-factor challenge</h2>
+              <p class="sub" style="font-size:13px;color:var(--muted-foreground);margin:8px 0 0">Enter the 6-digit TOTP code (or an 8–10 character backup code). Session <span class="mono">auth_sess_12345678</span></p>
+              <div class="field">
+                <label for="totp-code">Verification code</label>
+                <input class="input mono" id="totp-code" type="text" inputmode="numeric" name="code" minlength="6" maxlength="10" required placeholder="123456" autocomplete="one-time-code" style="font-size:20px;letter-spacing:.3em">
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Verify and enter console</button>
+            </form>
+          </div>
+        </div>
+
+
+    <div class="demo-bar" role="group" aria-label="Demo state (lab affordance)">
+      <span>Demo:</span>
+      <button type="button" class="chip" data-state="default" aria-pressed="true">Sign-in</button>
+      <button type="button" class="chip" data-state="error" aria-pressed="false">Invalid</button>
+      <button type="button" class="chip" data-state="expired" aria-pressed="false">Expired</button>
+      <button type="button" class="chip" data-state="twofa" aria-pressed="false">2FA</button>
+      <button type="button" class="chip" data-state="reset" aria-pressed="false">Reset sent</button>
+    </div>
+  </section>
+
+  <div class="foot beat b5">
+    <span class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Secured · HTTPS</span>
+    <span class="mono">host · admin.nestlancer.com</span>
+    <span>© 2026 Nestlancer · <a href="https://app.nestlancer.com/terms">Terms</a> · <a href="https://app.nestlancer.com/privacy">Privacy</a></span>
+  </div>
+
+  <nav class="variant-nav beat b6" aria-label="Variants">
+    <a href="../../index.html">← Lab gallery</a>
+    <span><a href="../V4/index.html">← V4</a> &nbsp;·&nbsp; <a href="../V1/index.html">V1 →</a></span>
+  </nav>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+  var toggle=document.getElementById('theme-toggle');
+  function sync(){var d=root.classList.contains('dark');toggle.setAttribute('aria-pressed',String(d));toggle.querySelector('.ic-sun').classList.toggle('hidden',!d);toggle.querySelector('.ic-moon').classList.toggle('hidden',d);}
+  toggle.addEventListener('click',function(){root.classList.toggle('dark');try{localStorage.setItem('nl-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}sync();});
+  sync();
+
+  /* pointer spotlight (skipped for reduced motion / coarse pointers) */
+  try{
+    if(matchMedia('(prefers-reduced-motion: no-preference)').matches && matchMedia('(pointer:fine)').matches){
+      var spot=document.getElementById('spot');
+      document.addEventListener('mousemove',function(e){
+        spot.style.setProperty('--mx',(e.clientX/window.innerWidth*100)+'%');
+        spot.style.setProperty('--my',(e.clientY/window.innerHeight*100)+'%');
+      },{passive:true});
+    }
+  }catch(e){}
+
+  var pw=document.getElementById('current-password'),pt=document.getElementById('pw-toggle');
+  pt.addEventListener('click',function(){var s=pw.type==='password';pw.type=s?'text':'password';pt.setAttribute('aria-pressed',String(s));pt.setAttribute('aria-label',s?'Hide password':'Show password');pt.textContent=s?'Hide':'Show';pw.focus();});
+  var caps=document.getElementById('caps-hint');
+  function capsCheck(e){ if(e.getModifierState) caps.classList.toggle('on', e.getModifierState('CapsLock')); }
+  pw.addEventListener('keydown',capsCheck); pw.addEventListener('keyup',capsCheck); pw.addEventListener('blur',function(){caps.classList.remove('on')});
+
+  var pLogin=document.getElementById('panel-login'),pTwo=document.getElementById('panel-twofa');
+  var seg1=document.getElementById('seg-1'),seg2=document.getElementById('seg-2');
+  var lbl1=document.getElementById('lbl-1'),lbl2=document.getElementById('lbl-2');
+  function show(el,step){
+    [pLogin,pTwo].forEach(function(p){p.classList.add('off');p.classList.remove('back');p.setAttribute('aria-hidden','true');});
+    el.classList.remove('off'); el.setAttribute('aria-hidden','false');
+    seg1.classList.toggle('on',step>=1); seg2.classList.toggle('on',step>=2);
+    lbl1.classList.toggle('on',step===1); lbl2.classList.toggle('on',step===2);
+    var f=el.querySelector('input'); if(f)f.focus({preventScroll:true});
+  }
+  var email=document.getElementById('admin-email'),emailErr=document.getElementById('email-err'),pwErr=document.getElementById('pw-err');
+  document.getElementById('login-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true, ev=email.value.trim();
+    if(!ev||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)){email.setAttribute('aria-invalid','true');emailErr.classList.remove('hidden');ok=false;}else{email.removeAttribute('aria-invalid');emailErr.classList.add('hidden');}
+    if(!pw.value){pw.setAttribute('aria-invalid','true');pwErr.classList.remove('hidden');ok=false;}else{pw.removeAttribute('aria-invalid');pwErr.classList.add('hidden');}
+    if(!ok){(ev?pw:email).focus();return;}
+    var b=document.getElementById('submit-btn');b.disabled=true;b.setAttribute('aria-busy','true');b.querySelector('.spinner').classList.remove('hidden');document.getElementById('submit-label').textContent='Signing in\u2026';
+    setTimeout(function(){b.disabled=false;b.removeAttribute('aria-busy');b.querySelector('.spinner').classList.add('hidden');document.getElementById('submit-label').textContent='Enter console';setState('error');},900);
+  });
+  document.getElementById('twofa-form').addEventListener('submit',function(e){e.preventDefault();});
+
+  var zone=document.getElementById('notice-zone');
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var ICONS={
+    error:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>',
+    info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+    success:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+  };
+  var MSG={
+    error:{cls:'notice-error',icon:ICONS.error,html:'<strong>Those credentials didn\u2019t match an operator account.</strong> Failed attempts are rate-limited and written to the audit log with IP and user-agent. Try again.',focus:true},
+    expired:{cls:'notice-info',icon:ICONS.info,html:'<strong>Your session expired — sign back in.</strong> Nothing was lost; your queues keep their place. (Refresh returned 409/503 mid-shift — finding #3.)',dismiss:true},
+    reset:{cls:'notice-success',icon:ICONS.success,html:'<strong>If an account exists with this email, you will receive password reset instructions.</strong> (Spec copy — POST /api/v1/auth/forgot-password.)',dismiss:true}
+  };
+  function notice(m){zone.innerHTML='';var d=document.createElement('div');d.className='notice '+m.cls;d.tabIndex=-1;d.innerHTML=m.icon+'<span>'+m.html+'</span>';if(m.dismiss){var b=document.createElement('button');b.type='button';b.className='dismiss';b.setAttribute('aria-label','Dismiss notice');b.textContent='\u00d7';b.addEventListener('click',function(){zone.innerHTML='';});d.appendChild(b);}zone.appendChild(d);if(m.focus)d.focus();}
+  function setState(s){
+    chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.state===s))});
+    if(MSG[s])notice(MSG[s]); else zone.innerHTML='';
+    if(s==='twofa')show(pTwo,2); else if(s==='default')show(pLogin,1);
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){setState(c.dataset.state)})});
+  document.getElementById('forgot-btn').addEventListener('click',function(){setState('reset');});
+})();
+</script>
+</body>
+</html>

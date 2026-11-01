@@ -73,6 +73,8 @@ The console's front door. Captured twice: logged-out `/login` (`01`) and the mid
 | `61-requests-index.html` | `/login` — Operator sign-in (expired-session landing) | — (auth surface) |
 
 **Must include (every variant):** email + password + Show toggle + *Enter console* (frozen labels) · inline validation + invalid-credentials error (from `auth` spec error codes) · expired-session variant of the page ("signed out — sign back in", no data loss scare) + retry honesty · Caps-lock/2FA-ready affordance only if spec-backed, else demo-labelled · no SSO/passkey invented (report: fine for v1) · reduced-motion + 375px + dark.
+
+**Enterprise standards (2026-11-01, master §5.4 — now mandatory in every variant):** **single combined form only (owner review #5, 2026-11-01): Work email + Password on ONE panel with one *Enter console* submit — no email→Next→password stepping, no Change back-link; realistic like the live gates. 2FA stays a separate challenge panel (demo chip). Labels stay frozen · **Forgot password?** link backed by `POST /api/v1/auth/forgot-password` (Gate A; reset-sent notice reuses the spec 200 copy verbatim) · top-of-card `role="alert"` error summary that receives focus + per-field `aria-invalid`/`aria-describedby` · dismissible expired/reset notices · consent line under submit ("By continuing, you agree to our Terms and Privacy Policy.") · footer with **© 2026 Nestlancer**, Terms · Privacy, `host · admin.nestlancer.com` (mono), "Secured · HTTPS" chip · Show/Hide + **Caps Lock hint** (`getModifierState`) · shared-device hint beside *Keep me signed in* · autofocus first field · skip link · 44px targets on coarse pointers · working dark + `?theme=` boot. Brand canvases/panels must be theme-aware via CSS vars (both themes work — no hardcoded colour); use the shared client-lab logo pair from `admin-portal-lab/assets/` (`logo-mark-light/dark.svg` swapped by `.dark`, `alt` required, `favicon.svg` icon) — master §5.5 items 8–9. Pass 3: production-mindset rules for auth pages per master §5.5 item 10 (editorial split + product proof + live signals + kinetic type + aurora ambience). Pass 4 (2026-11-01 owner review #4): pages must read hand-crafted (scribbles, stickers, offset layers, annotations), never clone a live production layout, form boxes get real presence (offset shadow + top bar + focus-within), and owner-approved ambient variants may use the green-on-dark-blue scheme (#e9f0f8/#081426) via local vars only — master §5.5 items 11–12.
 **Content lock:** freeze H1, labels, button copy, help/error strings from `01` + `61` at Gate S; keep the operator tone ("console", not "app").
 **Cross-cutting:** light + dark · 375px · empty (n/a) + loading (submit progress) + error states · no-JS form posts readably.
 
@@ -117,13 +119,13 @@ Do not draw a single concept until S + R + A + T all PASS.
 Card template + Difference Test axes: master §8.1–§8.2 (≥3 of 5 axes, incl. A or C; colour never an axis). Coverage: ≥1 minimal · ≥1 dense · ≥1 action-led · ≥1 narrative-led · ≥1 motion-led.
 
 ### 8.3 Roster guidance (adapt freely — keep 5)
-| Variant | Suggested aspect (same tokens) |
+| Variant | Art direction (same tokens) — as shipped 2026-11-01 pass 4, owner review #4 (master §5.5 items 8–11) |
 |---|---|
-| V1 | Ground-truth fix: current IA, teal locked, honest errors + expired state |
-| V2 | Split console-door: brand panel + compact sign-in card |
-| V3 | Security-first minimal: 2FA-ready layout, session honesty up front |
-| V4 | Dense ops: sign-in + status (system health line) for on-call |
-| V5 | Motion-signature: calm focus choreography, same content |
+| V1 | **Creator's Draft** — editorial split made hand-placed, NOT template: blueprint grid canvas, oversized display H1 with a hand-scribble SVG circle drawn around "Operator" (the one dashoffset), rotated INTERNAL·ADMIN sticker on the card, offset rotated paper layer behind the card, mono margin annotation ("↳ ops only…"), wavy-underline keyword + hand-drawn arrow note on the product-stage rail (browser mock NL-204/68% + rows), dotted-leader footer; theme-aware paper/deep-teal canvas |
+| V2 | **Bento Ops** — must NOT clone the live admin.nestlancer.com/login split (owner review #4): bento console grid instead — big auth cell with window chrome (dots · "auth · operator sign-in" · gate-armed live dot) + side tiles: posture ring 2/3 (dashoffset draw), scrolling mono audit ticker (CSS loop, masked), env stat grid (access/role/TTL/audited), latency sparkline p95 182ms; theme-aware cells |
+| V3 | **Aurora Core** — owner-approved, reskinned pass 4: centered glass card over 3 breathing aurora blobs + dot grid on a GREEN-ON-DARK-BLUE scheme (light #e9f0f8 paper-blue with green orbs; dark #081426 navy with #2fbf71/#6ee7a8 aurora — owner-directed exception to teal-only canvas); orbiting dashed logo ring with glow; floating live chips (auth healthy · TLS 1.3 · TTL 8h/30d · ADMIN); green links/wordmark |
+| V4 | **Editorial Index** — magazine spread kept; form sheet box upgraded (owner review #4): radius 12px, offset hard teal shadow (9px 9px 0), teal top bar, padded head with bordered "01 / SIGN-IN" tag, inputs on tinted bg, focus-within ring + stronger shadow, demo bar aligned to padding; masthead rules, watermark 01, 76px headline with kinetic underline, ruled marginalia |
+| V5 | **Choreography** — owner-approved, reskinned pass 4: motion-led stage on GREEN-ON-DARK-BLUE (same #e9f0f8/#081426 scheme as V3): pointer spotlight follows cursor (fine pointers, reduced-motion off), conic orbit ring (green) around logo, twinkling green stars, staggered beat entrance (b1–b6), self-drawing step rail |
 
 ## 9. BUILD (manual, one by one)
 

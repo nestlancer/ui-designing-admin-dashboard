@@ -1,0 +1,3 @@
+# F10 baseline map
+
+Prompt scope: quote detail + Scope/Pricing/Schedule/Terms/Review and line-item library. Captures named: `055-quotes-details.webp`; `095` and `099` pricing/schedule; `096` and `101` terms/review; `098` line-item library; `100` scope/line items; `097` custom schedule (shot baseline, live gap). Detail screenshot reveals read-only accepted quote, totals, status history, versions/documents. Builder screenshots show client brief, phases/line items, line library, persistent total/summary, schedule presets/custom percentages, terms and create/send controls. The live custom schedule state is not verified. The V1 pilot has a compact one-group composer rather than the captured multi-phase editor; treat it as a concept, not full content parity.

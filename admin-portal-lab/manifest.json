@@ -1281,6 +1281,420 @@
           "status": "design preview · responsive/WCAG audit pending"
         }
       ]
+    },
+    "F08-requests-triage": {
+      "slug": "F08-requests-triage",
+      "title": "Requests triage + details",
+      "route": "/requests",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Operating desk",
+          "path": "families/F08-requests-triage/V1/index.html",
+          "aspect": "Captured-reference queue layout",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/requests",
+            "GET /api/v1/admin/requests/capacity/dashboard"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V2",
+          "name": "Split triage",
+          "path": "families/F08-requests-triage/V2/index.html",
+          "aspect": "Selected request context pane",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/requests",
+            "GET /api/v1/admin/requests/capacity/dashboard"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V3",
+          "name": "Card sweep",
+          "path": "families/F08-requests-triage/V3/index.html",
+          "aspect": "Card-oriented triage",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/requests",
+            "GET /api/v1/admin/requests/capacity/dashboard"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V4",
+          "name": "Dense desk",
+          "path": "families/F08-requests-triage/V4/index.html",
+          "aspect": "Compact high-volume scan",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/requests",
+            "GET /api/v1/admin/requests/capacity/dashboard"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V5",
+          "name": "Focus loop",
+          "path": "families/F08-requests-triage/V5/index.html",
+          "aspect": "Focus and keyboard movement",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/requests",
+            "GET /api/v1/admin/requests/capacity/dashboard"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        }
+      ],
+      "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
+    },
+    "F09-quotes-list": {
+      "slug": "F09-quotes-list",
+      "title": "Quotes list",
+      "route": "/quotes",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Revenue watchtower",
+          "path": "families/F09-quotes-list/V1/index.html",
+          "aspect": "Grounded quote table",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes",
+            "GET /api/v1/admin/quotes/stats"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V2",
+          "name": "Aging queue",
+          "path": "families/F09-quotes-list/V2/index.html",
+          "aspect": "Age-first follow-up",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes",
+            "GET /api/v1/admin/quotes/stats"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V3",
+          "name": "Revenue cards",
+          "path": "families/F09-quotes-list/V3/index.html",
+          "aspect": "Card dossiers",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes",
+            "GET /api/v1/admin/quotes/stats"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V4",
+          "name": "Ledger",
+          "path": "families/F09-quotes-list/V4/index.html",
+          "aspect": "Compact financial register",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes",
+            "GET /api/v1/admin/quotes/stats"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V5",
+          "name": "Open-next",
+          "path": "families/F09-quotes-list/V5/index.html",
+          "aspect": "Keyboard handoff",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes",
+            "GET /api/v1/admin/quotes/stats"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        }
+      ],
+      "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
+    },
+    "F10-quote-details-builder": {
+      "slug": "F10-quote-details-builder",
+      "title": "Quote details + builder",
+      "route": "/quotes/[id]",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Quote workbench",
+          "path": "families/F10-quote-details-builder/V1/index.html",
+          "aspect": "Balanced stepper and total rail",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "Finish-verify",
+            "Margin unknown guardrail"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes/{id}",
+            "PATCH /api/v1/admin/quotes/{id}",
+            "POST /api/v1/admin/quotes/{id}/send"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V2",
+          "name": "Stepper spine",
+          "path": "families/F10-quote-details-builder/V2/index.html",
+          "aspect": "Step-led editor",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "Finish-verify",
+            "Margin unknown guardrail"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes/{id}",
+            "PATCH /api/v1/admin/quotes/{id}",
+            "POST /api/v1/admin/quotes/{id}/send"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V3",
+          "name": "Ledger first",
+          "path": "families/F10-quote-details-builder/V3/index.html",
+          "aspect": "Item-led register",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "Finish-verify",
+            "Margin unknown guardrail"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes/{id}",
+            "PATCH /api/v1/admin/quotes/{id}",
+            "POST /api/v1/admin/quotes/{id}/send"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V4",
+          "name": "Compact workbench",
+          "path": "families/F10-quote-details-builder/V4/index.html",
+          "aspect": "Dense editing canvas",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "Finish-verify",
+            "Margin unknown guardrail"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes/{id}",
+            "PATCH /api/v1/admin/quotes/{id}",
+            "POST /api/v1/admin/quotes/{id}/send"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        },
+        {
+          "id": "V5",
+          "name": "Review choreography",
+          "path": "families/F10-quote-details-builder/V5/index.html",
+          "aspect": "Reduced-motion review cues",
+          "changes": [
+            "C3",
+            "C5",
+            "C9",
+            "C12",
+            "C18",
+            "C20"
+          ],
+          "adds": [
+            "Finish-verify",
+            "Margin unknown guardrail"
+          ],
+          "api": [
+            "GET /api/v1/admin/quotes/{id}",
+            "PATCH /api/v1/admin/quotes/{id}",
+            "POST /api/v1/admin/quotes/{id}/send"
+          ],
+          "status": "Offline prototype; no API call or persistence"
+        }
+      ],
+      "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
     }
   }
 }

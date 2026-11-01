@@ -1,0 +1,3 @@
+# F10 API map
+
+Bundled quotes spec: `GET/PATCH/DELETE /api/v1/admin/quotes/{id}`, `POST /api/v1/admin/quotes/{id}/send`, `/resend`, `/duplicate`, `/revise`, `GET /api/v1/admin/quotes/{id}/history`, document version endpoints, PDF/contract endpoints, line-item library GET/POST and `{id}` PATCH/DELETE, payment-schedule presets GET. Request prefill/create endpoints are in requests service. The prototype calls none of these. Send/duplicate are local-only preview actions; schedule items/rates are illustrative, not confirmed API values. The existence of route operations does not confirm permission policy or exact request schemas.

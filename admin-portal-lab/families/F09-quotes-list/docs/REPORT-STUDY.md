@@ -1,0 +1,3 @@
+# F09 report study
+
+Based on the UI research report markdown §4.2, §6 and §7 and all ten workbook sheets (Executive Findings, Design Tokens, Page Inventory, Benchmark Patterns, CHANGE, ADD, KEEP, Roadmap, Acceptance checklist, Sources); markdown wins conflicts. Revenue delays are operational queue work, not just aggregate charts. Keep table honesty and microcopy. Apply C3 contrast-safe status text; C5 teal; C9 mono IDs; C12 prominent values; C18 dark parity; C19 pagination context; C20 alt text. Adds: A1 bulk bar, A2 keyboard movement, A3 saved-view affordance, A4 age badges, A5 open-next handoff. Amount age and rows are demo-labelled; there is no invented expiry countdown. Keep total accepted value separate from quote pipeline value.

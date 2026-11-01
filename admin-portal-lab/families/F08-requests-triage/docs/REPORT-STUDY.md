@@ -1,0 +1,5 @@
+# F08 report study
+
+Sources: `reports/NESTLANCER_ADMIN_CONSOLE_UI_RESEARCH_REPORT.md` and all ten workbook sheets (Executive Findings, Design Tokens, Page Inventory, Benchmark Patterns, CHANGE, ADD, KEEP, Roadmap, Acceptance checklist, Sources). The markdown report is the conflict authority. Relevant report findings: queues are visible but not workable; requests is a primary intake surface and capacity card is a keep; age/whose-move and fast queue clearing matter. The redesign retains capacity intelligence and request-history depth while adding queue ergonomics. Changes: C3 contrast-safe text status, C5 teal-only, C9 mono IDs/copy, C12 prominent key values, C18 dark parity, C19 pagination context, C20 logo alt. P1 additions A1 bulk bar, A2 keyboard triage, A3 saved views, A4 age badges, A5 queue→detail→next loop. No backend mutation is simulated as successful.
+
+Report content lock: historical metrics and frozen labels remain separate from illustrative rows. The workbook's ten sheets have not been independently reviewed; consequently this is a scoped report study, not a full gate pass.

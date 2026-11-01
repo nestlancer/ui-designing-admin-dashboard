@@ -140,3 +140,15 @@ All F07 variants were hand-authored; no design-generation script was used. A sha
 
 ## F06/F07 owner organization review (2026-11-02)
 The owner approved the sample data and five visual concepts for each family, but requested better information organization. We retained those data and concept axes. Added shared hierarchy styles and restructured F06 selected-inquiry reading order and F07 ops task/evidence order. See each family's `docs/ORGANIZATION-REVIEW.md`. No variant HTML/CSS generator was used.
+
+## F08–F10 · initial research-led pilots (2026-11-02)
+
+Only V1 pilot pages were authored for Requests, Quotes list and Quote builder. V2–V5 are intentionally not represented as complete. Existing F08/F09/F10 prompt files were left unchanged pending the owner's forthcoming visual review; no claim is made that the 25-family prompt inventory has been fully reread or that the required ten-sheet workbook/gate sequence is complete. Screenshot inspection was performed on the requests queue and quotes list; other named source screenshots are referenced in prompts but were not all individually inspected. Web research informed only general queue, enterprise table, financial-context and confirmation patterns. All page actions are local-only; data provenance is labelled in the pages. No requests or quote emails were sent, and no external API was called.
+
+V1 files: `families/F08-requests-triage/V1/index.html`, `families/F09-quotes-list/V1/index.html`, `families/F10-quote-details-builder/V1/index.html`. Family notes disclose remaining tasks. No production functionality, security boundary, audit persistence, authorization, or successful financial operation is implied.
+
+### F08–F10 scope update (2026-11-02, supersedes pilot-only variant count)
+
+All three families now have five distinct HTML entries and full gallery/manifest links. V2–V5 began from the respective hand-authored V1 skeleton and were manually restyled as split/card/dense/focus (F08), aging/card/ledger/open-next (F09), and stepper/ledger/compact/review (F10). Shared shell refinements provide full-width content, desktop collapse preference, mobile navigation drawer, Escape/focus handling, theme persistence, theme-aware logo and coarse-pointer target sizing. F08/F09 include state-preview selectors, local queue keyboard help, and age-aware filtering; F10 includes stepper arrow navigation, custom-schedule percentage validation, and quote history reference panel. Repository prompt files remain untouched pending joint owner review.
+
+This is completion of the **five visual variant file set**, not a claim that every strict Gate S/R/A/T or Gate 3 criterion passes. F10 does not yet reproduce every multi-phase/details/version/document state from the capture; online research sources are desk references rather than eight deep product teardowns; no browser/axe/viewport screenshots or user throughput study were possible in this environment. See each family DELIVERY-REPORT for explicit status and limits. Earlier wording in the first F08–F10 DECISIONS entry describing “only V1” is historical and superseded by this update.

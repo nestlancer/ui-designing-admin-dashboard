@@ -1,0 +1,5 @@
+# F08 baseline map
+
+Screenshot set named by the prompt: `056-requests.webp` queue/capacity; `057-requests-details.webp` details; `058-requests-details-quote-new.webp` quote entry; `102-request-details-edit-form.webp` edit; `001-request-details-ready-to-quote.webp` ready-to-quote. The queue screenshot was inspected directly. The prompt inventory also cites snapshots `194-requests-index-list.html`, `62…66` request detail states, `143-requests-details.html`, `144-requests-details-state-edit.html`; the README and captures remain the authoritative reconciliation source.
+
+Frozen queue facts: capacity 7 active / 16 queued / 28% / max 25; editable max-active and warning threshold; summary 46 total / 6 categories / average response 0 minutes / conversion 43.9%; 13 visible rows and table fields ID, title, status, category, client, created, Review. Details retain requirements, attachments/history/linked quote and edit actions. These are captures, not current values. Quote entry/ready-to-quote/custom schedule states are screenshot-backed and/or API-backed but not independently verified live. Avoid treating unknown attachment contents or record identity as true.

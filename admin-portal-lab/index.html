@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nestlancer Admin Portal Lab — Gallery</title>
-<script>
-(function(){try{
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Nestlancer Admin Portal Lab &mdash; Gallery
+  </title>
+  <script>
+   (function(){try{
   var q=new URLSearchParams(location.search).get('theme');
   var t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
   if(t==='dark')document.documentElement.classList.add('dark');
 }catch(e){}})();
-</script>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="shared/tokens.css">
-<link rel="stylesheet" href="shared/base.css">
-<style>
-.wrap{max-width:var(--content); margin:0 auto; padding:28px 20px 60px}
+  </script>
+  <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="shared/tokens.css" rel="stylesheet"/>
+  <link href="shared/base.css" rel="stylesheet"/>
+  <style>
+   .wrap{max-width:var(--content); margin:0 auto; padding:28px 20px 60px}
 .top{display:flex; align-items:center; gap:12px; margin-bottom:8px}
 .top img{width:30px; height:31px}
 .top h1{font-size:26px; font-weight:800; letter-spacing:-.02em}
@@ -40,121 +42,676 @@
 .head{display:flex; align-items:center; gap:12px}
 .head .spacer{flex:1}
 .hidden{display:none!important}
-</style>
-</head>
-<body>
-<a class="skip-link" href="#main-content">Skip to content</a>
-<main class="wrap" id="main-content">
-  <div class="head">
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main-content">
+   Skip to content
+  </a>
+  <main class="wrap" id="main-content">
+   <div class="head">
     <div class="top">
-      <img class="logo-for-light" src="assets/logo-mark-light.svg" alt="Nestlancer logo" width="30" height="31">
-      <img class="logo-for-dark" src="assets/logo-mark-dark.svg" alt="Nestlancer logo" width="30" height="31">
-      <h1>Admin Portal Lab</h1><span class="tag">25 families × 5 variants</span>
+     <img alt="Nestlancer logo" class="logo-for-light" height="31" src="assets/logo-mark-light.svg" width="30"/>
+     <img alt="Nestlancer logo" class="logo-for-dark" height="31" src="assets/logo-mark-dark.svg" width="30"/>
+     <h1>
+      Admin Portal Lab
+     </h1>
+     <span class="tag">
+      25 families &times; 5 variants
+     </span>
     </div>
-    <div class="spacer"></div>
-    <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-      <svg class="ic-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.3 11.3 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <div class="spacer">
+    </div>
+    <button aria-label="Toggle dark mode" aria-pressed="false" class="icon-btn" id="theme-toggle" type="button">
+     <svg aria-hidden="true" class="ic-sun hidden" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+      <circle cx="12" cy="12" r="4">
+      </circle>
+      <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.3 11.3 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4">
+      </path>
+     </svg>
+     <svg aria-hidden="true" class="ic-moon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z">
+      </path>
+     </svg>
     </button>
-  </div>
-  <p class="lede">Redesigned, corrected, upgraded template lab for the Nestlancer Operator Console. One locked teal scheme (<code>shared/tokens.css</code>); every variant is hand-authored; content frozen from the repo captures. Preview: <code>python3 -m http.server 8131</code> from the repo root → <code>/admin-portal-lab/</code>.</p>
-
-  <!-- F01 section (this run adds/replaces only its own family section) -->
-  <section class="fam" id="F01-auth-login" aria-labelledby="f01-h">
-    <h2 id="f01-h">F01 · Auth · Operator sign-in</h2>
-    <p class="scope">Route <code>/login</code> (logged-out + expired-session landing) · 2 HTML states · 0 screenshots · global fixes C3 C5 C9 C12 C15 C18 C20 · add A11 (expired-session honesty)</p>
+   </div>
+   <p class="lede">
+    Redesigned, corrected, upgraded template lab for the Nestlancer Operator Console. One locked teal scheme (
+    <code>
+     shared/tokens.css
+    </code>
+    ); every variant is hand-authored; content frozen from the repo captures. Preview:
+    <code>
+     python3 -m http.server 8131
+    </code>
+    from the repo root &rarr;
+    <code>
+     /admin-portal-lab/
+    </code>
+    .
+   </p>
+   <!-- F01 section (this run adds/replaces only its own family section) -->
+   <section aria-labelledby="f01-h" class="fam" id="F01-auth-login">
+    <h2 id="f01-h">
+     F01 &middot; Auth &middot; Operator sign-in
+    </h2>
+    <p class="scope">
+     Route
+     <code>
+      /login
+     </code>
+     (logged-out + expired-session landing) &middot; 2 HTML states &middot; 0 screenshots &middot; global fixes C3 C5 C9 C12 C15 C18 C20 &middot; add A11 (expired-session honesty)
+    </p>
     <div class="vgrid">
-      <a class="vlink" href="families/F01-auth-login/V1/index.html"><span class="v">V1 · Creator's Draft</span><span class="d">pass 4 — hand-placed: blueprint grid, scribble-circle headline, rotated sticker, offset paper card, product rail</span></a>
-      <a class="vlink" href="families/F01-auth-login/V2/index.html"><span class="v">V2 · Bento Ops</span><span class="d">pass 4 — bento console grid: auth window cell + posture ring, live audit ticker, env stats, latency spark</span></a>
-      <a class="vlink" href="families/F01-auth-login/V3/index.html"><span class="v">V3 · Aurora Core</span><span class="d">pass 4 — glass card over green aurora on dark blue, orbiting logo ring, floating live chips</span></a>
-      <a class="vlink" href="families/F01-auth-login/V4/index.html"><span class="v">V4 · Editorial Index</span><span class="d">pass 4 — magazine spread, upgraded form sheet: offset teal shadow, top bar, focus-within ring</span></a>
-      <a class="vlink" href="families/F01-auth-login/V5/index.html"><span class="v">V5 · Choreography</span><span class="d">pass 4 — green spotlight on dark blue, conic orbit, beat entrance, stars</span></a>
+     <a class="vlink" href="families/F01-auth-login/V1/index.html">
+      <span class="v">
+       V1 &middot; Creator's Draft
+      </span>
+      <span class="d">
+       pass 4 &mdash; hand-placed: blueprint grid, scribble-circle headline, rotated sticker, offset paper card, product rail
+      </span>
+     </a>
+     <a class="vlink" href="families/F01-auth-login/V2/index.html">
+      <span class="v">
+       V2 &middot; Bento Ops
+      </span>
+      <span class="d">
+       pass 4 &mdash; bento console grid: auth window cell + posture ring, live audit ticker, env stats, latency spark
+      </span>
+     </a>
+     <a class="vlink" href="families/F01-auth-login/V3/index.html">
+      <span class="v">
+       V3 &middot; Aurora Core
+      </span>
+      <span class="d">
+       pass 4 &mdash; glass card over green aurora on dark blue, orbiting logo ring, floating live chips
+      </span>
+     </a>
+     <a class="vlink" href="families/F01-auth-login/V4/index.html">
+      <span class="v">
+       V4 &middot; Editorial Index
+      </span>
+      <span class="d">
+       pass 4 &mdash; magazine spread, upgraded form sheet: offset teal shadow, top bar, focus-within ring
+      </span>
+     </a>
+     <a class="vlink" href="families/F01-auth-login/V5/index.html">
+      <span class="v">
+       V5 &middot; Choreography
+      </span>
+      <span class="d">
+       pass 4 &mdash; green spotlight on dark blue, conic orbit, beat entrance, stars
+      </span>
+     </a>
     </div>
-  </section>
-
-  <!-- F02 section: dashboard family added without changing F01 -->
-  <section class="fam" id="F02-dashboard-command-center" aria-labelledby="f02-h">
-    <h2 id="f02-h">F02 · Dashboard · Command center</h2>
-    <p class="scope">Route <code>/dashboard</code> · five offline designs · historical capture: 30 Oct 2026, 13:38 UTC · local previews, not live operations</p>
+   </section>
+   <!-- F02 section: dashboard family added without changing F01 -->
+   <section aria-labelledby="f02-h" class="fam" id="F02-dashboard-command-center">
+    <h2 id="f02-h">
+     F02 &middot; Dashboard &middot; Command center
+    </h2>
+    <p class="scope">
+     Route
+     <code>
+      /dashboard
+     </code>
+     &middot; five offline designs &middot; historical capture: 30 Oct 2026, 13:38 UTC &middot; local previews, not live operations
+    </p>
     <div class="vgrid">
-      <a class="vlink" href="families/F02-dashboard-command-center/V1/index.html"><span class="v">V1 · Northstar</span><span class="d">Money-first verdict, broad attention strip and balanced operational canvas.</span></a>
-      <a class="vlink" href="families/F02-dashboard-command-center/V2/index.html"><span class="v">V2 · The Brief</span><span class="d">Editorial decision note with an asymmetric margin and handover context.</span></a>
-      <a class="vlink" href="families/F02-dashboard-command-center/V3/index.html"><span class="v">V3 · Queue Spine</span><span class="d">Keyboard-friendly triage rail with supporting metrics alongside.</span></a>
-      <a class="vlink" href="families/F02-dashboard-command-center/V4/index.html"><span class="v">V4 · Signal Board</span><span class="d">Status-first bento, honest service checks and demo-state controls.</span></a>
-      <a class="vlink" href="families/F02-dashboard-command-center/V5/index.html"><span class="v">V5 · Shift Ledger</span><span class="d">Dense records-first register with inline row previews.</span></a>
+     <a class="vlink" href="families/F02-dashboard-command-center/V1/index.html">
+      <span class="v">
+       V1 &middot; Northstar
+      </span>
+      <span class="d">
+       Money-first verdict, broad attention strip and balanced operational canvas.
+      </span>
+     </a>
+     <a class="vlink" href="families/F02-dashboard-command-center/V2/index.html">
+      <span class="v">
+       V2 &middot; The Brief
+      </span>
+      <span class="d">
+       Editorial decision note with an asymmetric margin and handover context.
+      </span>
+     </a>
+     <a class="vlink" href="families/F02-dashboard-command-center/V3/index.html">
+      <span class="v">
+       V3 &middot; Queue Spine
+      </span>
+      <span class="d">
+       Keyboard-friendly triage rail with supporting metrics alongside.
+      </span>
+     </a>
+     <a class="vlink" href="families/F02-dashboard-command-center/V4/index.html">
+      <span class="v">
+       V4 &middot; Signal Board
+      </span>
+      <span class="d">
+       Status-first bento, honest service checks and demo-state controls.
+      </span>
+     </a>
+     <a class="vlink" href="families/F02-dashboard-command-center/V5/index.html">
+      <span class="v">
+       V5 &middot; Shift Ledger
+      </span>
+      <span class="d">
+       Dense records-first register with inline row previews.
+      </span>
+     </a>
     </div>
-  </section>
-
-  <!-- F03 section: command palette family; F01/F02 sections preserved -->
-  <section class="fam" id="F03-global-search-command-palette" aria-labelledby="f03-h">
-    <h2 id="f03-h">F03 · Global search · Command palette</h2>
-    <p class="scope">34 local commands · 26 captured unique actions + 8 completeness additions · keyboard, recents, historical fixtures, destination handoffs · no production requests</p>
+   </section>
+   <!-- F03 section: command palette family; F01/F02 sections preserved -->
+   <section aria-labelledby="f03-h" class="fam" id="F03-global-search-command-palette">
+    <h2 id="f03-h">
+     F03 &middot; Global search &middot; Command palette
+    </h2>
+    <p class="scope">
+     34 local commands &middot; 26 captured unique actions + 8 completeness additions &middot; keyboard, recents, historical fixtures, destination handoffs &middot; no production requests
+    </p>
     <div class="vgrid">
-      <a class="vlink" href="families/F03-global-search-command-palette/V1/index.html"><span class="v">V1 · Compass</span><span class="d">Calm grouped list. Familiar navigation, live filtering and genuinely empty recent history.</span></a>
-      <a class="vlink" href="families/F03-global-search-command-palette/V2/index.html"><span class="v">V2 · Dispatch</span><span class="d">Queue-first register with a domain rail for queues, people, money, pages and actions.</span></a>
-      <a class="vlink" href="families/F03-global-search-command-palette/V3/index.html"><span class="v">V3 · Dossier</span><span class="d">Split list and destination preview. Inspect context, route and integration reference before jumping.</span></a>
-      <a class="vlink" href="families/F03-global-search-command-palette/V4/index.html"><span class="v">V4 · Needle</span><span class="d">Compact launch bar and ranked flat register. Less chrome, shorter path.</span></a>
-      <a class="vlink" href="families/F03-global-search-command-palette/V5/index.html"><span class="v">V5 · Relay</span><span class="d">An authored route spine, layered dock and reduced-motion-safe search-to-handoff choreography.</span></a>
+     <a class="vlink" href="families/F03-global-search-command-palette/V1/index.html">
+      <span class="v">
+       V1 &middot; Compass
+      </span>
+      <span class="d">
+       Calm grouped list. Familiar navigation, live filtering and genuinely empty recent history.
+      </span>
+     </a>
+     <a class="vlink" href="families/F03-global-search-command-palette/V2/index.html">
+      <span class="v">
+       V2 &middot; Dispatch
+      </span>
+      <span class="d">
+       Queue-first register with a domain rail for queues, people, money, pages and actions.
+      </span>
+     </a>
+     <a class="vlink" href="families/F03-global-search-command-palette/V3/index.html">
+      <span class="v">
+       V3 &middot; Dossier
+      </span>
+      <span class="d">
+       Split list and destination preview. Inspect context, route and integration reference before jumping.
+      </span>
+     </a>
+     <a class="vlink" href="families/F03-global-search-command-palette/V4/index.html">
+      <span class="v">
+       V4 &middot; Needle
+      </span>
+      <span class="d">
+       Compact launch bar and ranked flat register. Less chrome, shorter path.
+      </span>
+     </a>
+     <a class="vlink" href="families/F03-global-search-command-palette/V5/index.html">
+      <span class="v">
+       V5 &middot; Relay
+      </span>
+      <span class="d">
+       An authored route spine, layered dock and reduced-motion-safe search-to-handoff choreography.
+      </span>
+     </a>
     </div>
-  </section>
-
-  <!-- F04: only this family added; earlier family sections unchanged -->
-  <section class="fam" id="F04-pipelines-stage-hub" aria-labelledby="f04-h">
-    <h2 id="f04-h">F04 · Pipelines · Research-led revision 2</h2>
-    <p class="scope">Overview → worklist → case context. Seventeen Swagger specs studied; six clearly labelled illustrative cases, next-actor filters, real ordering and safe local preparation. Historical counts remain separate. All five retain stage/trust/consoles/API reference, dark/mobile and full-width collapsible shells.</p>
+   </section>
+   <!-- F04: only this family added; earlier family sections unchanged -->
+   <section aria-labelledby="f04-h" class="fam" id="F04-pipelines-stage-hub">
+    <h2 id="f04-h">
+     F04 &middot; Pipelines &middot; Research-led revision 2
+    </h2>
+    <p class="scope">
+     Overview &rarr; worklist &rarr; case context. Seventeen Swagger specs studied; six clearly labelled illustrative cases, next-actor filters, real ordering and safe local preparation. Historical counts remain separate. All five retain stage/trust/consoles/API reference, dark/mobile and full-width collapsible shells.
+    </p>
     <div class="vgrid">
-      <a class="vlink" href="families/F04-pipelines-stage-hub/V1/index.html"><span class="v">V1 · Atlas</span><span class="d">Operating desk: quiet exception rows and an evidence-first review guide.</span></a>
-      <a class="vlink" href="families/F04-pipelines-stage-hub/V2/index.html"><span class="v">V2 · Current</span><span class="d">Handoff board: ownership, related work and dependencies travel with each case.</span></a>
-      <a class="vlink" href="families/F04-pipelines-stage-hub/V3/index.html"><span class="v">V3 · Fieldguide</span><span class="d">Daily brief: admin decisions, client dependencies and data blind spots in separate chapters.</span></a>
-      <a class="vlink" href="families/F04-pipelines-stage-hub/V4/index.html"><span class="v">V4 · Switchboard · Recommended</span><span class="d">Ops register: semantic work table, condition/actor/age/action at a glance, case review and secondary API dock.</span></a>
-      <a class="vlink" href="families/F04-pipelines-stage-hub/V5/index.html"><span class="v">V5 · Passage</span><span class="d">Flow desk: Intake / Delivery / Money &amp; signals lanes; quiet motion, never false animated counts.</span></a>
+     <a class="vlink" href="families/F04-pipelines-stage-hub/V1/index.html">
+      <span class="v">
+       V1 &middot; Atlas
+      </span>
+      <span class="d">
+       Operating desk: quiet exception rows and an evidence-first review guide.
+      </span>
+     </a>
+     <a class="vlink" href="families/F04-pipelines-stage-hub/V2/index.html">
+      <span class="v">
+       V2 &middot; Current
+      </span>
+      <span class="d">
+       Handoff board: ownership, related work and dependencies travel with each case.
+      </span>
+     </a>
+     <a class="vlink" href="families/F04-pipelines-stage-hub/V3/index.html">
+      <span class="v">
+       V3 &middot; Fieldguide
+      </span>
+      <span class="d">
+       Daily brief: admin decisions, client dependencies and data blind spots in separate chapters.
+      </span>
+     </a>
+     <a class="vlink" href="families/F04-pipelines-stage-hub/V4/index.html">
+      <span class="v">
+       V4 &middot; Switchboard &middot; Recommended
+      </span>
+      <span class="d">
+       Ops register: semantic work table, condition/actor/age/action at a glance, case review and secondary API dock.
+      </span>
+     </a>
+     <a class="vlink" href="families/F04-pipelines-stage-hub/V5/index.html">
+      <span class="v">
+       V5 &middot; Passage
+      </span>
+      <span class="d">
+       Flow desk: Intake / Delivery / Money &amp; signals lanes; quiet motion, never false animated counts.
+      </span>
+     </a>
     </div>
-    <p class="scope" style="margin-top:12px"><a href="families/F04-pipelines-stage-hub/docs/revision-2/DELIVERY-REPORT.md">Revision 2 report &amp; fresh QA</a> · <a href="families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md">Research &amp; workflow study</a> · Historical snapshot ≠ demo cases ≠ live data. No production requests or mutations; F05 remains an honest handoff.</p>
-  </section>
-
-  <!-- F05 ADDITIVE START -->
-  <section class="fam" id="F05-pipeline-user-project-hubs">
-    <h2>F05 · Pipeline hubs · User + Project</h2>
-    <p class="scope">Research-led 360° workspaces. Both hubs in every design · historical reference evidence, not live data · independent section recovery · source conflicts visible.</p>
+    <p class="scope" style="margin-top:12px">
+     <a href="families/F04-pipelines-stage-hub/docs/revision-2/DELIVERY-REPORT.md">
+      Revision 2 report &amp; fresh QA
+     </a>
+     &middot;
+     <a href="families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md">
+      Research &amp; workflow study
+     </a>
+     &middot; Historical snapshot &ne; demo cases &ne; live data. No production requests or mutations; F05 remains an honest handoff.
+    </p>
+   </section>
+   <!-- F05 ADDITIVE START -->
+   <section class="fam" id="F05-pipeline-user-project-hubs">
+    <h2>
+     F05 &middot; Pipeline hubs &middot; User + Project
+    </h2>
+    <p class="scope">
+     Research-led 360&deg; workspaces. Both hubs in every design &middot; historical reference evidence, not live data &middot; independent section recovery &middot; source conflicts visible.
+    </p>
     <div class="vgrid">
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V1/index.html"><span class="v">V1 · Clear context</span><span class="d">Calm identity rail and native section disclosures. Minimal, source-bound and easy to scan.</span></a>
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V2/index.html"><span class="v">V2 · Evidence spine</span><span class="d">Relationship-led chapters with source-kind filtering. Delivery evidence never masquerades as a merged audit stream.</span></a>
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V3/index.html"><span class="v">V3 · Whole story ★</span><span class="d">Recommended 360° workspace: entity-first header, connected bento modules and contextual record inspection.</span></a>
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V4/index.html"><span class="v">V4 · Reference ledger</span><span class="d">Dense inspection desk. Keyboard section tabs, semantic tables and loaded-evidence filter/sort/pagination.</span></a>
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V5/index.html"><span class="v">V5 · Focus chapters</span><span class="d">One section at a time. Reversible chapter transitions, side inspector and a static reduced-motion path.</span></a>
-      <!-- F05 V6 V7 CARDS START -->
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V6/index.html"><span class="v">V6 · Evidence desk · detailed data</span><span class="d">Record-level inspection desk. Full captured UUIDs, 11 evidenced payment IDs, exact milestone references and a persistent source pane.</span></a>
-      <a class="vlink" href="families/F05-pipeline-user-project-hubs/V7/index.html"><span class="v">V7 · Client casebook · detailed data</span><span class="d">Expandable client and project dossiers. All available captured evidence, independent chapters and detailed record sheets.</span></a>
-      <!-- F05 V6 V7 CARDS END -->
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V1/index.html">
+      <span class="v">
+       V1 &middot; Clear context
+      </span>
+      <span class="d">
+       Calm identity rail and native section disclosures. Minimal, source-bound and easy to scan.
+      </span>
+     </a>
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V2/index.html">
+      <span class="v">
+       V2 &middot; Evidence spine
+      </span>
+      <span class="d">
+       Relationship-led chapters with source-kind filtering. Delivery evidence never masquerades as a merged audit stream.
+      </span>
+     </a>
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V3/index.html">
+      <span class="v">
+       V3 &middot; Whole story &starf;
+      </span>
+      <span class="d">
+       Recommended 360&deg; workspace: entity-first header, connected bento modules and contextual record inspection.
+      </span>
+     </a>
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V4/index.html">
+      <span class="v">
+       V4 &middot; Reference ledger
+      </span>
+      <span class="d">
+       Dense inspection desk. Keyboard section tabs, semantic tables and loaded-evidence filter/sort/pagination.
+      </span>
+     </a>
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V5/index.html">
+      <span class="v">
+       V5 &middot; Focus chapters
+      </span>
+      <span class="d">
+       One section at a time. Reversible chapter transitions, side inspector and a static reduced-motion path.
+      </span>
+     </a>
+     <!-- F05 V6 V7 CARDS START -->
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V6/index.html">
+      <span class="v">
+       V6 &middot; Evidence desk &middot; detailed data
+      </span>
+      <span class="d">
+       Record-level inspection desk. Full captured UUIDs, 11 evidenced payment IDs, exact milestone references and a persistent source pane.
+      </span>
+     </a>
+     <a class="vlink" href="families/F05-pipeline-user-project-hubs/V7/index.html">
+      <span class="v">
+       V7 &middot; Client casebook &middot; detailed data
+      </span>
+      <span class="d">
+       Expandable client and project dossiers. All available captured evidence, independent chapters and detailed record sheets.
+      </span>
+     </a>
+     <!-- F05 V6 V7 CARDS END -->
     </div>
-    <p class="scope" style="margin-top:12px"><a href="families/F05-pipeline-user-project-hubs/docs/DELIVERY-REPORT.md">F05 delivery &amp; verification</a> · <a href="families/F05-pipeline-user-project-hubs/docs/TEMPLATE-RESEARCH.md">Eleven studied references</a> · <a href="families/F05-pipeline-user-project-hubs/docs/API-MAP.md">Scoped read contracts</a>. No production calls, financial/security mutations or fabricated health metrics.</p>
-  </section>
-  <!-- F05 V6 V7 NOTES START -->
-  <p class="scope"><strong>V6/V7 captured-data extension:</strong> <a href="families/F05-pipeline-user-project-hubs/docs/v6-v7/ANALYSIS.md">Detailed five-version analysis</a> · <a href="families/F05-pipeline-user-project-hubs/docs/v6-v7/DATA-AUDIT.md">Data coverage &amp; inventories</a> · <a href="families/F05-pipeline-user-project-hubs/docs/v6-v7/DELIVERY.md">New delivery &amp; QA</a>. Reported totals stay separate; missing records and fields are not invented. V1–V5 remain unchanged. Self-contained HTML: <a href="families/F05-pipeline-user-project-hubs/V6/V6-complete.html">V6 download</a> · <a href="families/F05-pipeline-user-project-hubs/V7/V7-complete.html">V7 download</a>.</p>
-  <!-- F05 V6 V7 NOTES END -->
-  <!-- F05 ADDITIVE END -->
-
-  <!-- other families land here as their prompts run -->
-</main>
-<script>
-(function(){
+    <p class="scope" style="margin-top:12px">
+     <a href="families/F05-pipeline-user-project-hubs/docs/DELIVERY-REPORT.md">
+      F05 delivery &amp; verification
+     </a>
+     &middot;
+     <a href="families/F05-pipeline-user-project-hubs/docs/TEMPLATE-RESEARCH.md">
+      Eleven studied references
+     </a>
+     &middot;
+     <a href="families/F05-pipeline-user-project-hubs/docs/API-MAP.md">
+      Scoped read contracts
+     </a>
+     . No production calls, financial/security mutations or fabricated health metrics.
+    </p>
+   </section>
+   <!-- F05 V6 V7 NOTES START -->
+   <p class="scope">
+    <strong>
+     V6/V7 captured-data extension:
+    </strong>
+    <a href="families/F05-pipeline-user-project-hubs/docs/v6-v7/ANALYSIS.md">
+     Detailed five-version analysis
+    </a>
+    &middot;
+    <a href="families/F05-pipeline-user-project-hubs/docs/v6-v7/DATA-AUDIT.md">
+     Data coverage &amp; inventories
+    </a>
+    &middot;
+    <a href="families/F05-pipeline-user-project-hubs/docs/v6-v7/DELIVERY.md">
+     New delivery &amp; QA
+    </a>
+    . Reported totals stay separate; missing records and fields are not invented. V1&ndash;V5 remain unchanged. Self-contained HTML:
+    <a href="families/F05-pipeline-user-project-hubs/V6/V6-complete.html">
+     V6 download
+    </a>
+    &middot;
+    <a href="families/F05-pipeline-user-project-hubs/V7/V7-complete.html">
+     V7 download
+    </a>
+    .
+   </p>
+   <!-- F05 V6 V7 NOTES END -->
+   <!-- F05 ADDITIVE END -->
+   F08&ndash;F10 &middot; five research-led variants per family
+   <section class="fam" id="F06-contact-inquiries">
+    <h2>
+     F06 &middot; Contact inquiries
+    </h2>
+    <p class="scope">
+     Five offline concepts &middot; historical queue and reply view
+    </p>
+    <div class="vgrid">
+     <a class="vlink" href="families/F06-contact-inquiries/V1/index.html">
+      <span class="v">
+       V1 &middot; Split triage
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F06-contact-inquiries/V2/index.html">
+      <span class="v">
+       V2 &middot; Conversation desk
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F06-contact-inquiries/V3/index.html">
+      <span class="v">
+       V3 &middot; Card sweep
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F06-contact-inquiries/V4/index.html">
+      <span class="v">
+       V4 &middot; Reference ledger
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F06-contact-inquiries/V5/index.html">
+      <span class="v">
+       V5 &middot; Focus loop
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+    </div>
+   </section>
+   <section class="fam" id="F07-notifications-center">
+    <h2>
+     F07 &middot; Notifications center
+    </h2>
+    <p class="scope">
+     Five offline concepts &middot; personal inbox and restricted platform ops
+    </p>
+    <div class="vgrid">
+     <a class="vlink" href="families/F07-notifications-center/V1/index.html">
+      <span class="v">
+       V1 &middot; Safe boundary
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F07-notifications-center/V2/index.html">
+      <span class="v">
+       V2 &middot; Separate surfaces
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F07-notifications-center/V3/index.html">
+      <span class="v">
+       V3 &middot; Inbox spine
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F07-notifications-center/V4/index.html">
+      <span class="v">
+       V4 &middot; Dense operations
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+     <a class="vlink" href="families/F07-notifications-center/V5/index.html">
+      <span class="v">
+       V5 &middot; Signal focus
+      </span>
+      <span>
+       Open &rarr;
+      </span>
+     </a>
+    </div>
+   </section>
+   <section class="fam" id="F08-requests-triage">
+    <h2>
+     F08 &middot; Requests triage + details
+    </h2>
+    <p class="scope">
+     Five offline concepts &middot; captured capacity summary + clearly labelled illustrative queue cases &middot; V1&ndash;V5 layouts
+    </p>
+    <div class="vgrid">
+     <a class="vlink" href="families/F08-requests-triage/V1/index.html">
+      <span class="v">
+       V1 &middot; Operating desk
+      </span>
+      <span class="d">
+       Baseline capacity + filterable table.
+      </span>
+     </a>
+     <a class="vlink" href="families/F08-requests-triage/V2/index.html">
+      <span class="v">
+       V2 &middot; Split triage
+      </span>
+      <span class="d">
+       Queue and contextual request pane.
+      </span>
+     </a>
+     <a class="vlink" href="families/F08-requests-triage/V3/index.html">
+      <span class="v">
+       V3 &middot; Card sweep
+      </span>
+      <span class="d">
+       Card-forward review workset.
+      </span>
+     </a>
+     <a class="vlink" href="families/F08-requests-triage/V4/index.html">
+      <span class="v">
+       V4 &middot; Dense desk
+      </span>
+      <span class="d">
+       Compact scan rhythm for high volume.
+      </span>
+     </a>
+     <a class="vlink" href="families/F08-requests-triage/V5/index.html">
+      <span class="v">
+       V5 &middot; Focus loop
+      </span>
+      <span class="d">
+       Keyboard focus and advance choreography.
+      </span>
+     </a>
+    </div>
+    <p class="scope">
+     <a href="families/F08-requests-triage/docs/DELIVERY-REPORT.md">
+      F08 delivery notes
+     </a>
+     &middot;
+     <a href="families/F08-requests-triage/docs/RESEARCH-AND-PLAN.md">
+      Source research and API scope
+     </a>
+    </p>
+   </section>
+   <section class="fam" id="F09-quotes-list">
+    <h2>
+     F09 &middot; Quotes list
+    </h2>
+    <p class="scope">
+     Five list concepts &middot; captured KPI totals remain historical; rows are illustrative offline fixtures.
+    </p>
+    <div class="vgrid">
+     <a class="vlink" href="families/F09-quotes-list/V1/index.html">
+      <span class="v">
+       V1 &middot; Revenue watchtower
+      </span>
+      <span class="d">
+       Baseline table and queue controls.
+      </span>
+     </a>
+     <a class="vlink" href="families/F09-quotes-list/V2/index.html">
+      <span class="v">
+       V2 &middot; Aging queue
+      </span>
+      <span class="d">
+       Age-first follow-up workset.
+      </span>
+     </a>
+     <a class="vlink" href="families/F09-quotes-list/V3/index.html">
+      <span class="v">
+       V3 &middot; Revenue cards
+      </span>
+      <span class="d">
+       Card dossiers for quote-level scanning.
+      </span>
+     </a>
+     <a class="vlink" href="families/F09-quotes-list/V4/index.html">
+      <span class="v">
+       V4 &middot; Ledger
+      </span>
+      <span class="d">
+       Compact register for dense operations.
+      </span>
+     </a>
+     <a class="vlink" href="families/F09-quotes-list/V5/index.html">
+      <span class="v">
+       V5 &middot; Open-next
+      </span>
+      <span class="d">
+       Focused navigation and record handoff.
+      </span>
+     </a>
+    </div>
+    <p class="scope">
+     <a href="families/F09-quotes-list/docs/DELIVERY-REPORT.md">
+      F09 delivery report
+     </a>
+     &middot;
+     <a href="families/F09-quotes-list/docs/DELIVERY-STATUS.md">
+      Source and API notes
+     </a>
+    </p>
+   </section>
+   <section class="fam" id="F10-quote-details-builder">
+    <h2>
+     F10 &middot; Quote details + builder
+    </h2>
+    <p class="scope">
+     Five layouts for scope, pricing/schedule and terms/review &middot; local-only actions.
+    </p>
+    <div class="vgrid">
+     <a class="vlink" href="families/F10-quote-details-builder/V1/index.html">
+      <span class="v">
+       V1 &middot; Quote workbench
+      </span>
+      <span class="d">
+       Balanced stepper with persistent total rail.
+      </span>
+     </a>
+     <a class="vlink" href="families/F10-quote-details-builder/V2/index.html">
+      <span class="v">
+       V2 &middot; Stepper spine
+      </span>
+      <span class="d">
+       Step-led editor; totals remain visible.
+      </span>
+     </a>
+     <a class="vlink" href="families/F10-quote-details-builder/V3/index.html">
+      <span class="v">
+       V3 &middot; Ledger first
+      </span>
+      <span class="d">
+       Line-item register anchors the composition.
+      </span>
+     </a>
+     <a class="vlink" href="families/F10-quote-details-builder/V4/index.html">
+      <span class="v">
+       V4 &middot; Compact workbench
+      </span>
+      <span class="d">
+       Dense editing canvas with restrained chrome.
+      </span>
+     </a>
+     <a class="vlink" href="families/F10-quote-details-builder/V5/index.html">
+      <span class="v">
+       V5 &middot; Review choreography
+      </span>
+      <span class="d">
+       Review gate and reduced-motion-safe cues.
+      </span>
+     </a>
+    </div>
+    <p class="scope">
+     <a href="families/F10-quote-details-builder/docs/DELIVERY-REPORT.md">
+      F10 delivery report
+     </a>
+     &middot;
+     <a href="families/F10-quote-details-builder/docs/CONCEPTS.md">
+      Concepts
+     </a>
+     &middot; Margin remains unknown without cost data.
+    </p>
+   </section>
+   <!-- other families land here as their prompts run -->
+  </main>
+  <script>
+   (function(){
   var root=document.documentElement,t=document.getElementById('theme-toggle');
   function s(){var d=root.classList.contains('dark');t.setAttribute('aria-pressed',String(d));t.querySelector('.ic-sun').classList.toggle('hidden',d);t.querySelector('.ic-moon').classList.toggle('hidden',!d);}
   t.addEventListener('click',function(){root.classList.toggle('dark');try{localStorage.setItem('nl-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}s();});
   s();
 })();
-</script>
-<section class="fam" id="F06-contact-inquiries"><h2>F06 · Contact inquiries</h2><p class="scope">Five offline concepts · historical queue and reply view</p><div class="vgrid">
-<a class="vlink" href="families/F06-contact-inquiries/V1/index.html"><span class="v">V1 · Split triage</span><span>Open →</span></a>
-<a class="vlink" href="families/F06-contact-inquiries/V2/index.html"><span class="v">V2 · Conversation desk</span><span>Open →</span></a>
-<a class="vlink" href="families/F06-contact-inquiries/V3/index.html"><span class="v">V3 · Card sweep</span><span>Open →</span></a>
-<a class="vlink" href="families/F06-contact-inquiries/V4/index.html"><span class="v">V4 · Reference ledger</span><span>Open →</span></a>
-<a class="vlink" href="families/F06-contact-inquiries/V5/index.html"><span class="v">V5 · Focus loop</span><span>Open →</span></a></div></section>
-<section class="fam" id="F07-notifications-center"><h2>F07 · Notifications center</h2><p class="scope">Five offline concepts · personal inbox and restricted platform ops</p><div class="vgrid">
-<a class="vlink" href="families/F07-notifications-center/V1/index.html"><span class="v">V1 · Safe boundary</span><span>Open →</span></a>
-<a class="vlink" href="families/F07-notifications-center/V2/index.html"><span class="v">V2 · Separate surfaces</span><span>Open →</span></a>
-<a class="vlink" href="families/F07-notifications-center/V3/index.html"><span class="v">V3 · Inbox spine</span><span>Open →</span></a>
-<a class="vlink" href="families/F07-notifications-center/V4/index.html"><span class="v">V4 · Dense operations</span><span>Open →</span></a>
-<a class="vlink" href="families/F07-notifications-center/V5/index.html"><span class="v">V5 · Signal focus</span><span>Open →</span></a></div></section>
-</body>
+  </script>
+ </body>
 </html>
+

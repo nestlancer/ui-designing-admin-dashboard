@@ -1,0 +1,5 @@
+# F08 API map
+
+Bundled `backend-api-swagger/requests.openapi.json` (25 paths) and user/quotes specs were inspected for relevant contracts. Queue/stats: `GET /api/v1/admin/requests`, `GET /api/v1/admin/requests/stats`. Capacity: `GET /api/v1/admin/requests/capacity/dashboard`, `PATCH /api/v1/admin/requests/settings/capacity`. Detail/edit/delete: `GET/PATCH/DELETE /api/v1/admin/requests/{id}`. Status/assignment: `PATCH /api/v1/admin/requests/{id}/status`, `POST /api/v1/admin/requests/{id}/assign`. Quote: `POST /api/v1/admin/requests/{id}/quotes` and `/quotes/prefill`. Notes: GET/POST `/api/v1/admin/requests/{id}/notes`; attachments via admin download path. Assignees require users service; quote creation is owned by quotes service.
+
+Pages are static local previews and call no endpoint. API existence does not establish deployed permissions, validation, freshness, or mutation result. No service endpoint was found for the prompt's newly proposed saved-view or keyboard UI behavior; those are local prototype affordances only.

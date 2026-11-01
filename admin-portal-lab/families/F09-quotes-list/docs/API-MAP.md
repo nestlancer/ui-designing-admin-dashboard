@@ -1,0 +1,3 @@
+# F09 API map
+
+Bundled quotes spec (27 paths): `GET /api/v1/admin/quotes` and `GET /api/v1/admin/quotes/stats` for the admin list/summary. F10 links use `GET /api/v1/admin/quotes/{id}`; mutation actions belong to F10 routes. Prototype does not call any API. Status filtering, row search, local selection and keyboard navigation are front-end-only; no saved-view endpoint is asserted. Full schema/auth/production response validation is not represented by this static page.

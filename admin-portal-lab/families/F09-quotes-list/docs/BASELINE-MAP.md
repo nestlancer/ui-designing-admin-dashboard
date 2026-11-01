@@ -1,0 +1,3 @@
+# F09 baseline map
+
+Source capture `054-quotes.webp`: shell/heading; note that active quotes are in pipeline; KPIs Total 36, Total Accepted Value ₹9,68,950.00, Acceptance Rate 50%; explanatory line states all-status KPI totals and active Inbox 17 matching; search, status, Clear; table Title, Status, Amount, Client, Actions; 17 matching rows and Showing 1–17 pagination. Frozen statuses shown include Draft and Viewed. Amounts use INR. Only this screenshot is explicitly in prompt scope. Captured KPI numbers are historical; the local table uses illustrative fixtures and does not claim to reproduce 17 real records. Route `/quotes`; row handoff points to F10.

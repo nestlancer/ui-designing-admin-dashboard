@@ -1,0 +1,1320 @@
+{
+  "passed": true,
+  "checks": 328,
+  "scans": 105,
+  "violations": [],
+  "details": [
+    {
+      "ok": true,
+      "what": "V1 sidebar preference persists"
+    },
+    {
+      "ok": true,
+      "what": "V1 collapse shared with preserved F04"
+    },
+    {
+      "ok": true,
+      "what": "V1 different project isolation"
+    },
+    {
+      "ok": true,
+      "what": "V1 local reference is not a fake UUID"
+    },
+    {
+      "ok": true,
+      "what": "V1 partial record contract guarded"
+    },
+    {
+      "ok": true,
+      "what": "V1 project unselected"
+    },
+    {
+      "ok": true,
+      "what": "V1 unknown ID no substitution"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V1 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/light/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V1 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V1 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1/dark/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V1/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V1 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V1 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V1 coarse 44px buttons: []"
+    },
+    {
+      "ok": true,
+      "what": "V1 mobile drawer focus trap"
+    },
+    {
+      "ok": true,
+      "what": "V1 drawer focus return"
+    },
+    {
+      "ok": true,
+      "what": "V1 broken-logo text fallback"
+    },
+    {
+      "ok": true,
+      "what": "V2 sidebar preference persists"
+    },
+    {
+      "ok": true,
+      "what": "V2 collapse shared with preserved F04"
+    },
+    {
+      "ok": true,
+      "what": "V2 different project isolation"
+    },
+    {
+      "ok": true,
+      "what": "V2 local reference is not a fake UUID"
+    },
+    {
+      "ok": true,
+      "what": "V2 partial record contract guarded"
+    },
+    {
+      "ok": true,
+      "what": "V2 project unselected"
+    },
+    {
+      "ok": true,
+      "what": "V2 unknown ID no substitution"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V2 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/light/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V2 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V2 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2/dark/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V2/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V2 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V2 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V2 evidence-kind filter"
+    },
+    {
+      "ok": true,
+      "what": "V2 filter retains six hub sections"
+    },
+    {
+      "ok": true,
+      "what": "V2 source index hidden for partial profile"
+    },
+    {
+      "ok": true,
+      "what": "V2 coarse 44px buttons: []"
+    },
+    {
+      "ok": true,
+      "what": "V2 mobile drawer focus trap"
+    },
+    {
+      "ok": true,
+      "what": "V2 drawer focus return"
+    },
+    {
+      "ok": true,
+      "what": "V2 broken-logo text fallback"
+    },
+    {
+      "ok": true,
+      "what": "V3 sidebar preference persists"
+    },
+    {
+      "ok": true,
+      "what": "V3 collapse shared with preserved F04"
+    },
+    {
+      "ok": true,
+      "what": "V3 different project isolation"
+    },
+    {
+      "ok": true,
+      "what": "V3 local reference is not a fake UUID"
+    },
+    {
+      "ok": true,
+      "what": "V3 partial record contract guarded"
+    },
+    {
+      "ok": true,
+      "what": "V3 project unselected"
+    },
+    {
+      "ok": true,
+      "what": "V3 unknown ID no substitution"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V3 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/light/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V3 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V3 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3/dark/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V3/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V3 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V3 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V3 coarse 44px buttons: []"
+    },
+    {
+      "ok": true,
+      "what": "V3 mobile drawer focus trap"
+    },
+    {
+      "ok": true,
+      "what": "V3 drawer focus return"
+    },
+    {
+      "ok": true,
+      "what": "V3 broken-logo text fallback"
+    },
+    {
+      "ok": true,
+      "what": "V4 sidebar preference persists"
+    },
+    {
+      "ok": true,
+      "what": "V4 collapse shared with preserved F04"
+    },
+    {
+      "ok": true,
+      "what": "V4 different project isolation"
+    },
+    {
+      "ok": true,
+      "what": "V4 local reference is not a fake UUID"
+    },
+    {
+      "ok": true,
+      "what": "V4 partial record contract guarded"
+    },
+    {
+      "ok": true,
+      "what": "V4 project unselected"
+    },
+    {
+      "ok": true,
+      "what": "V4 unknown ID no substitution"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V4 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/p-origin: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/light/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V4 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V4 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/p-origin: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4/dark/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V4/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V4 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V4 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V4 loaded pagination first page"
+    },
+    {
+      "ok": true,
+      "what": "V4 real sort"
+    },
+    {
+      "ok": true,
+      "what": "V4 status filter"
+    },
+    {
+      "ok": true,
+      "what": "V4 no-match evidence state"
+    },
+    {
+      "ok": true,
+      "what": "V4 second page seven loaded rows"
+    },
+    {
+      "ok": true,
+      "what": "V4 End section key"
+    },
+    {
+      "ok": true,
+      "what": "V4 coarse 44px buttons: []"
+    },
+    {
+      "ok": true,
+      "what": "V4 mobile drawer focus trap"
+    },
+    {
+      "ok": true,
+      "what": "V4 drawer focus return"
+    },
+    {
+      "ok": true,
+      "what": "V4 broken-logo text fallback"
+    },
+    {
+      "ok": true,
+      "what": "V5 sidebar preference persists"
+    },
+    {
+      "ok": true,
+      "what": "V5 collapse shared with preserved F04"
+    },
+    {
+      "ok": true,
+      "what": "V5 different project isolation"
+    },
+    {
+      "ok": true,
+      "what": "V5 local reference is not a fake UUID"
+    },
+    {
+      "ok": true,
+      "what": "V5 partial record contract guarded"
+    },
+    {
+      "ok": true,
+      "what": "V5 project unselected"
+    },
+    {
+      "ok": true,
+      "what": "V5 unknown ID no substitution"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V5 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/light/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V5 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/u-requests: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-requests: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/u-quotes: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-quotes: required query sortBy"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-quotes: required query sortOrder"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-quotes: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/u-projects: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-projects: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/u-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-messages: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-messages: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/u-trust-account: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/u-trust-account: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V5 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/p-milestones: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-milestones: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/p-payments: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-payments: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-origin: explicit read-scope gap"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-origin: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5/dark/p-timeline: published read path"
+    },
+    {
+      "ok": true,
+      "what": "V5/p-timeline: dialog focus restored"
+    },
+    {
+      "ok": true,
+      "what": "V5 sibling section retained during failure"
+    },
+    {
+      "ok": true,
+      "what": "V5 section retry restores reference"
+    },
+    {
+      "ok": true,
+      "what": "V5 vertical keyboard chapter"
+    },
+    {
+      "ok": true,
+      "what": "V5 next chapter wraps"
+    },
+    {
+      "ok": true,
+      "what": "V5 reduced motion has no chapter animation"
+    },
+    {
+      "ok": true,
+      "what": "V5 coarse 44px buttons: []"
+    },
+    {
+      "ok": true,
+      "what": "V5 mobile drawer focus trap"
+    },
+    {
+      "ok": true,
+      "what": "V5 drawer focus return"
+    },
+    {
+      "ok": true,
+      "what": "V5 broken-logo text fallback"
+    },
+    {
+      "ok": true,
+      "what": "Supplemental axe violations: 0"
+    }
+  ]
+}

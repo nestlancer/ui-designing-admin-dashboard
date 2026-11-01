@@ -1,0 +1,1304 @@
+[
+  {
+    "sheet": "1. Executive Findings",
+    "rows": [
+      [
+        "Nestlancer Admin Operator Console \u2014 Executive Findings (live audit 30 Oct 2026 + benchmark research)",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "#",
+        "Finding",
+        "Evidence",
+        "Source artifact",
+        "Severity",
+        "Verdict / Impact"
+      ],
+      [
+        1,
+        "Projects API down: /api/v1/admin/projects* dies at network level (ERR_FAILED, CORS-surfaced)",
+        "26 failed calls; preflight 204 + GET 401 healthy with ACAO; well-formed Bearer requests",
+        "73/149/150/185/189 + header forensics",
+        "CRITICAL",
+        "/projects stuck Loading; /pipeline/projects Network Error; 14 screenshots unreproducible \u2014 backend defect"
+      ],
+      [
+        2,
+        "Live UI matches repo screenshots where API healthy",
+        "83 of 119 screenshots reproduced live, identical",
+        "README mapping \u00a74.3",
+        "INFO",
+        "Screenshots are a valid, current baseline"
+      ],
+      [
+        3,
+        "Admin sessions unstable: /api/auth/refresh 409/503, bounced to sign-in 3x in ~25 min",
+        "capture-log session-expired + relogins",
+        "capture-log.jsonl",
+        "HIGH",
+        "Operators lose triage context mid-shift"
+      ],
+      [
+        4,
+        "Admin teal+Inter vs client blue/violet+Outfit; token leaks (brand-violet is teal, blue tw-ring)",
+        "116 CSS vars vs client report \u00a73.2",
+        "audit-metadata 02",
+        "HIGH",
+        "Three brands, two typefaces across products"
+      ],
+      [
+        5,
+        "Success (2.59:1) + info (3.63:1) badges fail WCAG AA; warning/error pass",
+        "Computed live-token contrast",
+        "audit-metadata 02",
+        "HIGH",
+        "Most common badges unreadable"
+      ],
+      [
+        6,
+        "Queues visible but not workable: 99+/21 bells, no bulk bar, audit rows dead",
+        "5 screens + metadata census",
+        "79/131/51",
+        "HIGH",
+        "Console can't triage at speed"
+      ],
+      [
+        7,
+        "Needs-attention strip is verdict-first done right; six KPIs all say identical 'up new'",
+        "02 + screenshot 015",
+        "02-dashboard-index",
+        "HIGH",
+        "Signal on top, noise underneath"
+      ],
+      [
+        8,
+        "Dead routes: /messages/new/group, /content/new, /payments/transactions = 404",
+        "3 verified 404 captures",
+        "167/171/184",
+        "MEDIUM",
+        "Creation flows lack URL grammar"
+      ],
+      [
+        9,
+        "Dark mode CSS exists (103 rules) but toggle never engages; only 14 dark: utilities",
+        "0 token diffs across 2 attempts",
+        "132/191",
+        "MEDIUM",
+        "Light-only console for night operators"
+      ],
+      [
+        10,
+        "Compressed type (H1 24/30), no mono; UUIDs truncated + COPY",
+        "Inter markers, h1 classes, tables",
+        "02/61/79",
+        "MEDIUM",
+        "ID-hostile dense tool"
+      ],
+      [
+        11,
+        "Notifications mixes personal inbox with platform Send/Broadcast (129 buttons)",
+        "52 metadata census",
+        "52-notifications-index",
+        "MEDIUM",
+        "Misclick surface"
+      ],
+      [
+        12,
+        "Responsive tables via duplication (audit 3x, portfolio 2x)",
+        "Table census",
+        "131/113",
+        "MEDIUM",
+        "DOM weight + SR triple-announce"
+      ],
+      [
+        13,
+        "Charts collapse to single spike on sparse data",
+        "Screenshot 015",
+        "015-dashboard",
+        "MEDIUM",
+        "Looks like an outage"
+      ],
+      [
+        14,
+        "17 nav items, zero badges; pressure only in header bells",
+        "All captures",
+        "shell",
+        "MEDIUM",
+        "Wayfinding by memory"
+      ]
+    ]
+  },
+  {
+    "sheet": "2. Design Tokens",
+    "rows": [
+      [
+        "Live design-token audit (extracted from admin.nestlancer.com :root, 116 vars)",
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "Token group",
+        "Key values",
+        "Source",
+        "Assessment",
+        "Recommended action"
+      ],
+      [
+        "Typeface",
+        "Inter (__Inter_d8ebd1), font-sans antialiased",
+        "02 HTML + computed",
+        "Competent but != client Outfit; no mono",
+        "Keep Inter for ops; add mono for IDs/money/refs"
+      ],
+      [
+        "Type scale",
+        "H1 text-2xl/sm:text-3xl 700; body 12-14px",
+        "h1 classes",
+        "Compressed; no display size for money/counts",
+        "Add 32-40px display for amounts + queue counts"
+      ],
+      [
+        "Neutrals",
+        "bg 220 33% 97%; muted 210 20% 98%; border 220 13% 91%; fg 216 24% 16%",
+        ":root",
+        "Clean cool-gray ramp",
+        "Keep"
+      ],
+      [
+        "Brand (admin)",
+        "primary/accent-1/ring = 168 82% 26% teal; sidebar-active teal 10%",
+        ":root",
+        "Internally consistent; 3rd product brand",
+        "Document admin-teal vs client-blue split"
+      ],
+      [
+        "Token leaks",
+        "brand-violet=teal; brand-coral; article-accent blue; tw-ring blue",
+        ":root",
+        "Misnamed + stray-blue tokens",
+        "Rename to teal; purge blues"
+      ],
+      [
+        "Status hues",
+        "success 2.59 FAIL; info 3.63 FAIL; warning 6.84 PASS; error 4.80 PASS; neutral/purple PASS",
+        "computed vs white",
+        "Half-fixed ramp",
+        "Darken success/info text variants"
+      ],
+      [
+        "Radii",
+        "6px base (sm4/md6/lg8/xl20)",
+        ":root",
+        "Tight, ops-appropriate",
+        "Keep; document vs client 14px"
+      ],
+      [
+        "Layout",
+        "header 52px; sidebar #f3f4f7",
+        ":root",
+        "Compact shell for long sessions",
+        "Keep"
+      ],
+      [
+        "Motion",
+        "ease-spring token; ~zero observed motion",
+        ":root + DOM",
+        "Static feel",
+        "Add fade/slide/stagger system in P7"
+      ],
+      [
+        "Dark mode",
+        "103 .dark rules; 14 dark: utilities; toggle dead in automation",
+        "02/132/191",
+        "Unreachable + thin",
+        "Wire toggle + expand coverage, or remove toggle"
+      ]
+    ]
+  },
+  {
+    "sheet": "3. Page Inventory",
+    "rows": [
+      [
+        "Area-by-area UI report \u2014 19 groups covering 194 captured states (full file list in nestlancer-admin-pages-html/README.md)",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "#",
+        "Area / route",
+        "Files",
+        "Status",
+        "Repo screenshots",
+        "Key components",
+        "Principal UI issue"
+      ],
+      [
+        "A0",
+        "/login (Operator sign-in)",
+        "01, 61",
+        "OK",
+        "\u2014 (auth surface)",
+        "Show pw, Enter console",
+        "No SSO/passkey; fine for v1"
+      ],
+      [
+        "A1",
+        "/dashboard Command center",
+        "35",
+        "OK (dark NO)",
+        "015, 072",
+        "Needs-attention strip, 6 KPIs, 2 charts, 2 tables, \u2318K",
+        "Six identical 'up new' KPIs; spike charts; strip doesn't drill down"
+      ],
+      [
+        "A2",
+        "/pipeline (+users/projects)",
+        "19",
+        "PARTIAL",
+        "044, 045, 047",
+        "3 hub tabs, stage cards, API reference 157 endpoints",
+        "Project hub empty (API); API ref is dev-tool in ops clothing"
+      ],
+      [
+        "A3",
+        "/contact Inquiries",
+        "7",
+        "OK",
+        "007 (008 gap)",
+        "6 chips w/ counts, row-buttons, Refresh",
+        "Rows open nothing capturable; spam rows pollute New 14"
+      ],
+      [
+        "A4",
+        "/notifications",
+        "10",
+        "OK",
+        "029-034",
+        "6 ops tabs + 8 personal filters, builders, logs",
+        "Personal+platform mixed; 129 buttons; misclick surface"
+      ],
+      [
+        "A5",
+        "/requests (+[id])",
+        "8",
+        "OK",
+        "001, 056, 057, 102",
+        "Capacity card, filters, Review links, inline edit",
+        "No bulk triage/keyboard; quote-new entry unverified"
+      ],
+      [
+        "A6",
+        "/quotes (+[id])",
+        "10",
+        "OK",
+        "054, 055, 095-096, 098-101",
+        "Table, Scope/Pricing/Terms stepper, line-item library",
+        "Custom-schedule + send flows partially verified"
+      ],
+      [
+        "A7",
+        "/projects",
+        "8",
+        "API DOWN",
+        "052 (+14 gap)",
+        "Loading / Network Error / Not-found states",
+        "Delivery surface unreadable in production"
+      ],
+      [
+        "A8",
+        "/payments (+accounts/legal/disputes)",
+        "13",
+        "OK",
+        "035-038, 041, 042",
+        "5 tabs, installment bars, settlement + legal",
+        "No payment-detail page; reconciliation unverified"
+      ],
+      [
+        "A9",
+        "/users (+[id])",
+        "12",
+        "OK",
+        "002, 064, 108-113",
+        "Directory + filters, detail, 5 safety dialogs",
+        "No bulk bar; pipeline tabs unverified; 34/34/34 suspect"
+      ],
+      [
+        "A10",
+        "/messages (+inbox/thread/new-direct)",
+        "13",
+        "OK",
+        "022-024, 026, 078, 080",
+        "Inbox, threads, reply/edit/mark-read",
+        "/new/group 404s; members panel unverified"
+      ],
+      [
+        "A11",
+        "/moderation",
+        "3",
+        "OK",
+        "027, 028",
+        "Active queue / History toggle",
+        "Queue item actions unverified"
+      ],
+      [
+        "A12",
+        "/analytics",
+        "15",
+        "OK",
+        "003-006",
+        "4 hubs + 4 ranges, Download CSV",
+        "Projects tab likely hollow (API); CSV only export"
+      ],
+      [
+        "A13",
+        "/content (+posts/*)",
+        "17",
+        "OK",
+        "009-014, 066-069",
+        "6 tabs, Write/Split/Preview editor, new-post",
+        "/content/new 404; card view + template editors unverified"
+      ],
+      [
+        "A14",
+        "/portfolio (+edit/new)",
+        "7",
+        "OK",
+        "048-050, 082",
+        "Listing, edits, new, analytics",
+        "Destructive density w/o visible undo"
+      ],
+      [
+        "A15",
+        "/media",
+        "6",
+        "PARTIAL",
+        "018, 019, 021, 074",
+        "Storage/Quarantine/Analytics + filters",
+        "Asset open/share/metadata/list-view unverified"
+      ],
+      [
+        "A16",
+        "/system",
+        "8",
+        "OK",
+        "059-063, 104",
+        "Health/Config14/Features12/Jobs/Templates62/Ops",
+        "Template editors + diagnostics depth unverified"
+      ],
+      [
+        "A17",
+        "/integrations Webhooks",
+        "2",
+        "OK",
+        "016, 017",
+        "List + inline Add-webhook form",
+        "Delivery logs/history depth unknown"
+      ],
+      [
+        "A18",
+        "/audit",
+        "2",
+        "OK",
+        "065",
+        "4 filter groups, 132-row table",
+        "Rows not clickable; table x3 in DOM; no export"
+      ],
+      [
+        "S1",
+        "Mobile 375px dashboard",
+        "133",
+        "OK",
+        "\u2014",
+        "Stacked command center",
+        "Table card-fallbacks unverified"
+      ]
+    ]
+  },
+  {
+    "sheet": "4. Benchmark Patterns",
+    "rows": [
+      [
+        "Pattern library \u2014 what every 2026 ops console does vs what Nestlancer has",
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "Pattern",
+        "Sources endorsing it",
+        "Present in Nestlancer?",
+        "Recommended action",
+        "Priority"
+      ],
+      [
+        "Verdict-first strip",
+        "[1] AgencyAnalytics, [2] Pulse",
+        "YES (Needs-attention)",
+        "Extend to every queue page",
+        "P1"
+      ],
+      [
+        "Whose-move / next-step per row",
+        "[1] Moxo",
+        "PARTIAL (strip only)",
+        "Add assignee + age + SLA + one-click advance",
+        "P1"
+      ],
+      [
+        "Explain every number",
+        "[1] Whatagraph",
+        "NO (up-new x6)",
+        "Add deltas + plain-English why",
+        "P1"
+      ],
+      [
+        "One dominant metric",
+        "[2] Mercury, [13]",
+        "NO",
+        "1 hero + compact strip",
+        "P1"
+      ],
+      [
+        "Status != colour alone",
+        "[2] Home Assistant",
+        "PARTIAL (contrast fails)",
+        "Fix success/info text tokens",
+        "P1"
+      ],
+      [
+        "Density follows expertise",
+        "[2]",
+        "LICENSED (dense OK)",
+        "Add comfortable/compact toggle [5]",
+        "P2"
+      ],
+      [
+        "Settled vs owed split",
+        "[9]",
+        "YES (tabs)",
+        "Behaviouralise tabs into SLA queues",
+        "P2"
+      ],
+      [
+        "Failed/aged as queues",
+        "[9]",
+        "PARTIAL (counts only)",
+        "Add age buckets + bulk advance",
+        "P1"
+      ],
+      [
+        "Bulk select + bulk actions",
+        "[6] Apex/TanStack, [7]",
+        "NO (checkboxes, no bar)",
+        "Add bulk bar: assign/advance/tag/export",
+        "P1"
+      ],
+      [
+        "Keyboard triage",
+        "[12] + Gmail/Linear conv.",
+        "NO",
+        "Add j/k/x/e///? + help",
+        "P1"
+      ],
+      [
+        "Saved views",
+        "[9]",
+        "NO",
+        "Add My queues: needs-me/stale/unassigned/VIP",
+        "P1"
+      ],
+      [
+        "Audit trail on actions",
+        "Admin-console convention",
+        "PARTIAL (rows dead)",
+        "Wire row-detail + actor deep-links + export",
+        "P2"
+      ],
+      [
+        "Destructive confirmations",
+        "Convention",
+        "YES (reason-required)",
+        "Keep; add undo windows",
+        "KEEP"
+      ],
+      [
+        "Command palette completeness",
+        "[4][5][6]",
+        "PARTIAL",
+        "Audit: every queue/user/action reachable",
+        "P2"
+      ],
+      [
+        "Matching dark mode",
+        "[5][7]",
+        "NO (unreachable)",
+        "Rebuild to parity or remove toggle",
+        "P2"
+      ],
+      [
+        "Empty/loading/error states",
+        "[9]",
+        "PARTIAL",
+        "Design skeletons + sparse + degraded banners",
+        "P2"
+      ],
+      [
+        "Ask-AI on console data",
+        "[11][5]",
+        "NO",
+        "Add queue/user/payment Q&A",
+        "P2"
+      ],
+      [
+        "PWA / installable ops",
+        "[5][6][12]",
+        "NO",
+        "Consider for on-call triage",
+        "P3"
+      ]
+    ]
+  },
+  {
+    "sheet": "5. CHANGE list",
+    "rows": [
+      [
+        "CHANGE \u2014 concrete edits to existing screens (20 items)",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "ID",
+        "Change",
+        "Target page",
+        "Specifics",
+        "Benchmark rationale",
+        "Phase"
+      ],
+      [
+        "C1",
+        "1 hero KPI + compact strip",
+        "Dashboard",
+        "Hero = blocked items + Rs at risk; strip with deltas",
+        "[2] one dominant thing; [13]",
+        "P3"
+      ],
+      [
+        "C2",
+        "Drill-down Needs-attention cells",
+        "Dashboard",
+        "Click count -> filtered queue; oldest-age badges",
+        "[1] next-step; [9] queues",
+        "P3"
+      ],
+      [
+        "C3",
+        "Fix success/info badge contrast",
+        "All pages",
+        "Darken text like warning fix",
+        "[2]; WCAG AA",
+        "P1"
+      ],
+      [
+        "C4",
+        "One table per page",
+        "Audit, Portfolio, lists",
+        "Delete dupes; CSS card-fallback under sm:",
+        "[7]; a11y",
+        "P1"
+      ],
+      [
+        "C5",
+        "Rename + purge token leaks",
+        "Design system",
+        "brand-violet->teal; drop blue strays; document split",
+        "Token hygiene",
+        "P1"
+      ],
+      [
+        "C6",
+        "Nav badges + hub groups",
+        "Shell",
+        "Counts on queue items; Content popover",
+        "[2] nav explains",
+        "P3"
+      ],
+      [
+        "C7",
+        "Split personal vs platform notifications",
+        "Notifications",
+        "Separate surfaces or hard divider + role gate",
+        "Safety; [12] RBAC",
+        "P2"
+      ],
+      [
+        "C8",
+        "Tame 152-stop focus page",
+        "Notifications",
+        "Roving tabindex; overflow menus; skip-links",
+        "[12]; WCAG",
+        "P2"
+      ],
+      [
+        "C9",
+        "Mono + full IDs on hover",
+        "Requests/Users/Payments/Audit",
+        "font-mono; full value hover; keep copy",
+        "[2] Mercury",
+        "P1"
+      ],
+      [
+        "C10",
+        "Label charts + sparse states",
+        "Dashboard/Analytics",
+        "Axes; no-data/few-points states",
+        "[7] honesty",
+        "P3"
+      ],
+      [
+        "C11",
+        "Unify creation URL grammar",
+        "Messages/Content/Payments",
+        "One pattern; redirects; kill dead guesses",
+        "IA integrity",
+        "P1"
+      ],
+      [
+        "C12",
+        "Display size for money",
+        "All pages",
+        "32-40px for Rs + counts; keep dense body",
+        "[2]; [13]",
+        "P1"
+      ],
+      [
+        "C13",
+        "Audit rows open detail",
+        "Audit",
+        "Drawer: actor/diff/session/entity + deep-link",
+        "Auditability",
+        "P5"
+      ],
+      [
+        "C14",
+        "Contact rows open reply view",
+        "Contact",
+        "Row -> thread + composer + undo archive",
+        "Queue completeness",
+        "P2"
+      ],
+      [
+        "C15",
+        "Remove cookie banner",
+        "Shell",
+        "Remember per device or drop (essential-only)",
+        "Noise removal",
+        "P1"
+      ],
+      [
+        "C16",
+        "Fix New-this-month counting",
+        "Users",
+        "Verify 34/34/34 + 0 suspended",
+        "[1] trust in numbers",
+        "P1"
+      ],
+      [
+        "C17",
+        "Undo windows on destructive rows",
+        "Portfolio/Moderation/Media",
+        "10s undo toast",
+        "[9]",
+        "P5"
+      ],
+      [
+        "C18",
+        "Repair dark mode or remove toggle",
+        "Shell",
+        "Wire .dark + expand 14 utils, or delete control",
+        "[7]",
+        "P1"
+      ],
+      [
+        "C19",
+        "Pagination info everywhere",
+        "Requests/Quotes/Audit/Media",
+        "Showing x-y of N + size + total",
+        "[7]",
+        "P2"
+      ],
+      [
+        "C20",
+        "Logo alt text",
+        "Shell",
+        "One attribute; every page misses it",
+        "[12]",
+        "P1"
+      ]
+    ]
+  },
+  {
+    "sheet": "6. ADD list",
+    "rows": [
+      [
+        "ADD \u2014 genuinely missing capability (15 items)",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "ID",
+        "Addition",
+        "Where",
+        "Priority",
+        "Why it matters",
+        "Benchmark source"
+      ],
+      [
+        "A1",
+        "Bulk-action bar",
+        "Requests/Users/Contact/Verification/Audit",
+        "P1",
+        "Biggest triage multiplier; checkboxes exist",
+        "[6][7]"
+      ],
+      [
+        "A2",
+        "Keyboard triage",
+        "All queues",
+        "P1",
+        "100-item queues unusable by mouse",
+        "[12]"
+      ],
+      [
+        "A3",
+        "Saved queue views",
+        "Requests/Verification/Disputes/Contact",
+        "P1",
+        "Needs-me / stale / unassigned / VIP",
+        "[9]"
+      ],
+      [
+        "A4",
+        "SLA/age badges + escalation",
+        "Every queue row",
+        "P1",
+        "Oldest-first behaviour; Moxo whose-move",
+        "[1]"
+      ],
+      [
+        "A5",
+        "Queue->detail->advance loop",
+        "Requests/Verification/Contact/Moderation",
+        "P1",
+        "Next-item flow; items/hour metric",
+        "Triage ergonomics"
+      ],
+      [
+        "A6",
+        "Payment-detail page",
+        "Payments",
+        "P2",
+        "Milestone->invoice->attempts->settlement lineage",
+        "[13] ledger"
+      ],
+      [
+        "A7",
+        "Statement/ledger export",
+        "Payments/Audit",
+        "P2",
+        "GST-ready PDF+CSV for ops + accountants",
+        "[13]"
+      ],
+      [
+        "A8",
+        "Ask-AI on console data",
+        "Queues/Users/Payments",
+        "P2",
+        "'Why stuck?' summaries on own data",
+        "[11][5]"
+      ],
+      [
+        "A9",
+        "Operator digest + handover",
+        "Dashboard/Audit",
+        "P2",
+        "My actions today; queue delta; shift handover",
+        "Shift work"
+      ],
+      [
+        "A10",
+        "Density toggle",
+        "Shell",
+        "P2",
+        "Operators choose comfortable/compact",
+        "[5]"
+      ],
+      [
+        "A11",
+        "Degraded-status banner",
+        "Global",
+        "P2",
+        "Outage showed bare loader; reassure instead",
+        "Resilience"
+      ],
+      [
+        "A12",
+        "Webhook log + replay",
+        "Integrations",
+        "P3",
+        "Delivery observability",
+        "Ops completeness"
+      ],
+      [
+        "A13",
+        "Ops-health mini-grid",
+        "Dashboard",
+        "P3",
+        "Per-area status at a glance",
+        "[2] Signal"
+      ],
+      [
+        "A14",
+        "PWA install",
+        "Shell",
+        "P3",
+        "On-call triage from phone",
+        "[5][6][12]"
+      ],
+      [
+        "A15",
+        "Per-operator permissions",
+        "System/Users",
+        "P3",
+        "Who can broadcast/impersonate/refund",
+        "[6][11]"
+      ]
+    ]
+  },
+  {
+    "sheet": "7. KEEP list",
+    "rows": [
+      [
+        "KEEP \u2014 what is already good and must survive the redesign",
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        "Keep",
+        "Why"
+      ],
+      [
+        "Needs-attention strip",
+        "Verdict-first, live, counted \u2014 best 120px in either product"
+      ],
+      [
+        "Reason-required safety dialogs",
+        "Impersonation/deactivate/set-password + sole-admin safeguards; compliance asset"
+      ],
+      [
+        "Payments 5-tab model + installment bars + settlement/legal",
+        "Genuinely good finance-ops IA; extend, don't rebuild"
+      ],
+      [
+        "Quote Scope/Pricing/Terms stepper + line-item library",
+        "Revenue-critical flow with real structure"
+      ],
+      [
+        "Capacity card on Requests",
+        "Ops intelligence competitors lack (Active/Queued/%/Max + thresholds)"
+      ],
+      [
+        "Cmd+K palette + keyboard hints",
+        "Above benchmark average; audit for operator completeness"
+      ],
+      [
+        "Honest microcopy",
+        "'Operators cannot create users here' etc. \u2014 trust-building voice"
+      ],
+      [
+        "Teal + Inter + 6px ops identity",
+        "Distinct from client blue is fine \u2014 document, don't merge blindly"
+      ],
+      [
+        "Settlement transparency / trust strips",
+        "Converts anxious operators like it converts payers"
+      ]
+    ]
+  },
+  {
+    "sheet": "8. Roadmap",
+    "rows": [
+      [
+        "Prioritised redesign roadmap",
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "Phase",
+        "Scope",
+        "Contents",
+        "Effort",
+        "Outcome"
+      ],
+      [
+        "P0",
+        "Fix production",
+        "Repair admin/projects* (origin logs, CORS-safe errors); stabilise auth/refresh; degraded banner + retry",
+        "S",
+        "Projects + hubs load; sessions survive a shift"
+      ],
+      [
+        "P1",
+        "Foundations",
+        "Badge contrast; one-table; token purge; type scale + mono; alt; cookie banner; dark decision",
+        "M",
+        "Accessible honest base"
+      ],
+      [
+        "P2",
+        "Triage engine",
+        "Bulk bar + keyboard + saved views + SLA badges + next-item loop",
+        "L",
+        "Queues clearable; items/hour metric"
+      ],
+      [
+        "P3",
+        "Dashboard rebuild",
+        "1 hero + drill-down strip + labelled charts + sparse states + health grid",
+        "M",
+        "First 30s directs the shift"
+      ],
+      [
+        "P4",
+        "Money depth",
+        "Payment detail; reconciliation verify; statement export; SLA queues",
+        "L",
+        "Cash-in fully operable"
+      ],
+      [
+        "P5",
+        "Trust + handover",
+        "Audit detail + export; operator digest; gap closure; undo windows",
+        "M",
+        "Actions explainable; clean handovers"
+      ],
+      [
+        "P6",
+        "Responsive + PWA",
+        "Card-fallbacks; drawer nav; installable PWA; offline banners",
+        "M",
+        "Phone becomes on-call surface"
+      ],
+      [
+        "P7",
+        "Polish + AI",
+        "Motion; density toggle; RTL; Figma parity; Ask-AI; per-operator permissions",
+        "M",
+        "Matches 2026 benchmark set"
+      ]
+    ]
+  },
+  {
+    "sheet": "9. Acceptance checklist",
+    "rows": [
+      [
+        "Redesign acceptance checklist (Tailwind Admin [7] + TailGrids [12] + WCAG + \u00a75.2)",
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null
+      ],
+      [
+        "Gate",
+        "Pass criteria",
+        "Source"
+      ],
+      [
+        "Hierarchy",
+        "Operator names top queue + Rs at risk in < 2 s",
+        "[2]"
+      ],
+      [
+        "Triage speed",
+        "20-item queue clearable by keyboard; bulk bar everywhere; next-item loop",
+        "[12]+\u00a75.2"
+      ],
+      [
+        "Queues",
+        "Age/SLA/assignee per row; saved views persist; stale escalates",
+        "[9][1]"
+      ],
+      [
+        "Tables",
+        "Search/filter/status/sort/pagination+totals/bulk/mobile-fallback; one table/page",
+        "[7]"
+      ],
+      [
+        "Navigation",
+        "Hub-grouped; live badges; Cmd+K reaches every queue/user/action",
+        "[2][4]"
+      ],
+      [
+        "Colour",
+        "One ramp per product (split documented); status=icon+colour+text; text >= 4.5:1",
+        "[2]+WCAG"
+      ],
+      [
+        "Typography",
+        "Inter + mono for IDs/money; display size for amounts/counts",
+        "[2][13]"
+      ],
+      [
+        "Dark mode",
+        "Full parity verified page-by-page, or no toggle",
+        "[7]"
+      ],
+      [
+        "Accessibility",
+        "Keyboard nav; roving tabindex on dense lists; ARIA tabs/dialogs; alt everywhere",
+        "[12]+WCAG"
+      ],
+      [
+        "Empty/loading/error",
+        "Skeleton + empty + sparse + degraded states per queue/table/chart",
+        "[9]"
+      ],
+      [
+        "Safety",
+        "Destructive = reason-confirmed + audited + undoable; broadcasts role-gated",
+        "Convention"
+      ],
+      [
+        "Mobile",
+        "375/414/768 pass; no page h-scroll; no clipped CTAs",
+        "[12]"
+      ],
+      [
+        "Performance",
+        "FCP < 1.5s; no shift on async; no session drops in 30-min triage",
+        "[12]"
+      ],
+      [
+        "Legal/ops",
+        "GST-ready exports; impersonation/deactivation trails; retention noted",
+        "[13]"
+      ]
+    ]
+  },
+  {
+    "sheet": "10. Sources",
+    "rows": [
+      [
+        "Research sources \u2014 13 external (6 deep-read 30 Oct 2026; 7 read in full 24 Oct + re-validated 30 Oct) + internal",
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        "#",
+        "Title",
+        "Publisher",
+        "URL",
+        "What it contributed"
+      ],
+      [
+        1,
+        "10 Best Client Dashboard & Portal Design Examples (2026)",
+        "AdminLTE",
+        "https://adminlte.io/blog/client-dashboard-design-examples/",
+        "Verdict-first; explain numbers; next-step (Moxo); extends Needs-attention"
+      ],
+      [
+        2,
+        "12 Best Dashboard Design Examples 2026",
+        "AdminLTE",
+        "https://adminlte.io/blog/dashboard-design-examples/",
+        "5 rules; density-licenses-expertise; Signal grid; KPI grammar"
+      ],
+      [
+        3,
+        "Client Portal tag gallery",
+        "Dribbble",
+        "https://dribbble.com/tags/client-portal",
+        "Visual inspiration; dark-console bar"
+      ],
+      [
+        4,
+        "Made in Webflow: Client Dashboard",
+        "Webflow",
+        "https://webflow.com/made-in-webflow/client-dashboard",
+        "Cmd+K baseline; shell+grid expectation"
+      ],
+      [
+        5,
+        "35 Best Dashboard Templates 2026",
+        "AdminLTE",
+        "https://adminlte.io/blog/dashboard-templates/",
+        "Density toggle; theme customiser; OKLCh direction"
+      ],
+      [
+        6,
+        "34 Best Free & Premium Dashboard Templates (2026)",
+        "AdminLTE",
+        "https://adminlte.io/blog/free-dashboard-templates/",
+        "Apex/Shadcn Admin user tables + RBAC; Tabler table grammar"
+      ],
+      [
+        7,
+        "25+ Free Dashboard Design Templates (Figma & Code)",
+        "Tailwind Admin",
+        "https://tailwind-admin.com/blogs/dashboard-design-templates",
+        "QA checklist adopted as \u00a77.1"
+      ],
+      [
+        8,
+        "10+ Best Dashboard Designs 2026 (Figma + Coded)",
+        "WrapPixel",
+        "https://wrappixel.com/blog/best-dashboard-designs",
+        "Asanah milestone model for delivery views"
+      ],
+      [
+        9,
+        "22 Best SaaS Dashboard Templates & UI Examples 2026",
+        "AdminLTE",
+        "https://adminlte.io/blog/saas-admin-dashboard-templates/",
+        "Queues-not-tabs; settled-vs-owed; empty states as feature"
+      ],
+      [
+        10,
+        "5 Amazing Client Portal Templates",
+        "Assembly",
+        "https://assembly.com/blog/client-portal-templates",
+        "Hub-360 module-card reference"
+      ],
+      [
+        11,
+        "No-code client dashboard (+examples & templates)",
+        "Softr",
+        "https://www.softr.io/blog/what-is-a-client-dashboard",
+        "Ask-AI on data; per-record permissions"
+      ],
+      [
+        12,
+        "21+ Best React Dashboard Templates 2026",
+        "TailGrids",
+        "https://tailgrids.com/blog/best-react-dashboards",
+        "Production-readiness + keyboard gates"
+      ],
+      [
+        13,
+        "13 Best Finance/Banking Dashboard Templates 2026",
+        "AdminLTE",
+        "https://adminlte.io/blog/fintech-banking-dashboard-templates/",
+        "Ledger anatomy; Tremor charts; money typography"
+      ],
+      [
+        "I1",
+        "Live Operator Console (194 states)",
+        "Nestlancer",
+        "https://admin.nestlancer.com/",
+        "audit-metadata.json + 194 HTML snapshots"
+      ],
+      [
+        "I2",
+        "119 admin screenshots",
+        "Nestlancer repo",
+        "Nestlancer-admin-screenshots/admin/",
+        "83/119 cross-verified baseline"
+      ],
+      [
+        "I3",
+        "Backend OpenAPI specs (560 paths)",
+        "Nestlancer",
+        "backend-api-swagger/",
+        "Endpoint inventory; outage forensics context"
+      ]
+    ]
+  }
+]

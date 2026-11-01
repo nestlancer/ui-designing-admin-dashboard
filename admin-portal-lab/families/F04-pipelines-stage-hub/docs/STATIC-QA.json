@@ -1,0 +1,13 @@
+{
+  "missingLinks": [],
+  "duplicateIDs": [],
+  "remoteResources": [],
+  "scopeChanges": [],
+  "gitAbsent": true,
+  "manifestFamilies": [
+    "F04-pipelines-stage-hub",
+    "F03-global-search-command-palette",
+    "F01-auth-login",
+    "F02-dashboard-command-center"
+  ]
+}

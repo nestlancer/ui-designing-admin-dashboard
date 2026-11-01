@@ -515,4 +515,18 @@ Gate: PASS / FAIL
 
 ---
 
-*End of master prompt. Family prompts in `admin-portal-prompts/` carry the same rules scoped to one family. Start at §3 Step 1. Print every gate block. Hand-craft all 125.*
+## 16. Owner review — research-led operating truth (2 November 2026)
+
+These refinements apply through this shared parent to **all 25 family prompts** on their next execution; they do not authorize changing already-approved sibling designs.
+
+- **Study the work, not only dashboard styling.** After archaeology and API analysis, open primary operations/UX references and inspect relevant real screenshots. Explain which operator decision each observed pattern improves. Avoid generic metric-card wallpaper.
+- **Inventory the domain before designing a lifecycle.** Read related services, enums, actor-specific endpoints, relationships, amounts/units, side effects, response limits and conflicts. Documentation coverage is not a percentage of runtime understanding. A Swagger operation proves a documented capability, not a deployed route, current permission or service health.
+- **Separate overview → workset → record context.** Where supported, an operator should identify what/why/next actor/related work/next step and act through the right record workflow. Search, filtering, ordering, no-match and recovery must actually work; do not add bulk actions unless entities and contracts safely support them.
+- **Keep distinct concepts distinct.** Inventory ≠ attention backlog; different populations ≠ a conversion cohort; example age ≠ stage dwell or SLA; delivery completion ≠ client approval ≠ settlement. Only show analytical metrics when the required timestamps, cohort and denominators exist. Communication may be cross-cutting, not a terminal stage.
+- **Show provenance at the point of use.** Captured historical totals and synthetic records must be visually separate. Prefix illustrative IDs with DEMO, label ages/amounts illustrative, and never imply fixture records explain captured counts. Unknown/unavailable/uncounted/zero are different states. No invented freshness timestamps or health-success signals.
+- **Financial/permission-sensitive prototypes prepare, never secretly execute.** Validate local fields, disclose who can act and who sees a reason, distinguish client-facing rejection from internal notes, clear stale previews on edits and block denied actions. Do not fabricate an active-user lookup or server-side ACL. Never assert a mutation/audit succeeded when no request ran.
+- **References are secondary.** API tools belong behind progressive disclosure after operator context. Flag obsolete captured operations visibly; preserve their history in docs, not as a runnable action. Conflicting service-local routes must remain an explicit integration question.
+- **Truth survives motion and accessibility.** Never animate through false business numbers. Test native-dialog naming, initial focus, containment, Escape, caller restoration, field errors, permission state and all themes/widths. Test transient enabled/disabled paints, not just settled screenshots. Retain no-JS readable primary content.
+- **Revision evidence is fresh.** Archive earlier results, document changed scope and any procedural/budget exception, then rerun affected interaction, regression, accessibility and scope-hash checks. Historical gate passes must not be presented as new validation. Preserve manual page authorship and genuinely different geometry/narrative.
+
+*End of master prompt. Family prompts in `admin-portal-prompts/` inherit §16 as well as their own scoped rules. Start at §3 Step 1. Print every gate block. Hand-craft all 125.*

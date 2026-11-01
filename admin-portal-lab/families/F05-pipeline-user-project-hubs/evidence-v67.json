@@ -1,0 +1,2133 @@
+{
+  "policy": "Captured evidence only. Historical snapshots; no live requests. Unknown means not captured, not zero.",
+  "sources": {
+    "s114": {
+      "path": "Nestlancer-admin-screenshots/admin/114-user-pipeline-messages.webp",
+      "label": "Screenshot 114 · Messages"
+    },
+    "s115": {
+      "path": "Nestlancer-admin-screenshots/admin/115-user-pipeline-payments.webp",
+      "label": "Screenshot 115 · Payments"
+    },
+    "s116": {
+      "path": "Nestlancer-admin-screenshots/admin/116-user-pipeline-projects.webp",
+      "label": "Screenshot 116 · Projects"
+    },
+    "s117": {
+      "path": "Nestlancer-admin-screenshots/admin/117-user-pipeline-quotes.webp",
+      "label": "Screenshot 117 · Quotes"
+    },
+    "s118": {
+      "path": "Nestlancer-admin-screenshots/admin/118-user-pipeline-requests.webp",
+      "label": "Screenshot 118 · Requests"
+    },
+    "s119": {
+      "path": "Nestlancer-admin-screenshots/admin/119-user-pipeline-trust-account.webp",
+      "label": "Screenshot 119 · Trust & account"
+    },
+    "s45": {
+      "path": "Nestlancer-admin-screenshots/admin/045-pipeline-projects.webp",
+      "label": "Screenshot 045 · Project selector"
+    },
+    "s46": {
+      "path": "Nestlancer-admin-screenshots/admin/046-pipeline-projects-details.webp",
+      "label": "Screenshot 046 · Selected project"
+    },
+    "s53": {
+      "path": "Nestlancer-admin-screenshots/admin/053-projects-details.webp",
+      "label": "Screenshot 053 · Project overview"
+    },
+    "s89": {
+      "path": "Nestlancer-admin-screenshots/admin/089-project-details-daily-progress.webp",
+      "label": "Screenshot 089 · Daily progress"
+    },
+    "s90": {
+      "path": "Nestlancer-admin-screenshots/admin/090-project-details-milestones-and-files.webp",
+      "label": "Screenshot 090 · Milestones & files"
+    },
+    "h65": {
+      "path": "nestlancer-admin-pages-html/65-requests-sub-requests-01a10aa7-641e-717a-aa57-7d6706c3aa52.html",
+      "label": "HTML 65 · requests-sub-requests-01a10aa7-641e-717a-aa57-7d6706c3aa52"
+    },
+    "h66": {
+      "path": "nestlancer-admin-pages-html/66-requests-sub-requests-01a10abd-84ae-7073-b83a-138679d1bfa4.html",
+      "label": "HTML 66 · requests-sub-requests-01a10abd-84ae-7073-b83a-138679d1bfa4"
+    },
+    "h67": {
+      "path": "nestlancer-admin-pages-html/67-quotes-index.html",
+      "label": "HTML 67 · quotes-index"
+    },
+    "h68": {
+      "path": "nestlancer-admin-pages-html/68-quotes-sub-quotes-01a10aa7-baf8-722a-91e9-d824f7349ae4.html",
+      "label": "HTML 68 · quotes-sub-quotes-01a10aa7-baf8-722a-91e9-d824f7349ae4"
+    },
+    "h69": {
+      "path": "nestlancer-admin-pages-html/69-quotes-sub-quotes-01a10aa9-a039-77bf-bbf7-80f247ca739a.html",
+      "label": "HTML 69 · quotes-sub-quotes-01a10aa9-a039-77bf-bbf7-80f247ca739a"
+    },
+    "h70": {
+      "path": "nestlancer-admin-pages-html/70-quotes-sub-quotes-01a10abf-35bf-730a-8832-cef83c3acab9.html",
+      "label": "HTML 70 · quotes-sub-quotes-01a10abf-35bf-730a-8832-cef83c3acab9"
+    },
+    "h71": {
+      "path": "nestlancer-admin-pages-html/71-quotes-sub-quotes-01a10b3b-4732-70dd-8d89-010a0103d883.html",
+      "label": "HTML 71 · quotes-sub-quotes-01a10b3b-4732-70dd-8d89-010a0103d883"
+    },
+    "h72": {
+      "path": "nestlancer-admin-pages-html/72-quotes-sub-quotes-01a10cc2-0f7c-74f8-af2d-cdcb2585e421.html",
+      "label": "HTML 72 · quotes-sub-quotes-01a10cc2-0f7c-74f8-af2d-cdcb2585e421"
+    },
+    "h74": {
+      "path": "nestlancer-admin-pages-html/74-payments-index.html",
+      "label": "HTML 74 · payments-index"
+    },
+    "h76": {
+      "path": "nestlancer-admin-pages-html/76-payments-index-tab-all-transactions.html",
+      "label": "HTML 76 · payments-index-tab-all-transactions"
+    },
+    "h156": {
+      "path": "nestlancer-admin-pages-html/156-users-details.html",
+      "label": "HTML 156 · users-details"
+    }
+  },
+  "records": {
+    "requests": [
+      {
+        "id": "01a10fa4-8fd5-712e-97d7-7d3d12f94976",
+        "title": "AUDIT-P23-LINE-20261005-7r0l Request",
+        "status": "Submitted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10fa3-acfd-702b-a224-a956a39a7bc6",
+        "title": "AUDIT-P23-SUPP-20261005-6grw Request",
+        "status": "Submitted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f87-f3cf-73ac-9a0a-62335d571d11",
+        "title": "AUDIT-P25-20261005-73dhk Project Fixture",
+        "status": "Converted To Project",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f86-72a4-75f5-be0e-66bf26a8a6ec",
+        "title": "Copy of AUDIT-P24-20261005-6y6fa-sent Request",
+        "status": "Draft",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f84-ddf5-75c8-9110-113258a17674",
+        "title": "AUDIT-P24-20261005-6y6fa-draft Request",
+        "status": "Submitted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f84-31f1-75a6-aeb1-cbe61a191581",
+        "title": "AUDIT-P24-20261005-6y6fa-sent Request",
+        "status": "Quoted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f84-89ee-75de-99e9-a83c487085e8",
+        "title": "Copy of AUDIT-P24-20261005-6v89t-sent Request",
+        "status": "Draft",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f82-c72d-72ce-96f8-80799ed2d7c7",
+        "title": "AUDIT-P24-20261005-6v89t-draft Request",
+        "status": "Submitted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f82-1ddb-75cc-ba1b-93609e9e7dc4",
+        "title": "AUDIT-P24-20261005-6v89t-sent Request",
+        "status": "Quoted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f7f-7698-71f1-8c99-709e45f72b67",
+        "title": "AUDIT-P23-20261005-6rdsf Request to Quote Builder",
+        "status": "Quoted",
+        "sources": [
+          "s118"
+        ],
+        "fields": {
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured",
+          "Quote / project relationship": "Not established by matching titles"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10aa7-641e-717a-aa57-7d6706c3aa52",
+        "title": "AUDIT-P24-20261005-uc3d4-draft Request",
+        "status": "Submitted",
+        "sources": [
+          "h68",
+          "h65"
+        ],
+        "fields": {
+          "Linked from quote ID": "01a10aa7-baf8-722a-91e9-d824f7349ae4",
+          "Title": "AUDIT-P24-20261005-uc3d4-draft Request",
+          "Budget": "₹1,000.00 – ₹5,000.00",
+          "Created": "Oct 5, 2026, 6:01 AM",
+          "Assignee": "Not captured",
+          "Brief": "P24 audit draft request for admin quote management list/detail/templates/library/schedules/documents.",
+          "Category": "Web Development",
+          "Client": "Arjun Mehta (arjun.mehta@nestlancer.com)",
+          "Last updated": "Oct 5, 2026, 6:01 AM",
+          "Preferred start": "Oct 5, 2026",
+          "Deadline": "Nov 4, 2026",
+          "Requirements": "AUDIT-P24 draft; Admin quotes list/detail coverage; Documents and library coverage",
+          "Attachments": "No attachments",
+          "Status history": "Submitted — Submitted for review; Draft — Request created. Both Oct 5, 2026, 6:01 AM",
+          "Internal notes": "No note entries visible"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "quoteId": "01a10aa7-baf8-722a-91e9-d824f7349ae4"
+      },
+      {
+        "id": "01a10aa9-a003-72c6-9646-2dd14a5af336",
+        "title": "Linked source request",
+        "status": "Not captured",
+        "sources": [
+          "h69"
+        ],
+        "fields": {
+          "Linked from quote ID": "01a10aa9-a039-77bf-bbf7-80f247ca739a",
+          "Title": "Not captured in request detail",
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "quoteId": "01a10aa9-a039-77bf-bbf7-80f247ca739a"
+      },
+      {
+        "id": "01a10abd-84ae-7073-b83a-138679d1bfa4",
+        "title": "AUDIT-P23-SUPP-20261005-8p13 Request",
+        "status": "Submitted",
+        "sources": [
+          "h70",
+          "h66"
+        ],
+        "fields": {
+          "Linked from quote ID": "01a10abf-35bf-730a-8832-cef83c3acab9",
+          "Title": "AUDIT-P23-SUPP-20261005-8p13 Request",
+          "Budget": "₹1,000.00 – ₹5,000.00",
+          "Created": "Oct 5, 2026, 6:25 AM",
+          "Assignee": "Not captured",
+          "Brief": "P23 supplement audit request for quote builder template, duplicate, add/remove, schedule, and browser-back coverage.",
+          "Category": "Web Development",
+          "Client": "Arjun Mehta (arjun.mehta@nestlancer.com)",
+          "Last updated": "Oct 5, 2026, 6:25 AM",
+          "Preferred start": "Oct 5, 2026",
+          "Deadline": "Nov 4, 2026",
+          "Requirements": "Template and prefill coverage; Duplicate and reorder coverage; Payment schedule edge coverage",
+          "Attachments": "No attachments",
+          "Status history": "Submitted — Submitted for review; Draft — Request created. Both Oct 5, 2026, 6:25 AM",
+          "Internal notes": "No note entries visible"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "quoteId": "01a10abf-35bf-730a-8832-cef83c3acab9"
+      },
+      {
+        "id": "01a10b3a-e2d7-7055-973b-13a9724f66af",
+        "title": "Linked source request",
+        "status": "Not captured",
+        "sources": [
+          "h71"
+        ],
+        "fields": {
+          "Linked from quote ID": "01a10b3b-4732-70dd-8d89-010a0103d883",
+          "Title": "Not captured in request detail",
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "quoteId": "01a10b3b-4732-70dd-8d89-010a0103d883"
+      },
+      {
+        "id": "01a10cc0-69f4-72fd-9ae7-0e6533c8f21e",
+        "title": "Linked source request",
+        "status": "Not captured",
+        "sources": [
+          "h72"
+        ],
+        "fields": {
+          "Linked from quote ID": "01a10cc2-0f7c-74f8-af2d-cdcb2585e421",
+          "Title": "Not captured in request detail",
+          "Budget": "Not captured",
+          "Created": "Not captured",
+          "Assignee": "Not captured",
+          "Brief": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "quoteId": "01a10cc2-0f7c-74f8-af2d-cdcb2585e421"
+      }
+    ],
+    "quotes": [
+      {
+        "id": "01a10fa5-253c-727b-a29d-563918dfe3b4",
+        "title": "AUDIT-P23-SUPP-20261005-6grw Request",
+        "status": "Draft",
+        "sources": [
+          "s117",
+          "h67"
+        ],
+        "fields": {
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f88-5d7e-73fe-8e56-922499638ca6",
+        "title": "AUDIT-P25-20261005-73dhk Project Fixture",
+        "status": "Accepted",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Amount": "Not captured",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f86-72b8-7184-8474-e486115856a3",
+        "title": "Copy of AUDIT-P24-20261005-6y6fa-sent Request",
+        "status": "Draft",
+        "sources": [
+          "s117",
+          "h67"
+        ],
+        "fields": {
+          "Amount": "₹2,832.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f85-2f4a-7324-a404-2dddf401826a",
+        "title": "AUDIT-P24-20261005-6y6fa-draft Request",
+        "status": "Draft",
+        "sources": [
+          "s117",
+          "h67"
+        ],
+        "fields": {
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f84-8b40-7141-b478-5b26e82278bd",
+        "title": "Copy of AUDIT-P24-20261005-6v89t-sent Request",
+        "status": "Draft",
+        "sources": [
+          "s117",
+          "h67"
+        ],
+        "fields": {
+          "Amount": "₹2,832.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f84-85e8-772e-a384-1ce152381d9e",
+        "title": "AUDIT-P24-20261005-6y6fa-sent Request",
+        "status": "Viewed",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Amount": "Not captured",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f83-3849-76fa-9553-d31729e85c50",
+        "title": "AUDIT-P24-20261005-6v89t-draft Request",
+        "status": "Draft",
+        "sources": [
+          "s117",
+          "h67"
+        ],
+        "fields": {
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f82-6e95-70de-8501-aaf5d9a03466",
+        "title": "AUDIT-P24-20261005-6v89t-sent Request",
+        "status": "Viewed",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Amount": "Not captured",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10f80-3144-755f-a145-b48ad8a72557",
+        "title": "AUDIT-P23-20261005-6rdsf Request to Quote Builder",
+        "status": "Viewed",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Amount": "Not captured",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "Not captured",
+          "Source request ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10cc2-0f7c-74f8-af2d-cdcb2585e421",
+        "title": "AUDIT-P23-SUPP-20261005-bwrn Request",
+        "status": "Draft",
+        "sources": [
+          "s117",
+          "h67",
+          "h72"
+        ],
+        "fields": {
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Valid until": "2026-10-19",
+          "Source request ID": "01a10cc0-69f4-72fd-9ae7-0e6533c8f21e",
+          "Phase": "Deliverables",
+          "Line item": "AUDIT-P23 browser-back-after-save edited line item.",
+          "Quantity": "1",
+          "Unit price (INR)": "1250",
+          "Subtotal": "₹1,250.00",
+          "Tax": "0% · ₹0.00",
+          "History": "Loading history… in capture · not recovered"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "requestId": "01a10cc0-69f4-72fd-9ae7-0e6533c8f21e"
+      },
+      {
+        "id": "01a10b3b-4732-70dd-8d89-010a0103d883",
+        "title": "AUDIT-P24-20261005-03ipf-draft Request",
+        "status": "Draft",
+        "sources": [
+          "h67",
+          "h71"
+        ],
+        "fields": {
+          "Source request ID": "01a10b3a-e2d7-7055-973b-13a9724f66af",
+          "Valid until": "2026-10-19",
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Phase": "Deliverables",
+          "Line item": "AUDIT-P24 draft line item safely renders <img src=x onerror=alert(1)>",
+          "Quantity": "1",
+          "Unit price (INR)": "1250",
+          "Subtotal": "₹1,250.00",
+          "Tax": "0% · ₹0.00",
+          "History": "Loading history… in capture · not recovered"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "requestId": "01a10b3a-e2d7-7055-973b-13a9724f66af"
+      },
+      {
+        "id": "01a10abf-35bf-730a-8832-cef83c3acab9",
+        "title": "AUDIT-P23-SUPP-20261005-8p13 Request",
+        "status": "Draft",
+        "sources": [
+          "h67",
+          "h70"
+        ],
+        "fields": {
+          "Source request ID": "01a10abd-84ae-7073-b83a-138679d1bfa4",
+          "Valid until": "2026-10-19",
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Phase": "Deliverables",
+          "Line item": "AUDIT-P23 browser-back-after-save edited line item.",
+          "Quantity": "1",
+          "Unit price (INR)": "1250",
+          "Subtotal": "₹1,250.00",
+          "Tax": "0% · ₹0.00",
+          "History": "Created Oct 5, 2026, 6:27 AM"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "requestId": "01a10abd-84ae-7073-b83a-138679d1bfa4"
+      },
+      {
+        "id": "01a10aa9-a039-77bf-bbf7-80f247ca739a",
+        "title": "Copy of AUDIT-P24-20261005-uc3d4-sent Request",
+        "status": "Draft",
+        "sources": [
+          "h67",
+          "h69"
+        ],
+        "fields": {
+          "Source request ID": "01a10aa9-a003-72c6-9646-2dd14a5af336",
+          "Valid until": "2026-10-19",
+          "Amount": "₹2,832.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Phase": "Deliverables",
+          "Line item": "AUDIT-P24 sent line item safely renders <img src=x onerror=alert(1)>",
+          "Quantity": "1",
+          "Unit price (INR)": "2400",
+          "Subtotal": "₹2,400.00",
+          "Tax": "18% · ₹432.00",
+          "History": "Created Oct 5, 2026, 6:04 AM"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "requestId": "01a10aa9-a003-72c6-9646-2dd14a5af336"
+      },
+      {
+        "id": "01a10aa7-baf8-722a-91e9-d824f7349ae4",
+        "title": "AUDIT-P24-20261005-uc3d4-draft Request",
+        "status": "Draft",
+        "sources": [
+          "h67",
+          "h68"
+        ],
+        "fields": {
+          "Source request ID": "01a10aa7-641e-717a-aa57-7d6706c3aa52",
+          "Valid until": "2026-10-19",
+          "Amount": "₹1,250.00",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Phase": "Deliverables",
+          "Line item": "AUDIT-P24 draft line item safely renders <img src=x onerror=alert(1)>",
+          "Quantity": "1",
+          "Unit price (INR)": "1250",
+          "Subtotal": "₹1,250.00",
+          "Tax": "0% · ₹0.00",
+          "History": "Loading history… in capture · not recovered"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "requestId": "01a10aa7-641e-717a-aa57-7d6706c3aa52"
+      }
+    ],
+    "projects": [
+      {
+        "id": "01a10a2c-b485-766a-8ed6-94cc3ead00af",
+        "title": "API Batch Tracking Dashboard",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹62,000.00",
+          "Paid": "₹62,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "kavya.reddy@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2d-30c7-749f-ab46-a90c19658f51",
+        "title": "Artisan Marketplace Storefront",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹55,000.00",
+          "Paid": "₹55,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "divya.sharma@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10f88-c023-7368-84d5-6b13855a5d1f",
+        "title": "AUDIT-P25-20261005-73dhk Project Fixture",
+        "status": "Pending Payment",
+        "sources": [
+          "h74",
+          "s116",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹1,250.00",
+          "Paid": "₹0.00",
+          "Balance": "₹1,250.00",
+          "Installment progress": "0% 0/2 installments paid · 1 deliveries",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Delivery status": "Pending Payment",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Pending Payment"
+        },
+        "hub": true,
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a10cbc-ed76-704f-af30-8d47048df523",
+        "title": "AUDIT-P25-20261005-f611o Project Fixture",
+        "status": "Pending Payment",
+        "sources": [
+          "h74",
+          "s116",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹1,250.00",
+          "Paid": "₹0.00",
+          "Balance": "₹1,250.00",
+          "Installment progress": "0% 0/2 installments paid · 1 deliveries",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Delivery status": "Pending Payment",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Pending Payment"
+        },
+        "hub": true,
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a10aac-cfc0-70fb-9272-7482f9b0a227",
+        "title": "AUDIT-P25-20261005-uk6ic Project Fixture",
+        "status": "Pending Payment",
+        "sources": [
+          "h74",
+          "s116",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹1,250.00",
+          "Paid": "₹0.00",
+          "Balance": "₹1,250.00",
+          "Installment progress": "0% 0/2 installments paid · 1 deliveries",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Delivery status": "Pending Payment",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Pending Payment"
+        },
+        "hub": true,
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a10a2c-8397-72f9-9f80-56b345e4d34a",
+        "title": "B2B Textile Export Order Portal",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹85,000.00",
+          "Paid": "₹85,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "vikram.shah@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2b-661c-733e-be12-b5a70715a19e",
+        "title": "B2B Wholesale Ordering Portal",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s116",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹59,000.00",
+          "Paid": "₹59,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 2/2 installments paid · 1 deliveries",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": true,
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a10a2c-5cfb-71fa-854b-d88f4481e3e8",
+        "title": "Corporate LMS for 200 Employees",
+        "status": "In Progress",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹52,200.00",
+          "Paid": "₹15,660.00",
+          "Balance": "₹36,540.00",
+          "Installment progress": "30% 1/3 installments paid · 2 deliveries",
+          "Client": "priya.nair@nestlancer.com",
+          "Delivery status": "In Progress",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "In Progress"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2d-bbc4-777f-ba19-f51900dd5438",
+        "title": "Farmer Mandi Price App",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹42,000.00",
+          "Paid": "₹42,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "suresh.iyer@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2b-ca23-72d6-84d3-47fde5ca5746",
+        "title": "Festive Season Campaign Landing Pages",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹12,000.00",
+          "Paid": "₹12,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 2/2 installments paid · 1 deliveries",
+          "Client": "samira.patel@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2e-4f64-740a-b4ca-0d9ab8dc1899",
+        "title": "GPS Fleet Tracking Portal",
+        "status": "In Progress",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹72,000.00",
+          "Paid": "₹21,600.00",
+          "Balance": "₹50,400.00",
+          "Installment progress": "30% 1/3 installments paid · 2 deliveries",
+          "Client": "sandeep.chopra@nestlancer.com",
+          "Delivery status": "In Progress",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "In Progress"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+        "title": "Khandesh Spice D2C E-Commerce Store",
+        "status": "In Progress",
+        "sources": [
+          "h74",
+          "s116",
+          "s46",
+          "s90",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹75,000.00",
+          "Paid": "₹22,500.00",
+          "Balance": "₹52,500.00",
+          "Installment progress": "30% 1/3 installments paid · 4 deliveries",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Delivery status": "In Progress",
+          "Delivery progress": "57% · selected hub screenshot 046",
+          "Selector progress": "0% · screenshot 045",
+          "Target end": "Oct 5, 2027 · F12",
+          "Operator": "admin@nestlancer.com · F12",
+          "Milestones": "7 total / 7 open in hub; 4 Approved rows visible",
+          "Deliverables": "1 in hub and F12; billing list independently says 4 deliveries",
+          "Hub timeline": "0 events · No recent activity",
+          "Request origin": "— · no captured request ID",
+          "Quote origin": "01a10a2b-5c32-72e7-99ac-ba6c1c58b2ad",
+          "Selector delivery status": "In Progress"
+        },
+        "hub": true,
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a10a2d-f356-748e-bbab-2cc07a848f9d",
+        "title": "Multi-Branch Clinic Booking",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹65,000.00",
+          "Paid": "₹65,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "pooja.kulkarni@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2d-8ed9-767b-a4de-5701369ddfdf",
+        "title": "Multi-Tenant Attendance SaaS",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹92,000.00",
+          "Paid": "₹92,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "neha.gupta@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2d-61cd-733c-bd2c-7936be163dec",
+        "title": "Property Lead CRM",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹48,000.00",
+          "Paid": "₹48,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 3/3 installments paid · 1 deliveries",
+          "Client": "amit.verma@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2c-2c98-70ad-9d65-19c80c4cb784",
+        "title": "Razorpay Settlement Reconciliation Engine",
+        "status": "Revision Requested",
+        "sources": [
+          "h74",
+          "s53",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹48,000.00",
+          "Paid": "₹14,400.00",
+          "Balance": "₹33,600.00",
+          "Installment progress": "30% 1/3 installments paid · 2 deliveries",
+          "Client": "ananya.iyer@nestlancer.com",
+          "Delivery status": "Revision Requested",
+          "Delivery progress": "40% · separate F12 reference",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Revision Requested",
+          "Created": "Oct 5, 2026, 3:47 AM",
+          "Last updated": "Oct 5, 2026, 3:47 AM",
+          "Target end": "Oct 5, 2027",
+          "Operator": "Riya Kapoor · admin@nestlancer.com",
+          "Milestones": "5 reported · no milestone row IDs captured",
+          "Deliverables": "1 reported · billing separately says 2 deliveries; no file row captured",
+          "Quote origin": "01a10a2c-26a7-727f-9252-a3154d836492",
+          "Description": "Node.js microservice to reconcile Razorpay settlement reports with our internal ledger — idempotent webhook ingestion for payment.captured and settlement.processed events, transactional outbox for downstream accounting, and an admin replay UI for ops to reprocess failed settlements after the 18 June payout outage.",
+          "Portfolio note": "Portfolio drafts can only be created from completed projects."
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2c-e744-724f-ad7d-b247f2d86ff2",
+        "title": "Shop-Floor OEE Dashboard",
+        "status": "Completed",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹78,000.00",
+          "Paid": "₹78,000.00",
+          "Balance": "—",
+          "Installment progress": "100% 2/2 installments paid · 1 deliveries",
+          "Client": "rajan.kumar@nestlancer.com",
+          "Delivery status": "Completed",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "Completed"
+        },
+        "hub": false
+      },
+      {
+        "id": "01a10a2e-2015-72f9-8347-645cab96c44e",
+        "title": "UPI Switch Integration Layer",
+        "status": "In Progress",
+        "sources": [
+          "h74",
+          "s45"
+        ],
+        "fields": {
+          "Budget": "₹1,20,000.00",
+          "Paid": "₹36,000.00",
+          "Balance": "₹84,000.00",
+          "Installment progress": "30% 1/3 installments paid · 2 deliveries",
+          "Client": "karthik.menon@nestlancer.com",
+          "Delivery status": "In Progress",
+          "Delivery progress": "Not captured",
+          "Selector progress": "0% · screenshot 045",
+          "Selector delivery status": "In Progress"
+        },
+        "hub": false
+      }
+    ],
+    "payments": [
+      {
+        "id": "01a10f88-c103-710c-8c8d-c28fec9226a8",
+        "title": "Captured payment",
+        "status": "Pending",
+        "sources": [
+          "s115",
+          "h76"
+        ],
+        "fields": {
+          "Amount": "₹625.00",
+          "Project ID": "01a10f88-c023-7368-84d5-6b13855a5d1f",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Transaction-list status": "Payment due",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Project": "AUDIT-P25-20261005-73dhk Project Fixture",
+          "Status note": "Hub wording retained; owner-list wording shown separately"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10f88-c023-7368-84d5-6b13855a5d1f"
+      },
+      {
+        "id": "01a10f88-c103-710c-8c8d-be1873c17d44",
+        "title": "Captured payment",
+        "status": "Created",
+        "sources": [
+          "s115",
+          "h76"
+        ],
+        "fields": {
+          "Amount": "₹625.00",
+          "Project ID": "01a10f88-c023-7368-84d5-6b13855a5d1f",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Transaction-list status": "Not requested",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Project": "AUDIT-P25-20261005-73dhk Project Fixture",
+          "Status note": "Hub wording retained; owner-list wording shown separately"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10f88-c023-7368-84d5-6b13855a5d1f"
+      },
+      {
+        "id": "01a10cbc-edbf-764c-bc51-b5debebadc56",
+        "title": "Captured payment",
+        "status": "Pending",
+        "sources": [
+          "s115",
+          "h76"
+        ],
+        "fields": {
+          "Amount": "₹625.00",
+          "Project ID": "01a10cbc-ed76-704f-af30-8d47048df523",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Transaction-list status": "Payment due",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Project": "AUDIT-P25-20261005-f611o Project Fixture",
+          "Status note": "Hub wording retained; owner-list wording shown separately"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10cbc-ed76-704f-af30-8d47048df523"
+      },
+      {
+        "id": "01a10cbc-edbf-764c-bc51-b35825aea61d",
+        "title": "Captured payment",
+        "status": "Created",
+        "sources": [
+          "s115",
+          "h76"
+        ],
+        "fields": {
+          "Amount": "₹625.00",
+          "Project ID": "01a10cbc-ed76-704f-af30-8d47048df523",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Transaction-list status": "Not requested",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Project": "AUDIT-P25-20261005-f611o Project Fixture",
+          "Status note": "Hub wording retained; owner-list wording shown separately"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10cbc-ed76-704f-af30-8d47048df523"
+      },
+      {
+        "id": "01a10aac-d034-723e-8841-eb0ec84d268d",
+        "title": "Captured payment",
+        "status": "Created",
+        "sources": [
+          "s115",
+          "h76"
+        ],
+        "fields": {
+          "Amount": "₹625.00",
+          "Project ID": "01a10aac-cfc0-70fb-9272-7482f9b0a227",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Transaction-list status": "Not requested",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Project": "AUDIT-P25-20261005-uk6ic Project Fixture",
+          "Status note": "Hub wording retained; owner-list wording shown separately"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10aac-cfc0-70fb-9272-7482f9b0a227"
+      },
+      {
+        "id": "01a10aac-d034-723e-8841-ee3e98977730",
+        "title": "Captured payment",
+        "status": "Pending",
+        "sources": [
+          "s115",
+          "h76"
+        ],
+        "fields": {
+          "Amount": "₹625.00",
+          "Project ID": "01a10aac-cfc0-70fb-9272-7482f9b0a227",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Transaction-list status": "Payment due",
+          "Client": "arjun.mehta@nestlancer.com",
+          "Project": "AUDIT-P25-20261005-uk6ic Project Fixture",
+          "Status note": "Hub wording retained; owner-list wording shown separately"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10aac-cfc0-70fb-9272-7482f9b0a227"
+      },
+      {
+        "id": "01a10a2b-663e-7019-87c4-f4403da353e0",
+        "title": "Captured payment",
+        "status": "Completed",
+        "sources": [
+          "s115"
+        ],
+        "fields": {
+          "Amount": "Not captured",
+          "Project ID": "Not captured",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10a2b-663e-7019-87c4-fa82caf14f0b",
+        "title": "Captured payment",
+        "status": "Completed",
+        "sources": [
+          "s115"
+        ],
+        "fields": {
+          "Amount": "Not captured",
+          "Project ID": "Not captured",
+          "Milestone ID": "Not captured",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true
+      },
+      {
+        "id": "01a10a2b-5ed2-73bc-8aee-d4cdcbb6e6d6",
+        "title": "Captured payment",
+        "status": "Pending",
+        "sources": [
+          "s115",
+          "s46"
+        ],
+        "fields": {
+          "Amount": "₹22,500.00",
+          "Project ID": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+          "Milestone ID": "01a10a2b-5eca-760b-8ae6-db511c21e3b5",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Raw amount (paise)": 2250000,
+          "Relationship evidence": "REF column in screenshot 046 · exact milestone UUID"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+        "milestoneId": "01a10a2b-5eca-760b-8ae6-db511c21e3b5"
+      },
+      {
+        "id": "01a10a2b-5ed2-73bc-8aee-cf61167d4900",
+        "title": "Captured payment",
+        "status": "Completed",
+        "sources": [
+          "s115",
+          "s46"
+        ],
+        "fields": {
+          "Amount": "₹22,500.00",
+          "Project ID": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+          "Milestone ID": "01a10a2b-5eca-760b-8ae6-d33d2131d708",
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Raw amount (paise)": 2250000,
+          "Relationship evidence": "REF column in screenshot 046 · exact milestone UUID"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": true,
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+        "milestoneId": "01a10a2b-5eca-760b-8ae6-d33d2131d708"
+      },
+      {
+        "id": "01a10a2b-5ed2-73bc-8aee-d1c6262906e9",
+        "title": "Captured payment",
+        "status": "Pending",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Method": "Not captured",
+          "Created / paid date": "Not captured",
+          "Amount": "₹30,000.00",
+          "Raw amount (paise)": 3000000,
+          "Project ID": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+          "Milestone ID": "01a10a2b-5eca-760b-8ae6-d723b0524e0a",
+          "Relationship evidence": "REF column in screenshot 046 · exact milestone UUID"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+        "hub": false,
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+        "milestoneId": "01a10a2b-5eca-760b-8ae6-d723b0524e0a"
+      }
+    ],
+    "milestones": [
+      {
+        "id": "01a10a2b-5eca-760b-8ae6-d33d2131d708",
+        "title": "Deposit",
+        "status": "Pending",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Pending",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": "01a10a2b-5eca-760b-8ae6-d723b0524e0a",
+        "title": "Mid-project payment",
+        "status": "Pending",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Pending",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": "01a10a2b-5eca-760b-8ae6-db511c21e3b5",
+        "title": "Final payment",
+        "status": "Pending",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Pending",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": "01a10a2b-5ee3-72f8-841f-7ee941ba7636",
+        "title": "Project delivery",
+        "status": "Approved",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Approved",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": "01a10a2b-7765-721c-86f7-506c98b91e5e",
+        "title": "Design & Architecture",
+        "status": "Approved",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Approved",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": "01a10a2b-777d-721e-bf80-f46a10c1d45e",
+        "title": "Storefront & Checkout",
+        "status": "Approved",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Approved",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": "01a10a2b-77b5-7674-abec-84864264cf08",
+        "title": "QA, SEO & Launch",
+        "status": "Approved",
+        "sources": [
+          "s46"
+        ],
+        "fields": {
+          "Hub status": "Approved",
+          "Due": "Not captured in the ID-bearing hub row",
+          "Type": "Not captured in the ID-bearing hub row",
+          "Payment column": "— in hub; exact payment REF associations are separately captured",
+          "F12 comparison": "See separate, unjoined F12 phase observations. No title-only field join."
+        },
+        "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      }
+    ],
+    "sessions": [
+      {
+        "id": "01a125ac-f30a-7128-b205-cccd856f2a55",
+        "title": "Active session",
+        "status": "Active",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Device": "Not captured",
+          "IP address": "Not captured",
+          "Created": "Not captured",
+          "Last used": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a125a7-698e-77b4-8a74-0c17c526ebf9",
+        "title": "Active session",
+        "status": "Active",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Device": "Not captured",
+          "IP address": "Not captured",
+          "Created": "Not captured",
+          "Last used": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a12573-fe46-70b8-9235-a143aea09b0f",
+        "title": "Active session",
+        "status": "Active",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Device": "Not captured",
+          "IP address": "Not captured",
+          "Created": "Not captured",
+          "Last used": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a12558-ed84-72df-9ad4-49b18bf2ba99",
+        "title": "Active session",
+        "status": "Active",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Device": "Not captured",
+          "IP address": "Not captured",
+          "Created": "Not captured",
+          "Last used": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a124e2-5ed7-7748-b602-fe2caea75a9c",
+        "title": "Active session",
+        "status": "Active",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Device": "Not captured",
+          "IP address": "Not captured",
+          "Created": "Not captured",
+          "Last used": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": "01a124c5-8cae-71fd-b0fc-faddf55e29c3",
+        "title": "Active session",
+        "status": "Active",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Device": "Not captured",
+          "IP address": "Not captured",
+          "Created": "Not captured",
+          "Last used": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      }
+    ],
+    "activity": [
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T11:57:09.639Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T11:51:13.562Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T11:50:30.767Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T10:55:13.613Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T10:24:57.630Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s119"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T10:22:13.105Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured"
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 10, 2026, 12:11 PM",
+          "Description": "User signed in successfully",
+          "IP": "136.86.144.132",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 10, 2026, 10:17 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.83.1.1",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 10, 2026, 10:01 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.83.1.1",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 10, 2026, 8:05 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.168.44.144",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 9, 2026, 11:11 AM",
+          "Description": "User signed in successfully",
+          "IP": "35.233.212.73",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 6, 2026, 5:14 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.187.212.218",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 6, 2026, 5:08 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.187.212.218",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 6, 2026, 4:25 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.187.212.218",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 6, 2026, 4:24 AM",
+          "Description": "User signed in successfully",
+          "IP": "34.187.212.218",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "h156"
+        ],
+        "fields": {
+          "Timestamp": "Oct 5, 2026, 4:48 PM",
+          "Description": "User signed in successfully",
+          "IP": "115.98.206.71",
+          "Timezone": "Not stated"
+        },
+        "userId": "01a10a2b-1039-77dd-90c9-2793dd606216"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T12:03:30.382Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured",
+          "Snapshot boundary": "Separate screenshot 117 observation. Not an additional unique login inferred from repeated timestamps."
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T11:57:09.639Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured",
+          "Snapshot boundary": "Separate screenshot 117 observation. Not an additional unique login inferred from repeated timestamps."
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T11:51:13.562Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured",
+          "Snapshot boundary": "Separate screenshot 117 observation. Not an additional unique login inferred from repeated timestamps."
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T11:50:30.767Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured",
+          "Snapshot boundary": "Separate screenshot 117 observation. Not an additional unique login inferred from repeated timestamps."
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T10:55:13.613Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured",
+          "Snapshot boundary": "Separate screenshot 117 observation. Not an additional unique login inferred from repeated timestamps."
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      },
+      {
+        "id": null,
+        "title": "LOGIN",
+        "status": "auth",
+        "sources": [
+          "s117"
+        ],
+        "fields": {
+          "Timestamp": "2026-10-10T10:24:57.630Z",
+          "Description": "User signed in successfully",
+          "IP": "Not captured",
+          "Event ID": "Not captured",
+          "Snapshot boundary": "Separate screenshot 117 observation. Not an additional unique login inferred from repeated timestamps."
+        },
+        "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b"
+      }
+    ],
+    "timeline": [
+      {
+        "id": null,
+        "title": "Wireframe pack uploaded for review",
+        "status": "Deliverable upload",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Milestone 1 wireframes attached — please review checkout UPI flow and Hindi toggle placement.",
+          "Milestone": "Design & Architecture",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Client visibility not independently established",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": null,
+        "title": "Milestone Approved",
+        "status": "Daily update",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Reconciled after deliverable approval.",
+          "Milestone": "QA, SEO & Launch",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Client visibility not independently established",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": null,
+        "title": "Milestone Approved",
+        "status": "Daily update",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Reconciled after deliverable approval.",
+          "Milestone": "Storefront & Checkout",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Client visibility not independently established",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": null,
+        "title": "Milestone Approved",
+        "status": "Daily update",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Reconciled after deliverable approval.",
+          "Milestone": "Design & Architecture",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Client visibility not independently established",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": null,
+        "title": "Internal — Shiprocket rate API spike",
+        "status": "Internal note",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Confirmed Shiprocket v2 rates endpoint supports pincode checker on cart. Keeping COD threshold at ₹2,000 per Arjun’s note.",
+          "Milestone": "Design & Architecture",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Internal",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": null,
+        "title": "Daily update — homepage and PLP wireframes",
+        "status": "Daily update",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Completed homepage hero, product listing with variant swatches (50g/200g/500g), and mobile-first navigation. Hindi toggle wireframes shared in Figma.",
+          "Milestone": "Design & Architecture",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Client visibility not independently established",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      },
+      {
+        "id": null,
+        "title": "Milestone Approved",
+        "status": "Daily update",
+        "sources": [
+          "s89"
+        ],
+        "fields": {
+          "Body": "Reconciled after deliverable approval.",
+          "Milestone": "Project delivery",
+          "Timestamp": "Oct 5, 2026, 3:46 AM",
+          "Timezone": "Not stated; not converted to UTC",
+          "Event ID": "Not captured",
+          "Visibility": "Client visibility not independently established",
+          "Association boundary": "Separate F12 named-project snapshot, not ID-bearing hub timeline events."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      }
+    ],
+    "deliverables": [
+      {
+        "id": null,
+        "title": "Milestone 1 wireframes — homepage, PLP, PDP, cart, checkout (Hindi + English).",
+        "status": "Approved",
+        "sources": [
+          "s90"
+        ],
+        "fields": {
+          "Submitted": "Oct 5, 2026, 3:46 AM",
+          "File": "arjun-mehta-e-commerce-platform-milestone-1-wireframes.pdf",
+          "Download URL": "Not captured; filename is not a downloadable file",
+          "Deliverable ID": "Not captured",
+          "Association boundary": "Separate F12 named-project reference. Deliverable UUID not captured; not ID-joined to the hub deliverable."
+        },
+        "contextProjectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924"
+      }
+    ]
+  },
+  "userId": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+  "projectId": "01a10a2b-5eaa-769e-a5d9-0d58fcca6924",
+  "users": [
+    {
+      "id": "01a10a2a-a99a-7578-825a-c7de8bce4d2b",
+      "name": "Arjun Mehta",
+      "email": "arjun.mehta@nestlancer.com",
+      "status": "Active",
+      "role": "USER",
+      "source": [
+        "s118"
+      ],
+      "reported": {
+        "Requests": 26,
+        "Quotes": 22,
+        "Active projects": 4,
+        "Payments": 11,
+        "Messages": 0,
+        "Sessions": 6
+      },
+      "fields": {
+        "Snapshot": "October 2026 · historical",
+        "Open requests header": "10 · Submitted + in review",
+        "Pending payments header": "8 · inclusion rule unverified",
+        "Cross-category alerts": "2 · active project with pending payments; submitted requests not yet under review",
+        "Registered": "Not captured",
+        "Last active": "Not captured"
+      }
+    },
+    {
+      "id": "01a10a2b-1039-77dd-90c9-2793dd606216",
+      "name": "Karthik Menon",
+      "email": "karthik.menon@nestlancer.com",
+      "status": "ACTIVE",
+      "role": "USER",
+      "source": [
+        "h156"
+      ],
+      "reported": {
+        "Requests": 1,
+        "Projects": 0,
+        "Sessions": 0,
+        "Activity events": 24
+      },
+      "fields": {
+        "Registered": "Oct 5, 2026",
+        "Lifetime paid": "₹36,000.00",
+        "Last active": "— in capture",
+        "Operator notes": "No operator notes on file",
+        "Coverage": "Profile only. No request IDs, quote records, payment rows or messages captured."
+      }
+    }
+  ],
+  "milestoneReferences": [
+    {
+      "title": "Deposit",
+      "status": "Paid",
+      "due": "Oct 5, 2027",
+      "type": "deposit · pay-only",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    },
+    {
+      "title": "Mid-project payment",
+      "status": "Payment due",
+      "due": "Oct 5, 2027",
+      "type": "installment · pay-only",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    },
+    {
+      "title": "Final payment",
+      "status": "Payment due",
+      "due": "Oct 5, 2027",
+      "type": "installment · pay-only",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    },
+    {
+      "title": "Project delivery",
+      "status": "Approved",
+      "due": "Oct 5, 2027",
+      "type": "Delivery milestone",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    },
+    {
+      "title": "Design & Architecture",
+      "status": "Approved",
+      "due": "Jul 15, 2026",
+      "type": "Delivery milestone",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    },
+    {
+      "title": "Storefront & Checkout",
+      "status": "Approved",
+      "due": "Aug 15, 2026",
+      "type": "Delivery milestone",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    },
+    {
+      "title": "QA, SEO & Launch",
+      "status": "Approved",
+      "due": "Sep 30, 2026",
+      "type": "Delivery milestone",
+      "sources": [
+        "s90"
+      ],
+      "boundary": "F12 named-project reference. Phase UUID not visible; not joined to a hub milestone ID."
+    }
+  ],
+  "counts": {
+    "requests": 15,
+    "quotes": 14,
+    "projects": 18,
+    "payments": 11,
+    "milestones": 7,
+    "sessions": 6,
+    "activity": 22,
+    "timeline": 7,
+    "deliverables": 1
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "passed": true,
+  "checks": 40,
+  "details": [
+    {
+      "ok": true,
+      "what": "547 protected source/earlier-family/shared files unchanged"
+    },
+    {
+      "ok": true,
+      "what": "Earlier manifest family values unchanged"
+    },
+    {
+      "ok": true,
+      "what": "Gallery additive F05-only block"
+    },
+    {
+      "ok": true,
+      "what": ".git remains absent"
+    },
+    {
+      "ok": true,
+      "what": "V1 ten required sections"
+    },
+    {
+      "ok": true,
+      "what": "V1 both hubs"
+    },
+    {
+      "ok": true,
+      "what": "V1 no placeholder # links"
+    },
+    {
+      "ok": true,
+      "what": "V1 local asset/link graph: []"
+    },
+    {
+      "ok": true,
+      "what": "V1 logo alt and dimensions"
+    },
+    {
+      "ok": true,
+      "what": "V1 variant CSS uses tokens, no raw colours"
+    },
+    {
+      "ok": true,
+      "what": "V1 below hard250KiB"
+    },
+    {
+      "ok": true,
+      "what": "V2 ten required sections"
+    },
+    {
+      "ok": true,
+      "what": "V2 both hubs"
+    },
+    {
+      "ok": true,
+      "what": "V2 no placeholder # links"
+    },
+    {
+      "ok": true,
+      "what": "V2 local asset/link graph: []"
+    },
+    {
+      "ok": true,
+      "what": "V2 logo alt and dimensions"
+    },
+    {
+      "ok": true,
+      "what": "V2 variant CSS uses tokens, no raw colours"
+    },
+    {
+      "ok": true,
+      "what": "V2 below hard250KiB"
+    },
+    {
+      "ok": true,
+      "what": "V3 ten required sections"
+    },
+    {
+      "ok": true,
+      "what": "V3 both hubs"
+    },
+    {
+      "ok": true,
+      "what": "V3 no placeholder # links"
+    },
+    {
+      "ok": true,
+      "what": "V3 local asset/link graph: []"
+    },
+    {
+      "ok": true,
+      "what": "V3 logo alt and dimensions"
+    },
+    {
+      "ok": true,
+      "what": "V3 variant CSS uses tokens, no raw colours"
+    },
+    {
+      "ok": true,
+      "what": "V3 below hard250KiB"
+    },
+    {
+      "ok": true,
+      "what": "V4 ten required sections"
+    },
+    {
+      "ok": true,
+      "what": "V4 both hubs"
+    },
+    {
+      "ok": true,
+      "what": "V4 no placeholder # links"
+    },
+    {
+      "ok": true,
+      "what": "V4 local asset/link graph: []"
+    },
+    {
+      "ok": true,
+      "what": "V4 logo alt and dimensions"
+    },
+    {
+      "ok": true,
+      "what": "V4 variant CSS uses tokens, no raw colours"
+    },
+    {
+      "ok": true,
+      "what": "V4 below hard250KiB"
+    },
+    {
+      "ok": true,
+      "what": "V5 ten required sections"
+    },
+    {
+      "ok": true,
+      "what": "V5 both hubs"
+    },
+    {
+      "ok": true,
+      "what": "V5 no placeholder # links"
+    },
+    {
+      "ok": true,
+      "what": "V5 local asset/link graph: []"
+    },
+    {
+      "ok": true,
+      "what": "V5 logo alt and dimensions"
+    },
+    {
+      "ok": true,
+      "what": "V5 variant CSS uses tokens, no raw colours"
+    },
+    {
+      "ok": true,
+      "what": "V5 below hard250KiB"
+    },
+    {
+      "ok": true,
+      "what": "No API/network execution code"
+    }
+  ],
+  "changedProtected": [],
+  "payload": [
+    {
+      "variant": "V1",
+      "rawBytesIncludingShared": 82545,
+      "gzipEstimateBytes": 25414,
+      "imagesBytes": 4940
+    },
+    {
+      "variant": "V2",
+      "rawBytesIncludingShared": 86343,
+      "gzipEstimateBytes": 26359,
+      "imagesBytes": 4940
+    },
+    {
+      "variant": "V3",
+      "rawBytesIncludingShared": 82371,
+      "gzipEstimateBytes": 25044,
+      "imagesBytes": 4940
+    },
+    {
+      "variant": "V4",
+      "rawBytesIncludingShared": 83886,
+      "gzipEstimateBytes": 25496,
+      "imagesBytes": 4940
+    },
+    {
+      "variant": "V5",
+      "rawBytesIncludingShared": 85176,
+      "gzipEstimateBytes": 25675,
+      "imagesBytes": 4940
+    }
+  ],
+  "finalScopeRecheck": {
+    "protectedFiles": 547,
+    "changed": [],
+    "galleryAdditive": true,
+    "previousManifestFamiliesUnchanged": true,
+    "decisionsAppendOnly": true,
+    "gitAbsent": true
+  }
+}

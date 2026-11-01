@@ -1,0 +1,830 @@
+{
+  "manifest": {
+    "lab": "admin-portal-lab",
+    "scheme": "ONE locked teal token file \u2014 shared/tokens.css (master admin-portal-prompt.md \u00a75.2)",
+    "families": {
+      "F04-pipelines-stage-hub": {
+        "slug": "F04-pipelines-stage-hub",
+        "title": "Pipelines \u00b7 Operating workbench",
+        "route": "/pipeline",
+        "variants": [
+          {
+            "id": "V1",
+            "name": "Atlas",
+            "path": "families/F04-pipelines-stage-hub/V1/index.html",
+            "aspect": "Operating desk with exception rows and evidence-first guide",
+            "axes": [
+              "A worklist + guide",
+              "B next actor",
+              "C evidence then handoff",
+              "D minimal",
+              "E filter and local preparation"
+            ],
+            "changes": [
+              "C11",
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "api": [
+              "GET /api/v1/admin/contact",
+              "GET /api/v1/admin/requests/stats"
+            ],
+            "workflowExamples": [
+              "offline-transfer review",
+              "request assignment",
+              "client contract signature dependency",
+              "delivery revision",
+              "inquiry qualification",
+              "source visibility gap"
+            ]
+          },
+          {
+            "id": "V2",
+            "name": "Current",
+            "path": "families/F04-pipelines-stage-hub/V2/index.html",
+            "aspect": "Handoff board with ownership and related-record dependencies",
+            "axes": [
+              "A two-column handoff board",
+              "B accountable ownership",
+              "C dependency context",
+              "D structured",
+              "E case review plus roving stage inspector"
+            ],
+            "changes": [
+              "C11",
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "api": [
+              "GET /api/v1/admin/quotes/stats",
+              "GET /api/v1/admin/projects/stats"
+            ],
+            "workflowExamples": [
+              "offline-transfer review",
+              "request assignment",
+              "client contract signature dependency",
+              "delivery revision",
+              "inquiry qualification",
+              "source visibility gap"
+            ]
+          },
+          {
+            "id": "V3",
+            "name": "Fieldguide",
+            "path": "families/F04-pipelines-stage-hub/V3/index.html",
+            "aspect": "Editorial operating brief: decisions, client waits, data gaps",
+            "axes": [
+              "A three-part brief",
+              "B operator questions",
+              "C decision/client/data chapters",
+              "D editorial",
+              "E searchable ledger plus observed chapters"
+            ],
+            "changes": [
+              "C11",
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "api": [
+              "GET /api/v1/admin/users",
+              "GET /api/audit/stats"
+            ],
+            "workflowExamples": [
+              "offline-transfer review",
+              "request assignment",
+              "client contract signature dependency",
+              "delivery revision",
+              "inquiry qualification",
+              "source visibility gap"
+            ]
+          },
+          {
+            "id": "V4",
+            "name": "Switchboard",
+            "path": "families/F04-pipelines-stage-hub/V4/index.html",
+            "aspect": "Semantic work register with case preparation and secondary API dock",
+            "axes": [
+              "A real semantic work table",
+              "B record condition",
+              "C triage to context",
+              "D dense",
+              "E sort/filter/validation plus API dock"
+            ],
+            "changes": [
+              "C11",
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "api": [
+              "GET /api/v1/admin/payments/stats",
+              "GET /api/v1/docs-specs"
+            ],
+            "workflowExamples": [
+              "offline-transfer review",
+              "request assignment",
+              "client contract signature dependency",
+              "delivery revision",
+              "inquiry qualification",
+              "source visibility gap"
+            ]
+          },
+          {
+            "id": "V5",
+            "name": "Passage",
+            "path": "families/F04-pipelines-stage-hub/V5/index.html",
+            "aspect": "Three-lane flow desk: Intake / Delivery / Money & signals",
+            "axes": [
+              "A three stage lanes",
+              "B functional stream",
+              "C dependency-led case flow",
+              "D spatial",
+              "E quiet entry motion; static numerical truth"
+            ],
+            "changes": [
+              "C11",
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "api": [
+              "GET /api/v1/admin/messages/stats",
+              "GET /api/dashboard/overview"
+            ],
+            "workflowExamples": [
+              "offline-transfer review",
+              "request assignment",
+              "client contract signature dependency",
+              "delivery revision",
+              "inquiry qualification",
+              "source visibility gap"
+            ]
+          }
+        ],
+        "coverage": {
+          "C": "7/7 in 5/5 variants",
+          "A11": "5/5 (P2 requires \u22653/5)",
+          "P1Adds": "none newly classified",
+          "retainedStageTrustConsolesReference": "5/5",
+          "caseContextFilterSortPreparationStates": "5/5",
+          "primaryMarkup": "hand-authored per variant; shared interactive dialog component only",
+          "generators": 0
+        },
+        "demoOnly": "Historical volumes remain distinct from six synthetic DEMO cases. Example age is not SLA or stage dwell. Assignment and transfer approve/reject create validated local payload previews only; denied permission blocks preparation. No request, mutation or audit write runs. Unknown source is not zero. API history remains read-only with obsolete milestone creation visibly flagged; F05 is not implemented here.",
+        "winnerRecommendation": "V4 Switchboard \u2014 best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
+        "revision": 2,
+        "evidence": {
+          "research": "families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md",
+          "contracts": "families/F04-pipelines-stage-hub/docs/revision-2/SWAGGER-INVENTORY.md",
+          "delivery": "families/F04-pipelines-stage-hub/docs/revision-2/DELIVERY-REPORT.md",
+          "swaggerSpecs": 17,
+          "serviceLocalPathEntries": 560,
+          "httpOperations": 648,
+          "schemaDefinitions": 218,
+          "qualification": "documentation inventory, not unique deployed public routes or a runtime understanding percentage"
+        }
+      },
+      "F03-global-search-command-palette": {
+        "slug": "F03-global-search-command-palette",
+        "title": "Global search \u00b7 Command palette",
+        "route": "Overlay on any console route",
+        "variants": [
+          {
+            "id": "V1",
+            "name": "Compass",
+            "path": "families/F03-global-search-command-palette/V1/index.html",
+            "aspect": "Ground-truth grouped list with recent history",
+            "axes": [
+              "A centered list",
+              "B familiar pages",
+              "C grouped browse",
+              "D comfortable",
+              "E live filter/recent"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "palette-completeness"
+            ],
+            "api": [
+              "GET /api/v1/admin/users/search",
+              "GET /api/v1/admin/requests"
+            ]
+          },
+          {
+            "id": "V2",
+            "name": "Dispatch",
+            "path": "families/F03-global-search-command-palette/V2/index.html",
+            "aspect": "Queue-first register with domain rail",
+            "axes": [
+              "A domain rail",
+              "B queue-first",
+              "C scope drill",
+              "D compact",
+              "E domain selection"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "palette-completeness"
+            ],
+            "api": [
+              "GET /api/v1/admin/payments?status=PENDING_VERIFICATION"
+            ]
+          },
+          {
+            "id": "V3",
+            "name": "Dossier",
+            "path": "families/F03-global-search-command-palette/V3/index.html",
+            "aspect": "Two-pane destination and provenance preview",
+            "axes": [
+              "A split preview",
+              "B destination-first",
+              "C inspect/jump",
+              "D editorial",
+              "E highlight crossfade"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "palette-completeness"
+            ],
+            "api": [
+              "GET /api/v1/admin/users/{userId}",
+              "GET /api/v1/admin/payments"
+            ]
+          },
+          {
+            "id": "V4",
+            "name": "Needle",
+            "path": "families/F03-global-search-command-palette/V4/index.html",
+            "aspect": "Minimal launch bar with ranked flat register",
+            "axes": [
+              "A horizontal bar",
+              "B exact match",
+              "C query register",
+              "D minimal dense",
+              "E ranked typeahead"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "palette-completeness"
+            ],
+            "api": [
+              "GET /api/v1/admin/requests",
+              "GET /api/v1/admin/quotes"
+            ]
+          },
+          {
+            "id": "V5",
+            "name": "Relay",
+            "path": "families/F03-global-search-command-palette/V5/index.html",
+            "aspect": "Route spine, layered dock and choreographed handoff",
+            "axes": [
+              "A spine dock",
+              "B next step",
+              "C staged receipt",
+              "D layered",
+              "E stagger/handoff"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "palette-completeness"
+            ],
+            "api": [
+              "GET /api/v1/admin/payments",
+              "POST /api/v1/messages/threads/group (reference only)"
+            ]
+          }
+        ],
+        "coverage": {
+          "C": "6/6 in 5/5 variants",
+          "palette-completeness": "5/5",
+          "keyboard-recents-states-dark-mobile": "5/5",
+          "generators": 0
+        },
+        "demoOnly": "All route/record/creation handoffs are local previews, not live APIs. No global search endpoint. Payment fixture is project context, not a verified individual payment. Group creation preview repairs captured 404 without guessing a route.",
+        "winnerRecommendation": "V3 Dossier \u2014 destination context and provenance before selecting; V1 Compass is the simplest default."
+      },
+      "F01-auth-login": {
+        "slug": "F01-auth-login",
+        "title": "Auth \u00b7 Operator sign-in",
+        "route": "/login",
+        "variants": [
+          {
+            "id": "V1",
+            "name": "Monolith",
+            "path": "families/F01-auth-login/V1/index.html",
+            "aspect": "Deep-teal full-bleed canvas with drifting contour SVG + dot grid; floating light card, 3-step progress line, display H1",
+            "axes": [
+              "A layout",
+              "C narrative",
+              "D density"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "enterprise2026": [
+              "single-form",
+              "forgot-password(Gate-A)",
+              "consent-line",
+              "copyright-footer",
+              "error-focus",
+              "dismissible-notices",
+              "caps-lock",
+              "shared-device-hint",
+              "44px-coarse"
+            ],
+            "api": [
+              "POST /api/v1/auth/login",
+              "POST /api/v1/auth/verify-2fa",
+              "POST /api/v1/auth/forgot-password",
+              "POST /api/v1/auth/refresh",
+              "GET /api/v1/auth/health"
+            ]
+          },
+          {
+            "id": "V2",
+            "name": "Tide",
+            "path": "families/F01-auth-login/V2/index.html",
+            "aspect": "Asymmetric 46/54 split; animated wave lines (single dashoffset draw) on teal panel; vertical wordmark; mono posture ledger; two-step card",
+            "axes": [
+              "A layout",
+              "B hierarchy",
+              "C narrative"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "enterprise2026": [
+              "progressive-disclosure",
+              "forgot-password(Gate-A)",
+              "consent-line",
+              "copyright-footer",
+              "error-focus",
+              "dismissible-notices",
+              "caps-lock",
+              "44px-coarse"
+            ],
+            "api": [
+              "POST /api/v1/auth/login",
+              "POST /api/v1/auth/verify-2fa",
+              "POST /api/v1/auth/forgot-password"
+            ]
+          },
+          {
+            "id": "V3",
+            "name": "Ops terminal",
+            "path": "families/F01-auth-login/V3/index.html",
+            "aspect": "Console-card: window chrome bar, mono prompt line with blinking caret, scan-dot backdrop, status readout; single-form",
+            "axes": [
+              "A layout",
+              "B hierarchy",
+              "E interaction"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "enterprise2026": [
+              "progressive-disclosure",
+              "forgot-password(Gate-A)",
+              "consent-line",
+              "copyright-footer",
+              "error-focus",
+              "dismissible-notices",
+              "caps-lock",
+              "44px-coarse"
+            ],
+            "api": [
+              "POST /api/v1/auth/login",
+              "POST /api/v1/auth/verify-2fa",
+              "POST /api/v1/auth/forgot-password"
+            ]
+          },
+          {
+            "id": "V4",
+            "name": "Editorial index",
+            "path": "families/F01-auth-login/V4/index.html",
+            "aspect": "Editorial spread: oversized display headline + outlined ghost word, hard-offset-shadow paper form with index tag, ruled mono footer",
+            "axes": [
+              "A layout",
+              "D density",
+              "C narrative"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "enterprise2026": [
+              "single-form",
+              "forgot-password(Gate-A)",
+              "consent-line",
+              "copyright-footer",
+              "error-focus",
+              "dismissible-notices",
+              "caps-lock",
+              "44px-coarse"
+            ],
+            "api": [
+              "POST /api/v1/auth/login",
+              "GET /api/v1/auth/health",
+              "POST /api/v1/auth/verify-2fa",
+              "POST /api/v1/auth/forgot-password"
+            ]
+          },
+          {
+            "id": "V5",
+            "name": "Choreography",
+            "path": "families/F01-auth-login/V5/index.html",
+            "aspect": "Centered card over pointer-parallax teal glow + concentric rings; animated step progress line (dashoffset stepper); sliding panels",
+            "axes": [
+              "E interaction",
+              "C narrative",
+              "B hierarchy"
+            ],
+            "changes": [
+              "C3",
+              "C5",
+              "C9",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A11"
+            ],
+            "enterprise2026": [
+              "progressive-disclosure",
+              "forgot-password(Gate-A)",
+              "consent-line",
+              "copyright-footer",
+              "error-focus",
+              "dismissible-notices",
+              "caps-lock",
+              "44px-coarse",
+              "motion-signature"
+            ],
+            "api": [
+              "POST /api/v1/auth/login",
+              "POST /api/v1/auth/verify-2fa",
+              "POST /api/v1/auth/forgot-password"
+            ]
+          }
+        ],
+        "coverage": {
+          "C": "7/7 in 5/5 variants",
+          "A11": "5/5 (>=3/5 required)",
+          "generators": 0
+        },
+        "redesign": "2026-11-01 creative pass: 5 art-directed variants (Monolith/Tide/Ops terminal/Editorial index/Choreography), teal ramp only, hand-authored"
+      },
+      "F02-dashboard-command-center": {
+        "slug": "F02-dashboard-command-center",
+        "title": "Dashboard \u00b7 Command center",
+        "route": "/dashboard",
+        "snapshot": "2026-10-30 13:38 UTC; historical offline capture, not live data",
+        "variants": [
+          {
+            "id": "V1",
+            "name": "Northstar",
+            "path": "families/F02-dashboard-command-center/V1/index.html",
+            "aspect": "Money-first decision surface, six-cell attention strip, balanced performance and recent-record panels",
+            "axes": [
+              "A balanced split",
+              "B money-first",
+              "C sections",
+              "D airy",
+              "E queue preview"
+            ],
+            "changes": [
+              "C1",
+              "C2",
+              "C3",
+              "C5",
+              "C6",
+              "C9",
+              "C10",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A9",
+              "A11",
+              "A13"
+            ],
+            "enterprise2026": [
+              "historical-label",
+              "error-focus",
+              "dismissible-notice",
+              "44px-coarse",
+              "keyboard-dialog",
+              "honest-transport"
+            ],
+            "api": [
+              "GET /api/dashboard/overview",
+              "GET /api/dashboard/revenue",
+              "GET /api/dashboard/activity",
+              "GET /api/v1/health"
+            ]
+          },
+          {
+            "id": "V2",
+            "name": "The Brief",
+            "path": "families/F02-dashboard-command-center/V2/index.html",
+            "aspect": "Ruled editorial decision note, separate verdict card and asymmetric collapsible handover marginalia",
+            "axes": [
+              "A editorial rail",
+              "B verdict-first",
+              "C brief",
+              "D ruled",
+              "E disclosure"
+            ],
+            "changes": [
+              "C1",
+              "C2",
+              "C3",
+              "C5",
+              "C6",
+              "C9",
+              "C10",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A9",
+              "A11",
+              "A13"
+            ],
+            "enterprise2026": [
+              "historical-label",
+              "error-focus",
+              "dismissible-notice",
+              "44px-coarse",
+              "keyboard-dialog",
+              "honest-transport"
+            ],
+            "api": [
+              "GET /api/dashboard/overview",
+              "GET /api/dashboard/activity",
+              "GET /api/dashboard/revenue",
+              "GET /api/v1/health"
+            ]
+          },
+          {
+            "id": "V3",
+            "name": "Queue Spine",
+            "path": "families/F02-dashboard-command-center/V3/index.html",
+            "aspect": "Six-queue vertical triage spine beside metrics; arrow-key queue navigation and local preview",
+            "axes": [
+              "A queue rail",
+              "B queue-first",
+              "C triage",
+              "D compact list",
+              "E arrow-key loop"
+            ],
+            "changes": [
+              "C1",
+              "C2",
+              "C3",
+              "C5",
+              "C6",
+              "C9",
+              "C10",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A9",
+              "A11",
+              "A13"
+            ],
+            "enterprise2026": [
+              "historical-label",
+              "error-focus",
+              "dismissible-notice",
+              "44px-coarse",
+              "keyboard-dialog",
+              "honest-transport"
+            ],
+            "api": [
+              "GET /api/dashboard/overview",
+              "GET /api/dashboard/revenue",
+              "GET /api/v1/notifications/unread-count",
+              "GET /api/v1/messages/unread-count"
+            ]
+          },
+          {
+            "id": "V4",
+            "name": "Signal Board",
+            "path": "families/F02-dashboard-command-center/V4/index.html",
+            "aspect": "Bento status overview with six unverified service checks, priority tile and local degraded/error demonstrations",
+            "axes": [
+              "A bento matrix",
+              "B status-first",
+              "C health chapters",
+              "D modular",
+              "E state simulation"
+            ],
+            "changes": [
+              "C1",
+              "C2",
+              "C3",
+              "C5",
+              "C6",
+              "C9",
+              "C10",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A9",
+              "A11",
+              "A13"
+            ],
+            "enterprise2026": [
+              "historical-label",
+              "error-focus",
+              "dismissible-notice",
+              "44px-coarse",
+              "keyboard-dialog",
+              "honest-transport",
+              "reduced-motion"
+            ],
+            "api": [
+              "GET /api/dashboard/overview",
+              "GET /api/dashboard/alerts",
+              "GET /api/v1/health",
+              "GET /api/v1/health/detailed"
+            ]
+          },
+          {
+            "id": "V5",
+            "name": "Shift Ledger",
+            "path": "families/F02-dashboard-command-center/V5/index.html",
+            "aspect": "Compact ledger strips, records before charts, paired semantic tables and inline row detail",
+            "axes": [
+              "A paired ledgers",
+              "B records-first",
+              "C table-led",
+              "D dense",
+              "E inline detail"
+            ],
+            "changes": [
+              "C1",
+              "C2",
+              "C3",
+              "C5",
+              "C6",
+              "C9",
+              "C10",
+              "C12",
+              "C15",
+              "C18",
+              "C20"
+            ],
+            "adds": [
+              "A9",
+              "A11",
+              "A13"
+            ],
+            "enterprise2026": [
+              "historical-label",
+              "error-focus",
+              "dismissible-notice",
+              "44px-coarse",
+              "keyboard-dialog",
+              "honest-transport"
+            ],
+            "api": [
+              "GET /api/dashboard/overview",
+              "GET /api/dashboard/revenue",
+              "GET /api/dashboard/activity",
+              "GET /api/v1/health"
+            ]
+          }
+        ],
+        "coverage": {
+          "C": "11/11 in 5/5 variants",
+          "A9": "5/5",
+          "A11": "5/5",
+          "A13": "5/5",
+          "generators": 0
+        },
+        "demoOnly": "All interactions are local; API routes are integration references, not live requests. Unbuilt destinations show contextual previews.",
+        "winnerRecommendation": "V1 Northstar \u2014 clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
+      }
+    }
+  },
+  "gallerySha256": "51021e16928fe396db68a80a4fd79e1c39ef583e5c82ab3473252880470d1677",
+  "decisionsSha256": "75f183effd7ae29e2ff8b54450a7586b5bc2ab476fda1e91ac4be76608a820da",
+  "decisionsBytes": 27002
+}

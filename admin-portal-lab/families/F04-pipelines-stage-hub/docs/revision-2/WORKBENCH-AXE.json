@@ -1,0 +1,1822 @@
+[
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 1,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 2,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 3,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 4,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "light",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 390,
+    "state": "assignment-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "revised-ready",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-transfer",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-assignment",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-contract",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-revision",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-lead",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "case-source",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "transfer-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "permission-denied",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "approval-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "rejection-prepared",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-validation-error",
+    "violations": []
+  },
+  {
+    "v": 5,
+    "theme": "dark",
+    "width": 1440,
+    "state": "assignment-prepared",
+    "violations": []
+  }
+]

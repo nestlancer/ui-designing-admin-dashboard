@@ -1,0 +1,37 @@
+/* F21 · V4 · Dense console — bento: table + side column + docked tab strip; drawer from the right.
+   Art direction: console chrome — mono lowercase labels, hairline grid, a teal cursor on the active row. */
+.page-head h1{font-family:var(--mono);letter-spacing:-.01em;font-size:clamp(20px,2vw,24px)}
+.page-head h1::before{content:"> " / "";color:var(--primary)}
+.console-strip{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px}
+.console-strip .strip{grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
+.console-strip .cell{border:0;border-radius:0;padding:8px 12px;background:var(--card)}
+.console-strip .cell-label{font-family:var(--mono);text-transform:none;letter-spacing:0;font-size:11px}
+.console-strip .cell-value{font-size:22px}
+.console-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cols{position:relative}
+.cols>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:650;padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);min-height:32px}
+.cols>summary::-webkit-details-marker{display:none}
+.cols-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:30;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:12px;min-width:180px;font-family:var(--mono)}
+.cols-pop label{display:flex;gap:8px;align-items:center}
+.bento{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start}
+.console-main .panel-title,.console-side .panel-title{font-family:var(--mono);text-transform:lowercase;letter-spacing:0;font-size:13px}
+.console-table thead th{font-family:var(--mono);text-transform:lowercase;letter-spacing:0;font-size:11px}
+.console-table tbody tr[aria-selected="true"]{background:var(--primary-tint)}
+.console-table tbody tr.is-focus{outline:none;box-shadow:inset 3px 0 0 var(--primary);background:var(--muted)}
+.console-table tbody tr.is-focus th::before{content:"▍";color:var(--primary);margin-right:4px;font-family:var(--mono)}
+.console-table .post-title{font-size:12.5px}
+.console-table th[scope="row"]{min-width:220px}
+.console-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:12.5px}
+.kv dt{font-family:var(--mono);font-size:11px;color:var(--muted-foreground)}
+.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.tabs [role="tab"]{font-family:var(--mono);text-transform:lowercase;font-size:12px}
+.data-table{font-variant-numeric:tabular-nums}
+.pager{font-family:var(--mono);font-size:11.5px}
+.drawer{width:min(480px,100vw)}
+.drawer .eyebrow{font-family:var(--mono);text-transform:lowercase;letter-spacing:0}
+.desk-fold{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 12px;border:1px dashed var(--border);border-radius:var(--radius-md);background:var(--muted);font-size:12.5px;color:var(--muted-foreground);font-family:var(--mono)}
+.desk-fold>span{display:inline-flex;gap:6px;align-items:center}
+@media (max-width:1180px){.console-strip{grid-template-columns:minmax(0,1fr)}.bento{grid-template-columns:minmax(0,1fr)}.console-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.console-side{grid-template-columns:1fr}}
+@media (max-width:620px){.console-strip .strip{grid-template-columns:1fr 1fr}.console-table tbody tr.is-focus th::before{content:none}}

@@ -1,2286 +1,2514 @@
 {
-  "lab": "admin-portal-lab",
-  "scheme": "ONE locked teal token file — shared/tokens.css (master admin-portal-prompt.md §5.2)",
-  "families": {
-    "F04-pipelines-stage-hub": {
-      "slug": "F04-pipelines-stage-hub",
-      "title": "Pipelines · Operating workbench",
-      "route": "/pipeline",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Atlas",
-          "path": "families/F04-pipelines-stage-hub/V1/index.html",
-          "aspect": "Operating desk with exception rows and evidence-first guide",
-          "axes": [
-            "A worklist + guide",
-            "B next actor",
-            "C evidence then handoff",
-            "D minimal",
-            "E filter and local preparation"
-          ],
-          "changes": [
-            "C11",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "api": [
-            "GET /api/v1/admin/contact",
-            "GET /api/v1/admin/requests/stats"
-          ],
-          "workflowExamples": [
-            "offline-transfer review",
-            "request assignment",
-            "client contract signature dependency",
-            "delivery revision",
-            "inquiry qualification",
-            "source visibility gap"
-          ]
-        },
-        {
-          "id": "V2",
-          "name": "Current",
-          "path": "families/F04-pipelines-stage-hub/V2/index.html",
-          "aspect": "Handoff board with ownership and related-record dependencies",
-          "axes": [
-            "A two-column handoff board",
-            "B accountable ownership",
-            "C dependency context",
-            "D structured",
-            "E case review plus roving stage inspector"
-          ],
-          "changes": [
-            "C11",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes/stats",
-            "GET /api/v1/admin/projects/stats"
-          ],
-          "workflowExamples": [
-            "offline-transfer review",
-            "request assignment",
-            "client contract signature dependency",
-            "delivery revision",
-            "inquiry qualification",
-            "source visibility gap"
-          ]
-        },
-        {
-          "id": "V3",
-          "name": "Fieldguide",
-          "path": "families/F04-pipelines-stage-hub/V3/index.html",
-          "aspect": "Editorial operating brief: decisions, client waits, data gaps",
-          "axes": [
-            "A three-part brief",
-            "B operator questions",
-            "C decision/client/data chapters",
-            "D editorial",
-            "E searchable ledger plus observed chapters"
-          ],
-          "changes": [
-            "C11",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "api": [
-            "GET /api/v1/admin/users",
-            "GET /api/audit/stats"
-          ],
-          "workflowExamples": [
-            "offline-transfer review",
-            "request assignment",
-            "client contract signature dependency",
-            "delivery revision",
-            "inquiry qualification",
-            "source visibility gap"
-          ]
-        },
-        {
-          "id": "V4",
-          "name": "Switchboard",
-          "path": "families/F04-pipelines-stage-hub/V4/index.html",
-          "aspect": "Semantic work register with case preparation and secondary API dock",
-          "axes": [
-            "A real semantic work table",
-            "B record condition",
-            "C triage to context",
-            "D dense",
-            "E sort/filter/validation plus API dock"
-          ],
-          "changes": [
-            "C11",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "api": [
-            "GET /api/v1/admin/payments/stats",
-            "GET /api/v1/docs-specs"
-          ],
-          "workflowExamples": [
-            "offline-transfer review",
-            "request assignment",
-            "client contract signature dependency",
-            "delivery revision",
-            "inquiry qualification",
-            "source visibility gap"
-          ]
-        },
-        {
-          "id": "V5",
-          "name": "Passage",
-          "path": "families/F04-pipelines-stage-hub/V5/index.html",
-          "aspect": "Three-lane flow desk: Intake / Delivery / Money & signals",
-          "axes": [
-            "A three stage lanes",
-            "B functional stream",
-            "C dependency-led case flow",
-            "D spatial",
-            "E quiet entry motion; static numerical truth"
-          ],
-          "changes": [
-            "C11",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "api": [
-            "GET /api/v1/admin/messages/stats",
-            "GET /api/dashboard/overview"
-          ],
-          "workflowExamples": [
-            "offline-transfer review",
-            "request assignment",
-            "client contract signature dependency",
-            "delivery revision",
-            "inquiry qualification",
-            "source visibility gap"
-          ]
-        }
-      ],
-      "coverage": {
-        "C": "7/7 in 5/5 variants",
-        "A11": "5/5 (P2 requires ≥3/5)",
-        "P1Adds": "none newly classified",
-        "retainedStageTrustConsolesReference": "5/5",
-        "caseContextFilterSortPreparationStates": "5/5",
-        "primaryMarkup": "hand-authored per variant; shared interactive dialog component only",
-        "generators": 0
-      },
-      "demoOnly": "Historical volumes remain distinct from six synthetic DEMO cases. Example age is not SLA or stage dwell. Assignment and transfer approve/reject create validated local payload previews only; denied permission blocks preparation. No request, mutation or audit write runs. Unknown source is not zero. API history remains read-only with obsolete milestone creation visibly flagged; F05 is not implemented here.",
-      "winnerRecommendation": "V4 Switchboard — best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
-      "revision": 2,
-      "evidence": {
-        "research": "families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md",
-        "contracts": "families/F04-pipelines-stage-hub/docs/revision-2/SWAGGER-INVENTORY.md",
-        "delivery": "families/F04-pipelines-stage-hub/docs/revision-2/DELIVERY-REPORT.md",
-        "swaggerSpecs": 17,
-        "serviceLocalPathEntries": 560,
-        "httpOperations": 648,
-        "schemaDefinitions": 218,
-        "qualification": "documentation inventory, not unique deployed public routes or a runtime understanding percentage"
-      }
+ "lab": "admin-portal-lab",
+ "scheme": "ONE locked teal token file — shared/tokens.css (master admin-portal-prompt.md §5.2)",
+ "families": {
+  "F04-pipelines-stage-hub": {
+   "slug": "F04-pipelines-stage-hub",
+   "title": "Pipelines · Operating workbench",
+   "route": "/pipeline",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Atlas",
+     "path": "families/F04-pipelines-stage-hub/V1/index.html",
+     "aspect": "Operating desk with exception rows and evidence-first guide",
+     "axes": [
+      "A worklist + guide",
+      "B next actor",
+      "C evidence then handoff",
+      "D minimal",
+      "E filter and local preparation"
+     ],
+     "changes": [
+      "C11",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "api": [
+      "GET /api/v1/admin/contact",
+      "GET /api/v1/admin/requests/stats"
+     ],
+     "workflowExamples": [
+      "offline-transfer review",
+      "request assignment",
+      "client contract signature dependency",
+      "delivery revision",
+      "inquiry qualification",
+      "source visibility gap"
+     ]
     },
-    "F03-global-search-command-palette": {
-      "slug": "F03-global-search-command-palette",
-      "title": "Global search · Command palette",
-      "route": "Overlay on any console route",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Compass",
-          "path": "families/F03-global-search-command-palette/V1/index.html",
-          "aspect": "Ground-truth grouped list with recent history",
-          "axes": [
-            "A centered list",
-            "B familiar pages",
-            "C grouped browse",
-            "D comfortable",
-            "E live filter/recent"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "palette-completeness"
-          ],
-          "api": [
-            "GET /api/v1/admin/users/search",
-            "GET /api/v1/admin/requests"
-          ]
-        },
-        {
-          "id": "V2",
-          "name": "Dispatch",
-          "path": "families/F03-global-search-command-palette/V2/index.html",
-          "aspect": "Queue-first register with domain rail",
-          "axes": [
-            "A domain rail",
-            "B queue-first",
-            "C scope drill",
-            "D compact",
-            "E domain selection"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "palette-completeness"
-          ],
-          "api": [
-            "GET /api/v1/admin/payments?status=PENDING_VERIFICATION"
-          ]
-        },
-        {
-          "id": "V3",
-          "name": "Dossier",
-          "path": "families/F03-global-search-command-palette/V3/index.html",
-          "aspect": "Two-pane destination and provenance preview",
-          "axes": [
-            "A split preview",
-            "B destination-first",
-            "C inspect/jump",
-            "D editorial",
-            "E highlight crossfade"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "palette-completeness"
-          ],
-          "api": [
-            "GET /api/v1/admin/users/{userId}",
-            "GET /api/v1/admin/payments"
-          ]
-        },
-        {
-          "id": "V4",
-          "name": "Needle",
-          "path": "families/F03-global-search-command-palette/V4/index.html",
-          "aspect": "Minimal launch bar with ranked flat register",
-          "axes": [
-            "A horizontal bar",
-            "B exact match",
-            "C query register",
-            "D minimal dense",
-            "E ranked typeahead"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "palette-completeness"
-          ],
-          "api": [
-            "GET /api/v1/admin/requests",
-            "GET /api/v1/admin/quotes"
-          ]
-        },
-        {
-          "id": "V5",
-          "name": "Relay",
-          "path": "families/F03-global-search-command-palette/V5/index.html",
-          "aspect": "Route spine, layered dock and choreographed handoff",
-          "axes": [
-            "A spine dock",
-            "B next step",
-            "C staged receipt",
-            "D layered",
-            "E stagger/handoff"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "palette-completeness"
-          ],
-          "api": [
-            "GET /api/v1/admin/payments",
-            "POST /api/v1/messages/threads/group (reference only)"
-          ]
-        }
-      ],
-      "coverage": {
-        "C": "6/6 in 5/5 variants",
-        "palette-completeness": "5/5",
-        "keyboard-recents-states-dark-mobile": "5/5",
-        "generators": 0
-      },
-      "demoOnly": "All route/record/creation handoffs are local previews, not live APIs. No global search endpoint. Payment fixture is project context, not a verified individual payment. Group creation preview repairs captured 404 without guessing a route.",
-      "winnerRecommendation": "V3 Dossier — destination context and provenance before selecting; V1 Compass is the simplest default."
+    {
+     "id": "V2",
+     "name": "Current",
+     "path": "families/F04-pipelines-stage-hub/V2/index.html",
+     "aspect": "Handoff board with ownership and related-record dependencies",
+     "axes": [
+      "A two-column handoff board",
+      "B accountable ownership",
+      "C dependency context",
+      "D structured",
+      "E case review plus roving stage inspector"
+     ],
+     "changes": [
+      "C11",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes/stats",
+      "GET /api/v1/admin/projects/stats"
+     ],
+     "workflowExamples": [
+      "offline-transfer review",
+      "request assignment",
+      "client contract signature dependency",
+      "delivery revision",
+      "inquiry qualification",
+      "source visibility gap"
+     ]
     },
-    "F01-auth-login": {
-      "slug": "F01-auth-login",
-      "title": "Auth · Operator sign-in",
-      "route": "/login",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Monolith",
-          "path": "families/F01-auth-login/V1/index.html",
-          "aspect": "Deep-teal full-bleed canvas with drifting contour SVG + dot grid; floating light card, 3-step progress line, display H1",
-          "axes": [
-            "A layout",
-            "C narrative",
-            "D density"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "enterprise2026": [
-            "single-form",
-            "forgot-password(Gate-A)",
-            "consent-line",
-            "copyright-footer",
-            "error-focus",
-            "dismissible-notices",
-            "caps-lock",
-            "shared-device-hint",
-            "44px-coarse"
-          ],
-          "api": [
-            "POST /api/v1/auth/login",
-            "POST /api/v1/auth/verify-2fa",
-            "POST /api/v1/auth/forgot-password",
-            "POST /api/v1/auth/refresh",
-            "GET /api/v1/auth/health"
-          ]
-        },
-        {
-          "id": "V2",
-          "name": "Tide",
-          "path": "families/F01-auth-login/V2/index.html",
-          "aspect": "Asymmetric 46/54 split; animated wave lines (single dashoffset draw) on teal panel; vertical wordmark; mono posture ledger; two-step card",
-          "axes": [
-            "A layout",
-            "B hierarchy",
-            "C narrative"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "enterprise2026": [
-            "progressive-disclosure",
-            "forgot-password(Gate-A)",
-            "consent-line",
-            "copyright-footer",
-            "error-focus",
-            "dismissible-notices",
-            "caps-lock",
-            "44px-coarse"
-          ],
-          "api": [
-            "POST /api/v1/auth/login",
-            "POST /api/v1/auth/verify-2fa",
-            "POST /api/v1/auth/forgot-password"
-          ]
-        },
-        {
-          "id": "V3",
-          "name": "Ops terminal",
-          "path": "families/F01-auth-login/V3/index.html",
-          "aspect": "Console-card: window chrome bar, mono prompt line with blinking caret, scan-dot backdrop, status readout; single-form",
-          "axes": [
-            "A layout",
-            "B hierarchy",
-            "E interaction"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "enterprise2026": [
-            "progressive-disclosure",
-            "forgot-password(Gate-A)",
-            "consent-line",
-            "copyright-footer",
-            "error-focus",
-            "dismissible-notices",
-            "caps-lock",
-            "44px-coarse"
-          ],
-          "api": [
-            "POST /api/v1/auth/login",
-            "POST /api/v1/auth/verify-2fa",
-            "POST /api/v1/auth/forgot-password"
-          ]
-        },
-        {
-          "id": "V4",
-          "name": "Editorial index",
-          "path": "families/F01-auth-login/V4/index.html",
-          "aspect": "Editorial spread: oversized display headline + outlined ghost word, hard-offset-shadow paper form with index tag, ruled mono footer",
-          "axes": [
-            "A layout",
-            "D density",
-            "C narrative"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "enterprise2026": [
-            "single-form",
-            "forgot-password(Gate-A)",
-            "consent-line",
-            "copyright-footer",
-            "error-focus",
-            "dismissible-notices",
-            "caps-lock",
-            "44px-coarse"
-          ],
-          "api": [
-            "POST /api/v1/auth/login",
-            "GET /api/v1/auth/health",
-            "POST /api/v1/auth/verify-2fa",
-            "POST /api/v1/auth/forgot-password"
-          ]
-        },
-        {
-          "id": "V5",
-          "name": "Choreography",
-          "path": "families/F01-auth-login/V5/index.html",
-          "aspect": "Centered card over pointer-parallax teal glow + concentric rings; animated step progress line (dashoffset stepper); sliding panels",
-          "axes": [
-            "E interaction",
-            "C narrative",
-            "B hierarchy"
-          ],
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11"
-          ],
-          "enterprise2026": [
-            "progressive-disclosure",
-            "forgot-password(Gate-A)",
-            "consent-line",
-            "copyright-footer",
-            "error-focus",
-            "dismissible-notices",
-            "caps-lock",
-            "44px-coarse",
-            "motion-signature"
-          ],
-          "api": [
-            "POST /api/v1/auth/login",
-            "POST /api/v1/auth/verify-2fa",
-            "POST /api/v1/auth/forgot-password"
-          ]
-        }
-      ],
-      "coverage": {
-        "C": "7/7 in 5/5 variants",
-        "A11": "5/5 (>=3/5 required)",
-        "generators": 0
-      },
-      "redesign": "2026-11-01 creative pass: 5 art-directed variants (Monolith/Tide/Ops terminal/Editorial index/Choreography), teal ramp only, hand-authored"
+    {
+     "id": "V3",
+     "name": "Fieldguide",
+     "path": "families/F04-pipelines-stage-hub/V3/index.html",
+     "aspect": "Editorial operating brief: decisions, client waits, data gaps",
+     "axes": [
+      "A three-part brief",
+      "B operator questions",
+      "C decision/client/data chapters",
+      "D editorial",
+      "E searchable ledger plus observed chapters"
+     ],
+     "changes": [
+      "C11",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "api": [
+      "GET /api/v1/admin/users",
+      "GET /api/audit/stats"
+     ],
+     "workflowExamples": [
+      "offline-transfer review",
+      "request assignment",
+      "client contract signature dependency",
+      "delivery revision",
+      "inquiry qualification",
+      "source visibility gap"
+     ]
     },
-    "F02-dashboard-command-center": {
-      "slug": "F02-dashboard-command-center",
-      "title": "Dashboard · Command center",
-      "route": "/dashboard",
-      "snapshot": "2026-10-30 13:38 UTC; historical offline capture, not live data",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Northstar",
-          "path": "families/F02-dashboard-command-center/V1/index.html",
-          "aspect": "Money-first decision surface, six-cell attention strip, balanced performance and recent-record panels",
-          "axes": [
-            "A balanced split",
-            "B money-first",
-            "C sections",
-            "D airy",
-            "E queue preview"
-          ],
-          "changes": [
-            "C1",
-            "C2",
-            "C3",
-            "C5",
-            "C6",
-            "C9",
-            "C10",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A9",
-            "A11",
-            "A13"
-          ],
-          "enterprise2026": [
-            "historical-label",
-            "error-focus",
-            "dismissible-notice",
-            "44px-coarse",
-            "keyboard-dialog",
-            "honest-transport"
-          ],
-          "api": [
-            "GET /api/dashboard/overview",
-            "GET /api/dashboard/revenue",
-            "GET /api/dashboard/activity",
-            "GET /api/v1/health"
-          ]
-        },
-        {
-          "id": "V2",
-          "name": "The Brief",
-          "path": "families/F02-dashboard-command-center/V2/index.html",
-          "aspect": "Ruled editorial decision note, separate verdict card and asymmetric collapsible handover marginalia",
-          "axes": [
-            "A editorial rail",
-            "B verdict-first",
-            "C brief",
-            "D ruled",
-            "E disclosure"
-          ],
-          "changes": [
-            "C1",
-            "C2",
-            "C3",
-            "C5",
-            "C6",
-            "C9",
-            "C10",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A9",
-            "A11",
-            "A13"
-          ],
-          "enterprise2026": [
-            "historical-label",
-            "error-focus",
-            "dismissible-notice",
-            "44px-coarse",
-            "keyboard-dialog",
-            "honest-transport"
-          ],
-          "api": [
-            "GET /api/dashboard/overview",
-            "GET /api/dashboard/activity",
-            "GET /api/dashboard/revenue",
-            "GET /api/v1/health"
-          ]
-        },
-        {
-          "id": "V3",
-          "name": "Queue Spine",
-          "path": "families/F02-dashboard-command-center/V3/index.html",
-          "aspect": "Six-queue vertical triage spine beside metrics; arrow-key queue navigation and local preview",
-          "axes": [
-            "A queue rail",
-            "B queue-first",
-            "C triage",
-            "D compact list",
-            "E arrow-key loop"
-          ],
-          "changes": [
-            "C1",
-            "C2",
-            "C3",
-            "C5",
-            "C6",
-            "C9",
-            "C10",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A9",
-            "A11",
-            "A13"
-          ],
-          "enterprise2026": [
-            "historical-label",
-            "error-focus",
-            "dismissible-notice",
-            "44px-coarse",
-            "keyboard-dialog",
-            "honest-transport"
-          ],
-          "api": [
-            "GET /api/dashboard/overview",
-            "GET /api/dashboard/revenue",
-            "GET /api/v1/notifications/unread-count",
-            "GET /api/v1/messages/unread-count"
-          ]
-        },
-        {
-          "id": "V4",
-          "name": "Signal Board",
-          "path": "families/F02-dashboard-command-center/V4/index.html",
-          "aspect": "Bento status overview with six unverified service checks, priority tile and local degraded/error demonstrations",
-          "axes": [
-            "A bento matrix",
-            "B status-first",
-            "C health chapters",
-            "D modular",
-            "E state simulation"
-          ],
-          "changes": [
-            "C1",
-            "C2",
-            "C3",
-            "C5",
-            "C6",
-            "C9",
-            "C10",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A9",
-            "A11",
-            "A13"
-          ],
-          "enterprise2026": [
-            "historical-label",
-            "error-focus",
-            "dismissible-notice",
-            "44px-coarse",
-            "keyboard-dialog",
-            "honest-transport",
-            "reduced-motion"
-          ],
-          "api": [
-            "GET /api/dashboard/overview",
-            "GET /api/dashboard/alerts",
-            "GET /api/v1/health",
-            "GET /api/v1/health/detailed"
-          ]
-        },
-        {
-          "id": "V5",
-          "name": "Shift Ledger",
-          "path": "families/F02-dashboard-command-center/V5/index.html",
-          "aspect": "Compact ledger strips, records before charts, paired semantic tables and inline row detail",
-          "axes": [
-            "A paired ledgers",
-            "B records-first",
-            "C table-led",
-            "D dense",
-            "E inline detail"
-          ],
-          "changes": [
-            "C1",
-            "C2",
-            "C3",
-            "C5",
-            "C6",
-            "C9",
-            "C10",
-            "C12",
-            "C15",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A9",
-            "A11",
-            "A13"
-          ],
-          "enterprise2026": [
-            "historical-label",
-            "error-focus",
-            "dismissible-notice",
-            "44px-coarse",
-            "keyboard-dialog",
-            "honest-transport"
-          ],
-          "api": [
-            "GET /api/dashboard/overview",
-            "GET /api/dashboard/revenue",
-            "GET /api/dashboard/activity",
-            "GET /api/v1/health"
-          ]
-        }
-      ],
-      "coverage": {
-        "C": "11/11 in 5/5 variants",
-        "A9": "5/5",
-        "A11": "5/5",
-        "A13": "5/5",
-        "generators": 0
-      },
-      "demoOnly": "All interactions are local; API routes are integration references, not live requests. Unbuilt destinations show contextual previews.",
-      "winnerRecommendation": "V1 Northstar — clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
+    {
+     "id": "V4",
+     "name": "Switchboard",
+     "path": "families/F04-pipelines-stage-hub/V4/index.html",
+     "aspect": "Semantic work register with case preparation and secondary API dock",
+     "axes": [
+      "A real semantic work table",
+      "B record condition",
+      "C triage to context",
+      "D dense",
+      "E sort/filter/validation plus API dock"
+     ],
+     "changes": [
+      "C11",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "api": [
+      "GET /api/v1/admin/payments/stats",
+      "GET /api/v1/docs-specs"
+     ],
+     "workflowExamples": [
+      "offline-transfer review",
+      "request assignment",
+      "client contract signature dependency",
+      "delivery revision",
+      "inquiry qualification",
+      "source visibility gap"
+     ]
     },
-    "F05-pipeline-user-project-hubs": {
-      "slug": "F05-pipeline-user-project-hubs",
-      "title": "Pipeline hubs · User + Project",
-      "routes": [
-        "/pipeline/users",
-        "/pipeline/projects"
-      ],
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Clear context",
-          "path": "families/F05-pipeline-user-project-hubs/V1/index.html",
-          "aspect": "Minimal identity rail + quiet section disclosures",
-          "axes": [
-            "A reading column + identity rail",
-            "B next-review first",
-            "C disclosure sections",
-            "D airy minimal",
-            "E source-aware anchor jumps"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ]
-        },
-        {
-          "id": "V2",
-          "name": "Evidence spine",
-          "path": "families/F05-pipeline-user-project-hubs/V2/index.html",
-          "aspect": "Timeline-led relationship spine and source-separated evidence",
-          "axes": [
-            "A vertical spine",
-            "B source sequence",
-            "C stepper-linked chapters",
-            "D print ledger",
-            "E source-kind filter + connector motion"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ]
-        },
-        {
-          "id": "V3",
-          "name": "Whole story",
-          "path": "families/F05-pipeline-user-project-hubs/V3/index.html",
-          "aspect": "Entity-first 360 bento with connected records and contextual inspector",
-          "axes": [
-            "A asymmetric bento",
-            "B association overview",
-            "C overview to drill-down",
-            "D modular bento",
-            "E contextual inspector"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ]
-        },
-        {
-          "id": "V4",
-          "name": "Reference ledger",
-          "path": "families/F05-pipeline-user-project-hubs/V4/index.html",
-          "aspect": "Dense inspection console, semantic evidence table, local filter/sort/paging",
-          "axes": [
-            "A entity index + ledger + evidence drawer",
-            "B queue/coverage",
-            "C tab-led worksection",
-            "D dense console",
-            "E evidence filter/sort/pagination"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ]
-        },
-        {
-          "id": "V5",
-          "name": "Focus chapters",
-          "path": "families/F05-pipeline-user-project-hubs/V5/index.html",
-          "aspect": "Motion-led reversible chapter stage with reduced-motion equivalent",
-          "axes": [
-            "A split focus stage",
-            "B one-question focus",
-            "C sticky chapters",
-            "D editorial focus",
-            "E chapter translation + side inspector"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ]
-        },
-        {
-          "id": "V6",
-          "name": "Evidence desk",
-          "path": "families/F05-pipeline-user-project-hubs/V6/index.html",
-          "aspect": "Three-zone captured-record investigation desk with persistent per-record evidence",
-          "axes": [
-            "A identity + records + inspector",
-            "B exact captured records",
-            "C source-scoped local query",
-            "D working desk",
-            "E persistent detail + modal expansion"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ],
-          "dataPolicy": "Captured evidence only",
-          "audit": "families/F05-pipeline-user-project-hubs/docs/v6-v7/ANALYSIS.md",
-          "standalonePath": "families/F05-pipeline-user-project-hubs/V6/V6-complete.html"
-        },
-        {
-          "id": "V7",
-          "name": "Client casebook",
-          "path": "families/F05-pipeline-user-project-hubs/V7/index.html",
-          "aspect": "Editorial dossier with independently expandable source chapters and record sheets",
-          "axes": [
-            "A full-width identity hero + chapter index",
-            "B full case reading",
-            "C multiple open chapters",
-            "D editorial dossier",
-            "E independent queries + source sheets"
-          ],
-          "changes": [
-            "C9",
-            "C11",
-            "C3",
-            "C5",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A11",
-            "A13"
-          ],
-          "dataPolicy": "Captured evidence only",
-          "audit": "families/F05-pipeline-user-project-hubs/docs/v6-v7/ANALYSIS.md",
-          "standalonePath": "families/F05-pipeline-user-project-hubs/V7/V7-complete.html"
-        }
-      ],
-      "coverage": {
-        "C": "7/7 in 5/5",
-        "A11": "5/5 P2",
-        "A13": "5/5 P3 · reference coverage, NOT fabricated live health",
-        "P1Adds": "none targeted",
-        "bothHubs": "5/5",
-        "sections": "6 user + 4 project per variant",
-        "states": "full/empty/skeleton/error/degraded/permission preview + selected/unselected/partial",
-        "generators": 0,
-        "pilotSequence": "V1 572 checks +120 axe scans PASS before V2–V5 implementation"
-      },
-      "demoOnly": "Historical screenshot references and partial profiles, not a live directory. Section state previews/retries, navigation/command search, evidence filter/sort/pagination, copy and legal notices are local. Canonical destination/read contracts remain inert; unbuilt owner families show explicit integration handoffs. No authenticated API request, financial/security mutation or actual audit event.",
-      "winnerRecommendation": "V3 Whole story — clearest entity-first overview across both 360 hubs; V4 for focused evidence inspection.",
-      "evidence": {
-        "baseline": "families/F05-pipeline-user-project-hubs/docs/BASELINE-MAP.md",
-        "research": "families/F05-pipeline-user-project-hubs/docs/TEMPLATE-RESEARCH.md",
-        "contracts": "families/F05-pipeline-user-project-hubs/docs/API-MAP.md",
-        "concepts": "families/F05-pipeline-user-project-hubs/docs/CONCEPTS.md",
-        "delivery": "families/F05-pipeline-user-project-hubs/docs/DELIVERY-REPORT.md",
-        "freshReferences": 11,
-        "requiredSpecs": 8,
-        "directEntityWorkspaceReferences": 8,
-        "researchTiming": "Initial9references before concepts (6entity+3support);2more entity-specific references in final completeness audit; see research timing disclosure."
-      }
-    },
-    "F06-contact-inquiries": {
-      "slug": "F06-contact-inquiries",
-      "title": "Contact · inquiries triage",
-      "route": "/contact",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Split triage",
-          "path": "families/F06-contact-inquiries/V1/index.html",
-          "aspect": "Split triage · offline historical sample",
-          "changes": [
-            "C14",
-            "C19",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V2",
-          "name": "Conversation desk",
-          "path": "families/F06-contact-inquiries/V2/index.html",
-          "aspect": "Conversation desk · offline historical sample",
-          "changes": [
-            "C14",
-            "C19",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V3",
-          "name": "Card sweep",
-          "path": "families/F06-contact-inquiries/V3/index.html",
-          "aspect": "Card sweep · offline historical sample",
-          "changes": [
-            "C14",
-            "C19",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V4",
-          "name": "Reference ledger",
-          "path": "families/F06-contact-inquiries/V4/index.html",
-          "aspect": "Reference ledger · offline historical sample",
-          "changes": [
-            "C14",
-            "C19",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V5",
-          "name": "Focus loop",
-          "path": "families/F06-contact-inquiries/V5/index.html",
-          "aspect": "Focus loop · offline historical sample",
-          "changes": [
-            "C14",
-            "C19",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        }
-      ]
-    },
-    "F07-notifications-center": {
-      "slug": "F07-notifications-center",
-      "title": "Notifications · personal + platform",
-      "route": "/notifications",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Safe boundary",
-          "path": "families/F07-notifications-center/V1/index.html",
-          "aspect": "Safe boundary · offline historical sample",
-          "changes": [
-            "C7",
-            "C8",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A3"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V2",
-          "name": "Separate surfaces",
-          "path": "families/F07-notifications-center/V2/index.html",
-          "aspect": "Separate surfaces · offline historical sample",
-          "changes": [
-            "C7",
-            "C8",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A3"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V3",
-          "name": "Inbox spine",
-          "path": "families/F07-notifications-center/V3/index.html",
-          "aspect": "Inbox spine · offline historical sample",
-          "changes": [
-            "C7",
-            "C8",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A3"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V4",
-          "name": "Dense operations",
-          "path": "families/F07-notifications-center/V4/index.html",
-          "aspect": "Dense operations · offline historical sample",
-          "changes": [
-            "C7",
-            "C8",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A3"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        },
-        {
-          "id": "V5",
-          "name": "Signal focus",
-          "path": "families/F07-notifications-center/V5/index.html",
-          "aspect": "Signal focus · offline historical sample",
-          "changes": [
-            "C7",
-            "C8",
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A3"
-          ],
-          "status": "design preview · responsive/WCAG audit pending"
-        }
-      ]
-    },
-    "F08-requests-triage": {
-      "slug": "F08-requests-triage",
-      "title": "Requests triage + details",
-      "route": "/requests",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Operating desk",
-          "path": "families/F08-requests-triage/V1/index.html",
-          "aspect": "Captured-reference queue layout",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/requests",
-            "GET /api/v1/admin/requests/capacity/dashboard"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V2",
-          "name": "Split triage",
-          "path": "families/F08-requests-triage/V2/index.html",
-          "aspect": "Selected request context pane",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/requests",
-            "GET /api/v1/admin/requests/capacity/dashboard"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V3",
-          "name": "Card sweep",
-          "path": "families/F08-requests-triage/V3/index.html",
-          "aspect": "Card-oriented triage",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/requests",
-            "GET /api/v1/admin/requests/capacity/dashboard"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V4",
-          "name": "Dense desk",
-          "path": "families/F08-requests-triage/V4/index.html",
-          "aspect": "Compact high-volume scan",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/requests",
-            "GET /api/v1/admin/requests/capacity/dashboard"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V5",
-          "name": "Focus loop",
-          "path": "families/F08-requests-triage/V5/index.html",
-          "aspect": "Focus and keyboard movement",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/requests",
-            "GET /api/v1/admin/requests/capacity/dashboard"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        }
-      ],
-      "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
-    },
-    "F09-quotes-list": {
-      "slug": "F09-quotes-list",
-      "title": "Quotes list",
-      "route": "/quotes",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Revenue watchtower",
-          "path": "families/F09-quotes-list/V1/index.html",
-          "aspect": "Grounded quote table",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes",
-            "GET /api/v1/admin/quotes/stats"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V2",
-          "name": "Aging queue",
-          "path": "families/F09-quotes-list/V2/index.html",
-          "aspect": "Age-first follow-up",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes",
-            "GET /api/v1/admin/quotes/stats"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V3",
-          "name": "Revenue cards",
-          "path": "families/F09-quotes-list/V3/index.html",
-          "aspect": "Card dossiers",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes",
-            "GET /api/v1/admin/quotes/stats"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V4",
-          "name": "Ledger",
-          "path": "families/F09-quotes-list/V4/index.html",
-          "aspect": "Compact financial register",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes",
-            "GET /api/v1/admin/quotes/stats"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V5",
-          "name": "Open-next",
-          "path": "families/F09-quotes-list/V5/index.html",
-          "aspect": "Keyboard handoff",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C19",
-            "C20"
-          ],
-          "adds": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes",
-            "GET /api/v1/admin/quotes/stats"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        }
-      ],
-      "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
-    },
-    "F10-quote-details-builder": {
-      "slug": "F10-quote-details-builder",
-      "title": "Quote details + builder",
-      "route": "/quotes/[id]",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Quote workbench",
-          "path": "families/F10-quote-details-builder/V1/index.html",
-          "aspect": "Balanced stepper and total rail",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "Finish-verify",
-            "Margin unknown guardrail"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes/{id}",
-            "PATCH /api/v1/admin/quotes/{id}",
-            "POST /api/v1/admin/quotes/{id}/send"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V2",
-          "name": "Stepper spine",
-          "path": "families/F10-quote-details-builder/V2/index.html",
-          "aspect": "Step-led editor",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "Finish-verify",
-            "Margin unknown guardrail"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes/{id}",
-            "PATCH /api/v1/admin/quotes/{id}",
-            "POST /api/v1/admin/quotes/{id}/send"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V3",
-          "name": "Ledger first",
-          "path": "families/F10-quote-details-builder/V3/index.html",
-          "aspect": "Item-led register",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "Finish-verify",
-            "Margin unknown guardrail"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes/{id}",
-            "PATCH /api/v1/admin/quotes/{id}",
-            "POST /api/v1/admin/quotes/{id}/send"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V4",
-          "name": "Compact workbench",
-          "path": "families/F10-quote-details-builder/V4/index.html",
-          "aspect": "Dense editing canvas",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "Finish-verify",
-            "Margin unknown guardrail"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes/{id}",
-            "PATCH /api/v1/admin/quotes/{id}",
-            "POST /api/v1/admin/quotes/{id}/send"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        },
-        {
-          "id": "V5",
-          "name": "Review choreography",
-          "path": "families/F10-quote-details-builder/V5/index.html",
-          "aspect": "Reduced-motion review cues",
-          "changes": [
-            "C3",
-            "C5",
-            "C9",
-            "C12",
-            "C18",
-            "C20"
-          ],
-          "adds": [
-            "Finish-verify",
-            "Margin unknown guardrail"
-          ],
-          "api": [
-            "GET /api/v1/admin/quotes/{id}",
-            "PATCH /api/v1/admin/quotes/{id}",
-            "POST /api/v1/admin/quotes/{id}/send"
-          ],
-          "status": "Offline prototype; no API call or persistence"
-        }
-      ],
-      "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
-    },
-    "F11-projects-list": {
-      "slug": "F11-projects-list",
-      "title": "Projects · historical outage reference",
-      "route": "/projects",
-      "familyStatus": "Preliminary offline concepts; research gates, complete state coverage and full accessibility verification remain open. No production connection.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Historical list",
-          "path": "families/F11-projects-list/V1/index.html",
-          "aspect": "List-led capture with simulated service states",
-          "status": "Preliminary; no production request"
-        },
-        {
-          "id": "V2",
-          "name": "Status desk",
-          "path": "families/F11-projects-list/V2/index.html",
-          "aspect": "Status-first workspace with reference examples",
-          "status": "Preliminary; no production request"
-        },
-        {
-          "id": "V3",
-          "name": "Project cards",
-          "path": "families/F11-projects-list/V3/index.html",
-          "aspect": "Card-led historical reference",
-          "status": "Preliminary; no production request"
-        },
-        {
-          "id": "V4",
-          "name": "Operations ledger",
-          "path": "families/F11-projects-list/V4/index.html",
-          "aspect": "Compact table with status rail",
-          "status": "Preliminary; reworked from V1; distinctness not verified"
-        },
-        {
-          "id": "V5",
-          "name": "Recovery path",
-          "path": "families/F11-projects-list/V5/index.html",
-          "aspect": "State progression and loading illustration",
-          "status": "Preliminary; no production request"
-        }
-      ]
-    },
-    "F12-project-details-delivery": {
-      "slug": "F12-project-details-delivery",
-      "title": "Project details · delivery reference",
-      "route": "/projects/[id]",
-      "familyStatus": "Preliminary offline concepts; historical screenshot records include separate projects. Delivery actions and several states are not implemented; research gates remain open.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Delivery overview",
-          "path": "families/F12-project-details-delivery/V1/index.html",
-          "aspect": "Overview with labelled separate-source sections",
-          "status": "Preliminary; no production request"
-        },
-        {
-          "id": "V2",
-          "name": "Delivery casebook",
-          "path": "families/F12-project-details-delivery/V2/index.html",
-          "aspect": "Disclosure-led historical evidence",
-          "status": "Preliminary; no production request"
-        },
-        {
-          "id": "V3",
-          "name": "Evidence desk",
-          "path": "families/F12-project-details-delivery/V3/index.html",
-          "aspect": "Record-separated project evidence",
-          "status": "Preliminary; no production request"
-        },
-        {
-          "id": "V4",
-          "name": "Delivery console",
-          "path": "families/F12-project-details-delivery/V4/index.html",
-          "aspect": "Compact delivery workspace",
-          "status": "Preliminary; reworked from V1; distinctness not verified"
-        },
-        {
-          "id": "V5",
-          "name": "Delivery journey",
-          "path": "families/F12-project-details-delivery/V5/index.html",
-          "aspect": "Chapter-led historical delivery reference",
-          "status": "Preliminary; no production request"
-        }
-      ]
-    },
-    "F13-payments-money-ops": {
-      "slug": "F13-payments-money-ops",
-      "title": "Payments · historical money operations",
-      "route": "/payments",
-      "familyStatus": "Preliminary offline concepts; transaction samples and historical empty states are not current data. Verification, receipts and reconciliation actions remain incomplete.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Payments overview",
-          "path": "families/F13-payments-money-ops/V1/index.html",
-          "aspect": "Captured figures and sample ledger",
-          "status": "Preliminary; no financial operation"
-        },
-        {
-          "id": "V2",
-          "name": "Investigation desk",
-          "path": "families/F13-payments-money-ops/V2/index.html",
-          "aspect": "Sidebar-led financial reference",
-          "status": "Preliminary; no financial operation"
-        },
-        {
-          "id": "V3",
-          "name": "Project ledger",
-          "path": "families/F13-payments-money-ops/V3/index.html",
-          "aspect": "Project-card billing reference",
-          "status": "Preliminary; no financial operation"
-        },
-        {
-          "id": "V4",
-          "name": "Money console",
-          "path": "families/F13-payments-money-ops/V4/index.html",
-          "aspect": "Dense ledger and metric rail",
-          "status": "Preliminary; reworked from V1; distinctness not verified"
-        },
-        {
-          "id": "V5",
-          "name": "Review flow",
-          "path": "families/F13-payments-money-ops/V5/index.html",
-          "aspect": "Stage-led money reference",
-          "status": "Preliminary; no financial operation"
-        }
-      ]
-    },
-    "F14-settlement-legal": {
-      "slug": "F14-settlement-legal",
-      "title": "Settlement accounts · company legal identity",
-      "route": "/payments/accounts and /payments/company-legal",
-      "familyStatus": "Preliminary local forms; no production persistence, account verification or audit events. Full report and API gates remain open.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Settings",
-          "path": "families/F14-settlement-legal/V1/index.html",
-          "aspect": "Account and legal profile forms",
-          "status": "Preliminary; local preview only"
-        },
-        {
-          "id": "V2",
-          "name": "Record desk",
-          "path": "families/F14-settlement-legal/V2/index.html",
-          "aspect": "Record selection and editing",
-          "status": "Preliminary; local preview only"
-        },
-        {
-          "id": "V3",
-          "name": "Identity dossier",
-          "path": "families/F14-settlement-legal/V3/index.html",
-          "aspect": "Side-by-side accounts and legal records",
-          "status": "Preliminary; local preview only"
-        },
-        {
-          "id": "V4",
-          "name": "Settings workbench",
-          "path": "families/F14-settlement-legal/V4/index.html",
-          "aspect": "Compact editor with reference rail",
-          "status": "Preliminary; reworked from V1; distinctness not verified"
-        },
-        {
-          "id": "V5",
-          "name": "Review path",
-          "path": "families/F14-settlement-legal/V5/index.html",
-          "aspect": "Local preparation and review",
-          "status": "Preliminary; local preview only"
-        }
-      ]
-    },
-    "F15-users-directory": {
-      "slug": "F15-users-directory",
-      "title": "Users directory",
-      "route": "/users",
-      "familyStatus": "Five preliminary offline layouts, derived from a shared pilot; strict research and accessibility gates remain incomplete.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Directory ledger",
-          "path": "families/F15-users-directory/V1/index.html",
-          "aspect": "20 captured first-page users and local batch preview",
-          "status": "Preliminary; no production operations"
-        },
-        {
-          "id": "V2",
-          "name": "Triage rail",
-          "path": "families/F15-users-directory/V2/index.html",
-          "aspect": "Side filters and workset",
-          "status": "Preliminary; derived from shared pilot"
-        },
-        {
-          "id": "V3",
-          "name": "Identity cards",
-          "path": "families/F15-users-directory/V3/index.html",
-          "aspect": "Card-reflowed directory",
-          "status": "Preliminary; derived from shared pilot"
-        },
-        {
-          "id": "V4",
-          "name": "Operations register",
-          "path": "families/F15-users-directory/V4/index.html",
-          "aspect": "Compact table",
-          "status": "Preliminary; derived from shared pilot"
-        },
-        {
-          "id": "V5",
-          "name": "Search first",
-          "path": "families/F15-users-directory/V5/index.html",
-          "aspect": "Results before context",
-          "status": "Preliminary; derived from shared pilot"
-        }
-      ]
-    },
-    "F16-user-details-safety": {
-      "slug": "F16-user-details-safety",
-      "title": "User details and safety",
-      "route": "/users/[id]",
-      "familyStatus": "Five preliminary offline layouts, derived from a shared pilot; strict research and accessibility gates remain incomplete.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Profile dossier",
-          "path": "families/F16-user-details-safety/V1/index.html",
-          "aspect": "Seven historical profiles, guarded action and device previews",
-          "status": "Preliminary; no production operations or audit"
-        },
-        {
-          "id": "V2",
-          "name": "Trust spine",
-          "path": "families/F16-user-details-safety/V2/index.html",
-          "aspect": "Identity and safeguards first",
-          "status": "Preliminary; derived from shared pilot"
-        },
-        {
-          "id": "V3",
-          "name": "Account chronology",
-          "path": "families/F16-user-details-safety/V3/index.html",
-          "aspect": "Activity-led view",
-          "status": "Preliminary; derived from shared pilot"
-        },
-        {
-          "id": "V4",
-          "name": "Account workbench",
-          "path": "families/F16-user-details-safety/V4/index.html",
-          "aspect": "Compact operational panels",
-          "status": "Preliminary; derived from shared pilot"
-        },
-        {
-          "id": "V5",
-          "name": "Review path",
-          "path": "families/F16-user-details-safety/V5/index.html",
-          "aspect": "Verify, review and inspect context",
-          "status": "Preliminary; derived from shared pilot"
-        }
-      ]
-    },
-    "F17-messages-home": {
-      "slug": "F17-messages-home",
-      "title": "Messages home and inbox",
-      "route": "/messages",
-      "familyStatus": "Five redesigned offline variants. Overview and inbox historical snapshots remain distinct; direct/group creation are local previews only. Static audit passed (10 pages, 10 variant stylesheets, 230 resource/link fetches, 0 issues); browser verification remains unperformed.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Signal brief",
-          "path": "families/F17-messages-home/V1/index.html",
-          "aspect": "Paired source-snapshot masthead, historical figures and recent captured activity.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V2",
-          "name": "Queue workbench",
-          "path": "families/F17-messages-home/V2/index.html",
-          "aspect": "Persistent queue-first split with compact source/evidence rail.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V3",
-          "name": "Conversation index",
-          "path": "families/F17-messages-home/V3/index.html",
-          "aspect": "Wide scan-first conversation index and explicit filter/source scope.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V4",
-          "name": "Operations ledger",
-          "path": "families/F17-messages-home/V4/index.html",
-          "aspect": "Compact, consistent row register for dense desktop scanning.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V5",
-          "name": "Compose paths",
-          "path": "families/F17-messages-home/V5/index.html",
-          "aspect": "Task-led direct/group local-preview forms with contract requirements.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        }
-      ]
-    },
-    "F18-messages-thread": {
-      "slug": "F18-messages-thread",
-      "title": "Messages thread",
-      "route": "/messages/[threadId]",
-      "familyStatus": "Five redesigned offline variants. Screenshot-backed Payments ops group and HTML-backed Amit Verma direct conversation remain separate; actions are local previews only. Static audit passed (10 pages, 10 variant stylesheets, 230 resource/link fetches, 0 issues); browser verification remains unperformed.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Three-pane desk",
-          "path": "families/F18-messages-thread/V1/index.html",
-          "aspect": "Queue, transcript and source context visible together.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V2",
-          "name": "Thread reader",
-          "path": "families/F18-messages-thread/V2/index.html",
-          "aspect": "Transcript-first wide reading surface with persistent queue and toggled context.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V3",
-          "name": "Room directory",
-          "path": "families/F18-messages-thread/V3/index.html",
-          "aspect": "Participant/source context precedes the selected transcript.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V4",
-          "name": "Message ledger",
-          "path": "families/F18-messages-thread/V4/index.html",
-          "aspect": "Compact chronology with explicit actor/time rhythm and side context.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        },
-        {
-          "id": "V5",
-          "name": "Conversation folio",
-          "path": "families/F18-messages-thread/V5/index.html",
-          "aspect": "Generous dated narrative with subordinate source/participant context.",
-          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
-        }
-      ]
-    },
-    "F19-moderation-queue": {
-      "slug": "F19-moderation-queue",
-      "title": "Moderation queue",
-      "route": "/moderation",
-      "familyStatus": "Revision 2 source reconciliation delivered. Default view matches the captured empty queue/history; optional workflow demo reuses captured message text with synthetic flags and session-only history. Reporter/reason/age/rationale/saved-view/sort fields are not claimed. Guarded local Dismiss/Escalate/Remove/Restore, safe bulk-dismiss preparation and ten-second local undo. Playwright/axe/static checks pass; production integration/permissions/audit unclaimed.",
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Queue workspace",
-          "path": "families/F19-moderation-queue/V1/index.html",
-          "aspect": "Captured empty default; demo workset table + evidence pane.",
-          "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass; recommended general-purpose winner"
-        },
-        {
-          "id": "V2",
-          "name": "Context review",
-          "path": "families/F19-moderation-queue/V2/index.html",
-          "aspect": "Case rail + bounded captured context + guidance.",
-          "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass; recommended dedicated triage"
-        },
-        {
-          "id": "V3",
-          "name": "Chat-type triage",
-          "path": "families/F19-moderation-queue/V3/index.html",
-          "aspect": "Project/Direct/Group lanes from captured chat-type filter.",
-          "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
-        },
-        {
-          "id": "V4",
-          "name": "Decision register",
-          "path": "families/F19-moderation-queue/V4/index.html",
-          "aspect": "Dense register with in-place expanded review.",
-          "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
-        },
-        {
-          "id": "V5",
-          "name": "Focused reader",
-          "path": "families/F19-moderation-queue/V5/index.html",
-          "aspect": "Case strip + evidence folio + reduced-motion next-case flow.",
-          "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
-        }
-      ]
-    },
-    "F20-analytics-hub": {
-      "slug": "F20-analytics-hub",
-      "title": "Analytics hub",
-      "route": "/analytics",
-      "familyStatus": "Rework pass 2 Nov 2026 (self-contained rebuild). Each variant is now ONE HTML file with zero sub-resources — shared tokens/base CSS, family CSS, variant CSS, the runtime, the decision layer, the variant script, both logo marks and the icon sprite are inlined — so the page renders the full shell (topbar + sidebar) in a sandboxed preview or from a plain file open. The sidebar is never hidden on desktop: full 248px above 1180px, 64px icon rail down to 620px, drawer only below that. Composition was rebuilt around the second Gate-T research round: exceptions above the numbers, a north-star card with an honest target slot, a coverage strip, a driver row, the diagnostic chart, the detail table, a metric dictionary (definition/source/owner/refresh) and a persistent data-health rail. Full-Swagger sweep (17 specs) recorded in docs/API-MAP.md §6. C10/C5/C3/C9/C12/C18/C20 unchanged in substance. Verified: 0 console errors, 0 page-level overflow 360-2560 in both themes, keyboard-complete tabs/ranges/states/chart-table/row disclosures, CSV download with manifest, axe-core 4.10.2 WCAG 2 A/AA + 2.1/2.2 AA 0 violations across 5 variants x 2 themes x tabs x demo states, and a route-aborted render proving zero network requests. Production integration, real payloads, metric owners/cadences and target values are explicitly unclaimed.",
-      "sources": [
-        "Nestlancer-admin-screenshots/admin/003-analytics.webp",
-        "004-analytics-projects.webp",
-        "005-analytics-requests.webp",
-        "006-analytics-users.webp",
-        "nestlancer-admin-pages-html/92–100 + 13–19",
-        "nestlancer-admin-pages-html/audit-metadata.json",
-        "reports/NESTLANCER_ADMIN_CONSOLE_UI_RESEARCH_REPORT.md",
-        "backend-api-swagger/admin.openapi.json",
-        "backend-api-swagger/health.openapi.json"
-      ],
-      "changes": [
-        "C3",
-        "C5",
-        "C9",
-        "C10",
-        "C12",
-        "C18",
-        "C20"
-      ],
-      "adds": [
-        "A11 (global degraded series)"
-      ],
-      "keeps": [
-        "Download CSV per view",
-        "7d/30d/90d/1y range discipline",
-        "captured microcopy + teal identity"
-      ],
-      "tieOut": {
-        "revenueCategoriesSumToKpi": true,
-        "requestStatusesSum": 46,
-        "requestCategoriesSum": 46,
-        "openPipeline": 13,
-        "conversionBasis": "18 ÷ 41 = 43.9%",
-        "acceptanceBasis": "18 ÷ 36 = 50%",
-        "projectsCountedOfTotal": "14 of 18",
-        "projectsUncounted": 4,
-        "usersTripleUnverified": "34 / 34 / 34",
-        "avgResponseTime": "0 minutes (absence, not a measurement)"
-      },
-      "demoAffordances": [
-        {
-          "what": "Download CSV",
-          "behaviour": "client-side CSV from the rendered view with a manifest (view, range, endpoint, captured date, row count, demo notice)"
-        },
-        {
-          "what": "Retry / Reset to captured view",
-          "behaviour": "re-renders captured fixtures; no request runs"
-        },
-        {
-          "what": "Range switch",
-          "behaviour": "recomputes rendered buckets; totals stay captured; the period mapping is displayed"
-        }
-      ],
-      "variants": [
-        {
-          "id": "V1",
-          "name": "Calibrated ledger",
-          "path": "families/F20-analytics-hub/V1/index.html",
-          "aspect": "Single-column ledger; calibration gutter (points / empty / latest) under every chart; provenance popover.",
-          "axes": [
-            "A single-column ledger",
-            "B verdict-first",
-            "C static sections, range-led",
-            "D airy-minimal",
-            "E chart↔table + provenance popover"
-          ],
-          "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended general-purpose winner",
-          "bytes": 114398,
-          "selfContained": true,
-          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
-          "sha256": "9e7aae50a805fb3672c9b1b4db28b1257b71e67368a3fa5163e53a9e0f286dfb"
-        },
-        {
-          "id": "V2",
-          "name": "Signal spine",
-          "path": "families/F20-analytics-hub/V2/index.html",
-          "aspect": "Shared time axis; query-value cards carry series backgrounds; breakdown tables docked in a rail.",
-          "axes": [
-            "A chart spine + rail",
-            "B per-card verdict",
-            "C scroll-linked spine",
-            "D dense-ops",
-            "E shared axis + scroll-spy"
-          ],
-          "status": "Delivered 2 Nov 2026; Playwright/axe pass",
-          "bytes": 109842,
-          "selfContained": true,
-          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
-          "sha256": "17e563badf1b76fcc93c61b371b57ece1abf90d7378317be6fc5ab566bdbcd6c"
-        },
-        {
-          "id": "V3",
-          "name": "Readout stack",
-          "path": "families/F20-analytics-hub/V3/index.html",
-          "aspect": "Table-first ledger; every rate row expands into its computation, endpoint and basis; charts demoted to a disclosure.",
-          "axes": [
-            "A table-first",
-            "B money-first",
-            "C table → chart → footnote",
-            "D ledger/print",
-            "E expandable provenance rows + density"
-          ],
-          "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended for reconciliation work",
-          "bytes": 112079,
-          "selfContained": true,
-          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
-          "sha256": "4e07cf0bbc729e4a141a93411186bdc8046f6def2041dcbdd33426c10f8b8127"
-        },
-        {
-          "id": "V4",
-          "name": "Dense board",
-          "path": "families/F20-analytics-hub/V4/index.html",
-          "aspect": "Bento board with an attention strip hoisting unverified/degraded facts above the metrics; compact density.",
-          "axes": [
-            "A bento grid",
-            "B action-first (exceptions)",
-            "C board-led + attention strip",
-            "D compact console",
-            "E density toggle + probe buttons"
-          ],
-          "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended for daily growth-ops scanning",
-          "bytes": 110917,
-          "selfContained": true,
-          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
-          "sha256": "1025f8c76a2320a576ea76379c99a6714ccdc03e40272fc6271d9be765f74885"
-        },
-        {
-          "id": "V5",
-          "name": "Choreograph",
-          "path": "families/F20-analytics-hub/V5/index.html",
-          "aspect": "Range → read → evidence → export chapters, one hand-drawn annotation, count-up that settles on fixtures, exportable receipt rail.",
-          "axes": [
-            "A split stage + receipt rail",
-            "B narrative-first",
-            "C chapter/stepper-led",
-            "D airy-editorial",
-            "E motion signature (reduced-motion safe)"
-          ],
-          "status": "Delivered 2 Nov 2026; Playwright/axe pass",
-          "bytes": 113074,
-          "selfContained": true,
-          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
-          "sha256": "9bac182d7e8fac8b9648c1ac769bfee4dfa0af5496b151047839b48bf29c98bd"
-        }
-      ],
-      "hashes": {
-        "V1": "9e7aae50a805fb3672c9b1b4db28b1257b71e67368a3fa5163e53a9e0f286dfb",
-        "V2": "17e563badf1b76fcc93c61b371b57ece1abf90d7378317be6fc5ab566bdbcd6c",
-        "V3": "4e07cf0bbc729e4a141a93411186bdc8046f6def2041dcbdd33426c10f8b8127",
-        "V4": "1025f8c76a2320a576ea76379c99a6714ccdc03e40272fc6271d9be765f74885",
-        "V5": "9bac182d7e8fac8b9648c1ac769bfee4dfa0af5496b151047839b48bf29c98bd"
-      },
-      "bytesHtmlCss": {
-        "V1": 114398,
-        "V2": 109842,
-        "V3": 112079,
-        "V4": 110917,
-        "V5": 113074
-      },
-      "sharedFiles": [
-        "families/F20-analytics-hub/build-f20.js",
-        "families/F20-analytics-hub/analytics.css",
-        "families/F20-analytics-hub/analytics.js",
-        "families/F20-analytics-hub/analytics-blocks.js",
-        "families/F20-analytics-hub/parts/V1-panel.js",
-        "families/F20-analytics-hub/parts/V2-panel.js",
-        "families/F20-analytics-hub/parts/V3-panel.js",
-        "families/F20-analytics-hub/parts/V4-panel.js",
-        "families/F20-analytics-hub/parts/V5-panel.js",
-        "families/F20-analytics-hub/variants/V1/design.css",
-        "families/F20-analytics-hub/variants/V2/design.css",
-        "families/F20-analytics-hub/variants/V3/design.css",
-        "families/F20-analytics-hub/variants/V4/design.css",
-        "families/F20-analytics-hub/variants/V5/design.css"
-      ],
-      "layout": {
-        "decisionOrder": [
-          "exceptions",
-          "north star + coverage",
-          "drivers",
-          "diagnostic chart",
-          "detail table",
-          "metric dictionary"
-        ],
-        "persistent": [
-          "data-health rail (per endpoint: reachable / failing / not captured, capture timestamp, schema + range caveats)"
-        ],
-        "research": "second Gate-T round: north-star + drivers IA, metric dictionary with owner/cadence, freshness as a first-class signal, three-tier drill"
-      },
-      "notes": [
-        "tokens.css: --sidebar-section darkened #6a7381 -> #59616e for 4.5:1 on the sidebar tint (affects all families)"
-      ]
+    {
+     "id": "V5",
+     "name": "Passage",
+     "path": "families/F04-pipelines-stage-hub/V5/index.html",
+     "aspect": "Three-lane flow desk: Intake / Delivery / Money & signals",
+     "axes": [
+      "A three stage lanes",
+      "B functional stream",
+      "C dependency-led case flow",
+      "D spatial",
+      "E quiet entry motion; static numerical truth"
+     ],
+     "changes": [
+      "C11",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "api": [
+      "GET /api/v1/admin/messages/stats",
+      "GET /api/dashboard/overview"
+     ],
+     "workflowExamples": [
+      "offline-transfer review",
+      "request assignment",
+      "client contract signature dependency",
+      "delivery revision",
+      "inquiry qualification",
+      "source visibility gap"
+     ]
     }
+   ],
+   "coverage": {
+    "C": "7/7 in 5/5 variants",
+    "A11": "5/5 (P2 requires ≥3/5)",
+    "P1Adds": "none newly classified",
+    "retainedStageTrustConsolesReference": "5/5",
+    "caseContextFilterSortPreparationStates": "5/5",
+    "primaryMarkup": "hand-authored per variant; shared interactive dialog component only",
+    "generators": 0
+   },
+   "demoOnly": "Historical volumes remain distinct from six synthetic DEMO cases. Example age is not SLA or stage dwell. Assignment and transfer approve/reject create validated local payload previews only; denied permission blocks preparation. No request, mutation or audit write runs. Unknown source is not zero. API history remains read-only with obsolete milestone creation visibly flagged; F05 is not implemented here.",
+   "winnerRecommendation": "V4 Switchboard — best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
+   "revision": 2,
+   "evidence": {
+    "research": "families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md",
+    "contracts": "families/F04-pipelines-stage-hub/docs/revision-2/SWAGGER-INVENTORY.md",
+    "delivery": "families/F04-pipelines-stage-hub/docs/revision-2/DELIVERY-REPORT.md",
+    "swaggerSpecs": 17,
+    "serviceLocalPathEntries": 560,
+    "httpOperations": 648,
+    "schemaDefinitions": 218,
+    "qualification": "documentation inventory, not unique deployed public routes or a runtime understanding percentage"
+   }
+  },
+  "F03-global-search-command-palette": {
+   "slug": "F03-global-search-command-palette",
+   "title": "Global search · Command palette",
+   "route": "Overlay on any console route",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Compass",
+     "path": "families/F03-global-search-command-palette/V1/index.html",
+     "aspect": "Ground-truth grouped list with recent history",
+     "axes": [
+      "A centered list",
+      "B familiar pages",
+      "C grouped browse",
+      "D comfortable",
+      "E live filter/recent"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "palette-completeness"
+     ],
+     "api": [
+      "GET /api/v1/admin/users/search",
+      "GET /api/v1/admin/requests"
+     ]
+    },
+    {
+     "id": "V2",
+     "name": "Dispatch",
+     "path": "families/F03-global-search-command-palette/V2/index.html",
+     "aspect": "Queue-first register with domain rail",
+     "axes": [
+      "A domain rail",
+      "B queue-first",
+      "C scope drill",
+      "D compact",
+      "E domain selection"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "palette-completeness"
+     ],
+     "api": [
+      "GET /api/v1/admin/payments?status=PENDING_VERIFICATION"
+     ]
+    },
+    {
+     "id": "V3",
+     "name": "Dossier",
+     "path": "families/F03-global-search-command-palette/V3/index.html",
+     "aspect": "Two-pane destination and provenance preview",
+     "axes": [
+      "A split preview",
+      "B destination-first",
+      "C inspect/jump",
+      "D editorial",
+      "E highlight crossfade"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "palette-completeness"
+     ],
+     "api": [
+      "GET /api/v1/admin/users/{userId}",
+      "GET /api/v1/admin/payments"
+     ]
+    },
+    {
+     "id": "V4",
+     "name": "Needle",
+     "path": "families/F03-global-search-command-palette/V4/index.html",
+     "aspect": "Minimal launch bar with ranked flat register",
+     "axes": [
+      "A horizontal bar",
+      "B exact match",
+      "C query register",
+      "D minimal dense",
+      "E ranked typeahead"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "palette-completeness"
+     ],
+     "api": [
+      "GET /api/v1/admin/requests",
+      "GET /api/v1/admin/quotes"
+     ]
+    },
+    {
+     "id": "V5",
+     "name": "Relay",
+     "path": "families/F03-global-search-command-palette/V5/index.html",
+     "aspect": "Route spine, layered dock and choreographed handoff",
+     "axes": [
+      "A spine dock",
+      "B next step",
+      "C staged receipt",
+      "D layered",
+      "E stagger/handoff"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "palette-completeness"
+     ],
+     "api": [
+      "GET /api/v1/admin/payments",
+      "POST /api/v1/messages/threads/group (reference only)"
+     ]
+    }
+   ],
+   "coverage": {
+    "C": "6/6 in 5/5 variants",
+    "palette-completeness": "5/5",
+    "keyboard-recents-states-dark-mobile": "5/5",
+    "generators": 0
+   },
+   "demoOnly": "All route/record/creation handoffs are local previews, not live APIs. No global search endpoint. Payment fixture is project context, not a verified individual payment. Group creation preview repairs captured 404 without guessing a route.",
+   "winnerRecommendation": "V3 Dossier — destination context and provenance before selecting; V1 Compass is the simplest default."
+  },
+  "F01-auth-login": {
+   "slug": "F01-auth-login",
+   "title": "Auth · Operator sign-in",
+   "route": "/login",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Monolith",
+     "path": "families/F01-auth-login/V1/index.html",
+     "aspect": "Deep-teal full-bleed canvas with drifting contour SVG + dot grid; floating light card, 3-step progress line, display H1",
+     "axes": [
+      "A layout",
+      "C narrative",
+      "D density"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "enterprise2026": [
+      "single-form",
+      "forgot-password(Gate-A)",
+      "consent-line",
+      "copyright-footer",
+      "error-focus",
+      "dismissible-notices",
+      "caps-lock",
+      "shared-device-hint",
+      "44px-coarse"
+     ],
+     "api": [
+      "POST /api/v1/auth/login",
+      "POST /api/v1/auth/verify-2fa",
+      "POST /api/v1/auth/forgot-password",
+      "POST /api/v1/auth/refresh",
+      "GET /api/v1/auth/health"
+     ]
+    },
+    {
+     "id": "V2",
+     "name": "Tide",
+     "path": "families/F01-auth-login/V2/index.html",
+     "aspect": "Asymmetric 46/54 split; animated wave lines (single dashoffset draw) on teal panel; vertical wordmark; mono posture ledger; two-step card",
+     "axes": [
+      "A layout",
+      "B hierarchy",
+      "C narrative"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "enterprise2026": [
+      "progressive-disclosure",
+      "forgot-password(Gate-A)",
+      "consent-line",
+      "copyright-footer",
+      "error-focus",
+      "dismissible-notices",
+      "caps-lock",
+      "44px-coarse"
+     ],
+     "api": [
+      "POST /api/v1/auth/login",
+      "POST /api/v1/auth/verify-2fa",
+      "POST /api/v1/auth/forgot-password"
+     ]
+    },
+    {
+     "id": "V3",
+     "name": "Ops terminal",
+     "path": "families/F01-auth-login/V3/index.html",
+     "aspect": "Console-card: window chrome bar, mono prompt line with blinking caret, scan-dot backdrop, status readout; single-form",
+     "axes": [
+      "A layout",
+      "B hierarchy",
+      "E interaction"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "enterprise2026": [
+      "progressive-disclosure",
+      "forgot-password(Gate-A)",
+      "consent-line",
+      "copyright-footer",
+      "error-focus",
+      "dismissible-notices",
+      "caps-lock",
+      "44px-coarse"
+     ],
+     "api": [
+      "POST /api/v1/auth/login",
+      "POST /api/v1/auth/verify-2fa",
+      "POST /api/v1/auth/forgot-password"
+     ]
+    },
+    {
+     "id": "V4",
+     "name": "Editorial index",
+     "path": "families/F01-auth-login/V4/index.html",
+     "aspect": "Editorial spread: oversized display headline + outlined ghost word, hard-offset-shadow paper form with index tag, ruled mono footer",
+     "axes": [
+      "A layout",
+      "D density",
+      "C narrative"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "enterprise2026": [
+      "single-form",
+      "forgot-password(Gate-A)",
+      "consent-line",
+      "copyright-footer",
+      "error-focus",
+      "dismissible-notices",
+      "caps-lock",
+      "44px-coarse"
+     ],
+     "api": [
+      "POST /api/v1/auth/login",
+      "GET /api/v1/auth/health",
+      "POST /api/v1/auth/verify-2fa",
+      "POST /api/v1/auth/forgot-password"
+     ]
+    },
+    {
+     "id": "V5",
+     "name": "Choreography",
+     "path": "families/F01-auth-login/V5/index.html",
+     "aspect": "Centered card over pointer-parallax teal glow + concentric rings; animated step progress line (dashoffset stepper); sliding panels",
+     "axes": [
+      "E interaction",
+      "C narrative",
+      "B hierarchy"
+     ],
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11"
+     ],
+     "enterprise2026": [
+      "progressive-disclosure",
+      "forgot-password(Gate-A)",
+      "consent-line",
+      "copyright-footer",
+      "error-focus",
+      "dismissible-notices",
+      "caps-lock",
+      "44px-coarse",
+      "motion-signature"
+     ],
+     "api": [
+      "POST /api/v1/auth/login",
+      "POST /api/v1/auth/verify-2fa",
+      "POST /api/v1/auth/forgot-password"
+     ]
+    }
+   ],
+   "coverage": {
+    "C": "7/7 in 5/5 variants",
+    "A11": "5/5 (>=3/5 required)",
+    "generators": 0
+   },
+   "redesign": "2026-11-01 creative pass: 5 art-directed variants (Monolith/Tide/Ops terminal/Editorial index/Choreography), teal ramp only, hand-authored"
+  },
+  "F02-dashboard-command-center": {
+   "slug": "F02-dashboard-command-center",
+   "title": "Dashboard · Command center",
+   "route": "/dashboard",
+   "snapshot": "2026-10-30 13:38 UTC; historical offline capture, not live data",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Northstar",
+     "path": "families/F02-dashboard-command-center/V1/index.html",
+     "aspect": "Money-first decision surface, six-cell attention strip, balanced performance and recent-record panels",
+     "axes": [
+      "A balanced split",
+      "B money-first",
+      "C sections",
+      "D airy",
+      "E queue preview"
+     ],
+     "changes": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C9",
+      "C10",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A9",
+      "A11",
+      "A13"
+     ],
+     "enterprise2026": [
+      "historical-label",
+      "error-focus",
+      "dismissible-notice",
+      "44px-coarse",
+      "keyboard-dialog",
+      "honest-transport"
+     ],
+     "api": [
+      "GET /api/dashboard/overview",
+      "GET /api/dashboard/revenue",
+      "GET /api/dashboard/activity",
+      "GET /api/v1/health"
+     ]
+    },
+    {
+     "id": "V2",
+     "name": "The Brief",
+     "path": "families/F02-dashboard-command-center/V2/index.html",
+     "aspect": "Ruled editorial decision note, separate verdict card and asymmetric collapsible handover marginalia",
+     "axes": [
+      "A editorial rail",
+      "B verdict-first",
+      "C brief",
+      "D ruled",
+      "E disclosure"
+     ],
+     "changes": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C9",
+      "C10",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A9",
+      "A11",
+      "A13"
+     ],
+     "enterprise2026": [
+      "historical-label",
+      "error-focus",
+      "dismissible-notice",
+      "44px-coarse",
+      "keyboard-dialog",
+      "honest-transport"
+     ],
+     "api": [
+      "GET /api/dashboard/overview",
+      "GET /api/dashboard/activity",
+      "GET /api/dashboard/revenue",
+      "GET /api/v1/health"
+     ]
+    },
+    {
+     "id": "V3",
+     "name": "Queue Spine",
+     "path": "families/F02-dashboard-command-center/V3/index.html",
+     "aspect": "Six-queue vertical triage spine beside metrics; arrow-key queue navigation and local preview",
+     "axes": [
+      "A queue rail",
+      "B queue-first",
+      "C triage",
+      "D compact list",
+      "E arrow-key loop"
+     ],
+     "changes": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C9",
+      "C10",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A9",
+      "A11",
+      "A13"
+     ],
+     "enterprise2026": [
+      "historical-label",
+      "error-focus",
+      "dismissible-notice",
+      "44px-coarse",
+      "keyboard-dialog",
+      "honest-transport"
+     ],
+     "api": [
+      "GET /api/dashboard/overview",
+      "GET /api/dashboard/revenue",
+      "GET /api/v1/notifications/unread-count",
+      "GET /api/v1/messages/unread-count"
+     ]
+    },
+    {
+     "id": "V4",
+     "name": "Signal Board",
+     "path": "families/F02-dashboard-command-center/V4/index.html",
+     "aspect": "Bento status overview with six unverified service checks, priority tile and local degraded/error demonstrations",
+     "axes": [
+      "A bento matrix",
+      "B status-first",
+      "C health chapters",
+      "D modular",
+      "E state simulation"
+     ],
+     "changes": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C9",
+      "C10",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A9",
+      "A11",
+      "A13"
+     ],
+     "enterprise2026": [
+      "historical-label",
+      "error-focus",
+      "dismissible-notice",
+      "44px-coarse",
+      "keyboard-dialog",
+      "honest-transport",
+      "reduced-motion"
+     ],
+     "api": [
+      "GET /api/dashboard/overview",
+      "GET /api/dashboard/alerts",
+      "GET /api/v1/health",
+      "GET /api/v1/health/detailed"
+     ]
+    },
+    {
+     "id": "V5",
+     "name": "Shift Ledger",
+     "path": "families/F02-dashboard-command-center/V5/index.html",
+     "aspect": "Compact ledger strips, records before charts, paired semantic tables and inline row detail",
+     "axes": [
+      "A paired ledgers",
+      "B records-first",
+      "C table-led",
+      "D dense",
+      "E inline detail"
+     ],
+     "changes": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C9",
+      "C10",
+      "C12",
+      "C15",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A9",
+      "A11",
+      "A13"
+     ],
+     "enterprise2026": [
+      "historical-label",
+      "error-focus",
+      "dismissible-notice",
+      "44px-coarse",
+      "keyboard-dialog",
+      "honest-transport"
+     ],
+     "api": [
+      "GET /api/dashboard/overview",
+      "GET /api/dashboard/revenue",
+      "GET /api/dashboard/activity",
+      "GET /api/v1/health"
+     ]
+    }
+   ],
+   "coverage": {
+    "C": "11/11 in 5/5 variants",
+    "A9": "5/5",
+    "A11": "5/5",
+    "A13": "5/5",
+    "generators": 0
+   },
+   "demoOnly": "All interactions are local; API routes are integration references, not live requests. Unbuilt destinations show contextual previews.",
+   "winnerRecommendation": "V1 Northstar — clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
+  },
+  "F05-pipeline-user-project-hubs": {
+   "slug": "F05-pipeline-user-project-hubs",
+   "title": "Pipeline hubs · User + Project",
+   "routes": [
+    "/pipeline/users",
+    "/pipeline/projects"
+   ],
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Clear context",
+     "path": "families/F05-pipeline-user-project-hubs/V1/index.html",
+     "aspect": "Minimal identity rail + quiet section disclosures",
+     "axes": [
+      "A reading column + identity rail",
+      "B next-review first",
+      "C disclosure sections",
+      "D airy minimal",
+      "E source-aware anchor jumps"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ]
+    },
+    {
+     "id": "V2",
+     "name": "Evidence spine",
+     "path": "families/F05-pipeline-user-project-hubs/V2/index.html",
+     "aspect": "Timeline-led relationship spine and source-separated evidence",
+     "axes": [
+      "A vertical spine",
+      "B source sequence",
+      "C stepper-linked chapters",
+      "D print ledger",
+      "E source-kind filter + connector motion"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ]
+    },
+    {
+     "id": "V3",
+     "name": "Whole story",
+     "path": "families/F05-pipeline-user-project-hubs/V3/index.html",
+     "aspect": "Entity-first 360 bento with connected records and contextual inspector",
+     "axes": [
+      "A asymmetric bento",
+      "B association overview",
+      "C overview to drill-down",
+      "D modular bento",
+      "E contextual inspector"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ]
+    },
+    {
+     "id": "V4",
+     "name": "Reference ledger",
+     "path": "families/F05-pipeline-user-project-hubs/V4/index.html",
+     "aspect": "Dense inspection console, semantic evidence table, local filter/sort/paging",
+     "axes": [
+      "A entity index + ledger + evidence drawer",
+      "B queue/coverage",
+      "C tab-led worksection",
+      "D dense console",
+      "E evidence filter/sort/pagination"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ]
+    },
+    {
+     "id": "V5",
+     "name": "Focus chapters",
+     "path": "families/F05-pipeline-user-project-hubs/V5/index.html",
+     "aspect": "Motion-led reversible chapter stage with reduced-motion equivalent",
+     "axes": [
+      "A split focus stage",
+      "B one-question focus",
+      "C sticky chapters",
+      "D editorial focus",
+      "E chapter translation + side inspector"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ]
+    },
+    {
+     "id": "V6",
+     "name": "Evidence desk",
+     "path": "families/F05-pipeline-user-project-hubs/V6/index.html",
+     "aspect": "Three-zone captured-record investigation desk with persistent per-record evidence",
+     "axes": [
+      "A identity + records + inspector",
+      "B exact captured records",
+      "C source-scoped local query",
+      "D working desk",
+      "E persistent detail + modal expansion"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ],
+     "dataPolicy": "Captured evidence only",
+     "audit": "families/F05-pipeline-user-project-hubs/docs/v6-v7/ANALYSIS.md",
+     "standalonePath": "families/F05-pipeline-user-project-hubs/V6/V6-complete.html"
+    },
+    {
+     "id": "V7",
+     "name": "Client casebook",
+     "path": "families/F05-pipeline-user-project-hubs/V7/index.html",
+     "aspect": "Editorial dossier with independently expandable source chapters and record sheets",
+     "axes": [
+      "A full-width identity hero + chapter index",
+      "B full case reading",
+      "C multiple open chapters",
+      "D editorial dossier",
+      "E independent queries + source sheets"
+     ],
+     "changes": [
+      "C9",
+      "C11",
+      "C3",
+      "C5",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A11",
+      "A13"
+     ],
+     "dataPolicy": "Captured evidence only",
+     "audit": "families/F05-pipeline-user-project-hubs/docs/v6-v7/ANALYSIS.md",
+     "standalonePath": "families/F05-pipeline-user-project-hubs/V7/V7-complete.html"
+    }
+   ],
+   "coverage": {
+    "C": "7/7 in 5/5",
+    "A11": "5/5 P2",
+    "A13": "5/5 P3 · reference coverage, NOT fabricated live health",
+    "P1Adds": "none targeted",
+    "bothHubs": "5/5",
+    "sections": "6 user + 4 project per variant",
+    "states": "full/empty/skeleton/error/degraded/permission preview + selected/unselected/partial",
+    "generators": 0,
+    "pilotSequence": "V1 572 checks +120 axe scans PASS before V2–V5 implementation"
+   },
+   "demoOnly": "Historical screenshot references and partial profiles, not a live directory. Section state previews/retries, navigation/command search, evidence filter/sort/pagination, copy and legal notices are local. Canonical destination/read contracts remain inert; unbuilt owner families show explicit integration handoffs. No authenticated API request, financial/security mutation or actual audit event.",
+   "winnerRecommendation": "V3 Whole story — clearest entity-first overview across both 360 hubs; V4 for focused evidence inspection.",
+   "evidence": {
+    "baseline": "families/F05-pipeline-user-project-hubs/docs/BASELINE-MAP.md",
+    "research": "families/F05-pipeline-user-project-hubs/docs/TEMPLATE-RESEARCH.md",
+    "contracts": "families/F05-pipeline-user-project-hubs/docs/API-MAP.md",
+    "concepts": "families/F05-pipeline-user-project-hubs/docs/CONCEPTS.md",
+    "delivery": "families/F05-pipeline-user-project-hubs/docs/DELIVERY-REPORT.md",
+    "freshReferences": 11,
+    "requiredSpecs": 8,
+    "directEntityWorkspaceReferences": 8,
+    "researchTiming": "Initial9references before concepts (6entity+3support);2more entity-specific references in final completeness audit; see research timing disclosure."
+   }
+  },
+  "F06-contact-inquiries": {
+   "slug": "F06-contact-inquiries",
+   "title": "Contact · inquiries triage",
+   "route": "/contact",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Split triage",
+     "path": "families/F06-contact-inquiries/V1/index.html",
+     "aspect": "Split triage · offline historical sample",
+     "changes": [
+      "C14",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V2",
+     "name": "Conversation desk",
+     "path": "families/F06-contact-inquiries/V2/index.html",
+     "aspect": "Conversation desk · offline historical sample",
+     "changes": [
+      "C14",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V3",
+     "name": "Card sweep",
+     "path": "families/F06-contact-inquiries/V3/index.html",
+     "aspect": "Card sweep · offline historical sample",
+     "changes": [
+      "C14",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V4",
+     "name": "Reference ledger",
+     "path": "families/F06-contact-inquiries/V4/index.html",
+     "aspect": "Reference ledger · offline historical sample",
+     "changes": [
+      "C14",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V5",
+     "name": "Focus loop",
+     "path": "families/F06-contact-inquiries/V5/index.html",
+     "aspect": "Focus loop · offline historical sample",
+     "changes": [
+      "C14",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    }
+   ]
+  },
+  "F07-notifications-center": {
+   "slug": "F07-notifications-center",
+   "title": "Notifications · personal + platform",
+   "route": "/notifications",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Safe boundary",
+     "path": "families/F07-notifications-center/V1/index.html",
+     "aspect": "Safe boundary · offline historical sample",
+     "changes": [
+      "C7",
+      "C8",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A3"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V2",
+     "name": "Separate surfaces",
+     "path": "families/F07-notifications-center/V2/index.html",
+     "aspect": "Separate surfaces · offline historical sample",
+     "changes": [
+      "C7",
+      "C8",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A3"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V3",
+     "name": "Inbox spine",
+     "path": "families/F07-notifications-center/V3/index.html",
+     "aspect": "Inbox spine · offline historical sample",
+     "changes": [
+      "C7",
+      "C8",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A3"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V4",
+     "name": "Dense operations",
+     "path": "families/F07-notifications-center/V4/index.html",
+     "aspect": "Dense operations · offline historical sample",
+     "changes": [
+      "C7",
+      "C8",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A3"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    },
+    {
+     "id": "V5",
+     "name": "Signal focus",
+     "path": "families/F07-notifications-center/V5/index.html",
+     "aspect": "Signal focus · offline historical sample",
+     "changes": [
+      "C7",
+      "C8",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A3"
+     ],
+     "status": "design preview · responsive/WCAG audit pending"
+    }
+   ]
+  },
+  "F08-requests-triage": {
+   "slug": "F08-requests-triage",
+   "title": "Requests triage + details",
+   "route": "/requests",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Operating desk",
+     "path": "families/F08-requests-triage/V1/index.html",
+     "aspect": "Captured-reference queue layout",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/requests",
+      "GET /api/v1/admin/requests/capacity/dashboard"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V2",
+     "name": "Split triage",
+     "path": "families/F08-requests-triage/V2/index.html",
+     "aspect": "Selected request context pane",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/requests",
+      "GET /api/v1/admin/requests/capacity/dashboard"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V3",
+     "name": "Card sweep",
+     "path": "families/F08-requests-triage/V3/index.html",
+     "aspect": "Card-oriented triage",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/requests",
+      "GET /api/v1/admin/requests/capacity/dashboard"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V4",
+     "name": "Dense desk",
+     "path": "families/F08-requests-triage/V4/index.html",
+     "aspect": "Compact high-volume scan",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/requests",
+      "GET /api/v1/admin/requests/capacity/dashboard"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V5",
+     "name": "Focus loop",
+     "path": "families/F08-requests-triage/V5/index.html",
+     "aspect": "Focus and keyboard movement",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/requests",
+      "GET /api/v1/admin/requests/capacity/dashboard"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    }
+   ],
+   "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
+  },
+  "F09-quotes-list": {
+   "slug": "F09-quotes-list",
+   "title": "Quotes list",
+   "route": "/quotes",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Revenue watchtower",
+     "path": "families/F09-quotes-list/V1/index.html",
+     "aspect": "Grounded quote table",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes",
+      "GET /api/v1/admin/quotes/stats"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V2",
+     "name": "Aging queue",
+     "path": "families/F09-quotes-list/V2/index.html",
+     "aspect": "Age-first follow-up",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes",
+      "GET /api/v1/admin/quotes/stats"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V3",
+     "name": "Revenue cards",
+     "path": "families/F09-quotes-list/V3/index.html",
+     "aspect": "Card dossiers",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes",
+      "GET /api/v1/admin/quotes/stats"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V4",
+     "name": "Ledger",
+     "path": "families/F09-quotes-list/V4/index.html",
+     "aspect": "Compact financial register",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes",
+      "GET /api/v1/admin/quotes/stats"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V5",
+     "name": "Open-next",
+     "path": "families/F09-quotes-list/V5/index.html",
+     "aspect": "Keyboard handoff",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C19",
+      "C20"
+     ],
+     "adds": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes",
+      "GET /api/v1/admin/quotes/stats"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    }
+   ],
+   "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
+  },
+  "F10-quote-details-builder": {
+   "slug": "F10-quote-details-builder",
+   "title": "Quote details + builder",
+   "route": "/quotes/[id]",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Quote workbench",
+     "path": "families/F10-quote-details-builder/V1/index.html",
+     "aspect": "Balanced stepper and total rail",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "Finish-verify",
+      "Margin unknown guardrail"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes/{id}",
+      "PATCH /api/v1/admin/quotes/{id}",
+      "POST /api/v1/admin/quotes/{id}/send"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V2",
+     "name": "Stepper spine",
+     "path": "families/F10-quote-details-builder/V2/index.html",
+     "aspect": "Step-led editor",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "Finish-verify",
+      "Margin unknown guardrail"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes/{id}",
+      "PATCH /api/v1/admin/quotes/{id}",
+      "POST /api/v1/admin/quotes/{id}/send"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V3",
+     "name": "Ledger first",
+     "path": "families/F10-quote-details-builder/V3/index.html",
+     "aspect": "Item-led register",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "Finish-verify",
+      "Margin unknown guardrail"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes/{id}",
+      "PATCH /api/v1/admin/quotes/{id}",
+      "POST /api/v1/admin/quotes/{id}/send"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V4",
+     "name": "Compact workbench",
+     "path": "families/F10-quote-details-builder/V4/index.html",
+     "aspect": "Dense editing canvas",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "Finish-verify",
+      "Margin unknown guardrail"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes/{id}",
+      "PATCH /api/v1/admin/quotes/{id}",
+      "POST /api/v1/admin/quotes/{id}/send"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    },
+    {
+     "id": "V5",
+     "name": "Review choreography",
+     "path": "families/F10-quote-details-builder/V5/index.html",
+     "aspect": "Reduced-motion review cues",
+     "changes": [
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "Finish-verify",
+      "Margin unknown guardrail"
+     ],
+     "api": [
+      "GET /api/v1/admin/quotes/{id}",
+      "PATCH /api/v1/admin/quotes/{id}",
+      "POST /api/v1/admin/quotes/{id}/send"
+     ],
+     "status": "Offline prototype; no API call or persistence"
+    }
+   ],
+   "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
+  },
+  "F11-projects-list": {
+   "slug": "F11-projects-list",
+   "title": "Projects · historical outage reference",
+   "route": "/projects",
+   "familyStatus": "Preliminary offline concepts; research gates, complete state coverage and full accessibility verification remain open. No production connection.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Historical list",
+     "path": "families/F11-projects-list/V1/index.html",
+     "aspect": "List-led capture with simulated service states",
+     "status": "Preliminary; no production request"
+    },
+    {
+     "id": "V2",
+     "name": "Status desk",
+     "path": "families/F11-projects-list/V2/index.html",
+     "aspect": "Status-first workspace with reference examples",
+     "status": "Preliminary; no production request"
+    },
+    {
+     "id": "V3",
+     "name": "Project cards",
+     "path": "families/F11-projects-list/V3/index.html",
+     "aspect": "Card-led historical reference",
+     "status": "Preliminary; no production request"
+    },
+    {
+     "id": "V4",
+     "name": "Operations ledger",
+     "path": "families/F11-projects-list/V4/index.html",
+     "aspect": "Compact table with status rail",
+     "status": "Preliminary; reworked from V1; distinctness not verified"
+    },
+    {
+     "id": "V5",
+     "name": "Recovery path",
+     "path": "families/F11-projects-list/V5/index.html",
+     "aspect": "State progression and loading illustration",
+     "status": "Preliminary; no production request"
+    }
+   ]
+  },
+  "F12-project-details-delivery": {
+   "slug": "F12-project-details-delivery",
+   "title": "Project details · delivery reference",
+   "route": "/projects/[id]",
+   "familyStatus": "Preliminary offline concepts; historical screenshot records include separate projects. Delivery actions and several states are not implemented; research gates remain open.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Delivery overview",
+     "path": "families/F12-project-details-delivery/V1/index.html",
+     "aspect": "Overview with labelled separate-source sections",
+     "status": "Preliminary; no production request"
+    },
+    {
+     "id": "V2",
+     "name": "Delivery casebook",
+     "path": "families/F12-project-details-delivery/V2/index.html",
+     "aspect": "Disclosure-led historical evidence",
+     "status": "Preliminary; no production request"
+    },
+    {
+     "id": "V3",
+     "name": "Evidence desk",
+     "path": "families/F12-project-details-delivery/V3/index.html",
+     "aspect": "Record-separated project evidence",
+     "status": "Preliminary; no production request"
+    },
+    {
+     "id": "V4",
+     "name": "Delivery console",
+     "path": "families/F12-project-details-delivery/V4/index.html",
+     "aspect": "Compact delivery workspace",
+     "status": "Preliminary; reworked from V1; distinctness not verified"
+    },
+    {
+     "id": "V5",
+     "name": "Delivery journey",
+     "path": "families/F12-project-details-delivery/V5/index.html",
+     "aspect": "Chapter-led historical delivery reference",
+     "status": "Preliminary; no production request"
+    }
+   ]
+  },
+  "F13-payments-money-ops": {
+   "slug": "F13-payments-money-ops",
+   "title": "Payments · historical money operations",
+   "route": "/payments",
+   "familyStatus": "Preliminary offline concepts; transaction samples and historical empty states are not current data. Verification, receipts and reconciliation actions remain incomplete.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Payments overview",
+     "path": "families/F13-payments-money-ops/V1/index.html",
+     "aspect": "Captured figures and sample ledger",
+     "status": "Preliminary; no financial operation"
+    },
+    {
+     "id": "V2",
+     "name": "Investigation desk",
+     "path": "families/F13-payments-money-ops/V2/index.html",
+     "aspect": "Sidebar-led financial reference",
+     "status": "Preliminary; no financial operation"
+    },
+    {
+     "id": "V3",
+     "name": "Project ledger",
+     "path": "families/F13-payments-money-ops/V3/index.html",
+     "aspect": "Project-card billing reference",
+     "status": "Preliminary; no financial operation"
+    },
+    {
+     "id": "V4",
+     "name": "Money console",
+     "path": "families/F13-payments-money-ops/V4/index.html",
+     "aspect": "Dense ledger and metric rail",
+     "status": "Preliminary; reworked from V1; distinctness not verified"
+    },
+    {
+     "id": "V5",
+     "name": "Review flow",
+     "path": "families/F13-payments-money-ops/V5/index.html",
+     "aspect": "Stage-led money reference",
+     "status": "Preliminary; no financial operation"
+    }
+   ]
+  },
+  "F14-settlement-legal": {
+   "slug": "F14-settlement-legal",
+   "title": "Settlement accounts · company legal identity",
+   "route": "/payments/accounts and /payments/company-legal",
+   "familyStatus": "Preliminary local forms; no production persistence, account verification or audit events. Full report and API gates remain open.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Settings",
+     "path": "families/F14-settlement-legal/V1/index.html",
+     "aspect": "Account and legal profile forms",
+     "status": "Preliminary; local preview only"
+    },
+    {
+     "id": "V2",
+     "name": "Record desk",
+     "path": "families/F14-settlement-legal/V2/index.html",
+     "aspect": "Record selection and editing",
+     "status": "Preliminary; local preview only"
+    },
+    {
+     "id": "V3",
+     "name": "Identity dossier",
+     "path": "families/F14-settlement-legal/V3/index.html",
+     "aspect": "Side-by-side accounts and legal records",
+     "status": "Preliminary; local preview only"
+    },
+    {
+     "id": "V4",
+     "name": "Settings workbench",
+     "path": "families/F14-settlement-legal/V4/index.html",
+     "aspect": "Compact editor with reference rail",
+     "status": "Preliminary; reworked from V1; distinctness not verified"
+    },
+    {
+     "id": "V5",
+     "name": "Review path",
+     "path": "families/F14-settlement-legal/V5/index.html",
+     "aspect": "Local preparation and review",
+     "status": "Preliminary; local preview only"
+    }
+   ]
+  },
+  "F15-users-directory": {
+   "slug": "F15-users-directory",
+   "title": "Users directory",
+   "route": "/users",
+   "familyStatus": "Five preliminary offline layouts, derived from a shared pilot; strict research and accessibility gates remain incomplete.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Directory ledger",
+     "path": "families/F15-users-directory/V1/index.html",
+     "aspect": "20 captured first-page users and local batch preview",
+     "status": "Preliminary; no production operations"
+    },
+    {
+     "id": "V2",
+     "name": "Triage rail",
+     "path": "families/F15-users-directory/V2/index.html",
+     "aspect": "Side filters and workset",
+     "status": "Preliminary; derived from shared pilot"
+    },
+    {
+     "id": "V3",
+     "name": "Identity cards",
+     "path": "families/F15-users-directory/V3/index.html",
+     "aspect": "Card-reflowed directory",
+     "status": "Preliminary; derived from shared pilot"
+    },
+    {
+     "id": "V4",
+     "name": "Operations register",
+     "path": "families/F15-users-directory/V4/index.html",
+     "aspect": "Compact table",
+     "status": "Preliminary; derived from shared pilot"
+    },
+    {
+     "id": "V5",
+     "name": "Search first",
+     "path": "families/F15-users-directory/V5/index.html",
+     "aspect": "Results before context",
+     "status": "Preliminary; derived from shared pilot"
+    }
+   ]
+  },
+  "F16-user-details-safety": {
+   "slug": "F16-user-details-safety",
+   "title": "User details and safety",
+   "route": "/users/[id]",
+   "familyStatus": "Five preliminary offline layouts, derived from a shared pilot; strict research and accessibility gates remain incomplete.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Profile dossier",
+     "path": "families/F16-user-details-safety/V1/index.html",
+     "aspect": "Seven historical profiles, guarded action and device previews",
+     "status": "Preliminary; no production operations or audit"
+    },
+    {
+     "id": "V2",
+     "name": "Trust spine",
+     "path": "families/F16-user-details-safety/V2/index.html",
+     "aspect": "Identity and safeguards first",
+     "status": "Preliminary; derived from shared pilot"
+    },
+    {
+     "id": "V3",
+     "name": "Account chronology",
+     "path": "families/F16-user-details-safety/V3/index.html",
+     "aspect": "Activity-led view",
+     "status": "Preliminary; derived from shared pilot"
+    },
+    {
+     "id": "V4",
+     "name": "Account workbench",
+     "path": "families/F16-user-details-safety/V4/index.html",
+     "aspect": "Compact operational panels",
+     "status": "Preliminary; derived from shared pilot"
+    },
+    {
+     "id": "V5",
+     "name": "Review path",
+     "path": "families/F16-user-details-safety/V5/index.html",
+     "aspect": "Verify, review and inspect context",
+     "status": "Preliminary; derived from shared pilot"
+    }
+   ]
+  },
+  "F17-messages-home": {
+   "slug": "F17-messages-home",
+   "title": "Messages home and inbox",
+   "route": "/messages",
+   "familyStatus": "Five redesigned offline variants. Overview and inbox historical snapshots remain distinct; direct/group creation are local previews only. Static audit passed (10 pages, 10 variant stylesheets, 230 resource/link fetches, 0 issues); browser verification remains unperformed.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Signal brief",
+     "path": "families/F17-messages-home/V1/index.html",
+     "aspect": "Paired source-snapshot masthead, historical figures and recent captured activity.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V2",
+     "name": "Queue workbench",
+     "path": "families/F17-messages-home/V2/index.html",
+     "aspect": "Persistent queue-first split with compact source/evidence rail.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V3",
+     "name": "Conversation index",
+     "path": "families/F17-messages-home/V3/index.html",
+     "aspect": "Wide scan-first conversation index and explicit filter/source scope.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V4",
+     "name": "Operations ledger",
+     "path": "families/F17-messages-home/V4/index.html",
+     "aspect": "Compact, consistent row register for dense desktop scanning.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V5",
+     "name": "Compose paths",
+     "path": "families/F17-messages-home/V5/index.html",
+     "aspect": "Task-led direct/group local-preview forms with contract requirements.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    }
+   ]
+  },
+  "F18-messages-thread": {
+   "slug": "F18-messages-thread",
+   "title": "Messages thread",
+   "route": "/messages/[threadId]",
+   "familyStatus": "Five redesigned offline variants. Screenshot-backed Payments ops group and HTML-backed Amit Verma direct conversation remain separate; actions are local previews only. Static audit passed (10 pages, 10 variant stylesheets, 230 resource/link fetches, 0 issues); browser verification remains unperformed.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Three-pane desk",
+     "path": "families/F18-messages-thread/V1/index.html",
+     "aspect": "Queue, transcript and source context visible together.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V2",
+     "name": "Thread reader",
+     "path": "families/F18-messages-thread/V2/index.html",
+     "aspect": "Transcript-first wide reading surface with persistent queue and toggled context.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V3",
+     "name": "Room directory",
+     "path": "families/F18-messages-thread/V3/index.html",
+     "aspect": "Participant/source context precedes the selected transcript.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V4",
+     "name": "Message ledger",
+     "path": "families/F18-messages-thread/V4/index.html",
+     "aspect": "Compact chronology with explicit actor/time rhythm and side context.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    },
+    {
+     "id": "V5",
+     "name": "Conversation folio",
+     "path": "families/F18-messages-thread/V5/index.html",
+     "aspect": "Generous dated narrative with subordinate source/participant context.",
+     "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+    }
+   ]
+  },
+  "F19-moderation-queue": {
+   "slug": "F19-moderation-queue",
+   "title": "Moderation queue",
+   "route": "/moderation",
+   "familyStatus": "Revision 2 source reconciliation delivered. Default view matches the captured empty queue/history; optional workflow demo reuses captured message text with synthetic flags and session-only history. Reporter/reason/age/rationale/saved-view/sort fields are not claimed. Guarded local Dismiss/Escalate/Remove/Restore, safe bulk-dismiss preparation and ten-second local undo. Playwright/axe/static checks pass; production integration/permissions/audit unclaimed.",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Queue workspace",
+     "path": "families/F19-moderation-queue/V1/index.html",
+     "aspect": "Captured empty default; demo workset table + evidence pane.",
+     "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass; recommended general-purpose winner"
+    },
+    {
+     "id": "V2",
+     "name": "Context review",
+     "path": "families/F19-moderation-queue/V2/index.html",
+     "aspect": "Case rail + bounded captured context + guidance.",
+     "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass; recommended dedicated triage"
+    },
+    {
+     "id": "V3",
+     "name": "Chat-type triage",
+     "path": "families/F19-moderation-queue/V3/index.html",
+     "aspect": "Project/Direct/Group lanes from captured chat-type filter.",
+     "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
+    },
+    {
+     "id": "V4",
+     "name": "Decision register",
+     "path": "families/F19-moderation-queue/V4/index.html",
+     "aspect": "Dense register with in-place expanded review.",
+     "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
+    },
+    {
+     "id": "V5",
+     "name": "Focused reader",
+     "path": "families/F19-moderation-queue/V5/index.html",
+     "aspect": "Case strip + evidence folio + reduced-motion next-case flow.",
+     "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
+    }
+   ]
+  },
+  "F20-analytics-hub": {
+   "slug": "F20-analytics-hub",
+   "title": "Analytics hub",
+   "route": "/analytics",
+   "familyStatus": "Rework pass 2 Nov 2026 (self-contained rebuild). Each variant is now ONE HTML file with zero sub-resources — shared tokens/base CSS, family CSS, variant CSS, the runtime, the decision layer, the variant script, both logo marks and the icon sprite are inlined — so the page renders the full shell (topbar + sidebar) in a sandboxed preview or from a plain file open. The sidebar is never hidden on desktop: full 248px above 1180px, 64px icon rail down to 620px, drawer only below that. Composition was rebuilt around the second Gate-T research round: exceptions above the numbers, a north-star card with an honest target slot, a coverage strip, a driver row, the diagnostic chart, the detail table, a metric dictionary (definition/source/owner/refresh) and a persistent data-health rail. Full-Swagger sweep (17 specs) recorded in docs/API-MAP.md §6. C10/C5/C3/C9/C12/C18/C20 unchanged in substance. Verified: 0 console errors, 0 page-level overflow 360-2560 in both themes, keyboard-complete tabs/ranges/states/chart-table/row disclosures, CSV download with manifest, axe-core 4.10.2 WCAG 2 A/AA + 2.1/2.2 AA 0 violations across 5 variants x 2 themes x tabs x demo states, and a route-aborted render proving zero network requests. Production integration, real payloads, metric owners/cadences and target values are explicitly unclaimed.",
+   "sources": [
+    "Nestlancer-admin-screenshots/admin/003-analytics.webp",
+    "004-analytics-projects.webp",
+    "005-analytics-requests.webp",
+    "006-analytics-users.webp",
+    "nestlancer-admin-pages-html/92–100 + 13–19",
+    "nestlancer-admin-pages-html/audit-metadata.json",
+    "reports/NESTLANCER_ADMIN_CONSOLE_UI_RESEARCH_REPORT.md",
+    "backend-api-swagger/admin.openapi.json",
+    "backend-api-swagger/health.openapi.json"
+   ],
+   "changes": [
+    "C3",
+    "C5",
+    "C9",
+    "C10",
+    "C12",
+    "C18",
+    "C20"
+   ],
+   "adds": [
+    "A11 (global degraded series)"
+   ],
+   "keeps": [
+    "Download CSV per view",
+    "7d/30d/90d/1y range discipline",
+    "captured microcopy + teal identity"
+   ],
+   "tieOut": {
+    "revenueCategoriesSumToKpi": true,
+    "requestStatusesSum": 46,
+    "requestCategoriesSum": 46,
+    "openPipeline": 13,
+    "conversionBasis": "18 ÷ 41 = 43.9%",
+    "acceptanceBasis": "18 ÷ 36 = 50%",
+    "projectsCountedOfTotal": "14 of 18",
+    "projectsUncounted": 4,
+    "usersTripleUnverified": "34 / 34 / 34",
+    "avgResponseTime": "0 minutes (absence, not a measurement)"
+   },
+   "demoAffordances": [
+    {
+     "what": "Download CSV",
+     "behaviour": "client-side CSV from the rendered view with a manifest (view, range, endpoint, captured date, row count, demo notice)"
+    },
+    {
+     "what": "Retry / Reset to captured view",
+     "behaviour": "re-renders captured fixtures; no request runs"
+    },
+    {
+     "what": "Range switch",
+     "behaviour": "recomputes rendered buckets; totals stay captured; the period mapping is displayed"
+    }
+   ],
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Calibrated ledger",
+     "path": "families/F20-analytics-hub/V1/index.html",
+     "aspect": "Single-column ledger; calibration gutter (points / empty / latest) under every chart; provenance popover.",
+     "axes": [
+      "A single-column ledger",
+      "B verdict-first",
+      "C static sections, range-led",
+      "D airy-minimal",
+      "E chart↔table + provenance popover"
+     ],
+     "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended general-purpose winner",
+     "bytes": 114398,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+     "sha256": "9e7aae50a805fb3672c9b1b4db28b1257b71e67368a3fa5163e53a9e0f286dfb"
+    },
+    {
+     "id": "V2",
+     "name": "Signal spine",
+     "path": "families/F20-analytics-hub/V2/index.html",
+     "aspect": "Shared time axis; query-value cards carry series backgrounds; breakdown tables docked in a rail.",
+     "axes": [
+      "A chart spine + rail",
+      "B per-card verdict",
+      "C scroll-linked spine",
+      "D dense-ops",
+      "E shared axis + scroll-spy"
+     ],
+     "status": "Delivered 2 Nov 2026; Playwright/axe pass",
+     "bytes": 109842,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+     "sha256": "17e563badf1b76fcc93c61b371b57ece1abf90d7378317be6fc5ab566bdbcd6c"
+    },
+    {
+     "id": "V3",
+     "name": "Readout stack",
+     "path": "families/F20-analytics-hub/V3/index.html",
+     "aspect": "Table-first ledger; every rate row expands into its computation, endpoint and basis; charts demoted to a disclosure.",
+     "axes": [
+      "A table-first",
+      "B money-first",
+      "C table → chart → footnote",
+      "D ledger/print",
+      "E expandable provenance rows + density"
+     ],
+     "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended for reconciliation work",
+     "bytes": 112079,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+     "sha256": "4e07cf0bbc729e4a141a93411186bdc8046f6def2041dcbdd33426c10f8b8127"
+    },
+    {
+     "id": "V4",
+     "name": "Dense board",
+     "path": "families/F20-analytics-hub/V4/index.html",
+     "aspect": "Bento board with an attention strip hoisting unverified/degraded facts above the metrics; compact density.",
+     "axes": [
+      "A bento grid",
+      "B action-first (exceptions)",
+      "C board-led + attention strip",
+      "D compact console",
+      "E density toggle + probe buttons"
+     ],
+     "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended for daily growth-ops scanning",
+     "bytes": 110917,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+     "sha256": "1025f8c76a2320a576ea76379c99a6714ccdc03e40272fc6271d9be765f74885"
+    },
+    {
+     "id": "V5",
+     "name": "Choreograph",
+     "path": "families/F20-analytics-hub/V5/index.html",
+     "aspect": "Range → read → evidence → export chapters, one hand-drawn annotation, count-up that settles on fixtures, exportable receipt rail.",
+     "axes": [
+      "A split stage + receipt rail",
+      "B narrative-first",
+      "C chapter/stepper-led",
+      "D airy-editorial",
+      "E motion signature (reduced-motion safe)"
+     ],
+     "status": "Delivered 2 Nov 2026; Playwright/axe pass",
+     "bytes": 113074,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+     "sha256": "9bac182d7e8fac8b9648c1ac769bfee4dfa0af5496b151047839b48bf29c98bd"
+    }
+   ],
+   "hashes": {
+    "V1": "9e7aae50a805fb3672c9b1b4db28b1257b71e67368a3fa5163e53a9e0f286dfb",
+    "V2": "17e563badf1b76fcc93c61b371b57ece1abf90d7378317be6fc5ab566bdbcd6c",
+    "V3": "4e07cf0bbc729e4a141a93411186bdc8046f6def2041dcbdd33426c10f8b8127",
+    "V4": "1025f8c76a2320a576ea76379c99a6714ccdc03e40272fc6271d9be765f74885",
+    "V5": "9bac182d7e8fac8b9648c1ac769bfee4dfa0af5496b151047839b48bf29c98bd"
+   },
+   "bytesHtmlCss": {
+    "V1": 114398,
+    "V2": 109842,
+    "V3": 112079,
+    "V4": 110917,
+    "V5": 113074
+   },
+   "sharedFiles": [
+    "families/F20-analytics-hub/build-f20.js",
+    "families/F20-analytics-hub/analytics.css",
+    "families/F20-analytics-hub/analytics.js",
+    "families/F20-analytics-hub/analytics-blocks.js",
+    "families/F20-analytics-hub/parts/V1-panel.js",
+    "families/F20-analytics-hub/parts/V2-panel.js",
+    "families/F20-analytics-hub/parts/V3-panel.js",
+    "families/F20-analytics-hub/parts/V4-panel.js",
+    "families/F20-analytics-hub/parts/V5-panel.js",
+    "families/F20-analytics-hub/variants/V1/design.css",
+    "families/F20-analytics-hub/variants/V2/design.css",
+    "families/F20-analytics-hub/variants/V3/design.css",
+    "families/F20-analytics-hub/variants/V4/design.css",
+    "families/F20-analytics-hub/variants/V5/design.css"
+   ],
+   "layout": {
+    "decisionOrder": [
+     "exceptions",
+     "north star + coverage",
+     "drivers",
+     "diagnostic chart",
+     "detail table",
+     "metric dictionary"
+    ],
+    "persistent": [
+     "data-health rail (per endpoint: reachable / failing / not captured, capture timestamp, schema + range caveats)"
+    ],
+    "research": "second Gate-T round: north-star + drivers IA, metric dictionary with owner/cadence, freshness as a first-class signal, three-tier drill"
+   },
+   "notes": [
+    "tokens.css: --sidebar-section darkened #6a7381 -> #59616e for 4.5:1 on the sidebar tint (affects all families)"
+   ]
+  },
+  "F21-content-blog": {
+   "slug": "F21-content-blog",
+   "title": "Content · Blog + Editor",
+   "route": "/content",
+   "familyStatus": "Delivered 3 Nov 2026 (scoped run: F21 only). Each variant is ONE self-contained HTML file — shared tokens/base CSS, family CSS, variant CSS, runtime, decision layer, variant script, icon sprite, both logo marks and the five captured DOM editor posts (docs/fixtures/captured-editor-posts.json inlined as window.NL_CAPTURED, never retyped) — so the full shell renders in a sandboxed preview. Content frozen from the 2026-10-30 capture: 110 published / 0 drafts, six tabs, page 1 of 6 (20 of 110), four comments, two empty queues with their captured headings, analytics 107 views / top-10 summing to 17, taxonomy 4/6/1, editor Write/Split/Preview with the DOM-canonical post tying out to 230 words · 2 min · 105/160. Captured 120-controls-per-page row-action farm replaced by Edit + overflow with confirm → receipt → 10 s local undo in all five; Schedule is an action with scheduledAt, never a status; every endpoint printed as a DEMO documented contract; 'field names not documented in Swagger' printed at the point of use. Verified: 70-cell matrix (5 × 7 widths × 2 themes: one h1, no page-level overflow, 0 errors, 0 external requests), 107 interaction checks, axe-core 4.14.0 WCAG 2 A/AA + 2.1 AA + best-practice 0 violations incl. menu/confirm/toast/editor/drawer/demo states. Production integration, real payloads, and the category of three DOM posts (not serialised by the capture) are explicitly unclaimed.",
+   "sources": [
+    "Nestlancer-admin-screenshots/admin/009–014, 066–069, 071 (11 shots)",
+    "nestlancer-admin-pages-html/101–112, 171–175, 192 (18 snapshots, all /content* pre-data)",
+    "nestlancer-admin-pages-html/audit-metadata.json",
+    "reports/NESTLANCER_ADMIN_CONSOLE_UI_RESEARCH_REPORT.md (§1 #8, §2.2, §3.3, §4.1, §5.2) + xlsx 10/10",
+    "backend-api-swagger/blog.openapi.json (69 paths, 12 schemas)"
+   ],
+   "changes": [
+    "C11",
+    "C17 (by analogy)",
+    "C3",
+    "C5",
+    "C9",
+    "C12",
+    "C18",
+    "C20",
+    "C15",
+    "C4",
+    "C19"
+   ],
+   "adds": [
+    "A2/A5 cross-queue review craft declared in V3 (no F21-targeted P1 ADD)",
+    "A10 density in V4"
+   ],
+   "keeps": [
+    "Editorial structure (6 tabs + editor + schedule)",
+    "Guarded publishing",
+    "captured microcopy + teal identity"
+   ],
+   "tieOut": {
+    "totalPostsEqualsPublishedPlusDrafts": "110 = 110 + 0",
+    "scheduledArchivedCounted": false,
+    "pagination": "⌈110 ÷ 20⌉ = 6 pages",
+    "analyticsTopTenSum": 17,
+    "analyticsTotalViews": 107,
+    "viewsOutsideTopTen": "90 (84%)",
+    "topPerformingPostsTen": "list limit, not a metric",
+    "taxonomyCounts": "4 categories / 6 tags / 1 author — each equals its list",
+    "pendingComments": 0,
+    "reportedComments": 0,
+    "domCanonicalPost": "Agentic CI/CD with GitHub Actions — 230 words · 2 min · excerpt = meta 105 chars · Technology",
+    "domPostsWithoutCategory": [
+     "PLG",
+     "Retainer",
+     "Design Ops"
+    ]
+   },
+   "demoAffordances": [
+    {
+     "what": "Unpublish / Archive / Delete / Reject / Spam",
+     "behaviour": "confirm (documented transition + the Delete-vs-Archive verb inversion printed) → local receipt → 10 s local undo; no request runs"
+    },
+    {
+     "what": "Schedule",
+     "behaviour": "date-time dialog naming POST /api/v1/admin/posts/{id}/schedule {scheduledAt}; SCHEDULED badge only on DEMO rows"
+    },
+    {
+     "what": "Save / Publish from the editor",
+     "behaviour": "local receipt naming PATCH / POST publish; writing stats recomputed from the captured body"
+    },
+    {
+     "what": "Revisions list + restore",
+     "behaviour": "DEMO rows naming GET …/revisions and POST …/restore; restore confirms then writes a receipt"
+    },
+    {
+     "what": "Lab states",
+     "behaviour": "skeleton / empty / error (role=alert + focus + retry) / demo re-render captured fixtures; nothing is fetched"
+    }
+   ],
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Ground-truth desk",
+     "path": "families/F21-content-blog/V1/index.html",
+     "aspect": "Captured hub order (head → hero/strip → tabs → table) with the row-action farm replaced by Edit + overflow; captured-forms strip; editor opens in place beneath the desk.",
+     "axes": [
+      "A single column, captured order",
+      "B hero verdict > strip > table",
+      "C \"the capture, corrected\"",
+      "D comfortable 13 px / 48 px rows",
+      "E overflow menus, confirm → receipt → undo, provenance popovers"
+     ],
+     "status": "Delivered 3 Nov 2026; Playwright/axe pass; recommended general-purpose winner",
+     "bytes": 175614,
+     "gzipKB": 45.8,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos, captured fixture inlined)",
+     "sha256": "52e3b12a27acfec7ec8958164c5c685ea2f57297dc0807e59b873409b5c7949c"
+    },
+    {
+     "id": "V2",
+     "name": "Editor spine",
+     "path": "families/F21-content-blog/V2/index.html",
+     "aspect": "Three columns: posts rail (with a \"DOM edit forms (5)\" group) · writing surface · settings / SEO / writing-stats column holding Schedule and Revisions.",
+     "axes": [
+      "A 3-column editor-first",
+      "B post-first, desk secondary",
+      "C \"one post, start to finish\"",
+      "D focused, generous measure",
+      "E segmented Write/Split/Preview, right-column Schedule + Revisions"
+     ],
+     "status": "Delivered 3 Nov 2026; Playwright/axe pass",
+     "bytes": 182869,
+     "gzipKB": 47.4,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos, captured fixture inlined)",
+     "sha256": "dbe9581b8a6d761737a40d2b7ce406e88d70a369c5a37318422293f9efe350c8"
+    },
+    {
+     "id": "V3",
+     "name": "Review desk",
+     "path": "families/F21-content-blog/V3/index.html",
+     "aspect": "Comment lanes (Pending · Reported · All) as listboxes with a context pane; j/k/a/r/s/z keyboard triage with confirm, receipt and undo; posts + analytics stacked below.",
+     "axes": [
+      "A lanes + context pane",
+      "B queue-first",
+      "C \"clear the discussion, then publish\"",
+      "D index-tab labels, compact lanes",
+      "E keyboard triage with receipts"
+     ],
+     "status": "Delivered 3 Nov 2026; Playwright/axe pass",
+     "bytes": 184036,
+     "gzipKB": 48.0,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos, captured fixture inlined)",
+     "sha256": "3b7cbb377753af1ae394e4a1ef7a10b7c80b0b07d986109f937aff64f54fa48c"
+    },
+    {
+     "id": "V4",
+     "name": "Dense console",
+     "path": "families/F21-content-blog/V4/index.html",
+     "aspect": "Compact bento: 4-cell strip, 12 px dense table with persisted column chooser, multi-select that \"prepares N single requests\", peek drawer, taxonomy + merge + revisions beside the table.",
+     "axes": [
+      "A bento + side column",
+      "B everything visible at once",
+      "C \"everything on one screen\"",
+      "D dense 12 px",
+      "E drawer preview, column chooser, select bar"
+     ],
+     "status": "Delivered 3 Nov 2026; Playwright/axe pass",
+     "bytes": 188726,
+     "gzipKB": 48.7,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos, captured fixture inlined)",
+     "sha256": "7394196e9d4d1d0501384245708126ea545245acbf018a808ec89571888df731"
+    },
+    {
+     "id": "V5",
+     "name": "Publish choreography",
+     "path": "families/F21-content-blog/V5/index.html",
+     "aspect": "Centred stepper Draft → Review → Schedule → Publish; each step prints its endpoint and receipt; checklist recomputed from the captured body; desk folded beneath.",
+     "axes": [
+      "A centred stage + folded desk",
+      "B narrative, one step at a time",
+      "C \"a guarded publish, step by step\"",
+      "D airy-editorial",
+      "E motion signature (transform/opacity, reduced-motion safe)"
+     ],
+     "status": "Delivered 3 Nov 2026; Playwright/axe pass",
+     "bytes": 187678,
+     "gzipKB": 49.2,
+     "selfContained": true,
+     "note": "single file, zero sub-resources (CSS, JS, sprite, logos, captured fixture inlined)",
+     "sha256": "f8a88dbbc49638f10308a4f3c55e2f19c4cd8acb42d2928c5e7e3d8116d566f7"
+    }
+   ],
+   "hashes": {
+    "V1": "52e3b12a27acfec7ec8958164c5c685ea2f57297dc0807e59b873409b5c7949c",
+    "V2": "dbe9581b8a6d761737a40d2b7ce406e88d70a369c5a37318422293f9efe350c8",
+    "V3": "3b7cbb377753af1ae394e4a1ef7a10b7c80b0b07d986109f937aff64f54fa48c",
+    "V4": "7394196e9d4d1d0501384245708126ea545245acbf018a808ec89571888df731",
+    "V5": "f8a88dbbc49638f10308a4f3c55e2f19c4cd8acb42d2928c5e7e3d8116d566f7"
+   },
+   "bytesHtmlCss": {
+    "V1": 175614,
+    "V2": 182869,
+    "V3": 184036,
+    "V4": 188726,
+    "V5": 187678
+   },
+   "sharedFiles": [
+    "families/F21-content-blog/build-f21.js",
+    "families/F21-content-blog/blog.css",
+    "families/F21-content-blog/blog.js",
+    "families/F21-content-blog/blog-blocks.js",
+    "families/F21-content-blog/parts/V1-panel.js",
+    "families/F21-content-blog/parts/V2-panel.js",
+    "families/F21-content-blog/parts/V3-panel.js",
+    "families/F21-content-blog/parts/V4-panel.js",
+    "families/F21-content-blog/parts/V5-panel.js",
+    "families/F21-content-blog/variants/V1/design.css",
+    "families/F21-content-blog/variants/V2/design.css",
+    "families/F21-content-blog/variants/V3/design.css",
+    "families/F21-content-blog/variants/V4/design.css",
+    "families/F21-content-blog/variants/V5/design.css",
+    "families/F21-content-blog/docs/fixtures/captured-editor-posts.json"
+   ],
+   "layout": {
+    "decisionOrder": [
+     "hero verdict + tie-out strip",
+     "six captured tabs",
+     "table with Edit + overflow",
+     "editor Write/Split/Preview",
+     "schedule / revisions / confirm layer"
+    ],
+    "persistent": [
+     "provenance chips (shot / DOM / spec / DEMO) and endpoint lines on every surface",
+     "captured-forms strip + analytics Edit buttons as entry points to the five DOM editor posts"
+    ],
+    "research": "Gate T after S/R/A: 11 queries, 17 refs — overflow-not-farm row actions, confirm/undo over modal alarms, status as action, writing stats beside the field, provenance at point of use"
+   },
+   "localStorage": [
+    "nl-theme",
+    "nl-nav",
+    "nl-f21-view",
+    "nl-f21-v4-cols"
+   ],
+   "notes": [
+    "Pages exceed the 70 KB soft budget (171–184 KB raw, 46–49 KB gzip) for the same self-containment reason as F20, plus the inlined captured fixture; disclosed in DELIVERY-REPORT §1.",
+    "Rule from this run: never retype captured text into a runtime — two hand-typed strings drifted from the DOM; the build now inlines the extracted fixture.",
+    "No shared file outside the family was changed."
+   ]
   }
+ }
 }

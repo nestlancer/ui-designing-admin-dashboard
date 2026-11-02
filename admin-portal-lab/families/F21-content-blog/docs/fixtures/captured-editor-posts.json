@@ -1,0 +1,72 @@
+{
+ "01a10a1e-e219-73d9-855c-cf690f3b2b25": {
+  "file": "172-content-editor.html",
+  "title": "Agentic CI/CD with GitHub Actions",
+  "excerpt": "Patterns for AI agents that interpret failures, propose fixes, and escalate with human-in-the-loop gates.",
+  "body": "CI failures at 2 a.m. should not wait for a human to parse logs. **Agentic pipelines** interpret failures, propose fixes, and open draft PRs—while keeping merge gates firmly human-controlled.\n\n## Human-in-the-loop architecture\n\n```\nfail job → agent reads logs + diff → proposes fix branch → engineer approves merge\n```\n\nNever auto-merge to main. Agents lack context on business risk, migrations, and customer commitments.\n\n## What agents handle well\n\n- Lint and formatter failures with deterministic fixes\n- Missing lockfile updates after dependency bumps\n- Flaky test triage: rerun vs quarantine recommendations\n- Typo fixes in error messages surfaced by snapshot tests\n\n## What requires escalation\n\n- Database migration failures\n- Security scanner blocks on new CVEs\n- Contract test breaks across service boundaries\n- Any change touching auth, payments, or PII retention\n\n## GitHub Actions wiring\n\n```yaml\non:\n  workflow_run:\n    workflows: [CI]\n    types: [completed]\njobs:\n  triage:\n    if: ${{ github.event.workflow_run.conclusion == 'failure' }}\n    steps:\n      - uses: actions/checkout@v4\n      - run: node scripts/agent-triage.mjs\n```\n\nStore prompts and tool configs in-repo for reviewability. Cap token spend per run.\n\nAgentic CI augments engineers—it does not replace judgment on production-bound changes.\n\n## Instrumentation for agent pipelines\n\nLog every agent suggestion with PR link, diff size, and human acceptance outcome. Monthly review: which failure classes agents resolve reliably vs which still need runbook docs. Cap concurrent agent jobs so flaky retries do not starve human CI capacity.\n",
+  "slug": "agentic-ci-cd-with-github-actions",
+  "tags": "NestJS, Node.js",
+  "metaTitle": "Agentic CI/CD with GitHub Actions",
+  "metaDescription": "Patterns for AI agents that interpret failures, propose fixes, and escalate with human-in-the-loop gates.",
+  "words": "230",
+  "estRead": "2 min",
+  "excerptLen": "105 chars",
+  "bodyChars": 1612
+ },
+ "01a10a21-b705-70d0-992f-e96647543650": {
+  "file": "109-content-sub-content-posts-01a10a21-b705-70d0-992f-e96647543650.html",
+  "title": "Product-Led Growth Playbook for 2026",
+  "excerpt": "Self-serve onboarding, activation milestones, and in-app upgrades that compound without sales friction.",
+  "body": "PLG means the product **sells itself** through value experienced before sales calls—not by hiding pricing behind \"contact us\" forms.\n\n## Self-serve funnel design\n\n- Signup to value in under 10 minutes\n- Progressive profiling—ask for billing only when limits hit\n- In-app upgrade at moment of need (export limit, seat cap)\n- Transparent pricing page linked from inside the app\n\n## Activation milestones\n\nMap the habit loop:\n\n1. First success event (template used, integration connected)\n2. Second session within 48 hours\n3. Collaboration or data import (switching cost)\n4. Paid conversion trigger tied to value metric\n\n## Product-qualified leads\n\nScore PQLs on usage depth, not page views:\n\n| Signal | Weight |\n|--------|--------|\n| Invited teammate | High |\n| Hit usage threshold | High |\n| Viewed pricing | Medium |\n| Read docs only | Low |\n\nSales engages PQLs with context: \"You exported 4 reports—want SSO on the team plan?\"\n\n## Reduce sales friction\n\nAnnual plans with monthly payment option, sandbox environments, and admin controls on lower tiers for evaluators.\n\nPLG compounds when onboarding is measurable and sales shows up with usage insight—not cold pitches.\n",
+  "slug": "product-led-growth-playbook-for-2026",
+  "tags": "JavaScript, Node.js",
+  "metaTitle": "Product-Led Growth Playbook for 2026",
+  "metaDescription": "Self-serve onboarding, activation milestones, and in-app upgrades that compound without sales friction.",
+  "words": "188",
+  "estRead": "1 min",
+  "excerptLen": "103 chars",
+  "bodyChars": 1170
+ },
+ "01a10a23-b389-716c-a2eb-e5479eb081d6": {
+  "file": "110-content-sub-content-posts-01a10a23-b389-716c-a2eb-e5479eb081d6.html",
+  "title": "Retainer vs Project Pricing Models",
+  "excerpt": "When recurring revenue makes sense and how to structure hours, rollover, and scope.",
+  "body": "Retainers smooth revenue; projects cap risk. **Pricing model** should match work predictability and client maturity.\n\n## Retainer fit\n\n- Ongoing maintenance, feature slices, DevOps support\n- Client needs guaranteed monthly capacity\n- Relationship stable 6+ months\n\nStructure: monthly hours bucket, rollover cap (e.g., 20% max), overage at higher rate.\n\n## Project fit\n\n- Defined deliverable with acceptance criteria\n- New clients proving fit\n- Migration or launch with fixed deadline\n\nFixed price with phased payments tied to milestones.\n\n## Comparison\n\n| Factor | Retainer | Project |\n|--------|----------|---------|\n| Revenue predictability | High | Lumpy |\n| Scope risk | Creep risk | Bounded |\n| Client commitment | Ongoing | Point-in-time |\n\n## Hybrid\n\nImplementation project → transition retainer for support. Document handoff criteria between phases.\n\nPrice the model that matches how work actually arrives—forcing retainers on one-off clients creates resentment both ways.\n",
+  "slug": "retainer-vs-project-pricing-models",
+  "tags": "TypeScript, JavaScript, Node.js",
+  "metaTitle": "Retainer vs Project Pricing Models",
+  "metaDescription": "When recurring revenue makes sense and how to structure hours, rollover, and scope.",
+  "words": "144",
+  "estRead": "1 min",
+  "excerptLen": "83 chars",
+  "bodyChars": 981
+ },
+ "01a10a25-e1d8-71c0-911a-16db76a5980c": {
+  "file": "111-content-sub-content-posts-01a10a25-e1d8-71c0-911a-16db76a5980c.html",
+  "title": "Empty State UX Patterns That Guide Users",
+  "excerpt": "Illustrations, primary CTAs, and sample data that accelerate activation.",
+  "body": "Empty states are **onboarding moments**, not blank rectangles. First visit sets whether users activate or bounce confused.\n\n## Components of strong empty states\n\n- Illustration or icon with brand tone—not generic gray box\n- Headline stating what this area is for\n- Primary CTA: create first X, import, connect integration\n- Secondary link to docs or template gallery\n\n## Sample data option\n\nFor analytics dashboards, offer \"load sample data\" so charts demonstrate value before import friction.\n\n## Error vs empty\n\nDistinguish \"no data yet\" from \"failed to load\"—different copy and recovery actions.\n\n## Checklist\n\n| Scenario | CTA |\n|----------|-----|\n| Empty project list | Create project |\n| Empty team | Invite teammate |\n| Filtered zero results | Clear filters |\n\nMeasure activation rate from empty state CTA clicks—iterate copy like any landing page.\n",
+  "slug": "empty-state-ux-patterns-that-guide-users",
+  "tags": "JavaScript, React, Next.js",
+  "metaTitle": "Empty State UX Patterns That Guide Users",
+  "metaDescription": "Illustrations, primary CTAs, and sample data that accelerate activation.",
+  "words": "136",
+  "estRead": "1 min",
+  "excerptLen": "72 chars",
+  "bodyChars": 856
+ },
+ "01a10a27-429b-76dd-9069-d255e0ece571": {
+  "file": "112-content-sub-content-posts-01a10a27-429b-76dd-9069-d255e0ece571.html",
+  "title": "Design Ops for Growing Product Teams",
+  "excerpt": "Rituals, tooling, and intake processes that keep design shipping with engineering.",
+  "body": "Design ops keeps **intake, tooling, and rituals** predictable so designers ship with engineering—not drown in slack requests and duplicate Figma files.\n\n## Intake process\n\nSingle form: problem, success metric, deadline, eng counterpart. Triage weekly—reject vague \"make it pop\" requests.\n\n## Tooling stack\n\n| Tool | Purpose |\n|------|---------|\n| Figma | Source of truth |\n| Storybook | Component parity |\n| Linear/Jira | Linked tickets |\n| Loom | Async critique |\n\n## Rituals\n\n- Design critique weekly with cross-functional attendees\n- Design-dev sync biweekly for upcoming sprint components\n- Quarterly design debt sprint for doc and component cleanup\n\n## Capacity planning\n\nRatio guidance: 1 designer per 6–8 engineers for complex B2B—adjust per research load.\n\nDesign ops is friction removal—measure time from request to shipped component.\n",
+  "slug": "design-ops-for-growing-product-teams",
+  "tags": "React, Next.js",
+  "metaTitle": "Design Ops for Growing Product Teams",
+  "metaDescription": "Rituals, tooling, and intake processes that keep design shipping with engineering.",
+  "words": "127",
+  "estRead": "1 min",
+  "excerptLen": "82 chars",
+  "bodyChars": 844
+ }
+}

@@ -10,6 +10,8 @@
 
 F01–F18 have existing lab work. The owner requested **F19 next**, then corrected the first F19 delivery for screenshot/Swagger mismatch. `F19-moderation-queue.md` now defaults to the captured empty queue/history and offers an optional workflow demo using captured message text with synthetic flags. Reporter/reason/age/rationale/saved-view/sort fields are not claimed as product contracts; undo and receipts are local preview safeguards. The master carries the scoped clarification in §17. Other family prompts and pages are preserved for the owner's forthcoming review-driven revision pass; this note does not claim their gates or owner approval.
 
+**F20 then F21 (2 November 2026):** after F19, the owner ran F20 and then **F21** under the same scoped procedure (analyse the family's captures → public research → revise the family prompt → run). `F21-content-blog.md` now opens with a dated "Run revision" (R1–R7, revised §8.3 roster) and closes with a "Run record"; the pre-revision brief is archived in the F21 family docs. Master §17 carries both scoped notes. F01–F18 prompts and pages remain untouched pending the owner's review.
+
 ## How to use
 
 1. Open the `ui-designing-admin-dashboard` repo in your agent (Arena Agent Mode, Cursor, Claude Code).
@@ -45,7 +47,7 @@ F01–F18 have existing lab work. The owner requested **F19 next**, then correct
 | [`F18-messages-thread.md`](F18-messages-thread.md) | **F18** · Messages thread | 9 HTML states · 4 screenshots | Fix C9 · members closure |
 | [`F19-moderation-queue.md`](F19-moderation-queue.md) | **F19** · Moderation queue | 4 HTML states · 2 screenshots | Fix C17 · Add A1 A5 · A4 not claimed |
 | [`F20-analytics-hub.md`](F20-analytics-hub.md) | **F20** · Analytics hub | 16 HTML states · 4 screenshots | Fix C10 · CSV kept |
-| [`F21-content-blog.md`](F21-content-blog.md) | **F21** · Content · Blog + editor | 18 HTML states · 11 screenshots | Fix C11 C17 |
+| [`F21-content-blog.md`](F21-content-blog.md) | **F21** · Content · Blog + editor | 18 HTML states (all pre-data) · 11 screenshots | Fix C11 · C17 by analogy · row-action farm → overflow + undo · schedule = action, not status |
 | [`F22-portfolio-studio.md`](F22-portfolio-studio.md) | **F22** · Portfolio studio | 8 HTML states · 4 screenshots | Fix C9 C17 |
 | [`F23-media-library.md`](F23-media-library.md) | **F23** · Media library | 7 HTML states · 9 screenshots | Fix C17 · Add A1 |
 | [`F24-system-config.md`](F24-system-config.md) | **F24** · System config | 8 HTML states · 9 screenshots | Template closure · Add A15 |

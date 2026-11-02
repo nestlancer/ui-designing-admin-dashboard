@@ -156,3 +156,10 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ---
 
 *End of prompt F17. Start at §3 Step 1. Print every gate block. Hand-craft all 5.*
+
+
+---
+
+## Owner review — source-complete data and differentiated design (2026-11-02)
+
+When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.

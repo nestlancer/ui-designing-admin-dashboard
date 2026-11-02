@@ -11,6 +11,18 @@
 
 > **Owner review — full-width, collapsible shell:** Authenticated console pages F02–F25 must use the full viewport width available beside the sidebar, with responsive gutters and no centered page-level max-width. Provide an obvious keyboard-accessible desktop Collapse/Expand control, a named icon rail, and persistent state across reloads/families; use a mobile drawer instead on small screens. Check 1920/2560 as well as 360–1440 in both themes. Keep shared tokens unchanged (`--content` must not cap console pages). Individual reading columns and dialogs may remain appropriately sized. F01 sign-in remains standalone, without an added sidebar. See master §9.2a.
 
+## Owner review — evidence and redesign update (2 November 2026)
+
+The user approved the first F15 direction but then requested revisions to **both** F15 and F16. Keep the data, filter and bulk strengths while making intentional visual improvements. Transcribe all 20 visible rows from capture 79/064, retain the historical 34-user total and unavailable page two, and link only exact user IDs with captured F16 records. Distinguish local previews from production actions. See `families/F16-user-details-safety/docs/REVIEW-EVIDENCE.md` and `OPENAPI-INVENTORY.md` for the cross-family evidence and scope.
+
+## Evidence corrections — 2 November 2026 (takes precedence over conflicting text below)
+
+- Capture `064-users.webp` and `79-users-index.html` show **Add new user disabled** and explicitly say: “New accounts come from client registration — operators cannot create users here.” `GET /api/v1/admin/users` is list-only in the provided Swagger; no admin create method was found there. Do not invent an admin create form or imply it is implemented. Preserve the disabled control and explanation until a verified contract authorizes it.
+- Freeze the actual labels and order: **Total users 34 · Active 34 · New this month 34 · Suspended 0**. These are captured historical values, not live counts. Show freshness unknown; identical values are a question to investigate, not proof of a bug. The capture contains 20 data rows on page one and five data columns (User, Role, Status, Created, Actions), plus selection; the previous “21-col” text is incorrect.
+- `AdminBulkOperationDto` enumerates `suspend`, `activate`, `delete`, `resetPassword`. Its `reason` description says compulsory but its schema does not mark it required: document the inconsistency; require a reason in prototypes without asserting server enforcement. Tag/verify/export bulk are report-inspired proposals, not verified by this contract. Clearly label any demonstration and never claim a production action, receipt, or audit entry occurred.
+- Give selection scope and count, reset/filter behavior, honest pagination, focus visibility and keyboard help. Destructive changes require explicit confirmation and explain consequence; permissions and last-admin protection must be enforced server-side, not inferred from UI.
+- Research notes and outstanding gates: `admin-portal-lab/families/F15-users-directory/docs/RESEARCH-NOTES.md`. These corrections do not waive any gate or imply it has passed.
+
 ## 1. YOUR ROLE
 
 1. **Product archaeologist** — reconstruct the directory exactly (KPIs, filters, 21-row table, add-user) first. 2. **Research analyst** — quote every F15 Finding/C/A/KEEP (incl. the suspect-34s). 3. **API analyst** — map directory to `users` spec (+`admin` aggregates). 4. **Design-template researcher** — ≥8 user directories **after** S/R/A. 5. **Designer + art director** — 5 ideas, same teal. 6. **Craftsperson** — self-contained, offline, no CDN. 7. **Harsh critic** — reject bulk-less directories, mouse-only admin, unverified add-user flows.
@@ -153,3 +165,10 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ---
 
 *End of prompt F15. Start at §3 Step 1. Print every gate block. Hand-craft all 5.*
+
+
+---
+
+## Owner review — source-complete data and differentiated design (2026-11-02)
+
+When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.

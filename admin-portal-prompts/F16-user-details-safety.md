@@ -11,6 +11,19 @@
 
 > **Owner review — full-width, collapsible shell:** Authenticated console pages F02–F25 must use the full viewport width available beside the sidebar, with responsive gutters and no centered page-level max-width. Provide an obvious keyboard-accessible desktop Collapse/Expand control, a named icon rail, and persistent state across reloads/families; use a mobile drawer instead on small screens. Check 1920/2560 as well as 360–1440 in both themes. Keep shared tokens unchanged (`--content` must not cap console pages). Individual reading columns and dialogs may remain appropriately sized. F01 sign-in remains standalone, without an added sidebar. See master §9.2a.
 
+## Owner review — evidence and redesign update (2 November 2026)
+
+The owner found the first F16 data incomplete and its design too close to the production screenshot, and requested revisiting both F15 and F16. Build a genuinely differentiated composition while keeping source-backed safety and data. Study all 13 screenshots individually, plus the five profile captures 80–84 and 156–161. The current review evidence contains seven separately selectable source profiles and visible first-page activity/device rows; no data may be borrowed from a different identity. 002 is Riya; 111 is Arjun. The full Riya screenshot ID is truncated; do not turn a prefix match into a confirmed UUID. Follow the per-operation `OPENAPI-INVENTORY.md`, the source-by-source `REVIEW-EVIDENCE.md`, and refreshed `TEMPLATE-RESEARCH.md`. Server permissions and the entire unseen remainder of activity are unknown. Offline confirmation is a preview, not a recorded action or audit event.
+
+## Evidence corrections — 2 November 2026 (takes precedence over conflicting text below)
+
+- **Correction after individual screenshot reinspection:** `002-user-details-sole-administrator-safeguards.webp` displays **Riya Kapoor**, the sole administrator; `111-user-details-populated-client-account.webp` displays **Arjun Mehta**, a normal USER. An earlier note accidentally reversed the two after parallel image results arrived out of order. Do not merge their personal details, metrics, session counts, or safety state. Show the source and identify historical demo data.
+- `112-user-details-revoke-session-confirmation.webp` is a **single-device revoke** dialog, not an end-all-sessions confirmation. Reconcile that separately with `157` and the terminate-all API; do not claim a captured end-all confirmation where none was established.
+- Preserve the actual captured wording: deactivate “This soft-deletes the account (sets deletedAt). The user can be restored later.”; password “Minimum 8 characters. Updating the password ends all sessions.”; single session “This will sign the user out of this device.” Impersonation's 60-minute, new-tab and audit claims originate in the captured UI, and must not be represented as proven for a static lab. Don't fabricate reason-code taxonomies or API behavior.
+- Report A15 means **per-operator action permissions**, not an audit strip. Include permission affordances with unknown permissions shown honestly and assume denial for real actions. Audit visibility is a separate safety improvement and must not claim that the mock produced a server audit event. Always make the sole-admin demotion, suspension and deletion protections explicit; also show that admin accounts cannot be impersonated. Server enforcement remains a production requirement.
+- `114`–`119` are pipeline-hub captures, not evidence that the detail page itself contains six tabs. Maintain clear navigation/context to F05; do not conflate distinct routes or identity records.
+- Research notes and outstanding gates: `admin-portal-lab/families/F16-user-details-safety/docs/RESEARCH-NOTES.md`. These corrections do not waive any gate or imply it has passed.
+
 ## 1. YOUR ROLE
 
 1. **Product archaeologist** — reconstruct the user detail + every safety dialog exactly first. 2. **Research analyst** — quote every F16 Finding/C/A/KEEP. 3. **API analyst** — map profile + verify/suspend/ban/delete to `users` spec (+audit). 4. **Design-template researcher** — ≥8 trust-&-safety consoles **after** S/R/A. 5. **Designer + art director** — 5 ideas, same teal. 6. **Craftsperson** — self-contained, offline, no CDN. 7. **Harsh critic** — reject one-click deactivations, unlogged power, softened safety copy.
@@ -158,3 +171,10 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ---
 
 *End of prompt F16. Start at §3 Step 1. Print every gate block. Hand-craft all 5.*
+
+
+---
+
+## Owner review — source-complete data and differentiated design (2026-11-02)
+
+When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.

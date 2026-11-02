@@ -165,3 +165,10 @@ Screenshot 029 contains a personal inbox with long grouped activity, while 030�
 
 ## Owner review · organize before adding detail (2026-11-02)
 The owner approved the demo data and visual directions but found all five screens insufficiently organized. Require a task hierarchy: compact historical counts → hard personal-inbox/platform-ops boundary → grouped activity within inbox OR one ops task at a time. In ops, sequence compose → audience/channel review → confirmation; delivery evidence and platform logs are inspection surfaces, not feed rows or send receipts. Keep the sample disclaimer subordinate, saved view with inbox controls, and filters distinct from ops tabs. Maintain each variant's different spatial idea while preserving these semantic layers. See `admin-portal-lab/families/F07-notifications-center/docs/ORGANIZATION-REVIEW.md`.
+
+
+---
+
+## Owner review — source-complete data and differentiated design (2026-11-02)
+
+When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.

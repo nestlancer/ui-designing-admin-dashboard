@@ -161,3 +161,10 @@ The captured 007 queue is a very narrow list inside an otherwise wide shell; 008
 
 ## Owner review · organize before adding detail (2026-11-02)
 The owner approved the demo data and visual directions but found all five screens insufficiently organized. **Do not add data to fix hierarchy.** Each version must make the same three-step reading order obvious: (1) compact captured status summary, (2) queue filters and record scan, (3) selected inquiry's received message → reply → secondary status actions. Keep historical totals separated from illustrated rows. A persistent sample disclaimer is metadata, not a hero card. Put status changes after the reply workflow, not alongside its primary CTA. Preserve distinct variant geometry while keeping this invariant task hierarchy. See `admin-portal-lab/families/F06-contact-inquiries/docs/ORGANIZATION-REVIEW.md`.
+
+
+---
+
+## Owner review — source-complete data and differentiated design (2026-11-02)
+
+When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.

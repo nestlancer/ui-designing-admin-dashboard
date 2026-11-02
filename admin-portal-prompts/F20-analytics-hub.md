@@ -11,6 +11,26 @@
 
 > **Owner review — full-width, collapsible shell:** Authenticated console pages F02–F25 must use the full viewport width available beside the sidebar, with responsive gutters and no centered page-level max-width. Provide an obvious keyboard-accessible desktop Collapse/Expand control, a named icon rail, and persistent state across reloads/families; use a mobile drawer instead on small screens. Check 1920/2560 as well as 360–1440 in both themes. Keep shared tokens unchanged (`--content` must not cap console pages). Individual reading columns and dialogs may remain appropriately sized. F01 sign-in remains standalone, without an added sidebar. See master §9.2a.
 
+## Run revision — 2 November 2026 (owner-directed: analyse captures → research → update prompt → then run)
+
+This revision supersedes the orientation-only gaps below. It was produced by re-reading all 4 screenshots individually, all 16 F20 HTML snapshots + `audit-metadata.json`, the report (§4 inventory row, §5.2/§5.3, C10) and the Swagger analytics/health/stats ops, then studying 14 public analytics/ops dashboards **before** any concept was drawn. Evidence lives in `admin-portal-lab/families/F20-analytics-hub/docs/` (BASELINE-MAP, REPORT-STUDY, API-MAP, TEMPLATE-RESEARCH, CONCEPTS).
+
+**R1 · The numbers must tie out, and where they don't, say so.** Gate S now includes a mandatory **tie-out audit** (every captured total vs the sum of its own parts). Recorded for F20: revenue categories sum to the hero exactly ✔ · request statuses sum to 46 ✔ · categories sum to 46 ✔ · open pipeline 13 = Submitted 11 + Under Review 2 ✔ · conversion 43.9% = **18 ÷ 41** (not 18 ÷ 46) ⚠ · acceptance 50% = 18 ÷ 36 ⚠ · **projects: 4 + 10 = 14 of 18 → 4 uncounted** ✗ · users 34/34/34 unverified ✗ · "Avg. response time 0 minutes" = absence, not a measurement ⚠. Every variant must surface these as **honesty devices** (numerator ÷ denominator under rates, an "uncounted" badge with the delta, an *unverified* chip, an absence note). Never repair a captured number; never present a product figure that the capture does not contain.
+
+**R2 · Provenance at the point of use (Gate T refs 5, 6).** Each tab discloses, in the UI: the documented endpoint (mono, prefixed `DEMO` where a real request is not made), the period mapping, the computation basis, the capture date, and — when Swagger has no field schema (`additionalProperties:true`) — the explicit line "field names not documented in Swagger". A "how is this calculated" popover/drawer is required somewhere in every variant.
+
+**R3 · Two documented traps must be visible, not hidden.** (a) Range values `7d/30d/90d/1y` are **not** the API enum `TODAY/WEEK/MONTH/QUARTER/YEAR`, and all four captured range states render identical data — so each variant shows the mapping and states that the range changes bucket/count, not totals. (b) The requests/quotes stats endpoints take **no `period`** — their KPI strips therefore carry a **lifetime** chip.
+
+**R4 · Charts must never be the only copy of a number.** Chart↔table toggle in every variant (Gate T refs 10, 11), legend with readable aliases always visible, adjacent charts share aligned x-axes when stacked, and every chart prints **points rendered / buckets in range / buckets with value**. The captured spike stays a spike (never smoothed or beautified) and the captured blue donut slice becomes brand-500 (C5).
+
+**R5 · No filters.** The family prompt's component list mentioned "advanced filters"; there is no filter contract in Swagger and none in the capture. **Excluded.** Do not invent saved views, cohorts, comparisons, PDF exports or date pickers.
+
+**R6 · Enterprise-ops state rules carried from the 2026-11-01/02 reviews.** Skeleton = shaped like the coming chart (never a spinner); empty = what/why/next; error = what/why/retry + support with `role="alert"` focus; **degraded series (A11)** for the Projects tab because `/api/dashboard/projects*` is down in production (report Finding #1); dark parity designed not inverted; 360–2560 with no page-level horizontal scroll; table = own scroll region + card fallback under `sm`; 44px coarse targets; tabular numerals globally; reduced-motion kills all animation; no-JS keeps every number readable.
+
+**R7 · Cross-family consistency (all families, next runs).** Desktop operator surfaces now assume: full-available-width canvas beside a collapsible sidebar (master §9.2a) · one hero verdict + a compact strip (C1/C12) · mono numerals and refs (C9) · status = icon + colour + text (C3) · provenance chips for demo/captured data · a CSV/export affordance per data view where one is captured. Mobile (360–430px) is a **read-only review** surface for analytics: hero → verdict → chart (reflowed, legend to top) → tables as stacked KV cards — never a horizontally squeezed console.
+
+---
+
 ## 1. YOUR ROLE
 
 1. **Product archaeologist** — reconstruct the analytics hub exactly (tabs, ranges, charts, tables, CSV) first. 2. **Research analyst** — quote every F20 Finding/C/A/KEEP. 3. **API analyst** — map series to `admin` analytics + `health` specs. 4. **Design-template researcher** — ≥8 analytics dashboards **after** S/R/A. 5. **Designer + art director** — 5 ideas, same teal. 6. **Craftsperson** — self-contained, offline, no CDN (hand-drawn SVG charts). 7. **Harsh critic** — reject unlabeled axes, spike-of-doom charts, CSV-less analytics.
@@ -60,7 +80,8 @@ The numbers room: **Revenue · Users · Projects · Requests** tabs, **7d/30d/90
 | `96-analytics-index-tab-requests.html` · `17-…-tab-requests.html` (dupe) | Requests tab | `005-analytics-requests.webp` |
 | `97/98/99/100-analytics-index-tab-7d/30d/90d/1y.html` + `18/19` dupes | Range states (reconcile) | — (range states) |
 
-**Must include (every variant):** 4 area tabs (frozen metrics) · 4 ranges (frozen) · every chart with **labelled axes + units + point counts** (C10) · sparse/empty states (never a lonely spike) · data tables per view (frozen columns) · Download CSV per view (kept, honest) · dark + 375px (charts reflow, tables card-fallback).
+**Must include (every variant):** 4 area tabs (frozen metrics) · 4 ranges (frozen) · every chart with **labelled axes + units + point counts** (C10) · sparse/empty states (never a lonely spike) · data tables per view (frozen columns) · Download CSV per view (kept, honest) · dark + 375px (charts reflow, tables card-fallback) · **tie-out honesty chips (R1)** · **provenance disclosure (R2)** · **range-mapping + lifetime chips (R3)** · **chart↔table toggle (R4)** · **degraded Projects series (A11)**.
+**Not in scope:** filters, saved views, cohorts, comparisons, PDF/Excel export, date pickers, drill-down pages (no contract in Swagger, none in capture — revision R5).
 **Content lock:** freeze tab/range labels, metric names, table columns, CSV copy at Gate S. Series values stay captured (incl. sparse) — never beautified.
 **Cross-cutting:** light + dark · 375px · empty + skeleton + error states · tabs/ranges keyboard-clean · charts have text/data-table equivalents.
 
@@ -71,11 +92,13 @@ The numbers room: **Revenue · Users · Projects · Requests** tabs, **7d/30d/90
 ## 6. WHAT TO CHANGE / ADD / KEEP — F20 scope
 
 ### CHANGE — every item in **all 5 variants**
-- **C10** — Labelled axes + units + sparse/empty states on every chart (kill the spike-of-doom). *(§6.1)*
-- **C3** — AA-safe text. *(§6.1)* · **C5** — Teal-only incl. chart palette. *(§6.1)* · **C9** — Mono refs; tabular figures. *(§6.1)* · **C12** — Display metric heroes. *(§6.1)* · **C18** — Dark parity. *(§6.1)* · **C20** — Logo alt. *(§6.1)*
+- **C10** — Labelled axes + units + sparse/empty states on every chart (kill the spike-of-doom). *(§6.1)* Now also: point counts, missing-bucket counts, chart↔table toggle (revision R4).
+- **C3** — AA-safe text. *(§6.1)* · **C5** — Teal-only incl. chart palette (the captured Projects donut's **blue COMPLETED slice** must become brand-500). *(§6.1)* · **C9** — Mono refs; tabular figures. *(§6.1)* · **C12** — Display metric heroes. *(§6.1)* · **C18** — Dark parity. *(§6.1)* · **C20** — Logo alt. *(§6.1)*
+- **Tie-out honesty (R1)** — numerator ÷ denominator under every rate, "uncounted"/"unverified"/"absence" chips where the capture disagrees with itself; never repair a captured figure.
 
 ### ADD — with priority + coverage
 - No F20-targeted ADDs; C10 + CSV honesty ship as the family craft — 5/5.
+- **A11 (global item, adopted here) — degraded-series state** for the Projects tab, because `/api/dashboard/projects*` 500s in production (report Finding #1). Must appear in 5/5; record it as `A11 (global)` in the manifest.
 **Coverage:** manifest records.
 
 ### KEEP — present in every variant
@@ -101,11 +124,13 @@ Master §8.1–§8.2 (≥3/5 axes incl. A or C). Coverage: ≥1 minimal · ≥1 
 ### 8.3 Roster guidance (adapt freely — keep 5)
 | Variant | Suggested aspect (same tokens) |
 |---|---|
-| V1 | Ground-truth fix: captured hub, C10 throughout, calm |
-| V2 | Chart-spine: labelled visualisations own the screen, tables docked |
-| V3 | Table-first: the data tables lead, charts summarise |
-| V4 | Dense console: compact multi-metric board for growth ops |
-| V5 | Motion-signature: range-transition choreography + count-ups |
+| V1 | **Calibrated ledger** — captured hub, C10 throughout, calibration gutter under every chart, calm single column |
+| V2 | **Signal spine** — chart-spine with one shared, aligned time axis + docked table rail |
+| V3 | **Readout stack** — table-first; rate rows expand into their own computation + endpoint |
+| V4 | **Dense board** — bento board with an attention strip that hoists unverified/degraded facts above the metrics |
+| V5 | **Choreograph** — range-transition choreography (crossfade + stroke-draw + count-up) with an exportable receipt rail |
+
+(As built for this run. See `docs/CONCEPTS.md` for the printed cards, sketches and difference tables.)
 
 ## 9. BUILD (manual, one by one)
 
@@ -165,3 +190,13 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ## Owner review — source-complete data and differentiated design (2026-11-02)
 
 When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.
+
+---
+
+## Run record — 2 November 2026 (F20 executed after the revision above)
+
+Executed scope: **F20 only**, as authorised. Evidence: `admin-portal-lab/families/F20-analytics-hub/docs/` (`BASELINE-MAP.md` incl. the tie-out audit, `REPORT-STUDY.md`, `API-MAP.md`, `TEMPLATE-RESEARCH.md` with 14 refs, `CONCEPTS.md`, `DELIVERY-REPORT.md`). Built: `V1…V5/index.html` hand-authored (shared `analytics.css`/`analytics.js` + per-variant `design.css`), no generator scripts.
+
+Gate results and limitations are recorded in `DELIVERY-REPORT.md`; browser verification was re-run for this revision (Chromium/Playwright, 375/768/1024/1440/1920/2560 × light/dark, interaction + a11y + resource checks). Production integration, real API responses, deployed-route behaviour and owner approval remain **unclaimed**.
+
+Open questions handed back to the owner for the review pass: (1) should the Projects tab's 4 uncounted projects be treated as a data bug to flag (current) or removed from the total; (2) is a lifetime-scoped KPI strip acceptable for Requests/Quotes, or should those KPIs move to the Requests/Quotes pages; (3) should CSV be per-card (one manifest each) or per-view (current); (4) the revenue trend capture conflict (`+100 up` in the screenshot vs `-100 down` in the DOM) — which is the product truth.

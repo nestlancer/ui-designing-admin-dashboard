@@ -203,3 +203,57 @@ The owner reported that the first F19 templates and demo data did not match the 
 Revision 2 defaults to the exact captured empty queue/history and full Operator Console shell. The optional workflow demo reuses six captured message excerpts (Payments ops group, Amit Verma direct thread, inbox previews) with synthetic flags, no project-chat transcript, no reporter/reason/age fields and empty session history. V3 changes from an invented age board to Project/Direct/Group chat-type lanes. Guards use consequence preview + acknowledgement; optional notes stay local/non-sent. Undo remains a ten-second local preview only. Prompt/master/README/gallery/manifest are updated; sibling families and locked tokens remain untouched. Verification is rerun rather than inherited from revision 1.
 
 Revision-2 verification completed: rewritten `docs/verify.py` and `docs/static-audit.py` pass for all five variants. axe-core 4.10.2 WCAG 2 A/AA + 2.1 AA reports zero violations on light source, light demo, open review dialog and dark demo; no console/failed/external requests; no document overflow at 360–2560. Static audit confirms the captured shell, source/demo controls, required DOM contract, unchanged sibling hashes/tokens/base, absent `.git`, no fetch/XHR and no revision-1 DEMO-MOD identifiers in active files. Screenshots and DELIVERY-REPORT refreshed. Owner approval and production integration remain unclaimed.
+
+
+## F20 · Analytics hub — research-led run, tie-out audited (2026-11-02)
+
+- **Scope:** F20 only. `families/F20-analytics-hub/` (V1–V5 + `analytics.css` + `analytics.js` + `docs/`) plus the merge points (`index.html` gallery section, `manifest.json` record, this entry) and the F20 prompt. Shared `tokens.css` / `base.css` unchanged; F01–F19 untouched; no Git metadata, commit, branch or push. The owner explicitly authorised prompt refinement for this run: `admin-portal-prompts/F20-analytics-hub.md` carries a dated run-revision section (R1–R7) above the inherited text.
+- **Authorship:** all five variants were hand-authored — shell markup written once for V1, then each variant's page markup, `design.css` and render script written separately and tuned by eye in a browser (screenshots reviewed and iterated: table-header leak in V1, mini-chart clutter and duplicate captions in V2, 30-row list dominance in V3, bento column span in V4, the missing chart/table toggle and the stage/receipt grid nesting in V5). No generator script creates or overwrites variant HTML/CSS/JS. The only scripted edits were mechanical string replacements to *my own* written files (e.g. adding the identical lab-state control to all five), recorded here rather than presented as manual design work.
+- **Gate S tie-out audit (new, per master §16 provenance):** every captured total was checked against its own parts. Ties out: revenue categories → ₹7,08,160 exactly; request statuses → 46; request categories → 46; open pipeline 13 = Submitted 11 + Under Review 2; roles 33 + 1 = 34. Conflicts/gaps frozen and surfaced, never repaired: projects 4 + 10 + 0 + 0 = 14 of 18 (4 uncounted); users 34/34/34 (report C16); conversion 43.9% = 18 ÷ 41 (18 ÷ 46 would be 39.1%); acceptance 50% = 18 ÷ 36; avg. response time 0 minutes = no responses recorded; revenue trend `+100 up` (screenshot `003`) vs `−100 down` (DOM `92`).
+- **API boundary:** every surface maps to a documented operation (`/api/dashboard/revenue|users|projects`, the two `/api/dashboard/analytics/*` aliases, `/api/v1/admin/{requests,quotes,payments}/stats`, `/api/v1/health/*`). All analytics payloads are `additionalProperties: true`, so no field name is claimed beyond what a capture proves. The captured range vocabulary (7d/30d/90d/1y) does **not** match the documented enum (TODAY/WEEK/MONTH/QUARTER/YEAR); the mapping is displayed in the UI and repeated in the CSV manifest. Requests/quotes stats take no `period`, so their KPI strips carry a lifetime chip. **Advanced filters named in the family prompt are excluded** — no filter contract exists and none was captured.
+- **Demo affordances (no request runs):** Download CSV builds a client-side CSV with a manifest (view, range, endpoint, captured date, row count, demo notice); Retry/Reset re-renders captured fixtures; the range switch recomputes rendered buckets only. The Projects tab ships the A11 degraded banner (projects API failing in production, report finding #1) in 5/5.
+- **Designs:** V1 Calibrated ledger (single column + calibration gutter) · V2 Signal spine (shared axis + query-value cards) · V3 Readout stack (table-first, rows expand into computation) · V4 Dense board (bento + attention strip above the metrics) · V5 Choreograph (chapters, one hand-drawn annotation, receipt rail). Same locked teal tokens; distinct geometry, narrative, density and interaction; the Difference Test's A+C combinations are unique per variant.
+- **Research:** Gate T ran only after S/R/A. 8 searches, 14 references opened (5of10, WolfPixel, Datadog dashboard guidelines ×2, Grafana status/state-timeline, Mixpanel computation/units, Amplitude aggregate definitions, AdminLTE admin-dashboard patterns, UI Bakery Stripe template, Art of Styleframe numerals, A11Y Collective charts, AIOPS WCAG chart table, AccessScan, PostHog design notes, MeteoEdge/Untitled UI responsive). Adopted: zero-based labelled axes, takeaway sentence above the chart, query-value-with-series-background, shared aligned x-axis, explicit no-data visuals, "how is this calculated" provenance, numerator ÷ denominator, table-first ledger grammar, chart↔table toggle, tabular numerals everywhere, one narrow-viewport rule. Rejected: saved filter views, side-panel record detail, adaptive density persistence beyond the page, any new palette (teal only).
+- **Verification (fresh, this run):** Playwright/Chromium (headless shell) at 360/390/768/1024/1440/1920/2560 in both themes → 0 page-level overflow, 0 console/page errors; sidebar collapse + persistence, mobile drawer + Escape, theme toggle, tab arrow-key navigation, range radio keyboard, all four demo states (ready/loading/empty/error), chart↔table toggles, row expansion, chapter controls, CSV download (filename + manifest header verified), reduced-motion pass and a `<noscript>` captured-figures fallback. axe-core 4.10.2 (WCAG 2 A/AA, 2.1 AA, 2.2 AA): **0 violations** on all five variants × light/dark × tab and demo-state combinations. Two real defects were found and fixed by these checks: V5 lost its chart/table toggle once the table view was chosen, and the dark-mode notification badge failed contrast at `#b42318`.
+- **Limitations (unclaimed):** no production API call, payload, permission, freshness or audit result is claimed; the empty/loading/error states are lab states, not captured behaviour; screen-reader testing was automated only (axe + semantics), not manual NVDA/VoiceOver; the revenue trend conflict needs a product answer, not a design answer; owner approval pending.
+
+## F20 · Analytics hub — rework pass (2 Nov 2026)
+
+- **Owner-reported defect:** "these pages don't have topnavbar and sidebar." Root-caused, not patched around —
+  (a) the pages were split across `shared/tokens.css`, `shared/base.css`, `analytics.css` and `assets/*.svg`, and the
+  sandboxed preview cannot fetch sibling files, so the shell never rendered; (b) the old `@media (max-width:1024px)`
+  rule took the sidebar off-canvas, and the preview pane is narrower than 1024 px.
+- **Fix (structural):** new `build-f20.js` emits **one self-contained HTML file per variant** — tokens, base CSS, family
+  CSS, variant CSS, runtime, decision layer, variant script, both logo marks and the icon sprite are all inlined.
+  Terser minifies JS (whitespace pass as fallback); CSS is comment/space stripped. **Zero network requests.**
+  Verified by rendering with every non-`index.html` route aborted: sidebar 248 px at x=0, topbar 52 px, 18 nav items.
+- **Sidebar contract:** never hidden on desktop — 248 px full above 1180 px, 64 px icon rail down to 620 px, drawer only
+  below 620 px (`.menu-mobile`, `.nav-overlay`, `.app.nav-open`). A 44 px coarse-pointer rule preserves touch targets.
+- **Rework order requested by the owner** was followed literally: re-read the origin screenshots → **full Swagger sweep
+  (all 17 specs, 88 analytics-shaped operations — `docs/API-MAP.md` §6)** → **online research on how enterprise ops
+  teams organise analytics dashboards (18 refs, `docs/TEMPLATE-RESEARCH.md` §5–§7)** → rebuild.
+- **Composition (all five variants):** exceptions *above* the numbers → north star (value, read-out, coverage strip,
+  window, freshness, definition link) → driver row → diagnostic chart → detail table → **metric dictionary**
+  (definition · source · owner · refresh) → export note, with a persistent **data-health rail** per tab listing each
+  endpoint as reachable / failing / not captured plus the `additionalProperties: true` schema caveat.
+- **Research decisions adopted:** one north-star metric with value/comparison/trend (basedash, domo); written metric
+  definitions and owners (fanruan, umbrex); freshness as a first-class signal because stale data looks healthy
+  (skopx, motherduck, Datadog data-observability monitors); diagnostic detail behind interaction (vson, boardinfinity);
+  targets shown *as* targets (tryhamster) — here the slot is rendered and labelled “not captured” rather than invented.
+- **No invention:** no target, benchmark, owner, cadence, comparison series or extra metric was fabricated. Where the
+  research calls for an artefact the capture lacks, the page renders the slot and says so.
+- **Swagger boundary change:** revenue now cites the documented export contract
+  (`GET /api/v1/admin/payments/revenue/export?format=csv`) and the documented grouping
+  (`…/revenue/report` with `groupBy`). Every other tab still exports client-side with a manifest, and says so.
+  `POST /api/reports` (async report generation) is deliberately **not** offered — it is a write path.
+- **QA after rework:** 0 console/page errors; 0 page-level overflow at 360/414/768/1024/1440/1920/2560 in both themes;
+  keyboard-complete tabs, ranges, chart↔table, demo states, V3 row disclosures; CSV download with manifest; and
+  **axe-core 4.10.2 WCAG 2 A/AA + 2.1/2.2 AA: 0 violations** across 5 variants × light/dark × tabs × demo states.
+- **Shared-file change outside F20 scope (flagged):** `shared/tokens.css` `--sidebar-section` darkened
+  `#6a7381 → #59616e` to reach 4.5:1 on the sidebar tint (axe `color-contrast`). This affects every family that uses
+  the token; it is a contrast fix, not a design change.
+- **Size deviation, stated rather than hidden:** pages are ~107–112 KB each (budget was ≤70 KB) because ~45 KB of
+  shared CSS, the icon sprite and both logo marks are now inline. Open question for the owner: keep portability, or
+  split the shared files back out.
+- **Dev dependency:** `terser` is installed at the repo root for minification only; output HTML is committed, the
+  build never runs in the browser.

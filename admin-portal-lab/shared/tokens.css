@@ -8,7 +8,7 @@
   --primary:var(--brand-600); --primary-hover:var(--brand-700); --primary-active:var(--brand-800);
   --primary-tint:#e6f4ef; --ring:var(--brand-600);
   /* Sidebar + header (measured) */
-  --sidebar-bg:#f3f4f7; --sidebar-active:rgba(12,121,99,.10); --sidebar-section:#6a7381;
+  --sidebar-bg:#f3f4f7; --sidebar-active:rgba(12,121,99,.10); --sidebar-section:#59616e;
   /* Status — bg tint + darkened AA text + border (FIX C3) */
   --status-success-bg:#e5f6ec; --status-success-text:#166534; --status-success-border:#86c9a3;
   --status-warning-bg:#fdf3e0; --status-warning-text:#7a5200; --status-warning-border:#e8c477;

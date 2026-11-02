@@ -1,10 +1,10 @@
 {
   "lab": "admin-portal-lab",
-  "scheme": "ONE locked teal token file \u2014 shared/tokens.css (master admin-portal-prompt.md \u00a75.2)",
+  "scheme": "ONE locked teal token file — shared/tokens.css (master admin-portal-prompt.md §5.2)",
   "families": {
     "F04-pipelines-stage-hub": {
       "slug": "F04-pipelines-stage-hub",
-      "title": "Pipelines \u00b7 Operating workbench",
+      "title": "Pipelines · Operating workbench",
       "route": "/pipeline",
       "variants": [
         {
@@ -195,7 +195,7 @@
       ],
       "coverage": {
         "C": "7/7 in 5/5 variants",
-        "A11": "5/5 (P2 requires \u22653/5)",
+        "A11": "5/5 (P2 requires ≥3/5)",
         "P1Adds": "none newly classified",
         "retainedStageTrustConsolesReference": "5/5",
         "caseContextFilterSortPreparationStates": "5/5",
@@ -203,7 +203,7 @@
         "generators": 0
       },
       "demoOnly": "Historical volumes remain distinct from six synthetic DEMO cases. Example age is not SLA or stage dwell. Assignment and transfer approve/reject create validated local payload previews only; denied permission blocks preparation. No request, mutation or audit write runs. Unknown source is not zero. API history remains read-only with obsolete milestone creation visibly flagged; F05 is not implemented here.",
-      "winnerRecommendation": "V4 Switchboard \u2014 best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
+      "winnerRecommendation": "V4 Switchboard — best scanning density for an operator deciding which record to review next; V2 Current is the more contextual handoff alternative.",
       "revision": 2,
       "evidence": {
         "research": "families/F04-pipelines-stage-hub/docs/revision-2/RESEARCH-AND-PLAN.md",
@@ -218,7 +218,7 @@
     },
     "F03-global-search-command-palette": {
       "slug": "F03-global-search-command-palette",
-      "title": "Global search \u00b7 Command palette",
+      "title": "Global search · Command palette",
       "route": "Overlay on any console route",
       "variants": [
         {
@@ -368,11 +368,11 @@
         "generators": 0
       },
       "demoOnly": "All route/record/creation handoffs are local previews, not live APIs. No global search endpoint. Payment fixture is project context, not a verified individual payment. Group creation preview repairs captured 404 without guessing a route.",
-      "winnerRecommendation": "V3 Dossier \u2014 destination context and provenance before selecting; V1 Compass is the simplest default."
+      "winnerRecommendation": "V3 Dossier — destination context and provenance before selecting; V1 Compass is the simplest default."
     },
     "F01-auth-login": {
       "slug": "F01-auth-login",
-      "title": "Auth \u00b7 Operator sign-in",
+      "title": "Auth · Operator sign-in",
       "route": "/login",
       "variants": [
         {
@@ -580,7 +580,7 @@
     },
     "F02-dashboard-command-center": {
       "slug": "F02-dashboard-command-center",
-      "title": "Dashboard \u00b7 Command center",
+      "title": "Dashboard · Command center",
       "route": "/dashboard",
       "snapshot": "2026-10-30 13:38 UTC; historical offline capture, not live data",
       "variants": [
@@ -819,11 +819,11 @@
         "generators": 0
       },
       "demoOnly": "All interactions are local; API routes are integration references, not live requests. Unbuilt destinations show contextual previews.",
-      "winnerRecommendation": "V1 Northstar \u2014 clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
+      "winnerRecommendation": "V1 Northstar — clearest general-purpose money-and-queue overview; V3 is strongest for focused triage."
     },
     "F05-pipeline-user-project-hubs": {
       "slug": "F05-pipeline-user-project-hubs",
-      "title": "Pipeline hubs \u00b7 User + Project",
+      "title": "Pipeline hubs · User + Project",
       "routes": [
         "/pipeline/users",
         "/pipeline/projects"
@@ -1021,16 +1021,16 @@
       "coverage": {
         "C": "7/7 in 5/5",
         "A11": "5/5 P2",
-        "A13": "5/5 P3 \u00b7 reference coverage, NOT fabricated live health",
+        "A13": "5/5 P3 · reference coverage, NOT fabricated live health",
         "P1Adds": "none targeted",
         "bothHubs": "5/5",
         "sections": "6 user + 4 project per variant",
         "states": "full/empty/skeleton/error/degraded/permission preview + selected/unselected/partial",
         "generators": 0,
-        "pilotSequence": "V1 572 checks +120 axe scans PASS before V2\u2013V5 implementation"
+        "pilotSequence": "V1 572 checks +120 axe scans PASS before V2–V5 implementation"
       },
       "demoOnly": "Historical screenshot references and partial profiles, not a live directory. Section state previews/retries, navigation/command search, evidence filter/sort/pagination, copy and legal notices are local. Canonical destination/read contracts remain inert; unbuilt owner families show explicit integration handoffs. No authenticated API request, financial/security mutation or actual audit event.",
-      "winnerRecommendation": "V3 Whole story \u2014 clearest entity-first overview across both 360 hubs; V4 for focused evidence inspection.",
+      "winnerRecommendation": "V3 Whole story — clearest entity-first overview across both 360 hubs; V4 for focused evidence inspection.",
       "evidence": {
         "baseline": "families/F05-pipeline-user-project-hubs/docs/BASELINE-MAP.md",
         "research": "families/F05-pipeline-user-project-hubs/docs/TEMPLATE-RESEARCH.md",
@@ -1045,14 +1045,14 @@
     },
     "F06-contact-inquiries": {
       "slug": "F06-contact-inquiries",
-      "title": "Contact \u00b7 inquiries triage",
+      "title": "Contact · inquiries triage",
       "route": "/contact",
       "variants": [
         {
           "id": "V1",
           "name": "Split triage",
           "path": "families/F06-contact-inquiries/V1/index.html",
-          "aspect": "Split triage \u00b7 offline historical sample",
+          "aspect": "Split triage · offline historical sample",
           "changes": [
             "C14",
             "C19",
@@ -1070,13 +1070,13 @@
             "A4",
             "A5"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V2",
           "name": "Conversation desk",
           "path": "families/F06-contact-inquiries/V2/index.html",
-          "aspect": "Conversation desk \u00b7 offline historical sample",
+          "aspect": "Conversation desk · offline historical sample",
           "changes": [
             "C14",
             "C19",
@@ -1094,13 +1094,13 @@
             "A4",
             "A5"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V3",
           "name": "Card sweep",
           "path": "families/F06-contact-inquiries/V3/index.html",
-          "aspect": "Card sweep \u00b7 offline historical sample",
+          "aspect": "Card sweep · offline historical sample",
           "changes": [
             "C14",
             "C19",
@@ -1118,13 +1118,13 @@
             "A4",
             "A5"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V4",
           "name": "Reference ledger",
           "path": "families/F06-contact-inquiries/V4/index.html",
-          "aspect": "Reference ledger \u00b7 offline historical sample",
+          "aspect": "Reference ledger · offline historical sample",
           "changes": [
             "C14",
             "C19",
@@ -1142,13 +1142,13 @@
             "A4",
             "A5"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V5",
           "name": "Focus loop",
           "path": "families/F06-contact-inquiries/V5/index.html",
-          "aspect": "Focus loop \u00b7 offline historical sample",
+          "aspect": "Focus loop · offline historical sample",
           "changes": [
             "C14",
             "C19",
@@ -1166,20 +1166,20 @@
             "A4",
             "A5"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         }
       ]
     },
     "F07-notifications-center": {
       "slug": "F07-notifications-center",
-      "title": "Notifications \u00b7 personal + platform",
+      "title": "Notifications · personal + platform",
       "route": "/notifications",
       "variants": [
         {
           "id": "V1",
           "name": "Safe boundary",
           "path": "families/F07-notifications-center/V1/index.html",
-          "aspect": "Safe boundary \u00b7 offline historical sample",
+          "aspect": "Safe boundary · offline historical sample",
           "changes": [
             "C7",
             "C8",
@@ -1194,13 +1194,13 @@
             "A1",
             "A3"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V2",
           "name": "Separate surfaces",
           "path": "families/F07-notifications-center/V2/index.html",
-          "aspect": "Separate surfaces \u00b7 offline historical sample",
+          "aspect": "Separate surfaces · offline historical sample",
           "changes": [
             "C7",
             "C8",
@@ -1215,13 +1215,13 @@
             "A1",
             "A3"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V3",
           "name": "Inbox spine",
           "path": "families/F07-notifications-center/V3/index.html",
-          "aspect": "Inbox spine \u00b7 offline historical sample",
+          "aspect": "Inbox spine · offline historical sample",
           "changes": [
             "C7",
             "C8",
@@ -1236,13 +1236,13 @@
             "A1",
             "A3"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V4",
           "name": "Dense operations",
           "path": "families/F07-notifications-center/V4/index.html",
-          "aspect": "Dense operations \u00b7 offline historical sample",
+          "aspect": "Dense operations · offline historical sample",
           "changes": [
             "C7",
             "C8",
@@ -1257,13 +1257,13 @@
             "A1",
             "A3"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         },
         {
           "id": "V5",
           "name": "Signal focus",
           "path": "families/F07-notifications-center/V5/index.html",
-          "aspect": "Signal focus \u00b7 offline historical sample",
+          "aspect": "Signal focus · offline historical sample",
           "changes": [
             "C7",
             "C8",
@@ -1278,7 +1278,7 @@
             "A1",
             "A3"
           ],
-          "status": "design preview \u00b7 responsive/WCAG audit pending"
+          "status": "design preview · responsive/WCAG audit pending"
         }
       ]
     },
@@ -1698,7 +1698,7 @@
     },
     "F11-projects-list": {
       "slug": "F11-projects-list",
-      "title": "Projects \u00b7 historical outage reference",
+      "title": "Projects · historical outage reference",
       "route": "/projects",
       "familyStatus": "Preliminary offline concepts; research gates, complete state coverage and full accessibility verification remain open. No production connection.",
       "variants": [
@@ -1741,7 +1741,7 @@
     },
     "F12-project-details-delivery": {
       "slug": "F12-project-details-delivery",
-      "title": "Project details \u00b7 delivery reference",
+      "title": "Project details · delivery reference",
       "route": "/projects/[id]",
       "familyStatus": "Preliminary offline concepts; historical screenshot records include separate projects. Delivery actions and several states are not implemented; research gates remain open.",
       "variants": [
@@ -1784,7 +1784,7 @@
     },
     "F13-payments-money-ops": {
       "slug": "F13-payments-money-ops",
-      "title": "Payments \u00b7 historical money operations",
+      "title": "Payments · historical money operations",
       "route": "/payments",
       "familyStatus": "Preliminary offline concepts; transaction samples and historical empty states are not current data. Verification, receipts and reconciliation actions remain incomplete.",
       "variants": [
@@ -1827,7 +1827,7 @@
     },
     "F14-settlement-legal": {
       "slug": "F14-settlement-legal",
-      "title": "Settlement accounts \u00b7 company legal identity",
+      "title": "Settlement accounts · company legal identity",
       "route": "/payments/accounts and /payments/company-legal",
       "familyStatus": "Preliminary local forms; no production persistence, account verification or audit events. Full report and API gates remain open.",
       "variants": [
@@ -2081,6 +2081,205 @@
           "aspect": "Case strip + evidence folio + reduced-motion next-case flow.",
           "status": "Revision 2 delivered 2 Nov 2026; Playwright/axe/static checks pass"
         }
+      ]
+    },
+    "F20-analytics-hub": {
+      "slug": "F20-analytics-hub",
+      "title": "Analytics hub",
+      "route": "/analytics",
+      "familyStatus": "Rework pass 2 Nov 2026 (self-contained rebuild). Each variant is now ONE HTML file with zero sub-resources — shared tokens/base CSS, family CSS, variant CSS, the runtime, the decision layer, the variant script, both logo marks and the icon sprite are inlined — so the page renders the full shell (topbar + sidebar) in a sandboxed preview or from a plain file open. The sidebar is never hidden on desktop: full 248px above 1180px, 64px icon rail down to 620px, drawer only below that. Composition was rebuilt around the second Gate-T research round: exceptions above the numbers, a north-star card with an honest target slot, a coverage strip, a driver row, the diagnostic chart, the detail table, a metric dictionary (definition/source/owner/refresh) and a persistent data-health rail. Full-Swagger sweep (17 specs) recorded in docs/API-MAP.md §6. C10/C5/C3/C9/C12/C18/C20 unchanged in substance. Verified: 0 console errors, 0 page-level overflow 360-2560 in both themes, keyboard-complete tabs/ranges/states/chart-table/row disclosures, CSV download with manifest, axe-core 4.10.2 WCAG 2 A/AA + 2.1/2.2 AA 0 violations across 5 variants x 2 themes x tabs x demo states, and a route-aborted render proving zero network requests. Production integration, real payloads, metric owners/cadences and target values are explicitly unclaimed.",
+      "sources": [
+        "Nestlancer-admin-screenshots/admin/003-analytics.webp",
+        "004-analytics-projects.webp",
+        "005-analytics-requests.webp",
+        "006-analytics-users.webp",
+        "nestlancer-admin-pages-html/92–100 + 13–19",
+        "nestlancer-admin-pages-html/audit-metadata.json",
+        "reports/NESTLANCER_ADMIN_CONSOLE_UI_RESEARCH_REPORT.md",
+        "backend-api-swagger/admin.openapi.json",
+        "backend-api-swagger/health.openapi.json"
+      ],
+      "changes": [
+        "C3",
+        "C5",
+        "C9",
+        "C10",
+        "C12",
+        "C18",
+        "C20"
+      ],
+      "adds": [
+        "A11 (global degraded series)"
+      ],
+      "keeps": [
+        "Download CSV per view",
+        "7d/30d/90d/1y range discipline",
+        "captured microcopy + teal identity"
+      ],
+      "tieOut": {
+        "revenueCategoriesSumToKpi": true,
+        "requestStatusesSum": 46,
+        "requestCategoriesSum": 46,
+        "openPipeline": 13,
+        "conversionBasis": "18 ÷ 41 = 43.9%",
+        "acceptanceBasis": "18 ÷ 36 = 50%",
+        "projectsCountedOfTotal": "14 of 18",
+        "projectsUncounted": 4,
+        "usersTripleUnverified": "34 / 34 / 34",
+        "avgResponseTime": "0 minutes (absence, not a measurement)"
+      },
+      "demoAffordances": [
+        {
+          "what": "Download CSV",
+          "behaviour": "client-side CSV from the rendered view with a manifest (view, range, endpoint, captured date, row count, demo notice)"
+        },
+        {
+          "what": "Retry / Reset to captured view",
+          "behaviour": "re-renders captured fixtures; no request runs"
+        },
+        {
+          "what": "Range switch",
+          "behaviour": "recomputes rendered buckets; totals stay captured; the period mapping is displayed"
+        }
+      ],
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Calibrated ledger",
+          "path": "families/F20-analytics-hub/V1/index.html",
+          "aspect": "Single-column ledger; calibration gutter (points / empty / latest) under every chart; provenance popover.",
+          "axes": [
+            "A single-column ledger",
+            "B verdict-first",
+            "C static sections, range-led",
+            "D airy-minimal",
+            "E chart↔table + provenance popover"
+          ],
+          "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended general-purpose winner",
+          "bytes": 114398,
+          "selfContained": true,
+          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+          "sha256": "9e7aae50a805fb3672c9b1b4db28b1257b71e67368a3fa5163e53a9e0f286dfb"
+        },
+        {
+          "id": "V2",
+          "name": "Signal spine",
+          "path": "families/F20-analytics-hub/V2/index.html",
+          "aspect": "Shared time axis; query-value cards carry series backgrounds; breakdown tables docked in a rail.",
+          "axes": [
+            "A chart spine + rail",
+            "B per-card verdict",
+            "C scroll-linked spine",
+            "D dense-ops",
+            "E shared axis + scroll-spy"
+          ],
+          "status": "Delivered 2 Nov 2026; Playwright/axe pass",
+          "bytes": 109842,
+          "selfContained": true,
+          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+          "sha256": "17e563badf1b76fcc93c61b371b57ece1abf90d7378317be6fc5ab566bdbcd6c"
+        },
+        {
+          "id": "V3",
+          "name": "Readout stack",
+          "path": "families/F20-analytics-hub/V3/index.html",
+          "aspect": "Table-first ledger; every rate row expands into its computation, endpoint and basis; charts demoted to a disclosure.",
+          "axes": [
+            "A table-first",
+            "B money-first",
+            "C table → chart → footnote",
+            "D ledger/print",
+            "E expandable provenance rows + density"
+          ],
+          "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended for reconciliation work",
+          "bytes": 112079,
+          "selfContained": true,
+          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+          "sha256": "4e07cf0bbc729e4a141a93411186bdc8046f6def2041dcbdd33426c10f8b8127"
+        },
+        {
+          "id": "V4",
+          "name": "Dense board",
+          "path": "families/F20-analytics-hub/V4/index.html",
+          "aspect": "Bento board with an attention strip hoisting unverified/degraded facts above the metrics; compact density.",
+          "axes": [
+            "A bento grid",
+            "B action-first (exceptions)",
+            "C board-led + attention strip",
+            "D compact console",
+            "E density toggle + probe buttons"
+          ],
+          "status": "Delivered 2 Nov 2026; Playwright/axe pass; recommended for daily growth-ops scanning",
+          "bytes": 110917,
+          "selfContained": true,
+          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+          "sha256": "1025f8c76a2320a576ea76379c99a6714ccdc03e40272fc6271d9be765f74885"
+        },
+        {
+          "id": "V5",
+          "name": "Choreograph",
+          "path": "families/F20-analytics-hub/V5/index.html",
+          "aspect": "Range → read → evidence → export chapters, one hand-drawn annotation, count-up that settles on fixtures, exportable receipt rail.",
+          "axes": [
+            "A split stage + receipt rail",
+            "B narrative-first",
+            "C chapter/stepper-led",
+            "D airy-editorial",
+            "E motion signature (reduced-motion safe)"
+          ],
+          "status": "Delivered 2 Nov 2026; Playwright/axe pass",
+          "bytes": 113074,
+          "selfContained": true,
+          "note": "single file, zero sub-resources (CSS, JS, sprite, logos inlined)",
+          "sha256": "9bac182d7e8fac8b9648c1ac769bfee4dfa0af5496b151047839b48bf29c98bd"
+        }
+      ],
+      "hashes": {
+        "V1": "9e7aae50a805fb3672c9b1b4db28b1257b71e67368a3fa5163e53a9e0f286dfb",
+        "V2": "17e563badf1b76fcc93c61b371b57ece1abf90d7378317be6fc5ab566bdbcd6c",
+        "V3": "4e07cf0bbc729e4a141a93411186bdc8046f6def2041dcbdd33426c10f8b8127",
+        "V4": "1025f8c76a2320a576ea76379c99a6714ccdc03e40272fc6271d9be765f74885",
+        "V5": "9bac182d7e8fac8b9648c1ac769bfee4dfa0af5496b151047839b48bf29c98bd"
+      },
+      "bytesHtmlCss": {
+        "V1": 114398,
+        "V2": 109842,
+        "V3": 112079,
+        "V4": 110917,
+        "V5": 113074
+      },
+      "sharedFiles": [
+        "families/F20-analytics-hub/build-f20.js",
+        "families/F20-analytics-hub/analytics.css",
+        "families/F20-analytics-hub/analytics.js",
+        "families/F20-analytics-hub/analytics-blocks.js",
+        "families/F20-analytics-hub/parts/V1-panel.js",
+        "families/F20-analytics-hub/parts/V2-panel.js",
+        "families/F20-analytics-hub/parts/V3-panel.js",
+        "families/F20-analytics-hub/parts/V4-panel.js",
+        "families/F20-analytics-hub/parts/V5-panel.js",
+        "families/F20-analytics-hub/variants/V1/design.css",
+        "families/F20-analytics-hub/variants/V2/design.css",
+        "families/F20-analytics-hub/variants/V3/design.css",
+        "families/F20-analytics-hub/variants/V4/design.css",
+        "families/F20-analytics-hub/variants/V5/design.css"
+      ],
+      "layout": {
+        "decisionOrder": [
+          "exceptions",
+          "north star + coverage",
+          "drivers",
+          "diagnostic chart",
+          "detail table",
+          "metric dictionary"
+        ],
+        "persistent": [
+          "data-health rail (per endpoint: reachable / failing / not captured, capture timestamp, schema + range caveats)"
+        ],
+        "research": "second Gate-T round: north-star + drivers IA, metric dictionary with owner/cadence, freshness as a first-class signal, three-tier drill"
+      },
+      "notes": [
+        "tokens.css: --sidebar-section darkened #6a7381 -> #59616e for 4.5:1 on the sidebar tint (affects all families)"
       ]
     }
   }

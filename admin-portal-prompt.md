@@ -104,7 +104,7 @@ State in `admin-portal-lab/DECISIONS.md` (each family's section): "All F## varia
 | **F16** · User details + safety dialogs | detail + 5 safety dialogs + pipeline tabs | 14 | 13 | Safety flows (KEEP) · Add A15 · pipeline-tabs closure |
 | **F17** · Messages home + inbox + new | overview, inbox, new-direct, new-group-404 | 5 | 4 | Fix C9 C11 |
 | **F18** · Messages thread | 5 threads + reply/edit/mark-read | 9 | 4 | Fix C9 · members-panel closure |
-| **F19** · Moderation queue | queue / history | 4 | 2 | Fix C17 · Add A1 A4 A5 |
+| **F19** · Moderation queue | queue / history | 4 | 2 | Fix C17 · Add A1 A5 · A4 not claimed (age undocumented) |
 | **F20** · Analytics hub | 4 hubs + 4 ranges + CSV | 16 | 4 | Fix C10 · CSV export kept |
 | **F21** · Content · Blog + editor | 6 tabs + editor Write/Split/Preview + new | 18 | 11 | Fix C11 C17 |
 | **F22** · Portfolio studio | listing + edits + new + analytics | 8 | 4 | Fix C9 C17 |
@@ -537,3 +537,13 @@ These refinements apply through this shared parent to **all 25 family prompts** 
 ## Owner review — source-complete data and differentiated design (2026-11-02)
 
 When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.
+
+---
+
+## 17. Scoped execution clarification — F19 run (2 November 2026)
+
+The owner requested screenshot/API analysis, public enterprise-operations research, prompt refinement and execution of **F19 only**, after F01–F18. The revised `admin-portal-prompts/F19-moderation-queue.md` is the current family brief; its earlier version is archived in the F19 docs. This explicitly authorizes updating the F19 prompt and pack-index guidance for this run, without changing the locked tokens or approved sibling pages. Other family prompts await the owner's forthcoming page review.
+
+For F19, revision 2 (owner correction, 2 November 2026) makes the captured empty queue/history the default source view. The optional workflow demo reuses captured Nestlancer message text with synthetic flags and starts history empty; it does not invent reporter, reason, age, rationale, saved views, sort controls, seeded history or populated row anatomy. C17 means a ten-second local undo window for dismiss/remove, not an API-backed rationale field. Chat Dismiss/Escalate/Remove/Restore remain distinct; blog comments and media quarantine stay in F21/F23. No batch moderation endpoint, global-feed query override, server permission result or audit persistence is invented.
+
+The revised brief and `docs/` record the S→R→A→T evidence and five distinct concepts before authorship. Gate 3 requires fresh browser/interaction/accessibility/resource checks and honest limitations; a prior static pass is not a new visual pass.

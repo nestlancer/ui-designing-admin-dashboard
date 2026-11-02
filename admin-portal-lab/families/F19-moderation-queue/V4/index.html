@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moderation · Decision register · Nestlancer Admin</title>
+<meta name="description" content="F19 V4 — source-reconciled dense moderation register with in-place review. Default captured empty state.">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();</script>
+<link rel="stylesheet" href="../../../shared/tokens.css">
+<link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../moderation-shell.css">
+<link rel="stylesheet" href="design.css">
+</head>
+<body data-layout="ledger">
+<a class="skip-link" href="#main">Skip to moderation content</a>
+<div id="live" class="visually-hidden" aria-live="polite"></div>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Operator console navigation">
+    <div class="brand"><div class="brand-row"><img class="logo-for-light" src="../../../assets/logo-mark-light.svg" alt="Nestlancer logo"><img class="logo-for-dark" src="../../../assets/logo-mark-dark.svg" alt="Nestlancer logo"><span class="brand-name">Nestlancer</span></div><span class="brand-sub">Operator Console</span></div>
+    <nav class="nav-group" aria-label="Operations">
+      <div class="nav-section">Operations</div>
+      <a class="nav" href="../../F02-dashboard-command-center/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-grid"></use></svg><span class="nav-label">Dashboard</span></a>
+      <a class="nav" href="../../F04-pipelines-stage-hub/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-compass"></use></svg><span class="nav-label">Pipelines</span></a>
+      <a class="nav" href="../../F06-contact-inquiries/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-doc"></use></svg><span class="nav-label">Inquiries</span></a>
+      <a class="nav" href="../../F07-notifications-center/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-bell"></use></svg><span class="nav-label">Notifications</span></a>
+      <a class="nav" href="../../F08-requests-triage/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-list"></use></svg><span class="nav-label">Requests</span></a>
+      <a class="nav" href="../../F09-quotes-list/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-card"></use></svg><span class="nav-label">Quotes</span></a>
+      <a class="nav" href="../../F11-projects-list/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-folder"></use></svg><span class="nav-label">Projects</span></a>
+      <a class="nav" href="../../F13-payments-money-ops/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-bank"></use></svg><span class="nav-label">Payments</span></a>
+      <a class="nav" href="../../F15-users-directory/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-user"></use></svg><span class="nav-label">Users</span></a>
+      <a class="nav" href="../../F17-messages-home/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-chat"></use></svg><span class="nav-label">Messages</span></a>
+      <a class="nav active" aria-current="page" href="index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-shield"></use></svg><span class="nav-label">Moderation</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-up"></use></svg><span class="nav-label">Analytics</span></a>
+    </nav>
+    <nav class="nav-group" aria-label="Content">
+      <div class="nav-section">Content</div>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-doc"></use></svg><span class="nav-label">Blog</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-folder"></use></svg><span class="nav-label">Portfolio</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-archive"></use></svg><span class="nav-label">Media Library</span></a>
+    </nav>
+    <nav class="nav-group" aria-label="System">
+      <div class="nav-section">System</div>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-gear"></use></svg><span class="nav-label">System Config</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-share"></use></svg><span class="nav-label">Webhooks</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-lock"></use></svg><span class="nav-label">Audit Logs</span></a>
+    </nav>
+    <div class="sidebar-account"><span class="account-avatar" aria-hidden="true">A</span><span class="account-meta"><strong>admin@nestlancer.com</strong><span>Administrator</span></span></div>
+    <button class="signout" data-signout><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-arrow"></use></svg><span>Sign out</span></button>
+  </aside>
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="top-start">
+        <button class="icon-button menu-mobile" id="menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-menu"></use></svg></button>
+        <button class="icon-button collapse-desktop" id="collapse" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-list"></use></svg><span class="collapse-text">Collapse</span></button>
+        <nav class="crumb" aria-label="Breadcrumb"><span>Home</span><span class="crumb-sep">›</span><span>Operations</span><span class="crumb-sep">›</span><b>Moderation</b></nav>
+      </div>
+      <div class="top-end">
+        <button class="global-search" id="global-search" aria-label="Search this moderation workset"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-search"></use></svg>Search pages… <kbd>⌘K</kbd></button>
+        <a class="icon-button" href="../../F07-notifications-center/V1/index.html" aria-label="188 unread notifications, captured badge 99+"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-bell"></use></svg><span class="top-badge">99+</span></a>
+        <a class="icon-button" href="../../F17-messages-home/V1/index.html" aria-label="21 unread messages"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-chat"></use></svg><span class="top-badge teal">21</span></a>
+        <a class="icon-button" href="index.html" aria-label="Moderation"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-shield"></use></svg></a>
+        <span class="operator"><span class="operator-mark" aria-hidden="true">RK</span><span class="operator-name">Riya Kapoor</span></span>
+        <button class="icon-button" id="theme" aria-label="Switch to dark mode" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-moon"></use></svg></button>
+      </div>
+    </header>
+    <main class="content" id="main">
+      <div class="page-head">
+        <div><p class="eyebrow">Operations</p><h1>Moderation</h1><p class="lede">Review flagged chats, escalate or remove them, and restore from history when needed.</p></div>
+        <div class="head-tools">
+          <details class="preview-options">
+            <summary><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-eye"></use></svg>Preview options</summary>
+            <div class="preview-panel">
+              <div class="preview-row"><span class="preview-label">Data source</span><div class="seg" role="group" aria-label="Data source"><button data-source="source" aria-pressed="true">Captured empty state</button><button data-source="demo" aria-pressed="false">Workflow demo</button></div></div>
+              <div class="preview-row"><span class="preview-label">Demo state</span><div class="seg" role="group" aria-label="Demo state"><button data-state="ready" aria-pressed="true">Ready</button><button data-state="loading" aria-pressed="false">Loading</button><button data-state="error" aria-pressed="false">Error</button><button data-state="empty" aria-pressed="false">Empty</button></div></div>
+              <p class="hint" id="scenario-boundary"></p>
+              <button class="btn btn-secondary btn-sm" data-help>Keyboard help</button>
+            </div>
+          </details>
+        </div>
+      </div>
+      <p class="demo-notice" id="demo-notice" hidden></p>
+      <div class="view-tabs" role="tablist" aria-label="Moderation views">
+        <button id="tab-queue" role="tab" aria-selected="true" aria-controls="panel-queue" data-tab="queue">Active queue</button>
+        <button id="tab-history" role="tab" aria-selected="false" aria-controls="panel-history" data-tab="history" tabindex="-1">History</button>
+      </div>
+      <section id="panel-queue" role="tabpanel" aria-labelledby="tab-queue">
+        <div class="summary-grid" id="summary-cards" aria-label="Moderation summary"></div>
+        <div class="filter-bar" id="queue-filter-bar">
+          <div class="search-wrap"><label class="visually-hidden" for="queue-search">Search queue</label><input class="input" id="queue-search" type="search" placeholder="Search message, sender, project, chat…" autocomplete="off"></div>
+          <label class="filter-inline" for="filter-status">Review status <select class="input" id="filter-status"><option value="all">All statuses</option><option value="Flagged">Flagged</option><option value="Escalated">Escalated</option></select></label>
+          <label class="filter-inline" for="filter-chat">Chat type <select class="input" id="filter-chat"><option value="all">All chats</option><option value="Project">Project</option><option value="Direct">Direct</option><option value="Group">Group</option></select></label>
+          <button class="btn btn-secondary" data-clear-filters>Clear</button>
+        </div>
+        <div class="selection-bar" id="selection-bar" hidden><strong id="selection-count">0 selected</strong><span id="selection-note" class="hint"></span><div class="selection-actions"><button class="btn btn-secondary btn-sm" data-select-page>Select page</button><button class="btn btn-secondary btn-sm" data-clear-selection>Clear selection</button><button class="btn btn-primary btn-sm" id="bulk-dismiss" data-bulk>Prepare bulk dismiss</button></div></div>
+        <div class="ledger-grid">
+          <aside class="query-rail" aria-label="Register guidance">
+            <h2>Register view</h2>
+            <p class="hint">Expand a row to review the captured message and prepare a guarded local action. Filters match the captured moderation controls.</p>
+            <p class="hint">No reporter, reason, age or rationale columns are invented.</p>
+            <p class="hint"><a href="../docs/SOURCE-RECONCILIATION.md">Source reconciliation</a></p>
+          </aside>
+          <section class="ledger-pane" aria-label="Moderation register">
+            <div id="queue-list"></div>
+            <div class="panel-footer" id="queue-footer" hidden><span id="queue-total"></span><div class="pager"><button class="btn btn-secondary btn-sm" id="queue-prev" data-page-prev>Previous</button><span class="hint" id="queue-page-info"></span><button class="btn btn-secondary btn-sm" id="queue-next" data-page-next>Next</button></div></div>
+          </section>
+        </div>
+      </section>
+      <section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden>
+        <div class="filter-bar">
+          <div class="search-wrap"><label class="visually-hidden" for="history-search">Search history</label><input class="input" id="history-search" type="search" placeholder="Search history content, actors, chats…" autocomplete="off"></div>
+          <label class="filter-inline" for="history-action">Action <select class="input" id="history-action"><option value="all">All actions</option><option value="Flagged">Flagged</option><option value="Escalated">Escalated</option><option value="Removed">Removed</option><option value="Dismissed">Dismissed</option><option value="Restored">Restored</option></select></label>
+          <button class="btn btn-secondary" data-clear-filters>Clear</button>
+        </div>
+        <div id="history-list"></div>
+        <div class="panel-footer" id="history-footer" hidden><span id="history-total"></span><div class="pager"><button class="btn btn-secondary btn-sm" id="history-prev" data-history-prev>Previous</button><span class="hint" id="history-page-info"></span><button class="btn btn-secondary btn-sm" id="history-next" data-history-next>Next</button></div></div>
+      </section>
+      <section id="receipt" class="receipt" hidden aria-label="Local preview receipt"></section>
+      <section class="source-note"><p>Default view matches the captured empty moderation queue and history. The optional workflow demo reuses captured Nestlancer message text with synthetic flags; it does not represent production moderation records. <a href="../docs/SOURCE-RECONCILIATION.md">Source reconciliation</a> · <a href="../docs/API-MAP.md">API map</a> · <a href="../../../index.html">Family gallery</a></p></section>
+    </main>
+    <footer class="footer">© 2026 Nestlancer Admin</footer>
+  </div>
+</div>
+<script src="../fixtures.js"></script>
+<script src="../moderation-shell.js"></script>
+<script src="../moderation.js"></script>
+</body>
+</html>

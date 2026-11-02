@@ -39,7 +39,7 @@ Hand-write each `families/F19-moderation-queue/V#/index.html` (+CSS/JS). One own
 
 ## 4. THIS FAMILY — F19 · Moderation Queue
 
-The judgment queue: **Active queue** (flagged items with reason, reporter, content preview, context links) + **History** (decisions with who/when/why) + Clear. Captured thin (4 states) — freeze item anatomy, action set, reason vocabulary, and history columns at Gate S, then spec-map every action. Every judgment is guarded (preview + reason + confirm) and logged; the queue itself gets the triage kit (bulk where safe, keyboard, age, loop).
+The judgment queue: **Active queue** + **History** + Clear. The captured moderation pages are empty: three zero summary cards, exact filter vocabulary and empty states. Swagger documents flag/dismiss/remove/escalate/restore paths but no flagged-message or history DTO. Freeze the captured shell, labels and zero state; keep populated anatomy explicitly unknown. Do not invent reporter, reason, age, rationale, SLA, assignee, saved views or history columns as product facts. Guard each local action with a consequence preview and explicit acknowledgement; keep optional reviewer notes local and non-sent. Add only source-compatible triage ergonomics: selection, safe bulk-dismiss preparation, keyboard navigation and review→next.
 
 > **Business weight:** 🔴 judgments affect real people — context first, power guarded, history immutable.
 
@@ -57,9 +57,9 @@ The judgment queue: **Active queue** (flagged items with reason, reporter, conte
 | `169-moderation-index-state-active-queue.html` | Active-queue state | `027-moderation.webp` |
 | `170-moderation-index-state-history.html` | History state | `028-moderation-history.webp` |
 
-**Must include (every variant):** queue with reason/reporter/preview/context (frozen anatomy) · review actions guarded (preview + reason + confirm, spec actions only) · bulk bar (A1 — safe actions only) + age badges (A4) + review→next loop (A5) · history table (who/when/why, immutable tone) · quarantine links (F23) · dark + 375px.
-**Content lock:** freeze item anatomy, action labels, reason vocabulary, confirm copy, history columns at Gate S. Never invent reasons or actions.
-**Cross-cutting:** light + dark · 375px · empty (queue-zero celebration) + skeleton + error + decision-receipt states · keyboard-complete (guarded confirms trapped).
+**Must include (every variant):** default exact captured empty queue/history · captured shell chrome · exact summary cards and filter labels · source/demo disclosure · optional workflow demo using captured Nestlancer message text with synthetic flags · documented action vocabulary only · guarded two-step local review · selection + safe bulk-dismiss preparation · review→next loop · session-only history · dark + 375px.
+**Content lock:** freeze captured labels, empty copy, filter options, shell identity and API action semantics. Populated row/history anatomy remains unknown; any demo fields must be labelled synthetic and must not claim reporter/reason/age/rationale contracts.
+**Cross-cutting:** light + dark · 375px · empty + skeleton + error + local receipt states · keyboard-complete (guarded confirms trapped) · no fabricated permissions/audit/production execution.
 
 ## 5. BRAND SYSTEM — locked
 
@@ -68,14 +68,14 @@ The judgment queue: **Active queue** (flagged items with reason, reporter, conte
 ## 6. WHAT TO CHANGE / ADD / KEEP — F19 scope
 
 ### CHANGE — every item in **all 5 variants**
-- **C17** — Review craft: every action needs context + reason + confirm (no naked buttons). *(§6.1)*
+- **C17** — Review craft: every action needs context + consequence preview + explicit acknowledgement + confirm. Optional notes stay local; no mandatory reason/rationale field is invented. *(§6.1)*
 - **C3** — AA-safe text. *(§6.1)* · **C5** — Teal-only. *(§6.1)* · **C9** — Mono refs/timestamps. *(§6.1)* · **C12** — Display counts. *(§6.1)* · **C18** — Dark parity. *(§6.1)* · **C20** — Logo alt. *(§6.1)*
 
 ### ADD — with priority + coverage (all P1 → **5/5**)
-- **A1** — Bulk bar (safe actions only). · **A4** — Age badges + escalation. · **A5** — Review→next loop.
+- **A1** — Bulk bar (safe actions only; local preparation, not a batch endpoint). · **A5** — Review→next loop. **A4 is not claimed:** age/SLA fields are undocumented.
 
 ### KEEP — present in every variant
-- History immutability tone (who/when/why on every decision). · Microcopy + teal identity. *(§6.3)*
+- History separation and honest local-session receipts (actor/time/effect only for actions actually taken in the preview). · Microcopy + teal identity. *(§6.3)*
 
 ## 7. GATES — in order, print blocks, stop on FAIL
 
@@ -97,15 +97,15 @@ Master §8.1–§8.2 (≥3/5 axes incl. A or C). Coverage: ≥1 minimal · ≥1 
 ### 8.3 Roster guidance (adapt freely — keep 5)
 | Variant | Suggested aspect (same tokens) |
 |---|---|
-| V1 | Ground-truth fix: captured queue, guarded review, calm |
-| V2 | Review-spine: the item under judgment owns the screen |
-| V3 | Card-queue: flagged items as context cards with sweep actions |
-| V4 | Dense console: compact queue + history rail for trust ops |
-| V5 | Motion-signature: judgment choreography + loop transitions |
+| V1 | Queue workspace: captured empty default, split table + review pane |
+| V2 | Context review: case rail + message/context + guidance |
+| V3 | Chat-type triage: Project / Direct / Group lanes from captured filters |
+| V4 | Decision register: dense table with in-place expanded review |
+| V5 | Focused reader: case strip + evidence folio + next-case continuity |
 
 ## 9. BUILD (manual, one by one)
 
-Master §9; family paths below. Review actions MUST be guarded + reason-coded + history-visible in every variant (lab static — confirm + receipt copy only).
+Master §9; family paths below. Review actions MUST be guarded + consequence-previewed + session-history-visible in every variant (lab static — confirm + receipt copy only). Do not claim a reason code, audit log or server permission check.
 
 ```
 admin-portal-lab/families/F19-moderation-queue/{V1…V5/index.html,docs/{BASELINE-MAP,REPORT-STUDY,API-MAP,TEMPLATE-RESEARCH,CONCEPTS,DELIVERY-REPORT}.md}
@@ -115,8 +115,8 @@ admin-portal-lab/families/F19-moderation-queue/{V1…V5/index.html,docs/{BASELIN
 
 ## 10. COMPONENT INVENTORY (restyle allowed, dropping states forbidden)
 
-**F19 primaries:** queue tabs, flagged items, review panel (guarded actions), bulk bar, history table.
-States: item pending/approved/removed/escalated · review confirm/receipt · history rows · dark + 375px. Lab-wide: master §10.
+**F19 primaries:** queue tabs, summary cards, captured filters, empty states, optional demo flagged messages, guarded review, selection bar, session history.
+States: Flagged/Escalated in demo · Dismissed/Removed/Restored as local session events · confirm/receipt · dark + 375px. No “Approved” or invented pending state. Lab-wide: master §10.
 
 ## 11–14. PERF · GATE 1/3 · CONSTRAINTS · CHECKLIST
 
@@ -130,12 +130,12 @@ Perf: master §11. Gates: master §12–§13 (tables 1–3; 1 winner).
 Constraints: master §14. Scope = F19 folder + shared merges only.
 
 - [ ] S/R/A/T PASS — `docs/` ×4 · Gate 1 PASS · Gate 2a/2b — 5 hand-authored; gallery + manifest + DECISIONS; 0 generators
-- [ ] Same teal tokens; C17/C3/C5/C9/C12/C18/C20 in 5/5; A1/A4/A5 in 5/5 (manifest)
+- [ ] Same teal tokens; C17/C3/C5/C9/C12/C18/C20 in 5/5; A1/A5 in 5/5 (manifest); A4 explicitly not claimed
 - [ ] Empty+skeleton+error; light+dark; 360–1440; keyboard-complete; reduced-motion; no-JS reachable
 - [ ] Gate 3 PASS — §7.1 ×5, 0 blockers, `DELIVERY-REPORT.md` + 1 winner · Reported paths + `:8131` + limits
 
 ### Operator shortcuts
-- "Restore §5 teal." · "V# fails Difference vs V1 — axis A/C." · "One-click judgment — FAIL, guard + reason + history." · "F19-V1 approved — never regenerate it."
+- "Restore §5 teal." · "V# fails Difference vs V1 — axis A/C." · "One-click judgment — FAIL, guard + consequence + session history." · "Do not invent reporter/reason/age fields." · "F19-V1 approved — never regenerate it."
 
 ## Enterprise-standards addendum (2026-11-01 review)
 

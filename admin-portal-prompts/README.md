@@ -6,6 +6,10 @@
 >
 > **Review provenance:** every family brief was verified on 2026-10-30 against the repo's actual captures — the 194 HTML snapshots, the 119-screenshot index, the research report (C1–C20 / A1–A15 / KEEP) and the 17 Swagger specs. Counts, ₹ figures and labels quoted in the prompts are the **captured** values; report illustrations that differ are labelled as such. States the live crawl could not reproduce (report §2.2) are flagged per family with their fallback baseline (screenshots and/or Swagger).
 
+## Current execution note — 2 November 2026
+
+F01–F18 have existing lab work. The owner requested **F19 next**, then corrected the first F19 delivery for screenshot/Swagger mismatch. `F19-moderation-queue.md` now defaults to the captured empty queue/history and offers an optional workflow demo using captured message text with synthetic flags. Reporter/reason/age/rationale/saved-view/sort fields are not claimed as product contracts; undo and receipts are local preview safeguards. The master carries the scoped clarification in §17. Other family prompts and pages are preserved for the owner's forthcoming review-driven revision pass; this note does not claim their gates or owner approval.
+
 ## How to use
 
 1. Open the `ui-designing-admin-dashboard` repo in your agent (Arena Agent Mode, Cursor, Claude Code).
@@ -39,7 +43,7 @@
 | [`F16-user-details-safety.md`](F16-user-details-safety.md) | **F16** · User details + safety dialogs | 14 HTML states · 13 screenshots | Safety flows (KEEP) · Add A15 |
 | [`F17-messages-home.md`](F17-messages-home.md) | **F17** · Messages home + inbox + new | 5 HTML states · 4 screenshots | Fix C9 C11 |
 | [`F18-messages-thread.md`](F18-messages-thread.md) | **F18** · Messages thread | 9 HTML states · 4 screenshots | Fix C9 · members closure |
-| [`F19-moderation-queue.md`](F19-moderation-queue.md) | **F19** · Moderation queue | 4 HTML states · 2 screenshots | Fix C17 · Add A1 A4 A5 |
+| [`F19-moderation-queue.md`](F19-moderation-queue.md) | **F19** · Moderation queue | 4 HTML states · 2 screenshots | Fix C17 · Add A1 A5 · A4 not claimed |
 | [`F20-analytics-hub.md`](F20-analytics-hub.md) | **F20** · Analytics hub | 16 HTML states · 4 screenshots | Fix C10 · CSV kept |
 | [`F21-content-blog.md`](F21-content-blog.md) | **F21** · Content · Blog + editor | 18 HTML states · 11 screenshots | Fix C11 C17 |
 | [`F22-portfolio-studio.md`](F22-portfolio-studio.md) | **F22** · Portfolio studio | 8 HTML states · 4 screenshots | Fix C9 C17 |

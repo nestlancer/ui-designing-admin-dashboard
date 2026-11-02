@@ -39,7 +39,7 @@ Hand-write each `families/F14-settlement-legal/V#/index.html` (+CSS/JS). One own
 
 ## 4. THIS FAMILY — F14 · Settlement Accounts + Company Legal
 
-The payout plumbing: settlement **accounts** (list + add/edit + verify states) and the **company legal** form (entity, tax, registered address, documents). Thin live capture (2 states) + 4 screenshots — transcribe shot-by-shot at Gate S, then cross-map every field to the specs at Gate A. Form craft is the whole brief: labels, helpers, inline validation, masked secrets, verify flows, save honesty (dirty/invalid/saving/saved), and audit-trail copy (who changed payout details, when).
+The payout plumbing: settlement **accounts** (list + add/edit/disable states; no account-verification endpoint was found in the specified payments contract, so any verification state must be explicitly labelled an unsupported design illustration, not an actual operation) and the **company legal** form (entity, tax, registered address, documents). Thin live capture (2 states) + 4 screenshots — transcribe shot-by-shot at Gate S, then cross-map every field to the specs at Gate A. Form craft is the whole brief: labels, helpers, inline validation, masked secrets and save honesty. A static prototype may illustrate dirty/invalid/saving/saved states only with explicit local-demo labels; audit actor/timestamp and account verification require a supported contract and must never be presented as actual events.
 
 > **Business weight:** 🔴 wrong account = money to the wrong place. Guard every field.
 
@@ -58,7 +58,7 @@ The payout plumbing: settlement **accounts** (list + add/edit + verify states) a
 | *(shot+spec baseline)* | Edit-account form | `103-settlement-accounts-edit-account-form.webp` |
 | *(shot+spec baseline)* | Legal-identity edit-profile form | `070-company-legal-identity-edit-profile-form.webp` |
 
-**Must include (every variant):** accounts list (mono numbers C9, masked) + add/edit with verify states · legal form field-complete (transcribed) with inline validation + helpers · masked secrets + reveal discipline · save bar (dirty/invalid/saving/saved + audit copy) · dark + 375px (forms stack, save bar sticky).
+**Must include (every variant):** accounts list (mono numbers C9, masked) + add/edit/disable previews; unsupported verification states only if explicitly labelled as design illustrations · legal form field-complete (transcribed) with inline validation + helpers · masked secrets + reveal discipline · save bar (dirty/invalid/saving/saved + audit copy) · dark + 375px (forms stack, save bar sticky).
 **Content lock:** freeze every label/helper/option/validation string from shots + captures at Gate S; spec field names for the rest. Never invent legal fields.
 **Cross-cutting:** light + dark · 375px · empty (no-accounts) + skeleton + error + saved-receipt states · labels + describedby + error announcements · reduced-motion.
 
@@ -69,7 +69,7 @@ The payout plumbing: settlement **accounts** (list + add/edit + verify states) a
 ## 6. WHAT TO CHANGE / ADD / KEEP — F14 scope
 
 ### CHANGE — every item in **all 5 variants**
-- **C9** — Mono account numbers/refs. *(§6.1)* · **C17** — Form craft: every field labelled, helper'd, validated inline. *(§6.1)*
+- **C9** — Mono account numbers/refs. *(§6.1)* · **Form craft (family requirement, not C17):** every field labelled, helper'd, validated inline. Report C17 actually concerns undo for destructive rows in Portfolio, Moderation and Media; do not attribute form craft to C17.
 - **C3** — AA-safe text. *(§6.1)* · **C5** — Teal-only. *(§6.1)* · **C12** — Display section titles. *(§6.1)* · **C18** — Dark parity. *(§6.1)* · **C20** — Logo alt. *(§6.1)*
 
 ### ADD — with priority + coverage
@@ -101,7 +101,7 @@ Master §8.1–§8.2 (≥3/5 axes incl. A or C). Coverage: ≥1 minimal · ≥1 
 |---|---|
 | V1 | Ground-truth fix: transcribed forms, inline validation, guarded saves |
 | V2 | Section-led: accounts + legal as guided sections with progress |
-| V3 | Wizard: add/verify flows as guarded steps (list stays put) |
+| V3 | Wizard: guarded add/edit review steps (list stays put; verification is not a supported operation) |
 | V4 | Dense console: compact forms + audit rail for finance ops |
 | V5 | Motion-signature: calm validation + save choreography |
 
@@ -117,8 +117,8 @@ admin-portal-lab/families/F14-settlement-legal/{V1…V5/index.html,docs/{BASELIN
 
 ## 10. COMPONENT INVENTORY (restyle allowed, dropping states forbidden)
 
-**F14 primaries:** accounts list, account add/edit + verify, legal form sections, masked secrets, save bar + audit copy.
-States: field default/focus/valid/invalid/disabled · verify pending/verified/failed · save dirty/invalid/saving/saved · dark + 375px. Lab-wide: master §10.
+**F14 primaries:** accounts list, account add/edit/disable, legal form sections, masked secrets, and save bar. Actor/timestamp audit copy must be explicitly illustrative unless backed by a verified contract.
+States: field default/focus/valid/invalid/disabled · local save dirty/invalid/review/simulated receipt · dark + 375px. Account verification is not established by the inspected contract; do not claim it occurred. Lab-wide: master §10.
 
 ## 11–14. PERF · GATE 1/3 · CONSTRAINTS · CHECKLIST
 
@@ -132,7 +132,7 @@ Perf: master §11. Gates: master §12–§13 (tables 1–3; 1 winner).
 Constraints: master §14. Scope = F14 folder + shared merges only.
 
 - [ ] S/R/A/T PASS — `docs/` ×4 · Gate 1 PASS · Gate 2a/2b — 5 hand-authored; gallery + manifest + DECISIONS; 0 generators
-- [ ] Same teal tokens; C9/C17/C3/C5/C12/C18/C20 in 5/5 (manifest)
+- [ ] Same teal tokens; C9/C3/C5/C12/C18/C20 and family-specific form craft in 5/5 (manifest); do not misattribute form craft to report C17.
 - [ ] Empty+skeleton+error; light+dark; 360–1440; keyboard-complete; reduced-motion; no-JS readable
 - [ ] Gate 3 PASS — §7.1 ×5, 0 blockers, `DELIVERY-REPORT.md` + 1 winner · Reported paths + `:8131` + limits
 

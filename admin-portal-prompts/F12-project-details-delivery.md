@@ -86,7 +86,7 @@ The delivery 360°: **detail** (`053`: header, status, parties, totals), **miles
 
 ## 7. GATES — in order, print blocks, stop on FAIL
 
-Procedures: master §6. F12 scope: Gate S transcribes 14 shots (reconcile dupes, provenance per section) + logs error evidence; Gate R quotes finding #1 + F12 rows; Gate A cross-maps shots↔`projects`/`progress`/`payments`; Gate T ≥8 delivery dashboards **after** S/R/A.
+Procedures: master §6. F12 scope: Gate S transcribes the 13 shots listed in §3 (reconcile dupes, provenance per section) + logs error evidence; Gate R quotes finding #1 + F12 rows; Gate A cross-maps shots↔`projects`/`progress`/`payments`; Gate T ≥8 delivery dashboards **after** S/R/A.
 
 ```
 ## GATE S (F12) · Shots: 13/13 · HTML: 1/1 (error) · Transcribed: YES · Provenance: YES · Gate: PASS/FAIL
@@ -161,3 +161,6 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ---
 
 *End of prompt F12. Start at §3 Step 1. Print every gate block. Hand-craft all 5. Transcribe before you draw.*
+
+### Contract clarification discovered during continuation
+The bundled projects and progress OpenAPI files document the same normalized milestone POST route with incompatible DTOs (`CreateMilestonesAdminDto` requires a milestones array; `CreateMilestoneDto` requires name, startDate and endDate). Request backend clarification before wiring writes; do not choose one silently. Existing HTML remains a non-mutating prototype.

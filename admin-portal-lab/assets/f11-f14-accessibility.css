@@ -1,0 +1,16 @@
+/* F11–F14 preliminary designs only. The locked shared token file is unchanged. */
+:root { --primary-foreground:#ffffff; }
+.dark {
+  --primary:#54d6b2;
+  --primary-foreground:#071b17;
+  --primary-tint:#12342d;
+  --status-success-bg:#102b20;
+  --status-warning-bg:#342509;
+  --status-error-bg:#35191c;
+  --status-info-bg:#102b3b;
+  --status-purple-bg:#291c3b;
+  --status-neutral-bg:#1c2b3d;
+}
+.nav.current,.nav.active,.link.current,.link.active { color:#075d4c; }
+.dark .nav.current,.dark .nav.active,.dark .link.current,.dark .link.active { color:#79dfc1; }
+.btn.primary { color:var(--primary-foreground); }

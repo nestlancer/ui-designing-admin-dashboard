@@ -5,7 +5,7 @@
 >
 > **Scope: ONE page family — F11 · Projects List.** One of **25 independent family prompts** (F01–F25): 25 × 5 = **125 templates**, ONE locked teal scheme (master `admin-portal-prompt.md` §5). This prompt builds **`admin-portal-lab/families/F11-projects-list/V1…V5/`** — the list only (F12 owns details/delivery). Never touch other families.
 >
-> **⚠️ OUTAGE FAMILY — read this:** `/api/v1/admin/projects*` is DOWN in production (report finding #1). The live list renders only a skeleton, *Loading…*, or *Network Error*. That is the truth you design for: degraded-first. The list's content baseline = screenshot `046` + `projects` spec (endpoints exist but fail — note at Gate A). Every variant ships list + loading + degraded + error + recovered states.
+> **⚠️ OUTAGE FAMILY — read this:** `/api/v1/admin/projects*` is DOWN in production (report finding #1). The live list renders only a skeleton, *Loading…*, or *Network Error*. That is the truth you design for: degraded-first. The list's content baseline = screenshot `052` + `projects` spec (historical endpoint failures — note at Gate A; current health is not verified). Every variant ships list + loading + degraded + error + recovered states.
 >
 > **Style parent:** `example-demo-prompt/*` (gates + hand-crafted discipline). Shared rules in `admin-portal-prompt.md` — read it end-to-end first; **this file is the task**. **Do not push, commit, create or switch a branch.**
 
@@ -41,7 +41,7 @@ Hand-write each `families/F11-projects-list/V#/index.html` (+CSS/JS). One own-va
 
 ## 4. THIS FAMILY — F11 · Projects List
 
-Five projects the console can't show: live renders skeleton/*Loading…*/*Network Error* and nothing else. Your variants deliver TWO layers: (1) the intended list (from shot 046 + spec: filters, project rows/cards, status, assignees, deep links to F12) built degraded-first, and (2) the outage experience itself — banner + per-page degraded state + retry with honesty + what-still-works guidance (A11). Mock list content MUST be labelled demo data (never pose as live), per master §5.3.
+The historical production crawl rendered skeleton/*Loading…*/*Network Error*. Separately, screenshot 052 captures 18 project records (8 active, 10 completed); treat these as historical capture, not live data. Your variants deliver TWO layers: (1) the intended list (from shot 052 + spec: filters, project rows/cards, status, client, deep links to F12) built degraded-first, and (2) the outage experience itself — banner + per-page degraded state + retry with honesty + what-still-works guidance (A11). Mock list content MUST be labelled demo data (never pose as live), per master §5.3.
 
 > **Business weight:** 🔴 the room the money is in — dark. Design the light switch and the flashlight.
 
@@ -61,7 +61,7 @@ Five projects the console can't show: live renders skeleton/*Loading…*/*Networ
 | *(shot+spec baseline)* | Intended list content | `052-projects.webp` |
 
 **Must include (every variant):** intended list (frozen-from-shot columns/filters + spec fields) with bulk/keyboard/saved-views parity where the list supports queues · **loading skeleton** (honest, timed-out aware) · **degraded state** (banner + page copy + retry + what-still-works + last-good-data honesty — A11) · **error state** (report wording basis: finding #1) · **recovered state** · demo-data labels on all mock rows · dark + 375px.
-**Content lock:** freeze shot-046 columns/labels + outage copy from captures at Gate S; spec field names for the rest. No invented project names presented as real.
+**Content lock:** freeze shot-052 columns/labels + outage copy from captures at Gate S; spec field names for the rest. Treat screenshot totals as historical, not a current service-health measurement. No invented project names presented as real.
 **Cross-cutting:** light + dark · 375px · all five states first-class · keyboard-complete · live regions announce state changes · reduced-motion.
 
 ## 5. BRAND SYSTEM — locked

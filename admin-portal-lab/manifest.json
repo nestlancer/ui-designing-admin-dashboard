@@ -1695,6 +1695,58 @@
         }
       ],
       "familyStatus": "5 layout variants available; see DELIVERY-REPORT.md for known gate gaps and validation scope"
+    },
+    "F11-projects-list": {
+      "slug": "F11-projects-list",
+      "title": "Projects · historical outage reference",
+      "route": "/projects",
+      "familyStatus": "Preliminary offline concepts; research gates, complete state coverage and full accessibility verification remain open. No production connection.",
+      "variants": [
+        {"id":"V1","name":"Historical list","path":"families/F11-projects-list/V1/index.html","aspect":"List-led capture with simulated service states","status":"Preliminary; no production request"},
+        {"id":"V2","name":"Status desk","path":"families/F11-projects-list/V2/index.html","aspect":"Status-first workspace with reference examples","status":"Preliminary; no production request"},
+        {"id":"V3","name":"Project cards","path":"families/F11-projects-list/V3/index.html","aspect":"Card-led historical reference","status":"Preliminary; no production request"},
+        {"id":"V4","name":"Operations ledger","path":"families/F11-projects-list/V4/index.html","aspect":"Compact table with status rail","status":"Preliminary; reworked from V1; distinctness not verified"},
+        {"id":"V5","name":"Recovery path","path":"families/F11-projects-list/V5/index.html","aspect":"State progression and loading illustration","status":"Preliminary; no production request"}
+      ]
+    },
+    "F12-project-details-delivery": {
+      "slug": "F12-project-details-delivery",
+      "title": "Project details · delivery reference",
+      "route": "/projects/[id]",
+      "familyStatus": "Preliminary offline concepts; historical screenshot records include separate projects. Delivery actions and several states are not implemented; research gates remain open.",
+      "variants": [
+        {"id":"V1","name":"Delivery overview","path":"families/F12-project-details-delivery/V1/index.html","aspect":"Overview with labelled separate-source sections","status":"Preliminary; no production request"},
+        {"id":"V2","name":"Delivery casebook","path":"families/F12-project-details-delivery/V2/index.html","aspect":"Disclosure-led historical evidence","status":"Preliminary; no production request"},
+        {"id":"V3","name":"Evidence desk","path":"families/F12-project-details-delivery/V3/index.html","aspect":"Record-separated project evidence","status":"Preliminary; no production request"},
+        {"id":"V4","name":"Delivery console","path":"families/F12-project-details-delivery/V4/index.html","aspect":"Compact delivery workspace","status":"Preliminary; reworked from V1; distinctness not verified"},
+        {"id":"V5","name":"Delivery journey","path":"families/F12-project-details-delivery/V5/index.html","aspect":"Chapter-led historical delivery reference","status":"Preliminary; no production request"}
+      ]
+    },
+    "F13-payments-money-ops": {
+      "slug": "F13-payments-money-ops",
+      "title": "Payments · historical money operations",
+      "route": "/payments",
+      "familyStatus": "Preliminary offline concepts; transaction samples and historical empty states are not current data. Verification, receipts and reconciliation actions remain incomplete.",
+      "variants": [
+        {"id":"V1","name":"Payments overview","path":"families/F13-payments-money-ops/V1/index.html","aspect":"Captured figures and sample ledger","status":"Preliminary; no financial operation"},
+        {"id":"V2","name":"Investigation desk","path":"families/F13-payments-money-ops/V2/index.html","aspect":"Sidebar-led financial reference","status":"Preliminary; no financial operation"},
+        {"id":"V3","name":"Project ledger","path":"families/F13-payments-money-ops/V3/index.html","aspect":"Project-card billing reference","status":"Preliminary; no financial operation"},
+        {"id":"V4","name":"Money console","path":"families/F13-payments-money-ops/V4/index.html","aspect":"Dense ledger and metric rail","status":"Preliminary; reworked from V1; distinctness not verified"},
+        {"id":"V5","name":"Review flow","path":"families/F13-payments-money-ops/V5/index.html","aspect":"Stage-led money reference","status":"Preliminary; no financial operation"}
+      ]
+    },
+    "F14-settlement-legal": {
+      "slug": "F14-settlement-legal",
+      "title": "Settlement accounts · company legal identity",
+      "route": "/payments/accounts and /payments/company-legal",
+      "familyStatus": "Preliminary local forms; no production persistence, account verification or audit events. Full report and API gates remain open.",
+      "variants": [
+        {"id":"V1","name":"Settings","path":"families/F14-settlement-legal/V1/index.html","aspect":"Account and legal profile forms","status":"Preliminary; local preview only"},
+        {"id":"V2","name":"Record desk","path":"families/F14-settlement-legal/V2/index.html","aspect":"Record selection and editing","status":"Preliminary; local preview only"},
+        {"id":"V3","name":"Identity dossier","path":"families/F14-settlement-legal/V3/index.html","aspect":"Side-by-side accounts and legal records","status":"Preliminary; local preview only"},
+        {"id":"V4","name":"Settings workbench","path":"families/F14-settlement-legal/V4/index.html","aspect":"Compact editor with reference rail","status":"Preliminary; reworked from V1; distinctness not verified"},
+        {"id":"V5","name":"Review path","path":"families/F14-settlement-legal/V5/index.html","aspect":"Local preparation and review","status":"Preliminary; local preview only"}
+      ]
     }
   }
 }

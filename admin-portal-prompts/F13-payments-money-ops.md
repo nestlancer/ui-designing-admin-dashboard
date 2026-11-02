@@ -39,7 +39,7 @@ Hand-write each `families/F13-payments-money-ops/V#/index.html` (+CSS/JS). One o
 
 ## 4. THIS FAMILY — F13 · Payments Money-Ops
 
-The money room: **KPI strip** (*Total collected ₹7,08,160 · Outstanding ₹2,60,790 · Pending milestones 16 · 18 Projects* — freeze at Gate S) over **4 tabs** (By project · All transactions · Awaiting verification · Disputes), verification/dispute actions, transaction tables, payment details with receipt strings, and reconciliation (`039`, shot-backed). Peak F-pattern density (finding #12: 6 dead-end buttons/headings per capture — your C3/C12 work fixes their legibility, A1/A4/A5 fix their operability).
+The money room: **KPI strip** (*Total collected ₹7,08,160 · Outstanding ₹2,60,790 · Pending milestones 16 · 18 Projects* — freeze at Gate S) over **5 tabs** (By project · All transactions · Awaiting verification · Disputes · Reconciliation), verification/dispute actions, transaction tables, payment details with receipt strings, and reconciliation (`039`, shot-backed). Peak F-pattern density (finding #12: 6 dead-end buttons/headings per capture — your C3/C12 work fixes their legibility, A1/A4/A5 fix their operability).
 
 > **Business weight:** 🔴 real money moves here — approvals guarded, receipts kept, figures tabular.
 
@@ -74,11 +74,11 @@ The money room: **KPI strip** (*Total collected ₹7,08,160 · Outstanding ₹2,
 ### CHANGE — every item in **all 5 variants**
 - **C9** — Mono refs/IDs/timestamps; tabular money everywhere. *(§6.1)*
 - **C12** — Display-scale ₹ hero + KPI strip (legibility at F-pattern density). *(§6.1)*
-- **C19** — Pagination info on all tables. *(§6.1)*
+- **Pagination info on all tables** — family-specific requirement. The source report's C19 targets Requests/Quotes/Audit/Media rather than explicitly naming Payments; retain the pagination requirement without claiming the report lists Payments under C19.
 - **C3** — AA-safe status text. *(§6.1)* · **C5** — Teal-only. *(§6.1)* · **C18** — Dark parity. *(§6.1)* · **C20** — Logo alt. *(§6.1)*
 
 ### ADD — with priority + coverage (all P1 → **5/5**)
-- **A1** — Bulk bar (verify/reject/export). · **A4** — Age/priority badges + escalation. · **A5** — Verify→next loop.
+- **A1** — Bulk bar (verify/reject/export). · **A4** — Age/priority badges + escalation only when source timestamps and escalation rules support them; otherwise display age/priority as unknown. · **A5** — Verify→next loop. All financial actions in offline prototypes must remain explicitly local simulations and must not assert verification, export, or audit success.
 
 ### KEEP — present in every variant
 - **Payout/setttlement transparency** (Per-quoted breakdowns, receipt strings). · KPI-strip honesty. · Microcopy + teal identity. *(§6.3)*
@@ -160,3 +160,6 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ---
 
 *End of prompt F13. Start at §3 Step 1. Print every gate block. Hand-craft all 5.*
+
+### Verification contract clarification discovered during continuation
+Payment verification and offline transfer approval/rejection are separate routes. The documented `/verify` POST has no request body; `/approve-transfer` accepts optional internal `verificationNotes`; `/reject-transfer` requires a client-visible `reason` and documents `allowRetry` defaulting true. Never imply these prototype actions call the backend.

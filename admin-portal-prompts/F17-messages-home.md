@@ -99,11 +99,11 @@ Master §8.1–§8.2 (≥3/5 axes incl. A or C). Coverage: ≥1 minimal · ≥1 
 ### 8.3 Roster guidance (adapt freely — keep 5)
 | Variant | Suggested aspect (same tokens) |
 |---|---|
-| V1 | Ground-truth fix: captured home + inbox + new, routed clean |
-| V2 | Inbox-spine: the list owns the screen, home docks as header |
-| V3 | Home-first: entry cards + smart sections lead, inbox below |
-| V4 | Dense console: compact list + compose drawer for support ops |
-| V5 | Motion-signature: list/compose choreography + transitions |
+| V1 | Signal brief: paired, clearly separate historical snapshots and recent captured activity |
+| V2 | Queue workbench: persistent inbox list/detail split with a compact source rail |
+| V3 | Conversation index: wide scan-first list and explicit filter/source scope |
+| V4 | Operations ledger: dense, disciplined register with consistent row rhythm |
+| V5 | Compose paths: task-led direct/group local-preview forms with requirements visible |
 
 ## 9. BUILD (manual, one by one)
 
@@ -163,3 +163,25 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ## Owner review — source-complete data and differentiated design (2026-11-02)
 
 When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.
+
+### 2026-11-02 · Messaging research + evidence addendum (applies to this F17 run)
+
+Before concepts, reconcile the captured home, inbox and compose states against the live screenshots and HTML independently. The overview snapshot records 18 open conversations / 21 unread messages / 11 unread threads; the inbox snapshot records 18 open / 20 unread / 10 waiting. These are different historical captures, not one consistent live metric set: preserve each only in its matching view and label it as a captured snapshot; do not sum, reconcile or animate the discrepancy away. Screenshot age labels and HTML text differ in some rows; do not manufacture fresh timestamps.
+
+The route `/messages/new/group` is a captured production 404, while `POST /api/v1/messages/threads/group` exists. In the offline lab, use one consistent UI route, `/messages/new-group`, link it from every creation entry, and make the form a truthful local preview. Group creation requires at least two client user IDs; the captured form's “Title (optional)” and client search are the source-backed fields. Do not claim a thread was created. Keep the direct route `/messages/new-direct` and show “Existing threads are reopened automatically.”
+
+Gate T references opened for this run: Intercom Inbox (queue/table and keyboard views), Zendesk Agent Workspace (conversation timeline plus context), Front shared conversation comments and assignment (team-private boundary; ownership pattern only), Freshdesk ticket details (collapsible quick list / transcript / context panes), Help Scout mobile conversation (profile and reply actions), Slack threads (reply context and thread navigation only), Salesforce Service Console (transcript and related-record pane), and Help Scout conversation/thread API documentation (thread, participant and attachment separation). Adopt only composition/interaction patterns that fit the captures and messaging Swagger. Assignment, collision/presence, snooze, internal notes, canned replies, AI, channel unification, analytics, bulk actions, saved views, and SLA targets are NOT licensed by these references; exclude unless a captured state or family ADD plus an exact endpoint supports them.
+
+### Owner-approved redesign roster and implementation note · 2026-11-02
+
+This section supersedes the earlier F17 concept roster and any previous visual direction. The owner reviewed the first designs and chose **keep F17 content/required states, redo all five looks**. Build exactly these five materially different compositions, in the same locked teal system:
+
+1. **V1 Signal brief** — pair the overview and inbox source snapshots as separate evidence; never reconcile or animate the counts.
+2. **V2 Queue workbench** — queue-first list with a compact captured-snapshot/evidence rail and links to known F18 fixtures.
+3. **V3 Conversation index** — wide scan-first list with clear filter and source scope; do not invent sorting/actions.
+4. **V4 Operations ledger** — compact register with consistent, readable captured-metadata rhythm.
+5. **V5 Compose paths** — task-led direct/group forms with requirements and local-only boundary visible.
+
+Retain the source-backed home/inbox/new-direct/new-group states and captured 18-row inbox. Overview stays 18 conversations / 21 unread messages / 11 unread threads; inbox stays 18 / 20 / 10. Preserve this capture boundary in each relevant view. Do **not** invent per-row unread/flagged/muted statuses, delivery states, new inbox metrics, rows or actions to satisfy older generic wording in this prompt. Unsupported states remain omitted or explicitly marked unavailable; any existing local empty/loading/error mock remains a local demonstration, not a backend observation. All direct/group form submission is a local payload preview; no request, created thread, permission check or audit event is claimed. Keep `/messages/new-group` as the offline route because captured `/messages/new/group` returned 404; no user/client ID lookup is available.
+
+Research and pattern-to-concept synthesis live in `admin-portal-lab/families/F17-messages-home/docs/TEMPLATE-RESEARCH.md` (Intercom Inbox/customization/Command-K, Zendesk Agent Workspace, Freshdesk details, Front internal discussion boundary, Atlassian queues, IBM Carbon data-table guidance, SaaSFrame inbox gallery, SaaSUI list-detail patterns, Figr ticket-detail template, Figma community dashboard kit). These sources inform hierarchy and layout only; no competitor capabilities are added. Update the gallery/manifest with these five names and report actual static checks. Each page uses its own hand-authored `V#/design.css`; do not use a page generator. If no browser engine is available, record source-level checks and state clearly that visual/responsive/keyboard/accessibility checks are unperformed; never claim Gate 3 passed on that basis. Do not change other family folders or the master prompt.

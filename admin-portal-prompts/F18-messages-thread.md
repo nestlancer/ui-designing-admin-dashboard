@@ -101,11 +101,11 @@ Master §8.1–§8.2 (≥3/5 axes incl. A or C). Coverage: ≥1 minimal · ≥1 
 ### 8.3 Roster guidance (adapt freely — keep 5)
 | Variant | Suggested aspect (same tokens) |
 |---|---|
-| V1 | Ground-truth fix: captured thread, members closed, calm |
-| V2 | Stream-spine: the conversation owns the screen, room docks |
-| V3 | Room-first: members + context lead, stream below |
-| V4 | Dense console: compact thread + composer for support triage |
-| V5 | Motion-signature: send/scroll choreography + transitions |
+| V1 | Three-pane desk: queue, transcript and source context visible together |
+| V2 | Thread reader: wide transcript with persistent queue and optional context rail |
+| V3 | Room directory: participant/source context precedes the selected transcript |
+| V4 | Message ledger: compact chronology with explicit actor/time rhythm |
+| V5 | Conversation folio: generous dated narrative with subordinate source context |
 
 ## 9. BUILD (manual, one by one)
 
@@ -165,3 +165,25 @@ Added after studying **12 live enterprise/operator login pages** (AWS Console, G
 ## Owner review — source-complete data and differentiated design (2026-11-02)
 
 When a reviewer says demo data is incomplete or designs resemble the production screenshot, re-inspect the applicable captures individually, reconcile every identity and visible record with the related Swagger contracts, and document missing or conflicting data. Do not substitute one account’s data for another, invent unseen pages, claim a simulated action was executed, or claim a server permission/audit result. Search and inspect relevant public design examples, then change information architecture and visual hierarchy as appropriate — not just colours or small spacing changes. Preserve approved work unless the user asks for revisions; this review explicitly requests changes to both F15 and F16. Test the revised pages and report actual coverage and unresolved gaps. Follow the shared master and relevant family scope; do not mark gates passed merely because an initial mock exists.
+
+### 2026-11-02 · Thread research + source-integrity addendum (applies to this F18 run)
+
+The source set has a material identity mismatch: screenshots 026/078/079/080 show the three-member “Payments ops — Razorpay settlement and webhooks” group (Riya Kapoor, Karthik Menon, Ananya Iyer); canonical HTML 162–165 is a direct conversation with Amit Verma, while 86–90 capture other direct clients. Do not merge these records or use the group transcript for Amit. Design the main thread state from the screenshot-backed group, keep the HTML-backed Amit direct conversation a separate selectable thread/reference, and record the mismatch in `BASELINE-MAP.md` and `REPORT-STUDY.md`. If an identity, member role, timestamp, attachment, or message body is not in the relevant source, mark it unknown rather than completing it with synthetic data.
+
+Use screenshot/API evidence for visible message chronology, member closure, composer and edit/reply/mark-read states. Expose a clear participant drawer/card even when collapsed on narrow screens. Keep system-event copy and the three group identities together; do not imply the 5 captured thread snapshots all belong to that group. Flagged state is not present on the selected message in the screenshot: preserve a local Flag affordance only as a labelled preview, and link the flagged-review route to F19 without claiming server-side review. The thread list and composer are prototypes, not live chat transport; sending/editing/mark-read/flag controls must disclose that no API request or audit write occurs.
+
+Gate T references opened for this run: Intercom Inbox (conversation context, right preview and image inspection), Zendesk Agent Workspace (message transcript with person context), Front comments (internal/customer visibility boundary), Freshdesk ticket detail (quick list + conversation + properties/context), Help Scout mobile conversation (reply/attachment controls and profile access), Slack threads (contextual reply and return-to-parent navigation only), Salesforce messaging console (transcript + related-record pane), Help Scout thread API (explicit thread/attachment records), and Front assignment docs (single-owner affordance only as inspiration). Do not import unsupported assignment, internal-note, reactions, presence, snooze, notifications, automation, AI, or channel features. Internal notes specifically remain absent because the Nestlancer capture does not show one and the app-specific spec does not document a team-private chat-note capability.
+
+### Owner-approved redesign roster and implementation note · 2026-11-02
+
+This section supersedes the earlier F18 concept roster and any previous visual direction. The owner reviewed the first designs and asked for **five clearly different thread directions using design judgment**. Build these five materially different compositions in the locked teal system:
+
+1. **V1 Three-pane desk** — queue, transcript and source context all visible together.
+2. **V2 Thread reader** — transcript-first wide reading surface; keep a narrow queue for orientation and toggle context.
+3. **V3 Room directory** — participant/source context leads, followed by the selected transcript.
+4. **V4 Message ledger** — compact chronological register with explicit actor/time rhythm and secondary context.
+5. **V5 Conversation folio** — generous dated narrative with subordinate source/participant context.
+
+The group fixture is screenshot-backed: Payments ops, with Riya Kapoor, Karthik Menon and Ananya Iyer. The Amit Verma direct fixture is HTML-backed and is not joined to that screenshot group. Keep both fixtures separately switchable, with source labels; do not borrow identities, messages, timestamps, member roles or IDs. All captured content and required local state previews remain. Do not add assignment, internal-note, reactions, delivery/read receipt guarantees, attachments, SLA, channel, send success, server permission or audit writes. Actions only present labelled local previews; no request is made.
+
+Research and pattern-to-concept synthesis are recorded in `admin-portal-lab/families/F18-messages-thread/docs/TEMPLATE-RESEARCH.md` (Intercom Inbox/events, Zendesk Agent Workspace/side conversations, Freshdesk ticket detail, Slack threads, Front internal discussions, Help Scout thread API, SaaSUI list-detail patterns, Figr ticket template, IBM Carbon table guidance and the Figma community kit). References inform geometry, chronology and context handling only. Each page uses its own hand-authored `V#/design.css`; no page factory or generator. Update gallery/manifest and report actual checks. If no browser engine is available, report only source-level checks and explicitly say visual/responsive/keyboard/accessibility verification remains unperformed; do not claim Gate 3 passed. Do not change other family folders or the master prompt.

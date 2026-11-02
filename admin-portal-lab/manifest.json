@@ -1874,11 +1874,41 @@
       "route": "/users",
       "familyStatus": "Five preliminary offline layouts, derived from a shared pilot; strict research and accessibility gates remain incomplete.",
       "variants": [
-        {"id":"V1","name":"Directory ledger","path":"families/F15-users-directory/V1/index.html","aspect":"20 captured first-page users and local batch preview","status":"Preliminary; no production operations"},
-        {"id":"V2","name":"Triage rail","path":"families/F15-users-directory/V2/index.html","aspect":"Side filters and workset","status":"Preliminary; derived from shared pilot"},
-        {"id":"V3","name":"Identity cards","path":"families/F15-users-directory/V3/index.html","aspect":"Card-reflowed directory","status":"Preliminary; derived from shared pilot"},
-        {"id":"V4","name":"Operations register","path":"families/F15-users-directory/V4/index.html","aspect":"Compact table","status":"Preliminary; derived from shared pilot"},
-        {"id":"V5","name":"Search first","path":"families/F15-users-directory/V5/index.html","aspect":"Results before context","status":"Preliminary; derived from shared pilot"}
+        {
+          "id": "V1",
+          "name": "Directory ledger",
+          "path": "families/F15-users-directory/V1/index.html",
+          "aspect": "20 captured first-page users and local batch preview",
+          "status": "Preliminary; no production operations"
+        },
+        {
+          "id": "V2",
+          "name": "Triage rail",
+          "path": "families/F15-users-directory/V2/index.html",
+          "aspect": "Side filters and workset",
+          "status": "Preliminary; derived from shared pilot"
+        },
+        {
+          "id": "V3",
+          "name": "Identity cards",
+          "path": "families/F15-users-directory/V3/index.html",
+          "aspect": "Card-reflowed directory",
+          "status": "Preliminary; derived from shared pilot"
+        },
+        {
+          "id": "V4",
+          "name": "Operations register",
+          "path": "families/F15-users-directory/V4/index.html",
+          "aspect": "Compact table",
+          "status": "Preliminary; derived from shared pilot"
+        },
+        {
+          "id": "V5",
+          "name": "Search first",
+          "path": "families/F15-users-directory/V5/index.html",
+          "aspect": "Results before context",
+          "status": "Preliminary; derived from shared pilot"
+        }
       ]
     },
     "F16-user-details-safety": {
@@ -1887,11 +1917,127 @@
       "route": "/users/[id]",
       "familyStatus": "Five preliminary offline layouts, derived from a shared pilot; strict research and accessibility gates remain incomplete.",
       "variants": [
-        {"id":"V1","name":"Profile dossier","path":"families/F16-user-details-safety/V1/index.html","aspect":"Seven historical profiles, guarded action and device previews","status":"Preliminary; no production operations or audit"},
-        {"id":"V2","name":"Trust spine","path":"families/F16-user-details-safety/V2/index.html","aspect":"Identity and safeguards first","status":"Preliminary; derived from shared pilot"},
-        {"id":"V3","name":"Account chronology","path":"families/F16-user-details-safety/V3/index.html","aspect":"Activity-led view","status":"Preliminary; derived from shared pilot"},
-        {"id":"V4","name":"Account workbench","path":"families/F16-user-details-safety/V4/index.html","aspect":"Compact operational panels","status":"Preliminary; derived from shared pilot"},
-        {"id":"V5","name":"Review path","path":"families/F16-user-details-safety/V5/index.html","aspect":"Verify, review and inspect context","status":"Preliminary; derived from shared pilot"}
+        {
+          "id": "V1",
+          "name": "Profile dossier",
+          "path": "families/F16-user-details-safety/V1/index.html",
+          "aspect": "Seven historical profiles, guarded action and device previews",
+          "status": "Preliminary; no production operations or audit"
+        },
+        {
+          "id": "V2",
+          "name": "Trust spine",
+          "path": "families/F16-user-details-safety/V2/index.html",
+          "aspect": "Identity and safeguards first",
+          "status": "Preliminary; derived from shared pilot"
+        },
+        {
+          "id": "V3",
+          "name": "Account chronology",
+          "path": "families/F16-user-details-safety/V3/index.html",
+          "aspect": "Activity-led view",
+          "status": "Preliminary; derived from shared pilot"
+        },
+        {
+          "id": "V4",
+          "name": "Account workbench",
+          "path": "families/F16-user-details-safety/V4/index.html",
+          "aspect": "Compact operational panels",
+          "status": "Preliminary; derived from shared pilot"
+        },
+        {
+          "id": "V5",
+          "name": "Review path",
+          "path": "families/F16-user-details-safety/V5/index.html",
+          "aspect": "Verify, review and inspect context",
+          "status": "Preliminary; derived from shared pilot"
+        }
+      ]
+    },
+    "F17-messages-home": {
+      "slug": "F17-messages-home",
+      "title": "Messages home and inbox",
+      "route": "/messages",
+      "familyStatus": "Five redesigned offline variants. Overview and inbox historical snapshots remain distinct; direct/group creation are local previews only. Static audit passed (10 pages, 10 variant stylesheets, 230 resource/link fetches, 0 issues); browser verification remains unperformed.",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Signal brief",
+          "path": "families/F17-messages-home/V1/index.html",
+          "aspect": "Paired source-snapshot masthead, historical figures and recent captured activity.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V2",
+          "name": "Queue workbench",
+          "path": "families/F17-messages-home/V2/index.html",
+          "aspect": "Persistent queue-first split with compact source/evidence rail.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V3",
+          "name": "Conversation index",
+          "path": "families/F17-messages-home/V3/index.html",
+          "aspect": "Wide scan-first conversation index and explicit filter/source scope.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V4",
+          "name": "Operations ledger",
+          "path": "families/F17-messages-home/V4/index.html",
+          "aspect": "Compact, consistent row register for dense desktop scanning.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V5",
+          "name": "Compose paths",
+          "path": "families/F17-messages-home/V5/index.html",
+          "aspect": "Task-led direct/group local-preview forms with contract requirements.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        }
+      ]
+    },
+    "F18-messages-thread": {
+      "slug": "F18-messages-thread",
+      "title": "Messages thread",
+      "route": "/messages/[threadId]",
+      "familyStatus": "Five redesigned offline variants. Screenshot-backed Payments ops group and HTML-backed Amit Verma direct conversation remain separate; actions are local previews only. Static audit passed (10 pages, 10 variant stylesheets, 230 resource/link fetches, 0 issues); browser verification remains unperformed.",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Three-pane desk",
+          "path": "families/F18-messages-thread/V1/index.html",
+          "aspect": "Queue, transcript and source context visible together.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V2",
+          "name": "Thread reader",
+          "path": "families/F18-messages-thread/V2/index.html",
+          "aspect": "Transcript-first wide reading surface with persistent queue and toggled context.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V3",
+          "name": "Room directory",
+          "path": "families/F18-messages-thread/V3/index.html",
+          "aspect": "Participant/source context precedes the selected transcript.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V4",
+          "name": "Message ledger",
+          "path": "families/F18-messages-thread/V4/index.html",
+          "aspect": "Compact chronology with explicit actor/time rhythm and side context.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        },
+        {
+          "id": "V5",
+          "name": "Conversation folio",
+          "path": "families/F18-messages-thread/V5/index.html",
+          "aspect": "Generous dated narrative with subordinate source/participant context.",
+          "status": "Redesigned 2 Nov 2026; static audit passed; browser verification unperformed"
+        }
       ]
     }
   }

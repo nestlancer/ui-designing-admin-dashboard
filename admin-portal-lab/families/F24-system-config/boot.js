@@ -1,0 +1,2 @@
+/* F24: pre-paint theme and the existing cross-family sidebar preference. */
+(function(){var r=document.documentElement;r.classList.add('js');try{var q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');r.classList.toggle('dark',t==='dark');r.classList.toggle('rail-collapsed',localStorage.getItem('nl-rail')==='collapsed');}catch(e){}})();

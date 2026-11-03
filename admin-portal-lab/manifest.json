@@ -3207,6 +3207,79 @@
           ]
         }
       ]
+    },
+    "F25-integrations-audit": {
+      "slug": "F25-integrations-audit",
+      "title": "Integrations & audit · evidence-led designs",
+      "route": "/integrations and /audit",
+      "status": "five offline prototypes; owner review and remaining acceptance checks pending",
+      "variants": [
+        {
+          "id": "V1",
+          "name": "Signal desk (pilot)",
+          "path": "families/F25-integrations-audit/V1/index.html",
+          "aspect": "Integration-led registry and audit explorer",
+          "changes": [
+            "C3",
+            "C4",
+            "C5",
+            "C9",
+            "C12",
+            "C13",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "adds": [
+            "A7 (preview only)",
+            "A12 (synthetic preview only)"
+          ],
+          "api": [
+            "GET /api/webhooks",
+            "POST /api/webhooks",
+            "GET /api/audit",
+            "GET /api/audit/{id}",
+            "POST /api/audit/export"
+          ],
+          "limitations": "Static simulation; not API-connected. Full acceptance pending."
+        },
+        {
+          "id": "V2",
+          "name": "Evidence explorer",
+          "path": "families/F25-integrations-audit/V2/index.html",
+          "aspect": "Audit-first investigator, source spine and filtered evidence table",
+          "changes": ["C3", "C4", "C13", "C19", "C18", "C20"],
+          "adds": ["A7 (preview only)", "A12 (synthetic preview only)"],
+          "limitations": "Historical capture; no live API, credentials, server export or audit result."
+        },
+        {
+          "id": "V3",
+          "name": "Connections map",
+          "path": "families/F25-integrations-audit/V3/index.html",
+          "aspect": "Event-to-endpoint pathway with central local draft and contextual health",
+          "changes": ["C3", "C4", "C13", "C19", "C18", "C20"],
+          "adds": ["A7 (preview only)", "A12 (synthetic preview only)"],
+          "limitations": "Historical capture; no live API, credentials, server export or audit result."
+        },
+        {
+          "id": "V4",
+          "name": "Trust ledger",
+          "path": "families/F25-integrations-audit/V4/index.html",
+          "aspect": "Dense audit register, compact security strip and delivery context rail",
+          "changes": ["C3", "C4", "C13", "C19", "C18", "C20"],
+          "adds": ["A7 (preview only)", "A12 (synthetic preview only)"],
+          "limitations": "Historical capture; no live API, credentials, server export or audit result."
+        },
+        {
+          "id": "V5",
+          "name": "Trace journey",
+          "path": "families/F25-integrations-audit/V5/index.html",
+          "aspect": "Chaptered connection, delivery and evidence flow with reduced motion support",
+          "changes": ["C3", "C4", "C13", "C19", "C18", "C20"],
+          "adds": ["A7 (preview only)", "A12 (synthetic preview only)"],
+          "limitations": "Historical capture; no live API, credentials, server export or audit result."
+        }
+      ]
     }
   }
 }

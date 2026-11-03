@@ -1,0 +1,5 @@
+# F25 baseline · 3 November 2026
+
+Screenshots individually inspected: 016 integration health / preferences / catalog / empty registry; 017 same plus inline Name, URL, Events and Create/Cancel; 065 audit long-form overview. Snapshots 130, 180, 131, 193 inspected. Routes `/integrations`, `/audit`. Audit row-click capture 193 does not show a detail drawer; C13 is a proposed improvement, not a captured state.
+
+Capture: `ok` / `webhooks-admin`, 12 catalog events (identities unavailable), zero configured webhooks. Toggles show retry and signing preferences, but persistence is not demonstrated. Audit security snapshot: total users 34, active users 34, suspended 0, two-factor enabled 0, failed logins 24h 0, active sessions 4. Counts are historical, not current. Three source tables: system 50 and auth 50 (identical visible rows), user-admin 32; 132 displayed rows are not 132 unique events. 16 impersonation sessions appear separately. Fields Actor, Action, Category, Resource, IP, User-Agent, Timestamp; original filters are three independent search/action filters plus one sessions search/status. Source 193 matches 131 in row counts. Data may be sensitive; keep local.

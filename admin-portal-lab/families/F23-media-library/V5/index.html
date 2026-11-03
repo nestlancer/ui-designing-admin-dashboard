@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Media · Choreography · F23 V5 · Nestlancer</title>
+<link rel="icon" href="../../../assets/favicon.svg">
+<link rel="stylesheet" href="../../../shared/tokens.css">
+<link rel="stylesheet" href="../../../shared/base.css">
+<link rel="stylesheet" href="../media.css">
+<link rel="stylesheet" href="theme.css">
+<script src="../boot.js"></script></head>
+<body class="v5">
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell"><aside class="rail" id="rail" aria-label="Console navigation"></aside><div class="main">
+<header class="topbar" id="topbar"></header>
+<main class="canvas" id="main">
+  <div class="page-head"><div><div class="eyebrow">Content / Media Library · V5 Choreography</div><h1>Media Library</h1>
+    <p>Browse public and private storage, preview assets, and manage quarantine and analytics.</p></div>
+    <div class="head-actions"><button class="btn" data-action="sources">Source details</button><button class="btn" data-action="help">? Shortcuts</button><button class="btn primary" data-action="upload">Start upload</button></div></div>
+  <div class="source-line" id="sources"><span class="source-dot"></span><span>Captured dataset · 30 Oct 2026</span><span class="sep">/</span><span>Upload flow is spec-backed, not photographed</span><span class="sep">/</span><span>Local changes only</span><button data-action="sources">Provenance</button></div>
+
+  <!-- V5 signature: a visible choreography lane for the un-photographed upload flow -->
+  <section class="choreo" aria-labelledby="choreo-h">
+    <div class="choreo-head"><div><span class="eyebrow">Upload choreography · local staging</span><h2 id="choreo-h">Four steps, no invented bytes</h2></div><button class="btn sm" data-action="upload">Open staged flow</button></div>
+    <ol class="choreo-steps">
+      <li><span class="c-num">01</span><b>Request</b><span>POST /api/v1/media/upload/request</span></li>
+      <li><span class="c-num">02</span><b>Progress</b><span>chunked init / part / status</span></li>
+      <li><span class="c-num">03</span><b>Confirm</b><span>POST /api/v1/media/upload/confirm</span></li>
+      <li><span class="c-num">04</span><b>Done</b><span>local receipt only · no asset added</span></li>
+    </ol>
+    <div class="progress" aria-hidden="true"><i style="width:0"></i></div>
+    <p class="tight">No upload screenshot exists. The spec declares JSON DTOs and chunked operations but no multipart/binary body, so this lane never sends a file. “Abort” maps to <span class="mono">POST /api/v1/media/upload/chunked/{uploadId}/abort</span>.</p>
+  </section>
+
+  <div class="tabs" role="tablist" aria-label="Media Library workspace">
+    <button role="tab" id="tab-storage" aria-controls="panel-storage" aria-selected="true" data-action="tab" data-tab="storage">Storage <span class="n">146</span></button>
+    <button role="tab" id="tab-quarantine" aria-controls="panel-quarantine" aria-selected="false" tabindex="-1" data-action="tab" data-tab="quarantine">Quarantine <span class="n">0</span></button>
+    <button role="tab" id="tab-analytics" aria-controls="panel-analytics" aria-selected="false" tabindex="-1" data-action="tab" data-tab="analytics">Analytics</button>
+  </div>
+
+  <section id="panel-storage" role="tabpanel" aria-labelledby="tab-storage" data-panel="storage">
+    <div class="v5-layout">
+      <div class="stage">
+        <div class="dropzone"><span class="dz-icon" aria-hidden="true">⇧</span><div><h3>Drag &amp; drop to upload</h3><p>Images, documents, video, and archives</p></div><span class="spacer"></span><button class="btn sm" data-action="upload">Browse files</button></div>
+        <div class="filters" aria-label="Asset filters">
+          <div class="chip-row"><span class="lbl">Type</span>
+            <button class="chip" data-action="filter" data-filter-group="type" data-value="All types" aria-pressed="true">All types</button><button class="chip" data-action="filter" data-filter-group="type" data-value="IMAGE" aria-pressed="false">IMAGE</button><button class="chip" data-action="filter" data-filter-group="type" data-value="DOCUMENT" aria-pressed="false">DOCUMENT</button><button class="chip" data-action="filter" data-filter-group="type" data-value="VIDEO" aria-pressed="false">VIDEO</button><button class="chip" data-action="filter" data-filter-group="type" data-value="ARCHIVE" aria-pressed="false">ARCHIVE</button></div>
+          <div class="chip-row"><span class="lbl">Source</span>
+            <button class="chip" data-action="filter" data-filter-group="source" data-value="All sources" aria-pressed="true">All sources</button><button class="chip" data-action="filter" data-filter-group="source" data-value="Message attachments" aria-pressed="false">Message attachments</button><button class="chip" data-action="filter" data-filter-group="source" data-value="Projects" aria-pressed="false">Projects</button><button class="chip" data-action="filter" data-filter-group="source" data-value="Deliveries" aria-pressed="false">Deliveries</button><button class="chip" data-action="filter" data-filter-group="source" data-value="Uploads only" aria-pressed="false">Uploads only</button><button class="chip" data-action="filter" data-filter-group="source" data-value="Folders" aria-pressed="false">Folders</button></div>
+          <label class="field-search"><span class="sr">Search files</span><span aria-hidden="true">⌕</span><input type="search" data-search placeholder="Search filename, mime, or ID…"></label>
+          <label class="sr" for="v5-status">Status</label><select class="sel" id="v5-status" data-status><option>All statuses</option><option>READY</option><option>PROCESSING</option><option>QUARANTINED</option><option>FAILED</option><option>UPLOADING</option></select>
+          <label class="sr" for="v5-sort">Sort</label><select class="sel" id="v5-sort" data-sort><option>Newest</option><option>Oldest</option><option>Largest</option><option>Name A–Z</option></select>
+          <button class="btn sm" data-action="clear-filter">Clear</button><div class="divider"></div>
+          <button class="btn sm" data-action="view-grid" aria-pressed="true" aria-label="Grid view">▦</button><button class="btn sm" data-action="view-list" aria-pressed="false" aria-label="List view">☰</button><button class="btn sm" data-action="clear-filter">View all files</button></div>
+        <p class="filter-summary" data-filter-note hidden></p>
+        <div data-workspace>
+          <p class="state-note empty" data-state-note hidden></p>
+          <div class="skeleton-stack" aria-hidden="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+          <div class="empty-state"><b>No quarantined media</b>Files flagged by security scanning will appear here for release, reprocess, or delete. — exact captured empty state.</div>
+          <div class="error-state"><b>Degraded view</b>Failed RSC prefetches and a CSP inline-style console error were logged on the captured DOM states. No live failure is claimed.</div>
+          <div class="grid-head"><label><input type="checkbox" data-select-page> Select page</label><span class="tag teal">Click a card → drawer slides in</span><span class="tight">145 files · previews load as you scroll / Page 1 of 7 · 146 files</span></div>
+          <div class="asset-grid" data-asset-list aria-label="Captured media assets">
+            <button class="asset" type="button" data-key="a01" data-name="sandeep-chopra-gps-fleet-gps-fleet-staging-review.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="353 B" data-order="1" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">sandeep-chopra-gps-fleet-gps-fleet-staging-review.zip</span><span class="a-meta">application/zip · 353 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a02" data-name="sandeep-chopra-gps-fleet-gps-fleet-staging-spec.pdf" data-mime="application/pdf" data-type="DOCUMENT" data-status="READY" data-size="20.3 KB" data-order="2" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext pdf">PDF</span></span><span class="a-name">sandeep-chopra-gps-fleet-gps-fleet-staging-spec.pdf</span><span class="a-meta">application/pdf · 20.3 KB</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a03" data-name="karthik-menon-ui-switch-ui-staging-review.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="356 B" data-order="3" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">karthik-menon-ui-switch-ui-staging-review.zip</span><span class="a-meta">application/zip · 356 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a05" data-name="pooja-kulkarni-clinic-booking-final-spec.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="319 B" data-order="5" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">pooja-kulkarni-clinic-booking-final-spec.zip</span><span class="a-meta">application/zip · 319 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a07" data-name="suresh-iyer-mandi-app-nestlancer-app-v1.0.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="319 B" data-order="7" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">suresh-iyer-mandi-app-nestlancer-app-v1.0.zip</span><span class="a-meta">application/zip · 319 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a09" data-name="neha-gupta-attendance-saas-final-spec.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="319 B" data-order="9" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">neha-gupta-attendance-saas-final-spec.zip</span><span class="a-meta">application/zip · 319 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a11" data-name="ananya-iyer-reconciliation-services-PB2-001-webhook-events.md" data-mime="text/markdown" data-type="DOCUMENT" data-status="READY" data-size="431 B" data-order="11" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext md">TXT</span></span><span class="a-name">ananya-iyer-reconciliation-services-PB2-001-webhook-events.md</span><span class="a-meta">text/markdown · 431 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+            <button class="asset" type="button" data-key="a12" data-name="sameera-patel-lending-page-suite-nestlancer-landing-pages-v1.0.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="539 B" data-order="12" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">sameera-patel-lending-page-suite-nestlancer-landing-pages-v1.0.zip</span><span class="a-meta">application/zip · 539 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Riya Kapoor</span></span></button>
+          </div>
+        </div>
+        <div class="grid-foot"><span data-count>Showing 1–8 of 146 · page 1 of 7 · 8 of 12 captured cards rendered</span><span class="spacer"></span><button class="btn sm" data-action="state" data-state="loading">Back to folders</button><button class="btn sm" disabled>Previous</button><button class="btn sm" disabled>Next</button><strong>Page 1 of 7 · 146 files</strong></div>
+      </div>
+      <aside class="motion-rail" aria-label="Motion and provenance notes">
+        <div class="motion-block"><span class="eyebrow">Motion signature</span><p>Staggered card entry, a drawer that slides beside the grid, and a step lane that fills left-to-right. Only transform/opacity animate; reduced-motion is honoured.</p></div>
+        <div class="motion-block"><span class="eyebrow">Safety choreography</span><p>Delete → preview → confirm → 10-second Undo. Share link → required purpose → local receipt. Cleanup → dry run first.</p></div>
+        <div class="motion-block"><span class="eyebrow">Captured dialogs</span><p>075 Create share link: Purpose / statement, “7 days — auto-revoke after expiry”, Password (optional).<br>076 Edit metadata: Filename, Display name, Description, Visibility.</p></div>
+        <div class="motion-block"><span class="eyebrow">Not invented</span><p>No real thumbnails, no 30-day series, no folder rows, no quarantined assets, no bulk tag/move endpoint, no server result.</p></div>
+        <div class="endpoint-print">POST /api/v1/media/upload/request · /confirm · /direct · /upload/chunked/init · /{uploadId}/part · /{uploadId}/complete · /{uploadId}/status · /{uploadId}/abort</div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="panel-quarantine" role="tabpanel" aria-labelledby="tab-quarantine" data-panel="quarantine" hidden>
+    <div class="panel"><div class="panel-head"><h2>Quarantine · review craft</h2><span class="tag">Captured count 0</span><span class="spacer"></span><button class="btn sm" data-action="quarantine-demo">Load local review demo</button></div><div class="panel-body">
+      <div class="review-empty" data-quarantine-empty><span class="mark" aria-hidden="true">⚑</span><div><h3>No quarantined media</h3><p>Files flagged by security scanning will appear here for release, reprocess, or delete.</p><p class="tight">Shot 021 / DOM 121 / DOM 187. No flagged asset or scan verdict was captured.</p></div></div>
+      <div class="review-row" data-demo-review data-demo-name="Local demo · flagged file A" hidden><div><span class="demo-flag">LOCAL DEMO</span> <span class="r-name">Local demo · flagged file A</span><div class="r-why">Local only — no captured quarantined asset.</div></div><div class="r-why">Release · reprocess · purge (force)</div><div class="r-acts"><button class="btn sm" data-action="review-do" data-do="Release">Release</button><button class="btn sm" data-action="review-do" data-do="Reprocess">Reprocess</button><button class="btn sm danger" data-action="review-do" data-do="Purge">Purge</button></div></div>
+      <div class="review-row" data-demo-review data-demo-name="Local demo · flagged file B" hidden><div><span class="demo-flag">LOCAL DEMO</span> <span class="r-name">Local demo · flagged file B</span><div class="r-why">Reason required · 10s undo · local only.</div></div><div class="r-why">No operator quarantines an asset in this spec</div><div class="r-acts"><button class="btn sm" data-action="review-do" data-do="Release">Release</button><button class="btn sm" data-action="review-do" data-do="Reprocess">Reprocess</button><button class="btn sm danger" data-action="review-do" data-do="Purge">Purge</button></div></div>
+      <ol class="runbook"><li>Context before consequence; no invented scan verdict.</li><li>Reason + preview + confirm, then 10-second local Undo (C17).</li><li>Every decision is local; no server audit or permission result is claimed.</li></ol>
+      <div class="endpoint-print">GET /api/v1/admin/media/quarantine · POST /api/v1/admin/media/quarantine/{id}/release · DELETE /api/v1/admin/media/quarantine/{id}?force={boolean} · POST /api/v1/admin/media/{id}/reprocess</div>
+    </div></div>
+  </section>
+
+  <section id="panel-analytics" role="tabpanel" aria-labelledby="tab-analytics" data-panel="analytics" hidden>
+    <div class="kpi-grid"><div class="kpi"><div class="k-label">Total files</div><div class="k-value">146</div><div class="k-src">D 122 / S 019</div></div><div class="kpi"><div class="k-label">Storage used</div><div class="k-value">19.3 MB</div><div class="k-src">D 122 / S 019</div></div><div class="kpi"><div class="k-label">Quarantined</div><div class="k-value">0</div><div class="k-src">S 021 / D 121</div></div><div class="kpi"><div class="k-label">Processing</div><div class="k-value">0</div><div class="k-src">S 019</div></div></div>
+    <div class="hr"></div><div class="analytics-split"><div class="panel"><div class="panel-head"><h2>Files by type</h2><span class="tag mono">118 + 1 + 12 + 15 = 146</span></div><div class="panel-body" data-types>
+      <div class="type-row"><span class="t-mime">image/jpeg</span><span class="t-bar"><i style="width:100%"></i></span><span class="t-num">118 (19 MB)</span></div>
+      <div class="type-row"><span class="t-mime">text/markdown</span><span class="t-bar"><i style="width:3%"></i></span><span class="t-num">1 (431 B)</span></div>
+      <div class="type-row"><span class="t-mime">application/zip</span><span class="t-bar"><i style="width:10%"></i></span><span class="t-num">12 (4.2 KB)</span></div>
+      <div class="type-row"><span class="t-mime">application/pdf</span><span class="t-bar"><i style="width:13%"></i></span><span class="t-num">15 (304.5 KB)</span></div></div></div>
+      <div class="panel"><div class="panel-head"><h2>Uploads (last 30 days)</h2></div><div class="panel-body"><div class="sparse"><span>Baseline dashes and one prominent bar. No labelled 30-day series was captured; no values inferred.</span><div class="baseline" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i></i><i></i><i></i><i></i><i></i></div><span class="eyebrow">Sparse-data honesty · C10</span></div>
+        <div class="maintenance"><b>Storage maintenance</b><div style="margin-top:6px">Preview unattached private media (no context, excluding published site assets) before cleanup. Dry run does not delete anything.</div><div class="acts"><button class="btn sm" data-action="cleanup" data-mode="preview">Preview cleanup</button><button class="btn sm danger" data-action="cleanup" data-mode="run">Run cleanup</button></div></div>
+        <div class="endpoint-print">GET /api/v1/admin/media/analytics · GET /api/v1/admin/media/orphans · POST /api/v1/admin/media/cleanup?dryRun={boolean}</div></div></div></div>
+  </section>
+
+  <details class="statebar"><summary>Prototype states &amp; provenance</summary><div class="state-acts">
+    <button class="btn sm" data-action="state" data-state="ready" aria-pressed="true">Captured</button><button class="btn sm" data-action="state" data-state="empty" aria-pressed="false">Empty</button><button class="btn sm" data-action="state" data-state="loading" aria-pressed="false">Loading / Folders</button><button class="btn sm" data-action="state" data-state="error" aria-pressed="false">Degraded</button><button class="btn sm" data-action="state" data-state="upload" aria-pressed="false">Upload progress</button><button class="btn sm" data-action="sources">Source differences</button></div></details>
+  <noscript><div class="noscript">Media Library · choreography. Captured: 146 files, 19.3 MB, 0 quarantined, 0 processing; Public 118 / Private 28; Storage · Quarantine · Analytics; 8 transcribed asset cards; asset detail, share-link and edit-metadata dialogs; upload, quarantine and cleanup flows require JavaScript. Historical captures, not live telemetry.</div></noscript>
+</main><footer class="footer" id="footer"></footer></div></div>
+<script src="../fixtures.js"></script><script src="../media.js"></script>
+</body></html>

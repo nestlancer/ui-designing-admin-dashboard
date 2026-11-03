@@ -1,0 +1,33 @@
+/* V2 · Grid spine — the asset wall owns the canvas; a docked inspector replaces modal hopping. */
+.v2 .canvas{padding-top:20px}
+.v2 .page-head{margin-bottom:10px}
+.v2 .page-head h1{font-size:clamp(28px,3.2vw,42px);font-weight:800}
+.v2 .page-head .eyebrow{color:var(--primary)}
+.v2 .tabs{margin-bottom:12px}
+.v2 .spine{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:16px;align-items:start}
+.v2 .wall-column{min-width:0}
+.v2 .wall-bar{margin-bottom:12px}
+.v2 .dropzone.compact{padding:10px 14px;border-radius:var(--radius-lg);margin-bottom:10px}
+.v2 .dropzone.compact .dz-icon{width:32px;height:32px}
+.v2 .filters{padding:9px 10px;gap:7px;margin-bottom:8px}
+.v2 .filters .chip-row{flex:1 1 100%}
+.v2 .wall-caption{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 2px 12px;border-bottom:1px solid var(--line);margin-bottom:14px;font-size:12px}
+.v2 .wall-caption b{font-family:var(--mono);font-size:12px;font-weight:700}
+.v2 .wall-caption label{display:inline-flex;align-items:center;gap:6px}
+.v2 .asset-grid.wall{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.v2 .asset-grid.wall .asset{padding:10px;gap:6px}
+.v2 .asset-grid.wall .thumb{height:96px;border-style:solid;border-color:var(--line);background:var(--tint-soft)}
+.v2 .asset-grid.wall .a-name{font-size:11px;min-height:30px}
+.v2 .asset-grid.wall .a-foot{font-size:9px}
+.v2 .inspector{position:sticky;top:66px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);overflow:hidden;box-shadow:var(--shadow-xs)}
+.v2 .inspector-head{padding:14px 16px;border-bottom:1px solid var(--line);background:var(--tint-soft)}
+.v2 .inspector-head h2{font-size:16px;margin:4px 0 4px}
+.v2 .inspector-body{padding:14px 16px;max-height:min(70vh,760px);overflow:auto}
+.v2 .inspector-block{padding:10px 0;border-bottom:1px solid var(--line)}
+.v2 .inspector-block h3{font-size:12px;word-break:break-word;margin:5px 0}
+.v2 .inspector .meta-grid{grid-template-columns:78px minmax(0,1fr);font-size:11px}
+.v2 .analytics-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.v2 .provenance{max-width:100ch}
+@media (min-width:1920px){ .v2 .spine{grid-template-columns:minmax(0,1fr) 360px} .v2 .asset-grid.wall{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))} }
+@media (max-width:1180px){ .v2 .spine{grid-template-columns:1fr} .v2 .inspector{position:static} .v2 .inspector-body{max-height:none} .v2 .analytics-split{grid-template-columns:1fr} }
+@media (max-width:620px){ .v2 .asset-grid.wall{grid-template-columns:repeat(2,minmax(0,1fr))} }

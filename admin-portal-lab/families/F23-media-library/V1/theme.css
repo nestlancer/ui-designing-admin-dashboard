@@ -1,0 +1,36 @@
+/* V1 · Ground-truth desk — the captured evidence ledger leads; browse rail left, work column right. */
+.v1 .canvas{padding-top:24px}
+.v1 .page-head{border-bottom:1px solid var(--line);padding-bottom:14px}
+.v1 .page-head h1{font-size:clamp(27px,2.7vw,36px)}
+.v1 .ledger{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);overflow:hidden;margin-bottom:18px}
+.v1 .ledger-cell{display:flex;flex-direction:column;gap:5px;padding:14px 18px;border-right:1px solid var(--line);position:relative}
+.v1 .ledger-cell:last-child{border-right:0}
+.v1 .ledger-cell::before{content:"";position:absolute;left:0;top:0;height:3px;width:34px;background:var(--primary)}
+.v1 .ledger-cell b{font-size:13px;font-weight:750;line-height:1.35}
+.v1 .ledger-cell b.mono{font-size:16px;letter-spacing:-.03em}
+.v1 .v1-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:18px;align-items:start}
+.v1 .browse-rail{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);position:sticky;top:66px}
+.v1 .browse-rail .panel-head{border-bottom:1px solid var(--line)}
+.v1 .browse-links{display:flex;flex-direction:column;padding:10px 8px;gap:3px}
+.v1 .browse-link{text-align:left;border:0;background:none;padding:8px 10px;border-radius:var(--radius-md);font-size:12px;font-weight:650;color:var(--muted-foreground)}
+.v1 .browse-link:hover{background:var(--tint-brand);color:var(--foreground)}
+.v1 .browse-link.on{background:var(--sidebar-active);color:var(--primary);font-weight:750}
+.v1 .bucket{display:flex;flex-direction:column;gap:4px;margin:8px 10px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--tint-soft);font-size:11px}
+.v1 .bucket b{font-size:12px}
+.v1 .bucket .mono{color:var(--primary);font-weight:700}
+.v1 .work-column{min-width:0}
+.v1 .filters{padding:12px;gap:8px}
+.v1 .filters .chip-row{flex:1 1 100%}
+.v1 .grid-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;font-size:12px}
+.v1 .grid-head label{display:inline-flex;align-items:center;gap:7px;font-weight:650}
+.v1 .grid-head .tight{font-family:var(--mono)}
+.v1 .asset-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.v1 .asset{background:var(--card)}
+.v1 .asset .a-name{font-size:11px}
+.v1 .analytics-split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:14px}
+.v1 .statebar{margin-top:22px}
+.v1 .provenance{font-size:11px;line-height:1.6}
+@media (min-width:1920px){ .v1 .asset-grid{grid-template-columns:repeat(6,minmax(0,1fr))} .v1 .v1-layout{grid-template-columns:260px minmax(0,1fr)} }
+@media (max-width:1240px){ .v1 .asset-grid{grid-template-columns:repeat(3,minmax(0,1fr))} .v1 .analytics-split{grid-template-columns:1fr} }
+@media (max-width:960px){ .v1 .v1-layout{grid-template-columns:1fr} .v1 .browse-rail{position:static} .v1 .ledger{grid-template-columns:repeat(2,minmax(0,1fr))} .v1 .ledger-cell:nth-child(2){border-right:0} }
+@media (max-width:620px){ .v1 .asset-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .v1 .ledger{grid-template-columns:1fr} .v1 .ledger-cell{border-right:0;border-bottom:1px solid var(--line)} }

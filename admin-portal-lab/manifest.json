@@ -2652,6 +2652,292 @@
     "siblingSharedChanges": 0,
     "ownerApproved": false
    }
+  },
+  "F23-media-library": {
+   "slug": "F23-media-library",
+   "title": "Media Library · evidence-led run",
+   "route": "/media",
+   "baseline": "9 screenshots · 7 DOM states · report md + 10 XLSX sheets · media.openapi.json 50 paths / 57 operations · 12 opened enterprise-ops/DAM references",
+   "gates": {
+    "S": "PASS 9/9 shots, 7/7 HTML",
+    "R": "PASS md + 10/10 sheets",
+    "A": "PASS 50 paths / 57 ops",
+    "T": "PASS 12 refs, order S→R→A→T",
+    "1": "PASS 5/5 concepts",
+    "3": "PARTIAL — simple smoke only, owner manual review pending"
+   },
+   "changes": [
+    "C17",
+    "C19",
+    "C3",
+    "C5",
+    "C9",
+    "C12",
+    "C18",
+    "C20"
+   ],
+   "adds": [
+    "A1"
+   ],
+   "keep": [
+    "Storage / Quarantine / Analytics structure",
+    "captured microcopy",
+    "teal + Inter identity"
+   ],
+   "smoke": "5/5 HTTP 200 · card→drawer · Escape · dark toggle · 0 JS errors at 1440 light (3 Nov 2026)",
+   "sizeNote": "≈115–118 KB raw / ≈31 KB gzip per page (shared runtime), over 70 KB soft budget, disclosed",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Ground-truth desk",
+     "path": "families/F23-media-library/V1/index.html",
+     "aspect": "Evidence ledger → Browse rail → captured four-column grid; guarded drawer and deletes",
+     "axes": [
+      "A evidence ledger",
+      "B captured bucket order",
+      "C browse rail + drawer",
+      "D comfortable",
+      "E filter + local preparation"
+     ],
+     "changes": [
+      "C17",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1"
+     ],
+     "api": [
+      "GET /api/v1/admin/media",
+      "GET /api/v1/admin/media/quarantine",
+      "GET /api/v1/admin/media/analytics",
+      "POST /api/v1/admin/media/bulk-delete",
+      "POST /api/v1/admin/media/cleanup?dryRun",
+      "POST /api/v1/media/upload/request",
+      "POST /api/v1/media/upload/confirm",
+      "POST /api/v1/admin/media/{id}/share",
+      "PATCH /api/v1/admin/media/{id}",
+      "POST /api/v1/admin/media/quarantine/{id}/release",
+      "DELETE /api/v1/admin/media/quarantine/{id}?force",
+      "POST /api/v1/admin/media/{id}/reprocess"
+     ],
+     "workflowExamples": [
+      "asset detail drawer",
+      "share-link purpose/timeout",
+      "edit metadata",
+      "quarantine release with reason and 10s undo",
+      "bulk select + delete preview/confirm/undo",
+      "staged upload request → progress → confirm",
+      "cleanup dry run vs run",
+      "grid/list parity and search"
+     ]
+    },
+    {
+     "id": "V2",
+     "name": "Grid spine",
+     "path": "families/F23-media-library/V2/index.html",
+     "aspect": "Full-width asset wall with a docked master–detail inspector",
+     "axes": [
+      "A wall + inspector split",
+      "B asset tiles dominate",
+      "C docked inspector",
+      "D spacious",
+      "E hover + drawer"
+     ],
+     "changes": [
+      "C17",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1"
+     ],
+     "api": [
+      "GET /api/v1/admin/media",
+      "GET /api/v1/admin/media/quarantine",
+      "GET /api/v1/admin/media/analytics",
+      "POST /api/v1/admin/media/bulk-delete",
+      "POST /api/v1/admin/media/cleanup?dryRun",
+      "POST /api/v1/media/upload/request",
+      "POST /api/v1/media/upload/confirm",
+      "POST /api/v1/admin/media/{id}/share",
+      "PATCH /api/v1/admin/media/{id}",
+      "POST /api/v1/admin/media/quarantine/{id}/release",
+      "DELETE /api/v1/admin/media/quarantine/{id}?force",
+      "POST /api/v1/admin/media/{id}/reprocess"
+     ],
+     "workflowExamples": [
+      "asset detail drawer",
+      "share-link purpose/timeout",
+      "edit metadata",
+      "quarantine release with reason and 10s undo",
+      "bulk select + delete preview/confirm/undo",
+      "staged upload request → progress → confirm",
+      "cleanup dry run vs run",
+      "grid/list parity and search"
+     ]
+    },
+    {
+     "id": "V3",
+     "name": "Trust review",
+     "path": "families/F23-media-library/V3/index.html",
+     "aspect": "Quarantine trust band above the tabs; compact list and decision rail",
+     "axes": [
+      "A trust band first",
+      "B captured zero",
+      "C decision rail",
+      "D verdict-first",
+      "E reason + undo choreography"
+     ],
+     "changes": [
+      "C17",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1"
+     ],
+     "api": [
+      "GET /api/v1/admin/media",
+      "GET /api/v1/admin/media/quarantine",
+      "GET /api/v1/admin/media/analytics",
+      "POST /api/v1/admin/media/bulk-delete",
+      "POST /api/v1/admin/media/cleanup?dryRun",
+      "POST /api/v1/media/upload/request",
+      "POST /api/v1/media/upload/confirm",
+      "POST /api/v1/admin/media/{id}/share",
+      "PATCH /api/v1/admin/media/{id}",
+      "POST /api/v1/admin/media/quarantine/{id}/release",
+      "DELETE /api/v1/admin/media/quarantine/{id}?force",
+      "POST /api/v1/admin/media/{id}/reprocess"
+     ],
+     "workflowExamples": [
+      "asset detail drawer",
+      "share-link purpose/timeout",
+      "edit metadata",
+      "quarantine release with reason and 10s undo",
+      "bulk select + delete preview/confirm/undo",
+      "staged upload request → progress → confirm",
+      "cleanup dry run vs run",
+      "grid/list parity and search"
+     ]
+    },
+    {
+     "id": "V4",
+     "name": "Dense console",
+     "path": "families/F23-media-library/V4/index.html",
+     "aspect": "Borderless status strip, compact 10-row register, live media-ops rail",
+     "axes": [
+      "A strip + register + rail",
+      "B status strip",
+      "C ops rail",
+      "D compact",
+      "E keyboard register"
+     ],
+     "changes": [
+      "C17",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1"
+     ],
+     "api": [
+      "GET /api/v1/admin/media",
+      "GET /api/v1/admin/media/quarantine",
+      "GET /api/v1/admin/media/analytics",
+      "POST /api/v1/admin/media/bulk-delete",
+      "POST /api/v1/admin/media/cleanup?dryRun",
+      "POST /api/v1/media/upload/request",
+      "POST /api/v1/media/upload/confirm",
+      "POST /api/v1/admin/media/{id}/share",
+      "PATCH /api/v1/admin/media/{id}",
+      "POST /api/v1/admin/media/quarantine/{id}/release",
+      "DELETE /api/v1/admin/media/quarantine/{id}?force",
+      "POST /api/v1/admin/media/{id}/reprocess"
+     ],
+     "workflowExamples": [
+      "asset detail drawer",
+      "share-link purpose/timeout",
+      "edit metadata",
+      "quarantine release with reason and 10s undo",
+      "bulk select + delete preview/confirm/undo",
+      "staged upload request → progress → confirm",
+      "cleanup dry run vs run",
+      "grid/list parity and search"
+     ]
+    },
+    {
+     "id": "V5",
+     "name": "Choreography",
+     "path": "families/F23-media-library/V5/index.html",
+     "aspect": "Visible four-step upload lane, staggered reveals, sliding drawer",
+     "axes": [
+      "A step lane + stage",
+      "B step lane",
+      "C motion rail",
+      "D editorial",
+      "E staggered transform/opacity"
+     ],
+     "changes": [
+      "C17",
+      "C19",
+      "C3",
+      "C5",
+      "C9",
+      "C12",
+      "C18",
+      "C20"
+     ],
+     "adds": [
+      "A1"
+     ],
+     "api": [
+      "GET /api/v1/admin/media",
+      "GET /api/v1/admin/media/quarantine",
+      "GET /api/v1/admin/media/analytics",
+      "POST /api/v1/admin/media/bulk-delete",
+      "POST /api/v1/admin/media/cleanup?dryRun",
+      "POST /api/v1/media/upload/request",
+      "POST /api/v1/media/upload/confirm",
+      "POST /api/v1/admin/media/{id}/share",
+      "PATCH /api/v1/admin/media/{id}",
+      "POST /api/v1/admin/media/quarantine/{id}/release",
+      "DELETE /api/v1/admin/media/quarantine/{id}?force",
+      "POST /api/v1/admin/media/{id}/reprocess"
+     ],
+     "workflowExamples": [
+      "asset detail drawer",
+      "share-link purpose/timeout",
+      "edit metadata",
+      "quarantine release with reason and 10s undo",
+      "bulk select + delete preview/confirm/undo",
+      "staged upload request → progress → confirm",
+      "cleanup dry run vs run",
+      "grid/list parity and search"
+     ]
+    }
+   ]
   }
  }
 }

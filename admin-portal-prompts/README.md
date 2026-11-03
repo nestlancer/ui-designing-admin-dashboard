@@ -84,3 +84,8 @@ F01–F18 have existing lab work. The owner requested **F19 next**, then correct
 - **HTML snapshots:** `nestlancer-admin-pages-html/` (194 files + `audit-metadata.json` + `README.md` map) — each prompt lists its own.
 - **Report:** `reports/NESTLANCER_ADMIN_CONSOLE_UI_RESEARCH_REPORT.md` + `.xlsx` (10 sheets) — read in full by every prompt.
 - **Swagger:** `backend-api-swagger/` (17 specs + `README.md`, 560 paths) — each prompt lists its family's specs.
+
+
+### F22 scoped run · 3 November 2026
+
+F22 Portfolio Studio's organization revision 2 now has five hand-authored layouts: Collection manager, Case-study library, Editorial workspace, Operations register and Timeline curator. Items / Categories / Analytics task tabs replace competing panels; a full-window editor adds section navigation, retained review-back values and guarded dirty cancellation. CMS-template/UX research and a focused Swagger reread are in `REVISION-2-RESEARCH-AND-PLAN.md`; full thesis retrieval was unsuccessful and is not claimed. Portfolio upload has no declared request body, so media staging remains local. Fresh QA: 70 width/theme cells, 80 interaction checks, 90 accessibility scans with zero detected violations; 339 sibling/shared hashes unchanged. DOM/screenshot differences and unknown fields remain explicit. Offline relative-asset bundle, not a single-file export. F01–F21 preserved; owner approval pending. Open the F22 gallery through port 8131; see its delivery report for evidence and limitations.

@@ -2509,6 +2509,149 @@
     "Rule from this run: never retype captured text into a runtime — two hand-typed strings drifted from the DOM; the build now inlines the extracted fixture.",
     "No shared file outside the family was changed."
    ]
+  },
+  "F22": {
+   "id": "F22",
+   "name": "Portfolio studio",
+   "slug": "F22-portfolio-studio",
+   "variants": [
+    {
+     "id": "V1",
+     "name": "Collection manager",
+     "path": "families/F22-portfolio-studio/V1/index.html",
+     "changes": [
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "C12",
+      "C17",
+      "C18",
+      "C20"
+     ],
+     "adds": [],
+     "status": "Revision 2 built; fresh browser and accessibility QA passed; owner review pending",
+     "selfContained": false,
+     "offlineBundle": true,
+     "bytes": 6187,
+     "sha256": "fae51387a33ec2daca0cd2ec4775b701015cf41f11ceeaf901181fec334232ad"
+    },
+    {
+     "id": "V2",
+     "name": "Case-study library",
+     "path": "families/F22-portfolio-studio/V2/index.html",
+     "changes": [
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "C12",
+      "C17",
+      "C18",
+      "C20"
+     ],
+     "adds": [],
+     "status": "Revision 2 built; fresh browser and accessibility QA passed; owner review pending",
+     "selfContained": false,
+     "offlineBundle": true,
+     "bytes": 5898,
+     "sha256": "fde1b1a142cd65b3a81d31c2de39b6a06838d7bfb3dc6d80eebaf033e0bec2e6"
+    },
+    {
+     "id": "V3",
+     "name": "Editorial workspace",
+     "path": "families/F22-portfolio-studio/V3/index.html",
+     "changes": [
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "C12",
+      "C17",
+      "C18",
+      "C20"
+     ],
+     "adds": [],
+     "status": "Revision 2 built; fresh browser and accessibility QA passed; owner review pending",
+     "selfContained": false,
+     "offlineBundle": true,
+     "bytes": 6188,
+     "sha256": "b007f12104f71e91cc5b653eb0149fed4d6a895acdbaf57be14e696c4615c560"
+    },
+    {
+     "id": "V4",
+     "name": "Operations register",
+     "path": "families/F22-portfolio-studio/V4/index.html",
+     "changes": [
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "C12",
+      "C17",
+      "C18",
+      "C20"
+     ],
+     "adds": [],
+     "status": "Revision 2 built; fresh browser and accessibility QA passed; owner review pending",
+     "selfContained": false,
+     "offlineBundle": true,
+     "bytes": 6405,
+     "sha256": "3df55ea01f69352d4dfdab2bd86c9096ad6b580812ab505c39c7a8c876fad922"
+    },
+    {
+     "id": "V5",
+     "name": "Timeline curator",
+     "path": "families/F22-portfolio-studio/V5/index.html",
+     "changes": [
+      "C3",
+      "C4",
+      "C5",
+      "C9",
+      "C12",
+      "C17",
+      "C18",
+      "C20"
+     ],
+     "adds": [],
+     "status": "Revision 2 built; fresh browser and accessibility QA passed; owner review pending",
+     "selfContained": false,
+     "offlineBundle": true,
+     "bytes": 6235,
+     "sha256": "69b1b1bb786621c05777896a11bedd21a314c602cf11e1fbe55350712d463991"
+    }
+   ],
+   "winner": "V1",
+   "notes": [
+    "Revision 2: Items / Categories / Analytics workspaces and a full-window sectioned editor.",
+    "Five manually authored layouts; no design-generation script.",
+    "30 paths / 36 documented portfolio operations; no API requests run.",
+    "Upload body unspecified in portfolio Swagger; staging remains local.",
+    "25 DOM views vs 11 screenshot views; unknown identities remain unknown.",
+    "Shared family-local CSS/JS/fixtures; retain relative paths. Academic abstracts located; full thesis text not retrieved."
+   ],
+   "sharedFiles": [
+    "families/F22-portfolio-studio/studio.css",
+    "families/F22-portfolio-studio/studio.js",
+    "families/F22-portfolio-studio/fixtures.js",
+    "families/F22-portfolio-studio/boot.js"
+   ],
+   "verification": {
+    "revision": 2,
+    "matrixCells": 70,
+    "coreChecks": 60,
+    "extendedChecks": 20,
+    "axeWorkspaceScans": 60,
+    "axeEditorScans": 20,
+    "axeWorkflowScans": 10,
+    "violations": 0,
+    "viewportOverflow": 0,
+    "runtimeErrors": 0,
+    "externalRequests": 0,
+    "siblingSharedHashesChecked": 339,
+    "siblingSharedChanges": 0,
+    "ownerApproved": false
+   }
   }
  }
 }

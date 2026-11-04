@@ -16,10 +16,11 @@
 @media(max-width:700px){.signal-queues .attention{grid-template-columns:repeat(2,minmax(0,1fr))}.signal-main .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.signal-health .health-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.signal-priority:after{animation:none}}
 </style>
+<link rel="stylesheet" href="../../../shared/dashboard-layout.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to dashboard</a>
-<aside class="sidebar" id="side-nav" aria-label="Main navigation">
+<aside class="sidebar" id="side-nav" aria-label="Main navigation" data-legacy-dashboard-chrome>
   <a class="brand" href="../../../index.html" aria-label="Nestlancer Admin template gallery"><img class="logo-for-light" src="../../../assets/logo-full-light.svg" alt="Nestlancer"><img class="logo-for-dark" src="../../../assets/logo-full-dark.svg" alt=""><span class="brand-tag">ADMIN</span></a>
   <div class="workspace"><span class="workspace-mark">N</span><span><strong>Nestlancer</strong><small>Admin workspace</small></span><span class="chevron" aria-hidden="true">⌄</span></div>
   <nav class="nav-scroll" aria-label="Console sections">
@@ -49,8 +50,8 @@
   <div class="sidebar-bottom"><span class="avatar" aria-hidden="true">RK</span><span class="account-copy"><strong>admin@nestlancer.com</strong><small>Administrator</small></span></div>
 </aside>
 <button class="drawer-scrim" id="drawer-scrim" aria-label="Close navigation"></button>
-<div class="shell">
-  <header class="topbar">
+<div class="shell" data-dashboard-workspace>
+  <header class="topbar" data-legacy-dashboard-chrome>
     <button class="icon-button menu-button" id="nav-open" aria-label="Open navigation" aria-controls="side-nav" aria-expanded="false"><svg class="svg"><use href="../../../assets/lab-icons.svg#i-menu"></use></svg></button>
     <button class="button sidebar-toggle" data-action="collapse" aria-controls="side-nav" aria-label="Collapse sidebar" title="Collapse sidebar" aria-expanded="true"><svg class="svg small" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path><path class="sidebar-chevron" d="m16 9-3 3 3 3"></path></svg><span class="collapse-label">Collapse</span></button>
     <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><b class="crumb-current">Dashboard</b></div>
@@ -132,4 +133,5 @@
 /* Signal-board shortcut buttons select the same explicit local-only state control. */
 (function(){var state=document.getElementById('display-state');document.querySelectorAll('[data-state-demo]').forEach(function(button){button.addEventListener('click',function(){state.value=button.dataset.stateDemo;state.dispatchEvent(new Event('change',{bubbles:true}));});});})();
 </script>
+<script src="../../../shared/dashboard-shell.js"></script>
 </body></html>

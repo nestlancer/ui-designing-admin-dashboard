@@ -164,12 +164,13 @@ ${CSS(base)}
 ${CSS(fam)}
 ${CSS(read(path.join(ROOT, 'variants', variantLabel, 'design.css')))}
 </style>
+<link rel="stylesheet" href="../../../shared/dashboard-layout.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to analytics content</a>
 <div id="live" class="visually-hidden" aria-live="polite" role="status"></div>
-<div class="app">
-  <aside class="sidebar" id="sidebar" aria-label="Operator console navigation">
+<div class="app" data-legacy-dashboard-layout>
+  <aside class="sidebar" id="sidebar" aria-label="Operator console navigation" data-legacy-dashboard-chrome>
     <div class="brand">
       <img class="logo-for-light" src="${LOGO_LIGHT}" alt="Nestlancer logo" width="26" height="27">
       <img class="logo-for-dark" src="${LOGO_DARK}" alt="Nestlancer logo" width="26" height="27">
@@ -180,8 +181,8 @@ ${nav}
     <a class="signout" href="../../F01-auth-login/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg><span>Sign out</span></a>
   </aside>
   <div class="nav-overlay" id="nav-overlay"></div>
-  <div class="workspace">
-    <header class="topbar">
+  <div class="workspace" data-dashboard-workspace>
+    <header class="topbar" data-legacy-dashboard-chrome>
       <div class="top-start">
         <button class="icon-button menu-mobile" id="menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar"><svg class="ic" aria-hidden="true"><use href="#i-menu"></use></svg></button>
         <button class="icon-button collapse-desktop" id="collapse" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar"><svg class="ic" aria-hidden="true"><use href="#i-list"></use></svg><span class="collapse-text">Collapse</span></button>
@@ -246,6 +247,7 @@ ${SPRITE}
 <script>${JSR}</script>
 <script>${JSB}</script>
 <script>${JSP}</script>
+<script src="../../../shared/dashboard-shell.js"></script>
 </body>
 </html>`;
 }

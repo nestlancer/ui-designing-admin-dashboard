@@ -11,12 +11,13 @@
 <link rel="stylesheet" href="../../../shared/base.css">
 <link rel="stylesheet" href="../moderation-shell.css">
 <link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="../../../shared/dashboard-layout.css">
 </head>
 <body data-layout="folio">
 <a class="skip-link" href="#main">Skip to moderation content</a>
 <div id="live" class="visually-hidden" aria-live="polite"></div>
-<div class="app">
-  <aside class="sidebar" id="sidebar" aria-label="Operator console navigation">
+<div class="app" data-legacy-dashboard-layout>
+  <aside class="sidebar" id="sidebar" aria-label="Operator console navigation" data-legacy-dashboard-chrome>
     <div class="brand"><div class="brand-row"><img class="logo-for-light" src="../../../assets/logo-mark-light.svg" alt="Nestlancer logo"><img class="logo-for-dark" src="../../../assets/logo-mark-dark.svg" alt="Nestlancer logo"><span class="brand-name">Nestlancer</span></div><span class="brand-sub">Operator Console</span></div>
     <nav class="nav-group" aria-label="Operations">
       <div class="nav-section">Operations</div>
@@ -49,8 +50,8 @@
     <button class="signout" data-signout><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-arrow"></use></svg><span>Sign out</span></button>
   </aside>
   <div class="nav-overlay" id="nav-overlay"></div>
-  <div class="workspace">
-    <header class="topbar">
+  <div class="workspace" data-dashboard-workspace>
+    <header class="topbar" data-legacy-dashboard-chrome>
       <div class="top-start">
         <button class="icon-button menu-mobile" id="menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-menu"></use></svg></button>
         <button class="icon-button collapse-desktop" id="collapse" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-list"></use></svg><span class="collapse-text">Collapse</span></button>
@@ -122,5 +123,6 @@
 <script src="../fixtures.js"></script>
 <script src="../moderation-shell.js"></script>
 <script src="../moderation.js"></script>
+<script src="../../../shared/dashboard-shell.js"></script>
 </body>
 </html>

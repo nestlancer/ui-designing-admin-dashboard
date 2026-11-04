@@ -1,0 +1,26 @@
+/* Adapts the different historical page layouts to the shared dashboard shell.
+   Legacy nodes stay in the DOM because page-specific scripts still reference them. */
+html.shared-chrome-ready body { padding:64px 0 0 248px !important; display:block !important; }
+html.shared-chrome-ready [data-legacy-dashboard-chrome] { display:none !important; }
+html.shared-chrome-ready [data-legacy-dashboard-footer] { display:none !important; }
+html.shared-chrome-ready [data-legacy-dashboard-layout] { display:block !important; grid-template-columns:none !important; }
+html.shared-chrome-ready [data-dashboard-workspace] { margin-left:0 !important; width:auto !important; min-width:0 !important; display:flex !important; flex-direction:column !important; min-height:calc(100vh - 64px) !important; }
+html.shared-chrome-ready #shared-dashboard-footer {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 16px;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:auto;
+  padding:14px clamp(16px,1.8vw,28px);
+  border-top:1px solid #dce7e3;
+  background:#fff;
+  color:#657772;
+  font:12px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+html.dark.shared-chrome-ready #shared-dashboard-footer {
+  border-top-color:#294039;
+  background:#10221f;
+  color:#a4bab3;
+}
+@media (max-width: 850px) { html.shared-chrome-ready body { padding-left:0 !important; } }

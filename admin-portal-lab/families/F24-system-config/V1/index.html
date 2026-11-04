@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>System Configuration · Control desk · F24 V1</title><script src="../boot.js"></script><link rel="icon" href="../../../assets/favicon.svg"><link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../system.css"><link rel="stylesheet" href="style.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>System Configuration · Control desk · F24 V1</title><script src="../boot.js"></script><link rel="icon" href="../../../assets/favicon.svg"><link rel="stylesheet" href="../../../shared/tokens.css"><link rel="stylesheet" href="../../../shared/base.css"><link rel="stylesheet" href="../system.css"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="../../../shared/dashboard-layout.css">
+</head>
 <body data-variant="1" data-default-tab="health">
 <a class="skip-link" href="#main">Skip to system workspace</a>
-<aside class="console-rail" id="rail" aria-label="Primary navigation"><noscript><a href="../../../index.html">Nestlancer · Lab gallery</a></noscript></aside>
-<div class="app"><header class="topbar" id="topbar"></header>
+<aside class="console-rail" id="rail" aria-label="Primary navigation" data-legacy-dashboard-chrome><noscript><a href="../../../index.html">Nestlancer · Lab gallery</a></noscript></aside>
+<div class="app" data-dashboard-workspace><header class="topbar" id="topbar" data-legacy-dashboard-chrome></header>
 <main class="canvas" id="main" tabindex="-1">
 <noscript><div class="noscript"><strong>System Configuration · read-only source view.</strong> This offline prototype requires JavaScript for workspace tabs and local edits. <a href="../source-view.html">Read all captured keys, flags, jobs and template evidence without JavaScript →</a></div></noscript>
 <div class="page-head"><div><div class="eyebrow">System / Control desk</div><h1>System Configuration</h1><p>Runtime health, platform settings, feature flags, jobs, templates, and operator controls.</p></div><div class="head-tools"><button class="btn quiet" data-act="sources"><span data-icon="clock"></span>Snapshot details</button><button class="btn" data-act="controls"><span data-icon="shield"></span><span data-permission-label>Can edit · local</span></button></div></div>
@@ -38,4 +39,5 @@
 <details class="prototype-bar"><summary>Prototype states & keyboard help</summary><div class="prototype-tools"><button class="btn small" data-state="ready" aria-pressed="true">Captured</button><button class="btn small" data-state="loading" aria-pressed="false">Loading</button><button class="btn small" data-state="empty" aria-pressed="false">Empty</button><button class="btn small" data-state="error" aria-pressed="false">Error</button><button class="btn small" data-act="controls">Permission preview</button><button class="btn small" data-act="help">Keyboard shortcuts</button><span>Offline bundle · no production writes</span></div></details>
 </main><footer class="footer" id="footer"><a href="../../../index.html">Lab gallery</a> · © 2026 Nestlancer</footer></div>
 <script src="../fixtures.js"></script><script src="../system.js"></script>
+<script src="../../../shared/dashboard-shell.js"></script>
 </body></html>

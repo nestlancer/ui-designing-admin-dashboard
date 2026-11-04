@@ -6,13 +6,14 @@
 <link rel="stylesheet" href="../../../shared/base.css">
 <link rel="stylesheet" href="../media.css">
 <link rel="stylesheet" href="theme.css">
-<script src="../boot.js"></script></head>
+<script src="../boot.js"></script><link rel="stylesheet" href="../../../shared/dashboard-layout.css">
+</head>
 <body class="v1">
 <a class="skip" href="#main">Skip to content</a>
-<div class="shell">
-  <aside class="rail" id="rail" aria-label="Console navigation"></aside>
-  <div class="main">
-    <header class="topbar" id="topbar"></header>
+<div class="shell" data-legacy-dashboard-layout>
+  <aside class="rail" id="rail" aria-label="Console navigation" data-legacy-dashboard-chrome></aside>
+  <div class="main" data-dashboard-workspace>
+    <header class="topbar" id="topbar" data-legacy-dashboard-chrome></header>
     <main class="canvas" id="main">
       <div class="page-head">
         <div>
@@ -190,4 +191,5 @@
   </div>
 </div>
 <script src="../fixtures.js"></script><script src="../media.js"></script>
+<script src="../../../shared/dashboard-shell.js"></script>
 </body></html>

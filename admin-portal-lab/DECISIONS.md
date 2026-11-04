@@ -347,3 +347,13 @@ Verification: 60 Chromium width/theme/audit checks; five local workflow tests; 1
 - **Removed after inlining:** `admin-portal-lab/shared/`; all family-level `.css`/`.js` (including F20/F21 `build-f*.js`, `parts/`, `variants/`); orphaned `assets/lab-core.css|js`, `users-pilot.css`, `f11-f14-accessibility.css`. SVG logos/icons under `assets/` remain for docs and optional re-embedding.
 - **Authoring copies only:** `tooling/shell-sources/{tokens,base,dashboard-layout,dashboard-shell}.{css,js}` — not linked by HTML. Edit HTML directly; see `tooling/README-dashboard-shell.md`.
 - **Checks:** `audit-and-fix-independent.py` 132/0 issues; isolate `file://` sample 15/15; shell audit for dashboard pages. Older family delivery notes that still name sibling CSS/JS describe pre-migration authorship.
+
+## 2026-11-04 · Seed demo data alignment (F02–F25)
+
+Owner added `backend-repo-seeds/` with the original Nestlancer demo payloads. Capture/audit fixtures in F02–F25 HTML were inaccurate (Riya Kapoor operator, AUDIT-* requests/quotes, audit.* / @maxxspace.com directory rows, 34/34 user metrics).
+
+Aligned offline templates to seed catalog:
+- Admin operator: `Nestlancer Admin` / `admin@nestlancer.com` / initials `NA`
+- 15 client accounts + request/quote/project titles and INR totals from `payloads/demo`
+- Directory metrics: 16 accounts (15 clients + 1 admin)
+- Tooling: `tooling/seed-catalog.json`, `tooling/apply-seed-demo-data.py`

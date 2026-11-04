@@ -1,0 +1,739 @@
+{
+  "admin": {
+    "displayName": "Nestlancer Admin",
+    "email": "admin@nestlancer.com",
+    "opsEmail": "ops@nestlancer.com",
+    "initials": "NA",
+    "role": "ADMIN",
+    "passwordNote": "Brick2@Build"
+  },
+  "currency": "INR",
+  "users": [
+    {
+      "seedKey": "arjun-mehta",
+      "displayName": "Arjun Mehta",
+      "email": "arjun.mehta@nestlancer.com",
+      "initials": "AM",
+      "summary": "Proprietor at Mehta Wholesale Traders (Ahmedabad)",
+      "company": "Mehta Wholesale Traders",
+      "jobTitle": "Proprietor",
+      "city": "Ahmedabad",
+      "industry": "wholesale",
+      "phone": "+919825012345",
+      "timezone": "Asia/Kolkata",
+      "headline": "Proprietor \u00b7 Mehta Wholesale Traders (Ahmedabad \u00b7 Wholesale)",
+      "requests": [
+        {
+          "seedKey": "arjun-mehta-ecommerce-req",
+          "file": "arjun-mehta-ecommerce-req.json",
+          "title": "Khandesh Spice D2C E-Commerce Store",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        },
+        {
+          "seedKey": "arjun-mehta-marketplace-req",
+          "file": "arjun-mehta-marketplace-req.json",
+          "title": "B2B Wholesale Ordering Portal",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        },
+        {
+          "seedKey": "arjun-mehta-mobile-draft",
+          "file": "arjun-mehta-mobile-draft.json",
+          "title": "Field Sales Dealer Mobile App",
+          "category": "mobileApp",
+          "statusHint": null
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "arjun-mehta-ecommerce-quote",
+          "requestSeedKey": "arjun-mehta-ecommerce-req",
+          "requestTitle": "Khandesh Spice D2C E-Commerce Store",
+          "totalRupees": 75000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        },
+        {
+          "seedKey": "arjun-mehta-marketplace-quote",
+          "requestSeedKey": "arjun-mehta-marketplace-req",
+          "requestTitle": "B2B Wholesale Ordering Portal",
+          "totalRupees": 59000,
+          "currency": "INR",
+          "schedule": "50-50",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "arjun-mehta-ecommerce-project",
+          "quoteSeedKey": "arjun-mehta-ecommerce-quote",
+          "title": "Khandesh Spice D2C E-Commerce Store",
+          "statusHint": null,
+          "totalRupees": 75000
+        },
+        {
+          "seedKey": "arjun-mehta-marketplace-project",
+          "quoteSeedKey": "arjun-mehta-marketplace-quote",
+          "title": "B2B Wholesale Ordering Portal",
+          "statusHint": "COMPLETED",
+          "totalRupees": 59000
+        }
+      ]
+    },
+    {
+      "seedKey": "samira-patel",
+      "displayName": "Samira Patel",
+      "email": "samira.patel@nestlancer.com",
+      "initials": "SP",
+      "summary": "Founder & Creative Director at Patel Digital Marketing (Mumbai)",
+      "company": "Patel Digital Marketing",
+      "jobTitle": "Founder & Creative Director",
+      "city": "Mumbai",
+      "industry": "marketing",
+      "phone": "+919810020033",
+      "timezone": "Asia/Kolkata",
+      "headline": "Founder & Creative Director \u00b7 Patel Digital Marketing (Mumbai \u00b7 Marketing)",
+      "requests": [
+        {
+          "seedKey": "samira-landing-req",
+          "file": "samira-landing-req.json",
+          "title": "Festive Season Campaign Landing Pages",
+          "category": "marketing",
+          "statusHint": "underReview"
+        },
+        {
+          "seedKey": "samira-website-req",
+          "file": "samira-website-req.json",
+          "title": "Patel Digital Agency Website Redesign",
+          "category": "design",
+          "statusHint": "submitted"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "samira-landing-quote",
+          "requestSeedKey": "samira-landing-req",
+          "requestTitle": "Festive Season Campaign Landing Pages",
+          "totalRupees": 12000,
+          "currency": "INR",
+          "schedule": "50-50",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "samira-landing-project",
+          "quoteSeedKey": "samira-landing-quote",
+          "title": "Festive Season Campaign Landing Pages",
+          "statusHint": "COMPLETED",
+          "totalRupees": 12000
+        }
+      ]
+    },
+    {
+      "seedKey": "rahul-desai",
+      "displayName": "Rahul Desai",
+      "email": "rahul.desai@nestlancer.com",
+      "initials": "RD",
+      "summary": "Operations Head at Desai Logistics Solutions (Pune)",
+      "company": "Desai Logistics Solutions",
+      "jobTitle": "Operations Head",
+      "city": "Pune",
+      "industry": "logistics",
+      "phone": "+919766543210",
+      "timezone": "Asia/Kolkata",
+      "headline": "Operations Head \u00b7 Desai Logistics Solutions (Pune \u00b7 Logistics)",
+      "requests": [
+        {
+          "seedKey": "alex-admin-portal-req",
+          "file": "alex-admin-portal-req.json",
+          "title": "Warehouse & Fleet Operations Portal",
+          "category": "custom",
+          "statusHint": "underReview"
+        },
+        {
+          "seedKey": "alex-analytics-req",
+          "file": "alex-analytics-req.json",
+          "title": "Live Shipment Tracking Dashboard",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        },
+        {
+          "seedKey": "alex-cancelled-req",
+          "file": "alex-cancelled-req.json",
+          "title": "Tally ERP to Cloud Migration",
+          "category": "consulting",
+          "statusHint": "rejected"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "alex-admin-portal-quote",
+          "requestSeedKey": "alex-admin-portal-req",
+          "requestTitle": "Warehouse & Fleet Operations Portal",
+          "totalRupees": 19800,
+          "currency": "INR",
+          "schedule": "50-50",
+          "decision": "sent"
+        }
+      ],
+      "projects": []
+    },
+    {
+      "seedKey": "ananya-iyer",
+      "displayName": "Ananya Iyer",
+      "email": "ananya.iyer@nestlancer.com",
+      "initials": "AI",
+      "summary": "VP Engineering at Iyer FinServ Pvt Ltd (Bengaluru)",
+      "company": "Iyer FinServ Pvt Ltd",
+      "jobTitle": "VP Engineering",
+      "city": "Bengaluru",
+      "industry": "fintech",
+      "phone": "+919845067890",
+      "timezone": "Asia/Kolkata",
+      "headline": "VP Engineering \u00b7 Iyer FinServ Pvt Ltd (Bengaluru \u00b7 Fintech)",
+      "requests": [
+        {
+          "seedKey": "mei-mobile-req",
+          "file": "mei-mobile-req.json",
+          "title": "UPI Merchant Collections Mobile App",
+          "category": "mobileApp",
+          "statusHint": "underReview"
+        },
+        {
+          "seedKey": "mei-reconciliation-req",
+          "file": "mei-reconciliation-req.json",
+          "title": "Razorpay Settlement Reconciliation Engine",
+          "category": "custom",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "mei-reconciliation-quote",
+          "requestSeedKey": "mei-reconciliation-req",
+          "requestTitle": "Razorpay Settlement Reconciliation Engine",
+          "totalRupees": 48000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "mei-reconciliation-project",
+          "quoteSeedKey": "mei-reconciliation-quote",
+          "title": "Razorpay Settlement Reconciliation Engine",
+          "statusHint": null,
+          "totalRupees": 48000
+        }
+      ]
+    },
+    {
+      "seedKey": "priya-nair",
+      "displayName": "Priya Nair",
+      "email": "priya.nair@nestlancer.com",
+      "initials": "PN",
+      "summary": "Head of Learning & Development at Nair Learning Systems (Kochi)",
+      "company": "Nair Learning Systems",
+      "jobTitle": "Head of Learning & Development",
+      "city": "Kochi",
+      "industry": "edtech",
+      "phone": "+919895011223",
+      "timezone": "Asia/Kolkata",
+      "headline": "Head of Learning & Development \u00b7 Nair Learning Systems (Kochi \u00b7 Edtech)",
+      "requests": [
+        {
+          "seedKey": "priya-cms-req",
+          "file": "priya-cms-req.json",
+          "title": "Malayalam-English Bilingual CMS",
+          "category": "webDevelopment",
+          "statusHint": null
+        },
+        {
+          "seedKey": "priya-rejected-req",
+          "file": "priya-rejected-req.json",
+          "title": "Blockchain-Based Skill Credential Platform",
+          "category": "custom",
+          "statusHint": "rejected"
+        },
+        {
+          "seedKey": "priya-training-req",
+          "file": "priya-training-req.json",
+          "title": "Corporate LMS for 200 Employees",
+          "category": "custom",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "priya-training-quote",
+          "requestSeedKey": "priya-training-req",
+          "requestTitle": "Corporate LMS for 200 Employees",
+          "totalRupees": 42000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "requestChanges"
+        },
+        {
+          "seedKey": "priya-training-quote-revised",
+          "requestSeedKey": "priya-training-req",
+          "requestTitle": "Corporate LMS for 200 Employees",
+          "totalRupees": 52200,
+          "currency": "INR",
+          "schedule": null,
+          "decision": "revised-pending"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "priya-training-project",
+          "quoteSeedKey": "priya-training-quote-revised",
+          "title": "Corporate LMS for 200 Employees",
+          "statusHint": null,
+          "totalRupees": 0
+        }
+      ]
+    },
+    {
+      "seedKey": "vikram-shah",
+      "displayName": "Vikram Shah",
+      "email": "vikram.shah@nestlancer.com",
+      "initials": "VS",
+      "summary": "Director at Shah Textile Exports (Surat)",
+      "company": "Shah Textile Exports",
+      "jobTitle": "Director",
+      "city": "Surat",
+      "industry": "textiles",
+      "phone": "+919825667788",
+      "timezone": "Asia/Kolkata",
+      "headline": "Director \u00b7 Shah Textile Exports (Surat \u00b7 Textiles)",
+      "requests": [
+        {
+          "seedKey": "vikram-shah-export-portal-req",
+          "file": "vikram-shah-export-portal-req.json",
+          "title": "B2B Textile Export Order Portal",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "vikram-shah-export-portal-quote",
+          "requestSeedKey": "vikram-shah-export-portal-req",
+          "requestTitle": "B2B Textile Export Order Portal",
+          "totalRupees": 85000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "vikram-shah-export-portal-project",
+          "quoteSeedKey": "vikram-shah-export-portal-quote",
+          "title": "B2B Textile Export Order Portal",
+          "statusHint": "COMPLETED",
+          "totalRupees": 85000
+        }
+      ]
+    },
+    {
+      "seedKey": "kavya-reddy",
+      "displayName": "Kavya Reddy",
+      "email": "kavya.reddy@nestlancer.com",
+      "initials": "KR",
+      "summary": "CTO at Reddy Pharma Labs (Hyderabad)",
+      "company": "Reddy Pharma Labs",
+      "jobTitle": "CTO",
+      "city": "Hyderabad",
+      "industry": "pharma",
+      "phone": "+919848221190",
+      "timezone": "Asia/Kolkata",
+      "headline": "CTO \u00b7 Reddy Pharma Labs (Hyderabad \u00b7 Pharma)",
+      "requests": [
+        {
+          "seedKey": "kavya-reddy-batch-tracking-req",
+          "file": "kavya-reddy-batch-tracking-req.json",
+          "title": "API Batch Tracking Dashboard",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "kavya-reddy-batch-tracking-quote",
+          "requestSeedKey": "kavya-reddy-batch-tracking-req",
+          "requestTitle": "API Batch Tracking Dashboard",
+          "totalRupees": 62000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "kavya-reddy-batch-tracking-project",
+          "quoteSeedKey": "kavya-reddy-batch-tracking-quote",
+          "title": "API Batch Tracking Dashboard",
+          "statusHint": "COMPLETED",
+          "totalRupees": 62000
+        }
+      ]
+    },
+    {
+      "seedKey": "rajan-kumar",
+      "displayName": "Rajan Kumar",
+      "email": "rajan.kumar@nestlancer.com",
+      "initials": "RK",
+      "summary": "Plant Head at Kumar Precision Tools (Chennai)",
+      "company": "Kumar Precision Tools",
+      "jobTitle": "Plant Head",
+      "city": "Chennai",
+      "industry": "manufacturing",
+      "phone": "+919444301128",
+      "timezone": "Asia/Kolkata",
+      "headline": "Plant Head \u00b7 Kumar Precision Tools (Chennai \u00b7 Manufacturing)",
+      "requests": [
+        {
+          "seedKey": "rajan-kumar-shop-floor-req",
+          "file": "rajan-kumar-shop-floor-req.json",
+          "title": "Shop-Floor OEE Dashboard",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "rajan-kumar-shop-floor-quote",
+          "requestSeedKey": "rajan-kumar-shop-floor-req",
+          "requestTitle": "Shop-Floor OEE Dashboard",
+          "totalRupees": 78000,
+          "currency": "INR",
+          "schedule": "50-50",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "rajan-kumar-shop-floor-project",
+          "quoteSeedKey": "rajan-kumar-shop-floor-quote",
+          "title": "Shop-Floor OEE Dashboard",
+          "statusHint": "COMPLETED",
+          "totalRupees": 78000
+        }
+      ]
+    },
+    {
+      "seedKey": "divya-sharma",
+      "displayName": "Divya Sharma",
+      "email": "divya.sharma@nestlancer.com",
+      "initials": "DS",
+      "summary": "Founder at Sharma Handicrafts (Jaipur)",
+      "company": "Sharma Handicrafts",
+      "jobTitle": "Founder",
+      "city": "Jaipur",
+      "industry": "ecommerce",
+      "phone": "+919829441076",
+      "timezone": "Asia/Kolkata",
+      "headline": "Founder \u00b7 Sharma Handicrafts (Jaipur \u00b7 E-commerce)",
+      "requests": [
+        {
+          "seedKey": "divya-sharma-craft-marketplace-req",
+          "file": "divya-sharma-craft-marketplace-req.json",
+          "title": "Artisan Marketplace Storefront",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "divya-sharma-craft-marketplace-quote",
+          "requestSeedKey": "divya-sharma-craft-marketplace-req",
+          "requestTitle": "Artisan Marketplace Storefront",
+          "totalRupees": 55000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "divya-sharma-craft-marketplace-project",
+          "quoteSeedKey": "divya-sharma-craft-marketplace-quote",
+          "title": "Artisan Marketplace Storefront",
+          "statusHint": "COMPLETED",
+          "totalRupees": 55000
+        }
+      ]
+    },
+    {
+      "seedKey": "amit-verma",
+      "displayName": "Amit Verma",
+      "email": "amit.verma@nestlancer.com",
+      "initials": "AV",
+      "summary": "Managing Partner at Verma Properties (Delhi)",
+      "company": "Verma Properties",
+      "jobTitle": "Managing Partner",
+      "city": "Delhi",
+      "industry": "realEstate",
+      "phone": "+919810564433",
+      "timezone": "Asia/Kolkata",
+      "headline": "Managing Partner \u00b7 Verma Properties (Delhi \u00b7 Real Estate)",
+      "requests": [
+        {
+          "seedKey": "amit-verma-lead-crm-req",
+          "file": "amit-verma-lead-crm-req.json",
+          "title": "Property Lead CRM",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "amit-verma-lead-crm-quote",
+          "requestSeedKey": "amit-verma-lead-crm-req",
+          "requestTitle": "Property Lead CRM",
+          "totalRupees": 48000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "amit-verma-lead-crm-project",
+          "quoteSeedKey": "amit-verma-lead-crm-quote",
+          "title": "Property Lead CRM",
+          "statusHint": "COMPLETED",
+          "totalRupees": 48000
+        }
+      ]
+    },
+    {
+      "seedKey": "neha-gupta",
+      "displayName": "Neha Gupta",
+      "email": "neha.gupta@nestlancer.com",
+      "initials": "NG",
+      "summary": "CEO at Gupta HR Cloud (Noida)",
+      "company": "Gupta HR Cloud",
+      "jobTitle": "CEO",
+      "city": "Noida",
+      "industry": "saas",
+      "phone": "+919811209874",
+      "timezone": "Asia/Kolkata",
+      "headline": "CEO \u00b7 Gupta HR Cloud (Noida \u00b7 SaaS)",
+      "requests": [
+        {
+          "seedKey": "neha-gupta-attendance-saas-req",
+          "file": "neha-gupta-attendance-saas-req.json",
+          "title": "Multi-Tenant Attendance SaaS",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "neha-gupta-attendance-saas-quote",
+          "requestSeedKey": "neha-gupta-attendance-saas-req",
+          "requestTitle": "Multi-Tenant Attendance SaaS",
+          "totalRupees": 92000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "neha-gupta-attendance-saas-project",
+          "quoteSeedKey": "neha-gupta-attendance-saas-quote",
+          "title": "Multi-Tenant Attendance SaaS",
+          "statusHint": "COMPLETED",
+          "totalRupees": 92000
+        }
+      ]
+    },
+    {
+      "seedKey": "suresh-iyer",
+      "displayName": "Suresh Iyer",
+      "email": "suresh.iyer@nestlancer.com",
+      "initials": "SI",
+      "summary": "Proprietor at Iyer Agro Supplies (Coimbatore)",
+      "company": "Iyer Agro Supplies",
+      "jobTitle": "Proprietor",
+      "city": "Coimbatore",
+      "industry": "agriculture",
+      "phone": "+919894226510",
+      "timezone": "Asia/Kolkata",
+      "headline": "Proprietor \u00b7 Iyer Agro Supplies (Coimbatore \u00b7 Agriculture)",
+      "requests": [
+        {
+          "seedKey": "suresh-iyer-mandi-app-req",
+          "file": "suresh-iyer-mandi-app-req.json",
+          "title": "Farmer Mandi Price App",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "suresh-iyer-mandi-app-quote",
+          "requestSeedKey": "suresh-iyer-mandi-app-req",
+          "requestTitle": "Farmer Mandi Price App",
+          "totalRupees": 42000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "suresh-iyer-mandi-app-project",
+          "quoteSeedKey": "suresh-iyer-mandi-app-quote",
+          "title": "Farmer Mandi Price App",
+          "statusHint": "COMPLETED",
+          "totalRupees": 42000
+        }
+      ]
+    },
+    {
+      "seedKey": "pooja-kulkarni",
+      "displayName": "Pooja Kulkarni",
+      "email": "pooja.kulkarni@nestlancer.com",
+      "initials": "PK",
+      "summary": "Operations Head at Kulkarni Clinic Chain (Pune)",
+      "company": "Kulkarni Clinic Chain",
+      "jobTitle": "Operations Head",
+      "city": "Pune",
+      "industry": "healthcare",
+      "phone": "+919823118640",
+      "timezone": "Asia/Kolkata",
+      "headline": "Operations Head \u00b7 Kulkarni Clinic Chain (Pune \u00b7 Healthcare)",
+      "requests": [
+        {
+          "seedKey": "pooja-kulkarni-clinic-booking-req",
+          "file": "pooja-kulkarni-clinic-booking-req.json",
+          "title": "Multi-Branch Clinic Booking",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "pooja-kulkarni-clinic-booking-quote",
+          "requestSeedKey": "pooja-kulkarni-clinic-booking-req",
+          "requestTitle": "Multi-Branch Clinic Booking",
+          "totalRupees": 65000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "pooja-kulkarni-clinic-booking-project",
+          "quoteSeedKey": "pooja-kulkarni-clinic-booking-quote",
+          "title": "Multi-Branch Clinic Booking",
+          "statusHint": "COMPLETED",
+          "totalRupees": 65000
+        }
+      ]
+    },
+    {
+      "seedKey": "karthik-menon",
+      "displayName": "Karthik Menon",
+      "email": "karthik.menon@nestlancer.com",
+      "initials": "KM",
+      "summary": "Founder at Menon PayTech (Bengaluru)",
+      "company": "Menon PayTech",
+      "jobTitle": "Founder",
+      "city": "Bengaluru",
+      "industry": "fintech",
+      "phone": "+919901334275",
+      "timezone": "Asia/Kolkata",
+      "headline": "Founder \u00b7 Menon PayTech (Bengaluru \u00b7 Fintech)",
+      "requests": [
+        {
+          "seedKey": "karthik-menon-upi-switch-req",
+          "file": "karthik-menon-upi-switch-req.json",
+          "title": "UPI Switch Integration Layer",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "karthik-menon-upi-switch-quote",
+          "requestSeedKey": "karthik-menon-upi-switch-req",
+          "requestTitle": "UPI Switch Integration Layer",
+          "totalRupees": 120000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "karthik-menon-upi-switch-project",
+          "quoteSeedKey": "karthik-menon-upi-switch-quote",
+          "title": "UPI Switch Integration Layer",
+          "statusHint": null,
+          "totalRupees": 120000
+        }
+      ]
+    },
+    {
+      "seedKey": "sandeep-chopra",
+      "displayName": "Sandeep Chopra",
+      "email": "sandeep.chopra@nestlancer.com",
+      "initials": "SC",
+      "summary": "Director at Chopra Fleet Logistics (Chandigarh)",
+      "company": "Chopra Fleet Logistics",
+      "jobTitle": "Director",
+      "city": "Chandigarh",
+      "industry": "logistics",
+      "phone": "+919814772061",
+      "timezone": "Asia/Kolkata",
+      "headline": "Director \u00b7 Chopra Fleet Logistics (Chandigarh \u00b7 Logistics)",
+      "requests": [
+        {
+          "seedKey": "sandeep-chopra-gps-fleet-req",
+          "file": "sandeep-chopra-gps-fleet-req.json",
+          "title": "GPS Fleet Tracking Portal",
+          "category": "webDevelopment",
+          "statusHint": "underReview"
+        }
+      ],
+      "quotes": [
+        {
+          "seedKey": "sandeep-chopra-gps-fleet-quote",
+          "requestSeedKey": "sandeep-chopra-gps-fleet-req",
+          "requestTitle": "GPS Fleet Tracking Portal",
+          "totalRupees": 72000,
+          "currency": "INR",
+          "schedule": "30-40-30",
+          "decision": "accept"
+        }
+      ],
+      "projects": [
+        {
+          "seedKey": "sandeep-chopra-gps-fleet-project",
+          "quoteSeedKey": "sandeep-chopra-gps-fleet-quote",
+          "title": "GPS Fleet Tracking Portal",
+          "statusHint": null,
+          "totalRupees": 72000
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "clients": 15,
+    "admins": 1,
+    "totalAccounts": 16,
+    "requests": 23,
+    "quotes": 17,
+    "projects": 15
+  }
+}

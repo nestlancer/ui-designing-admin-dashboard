@@ -1,7 +1,9 @@
 # F20 · Analytics Hub — GATE 3 · Delivery report
 
+> **2026-11-04:** Sibling `analytics.*`, `parts/`, `variants/`, and `build-f20.js` were removed after migration. **Edit `V#/index.html` only.** Open via `file://` (no server). Historical build steps below describe authorship, not current layout.
+
 Run: 2026-11-02 · Operator console lab · Scope: `admin-portal-lab/families/F20-analytics-hub/` only.
-Preview: `python3 -m http.server 8131` from the repo root → `/admin-portal-lab/` → **F20 · Analytics hub**.
+Preview: open any `V#/index.html` via `file://`, or serve the lab root → **F20 · Analytics hub**.
 
 ```
 ## GATE 3 (F20) · Hand-built: 5/5 · Generators: 0 · Widths×themes: 7×2 = 14 per variant

@@ -1,1 +1,0 @@
-(function(){try{let q=new URLSearchParams(location.search).get('theme');document.documentElement.classList.toggle('dark',(q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark');document.documentElement.classList.toggle('rail-collapsed',localStorage.getItem('nl-rail')==='collapsed')}catch(e){}})();

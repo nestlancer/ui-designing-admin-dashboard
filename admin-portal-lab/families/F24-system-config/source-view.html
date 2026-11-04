@@ -1,4 +1,149 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>System Configuration · Read-only source ledger</title><link rel="icon" href="../../assets/favicon.svg"><link rel="stylesheet" href="../../shared/tokens.css"><link rel="stylesheet" href="../../shared/base.css"><style>body{padding:32px 20px}main{max-width:1000px;margin:auto}h1{font-size:32px;margin:24px 0 12px;letter-spacing:-.03em}h2{font-size:20px;margin:28px 0 12px}h3{font-size:15px;margin:18px 0 8px}p,li{margin-bottom:8px}code,pre{font-family:var(--mono);font-size:12px;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:var(--muted);padding:16px;border:1px solid var(--border);border-radius:6px}a{text-decoration:underline}nav{display:flex;gap:16px;flex-wrap:wrap}details{border:1px solid var(--border);padding:16px;border-radius:8px;background:var(--card);margin:16px 0}summary{font-weight:600;cursor:pointer}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:12px 8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:var(--muted)}.notice{border-left:3px solid var(--primary);padding:16px;background:var(--card);margin:20px 0}footer{border-top:1px solid var(--border);margin-top:32px;padding:20px 0;font-size:12px}@media(max-width:600px){table,tbody,tr,td{display:block}thead{display:none}tr{border-bottom:1px solid var(--border);padding:12px 0}td{border:0;padding:4px 0}}</style></head><body><main><nav aria-label="Source ledger navigation"><a href="../../index.html#f24">Lab gallery</a><a href="V1/index.html">V1 Control desk</a><a href="docs/BASELINE-MAP.md">Full evidence map</a><a href="docs/API-MAP.md">Swagger mapping</a></nav><h1>System Configuration</h1><p>Runtime health, platform settings, feature flags, jobs, templates, and operator controls.</p><div class="notice"><strong>Read-only historical source ledger.</strong> No JavaScript, server request or mutation. Service Healthy/admin · Config14 All saved · Flags5/12 · Templates62 (10email+52notification). These are captured values, not live telemetry.</div><nav aria-label="Workspaces"><a href="#health">Health</a><a href="#config">Config14</a><a href="#features">Features12</a><a href="#jobs">Jobs12</a><a href="#templates">Templates62</a><a href="#operations">Operations</a></nav>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>System Configuration · Read-only source ledger</title><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2032%2032%22%20fill=%22none%22%3E%3Crect%20x=%221%22%20y=%221%22%20width=%2230%22%20height=%2230%22%20rx=%228%22%20fill=%22%23465fff%22/%3E%3Cpath%20d=%22M9%2023V9l8%209.2V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20fill=%22none%22/%3E%3Cpath%20d=%22M21%2023V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20fill=%22none%22/%3E%3C/svg%3E" type="image/svg+xml"><style>
+/* inlined from ../../shared/tokens.css */
+:root{
+  /* Neutrals (cool-gray, from live admin) */
+  --background:#f4f6f9; --card:#ffffff; --muted:#eef2f6; --border:#dfe6ee;
+  --foreground:#1a2433; --muted-foreground:#54657a;
+  /* Brand — ONE teal ramp (live --primary 168 82% 26% ≈ #0c7963) */
+  --brand-50:#ecfdf5; --brand-100:#d1fae5; --brand-200:#a7f3d0;
+  --brand-500:#14a07c; --brand-600:#0c7963; --brand-700:#0a5f4e; --brand-800:#084c3f;
+  --primary:var(--brand-600); --primary-hover:var(--brand-700); --primary-active:var(--brand-800);
+  --primary-tint:#e6f4ef; --ring:var(--brand-600);
+  /* Sidebar + header (measured) */
+  --sidebar-bg:#f3f4f7; --sidebar-active:rgba(12,121,99,.10); --sidebar-section:#59616e;
+  /* Status — bg tint + darkened AA text + border (FIX C3) */
+  --status-success-bg:#e5f6ec; --status-success-text:#166534; --status-success-border:#86c9a3;
+  --status-warning-bg:#fdf3e0; --status-warning-text:#7a5200; --status-warning-border:#e8c477;
+  --status-error-bg:#fdecec;   --status-error-text:#b42318;   --status-error-border:#f0a8a0;
+  --status-info-bg:#e6f4fd;    --status-info-text:#0c5d8a;    --status-info-border:#8fcbe8;
+  --status-purple-bg:#f1e8fd;  --status-purple-text:#5b21b6;  --status-purple-border:#c4a8ef;
+  --status-neutral-bg:#eef2f6; --status-neutral-text:#3f4c5e; --status-neutral-border:#c3cedb;
+  /* Shape + type */
+  --radius-sm:4px; --radius-md:6px; --radius-lg:8px; --radius-xl:20px;
+  --shadow-xs:0 1px 2px rgba(26,36,51,.06); --shadow-sm:0 4px 14px rgba(26,36,51,.08);
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  --sidebar:232px; --header:52px; --content:1440px;
+  --duration-fast:150ms; --duration-normal:280ms; --duration-slow:500ms;
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+.dark{
+  --background:#0b1220; --card:#101a2c; --muted:#152238; --border:#22334c;
+  --foreground:#e8eef4; --muted-foreground:#9fb0c3;
+  --sidebar-bg:#0d1526; --sidebar-active:rgba(20,160,124,.16);
+  --primary:#14a07c; --primary-hover:#1abc8f;
+  --status-success-text:#4ade80; --status-warning-text:#fbbf24;
+  --status-error-text:#f87171; --status-info-text:#38bdf8;
+  --status-purple-text:#c084fc; --status-neutral-text:#9fb0c3;
+  /* status BGs in dark: 12–16% tint of the hue over --card — same formula every variant */
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4); --shadow-sm:0 8px 28px rgba(0,0,0,.45);
+}
+
+</style><style>
+/* inlined from ../../shared/base.css */
+/* admin-portal-lab shared base — reset + primitives ONLY (create-if-missing; never fork) */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  font-size:14px; line-height:1.5;
+  background:var(--background); color:var(--foreground);
+  min-height:100vh;
+}
+img,svg{display:block; max-width:100%}
+button,input{font:inherit; color:inherit}
+a{color:var(--primary); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ring); outline-offset:2px; border-radius:var(--radius-sm)}
+::selection{background:var(--brand-200); color:var(--brand-800)}
+
+/* primitives */
+.skip-link{
+  position:absolute; left:12px; top:-48px; z-index:100;
+  background:var(--card); color:var(--primary);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:8px 14px; font-size:13px; font-weight:600;
+  transition:top var(--duration-fast) ease;
+}
+.skip-link:focus-visible{top:12px; text-decoration:none}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:40px; padding:0 18px;
+  border-radius:var(--radius-md); border:1px solid transparent;
+  font-size:14px; font-weight:600; cursor:pointer;
+  transition:background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover{background:var(--primary-hover); text-decoration:none}
+.btn-primary:active{background:var(--primary-active)}
+.btn-primary:disabled{opacity:.6; cursor:not-allowed}
+.btn-secondary{background:var(--card); color:var(--foreground); border-color:var(--border)}
+.btn-secondary:hover{background:var(--muted); text-decoration:none}
+.btn-ghost{background:transparent; color:var(--muted-foreground); border-color:transparent}
+.btn-ghost:hover{background:var(--muted); color:var(--foreground); text-decoration:none}
+.btn-block{width:100%}
+
+.field{display:flex; flex-direction:column; gap:6px}
+.field > label{font-size:13px; font-weight:600; color:var(--foreground)}
+.field .hint{font-size:12px; color:var(--muted-foreground)}
+.input, .field input[type="email"], .field input[type="password"], .field input[type="text"], .field input[type="tel"]{
+  width:100%; min-height:40px; padding:0 12px;
+  background:var(--card); color:var(--foreground);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  font-size:14px;
+  transition:border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.input::placeholder{color:var(--muted-foreground); opacity:.75}
+.input:hover{border-color:var(--muted-foreground)}
+.input:focus{border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent)}
+.input[aria-invalid="true"]{border-color:var(--status-error-text); box-shadow:0 0 0 3px color-mix(in srgb, var(--status-error-text) 18%, transparent)}
+.field-error{font-size:12px; color:var(--status-error-text); display:flex; gap:6px; align-items:flex-start}
+
+/* status badge — icon + colour + text, never colour alone (C3, AA text) */
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:2px 10px; border-radius:999px;
+  font-size:12px; font-weight:600; border:1px solid;
+  white-space:nowrap;
+}
+.badge svg{width:12px; height:12px; flex:none}
+.badge-success{background:var(--status-success-bg); color:var(--status-success-text); border-color:var(--status-success-border)}
+.badge-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.badge-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.badge-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.badge-purple{background:var(--status-purple-bg); color:var(--status-purple-text); border-color:var(--status-purple-border)}
+.badge-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+/* inline notice (alerts) */
+.notice{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:12px 14px; border-radius:var(--radius-md); border:1px solid;
+  font-size:13px;
+}
+.notice svg{width:16px; height:16px; flex:none; margin-top:1px}
+.notice-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.notice-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.notice-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.notice-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+.mono{font-family:var(--mono); font-size:.92em}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs)}
+.visually-hidden{position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+/* theme-aware logo pair (client-lab assets, 2026-11-01): light-ink artwork on light surfaces, white artwork on dark */
+img.logo-for-light{display:inline-block; vertical-align:middle}
+img.logo-for-dark{display:none; vertical-align:middle}
+.dark img.logo-for-light{display:none}
+.dark img.logo-for-dark{display:inline-block}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+
+</style><style>body{padding:32px 20px}main{max-width:1000px;margin:auto}h1{font-size:32px;margin:24px 0 12px;letter-spacing:-.03em}h2{font-size:20px;margin:28px 0 12px}h3{font-size:15px;margin:18px 0 8px}p,li{margin-bottom:8px}code,pre{font-family:var(--mono);font-size:12px;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:var(--muted);padding:16px;border:1px solid var(--border);border-radius:6px}a{text-decoration:underline}nav{display:flex;gap:16px;flex-wrap:wrap}details{border:1px solid var(--border);padding:16px;border-radius:8px;background:var(--card);margin:16px 0}summary{font-weight:600;cursor:pointer}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:12px 8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:var(--muted)}.notice{border-left:3px solid var(--primary);padding:16px;background:var(--card);margin:20px 0}footer{border-top:1px solid var(--border);margin-top:32px;padding:20px 0;font-size:12px}@media(max-width:600px){table,tbody,tr,td{display:block}thead{display:none}tr{border-bottom:1px solid var(--border);padding:12px 0}td{border:0;padding:4px 0}}</style></head><body><main><nav aria-label="Source ledger navigation"><a href="../../index.html#f24">Lab gallery</a><a href="V1/index.html">V1 Control desk</a><a href="docs/BASELINE-MAP.md">Full evidence map</a><a href="docs/API-MAP.md">Swagger mapping</a></nav><h1>System Configuration</h1><p>Runtime health, platform settings, feature flags, jobs, templates, and operator controls.</p><div class="notice"><strong>Read-only historical source ledger.</strong> No JavaScript, server request or mutation. Service Healthy/admin · Config14 All saved · Flags5/12 · Templates62 (10email+52notification). These are captured values, not live telemetry.</div><nav aria-label="Workspaces"><a href="#health">Health</a><a href="#config">Config14</a><a href="#features">Features12</a><a href="#jobs">Jobs12</a><a href="#templates">Templates62</a><a href="#operations">Operations</a></nav>
 <section id="health"><h2>Health</h2><ul><li>GATEWAY · Reachable · Admin health probe</li><li>SERVICE · admin · Responding identity</li><li>MAINTENANCE · Off · Client access gate</li><li>FLAGS ENABLED ·5/12 · Live feature surface (historical capture)</li></ul><details><summary>Diagnostics · captured10October2026</summary><p>status healthy; timestamp <code>2026-10-10T12:01:22.083Z</code>. Server hostname/platform/architecture/nodeVersion redacted; memory/CPU/disk/process values zeroed. Database/cache/queue connectedtrue. Diagnostic flags newDashboardtrue, advancedAnalyticsfalse, betaFeaturestrue. These three flags are not proven to map to the twelve switches.</p></details><h3>Cache management</h3><p>Flush Redis globally or invalidate one key. Use carefully in production. Captured actions: Clear all cache; Exact cache key; Clear key. Actions require the interactive local preview; nothing can be cleared from this ledger.</p><h3>System logs</h3><p>Export recent audit and system log entries as CSV for incident review. No production log records are included.</p></section>
 <section id="config"><h2>Config ·14keys</h2><p>Tunable runtime keys. JSON values are parsed on save. Maintenance and announcements are owned by Operations.12editable ·2managed elsewhere. The twelve named raw keys are below; full JSON is unavailable where clipped.</p><h3>SYSTEM ·8</h3><details><summary>Rate limits ·system.rate_limits ·partial</summary><pre>{"admin":{"limit":300,"windowSeconds":60}, … continuation not captured</pre></details><details><summary>File upload ·system.file_upload ·partial</summary><pre>maxFileSizeMB:50; maxChunkSizeMB:5; allowedMimeTypes:["image/jpeg", …]</pre></details><details open><summary>Pagination ·system.pagination</summary><pre>{"maxLimit":100,"defaultPage":1,"defaultLimit":20}</pre></details><details><summary>Jwt ·system.jwt</summary><pre>{"refreshTokenExpiryDays":7,"maxRefreshTokensPerUser":10,"accessTokenExpiryMinutes":15}</pre></details><details><summary>Security ·system.security ·partial</summary><pre>maxLoginAttempts:5; passwordMaxLength:128; passwordMinLength:8; lockoutDurationMinutes:15; closing content clipped</pre></details><details><summary>Currency ·system.currency ·partial</summary><pre>symbol:"₹"; default:"INR"; subunit:"paise"; subunitMultiplier:100; closing content clipped</pre></details><details><summary>Media ·system.media ·partial</summary><pre>maxVersions:10; imageSizeLimit:10485760; thumbnailSizes:{large:600, …}</pre></details><details><summary>Notifications ·system.notifications</summary><pre>{"batchSize":50,"expiryDays":90,"maxUnreadCount":100}</pre></details><h3>REQUESTS ·1</h3><details><summary>Categories ·request.categories ·partial</summary><pre>[{"key":"webDevelopment","label":"Web Development","description":"Websites and web applications" … continuation not captured</pre></details><h3>OTHER ·3</h3><p><code>blog.settings {}</code> · <code>media.settings {}</code> · <code>payment.settings {}</code></p><p>Maintenance mode and announcement history are edited under Operations, not as raw JSON. Their raw key IDs were not captured.</p></section>
 <section id="features"><h2>Features ·12</h2><p>Capability switches for the platform. Prefer clear names; technical IDs stay secondary.5on ·7off. Technical flag IDs were not captured.</p><ol><li>Enforce 2FA for all admin accounts — Off</li><li>Enable outbound webhook delivery — Off</li><li>Enable virus scanning for uploaded files — On</li><li>Enable system-wide maintenance mode — Off</li><li>Enable API rate limiting — On</li><li>Enable email notification delivery — On</li><li>Enable push notification delivery — Off</li><li>Enable advanced analytics dashboard — Off</li><li>Enable blog commenting system — On</li><li>Make portfolio items publicly visible — On</li><li>Enable chunked file upload support — Off</li><li>Enable CDN processing for media files — Off</li></ol></section>

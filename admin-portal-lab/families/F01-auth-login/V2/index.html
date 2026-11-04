@@ -12,9 +12,154 @@
   if(t==='dark')document.documentElement.classList.add('dark');
 }catch(e){}})();
 </script>
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
-<link rel="stylesheet" href="../../../shared/tokens.css">
-<link rel="stylesheet" href="../../../shared/base.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2032%2032%22%20fill=%22none%22%3E%3Crect%20x=%221%22%20y=%221%22%20width=%2230%22%20height=%2230%22%20rx=%228%22%20fill=%22%23465fff%22/%3E%3Cpath%20d=%22M9%2023V9l8%209.2V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20fill=%22none%22/%3E%3Cpath%20d=%22M21%2023V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20fill=%22none%22/%3E%3C/svg%3E" type="image/svg+xml">
+<style>
+/* inlined from ../../../shared/tokens.css */
+:root{
+  /* Neutrals (cool-gray, from live admin) */
+  --background:#f4f6f9; --card:#ffffff; --muted:#eef2f6; --border:#dfe6ee;
+  --foreground:#1a2433; --muted-foreground:#54657a;
+  /* Brand — ONE teal ramp (live --primary 168 82% 26% ≈ #0c7963) */
+  --brand-50:#ecfdf5; --brand-100:#d1fae5; --brand-200:#a7f3d0;
+  --brand-500:#14a07c; --brand-600:#0c7963; --brand-700:#0a5f4e; --brand-800:#084c3f;
+  --primary:var(--brand-600); --primary-hover:var(--brand-700); --primary-active:var(--brand-800);
+  --primary-tint:#e6f4ef; --ring:var(--brand-600);
+  /* Sidebar + header (measured) */
+  --sidebar-bg:#f3f4f7; --sidebar-active:rgba(12,121,99,.10); --sidebar-section:#59616e;
+  /* Status — bg tint + darkened AA text + border (FIX C3) */
+  --status-success-bg:#e5f6ec; --status-success-text:#166534; --status-success-border:#86c9a3;
+  --status-warning-bg:#fdf3e0; --status-warning-text:#7a5200; --status-warning-border:#e8c477;
+  --status-error-bg:#fdecec;   --status-error-text:#b42318;   --status-error-border:#f0a8a0;
+  --status-info-bg:#e6f4fd;    --status-info-text:#0c5d8a;    --status-info-border:#8fcbe8;
+  --status-purple-bg:#f1e8fd;  --status-purple-text:#5b21b6;  --status-purple-border:#c4a8ef;
+  --status-neutral-bg:#eef2f6; --status-neutral-text:#3f4c5e; --status-neutral-border:#c3cedb;
+  /* Shape + type */
+  --radius-sm:4px; --radius-md:6px; --radius-lg:8px; --radius-xl:20px;
+  --shadow-xs:0 1px 2px rgba(26,36,51,.06); --shadow-sm:0 4px 14px rgba(26,36,51,.08);
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  --sidebar:232px; --header:52px; --content:1440px;
+  --duration-fast:150ms; --duration-normal:280ms; --duration-slow:500ms;
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+.dark{
+  --background:#0b1220; --card:#101a2c; --muted:#152238; --border:#22334c;
+  --foreground:#e8eef4; --muted-foreground:#9fb0c3;
+  --sidebar-bg:#0d1526; --sidebar-active:rgba(20,160,124,.16);
+  --primary:#14a07c; --primary-hover:#1abc8f;
+  --status-success-text:#4ade80; --status-warning-text:#fbbf24;
+  --status-error-text:#f87171; --status-info-text:#38bdf8;
+  --status-purple-text:#c084fc; --status-neutral-text:#9fb0c3;
+  /* status BGs in dark: 12–16% tint of the hue over --card — same formula every variant */
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4); --shadow-sm:0 8px 28px rgba(0,0,0,.45);
+}
+
+</style>
+<style>
+/* inlined from ../../../shared/base.css */
+/* admin-portal-lab shared base — reset + primitives ONLY (create-if-missing; never fork) */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  font-size:14px; line-height:1.5;
+  background:var(--background); color:var(--foreground);
+  min-height:100vh;
+}
+img,svg{display:block; max-width:100%}
+button,input{font:inherit; color:inherit}
+a{color:var(--primary); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ring); outline-offset:2px; border-radius:var(--radius-sm)}
+::selection{background:var(--brand-200); color:var(--brand-800)}
+
+/* primitives */
+.skip-link{
+  position:absolute; left:12px; top:-48px; z-index:100;
+  background:var(--card); color:var(--primary);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:8px 14px; font-size:13px; font-weight:600;
+  transition:top var(--duration-fast) ease;
+}
+.skip-link:focus-visible{top:12px; text-decoration:none}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:40px; padding:0 18px;
+  border-radius:var(--radius-md); border:1px solid transparent;
+  font-size:14px; font-weight:600; cursor:pointer;
+  transition:background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover{background:var(--primary-hover); text-decoration:none}
+.btn-primary:active{background:var(--primary-active)}
+.btn-primary:disabled{opacity:.6; cursor:not-allowed}
+.btn-secondary{background:var(--card); color:var(--foreground); border-color:var(--border)}
+.btn-secondary:hover{background:var(--muted); text-decoration:none}
+.btn-ghost{background:transparent; color:var(--muted-foreground); border-color:transparent}
+.btn-ghost:hover{background:var(--muted); color:var(--foreground); text-decoration:none}
+.btn-block{width:100%}
+
+.field{display:flex; flex-direction:column; gap:6px}
+.field > label{font-size:13px; font-weight:600; color:var(--foreground)}
+.field .hint{font-size:12px; color:var(--muted-foreground)}
+.input, .field input[type="email"], .field input[type="password"], .field input[type="text"], .field input[type="tel"]{
+  width:100%; min-height:40px; padding:0 12px;
+  background:var(--card); color:var(--foreground);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  font-size:14px;
+  transition:border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.input::placeholder{color:var(--muted-foreground); opacity:.75}
+.input:hover{border-color:var(--muted-foreground)}
+.input:focus{border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent)}
+.input[aria-invalid="true"]{border-color:var(--status-error-text); box-shadow:0 0 0 3px color-mix(in srgb, var(--status-error-text) 18%, transparent)}
+.field-error{font-size:12px; color:var(--status-error-text); display:flex; gap:6px; align-items:flex-start}
+
+/* status badge — icon + colour + text, never colour alone (C3, AA text) */
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:2px 10px; border-radius:999px;
+  font-size:12px; font-weight:600; border:1px solid;
+  white-space:nowrap;
+}
+.badge svg{width:12px; height:12px; flex:none}
+.badge-success{background:var(--status-success-bg); color:var(--status-success-text); border-color:var(--status-success-border)}
+.badge-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.badge-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.badge-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.badge-purple{background:var(--status-purple-bg); color:var(--status-purple-text); border-color:var(--status-purple-border)}
+.badge-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+/* inline notice (alerts) */
+.notice{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:12px 14px; border-radius:var(--radius-md); border:1px solid;
+  font-size:13px;
+}
+.notice svg{width:16px; height:16px; flex:none; margin-top:1px}
+.notice-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.notice-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.notice-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.notice-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+.mono{font-family:var(--mono); font-size:.92em}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs)}
+.visually-hidden{position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+/* theme-aware logo pair (client-lab assets, 2026-11-01): light-ink artwork on light surfaces, white artwork on dark */
+img.logo-for-light{display:inline-block; vertical-align:middle}
+img.logo-for-dark{display:none; vertical-align:middle}
+.dark img.logo-for-light{display:none}
+.dark img.logo-for-dark{display:inline-block}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+
+</style>
 <style>
 /* V2 "BENTO OPS" (2026 pass 4) — deliberately NOT the live admin layout: a bento console grid.
    Auth form in the big window-chrome cell; around it live tiles: posture ring (the one dashoffset
@@ -186,8 +331,8 @@ h1{font-size:clamp(24px,3vw,30px); letter-spacing:-.03em; font-weight:800}
 
 <header class="strip">
   <div class="brand-row rise d1">
-    <img class="mark logo-for-light" src="../../../assets/logo-mark-light.svg" alt="Nestlancer logo" width="26" height="27">
-    <img class="mark logo-for-dark" src="../../../assets/logo-mark-dark.svg" alt="Nestlancer logo" width="26" height="27">
+    <img class="mark logo-for-light" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20viewBox=%220%200%20535%20544%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23272A7A%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23272A7A%22%20/%3E%3C/g%3E%3C/svg%3E" alt="Nestlancer logo" width="26" height="27">
+    <img class="mark logo-for-dark" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20viewBox=%220%200%20535%20544%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23ffffff%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23FFFFFF%22%20/%3E%3C/g%3E%3C/svg%3E" alt="Nestlancer logo" width="26" height="27">
     <h3>Nestlancer Admin</h3>
   </div>
   <span class="ops rise d2"><span class="blink"></span> ops console · zero-trust · admin only</span>

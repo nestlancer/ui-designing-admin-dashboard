@@ -1,5 +1,7 @@
 # F21 · Content · Blog + Editor — GATE 3 · Delivery report
 
+> **2026-11-04:** Sibling `blog.*`, `parts/`, `variants/`, and `build-f21.js` were removed after migration. **Edit `V#/index.html` only.** Open via `file://` (no server). Historical build steps below describe authorship, not current layout.
+
 Run: 2–3 November 2026 · scope **F21 only** (owner-authorised) · family folder `admin-portal-lab/families/F21-content-blog/`.
 Everything below was measured on the files as committed; nothing is carried over from another family's report.
 

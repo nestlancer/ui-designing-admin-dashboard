@@ -5,65 +5,462 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Moderation · Context review · Nestlancer Admin</title>
 <meta name="description" content="F19 V2 — source-reconciled moderation queue with conversation-context review. Default captured empty state.">
-<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2032%2032%22%20fill=%22none%22%3E%3Crect%20x=%221%22%20y=%221%22%20width=%2230%22%20height=%2230%22%20rx=%228%22%20fill=%22%23465fff%22/%3E%3Cpath%20d=%22M9%2023V9l8%209.2V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20fill=%22none%22/%3E%3Cpath%20d=%22M21%2023V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20fill=%22none%22/%3E%3C/svg%3E" type="image/svg+xml">
 <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();</script>
-<link rel="stylesheet" href="../../../shared/tokens.css">
-<link rel="stylesheet" href="../../../shared/base.css">
-<link rel="stylesheet" href="../moderation-shell.css">
-<link rel="stylesheet" href="design.css">
-<link rel="stylesheet" href="../../../shared/dashboard-layout.css">
+<style>
+/* inlined from ../../../shared/tokens.css */
+:root{
+  /* Neutrals (cool-gray, from live admin) */
+  --background:#f4f6f9; --card:#ffffff; --muted:#eef2f6; --border:#dfe6ee;
+  --foreground:#1a2433; --muted-foreground:#54657a;
+  /* Brand — ONE teal ramp (live --primary 168 82% 26% ≈ #0c7963) */
+  --brand-50:#ecfdf5; --brand-100:#d1fae5; --brand-200:#a7f3d0;
+  --brand-500:#14a07c; --brand-600:#0c7963; --brand-700:#0a5f4e; --brand-800:#084c3f;
+  --primary:var(--brand-600); --primary-hover:var(--brand-700); --primary-active:var(--brand-800);
+  --primary-tint:#e6f4ef; --ring:var(--brand-600);
+  /* Sidebar + header (measured) */
+  --sidebar-bg:#f3f4f7; --sidebar-active:rgba(12,121,99,.10); --sidebar-section:#59616e;
+  /* Status — bg tint + darkened AA text + border (FIX C3) */
+  --status-success-bg:#e5f6ec; --status-success-text:#166534; --status-success-border:#86c9a3;
+  --status-warning-bg:#fdf3e0; --status-warning-text:#7a5200; --status-warning-border:#e8c477;
+  --status-error-bg:#fdecec;   --status-error-text:#b42318;   --status-error-border:#f0a8a0;
+  --status-info-bg:#e6f4fd;    --status-info-text:#0c5d8a;    --status-info-border:#8fcbe8;
+  --status-purple-bg:#f1e8fd;  --status-purple-text:#5b21b6;  --status-purple-border:#c4a8ef;
+  --status-neutral-bg:#eef2f6; --status-neutral-text:#3f4c5e; --status-neutral-border:#c3cedb;
+  /* Shape + type */
+  --radius-sm:4px; --radius-md:6px; --radius-lg:8px; --radius-xl:20px;
+  --shadow-xs:0 1px 2px rgba(26,36,51,.06); --shadow-sm:0 4px 14px rgba(26,36,51,.08);
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  --sidebar:232px; --header:52px; --content:1440px;
+  --duration-fast:150ms; --duration-normal:280ms; --duration-slow:500ms;
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+.dark{
+  --background:#0b1220; --card:#101a2c; --muted:#152238; --border:#22334c;
+  --foreground:#e8eef4; --muted-foreground:#9fb0c3;
+  --sidebar-bg:#0d1526; --sidebar-active:rgba(20,160,124,.16);
+  --primary:#14a07c; --primary-hover:#1abc8f;
+  --status-success-text:#4ade80; --status-warning-text:#fbbf24;
+  --status-error-text:#f87171; --status-info-text:#38bdf8;
+  --status-purple-text:#c084fc; --status-neutral-text:#9fb0c3;
+  /* status BGs in dark: 12–16% tint of the hue over --card — same formula every variant */
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4); --shadow-sm:0 8px 28px rgba(0,0,0,.45);
+}
+
+</style>
+<style>
+/* inlined from ../../../shared/base.css */
+/* admin-portal-lab shared base — reset + primitives ONLY (create-if-missing; never fork) */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  font-size:14px; line-height:1.5;
+  background:var(--background); color:var(--foreground);
+  min-height:100vh;
+}
+img,svg{display:block; max-width:100%}
+button,input{font:inherit; color:inherit}
+a{color:var(--primary); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ring); outline-offset:2px; border-radius:var(--radius-sm)}
+::selection{background:var(--brand-200); color:var(--brand-800)}
+
+/* primitives */
+.skip-link{
+  position:absolute; left:12px; top:-48px; z-index:100;
+  background:var(--card); color:var(--primary);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:8px 14px; font-size:13px; font-weight:600;
+  transition:top var(--duration-fast) ease;
+}
+.skip-link:focus-visible{top:12px; text-decoration:none}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:40px; padding:0 18px;
+  border-radius:var(--radius-md); border:1px solid transparent;
+  font-size:14px; font-weight:600; cursor:pointer;
+  transition:background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover{background:var(--primary-hover); text-decoration:none}
+.btn-primary:active{background:var(--primary-active)}
+.btn-primary:disabled{opacity:.6; cursor:not-allowed}
+.btn-secondary{background:var(--card); color:var(--foreground); border-color:var(--border)}
+.btn-secondary:hover{background:var(--muted); text-decoration:none}
+.btn-ghost{background:transparent; color:var(--muted-foreground); border-color:transparent}
+.btn-ghost:hover{background:var(--muted); color:var(--foreground); text-decoration:none}
+.btn-block{width:100%}
+
+.field{display:flex; flex-direction:column; gap:6px}
+.field > label{font-size:13px; font-weight:600; color:var(--foreground)}
+.field .hint{font-size:12px; color:var(--muted-foreground)}
+.input, .field input[type="email"], .field input[type="password"], .field input[type="text"], .field input[type="tel"]{
+  width:100%; min-height:40px; padding:0 12px;
+  background:var(--card); color:var(--foreground);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  font-size:14px;
+  transition:border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.input::placeholder{color:var(--muted-foreground); opacity:.75}
+.input:hover{border-color:var(--muted-foreground)}
+.input:focus{border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent)}
+.input[aria-invalid="true"]{border-color:var(--status-error-text); box-shadow:0 0 0 3px color-mix(in srgb, var(--status-error-text) 18%, transparent)}
+.field-error{font-size:12px; color:var(--status-error-text); display:flex; gap:6px; align-items:flex-start}
+
+/* status badge — icon + colour + text, never colour alone (C3, AA text) */
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:2px 10px; border-radius:999px;
+  font-size:12px; font-weight:600; border:1px solid;
+  white-space:nowrap;
+}
+.badge svg{width:12px; height:12px; flex:none}
+.badge-success{background:var(--status-success-bg); color:var(--status-success-text); border-color:var(--status-success-border)}
+.badge-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.badge-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.badge-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.badge-purple{background:var(--status-purple-bg); color:var(--status-purple-text); border-color:var(--status-purple-border)}
+.badge-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+/* inline notice (alerts) */
+.notice{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:12px 14px; border-radius:var(--radius-md); border:1px solid;
+  font-size:13px;
+}
+.notice svg{width:16px; height:16px; flex:none; margin-top:1px}
+.notice-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.notice-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.notice-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.notice-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+.mono{font-family:var(--mono); font-size:.92em}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs)}
+.visually-hidden{position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+/* theme-aware logo pair (client-lab assets, 2026-11-01): light-ink artwork on light surfaces, white artwork on dark */
+img.logo-for-light{display:inline-block; vertical-align:middle}
+img.logo-for-dark{display:none; vertical-align:middle}
+.dark img.logo-for-light{display:none}
+.dark img.logo-for-dark{display:inline-block}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+
+</style>
+<style>
+/* inlined from ../moderation-shell.css */
+/* F19 revision 2 — shared Operator Console shell + source-aligned product primitives.
+   Variant design.css files own only layout geometry. Locked tokens/base remain unchanged. */
+[hidden]{display:none!important}
+.dark{--primary-tint:#112b25;--status-success-bg:#10281c;--status-success-border:#2f6b46;--status-warning-bg:#2b2110;--status-warning-border:#7a5200;--status-error-bg:#2c1516;--status-error-border:#7f2a24;--status-info-bg:#0e2438;--status-info-border:#235d80;--status-purple-bg:#241638;--status-purple-border:#5b3a8a;--status-neutral-bg:#1a2433;--status-neutral-border:#33445c}
+.dark .btn-primary{background:var(--brand-200);color:#052e27;border-color:var(--brand-200)}
+.dark .btn-primary:hover{background:var(--brand-100)}
+.dark .nav.active{color:var(--brand-200)}
+*{scrollbar-width:thin}
+.app{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:100vh;background:var(--background)}
+.app.collapsed{grid-template-columns:64px minmax(0,1fr)}
+.sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:var(--sidebar-bg);border-right:1px solid var(--border);overflow-y:auto;z-index:40}
+.brand{display:flex;flex-direction:column;gap:2px;padding:14px 16px 12px;border-bottom:1px solid var(--border)}
+.brand-row{display:flex;align-items:center;gap:8px}
+.brand img{width:28px;height:29px;flex:none}
+.brand-name{font-size:14px;font-weight:800;letter-spacing:-.01em;color:var(--foreground)}
+.brand-sub{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.nav-group{padding:10px 10px 4px}
+.nav-section{padding:6px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-foreground)}
+.nav{display:flex;align-items:center;gap:10px;min-height:36px;padding:7px 10px;border-radius:var(--radius-md);color:var(--muted-foreground);font-size:13px;font-weight:550}
+.nav:hover{background:var(--muted);color:var(--foreground);text-decoration:none}
+.nav.active{background:var(--sidebar-active);color:var(--brand-700);font-weight:650;box-shadow:inset 3px 0 0 var(--primary)}
+.nav .ic{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-label{white-space:nowrap}
+.sidebar-account{margin-top:auto;padding:12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.account-avatar{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:800;flex:none}
+.account-meta{min-width:0;font-size:12px;line-height:1.35}
+.account-meta strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.account-meta span{color:var(--muted-foreground);font-size:11px}
+.signout{display:flex;align-items:center;gap:8px;padding:8px 12px 14px;color:var(--muted-foreground);font-size:12px;background:none;border:0;cursor:pointer}
+.app.collapsed .brand-name,.app.collapsed .brand-sub,.app.collapsed .nav-label,.app.collapsed .nav-section,.app.collapsed .account-meta,.app.collapsed .signout span{display:none}
+.app.collapsed .brand{align-items:center;padding:14px 8px}
+.app.collapsed .nav{justify-content:center;padding-inline:0}
+.app.collapsed .sidebar-account{justify-content:center}
+.workspace{min-width:0;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;min-height:var(--header);padding:8px clamp(12px,2vw,24px);background:var(--card);border-bottom:1px solid var(--border);box-shadow:var(--shadow-xs)}
+.top-start,.top-end{display:flex;align-items:center;gap:10px;min-width:0}
+.top-end{margin-left:auto}
+.crumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted-foreground);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--foreground);font-weight:650}
+.crumb-sep{color:var(--border)}
+.icon-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:36px;min-height:36px;padding:0 9px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);color:var(--foreground);cursor:pointer;font-size:12px;font-weight:650;position:relative}
+.icon-button:hover{background:var(--muted)}
+.icon-button .ic{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.top-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:#b42318;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center}
+.top-badge.teal{background:var(--card);color:var(--primary);border:1px solid var(--primary)}
+.global-search{display:inline-flex;align-items:center;gap:8px;min-height:36px;min-width:220px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--muted-foreground);font-size:13px;cursor:pointer}
+.global-search kbd{margin-left:auto}
+.operator{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:650}
+.operator-mark{display:grid;place-items:center;width:30px;height:30px;border-radius:var(--radius-md);background:var(--primary-tint);color:var(--primary);font-size:11px;font-weight:800}
+.content{width:100%;padding:24px clamp(16px,2.4vw,32px) 40px;min-width:0}
+.footer{margin-top:auto;padding:10px clamp(16px,2.4vw,32px);border-top:1px solid var(--border);background:var(--card);font-size:11px;color:var(--muted-foreground)}
+.menu-mobile{display:none}.nav-overlay{display:none}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* Product primitives */
+h1{font-size:clamp(30px,2.6vw,36px);line-height:1.15;letter-spacing:-.02em;font-weight:800}
+h2{font-size:17px;line-height:1.3}h3{font-size:14px}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;color:var(--primary);margin-bottom:6px}
+.lede{margin-top:6px;max-width:72ch;color:var(--muted-foreground);font-size:14px}
+.hint{font-size:12px;color:var(--muted-foreground)}
+.mono{font-family:var(--mono);font-size:.92em}
+.page-head{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.head-tools{display:flex;align-items:center;gap:8px}
+.preview-options{position:relative}
+.preview-options summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);font-size:12px;font-weight:650;color:var(--muted-foreground);cursor:pointer}
+.preview-options summary::-webkit-details-marker{display:none}
+.preview-panel{position:absolute;right:0;top:calc(100% + 8px);z-index:25;width:min(360px,calc(100vw - 32px));padding:14px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px}
+.preview-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.preview-label{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-foreground);width:100%}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
+.seg button{min-height:32px;padding:0 10px;border:0;background:var(--card);color:var(--muted-foreground);font-size:12px;font-weight:650;cursor:pointer}
+.seg button+button{border-left:1px solid var(--border)}
+.seg button[aria-pressed="true"]{background:var(--primary-tint);color:var(--primary)}
+.demo-notice{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;margin-bottom:14px;border:1px solid var(--status-info-border);border-radius:var(--radius-md);background:var(--status-info-bg);color:var(--status-info-text);font-size:12px}
+.view-tabs{display:flex;gap:8px;margin-bottom:16px}
+.view-tabs [role="tab"]{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);color:var(--foreground);font-size:13px;font-weight:650;cursor:pointer;box-shadow:var(--shadow-xs)}
+.view-tabs [role="tab"][aria-selected="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
+.dark .view-tabs [role="tab"][aria-selected="true"]{background:var(--brand-200);border-color:var(--brand-200);color:#052e27}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);overflow:hidden;margin-bottom:16px}
+.summary-card{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:14px 18px;text-align:left;background:transparent;border:0;border-right:1px solid var(--border);cursor:pointer;color:var(--foreground)}
+.summary-card:last-child{border-right:0}
+.summary-card:hover:not(:disabled){background:var(--muted)}
+.summary-card:disabled{cursor:default}
+.summary-label{font-size:12px;font-weight:650;color:var(--muted-foreground)}
+.summary-value{font-size:24px;line-height:1.2;font-weight:750;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.summary-sub{font-size:12px;color:var(--muted-foreground)}
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-lg) var(--radius-lg) 0 0;background:var(--card)}
+.filter-bar .search-wrap{flex:1 1 260px;min-width:200px}
+.filter-inline{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted-foreground)}
+.input,select.input,textarea.input{width:100%;min-height:36px;padding:7px 11px;background:var(--card);color:var(--foreground);border:1px solid var(--border);border-radius:var(--radius-md);font:inherit;font-size:13px}
+select.input{width:auto;min-width:130px}
+textarea.input{resize:vertical;line-height:1.5}
+.input:focus{border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 18%,transparent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:0 14px;border-radius:var(--radius-md);border:1px solid transparent;font-size:13px;font-weight:650;cursor:pointer}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-hover)}
+.btn-secondary{background:var(--card);color:var(--foreground);border-color:var(--border)}.btn-secondary:hover{background:var(--muted)}
+.btn-ghost{background:transparent;color:var(--muted-foreground)}.btn-ghost:hover{background:var(--muted);color:var(--foreground)}
+.btn-danger{background:var(--status-error-bg);color:var(--status-error-text);border-color:var(--status-error-border)}
+.btn-sm{min-height:32px;padding:0 10px;font-size:12px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.panel{border:1px solid var(--border);border-top:0;border-radius:0 0 var(--radius-lg) var(--radius-lg);background:var(--card);overflow:hidden}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:72px 24px;min-height:220px}
+.empty-state h2{font-size:14px;font-weight:650}
+.empty-state p{max-width:46ch;font-size:13px;color:var(--muted-foreground)}
+.panel-footer{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted-foreground)}
+.pager{display:flex;align-items:center;gap:8px}
+.table-wrap{overflow:auto;position:relative}
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:750;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-foreground);background:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+.data-table tbody tr:last-child td{border-bottom:0}
+.data-table tr.selected{background:var(--primary-tint)}
+.data-table small{display:block;margin-top:3px;font-size:11px;color:var(--muted-foreground)}
+.link-button{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.link-button:hover{color:var(--primary)}
+.case-link strong{display:block;font-size:13px}
+.case-link span{display:block;margin-top:3px;color:var(--muted-foreground);font-size:12px}
+.check{display:inline-flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:12px}
+.check input{width:17px;height:17px;margin-top:2px;accent-color:var(--primary);flex:none}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid;white-space:nowrap}
+.badge .ic{width:12px;height:12px}
+.selection-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 14px;margin-bottom:12px;border:1px solid var(--status-info-border);border-radius:var(--radius-md);background:var(--status-info-bg)}
+.selection-actions{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.evidence{padding:18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg)}
+.evidence-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.reported-content{margin:0 0 14px;padding:14px 16px;border-left:3px solid var(--primary);border-radius:0 var(--radius-md) var(--radius-md) 0;background:var(--primary-tint);font-size:14px;line-height:1.65}
+.context-list{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.context-list li{padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted)}
+.context-list li.reported{border-color:var(--primary);background:var(--primary-tint)}
+.ctx-who{display:block;font-size:11px;font-weight:750;color:var(--muted-foreground);margin-bottom:3px}
+.context-list p{font-size:13px;line-height:1.5}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.meta-grid dt{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-foreground)}
+.meta-grid dd{margin:2px 0 0;font-size:12px;overflow-wrap:anywhere}
+.action-dock{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.action-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.state-panel{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:32px 24px}
+.error-state{background:var(--status-error-bg);color:var(--status-error-text)}
+.sk-row{display:grid;grid-template-columns:1fr 2fr 1fr;gap:12px;width:100%;padding:12px 16px;border-bottom:1px solid var(--border)}
+.sk-row i{display:block;height:13px;border-radius:4px;background:var(--muted);animation:pulse 1.4s ease-in-out infinite}
+.sk-row i:nth-child(2){height:26px}
+@keyframes pulse{50%{opacity:.45}}
+.receipt{margin:16px 0}
+.receipt-card{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--status-success-border);border-radius:var(--radius-md);background:var(--status-success-bg)}
+.receipt-card p{margin-top:3px;font-size:12px;color:var(--muted-foreground)}
+.receipt-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.modal{width:min(680px,calc(100vw - 32px));max-height:min(88dvh,860px);padding:0;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card);color:var(--foreground);box-shadow:var(--shadow-sm)}
+.modal::backdrop{background:rgba(8,15,28,.55)}
+.modal-sm{width:min(500px,calc(100vw - 32px))}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;border-bottom:1px solid var(--border)}
+.modal-head h2{font-size:17px}
+.modal-body{padding:18px;overflow:auto;max-height:calc(88dvh - 130px);display:flex;flex-direction:column;gap:13px}
+.modal-foot{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;padding:13px 18px;border-top:1px solid var(--border)}
+.modal-kicker{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--primary)}
+.ref-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ref-list li{padding:12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--muted)}
+.ref-list p{margin:6px 0;font-size:13px}.ref-list small{font-size:11px;color:var(--muted-foreground)}
+.field{display:flex;flex-direction:column;gap:5px}.field>label{font-size:12px;font-weight:700}
+.error-summary{padding:12px;border:1px solid var(--status-error-border);border-radius:var(--radius-md);background:var(--status-error-bg);color:var(--status-error-text);font-size:13px}
+.confirm-grid{display:grid;gap:10px}.confirm-grid dt{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-foreground)}
+.confirm-grid dd{margin:3px 0 0;font-size:13px;overflow-wrap:anywhere}
+.key-list{display:grid;gap:10px}.key-list div{display:grid;grid-template-columns:100px 1fr;gap:10px}.key-list dt{font-weight:700}.key-list dd{margin:0;font-size:13px;color:var(--muted-foreground)}
+kbd{display:inline-block;padding:1px 6px;border:1px solid var(--border);border-radius:4px;background:var(--muted);font-family:var(--mono);font-size:11px}
+.notice{font-size:13px}
+.source-note{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-size:12px;color:var(--muted-foreground)}
+.source-note p{max-width:100ch;margin-bottom:6px}
+.source-note a,.hint a{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:1100px){
+  .global-search{display:none}
+  .operator-name{display:none}
+}
+@media(max-width:900px){
+  .topbar{padding:0 8px;gap:4px}
+  .crumb{max-width:48vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+  .top-end .icon-button[aria-label*="notifications"],
+  .top-end .icon-button[aria-label*="messages"],
+  .top-end a[aria-label="Moderation"]{display:none}
+  .app,.app.collapsed{grid-template-columns:minmax(0,1fr)}
+  .sidebar{position:fixed;inset:0 auto 0 0;width:min(280px,84vw);height:100dvh;transform:translateX(-105%);transition:transform var(--duration-normal) ease;box-shadow:var(--shadow-sm)}
+  body.nav-open .sidebar{transform:translateX(0)}
+  body.nav-open .nav-overlay{display:block;position:fixed;inset:0;z-index:35;background:rgba(10,18,32,.45)}
+  .app.collapsed .brand-name,.app.collapsed .brand-sub,.app.collapsed .nav-label,.app.collapsed .nav-section,.app.collapsed .account-meta,.app.collapsed .signout span{display:revert}
+  .app.collapsed .nav{justify-content:flex-start;padding-inline:10px}
+  .collapse-desktop{display:none}.menu-mobile{display:inline-flex}
+  .global-search{display:none}.operator-name{display:none}
+  .content{padding:18px 14px 32px}
+  .summary-grid{grid-template-columns:1fr}
+  .summary-card{border-right:0;border-bottom:1px solid var(--border)}
+  .summary-card:last-child{border-bottom:0}
+  .filter-bar{border-radius:var(--radius-lg);margin-bottom:12px}
+  .panel{border-top:1px solid var(--border);border-radius:var(--radius-lg)}
+}
+@media(pointer:coarse){.btn,.nav,.icon-button,.view-tabs [role="tab"],.seg button{min-height:44px}.check input{width:21px;height:21px}}
+@media(prefers-reduced-motion:reduce){.sidebar{transition:none}.sk-row i{animation:none}}
+
+</style>
+<style>
+/* inlined from design.css */
+/* V2 Context review — layout only. */
+.spine-grid{display:grid;grid-template-columns:270px minmax(0,1fr) 250px;gap:16px;align-items:start}
+.spine-grid:has(#detail[hidden]){grid-template-columns:minmax(0,1fr)}
+.spine-grid:has(#detail[hidden]) .guidance-pane{display:none}
+.case-pane{position:sticky;top:76px;max-height:calc(100vh - 100px);overflow:auto;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card)}
+.case-rail{display:flex;flex-direction:column}
+.case-rail-item{display:flex;flex-direction:column;gap:6px;padding:12px;border-bottom:1px solid var(--border)}
+.case-rail-item.selected{background:var(--primary-tint);box-shadow:inset 3px 0 0 var(--primary)}
+.rail-open{display:flex;flex-direction:column;gap:5px;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.rail-top{display:flex;align-items:center;gap:6px;font-size:11px}
+.rail-top .badge{margin-left:auto}
+.rail-meta{font-size:11px;color:var(--muted-foreground)}
+.rail-snippet{font-size:12px;color:var(--muted-foreground);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.review-pane{min-width:0}
+.guidance-pane{position:sticky;top:76px;padding:16px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--card)}
+.guidance-pane h2{font-size:14px;margin-bottom:8px}
+.guidance-pane ol{margin:0 0 10px 18px;font-size:12px;color:var(--muted-foreground);display:grid;gap:6px}
+.data-table{min-width:720px}
+.expanded-row td{background:var(--muted);padding:16px}
+.history-detail{display:flex;flex-direction:column;gap:8px;font-size:13px}
+@media(max-width:1280px){.spine-grid{grid-template-columns:250px minmax(0,1fr)}.guidance-pane{grid-column:1/-1;position:static}}
+@media(max-width:800px){.spine-grid{grid-template-columns:minmax(0,1fr)}.case-pane{position:static;max-height:none}}
+
+</style>
+<style>
+/* inlined from ../../../shared/dashboard-layout.css */
+/* Adapts the different historical page layouts to the shared dashboard shell.
+   Legacy nodes stay in the DOM because page-specific scripts still reference them. */
+html.shared-chrome-ready body { padding:64px 0 0 248px !important; display:block !important; }
+html.shared-chrome-ready [data-legacy-dashboard-chrome] { display:none !important; }
+html.shared-chrome-ready [data-legacy-dashboard-footer] { display:none !important; }
+html.shared-chrome-ready [data-legacy-dashboard-layout] { display:block !important; grid-template-columns:none !important; }
+html.shared-chrome-ready [data-dashboard-workspace] { margin-left:0 !important; width:auto !important; min-width:0 !important; display:flex !important; flex-direction:column !important; min-height:calc(100vh - 64px) !important; }
+html.shared-chrome-ready #shared-dashboard-footer {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 16px;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:auto;
+  padding:14px clamp(16px,1.8vw,28px);
+  border-top:1px solid #dce7e3;
+  background:#fff;
+  color:#657772;
+  font:12px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+html.dark.shared-chrome-ready #shared-dashboard-footer {
+  border-top-color:#294039;
+  background:#10221f;
+  color:#a4bab3;
+}
+@media (max-width: 850px) { html.shared-chrome-ready body { padding-left:0 !important; } }
+
+</style>
 </head>
 <body data-layout="spine">
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 13h6M9 17h6"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 4-4 2 2-4z"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 9v5M12 17h.01"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol><symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v13m0 0 5-5m-5 5-5-5M4 21h16"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/></symbol><symbol id="i-save" viewBox="0 0 24 24"><path d="M4 4h13l3 3v13H4z"/><path d="M8 4v6h8V4M8 20v-6h8v6"/></symbol><symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol><symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9 12 4l9 5M5 9v9M19 9v9M3 20h18M9 9v9M15 9v9"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 20V7m0 0-5 5m5-5 5 5M4 4h16"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v7c0 5 3 8 8 10 5-2 8-5 8-10V5z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></symbol><symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></symbol><symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M10 12h4"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.3-9.3M16 7l3 3M19 4l2 2"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol></svg>
+
 <a class="skip-link" href="#main">Skip to moderation content</a>
 <div id="live" class="visually-hidden" aria-live="polite"></div>
 <div class="app" data-legacy-dashboard-layout>
   <aside class="sidebar" id="sidebar" aria-label="Operator console navigation" data-legacy-dashboard-chrome>
-    <div class="brand"><div class="brand-row"><img class="logo-for-light" src="../../../assets/logo-mark-light.svg" alt="Nestlancer logo"><img class="logo-for-dark" src="../../../assets/logo-mark-dark.svg" alt="Nestlancer logo"><span class="brand-name">Nestlancer</span></div><span class="brand-sub">Operator Console</span></div>
+    <div class="brand"><div class="brand-row"><img class="logo-for-light" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20viewBox=%220%200%20535%20544%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23272A7A%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23272A7A%22%20/%3E%3C/g%3E%3C/svg%3E" alt="Nestlancer logo"><img class="logo-for-dark" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20viewBox=%220%200%20535%20544%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23ffffff%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23FFFFFF%22%20/%3E%3C/g%3E%3C/svg%3E" alt="Nestlancer logo"><span class="brand-name">Nestlancer</span></div><span class="brand-sub">Operator Console</span></div>
     <nav class="nav-group" aria-label="Operations">
       <div class="nav-section">Operations</div>
-      <a class="nav" href="../../F02-dashboard-command-center/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-grid"></use></svg><span class="nav-label">Dashboard</span></a>
-      <a class="nav" href="../../F04-pipelines-stage-hub/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-compass"></use></svg><span class="nav-label">Pipelines</span></a>
-      <a class="nav" href="../../F06-contact-inquiries/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-doc"></use></svg><span class="nav-label">Inquiries</span></a>
-      <a class="nav" href="../../F07-notifications-center/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-bell"></use></svg><span class="nav-label">Notifications</span></a>
-      <a class="nav" href="../../F08-requests-triage/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-list"></use></svg><span class="nav-label">Requests</span></a>
-      <a class="nav" href="../../F09-quotes-list/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-card"></use></svg><span class="nav-label">Quotes</span></a>
-      <a class="nav" href="../../F11-projects-list/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-folder"></use></svg><span class="nav-label">Projects</span></a>
-      <a class="nav" href="../../F13-payments-money-ops/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-bank"></use></svg><span class="nav-label">Payments</span></a>
-      <a class="nav" href="../../F15-users-directory/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-user"></use></svg><span class="nav-label">Users</span></a>
-      <a class="nav" href="../../F17-messages-home/V1/index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-chat"></use></svg><span class="nav-label">Messages</span></a>
-      <a class="nav active" aria-current="page" href="index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-shield"></use></svg><span class="nav-label">Moderation</span></a>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-up"></use></svg><span class="nav-label">Analytics</span></a>
+      <a class="nav" href="../../F02-dashboard-command-center/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-grid"></use></svg><span class="nav-label">Dashboard</span></a>
+      <a class="nav" href="../../F04-pipelines-stage-hub/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-compass"></use></svg><span class="nav-label">Pipelines</span></a>
+      <a class="nav" href="../../F06-contact-inquiries/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-doc"></use></svg><span class="nav-label">Inquiries</span></a>
+      <a class="nav" href="../../F07-notifications-center/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-bell"></use></svg><span class="nav-label">Notifications</span></a>
+      <a class="nav" href="../../F08-requests-triage/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-list"></use></svg><span class="nav-label">Requests</span></a>
+      <a class="nav" href="../../F09-quotes-list/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-card"></use></svg><span class="nav-label">Quotes</span></a>
+      <a class="nav" href="../../F11-projects-list/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-folder"></use></svg><span class="nav-label">Projects</span></a>
+      <a class="nav" href="../../F13-payments-money-ops/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-bank"></use></svg><span class="nav-label">Payments</span></a>
+      <a class="nav" href="../../F15-users-directory/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-user"></use></svg><span class="nav-label">Users</span></a>
+      <a class="nav" href="../../F17-messages-home/V1/index.html"><svg class="ic" aria-hidden="true"><use href="#i-chat"></use></svg><span class="nav-label">Messages</span></a>
+      <a class="nav active" aria-current="page" href="index.html"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg><span class="nav-label">Moderation</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-up"></use></svg><span class="nav-label">Analytics</span></a>
     </nav>
     <nav class="nav-group" aria-label="Content">
       <div class="nav-section">Content</div>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-doc"></use></svg><span class="nav-label">Blog</span></a>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-folder"></use></svg><span class="nav-label">Portfolio</span></a>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-archive"></use></svg><span class="nav-label">Media Library</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-doc"></use></svg><span class="nav-label">Blog</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-folder"></use></svg><span class="nav-label">Portfolio</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-archive"></use></svg><span class="nav-label">Media Library</span></a>
     </nav>
     <nav class="nav-group" aria-label="System">
       <div class="nav-section">System</div>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-gear"></use></svg><span class="nav-label">System Config</span></a>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-share"></use></svg><span class="nav-label">Webhooks</span></a>
-      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-lock"></use></svg><span class="nav-label">Audit Logs</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-gear"></use></svg><span class="nav-label">System Config</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-share"></use></svg><span class="nav-label">Webhooks</span></a>
+      <a class="nav" href="../../../index.html"><svg class="ic" aria-hidden="true"><use href="#i-lock"></use></svg><span class="nav-label">Audit Logs</span></a>
     </nav>
     <div class="sidebar-account"><span class="account-avatar" aria-hidden="true">A</span><span class="account-meta"><strong>admin@nestlancer.com</strong><span>Administrator</span></span></div>
-    <button class="signout" data-signout><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-arrow"></use></svg><span>Sign out</span></button>
+    <button class="signout" data-signout><svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg><span>Sign out</span></button>
   </aside>
   <div class="nav-overlay" id="nav-overlay"></div>
   <div class="workspace" data-dashboard-workspace>
     <header class="topbar" data-legacy-dashboard-chrome>
       <div class="top-start">
-        <button class="icon-button menu-mobile" id="menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-menu"></use></svg></button>
-        <button class="icon-button collapse-desktop" id="collapse" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-list"></use></svg><span class="collapse-text">Collapse</span></button>
+        <button class="icon-button menu-mobile" id="menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar"><svg class="ic" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+        <button class="icon-button collapse-desktop" id="collapse" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic" aria-hidden="true"><use href="#i-list"></use></svg><span class="collapse-text">Collapse</span></button>
         <nav class="crumb" aria-label="Breadcrumb"><span>Home</span><span class="crumb-sep">›</span><span>Operations</span><span class="crumb-sep">›</span><b>Moderation</b></nav>
       </div>
       <div class="top-end">
-        <button class="global-search" id="global-search" aria-label="Search this moderation workset"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-search"></use></svg>Search pages… <kbd>⌘K</kbd></button>
-        <a class="icon-button" href="../../F07-notifications-center/V1/index.html" aria-label="188 unread notifications, captured badge 99+"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-bell"></use></svg><span class="top-badge">99+</span></a>
-        <a class="icon-button" href="../../F17-messages-home/V1/index.html" aria-label="21 unread messages"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-chat"></use></svg><span class="top-badge teal">21</span></a>
-        <a class="icon-button" href="index.html" aria-label="Moderation"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-shield"></use></svg></a>
+        <button class="global-search" id="global-search" aria-label="Search this moderation workset"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg>Search pages… <kbd>⌘K</kbd></button>
+        <a class="icon-button" href="../../F07-notifications-center/V1/index.html" aria-label="188 unread notifications, captured badge 99+"><svg class="ic" aria-hidden="true"><use href="#i-bell"></use></svg><span class="top-badge">99+</span></a>
+        <a class="icon-button" href="../../F17-messages-home/V1/index.html" aria-label="21 unread messages"><svg class="ic" aria-hidden="true"><use href="#i-chat"></use></svg><span class="top-badge teal">21</span></a>
+        <a class="icon-button" href="index.html" aria-label="Moderation"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg></a>
         <span class="operator"><span class="operator-mark" aria-hidden="true">RK</span><span class="operator-name">Riya Kapoor</span></span>
-        <button class="icon-button" id="theme" aria-label="Switch to dark mode" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-moon"></use></svg></button>
+        <button class="icon-button" id="theme" aria-label="Switch to dark mode" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-moon"></use></svg></button>
       </div>
     </header>
     <main class="content" id="main">
@@ -71,7 +468,7 @@
         <div><p class="eyebrow">Operations</p><h1>Moderation</h1><p class="lede">Review flagged chats, escalate or remove them, and restore from history when needed.</p></div>
         <div class="head-tools">
           <details class="preview-options">
-            <summary><svg class="ic" aria-hidden="true"><use href="../../../assets/lab-icons.svg#i-eye"></use></svg>Preview options</summary>
+            <summary><svg class="ic" aria-hidden="true"><use href="#i-eye"></use></svg>Preview options</summary>
             <div class="preview-panel">
               <div class="preview-row"><span class="preview-label">Data source</span><div class="seg" role="group" aria-label="Data source"><button data-source="source" aria-pressed="true">Captured empty state</button><button data-source="demo" aria-pressed="false">Workflow demo</button></div></div>
               <div class="preview-row"><span class="preview-label">Demo state</span><div class="seg" role="group" aria-label="Demo state"><button data-state="ready" aria-pressed="true">Ready</button><button data-state="loading" aria-pressed="false">Loading</button><button data-state="error" aria-pressed="false">Error</button><button data-state="empty" aria-pressed="false">Empty</button></div></div>
@@ -124,9 +521,614 @@
     <footer class="footer">© 2026 Nestlancer Admin</footer>
   </div>
 </div>
-<script src="../fixtures.js"></script>
-<script src="../moderation-shell.js"></script>
-<script src="../moderation.js"></script>
-<script src="../../../shared/dashboard-shell.js"></script>
+<script>
+/* inlined from ../fixtures.js */
+/* F19 revision 2 — source-reconciled fixtures.
+   Default UI state is the captured empty moderation queue/history.
+   Optional workflow demo reuses captured Nestlancer message text only.
+   Flags/escalations in the demo are synthetic; no production moderation record is implied. */
+(function () {
+  'use strict';
+  const GROUP = 'Payments ops — Razorpay settlement and webhooks';
+  const groupContext = [
+    { sender: 'Riya Kapoor', role: 'Admin', content: 'Karthik, Ananya — this thread is for settlement and webhook questions that overlap both engagements. Project files stay in each project.', timeLabel: 'Oct 5, 3:49 AM', reported: false },
+    { sender: 'Karthik Menon', role: 'Client', content: 'Useful. Our UPI adapter is still in staging; I want the same retry rules Ananya’s reconciliation service already uses for duplicate captures.', timeLabel: 'Oct 5, 3:49 AM', reported: true },
+    { sender: 'Ananya Iyer', role: 'Client', content: 'Happy to share the webhook idempotency notes. Duplicate payment refunds are the case we keep hitting on settlement day.', timeLabel: 'Oct 5, 3:49 AM', reported: false }
+  ];
+  const amitContext = [
+    { sender: 'Riya Kapoor', role: 'Admin', content: 'Hi Amit — welcome to Nestlancer. Let us know if you have questions about your request.', timeLabel: 'Oct 5, 3:48 AM', reported: false },
+    { sender: 'Amit Verma', role: 'Client', content: 'Thanks — we’re Verma Properties based in Delhi. Looking forward to working together.', timeLabel: 'Oct 5, 3:48 AM', reported: true }
+  ];
+  const cases = [
+    {
+      key: 'F19-DEMO-01', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      chat: 'Group', threadTitle: GROUP, sender: 'Karthik Menon', senderRole: 'Client',
+      content: 'Useful. Our UPI adapter is still in staging; I want the same retry rules Ananya’s reconciliation service already uses for duplicate captures.',
+      timeLabel: 'Oct 5, 3:49 AM', provenance: '026-messages-thread-details.webp', status: 'Flagged', syntheticFlag: true,
+      context: groupContext, contextNote: 'Captured group thread snippet. The flag itself is synthetic.'
+    },
+    {
+      key: 'F19-DEMO-02', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      chat: 'Group', threadTitle: GROUP, sender: 'Ananya Iyer', senderRole: 'Client',
+      content: 'Happy to share the webhook idempotency notes. Duplicate payment refunds are the case we keep hitting on settlement day.',
+      timeLabel: 'Oct 5, 3:49 AM', provenance: '026-messages-thread-details.webp', status: 'Escalated', syntheticFlag: true,
+      context: groupContext.map(m => ({ ...m, reported: m.sender === 'Ananya Iyer' })), contextNote: 'Captured group thread snippet. Escalation is a synthetic preview state.'
+    },
+    {
+      key: 'F19-DEMO-03', messageId: null, threadId: '01a10a2d-850b-7147-b023-efb5e17d8b73', projectId: null, type: 'TEXT',
+      chat: 'Direct', threadTitle: 'Amit Verma', sender: 'Amit Verma', senderRole: 'Client',
+      content: 'Thanks — we’re Verma Properties based in Delhi. Looking forward to working together.',
+      timeLabel: 'Oct 5, 3:48 AM', provenance: '162-messages-thread.html', status: 'Flagged', syntheticFlag: true,
+      context: amitContext, contextNote: 'Captured direct thread. The flag itself is synthetic.'
+    },
+    {
+      key: 'F19-DEMO-04', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      chat: 'Direct', threadTitle: 'Sandeep Chopra', sender: 'Sandeep Chopra', senderRole: 'Client',
+      content: 'Thanks — we’re Chopra Fleet Logistics based in Chandigarh. Looking forward to working together.',
+      timeLabel: '25 days ago · captured inbox', provenance: '85-messages-index.html / 168-messages-inbox.html', status: 'Flagged', syntheticFlag: true,
+      context: null, contextNote: 'Captured inbox preview only; the full thread was not opened in this source.'
+    },
+    {
+      key: 'F19-DEMO-05', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      chat: 'Direct', threadTitle: 'Ananya Iyer', sender: 'Ananya Iyer', senderRole: 'Client',
+      content: 'Thanks. Our finance team confirmed the duplicate NEFT on their end too. Replay UI remains the priority for month-end.',
+      timeLabel: '25 days ago · captured inbox', provenance: '168-messages-inbox.html', status: 'Flagged', syntheticFlag: true,
+      context: null, contextNote: 'Captured inbox preview only; the full thread was not opened in this source.'
+    },
+    {
+      key: 'F19-DEMO-06', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      chat: 'Direct', threadTitle: 'Priya Nair', sender: 'Priya Nair', senderRole: 'Client',
+      content: 'Understood. Subtitles stay in the current milestone. I’ll confirm the revised quote in writing before we invoice the next installment.',
+      timeLabel: '25 days ago · captured inbox', provenance: '168-messages-inbox.html', status: 'Flagged', syntheticFlag: true,
+      context: null, contextNote: 'Captured inbox preview only; the full thread was not opened in this source.'
+    }
+  ];
+  const source = {
+    h1: 'Moderation',
+    description: 'Review flagged chats, escalate or remove them, and restore from history when needed.',
+    cards: [
+      { label: 'Queue', sub: 'Nothing flagged right now', drill: 'all' },
+      { label: 'Escalated', sub: 'Blurred in chat for senior review', drill: 'escalated' },
+      { label: 'Project chats', sub: 'From client delivery threads', drill: 'project' }
+    ],
+    queueSearch: 'Search message, sender, project, chat…',
+    historySearch: 'Search history content, actors, chats…',
+    queueEmptyTitle: 'No flagged messages in the queue',
+    queueEmptyBody: 'Items appear here when a user or admin flags a message in project, direct, or group chat.',
+    queueFooter: 'Showing 0 of 0 flagged messages',
+    historyEmpty: 'No moderation history yet.',
+    historyFooter: '0 moderation history events'
+  };
+  const demoNote = 'Workflow demo: captured Nestlancer message text with synthetic flags. No production moderation record, reporter, reason or audit event is implied.';
+  window.F19Data = { source, cases, history: [], demoNote };
+})();
+
+</script>
+<script>
+/* inlined from ../moderation-shell.js */
+/* F19 shared shell behavior: theme, persistent collapse, mobile drawer. No network. */
+(function () {
+  'use strict';
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function init() {
+    const app = document.querySelector('.app');
+    const sidebar = document.getElementById('sidebar');
+    const menu = document.getElementById('menu');
+    const collapse = document.getElementById('collapse');
+    const overlay = document.getElementById('nav-overlay');
+    const theme = document.getElementById('theme');
+    const search = document.getElementById('global-search');
+    if (!app || !sidebar) return;
+    const desktop = () => matchMedia('(min-width:901px)').matches;
+    function setCollapsed(v) {
+      app.classList.toggle('collapsed', v);
+      if (collapse) {
+        collapse.setAttribute('aria-expanded', String(!v));
+        collapse.setAttribute('aria-label', v ? 'Expand sidebar' : 'Collapse sidebar');
+        const t = collapse.querySelector('.collapse-text'); if (t) t.textContent = v ? 'Expand' : 'Collapse';
+      }
+      store('nl-sidebar', v ? 'collapsed' : 'expanded');
+    }
+    setCollapsed(store('nl-sidebar') === 'collapsed');
+    if (collapse) collapse.addEventListener('click', () => setCollapsed(!app.classList.contains('collapsed')));
+    let lastFocus = null;
+    function openNav() {
+      lastFocus = document.activeElement;
+      document.body.classList.add('nav-open');
+      menu.setAttribute('aria-expanded', 'true');
+      sidebar.removeAttribute('aria-hidden');
+      const first = sidebar.querySelector('a,button'); if (first) first.focus();
+    }
+    function closeNav() {
+      document.body.classList.remove('nav-open');
+      if (menu) menu.setAttribute('aria-expanded', 'false');
+      if (!desktop()) sidebar.setAttribute('aria-hidden', 'true');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    if (menu) menu.addEventListener('click', () => document.body.classList.contains('nav-open') ? closeNav() : openNav());
+    if (overlay) overlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', (e) => {
+      if (!document.body.classList.contains('nav-open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeNav(); return; }
+      if (e.key === 'Tab') {
+        const f = [...sidebar.querySelectorAll('a,button')].filter(x => !x.disabled);
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    function syncMobile() {
+      if (desktop()) { document.body.classList.remove('nav-open'); sidebar.removeAttribute('aria-hidden'); if (menu) menu.setAttribute('aria-expanded', 'false'); }
+      else if (!document.body.classList.contains('nav-open')) sidebar.setAttribute('aria-hidden', 'true');
+    }
+    addEventListener('resize', syncMobile); syncMobile();
+    function syncTheme() {
+      const dark = document.documentElement.classList.contains('dark');
+      if (theme) { theme.setAttribute('aria-pressed', String(dark)); theme.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme'); }
+    }
+    if (theme) theme.addEventListener('click', () => {
+      const dark = document.documentElement.classList.toggle('dark');
+      store('nl-theme', dark ? 'dark' : 'light'); syncTheme();
+    });
+    syncTheme();
+    if (search) search.addEventListener('click', () => {
+      const q = document.getElementById('queue-search');
+      const h = document.getElementById('history-search');
+      const target = (h && !h.closest('[hidden]') && h.offsetParent !== null) ? h : q;
+      if (target) { target.focus(); target.select(); }
+    });
+    window.F19Shell = { setCollapsed, closeNav };
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+
+</script>
+<script>
+/* inlined from ../moderation.js */
+/* F19 revision 2 — source-reconciled local runtime.
+   Default: captured empty moderation state. Optional demo uses captured message text with synthetic flags.
+   No fetch/XHR, tokens, production mutation, permission check or audit write. */
+(function () {
+  'use strict';
+  const D = window.F19Data; if (!D) return;
+  const ASSETS = '../../../assets/';
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const icon = n => `<svg class="ic" aria-hidden="true" focusable="false"><use href="#i-${n}"></use></svg>`;
+  const layout = document.body.dataset.layout || 'desk';
+  const ACTION_LABEL = { dismiss: 'Dismissed', escalate: 'Escalated', remove: 'Removed', restore: 'Restored' };
+  const EFFECT = {
+    dismiss: 'Clears the flagged state without deleting the message.',
+    escalate: 'Marks the message for senior review and censors the bubble in chat so participants cannot read it.',
+    remove: 'Replaces the chat bubble with a moderation notice and keeps the original text in history for restore.',
+    restore: 'Restores a removed or escalated message. Optional edited content is a local preview; Swagger describes body.content but does not declare a requestBody schema.'
+  };
+  let cases = D.cases.map(c => ({ ...c, active: true }));
+  let session = [];
+  let selected = new Set(), opened = new Set();
+  let currentKey = cases[0] ? cases[0].key : null;
+  let tab = 'queue', source = 'source', preview = 'ready';
+  let filters = { q: '', status: 'all', chat: 'all' };
+  let histFilters = { q: '', action: 'all' };
+  let page = 1, histPage = 1, historyOpen = null;
+  let undoState = null, undoTimer = null, dialogState = null, opener = null, seq = 0;
+  const PAGE_SIZE = 10;
+
+  function announce(msg) { const l = $('#live'); if (l) { l.textContent = ''; setTimeout(() => { l.textContent = msg; }, 30); } }
+  function isDemo() { return source === 'demo'; }
+  function activeCases() { return isDemo() ? cases.filter(c => c.active) : []; }
+  function filteredCases() {
+    const q = filters.q.trim().toLowerCase();
+    return activeCases().filter(c => {
+      if (filters.status !== 'all' && c.status !== filters.status) return false;
+      if (filters.chat !== 'all' && c.chat !== filters.chat) return false;
+      if (q && ![c.content, c.sender, c.threadTitle, c.chat, c.key, c.projectId || '', c.threadId || ''].join(' ').toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }
+  function pagedCases() { const l = filteredCases(); const pages = Math.max(1, Math.ceil(l.length / PAGE_SIZE)); page = Math.min(Math.max(1, page), pages); return l.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE); }
+  function events() { return [...session].sort((a, b) => b.seq - a.seq); }
+  function filteredEvents() {
+    const q = histFilters.q.trim().toLowerCase();
+    return events().filter(e => {
+      if (histFilters.action !== 'all' && e.action !== histFilters.action) return false;
+      if (q && ![e.content, e.sender, e.threadTitle, e.chat, e.actor, e.note || ''].join(' ').toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }
+  function pagedEvents() { const l = filteredEvents(); const pages = Math.max(1, Math.ceil(l.length / PAGE_SIZE)); histPage = Math.min(Math.max(1, histPage), pages); return l.slice((histPage - 1) * PAGE_SIZE, histPage * PAGE_SIZE); }
+  function latestEvent(key) { return events().find(e => e.key === key) || null; }
+  function canRestore(key) { const e = latestEvent(key); return isDemo() && e && (e.action === 'Removed' || e.action === 'Escalated'); }
+  function caseByKey(k) { return cases.find(c => c.key === k); }
+  function allowedActions(c) { return c.status === 'Escalated' ? ['restore'] : ['dismiss', 'escalate', 'remove']; }
+  function statusBadge(s) {
+    const map = { Flagged: 'warning', Escalated: 'purple', Removed: 'error', Dismissed: 'neutral', Restored: 'success' };
+    const ic = { Flagged: 'alert', Escalated: 'up', Removed: 'trash', Dismissed: 'check', Restored: 'archive' };
+    return `<span class="badge badge-${map[s] || 'neutral'}">${icon(ic[s] || 'clock')}${esc(s)}</span>`;
+  }
+  function idLine(c) {
+    const parts = [];
+    parts.push(c.messageId ? `Message ${c.messageId}` : 'Message ID not exposed');
+    if (c.threadId) parts.push(`Thread ${c.threadId}`);
+    if (c.projectId) parts.push(`Project ${c.projectId}`);
+    return parts.join(' · ');
+  }
+
+  function render() {
+    const focusKey = captureFocus();
+    renderChrome();
+    if (tab === 'queue') renderQueue(); else renderHistory();
+    renderSelection();
+    restoreFocus(focusKey);
+    updateURL();
+  }
+  function captureFocus() {
+    const a = document.activeElement; if (!a || !a.dataset) return null;
+    for (const k of ['caseOpen', 'select', 'historyOpen', 'drill']) if (a.dataset[k]) return { k, v: a.dataset[k] };
+    return null;
+  }
+  function restoreFocus(f) {
+    if (!f) return;
+    const attr = { caseOpen: 'data-case-open', select: 'data-select', historyOpen: 'data-history-open', drill: 'data-drill' }[f.k];
+    const el = $(`[${attr}="${CSS.escape(f.v)}"]`); if (el && el.offsetParent !== null) el.focus({ preventScroll: true });
+  }
+  function renderChrome() {
+    $$('[data-source]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.source === source)));
+    $$('[data-state]').forEach(b => { b.setAttribute('aria-pressed', String(b.dataset.state === preview)); b.disabled = !isDemo(); });
+    const tq = $('#tab-queue'), th = $('#tab-history');
+    if (tq) { tq.setAttribute('aria-selected', String(tab === 'queue')); tq.tabIndex = tab === 'queue' ? 0 : -1; }
+    if (th) { th.setAttribute('aria-selected', String(tab === 'history')); th.tabIndex = tab === 'history' ? 0 : -1; }
+    const pq = $('#panel-queue'), ph = $('#panel-history');
+    if (pq) pq.hidden = tab !== 'queue'; if (ph) ph.hidden = tab !== 'history';
+    const notice = $('#demo-notice'); if (notice) { notice.hidden = !isDemo(); notice.textContent = isDemo() ? D.demoNote : ''; }
+    const boundary = '#scenario-boundary'; const el = $(boundary);
+    if (el) el.textContent = isDemo() ? D.demoNote : 'Captured source · 30 Oct 2026 · queue 0 / history 0.';
+  }
+  function renderSummary() {
+    const wrap = $('#summary-cards'); if (!wrap) return;
+    const ac = activeCases();
+    const vals = isDemo() ? [ac.length, ac.filter(c => c.status === 'Escalated').length, ac.filter(c => c.chat === 'Project').length] : [0, 0, 0];
+    const demoSubs = ['Synthetic flags on captured messages', 'Blurred in chat for senior review', 'No captured project-chat transcript'];
+    wrap.innerHTML = D.source.cards.map((c, i) => `<button class="summary-card" data-drill="${c.drill}" ${!isDemo() || preview !== 'ready' ? 'disabled' : ''}><span class="summary-label">${esc(c.label)}</span><strong class="summary-value">${vals[i]}</strong><span class="summary-sub">${esc(isDemo() ? demoSubs[i] : c.sub)}</span></button>`).join('');
+  }
+  function renderQueue() {
+    renderSummary();
+    const list = $('#queue-list'), detail = $('#detail'); if (!list) return;
+    const filterBar = $('#queue-filter-bar'); if (filterBar) filterBar.hidden = false;
+    if (!isDemo()) {
+      list.innerHTML = `<div class="panel"><section class="empty-state"><h2>${esc(D.source.queueEmptyTitle)}</h2><p>${esc(D.source.queueEmptyBody)}</p></section><div class="panel-footer"><span>${esc(D.source.queueFooter)}</span></div></div>`;
+      if (detail) detail.hidden = true; setQueueFooter(0); return;
+    }
+    if (preview === 'loading') { list.innerHTML = `<div class="panel" aria-busy="true">${[1, 2, 3].map(() => '<div class="sk-row"><i></i><i></i><i></i></div>').join('')}</div>`; if (detail) detail.hidden = true; setQueueFooter(0); return; }
+    if (preview === 'error') { list.innerHTML = `<div class="panel"><section class="state-panel error-state" role="alert"><h2>Queue unavailable</h2><p>Simulated offline error. No production health check ran.</p><button class="btn btn-secondary" data-retry>Return to demo queue</button></section></div>`; if (detail) detail.hidden = true; setQueueFooter(0); return; }
+    if (preview === 'empty') { list.innerHTML = `<div class="panel"><section class="empty-state"><h2>${esc(D.source.queueEmptyTitle)}</h2><p>${esc(D.source.queueEmptyBody)}</p></section><div class="panel-footer"><span>Showing 0 of 0 demo messages</span></div></div>`; if (detail) detail.hidden = true; setQueueFooter(0); return; }
+    const all = filteredCases(), items = pagedCases();
+    if (!all.length) { list.innerHTML = `<div class="panel"><section class="empty-state"><h2>No messages match these filters</h2><p>Adjust search, review status or chat type. Clear does not delete messages.</p><button class="btn btn-secondary" data-clear-filters>Clear</button></section></div>`; if (detail) detail.hidden = true; setQueueFooter(0); return; }
+    if (!items.some(c => c.key === currentKey)) { currentKey = items[0].key; opened.add(currentKey); }
+    list.innerHTML = renderList(items);
+    if (detail) { detail.hidden = false; detail.innerHTML = renderDetail(caseByKey(currentKey)); }
+    setQueueFooter(all.length);
+  }
+  function setQueueFooter(total) {
+    const foot = $('#queue-footer'); if (!foot) return;
+    if (!isDemo() || preview !== 'ready' || total === 0) { foot.hidden = true; return; }
+    foot.hidden = false;
+    const items = pagedCases();
+    $('#queue-total').textContent = `Showing ${(page - 1) * PAGE_SIZE + 1}–${(page - 1) * PAGE_SIZE + items.length} of ${total} demo messages`;
+    const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    $('#queue-page-info').textContent = `Page ${page} of ${pages}`;
+    $('#queue-prev').disabled = page <= 1; $('#queue-next').disabled = page >= pages;
+  }
+  function renderList(items) {
+    if (layout === 'spine') return `<div class="case-rail" role="list" aria-label="Demo moderation queue">${items.map(c => `<div role="listitem" class="case-rail-item ${c.key === currentKey ? 'selected' : ''}"><span class="rail-top"><label class="check"><input type="checkbox" data-select="${c.key}" ${c.status !== 'Flagged' ? 'disabled' : ''} ${selected.has(c.key) ? 'checked' : ''} aria-label="Select ${esc(c.key)} for bulk dismissal preview"></label><span class="mono">${esc(c.key)}</span>${statusBadge(c.status)}</span><button class="rail-open" data-case-open="${c.key}" aria-current="${c.key === currentKey ? 'true' : 'false'}"><strong>${esc(c.sender)}</strong><span class="rail-meta">${esc(c.chat)} · ${esc(c.threadTitle)}</span><span class="rail-snippet">${esc(c.content)}</span></button></div>`).join('')}</div>`;
+    if (layout === 'board') {
+      const lanes = ['Project', 'Direct', 'Group'];
+      return `<div class="chat-board">${lanes.map(lane => { const list = items.filter(c => c.chat === lane); return `<section class="chat-lane" aria-label="${lane} chats"><header class="lane-head"><h2>${lane}</h2><span class="badge badge-neutral">${list.length}</span></header>${list.length ? list.map(c => `<article class="case-card ${c.key === currentKey ? 'selected' : ''}"><div class="card-top"><label class="check"><input type="checkbox" data-select="${c.key}" ${c.status !== 'Flagged' ? 'disabled' : ''} ${selected.has(c.key) ? 'checked' : ''} aria-label="Select ${esc(c.key)} for bulk dismissal preview"><span class="mono">${esc(c.key)}</span></label>${statusBadge(c.status)}</div><p class="card-content">${esc(c.content)}</p><dl class="card-meta"><div><dt>Sender</dt><dd>${esc(c.sender)}</dd></div><div><dt>Thread</dt><dd>${esc(c.threadTitle)}</dd></div><div><dt>Shown</dt><dd>${esc(c.timeLabel)}</dd></div></dl><button class="btn btn-secondary" data-case-open="${c.key}">${icon('eye')}Review message</button></article>`).join('') : '<p class="lane-empty">No demo messages in this chat type.</p>'}</section>`; }).join('')}</div>`;
+    }
+    if (layout === 'folio') return `<div class="case-strip" role="list" aria-label="Demo case filmstrip">${items.map((c, i) => `<div role="listitem" class="strip-item ${c.key === currentKey ? 'selected' : ''}"><label class="check strip-check"><input type="checkbox" data-select="${c.key}" ${c.status !== 'Flagged' ? 'disabled' : ''} ${selected.has(c.key) ? 'checked' : ''} aria-label="Select ${esc(c.key)} for bulk dismissal preview"></label><button class="strip-open" data-case-open="${c.key}" aria-current="${c.key === currentKey ? 'true' : 'false'}"><span class="strip-index">${String(i + 1).padStart(2, '0')}</span><strong>${esc(c.sender)}</strong><span>${esc(c.chat)} · ${esc(c.threadTitle)}</span>${statusBadge(c.status)}</button></div>`).join('')}</div>`;
+    const dense = layout === 'ledger';
+    const rows = items.map(c => {
+      const sel = c.key === currentKey;
+      const check = `<label class="check"><input type="checkbox" data-select="${c.key}" ${c.status !== 'Flagged' ? 'disabled' : ''} ${selected.has(c.key) ? 'checked' : ''} aria-label="Select ${esc(c.key)} for bulk dismissal preview"></label>`;
+      const main = dense
+        ? `<tr class="${sel ? 'selected' : ''}"><td>${check}</td><td class="mono">${esc(c.key)}</td><td><button class="link-button" data-case-open="${c.key}" aria-expanded="${sel}">${esc(c.content.slice(0, 95))}${c.content.length > 95 ? '…' : ''}</button></td><td>${esc(c.sender)}</td><td>${esc(c.chat)}</td><td>${statusBadge(c.status)}</td><td><button class="btn btn-ghost btn-sm" data-case-open="${c.key}" aria-expanded="${sel}">${sel ? 'Collapse' : 'Expand'}</button></td></tr>`
+        : `<tr class="${sel ? 'selected' : ''}"><td>${check}</td><td><button class="link-button case-link" data-case-open="${c.key}"><strong>${esc(c.sender)}</strong><span>${esc(c.content.slice(0, 120))}${c.content.length > 120 ? '…' : ''}</span></button></td><td>${esc(c.chat)}<small>${esc(c.threadTitle)}</small></td><td>${esc(c.timeLabel)}</td><td>${statusBadge(c.status)}</td><td><button class="btn btn-secondary btn-sm" data-case-open="${c.key}">Review</button></td></tr>`;
+      return main + (dense && sel ? `<tr class="expanded-row"><td colspan="7">${renderDetail(c, true)}</td></tr>` : '');
+    }).join('');
+    return `<div class="panel"><div class="table-wrap"><table class="data-table ${dense ? 'dense' : ''}"><caption class="visually-hidden">Demo moderation queue using captured message text</caption><thead><tr>${dense ? '<th scope="col"><span class="visually-hidden">Select</span></th><th scope="col">Demo key</th><th scope="col">Message</th><th scope="col">Sender</th><th scope="col">Chat</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Expand</span></th>' : '<th scope="col"><span class="visually-hidden">Select</span></th><th scope="col">Message</th><th scope="col">Chat / thread</th><th scope="col">Captured time</th><th scope="col">Status</th><th scope="col">Review</th>'}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  }
+  function renderDetail(c, inline) {
+    if (!c) return '';
+    const actions = allowedActions(c).map(a => `<button class="btn ${a === 'remove' ? 'btn-danger' : a === 'dismiss' ? 'btn-primary' : 'btn-secondary'}" data-action="${a}" data-id="${c.key}">${icon(a === 'remove' ? 'trash' : a === 'escalate' ? 'up' : a === 'restore' ? 'archive' : 'check')}${a === 'dismiss' ? 'Dismiss flag' : a === 'escalate' ? 'Escalate' : a === 'remove' ? 'Remove message' : 'Restore message'}</button>`).join('');
+    const context = c.context ? `<div class="context-block"><h3>Captured conversation context</h3><p class="hint">${esc(c.contextNote)}</p><ol class="context-list">${c.context.map(m => `<li class="${m.reported ? 'reported' : ''}"><span class="ctx-who">${esc(m.sender)} · ${esc(m.role)} · ${esc(m.timeLabel)}${m.reported ? ' · reported in demo' : ''}</span><p>${esc(m.content)}</p></li>`).join('')}</ol></div>` : `<p class="hint">${esc(c.contextNote)}</p>`;
+    return `<article class="evidence ${inline ? 'inline-evidence' : ''}" aria-label="Evidence for ${esc(c.key)}"><header class="evidence-head"><div><p class="eyebrow">${esc(c.key)} · synthetic flag</p><h2>${esc(c.threadTitle)}</h2></div>${statusBadge(c.status)}</header><blockquote class="reported-content">${esc(c.content)}</blockquote>${context}<dl class="meta-grid"><div><dt>Sender</dt><dd>${esc(c.sender)} · ${esc(c.senderRole)}</dd></div><div><dt>Chat type</dt><dd>${esc(c.chat)}</dd></div><div><dt>Message type</dt><dd>${esc(c.type)}</dd></div><div><dt>Captured time</dt><dd>${esc(c.timeLabel)}</dd></div><div><dt>Identifiers</dt><dd class="mono">${esc(idLine(c))}</dd></div><div><dt>Message source</dt><dd>${esc(c.provenance)}</dd></div></dl><div class="action-dock"><p class="hint">Guarded local preview. No request is sent. Reporter, reason and rationale fields are not defined by the moderation Swagger contract.</p><div class="action-row">${actions}</div></div></article>`;
+  }
+  function renderHistory() {
+    const list = $('#history-list'); if (!list) return;
+    if (!isDemo()) { list.innerHTML = `<div class="panel"><section class="empty-state"><p>${esc(D.source.historyEmpty)}</p></section><div class="panel-footer"><span>${esc(D.source.historyFooter)}</span></div></div>`; setHistoryFooter(0); return; }
+    if (preview === 'loading') { list.innerHTML = `<div class="panel" aria-busy="true">${[1, 2].map(() => '<div class="sk-row"><i></i><i></i><i></i></div>').join('')}</div>`; setHistoryFooter(0); return; }
+    if (preview === 'error') { list.innerHTML = `<div class="panel"><section class="state-panel error-state" role="alert"><h2>History unavailable</h2><p>Simulated offline error. No audit service was contacted.</p><button class="btn btn-secondary" data-retry>Return to demo history</button></section></div>`; setHistoryFooter(0); return; }
+    const all = filteredEvents(), items = pagedEvents();
+    if (!all.length) { list.innerHTML = `<div class="panel"><section class="empty-state"><h2>No local moderation history yet</h2><p>Actions you preview in this browser will appear here. This is not a production audit log.</p></section><div class="panel-footer"><span>0 local preview events</span></div></div>`; setHistoryFooter(0); return; }
+    const rows = items.map(e => {
+      const open = historyOpen === e.id;
+      const eligible = canRestore(e.key) && (e.action === 'Removed' || e.action === 'Escalated');
+      return `<tr><td>${statusBadge(e.action)}</td><td>${esc(e.content.slice(0, 100))}${e.content.length > 100 ? '…' : ''}<small>${esc(e.sender)} · ${esc(e.threadTitle)}</small></td><td>${esc(e.chat)}</td><td>${esc(e.actor)}</td><td class="mono">${esc(e.timeLabel)}</td><td><button class="btn btn-ghost btn-sm" data-history-open="${e.id}" aria-expanded="${open}">${open ? 'Hide' : 'Details'}</button></td></tr>${open ? `<tr class="expanded-row"><td colspan="6"><div class="history-detail"><h3>${esc(e.id)} · ${esc(e.action)}</h3><p><strong>Original content:</strong> ${esc(e.originalContent || e.content)}</p>${e.editedContent ? `<p><strong>Edited restoration text:</strong> ${esc(e.editedContent)}</p>` : ''}${e.note ? `<p><strong>Local note (not sent):</strong> ${esc(e.note)}</p>` : ''}<p class="hint">Local preview only — no request, permission check or audit write.</p>${eligible ? `<button class="btn btn-secondary" data-restore-message="${esc(e.key)}">${icon('archive')}Restore message</button>` : ''}</div></td></tr>` : ''}`;
+    }).join('');
+    list.innerHTML = `<div class="panel"><div class="table-wrap"><table class="data-table"><caption class="visually-hidden">Local moderation preview history</caption><thead><tr><th scope="col">Action</th><th scope="col">Message</th><th scope="col">Chat</th><th scope="col">Actor</th><th scope="col">When</th><th scope="col"><span class="visually-hidden">Details</span></th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    setHistoryFooter(all.length);
+  }
+  function setHistoryFooter(total) {
+    const foot = $('#history-footer'); if (!foot) return;
+    if (!isDemo() || total === 0) { foot.hidden = true; return; }
+    foot.hidden = false;
+    const items = pagedEvents();
+    $('#history-total').textContent = `Showing ${(histPage - 1) * PAGE_SIZE + 1}–${(histPage - 1) * PAGE_SIZE + items.length} of ${total} local preview events`;
+    const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    $('#history-page-info').textContent = `Page ${histPage} of ${pages}`;
+    $('#history-prev').disabled = histPage <= 1; $('#history-next').disabled = histPage >= pages;
+  }
+  function renderSelection() {
+    const bar = $('#selection-bar'); if (!bar) return;
+    const ids = [...selected].filter(k => { const c = caseByKey(k); return c && c.active && c.status === 'Flagged'; });
+    selected = new Set(ids);
+    const unopened = ids.filter(k => !opened.has(k));
+    bar.hidden = !isDemo() || preview !== 'ready' || tab !== 'queue' || ids.length === 0;
+    const count = $('#selection-count'); if (count) count.textContent = `${ids.length} selected`;
+    const note = $('#selection-note'); if (note) note.textContent = unopened.length ? `${unopened.length} selected message${unopened.length === 1 ? '' : 's'} still need review opened.` : 'Bulk preview is dismissal only. No batch endpoint is documented.';
+    const bulk = $('#bulk-dismiss'); if (bulk) bulk.disabled = ids.length === 0 || unopened.length > 0;
+    $$('[data-select]').forEach(cb => { cb.checked = selected.has(cb.dataset.select); });
+  }
+  function syncControls() {
+    const map = { 'queue-search': filters.q, 'filter-status': filters.status, 'filter-chat': filters.chat, 'history-search': histFilters.q, 'history-action': histFilters.action };
+    Object.entries(map).forEach(([id, v]) => { const el = $('#' + id); if (el) el.value = v; });
+  }
+  function updateURL() {
+    try {
+      if (!/^https?:$/.test(location.protocol)) return;
+      const p = new URLSearchParams(); p.set('tab', tab); p.set('source', source);
+      if (isDemo() && preview !== 'ready') p.set('state', preview);
+      if (filters.q) p.set('q', filters.q); if (filters.status !== 'all') p.set('status', filters.status); if (filters.chat !== 'all') p.set('chat', filters.chat);
+      if (histFilters.q) p.set('hq', histFilters.q); if (histFilters.action !== 'all') p.set('haction', histFilters.action);
+      history.replaceState(null, '', location.pathname + '?' + p.toString());
+    } catch (e) { }
+  }
+  function readURL() {
+    try {
+      const p = new URLSearchParams(location.search);
+      if (p.get('tab') === 'history') tab = 'history';
+      if (p.get('source') === 'demo') source = 'demo';
+      if (['ready', 'loading', 'error', 'empty'].includes(p.get('state'))) preview = p.get('state');
+      filters.q = p.get('q') || ''; filters.status = ['all', 'Flagged', 'Escalated'].includes(p.get('status')) ? p.get('status') : 'all'; filters.chat = ['all', 'Project', 'Direct', 'Group'].includes(p.get('chat')) ? p.get('chat') : 'all';
+      histFilters.q = p.get('hq') || ''; histFilters.action = ['all', 'Flagged', 'Escalated', 'Removed', 'Dismissed', 'Restored'].includes(p.get('haction')) ? p.get('haction') : 'all';
+    } catch (e) { }
+  }
+
+  /* dialogs */
+  function ensureDialogs() {
+    if ($('#review-dialog')) return;
+    const wrap = document.createElement('div');
+    wrap.innerHTML = `<dialog id="review-dialog" class="modal" aria-labelledby="review-title"><div class="modal-head"><h2 id="review-title">Review action</h2><button class="icon-button" data-close-dialog aria-label="Close review dialog">${icon('x')}</button></div><div id="review-body" class="modal-body"></div><div id="review-foot" class="modal-foot"></div></dialog>
+    <dialog id="help-dialog" class="modal modal-sm" aria-labelledby="help-title"><div class="modal-head"><h2 id="help-title">Keyboard and preview safety</h2><button class="icon-button" data-close-dialog aria-label="Close help">${icon('x')}</button></div><div class="modal-body"><dl class="key-list"><div><dt><kbd>J</kbd> / <kbd>K</kbd></dt><dd>Move through demo cases</dd></div><div><dt><kbd>X</kbd></dt><dd>Select a flagged case for bulk dismissal preview</dd></div><div><dt><kbd>Enter</kbd></dt><dd>Open guarded review</dd></div><div><dt><kbd>/</kbd></dt><dd>Focus search</dd></div><div><dt><kbd>?</kbd></dt><dd>Open help</dd></div></dl><p class="hint">Shortcuts are ignored while typing or inside dialogs. All actions are local previews; no request, permission check or audit write occurs.</p></div><div class="modal-foot"><button class="btn btn-primary" data-close-dialog>Close</button></div></dialog>`;
+    document.body.appendChild(wrap);
+    $$('dialog').forEach(d => {
+      d.addEventListener('click', e => { if (e.target === d) d.close(); });
+      d.addEventListener('close', () => { dialogState = null; let t = opener && opener.isConnected ? opener : null; if (!t && currentKey) t = $(`[data-case-open="${CSS.escape(currentKey)}"]`); if (!t) t = $('#main'); if (t && t.focus) t.focus({ preventScroll: true }); opener = null; });
+    });
+  }
+  function openDialog(d) { opener = document.activeElement; ensureDialogs(); d.showModal(); }
+  function openReview(action, keys) {
+    if (!isDemo() || preview !== 'ready') { announce('Open the workflow demo to preview actions.'); return; }
+    const targets = keys.map(caseByKey).filter(Boolean); if (!targets.length) return;
+    for (const c of targets) {
+      if (action === 'restore') { if (!canRestore(c.key)) { announce('Only removed or escalated messages can be restored.'); return; } }
+      else { if (!c.active) return; if (action && !allowedActions(c).includes(action)) { announce('That action is not available for the current state.'); return; } }
+    }
+    targets.forEach(c => opened.add(c.key));
+    const bulk = targets.length > 1;
+    dialogState = { step: 1, action: action || allowedActions(targets[0])[0], targets, bulk, note: '', ack: false, edited: targets[0].content, busy: false };
+    ensureDialogs(); renderReview(); openDialog($('#review-dialog'));
+  }
+  function renderReview() {
+    const s = dialogState; if (!s) return;
+    const title = $('#review-title'), body = $('#review-body'), foot = $('#review-foot');
+    title.textContent = s.step === 1 ? (s.bulk ? 'Bulk dismiss preview' : 'Review action') : 'Confirm local preview';
+    if (s.step === 1) {
+      const options = s.bulk ? ['dismiss'] : (s.action === 'restore' || canRestore(s.targets[0].key) ? ['restore'] : allowedActions(s.targets[0]));
+      const actionField = s.bulk ? `<p><strong>Action:</strong> Dismissed</p>` : `<div class="field"><label for="review-action">Action</label><select id="review-action" class="input">${options.map(a => `<option value="${a}" ${a === s.action ? 'selected' : ''}>${ACTION_LABEL[a]}</option>`).join('')}</select></div>`;
+      body.innerHTML = `<p class="modal-kicker">Local preview · no request sent</p>${actionField}<p class="notice notice-info">${icon('alert')}<span>${esc(EFFECT[s.action])}</span></p><h3>Message${s.targets.length > 1 ? 's' : ''}</h3><ul class="ref-list">${s.targets.map(c => `<li><span class="mono">${esc(c.key)}</span><p>${esc(c.content)}</p><small>${esc(c.sender)} · ${esc(c.chat)} · ${esc(c.threadTitle)} · ${esc(c.provenance)}</small></li>`).join('')}</ul>${s.targets[0].context ? `<details class="context-details" open><summary>Captured conversation context</summary><ol class="context-list">${s.targets[0].context.map(m => `<li class="${m.reported ? 'reported' : ''}"><span class="ctx-who">${esc(m.sender)} · ${esc(m.timeLabel)}</span><p>${esc(m.content)}</p></li>`).join('')}</ol></details>` : ''}<div class="field check-field"><label class="check"><input type="checkbox" id="review-ack" ${s.ack ? 'checked' : ''}><span>I have reviewed the message content${s.targets[0].context ? ' and available captured context' : ''}.</span></label></div><div class="field"><label for="review-note">Local note <span class="hint">(optional, not sent)</span></label><textarea id="review-note" class="input" rows="2" maxlength="500">${esc(s.note)}</textarea><p class="hint">Swagger does not define a moderation rationale field. This note stays in the browser preview only.</p></div>${s.action === 'restore' ? `<div class="field"><label for="restore-content">Restored text</label><textarea id="restore-content" class="input" rows="3" maxlength="5000">${esc(s.edited)}</textarea><p class="hint">Leave unchanged to restore original text. Optional body.content is described in Swagger but has no declared requestBody schema.</p></div>` : ''}<div id="review-errors" class="error-summary" role="alert" tabindex="-1" hidden></div>`;
+      foot.innerHTML = `<button class="btn btn-secondary" data-close-dialog>Cancel</button><button class="btn btn-primary" id="review-next">Review confirmation</button>`;
+      const act = $('#review-action'); if (act) act.addEventListener('change', () => { s.action = act.value; s.ack = $('#review-ack').checked; s.note = $('#review-note').value; if (s.action === 'restore') s.edited = s.targets[0].content; renderReview(); });
+      $('#review-next').addEventListener('click', validateReview);
+    } else {
+      body.innerHTML = `<p class="modal-kicker">Confirmation required</p><dl class="confirm-grid"><div><dt>Action</dt><dd>${esc(ACTION_LABEL[s.action])}</dd></div><div><dt>Demo keys</dt><dd class="mono">${s.targets.map(c => esc(c.key)).join(', ')}</dd></div>${s.note ? `<div><dt>Local note (not sent)</dt><dd>${esc(s.note)}</dd></div>` : ''}${s.action === 'restore' ? `<div><dt>Restored text</dt><dd>${esc(s.edited)}</dd></div>` : ''}</dl><p class="notice notice-warning">${icon('alert')}<span>${esc(EFFECT[s.action])} This updates only the local demo.</span></p><p class="hint">No production request, permission check, notification or audit record will be created.</p>`;
+      foot.innerHTML = `<button class="btn btn-secondary" id="review-back">Back</button><button class="btn btn-secondary" data-close-dialog>Cancel</button><button class="btn ${s.action === 'remove' ? 'btn-danger' : 'btn-primary'}" id="confirm-preview">Confirm preview</button>`;
+      $('#review-back').addEventListener('click', () => { s.step = 1; renderReview(); });
+      $('#confirm-preview').addEventListener('click', confirmReview);
+    }
+  }
+  function validateReview() {
+    const s = dialogState; if (!s || s.busy) return;
+    s.ack = $('#review-ack').checked; s.note = $('#review-note').value;
+    if (s.action === 'restore') s.edited = $('#restore-content').value;
+    const errors = [];
+    if (!s.ack) errors.push('Acknowledge that you reviewed the message content.');
+    if (s.action === 'restore' && !s.edited.trim()) errors.push('Restored text cannot be empty.');
+    const box = $('#review-errors');
+    if (errors.length) { box.hidden = false; box.innerHTML = '<strong>Check the review details:</strong><ul>' + errors.map(e => `<li>${esc(e)}</li>`).join('') + '</ul>'; box.focus(); return; }
+    box.hidden = true; s.step = 2; renderReview();
+  }
+  function confirmReview() {
+    const s = dialogState; if (!s || s.busy) return;
+    s.busy = true; $$('#review-foot button').forEach(b => b.disabled = true); $('#confirm-preview').textContent = 'Applying local preview…';
+    setTimeout(() => { applyDecision(s); const d = $('#review-dialog'); if (d && d.open) d.close(); }, 200);
+  }
+  function applyDecision(s) {
+    const batchId = 'BATCH-' + (++seq); const now = new Date(); const undoItems = [];
+    s.targets.forEach((c, i) => {
+      undoItems.push({ key: c.key, prevActive: c.active, prevStatus: c.status });
+      if (s.action === 'dismiss') { c.active = false; c.status = 'Dismissed'; }
+      else if (s.action === 'escalate') { c.status = 'Escalated'; }
+      else if (s.action === 'remove') { c.active = false; c.status = 'Removed'; }
+      else if (s.action === 'restore') { c.active = false; c.status = 'Restored'; }
+      const edited = s.action === 'restore' && s.edited !== c.content ? s.edited : null;
+      session.push({ id: 'LOCAL-' + String(seq).padStart(3, '0') + '-' + (i + 1), seq: Date.now() + i, key: c.key, action: ACTION_LABEL[s.action], content: edited || c.content, originalContent: c.content, editedContent: edited, sender: c.sender, threadTitle: c.threadTitle, chat: c.chat, actor: 'Local preview', timeLabel: now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' local', note: s.note.trim(), batchId });
+      selected.delete(c.key);
+    });
+    const undoable = s.action === 'dismiss' || s.action === 'remove';
+    undoState = undoable ? { batchId, items: undoItems, expires: Date.now() + 10000 } : null;
+    if (s.targets.some(c => c.key === currentKey) && s.action !== 'escalate') { const remaining = filteredCases(); currentKey = remaining.length ? remaining[0].key : null; if (currentKey) opened.add(currentKey); }
+    showReceipt(s.action, s.targets.length, undoable); startUndoTimer();
+    announce(`${ACTION_LABEL[s.action]} ${s.targets.length} local preview${s.targets.length === 1 ? '' : 's'} applied.`); render();
+  }
+  function showReceipt(action, count, undoable) {
+    const r = $('#receipt'); if (!r) return; r.hidden = false;
+    r.innerHTML = `<div class="receipt-card" role="status"><div><strong>Preview applied — ${esc(ACTION_LABEL[action])} ${count} message${count === 1 ? '' : 's'}</strong><p>No request sent, no permission checked, no audit record written.</p></div><div class="receipt-actions">${undoable ? `<button class="btn btn-secondary" id="undo-preview">Undo preview <span id="undo-count" class="mono">10s</span></button>` : ''}${currentKey ? `<button class="btn btn-primary" data-case-open="${currentKey}">Review next</button>` : ''}<button class="icon-button" data-dismiss-receipt aria-label="Dismiss receipt">${icon('x')}</button></div></div>`;
+    const u = $('#undo-preview'); if (u) u.addEventListener('click', undoPreview);
+  }
+  function startUndoTimer() {
+    clearInterval(undoTimer); if (!undoState) return;
+    undoTimer = setInterval(() => {
+      const left = Math.max(0, Math.ceil((undoState.expires - Date.now()) / 1000)); const el = $('#undo-count'); if (el) el.textContent = left + 's';
+      if (left <= 0) { clearInterval(undoTimer); const u = $('#undo-preview'); if (u) u.remove(); undoState = null; }
+    }, 250);
+  }
+  function undoPreview() {
+    if (!undoState || Date.now() > undoState.expires) { announce('Undo window expired.'); return; }
+    const u = undoState; u.items.forEach(it => { const c = caseByKey(it.key); if (c) { c.active = it.prevActive; c.status = it.prevStatus; } });
+    session = session.filter(e => e.batchId !== u.batchId); undoState = null; clearInterval(undoTimer);
+    const r = $('#receipt'); if (r) r.innerHTML = `<div class="receipt-card" role="status"><div><strong>Undo applied — local demo restored</strong><p>Only the local preview was reversed.</p></div><button class="icon-button" data-dismiss-receipt aria-label="Dismiss receipt">${icon('x')}</button></div>`;
+    announce('Local preview undone.'); render();
+  }
+
+  function bind() {
+    document.addEventListener('click', e => {
+      const t = e.target.closest('[data-source],[data-state],[data-tab],[data-drill],[data-case-open],[data-action],[data-restore-message],[data-history-open],[data-clear-filters],[data-retry],[data-select-page],[data-clear-selection],[data-bulk],[data-help],[data-close-dialog],[data-dismiss-receipt],[data-page-prev],[data-page-next],[data-history-prev],[data-history-next],[data-signout]');
+      if (!t) return;
+      if (t.dataset.source) { source = t.dataset.source; preview = 'ready'; selected.clear(); page = 1; histPage = 1; const d = t.closest('details.preview-options'); if (d) d.open = false; render(); return; }
+      if (t.dataset.state) { if (!isDemo()) return; preview = t.dataset.state; selected.clear(); const d = t.closest('details.preview-options'); if (d) d.open = false; render(); return; }
+      if (t.dataset.tab) { tab = t.dataset.tab; render(); return; }
+      if (t.dataset.drill) { if (!isDemo()) return; const k = t.dataset.drill; filters = { q: '', status: k === 'escalated' ? 'Escalated' : 'all', chat: k === 'project' ? 'Project' : 'all' }; page = 1; selected.clear(); syncControls(); render(); return; }
+      if (t.dataset.caseOpen) { openCase(t.dataset.caseOpen, true); return; }
+      if (t.dataset.action) { openReview(t.dataset.action, [t.dataset.id]); return; }
+      if (t.dataset.restoreMessage) { restoreFromHistory(t.dataset.restoreMessage); return; }
+      if (t.dataset.historyOpen) { historyOpen = historyOpen === t.dataset.historyOpen ? null : t.dataset.historyOpen; renderHistory(); return; }
+      if (t.hasAttribute('data-clear-filters')) { if (tab === 'queue') filters = { q: '', status: 'all', chat: 'all' }; else histFilters = { q: '', action: 'all' }; page = 1; histPage = 1; selected.clear(); syncControls(); render(); return; }
+      if (t.hasAttribute('data-retry')) { preview = 'ready'; render(); announce('Returned to the demo. No network request was made.'); return; }
+      if (t.hasAttribute('data-select-page')) { pagedCases().forEach(c => { if (c.status === 'Flagged') selected.add(c.key); }); renderSelection(); return; }
+      if (t.hasAttribute('data-clear-selection')) { selected.clear(); renderSelection(); return; }
+      if (t.hasAttribute('data-bulk')) { openReview('dismiss', [...selected]); return; }
+      if (t.hasAttribute('data-help')) { ensureDialogs(); openDialog($('#help-dialog')); return; }
+      if (t.hasAttribute('data-close-dialog')) { const d = t.closest('dialog'); if (d) d.close(); return; }
+      if (t.hasAttribute('data-dismiss-receipt')) { const r = $('#receipt'); if (r) r.hidden = true; return; }
+      if (t.hasAttribute('data-page-prev')) { page = Math.max(1, page - 1); selected.clear(); render(); return; }
+      if (t.hasAttribute('data-page-next')) { page += 1; selected.clear(); render(); return; }
+      if (t.hasAttribute('data-history-prev')) { histPage = Math.max(1, histPage - 1); historyOpen = null; render(); return; }
+      if (t.hasAttribute('data-history-next')) { histPage += 1; historyOpen = null; render(); return; }
+      if (t.hasAttribute('data-signout')) { announce('Sign out is not available in the offline design preview.'); return; }
+    });
+    document.addEventListener('change', e => {
+      const el = e.target;
+      if (el.matches('[data-select]')) { toggleSelect(el.dataset.select); return; }
+      if (el.id === 'filter-status') { filters.status = el.value; page = 1; selected.clear(); render(); }
+      if (el.id === 'filter-chat') { filters.chat = el.value; page = 1; selected.clear(); render(); }
+      if (el.id === 'history-action') { histFilters.action = el.value; histPage = 1; historyOpen = null; render(); }
+    });
+    document.addEventListener('input', e => {
+      if (e.target.id === 'queue-search') { filters.q = e.target.value; page = 1; selected.clear(); render(); }
+      if (e.target.id === 'history-search') { histFilters.q = e.target.value; histPage = 1; historyOpen = null; render(); }
+    });
+    const tablist = $('[role="tablist"]');
+    if (tablist) tablist.addEventListener('keydown', e => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+      e.preventDefault(); tab = e.key === 'Home' ? 'queue' : e.key === 'End' ? 'history' : (tab === 'queue' ? 'history' : 'queue'); render(); const b = tab === 'queue' ? $('#tab-queue') : $('#tab-history'); if (b) b.focus();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = (e.target.tagName || '').toLowerCase();
+      if (['input', 'textarea', 'select'].includes(tag) || e.target.isContentEditable || $('dialog[open]')) return;
+      if (e.key === '?') { e.preventDefault(); ensureDialogs(); openDialog($('#help-dialog')); return; }
+      if (e.key === '/') { e.preventDefault(); const el = tab === 'queue' ? $('#queue-search') : $('#history-search'); if (el) { el.focus(); el.select(); } return; }
+      if (!isDemo() || preview !== 'ready' || tab !== 'queue') return;
+      const items = pagedCases(); if (!items.length) return;
+      const idx = Math.max(0, items.findIndex(c => c.key === currentKey));
+      if (e.key === 'j' || e.key === 'J') { e.preventDefault(); openCase(items[Math.min(items.length - 1, idx + 1)].key, true); }
+      else if (e.key === 'k' || e.key === 'K') { e.preventDefault(); openCase(items[Math.max(0, idx - 1)].key, true); }
+      else if (e.key === 'x' || e.key === 'X') { e.preventDefault(); toggleSelect(items[idx].key); }
+      else if (e.key === 'Enter') { e.preventDefault(); openReview(null, [items[idx].key]); }
+    });
+  }
+  function openCase(key, focus) { const c = caseByKey(key); if (!c || !c.active) return; currentKey = key; opened.add(key); render(); if (focus) { const el = $(`[data-case-open="${CSS.escape(key)}"]`); if (el) el.focus({ preventScroll: true }); } announce(`Opened ${key}.`); }
+  function toggleSelect(key) { const c = caseByKey(key); if (!c || !c.active || c.status !== 'Flagged') { announce('Escalated or inactive messages cannot enter bulk dismissal preview.'); return; } if (selected.has(key)) selected.delete(key); else selected.add(key); renderSelection(); }
+  function restoreFromHistory(key) {
+    const e = latestEvent(key); const c = caseByKey(key); if (!e || !c || !canRestore(key)) return;
+    currentKey = key; opened.add(key); openReview('restore', [key]);
+  }
+  function init() {
+    ensureDialogs();
+    if (!$('#live')) { const l = document.createElement('div'); l.id = 'live'; l.className = 'visually-hidden'; l.setAttribute('aria-live', 'polite'); document.body.appendChild(l); }
+    readURL(); syncControls(); bind(); render();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var family = "F19";
+  var requestedVersion = "V2";
+  var version = /^V[1-5]$/.test(requestedVersion) ? requestedVersion : 'V1';
+  var labPrefix = "../../../";
+  var shellCss = ":host { all:initial; --surface:#fff; --page:#f5f8f7; --ink:#172c29; --muted:#657772; --line:#dce7e3; --accent:#087c63; --soft:#e5f4ee; font:14px/1.4 system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--ink); }\n:host([dark]) { --surface:#10221f; --page:#0b1917; --ink:#e4f0ed; --muted:#a4bab3; --line:#294039; --accent:#68d7af; --soft:#1c3b31; }\n*,*::before,*::after {box-sizing:border-box} a{color:inherit;text-decoration:none} button{font:inherit;color:inherit;cursor:pointer} a:focus-visible,button:focus-visible {outline:3px solid #20aa84;outline-offset:2px}\n.sidebar{position:fixed;z-index:10001;left:0;top:0;bottom:0;width:248px;display:flex;flex-direction:column;background:var(--surface);border-right:1px solid var(--line)}\n.brand{height:64px;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--line);flex-shrink:0}.brand img{width:32px;height:32px}.brand strong{font-size:15px;letter-spacing:-.02em}.brand small{display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}\nnav{overflow:auto;padding:14px 12px;flex:1}.group{padding:14px 10px 6px;font-size:10px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.item{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;min-height:35px;font-size:13px;font-weight:550}.item:hover{background:var(--page)}.item[aria-current=page]{background:var(--soft);color:var(--accent);font-weight:750}.ico{width:19px;text-align:center;font-size:15px;line-height:1}.foot{border-top:1px solid var(--line);padding:14px 20px;color:var(--muted);font-size:12px}\n.topbar{position:fixed;z-index:10000;left:248px;right:0;top:0;height:64px;display:flex;align-items:center;gap:14px;padding:0 24px;background:var(--surface);border-bottom:1px solid var(--line)}.breadcrumb{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.breadcrumb strong{color:var(--ink)}.actions{margin-left:auto;display:flex;gap:8px;align-items:center}.action{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:13px;white-space:nowrap}.action:hover{background:var(--page)}.badge{font-size:11px;color:var(--muted)}.menu,.close,.shade{display:none}.shade{position:fixed;inset:0;background:#0009;z-index:10000;border:0}.avatar{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700}.avatar span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--accent)}\n@media(max-width:850px){.sidebar{transform:translateX(-100%);transition:transform .2s ease;box-shadow:0 8px 35px #0002}.sidebar.open{transform:none}.shade.open{display:block}.topbar{left:0;padding:0 14px}.menu,.close{display:inline-flex}.close{margin-left:auto}.search-label,.avatar,.badge{display:none}}\n@media(prefers-reduced-motion:reduce){.sidebar{transition:none}}\n";
+  var logoSrc = "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20viewBox=%220%200%20535%20544%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23272A7A%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23272A7A%22%20/%3E%3C/g%3E%3C/svg%3E";
+  var groups = [
+    ['Overview', [['F02','Dashboard','F02-dashboard-command-center','▦'],['F03','Global search','F03-global-search-command-palette','⌕'],['F04','Pipelines','F04-pipelines-stage-hub','◇'],['F05','User & project hubs','F05-pipeline-user-project-hubs','◎']]],
+    ['Operations', [['F06','Inquiries','F06-contact-inquiries','✉'],['F07','Notifications','F07-notifications-center','♧'],['F08','Requests','F08-requests-triage','≡'],['F09','Quotes','F09-quotes-list','▤'],['F10','Quote builder','F10-quote-details-builder','✎'],['F11','Projects','F11-projects-list','▣'],['F12','Project delivery','F12-project-details-delivery','◫'],['F13','Payments','F13-payments-money-ops','₹'],['F14','Settlement & legal','F14-settlement-legal','⚖'],['F15','Users','F15-users-directory','♙'],['F16','User details & safety','F16-user-details-safety','◉'],['F17','Messages','F17-messages-home','▧'],['F18','Message thread','F18-messages-thread','▱'],['F19','Moderation','F19-moderation-queue','⚑'],['F20','Analytics','F20-analytics-hub','▥']]],
+    ['Content', [['F21','Blog','F21-content-blog','▤'],['F22','Portfolio','F22-portfolio-studio','▣'],['F23','Media library','F23-media-library','▧']]],
+    ['System', [['F24','System configuration','F24-system-config','⚙'],['F25','Integrations & audit','F25-integrations-audit','⌘']]]
+  ];
+  function url(folder) {
+    var targetVersion = folder.indexOf('F05-') === 0 && /^V[67]$/.test(requestedVersion) ? requestedVersion : version;
+    return labPrefix + 'families/' + folder + '/' + targetVersion + '/index.html';
+  }
+  function galleryUrl() { return labPrefix + 'index.html'; }
+  var current = groups.flatMap(function(g){return g[1]}).find(function(i){return i[0]===family});
+  var host = document.createElement('div'); host.id='shared-dashboard-shell';
+  var shadow=host.attachShadow({mode:'open'});
+  var links=groups.map(function(g){return '<div class="group">'+g[0]+'</div>'+g[1].map(function(i){return '<a class="item" '+(i[0]===family?'aria-current="page" ':'')+'href="'+url(i[2])+'"><span class="ico" aria-hidden="true">'+i[3]+'</span><span>'+i[1]+'</span></a>'}).join('')}).join('');
+  var styleEl = document.createElement('style');
+  styleEl.textContent = shellCss;
+  shadow.appendChild(styleEl);
+  var wrap = document.createElement('div');
+  wrap.innerHTML='<button class="shade" aria-label="Close navigation"></button><aside class="sidebar" id="shared-nav" aria-label="Main navigation"><a class="brand" href="'+galleryUrl()+'"><img src="'+logoSrc+'" alt=""><span><strong>Nestlancer</strong><small>Admin workspace</small></span></a><nav aria-label="Dashboard sections">'+links+'</nav><div class="foot">Design lab · Offline prototype</div></aside><header class="topbar"><button class="action menu" aria-controls="shared-nav" aria-expanded="false" aria-label="Open navigation">☰</button><div class="breadcrumb">Admin <span aria-hidden="true"> / </span> <strong>'+(current?current[1]:'Dashboard')+'</strong></div><div class="actions"><a class="action" href="'+url('F03-global-search-command-palette')+'" aria-label="Search pages">⌕ <span class="search-label">&nbsp; Search pages</span></a><a class="action" href="'+url('F07-notifications-center')+'" aria-label="Notifications">♧</a><button class="action theme" aria-label="Toggle dark mode">◐</button><a class="action badge" href="'+galleryUrl()+'">Lab gallery ↗</a><div class="avatar"><span>RK</span> Riya Kapoor</div></div></header>';
+  while (wrap.firstChild) shadow.appendChild(wrap.firstChild);
+  document.body.appendChild(host);
+  var sidebar=shadow.querySelector('.sidebar'), shade=shadow.querySelector('.shade'), menu=shadow.querySelector('.menu'), theme=shadow.querySelector('.theme');
+  function drawer(open){sidebar.classList.toggle('open',open);shade.classList.toggle('open',open);menu.setAttribute('aria-expanded',String(open));if(!open)menu.focus()}
+  menu.addEventListener('click',function(){drawer(!sidebar.classList.contains('open'))}); shade.addEventListener('click',function(){drawer(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sidebar.classList.contains('open'))drawer(false)});
+  function syncTheme(){var dark=document.documentElement.classList.contains('dark');host.toggleAttribute('dark',dark);theme.setAttribute('aria-pressed',String(dark));theme.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode')}
+  theme.addEventListener('click',function(){document.documentElement.classList.toggle('dark');try{localStorage.setItem('nl-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){} try{var u=new URL(location.href);if(u.searchParams.has('theme')){u.searchParams.delete('theme');history.replaceState(history.state,'',u.href)}}catch(e){} syncTheme()});
+  new MutationObserver(syncTheme).observe(document.documentElement,{attributes:true,attributeFilter:['class']});syncTheme();
+  document.querySelectorAll('[data-legacy-dashboard-chrome]').forEach(function(node){ node.inert = true; node.setAttribute('aria-hidden', 'true'); });
+  document.querySelectorAll('footer').forEach(function(node){
+    node.setAttribute('data-legacy-dashboard-footer', '');
+    node.inert = true;
+    node.setAttribute('aria-hidden', 'true');
+  });
+  var footer = document.createElement('footer');
+  footer.id = 'shared-dashboard-footer';
+  footer.innerHTML = '<span>© 2026 Nestlancer · Design lab · Offline prototype</span> <span>Terms · Privacy · Secured · HTTPS (preview)</span>';
+  var workspace = document.querySelector('[data-dashboard-workspace]');
+  var main = (workspace || document).querySelector('main');
+  if (main && main.parentNode) main.parentNode.insertBefore(footer, main.nextSibling);
+  else if (workspace) workspace.appendChild(footer);
+  else document.body.appendChild(footer);
+  document.documentElement.classList.add('shared-chrome-ready');
+})();
+</script>
 </body>
 </html>

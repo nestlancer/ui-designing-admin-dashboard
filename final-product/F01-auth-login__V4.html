@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operator sign-in · Admin</title>
+<meta name="description" content="Nestlancer Admin operator sign-in. For Nestlancer administrators and internal operators only.">
+<script>
+(function(){try{
+  var q=new URLSearchParams(location.search).get('theme');
+  var t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  if(t==='dark')document.documentElement.classList.add('dark');
+}catch(e){}})();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2032%2032%22%20fill=%22none%22%3E%3Crect%20x=%221%22%20y=%221%22%20width=%2230%22%20height=%2230%22%20rx=%228%22%20fill=%22%23465fff%22/%3E%3Cpath%20d=%22M9%2023V9l8%209.2V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20fill=%22none%22/%3E%3Cpath%20d=%22M21%2023V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20fill=%22none%22/%3E%3C/svg%3E" type="image/svg+xml">
+<style>
+/* inlined from ../../../shared/tokens.css */
+:root{
+  /* Neutrals (cool-gray, from live admin) */
+  --background:#f4f6f9; --card:#ffffff; --muted:#eef2f6; --border:#dfe6ee;
+  --foreground:#1a2433; --muted-foreground:#54657a;
+  /* Brand — ONE teal ramp (live --primary 168 82% 26% ≈ #0c7963) */
+  --brand-50:#ecfdf5; --brand-100:#d1fae5; --brand-200:#a7f3d0;
+  --brand-500:#14a07c; --brand-600:#0c7963; --brand-700:#0a5f4e; --brand-800:#084c3f;
+  --primary:var(--brand-600); --primary-hover:var(--brand-700); --primary-active:var(--brand-800);
+  --primary-tint:#e6f4ef; --ring:var(--brand-600);
+  /* Sidebar + header (measured) */
+  --sidebar-bg:#f3f4f7; --sidebar-active:rgba(12,121,99,.10); --sidebar-section:#59616e;
+  /* Status — bg tint + darkened AA text + border (FIX C3) */
+  --status-success-bg:#e5f6ec; --status-success-text:#166534; --status-success-border:#86c9a3;
+  --status-warning-bg:#fdf3e0; --status-warning-text:#7a5200; --status-warning-border:#e8c477;
+  --status-error-bg:#fdecec;   --status-error-text:#b42318;   --status-error-border:#f0a8a0;
+  --status-info-bg:#e6f4fd;    --status-info-text:#0c5d8a;    --status-info-border:#8fcbe8;
+  --status-purple-bg:#f1e8fd;  --status-purple-text:#5b21b6;  --status-purple-border:#c4a8ef;
+  --status-neutral-bg:#eef2f6; --status-neutral-text:#3f4c5e; --status-neutral-border:#c3cedb;
+  /* Shape + type */
+  --radius-sm:4px; --radius-md:6px; --radius-lg:8px; --radius-xl:20px;
+  --shadow-xs:0 1px 2px rgba(26,36,51,.06); --shadow-sm:0 4px 14px rgba(26,36,51,.08);
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  --sidebar:232px; --header:52px; --content:1440px;
+  --duration-fast:150ms; --duration-normal:280ms; --duration-slow:500ms;
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+.dark{
+  --background:#0b1220; --card:#101a2c; --muted:#152238; --border:#22334c;
+  --foreground:#e8eef4; --muted-foreground:#9fb0c3;
+  --sidebar-bg:#0d1526; --sidebar-active:rgba(20,160,124,.16);
+  --primary:#14a07c; --primary-hover:#1abc8f;
+  --status-success-text:#4ade80; --status-warning-text:#fbbf24;
+  --status-error-text:#f87171; --status-info-text:#38bdf8;
+  --status-purple-text:#c084fc; --status-neutral-text:#9fb0c3;
+  /* status BGs in dark: 12–16% tint of the hue over --card — same formula every variant */
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4); --shadow-sm:0 8px 28px rgba(0,0,0,.45);
+}
+
+</style>
+<style>
+/* inlined from ../../../shared/base.css */
+/* admin-portal-lab shared base — reset + primitives ONLY (create-if-missing; never fork) */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  font-size:14px; line-height:1.5;
+  background:var(--background); color:var(--foreground);
+  min-height:100vh;
+}
+img,svg{display:block; max-width:100%}
+button,input{font:inherit; color:inherit}
+a{color:var(--primary); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ring); outline-offset:2px; border-radius:var(--radius-sm)}
+::selection{background:var(--brand-200); color:var(--brand-800)}
+
+/* primitives */
+.skip-link{
+  position:absolute; left:12px; top:-48px; z-index:100;
+  background:var(--card); color:var(--primary);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:8px 14px; font-size:13px; font-weight:600;
+  transition:top var(--duration-fast) ease;
+}
+.skip-link:focus-visible{top:12px; text-decoration:none}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:40px; padding:0 18px;
+  border-radius:var(--radius-md); border:1px solid transparent;
+  font-size:14px; font-weight:600; cursor:pointer;
+  transition:background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover{background:var(--primary-hover); text-decoration:none}
+.btn-primary:active{background:var(--primary-active)}
+.btn-primary:disabled{opacity:.6; cursor:not-allowed}
+.btn-secondary{background:var(--card); color:var(--foreground); border-color:var(--border)}
+.btn-secondary:hover{background:var(--muted); text-decoration:none}
+.btn-ghost{background:transparent; color:var(--muted-foreground); border-color:transparent}
+.btn-ghost:hover{background:var(--muted); color:var(--foreground); text-decoration:none}
+.btn-block{width:100%}
+
+.field{display:flex; flex-direction:column; gap:6px}
+.field > label{font-size:13px; font-weight:600; color:var(--foreground)}
+.field .hint{font-size:12px; color:var(--muted-foreground)}
+.input, .field input[type="email"], .field input[type="password"], .field input[type="text"], .field input[type="tel"]{
+  width:100%; min-height:40px; padding:0 12px;
+  background:var(--card); color:var(--foreground);
+  border:1px solid var(--border); border-radius:var(--radius-md);
+  font-size:14px;
+  transition:border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+.input::placeholder{color:var(--muted-foreground); opacity:.75}
+.input:hover{border-color:var(--muted-foreground)}
+.input:focus{border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent)}
+.input[aria-invalid="true"]{border-color:var(--status-error-text); box-shadow:0 0 0 3px color-mix(in srgb, var(--status-error-text) 18%, transparent)}
+.field-error{font-size:12px; color:var(--status-error-text); display:flex; gap:6px; align-items:flex-start}
+
+/* status badge — icon + colour + text, never colour alone (C3, AA text) */
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:2px 10px; border-radius:999px;
+  font-size:12px; font-weight:600; border:1px solid;
+  white-space:nowrap;
+}
+.badge svg{width:12px; height:12px; flex:none}
+.badge-success{background:var(--status-success-bg); color:var(--status-success-text); border-color:var(--status-success-border)}
+.badge-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.badge-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.badge-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.badge-purple{background:var(--status-purple-bg); color:var(--status-purple-text); border-color:var(--status-purple-border)}
+.badge-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+/* inline notice (alerts) */
+.notice{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:12px 14px; border-radius:var(--radius-md); border:1px solid;
+  font-size:13px;
+}
+.notice svg{width:16px; height:16px; flex:none; margin-top:1px}
+.notice-error{background:var(--status-error-bg); color:var(--status-error-text); border-color:var(--status-error-border)}
+.notice-warning{background:var(--status-warning-bg); color:var(--status-warning-text); border-color:var(--status-warning-border)}
+.notice-info{background:var(--status-info-bg); color:var(--status-info-text); border-color:var(--status-info-border)}
+.notice-neutral{background:var(--status-neutral-bg); color:var(--status-neutral-text); border-color:var(--status-neutral-border)}
+
+.mono{font-family:var(--mono); font-size:.92em}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs)}
+.visually-hidden{position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+/* theme-aware logo pair (client-lab assets, 2026-11-01): light-ink artwork on light surfaces, white artwork on dark */
+img.logo-for-light{display:inline-block; vertical-align:middle}
+img.logo-for-dark{display:none; vertical-align:middle}
+.dark img.logo-for-light{display:none}
+.dark img.logo-for-dark{display:inline-block}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+
+</style>
+<style>
+/* V4 "EDITORIAL INDEX" (2026 pass 3) — magazine spread: masthead with rules, oversized display
+   headline with kinetic underline, watermark index numeral, marginalia column + ruled form sheet.
+   Theme-aware paper (light) / ink (dark). Teal ramp only. */
+:root{
+  --page-bg:var(--background); --on-page:var(--foreground); --on-page-soft:var(--muted-foreground);
+  --rule:var(--border); --rule-strong:var(--foreground);
+  --sheet-bg:var(--card); --sheet-line:var(--border);
+  --wm:color-mix(in srgb, var(--primary) 9%, transparent);
+  --wordmark:var(--primary); --trust-c:var(--status-success-text);
+  --toggle-bg:var(--card); --toggle-fg:var(--muted-foreground); --toggle-border:var(--border); --toggle-hover:var(--muted);
+}
+.dark{
+  --page-bg:#0a0f14; --on-page:#e8eef4; --on-page-soft:#93a5b8;
+  --rule:#22334c; --rule-strong:#e8eef4;
+  --sheet-bg:#0f1826; --sheet-line:#22334c;
+  --wm:rgba(20,160,124,.13);
+  --wordmark:var(--brand-200); --trust-c:var(--brand-200);
+  --toggle-bg:rgba(255,255,255,.06); --toggle-fg:var(--brand-100); --toggle-border:rgba(167,243,208,.35); --toggle-hover:rgba(255,255,255,.14);
+}
+body{background:var(--page-bg); color:var(--on-page); transition:background var(--duration-normal) ease, color var(--duration-normal) ease}
+
+.masthead{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px clamp(18px,4.5vw,52px) 14px; border-bottom:2px solid var(--rule-strong); transition:border-color var(--duration-normal) ease}
+.brand-link{display:inline-flex; transition:opacity var(--duration-fast)}
+.brand-link:hover{opacity:.75; text-decoration:none}
+.logo-full{height:28px; width:auto}
+.mast-mid{font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--on-page-soft); text-transform:uppercase}
+.icon-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:999px; border:1px solid var(--toggle-border); background:var(--toggle-bg); color:var(--toggle-fg); cursor:pointer; transition:background var(--duration-fast), border-color var(--duration-fast)}
+.icon-btn:hover{background:var(--toggle-hover)}
+.icon-btn svg{width:18px; height:18px}
+
+.hero{position:relative; padding:clamp(30px,5vw,58px) clamp(18px,4.5vw,52px) 8px; overflow:hidden}
+.wm{position:absolute; right:clamp(6px,3vw,40px); top:-30px; font-size:clamp(150px,24vw,300px); font-weight:800; letter-spacing:-.06em; line-height:1; color:var(--wm); user-select:none; pointer-events:none}
+.kick{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--wordmark); margin-bottom:16px}
+.kick::before{content:""; width:34px; height:2px; background:var(--primary)}
+h1.display{font-size:clamp(38px,6.4vw,76px); line-height:.98; letter-spacing:-.05em; font-weight:800; max-width:12ch}
+.kinetic-u{background-image:linear-gradient(var(--primary), var(--primary)); background-repeat:no-repeat; background-position:0 94%; background-size:0% .09em; animation:hl 1s var(--ease-spring) .5s forwards}
+@keyframes hl{to{background-size:100% .09em}}
+.hero .lede{margin-top:18px; font-size:14px; line-height:1.7; color:var(--on-page-soft); max-width:56ch}
+
+.spread{display:grid; grid-template-columns:1fr; gap:0; padding:10px clamp(18px,4.5vw,52px) 40px}
+.margin-col{padding:26px 0 26px; border-bottom:1px solid var(--rule); display:flex; flex-direction:column; gap:18px}
+.margin-col h2{font-size:13px; font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--on-page-soft)}
+.margin-col p{font-size:13.5px; line-height:1.7; color:var(--on-page-soft); max-width:52ch}
+.ruled{list-style:none; border-top:1px solid var(--rule)}
+.ruled li{display:flex; align-items:baseline; gap:12px; padding:9px 2px; border-bottom:1px solid var(--rule); font-size:13px}
+.ruled .idx{font-family:var(--mono); font-size:11px; color:var(--wordmark); width:26px; flex:none}
+.ruled .t{color:var(--on-page); font-weight:600}
+.ruled .badge{margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:.08em; padding:2px 9px}
+.margin-note{font-family:var(--mono); font-size:11px; line-height:1.7; color:var(--on-page-soft)}
+.margin-note b{color:var(--status-warning-text)}
+
+.sheet-col{padding:26px 0}
+.sheet{position:relative; background:var(--sheet-bg); border:1px solid var(--sheet-line); border-radius:12px; box-shadow:9px 9px 0 color-mix(in srgb, var(--primary) 15%, transparent), var(--shadow-sm); transition:background var(--duration-normal) ease, border-color var(--duration-normal) ease, box-shadow var(--duration-fast) ease}
+.sheet::before{content:""; position:absolute; top:0; left:22px; right:22px; height:4px; border-radius:0 0 4px 4px; background:var(--primary)}
+.sheet:focus-within{border-color:var(--ring); box-shadow:9px 9px 0 color-mix(in srgb, var(--primary) 24%, transparent), 0 0 0 3px color-mix(in srgb, var(--ring) 20%, transparent)}
+.sheet-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:17px 22px; border-bottom:1px solid var(--sheet-line)}
+.sheet-head span{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--wordmark); font-weight:700}
+.sheet-head .no{font-family:var(--mono); font-size:11px; color:var(--on-page-soft); border:1px solid var(--sheet-line); border-radius:4px; padding:3px 8px}
+.sheet-body{padding:24px 22px 20px}
+.sheet .input{background:color-mix(in srgb, var(--background) 55%, var(--card))}
+
+.steps-line{display:flex; align-items:center; gap:10px; margin-bottom:18px}
+.steps-line .seg{flex:1; height:3px; background:var(--muted); overflow:hidden; position:relative; border-radius:2px}
+.steps-line .seg i{position:absolute; inset:0; background:var(--primary); transform:scaleX(0); transform-origin:left; transition:transform var(--duration-normal) var(--ease-spring)}
+.steps-line .seg.on i{transform:scaleX(1)}
+.steps-line .lbl{font-family:var(--mono); font-size:10.5px; color:var(--muted-foreground); white-space:nowrap}
+.steps-line .lbl.on{color:var(--primary)}
+.panels{position:relative; overflow:hidden}
+.panel{transition:transform var(--duration-normal) ease, opacity var(--duration-normal) ease}
+.panel.off{position:absolute; inset:0; transform:translateX(30px); opacity:0; pointer-events:none}
+.panel.back{transform:translateX(-30px)}
+.form{display:flex; flex-direction:column; gap:16px}
+.label-row{display:flex; align-items:baseline; justify-content:space-between; gap:10px}
+.forgot{font-size:12px}
+.input{height:46px; font-size:15px}
+.pw-row{position:relative}
+.pw-row .input{padding-right:78px}
+.pw-toggle{position:absolute; right:7px; top:50%; transform:translateY(-50%); height:32px; padding:0 11px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--muted); color:var(--muted-foreground); font-size:12px; font-weight:600; cursor:pointer; transition:background var(--duration-fast),color var(--duration-fast)}
+.pw-toggle:hover{color:var(--foreground); background:var(--border)}
+.caps-hint{font-size:12px; color:var(--status-warning-text); display:none; align-items:center; gap:6px}
+.caps-hint.on{display:inline-flex}
+.who{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted-foreground); background:var(--muted); border:1px solid var(--border); border-radius:var(--radius-md); padding:9px 12px}
+.who .mono{color:var(--foreground); font-weight:600}
+.who button{margin-left:auto}
+.row-between{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.remember{display:inline-flex; gap:9px; font-size:13px; cursor:pointer; align-items:flex-start}
+.remember input{width:16px; height:16px; margin-top:1px; accent-color:var(--primary)}
+.remember .hint{display:block; font-size:11px; color:var(--muted-foreground)}
+.alt-link{font-size:13px; color:var(--muted-foreground)}
+.btn{height:46px; font-size:15px; transition:background var(--duration-fast), transform var(--duration-fast), box-shadow var(--duration-fast)}
+.btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 26px color-mix(in srgb, var(--primary) 32%, transparent)}
+.btn-primary:active{transform:translateY(0)}
+.consent{font-size:11px; color:var(--muted-foreground); line-height:1.55}
+.demo-bar{display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:0 22px; padding:15px 0 18px; border-top:1px solid var(--sheet-line); font-size:12px; color:var(--muted-foreground)}
+.chip{border:1px solid var(--border); background:var(--card); color:var(--muted-foreground); border-radius:999px; padding:4px 11px; font-size:11px; font-weight:600; cursor:pointer; transition:all var(--duration-fast)}
+.chip:hover{border-color:var(--ring)}
+.chip[aria-pressed="true"]{background:var(--primary-tint); color:var(--primary); border-color:var(--ring)}
+
+.colophon{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; justify-content:space-between; padding:16px clamp(18px,4.5vw,52px) 26px; border-top:2px solid var(--rule-strong); font-size:11px; color:var(--on-page-soft); transition:border-color var(--duration-normal) ease}
+.colophon .mono{font-size:11px; color:var(--on-page)}
+.colophon a{color:var(--wordmark)}
+.trust{display:inline-flex; align-items:center; gap:6px; color:var(--trust-c); font-weight:600}
+.trust svg{width:12px; height:12px}
+.variant-nav{display:flex; gap:14px; font-size:12px}
+.variant-nav a{color:var(--wordmark)}
+.hidden{display:none!important}
+.spinner{width:15px; height:15px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.notice .dismiss{margin-left:auto; background:none; border:0; color:inherit; cursor:pointer; font-size:15px; line-height:1; padding:2px 5px; border-radius:var(--radius-sm)}
+.linklike{background:none;border:0;padding:0;color:var(--primary);font-size:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.notice-success{background:var(--status-success-bg);color:var(--status-success-text);border-color:var(--status-success-border)}
+.rise{opacity:0; transform:translateY(14px); animation:rise var(--duration-slow) var(--ease-spring) forwards}
+.d1{animation-delay:60ms}.d2{animation-delay:150ms}.d3{animation-delay:260ms}.d4{animation-delay:380ms}
+@keyframes rise{to{opacity:1; transform:none}}
+
+@media (min-width:960px){ .spread{grid-template-columns:.9fr 1.1fr; gap:clamp(24px,4vw,64px)} .margin-col{border-bottom:0; border-right:1px solid var(--rule); padding-right:clamp(24px,3vw,48px)} }
+@media (max-width:520px){ .mast-mid{display:none} .sheet-body{padding:18px 14px 14px} .demo-bar{margin:0 14px} }
+@media (pointer:coarse){ .btn,.input{height:48px} .chip{min-height:38px} .pw-toggle{height:38px} .icon-btn{width:44px; height:44px} }
+@media (prefers-reduced-motion:reduce){ .rise,.kinetic-u{animation:none!important; opacity:1; transform:none; background-size:100% .09em} .panel,.btn{transition:none} }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to sign-in</a>
+
+<header class="masthead">
+  <a class="brand-link" href="https://nestlancer.com" aria-label="Nestlancer home">
+    <img class="logo-full logo-for-light" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20width=%221973.000000pt%22%20height=%22544.000000pt%22%20viewBox=%220%200%201973.000000%20544.000000%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cmetadata%3ECreated%20by%20potrace%201.16,%20written%20by%20Peter%20Selinger%202001-2019%3C/metadata%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23000000%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M10960%202025%20l0%20-1085%20125%200%20125%200%200%201085%200%201085%20-125%200%20-125%200%200%20-1085z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M6068%202374%20l-3%20-585%20-124%20173%20c-186%20257%20-327%20454%20-390%20539%20-31%2042%20-114%20158%20-186%20258%20l-130%20181%20-187%200%20-187%200%20-3%20-377%20-3%20-378%20-33%20-69%20c-56%20-118%20-179%20-251%20-392%20-422%20-164%20-132%20-380%20-258%20-605%20-353%20-201%20-85%20-472%20-161%20-577%20-161%20-74%200%20-27%20-17%2080%20-29%20128%20-14%20386%20-14%20523%20-1%20400%2040%20778%20169%201075%20368%20277%20187%20315%20242%20347%20512%20l12%20100%20117%20-167%20c64%20-93%20254%20-359%20421%20-593%20l303%20-425%20182%20-3%20182%20-2%200%201010%200%201010%20-210%200%20-210%200%20-2%20-586z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M9849%202683%20c-1%20-104%20-1%20-191%200%20-195%200%20-5%20-44%20-8%20-99%20-8%20l-100%200%200%20-185%200%20-185%20100%200%20100%200%200%20-382%20c1%20-414%205%20-462%2054%20-561%2076%20-155%20209%20-233%20416%20-244%2058%20-3%20136%20-1%20174%205%2073%2012%20173%2056%20190%2083%206%2011%20-4%2060%20-37%20169%20-26%2084%20-48%20155%20-50%20157%20-2%202%20-28%20-8%20-58%20-22%20-104%20-48%20-217%20-25%20-255%2052%20-17%2035%20-19%2069%20-22%20391%20l-3%20352%20176%200%20175%200%200%20185%200%20185%20-175%200%20-175%200%200%20195%200%20195%20-205%200%20-205%200%20-1%20-187z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M1275%202687%20c-86%20-29%20-153%20-85%20-193%20-161%20-21%20-41%20-26%20-65%20-26%20-127%20-1%20-65%203%20-84%2029%20-134%2048%20-95%20164%20-165%20271%20-165%2095%200%20207%2070%20258%20160%2028%2050%2031%2063%2031%20140%200%2073%20-4%2092%20-27%20136%20-31%2059%20-84%20109%20-144%20135%20-56%2025%20-149%2032%20-199%2016z%22%20fill=%22%2316B6A5%22%20/%3E%3Cpath%20d=%22M7365%202519%20c-125%20-18%20-258%20-81%20-358%20-169%20-96%20-85%20-187%20-241%20-228%20-395%20-31%20-115%20-32%20-354%20-1%20-470%2038%20-141%2093%20-237%20191%20-335%20174%20-173%20351%20-238%20615%20-227%20209%209%20329%2053%20447%20165%2039%2036%2075%2074%2080%2084%208%2015%20-7%2038%20-92%20136%20-56%2064%20-106%20121%20-110%20126%20-4%204%20-31%20-11%20-60%20-34%20-107%20-85%20-212%20-118%20-340%20-107%20-81%207%20-174%2045%20-232%2096%20-36%2032%20-89%20128%20-101%20183%20l-6%2028%20512%202%20513%203%203%20100%20c2%2061%20-3%20139%20-13%20200%20-45%20266%20-168%20445%20-380%20551%20-138%2068%20-271%2087%20-440%2063z%20m244%20-363%20c69%20-35%20103%20-67%20135%20-126%2037%20-67%2059%20-149%2043%20-156%20-7%20-2%20-148%20-1%20-313%203%20l-302%208%2019%2061%20c33%20108%20105%20191%20194%20222%2017%206%2063%2011%20103%2011%2058%201%2082%20-4%20121%20-23z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M8886%202519%20c-166%20-22%20-284%20-70%20-376%20-156%20-105%20-97%20-150%20-200%20-150%20-343%200%20-137%2035%20-227%20116%20-300%2087%20-78%20178%20-114%20391%20-155%20229%20-44%20303%20-84%20303%20-163%200%20-86%20-76%20-128%20-230%20-126%20-139%202%20-283%2045%20-423%20126%20-26%2015%20-51%2028%20-55%2028%20-4%200%20-16%20-24%20-26%20-52%20-10%20-29%20-39%20-102%20-64%20-162%20l-45%20-109%2029%20-25%20c46%20-38%20201%20-108%20294%20-132%20122%20-31%20353%20-39%20475%20-16%20114%2022%20235%2079%20308%20146%20179%20164%20197%20478%2037%20638%20-85%2084%20-154%20113%20-401%20167%20-204%2045%20-283%2079%20-305%20131%20-23%2054%20-3%20101%2056%20134%2059%2032%20201%2040%20303%2016%2064%20-15%20177%20-64%20239%20-103%2015%20-10%2029%20-15%2031%20-13%207%209%20127%20328%20127%20339%200%2017%20-110%2068%20-203%2095%20-140%2041%20-290%2053%20-431%2035z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M12082%202509%20c-138%20-13%20-263%20-58%20-379%20-137%20-92%20-63%20-91%20-57%20-44%20-164%2060%20-135%2050%20-130%20124%20-62%20107%2097%20224%20144%20364%20144%20266%200%20401%20-139%20403%20-413%20l0%20-38%20-252%202%20c-321%202%20-407%20-12%20-532%20-85%20-63%20-37%20-141%20-127%20-168%20-194%20-19%20-49%20-23%20-75%20-23%20-182%200%20-158%2019%20-211%20107%20-306%20106%20-113%20244%20-160%20443%20-151%20181%209%20286%2054%20385%20165%20l50%2056%200%20-102%200%20-102%20121%200%20120%200%20-3%20543%20c-4%20519%20-5%20545%20-26%20620%20-83%20301%20-322%20441%20-690%20406z%20m314%20-869%20l154%200%200%20-58%20c0%20-140%20-41%20-254%20-120%20-332%20-75%20-76%20-142%20-103%20-264%20-108%20-227%20-10%20-349%2080%20-348%20256%201%20108%2052%20181%20154%20218%2053%2019%20169%2034%20227%2028%2024%20-2%20113%20-4%20197%20-4z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M17074%202509%20c-297%20-35%20-532%20-257%20-611%20-576%20-25%20-103%20-22%20-333%206%20-438%2099%20-376%20401%20-591%20801%20-572%20196%2010%20319%2062%20443%20189%2042%2043%2077%2083%2077%2088%200%205%20-35%2039%20-77%2075%20l-77%2065%20-40%20-41%20c-86%20-87%20-171%20-129%20-296%20-148%20-82%20-12%20-195%20-3%20-268%2022%20-98%2034%20-196%20111%20-256%20202%20-37%2055%20-86%20186%20-86%20229%20l0%2026%20584%200%20c523%200%20584%202%20590%2016%2010%2027%207%20124%20-9%20224%20-35%20239%20-144%20421%20-323%20540%20-81%2055%20-160%2083%20-277%2099%20-84%2012%20-79%2012%20-181%200z%20m249%20-240%20c162%20-60%20254%20-186%20286%20-391%20l8%20-48%20-464%200%20-463%200%206%2028%20c57%20259%20184%20400%20389%20432%2069%2010%20181%201%20238%20-21z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M13865%202496%20c-114%20-28%20-240%20-104%20-296%20-180%20l-29%20-40%200%20106%20c0%20124%208%20118%20-137%20118%20l-93%200%200%20-780%200%20-780%20120%200%20c107%200%20120%202%20121%2018%201%209%202%20215%204%20458%204%20476%208%20518%2061%20630%2038%2081%20121%20165%20196%20200%2057%2026%2073%2029%20173%2029%2098%200%20116%20-3%20165%20-26%20104%20-49%20160%20-118%20197%20-245%2015%20-51%2017%20-123%2021%20-561%20l3%20-503%20125%200%20124%200%200%20483%20c0%20523%20-6%20605%20-53%20729%20-67%20176%20-206%20306%20-367%20342%20-82%2019%20-262%2020%20-335%202z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M15472%202485%20c-107%20-32%20-151%20-55%20-239%20-122%20-197%20-149%20-307%20-414%20-290%20-697%208%20-135%2036%20-236%2099%20-358%2074%20-144%20169%20-238%20311%20-308%20211%20-103%20454%20-108%20645%20-14%2086%2042%20190%20141%20239%20227%20l31%2056%20-88%2060%20c-49%2034%20-92%2061%20-97%2061%20-5%200%20-16%20-13%20-26%20-29%20-37%20-62%20-109%20-131%20-170%20-160%20-176%20-86%20-386%20-50%20-531%2089%20-77%2074%20-119%20149%20-146%20261%20-78%20329%2076%20654%20345%20723%20195%2051%20404%20-24%20502%20-180%2016%20-24%2034%20-42%2040%20-39%2020%207%20163%20129%20163%20138%200%2017%20-62%2097%20-112%20147%20-63%2062%20-142%20111%20-228%20141%20-53%2018%20-92%2023%20-215%2026%20-137%203%20-157%201%20-233%20-22z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M18750%202494%20c-124%20-33%20-234%20-101%20-301%20-187%20l-39%20-49%200%20121%200%20121%20-115%200%20-115%200%200%20-780%200%20-780%20125%200%20125%200%200%20383%20c0%20530%2013%20624%20102%20758%2078%20117%20186%20177%20336%20186%20l82%206%200%20118%200%20119%20-72%20-1%20c-40%200%20-98%20-7%20-128%20-15z%22%20fill=%22%2316B6A5%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23272A7A%22%20/%3E%3Cpath%20d=%22M18839%201395%20c-147%20-47%20-217%20-219%20-143%20-354%2061%20-113%20181%20-158%20306%20-115%20198%2067%20213%20356%2025%20449%20-66%2032%20-129%2039%20-188%2020z%22%20fill=%22%2316B6A5%22%20/%3E%3C/g%3E%3C/svg%3E" alt="Nestlancer" width="109" height="30">
+    <img class="logo-full logo-for-dark" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20version=%221.0%22%20width=%221973.000000pt%22%20height=%22544.000000pt%22%20viewBox=%220%200%201973.000000%20544.000000%22%20preserveAspectRatio=%22xMidYMid%20meet%22%3E%3Cmetadata%3ECreated%20by%20potrace%201.16,%20written%20by%20Peter%20Selinger%202001-2019%3C/metadata%3E%3Cg%20transform=%22translate(0.000000,544.000000)%20scale(0.100000,-0.100000)%22%20fill=%22%23000000%22%20stroke=%22none%22%3E%3Cpath%20d=%22M1030%205214%20c0%20-22%209%20-90%2020%20-150%2076%20-423%20317%20-748%20765%20-1031%20162%20-102%20397%20-215%20732%20-353%20529%20-218%20785%20-361%20984%20-548%20223%20-210%20310%20-380%20310%20-607%201%20-95%20-6%20-137%20-33%20-225%20-30%20-95%20-81%20-188%20-146%20-265%20-31%20-37%20-66%20-79%20-76%20-93%20l-19%20-24%2024%207%20c64%2019%20177%2069%20240%20105%20267%20157%20465%20421%20720%20962%20141%20299%20181%20369%20252%20440%2095%2094%20234%20147%20385%20148%2034%200%2062%204%2062%209%200%2018%20-66%20106%20-101%20133%20-49%2040%20-162%2078%20-229%2078%20-55%200%20-56%201%20-68%2034%20-7%2019%20-33%2058%20-59%2086%20-120%20133%20-273%20157%20-498%2075%20-121%20-44%20-196%20-63%20-257%20-67%20-27%20-2%20-48%20-5%20-48%20-8%200%20-2%2035%20-39%2077%20-82%20l77%20-77%20-37%20-53%20c-83%20-120%20-260%20-298%20-297%20-298%20-8%200%20-80%2048%20-160%20106%20-331%20241%20-468%20312%20-1180%20612%20-216%2091%20-347%20155%20-500%20243%20-123%2070%20-322%20200%20-410%20267%20-202%20152%20-386%20358%20-494%20552%20l-36%2065%200%20-41z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M580%204703%20c0%20-11%207%20-60%2015%20-109%2085%20-498%20494%20-959%201080%20-1216%20167%20-74%20294%20-118%20590%20-208%20827%20-249%201084%20-366%201313%20-597%2050%20-52%2092%20-93%2092%20-91%200%2017%20-45%20159%20-65%20204%20-100%20225%20-349%20457%20-664%20618%20-132%2067%20-310%20137%20-658%20260%20-498%20175%20-743%20287%20-1002%20456%20-299%20195%20-479%20368%20-642%20614%20-37%2056%20-59%2082%20-59%2069z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M310%203913%20c0%20-18%2046%20-141%2086%20-229%20107%20-235%20306%20-445%20564%20-596%20259%20-152%20575%20-257%201080%20-358%20506%20-102%20853%20-221%201015%20-350%2021%20-17%2040%20-28%2042%20-26%207%207%20-81%20136%20-141%20208%20-95%20114%20-226%20213%20-395%20298%20-168%2084%20-349%20142%20-776%20249%20-326%2082%20-575%20168%20-800%20276%20-241%20116%20-493%20312%20-642%20500%20-18%2022%20-32%2035%20-33%2028z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M10960%202025%20l0%20-1085%20125%200%20125%200%200%201085%200%201085%20-125%200%20-125%200%200%20-1085z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M6068%202374%20l-3%20-585%20-124%20173%20c-186%20257%20-327%20454%20-390%20539%20-31%2042%20-114%20158%20-186%20258%20l-130%20181%20-187%200%20-187%200%20-3%20-377%20-3%20-378%20-33%20-69%20c-56%20-118%20-179%20-251%20-392%20-422%20-164%20-132%20-380%20-258%20-605%20-353%20-201%20-85%20-472%20-161%20-577%20-161%20-74%200%20-27%20-17%2080%20-29%20128%20-14%20386%20-14%20523%20-1%20400%2040%20778%20169%201075%20368%20277%20187%20315%20242%20347%20512%20l12%20100%20117%20-167%20c64%20-93%20254%20-359%20421%20-593%20l303%20-425%20182%20-3%20182%20-2%200%201010%200%201010%20-210%200%20-210%200%20-2%20-586z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M9849%202683%20c-1%20-104%20-1%20-191%200%20-195%200%20-5%20-44%20-8%20-99%20-8%20l-100%200%200%20-185%200%20-185%20100%200%20100%200%200%20-382%20c1%20-414%205%20-462%2054%20-561%2076%20-155%20209%20-233%20416%20-244%2058%20-3%20136%20-1%20174%205%2073%2012%20173%2056%20190%2083%206%2011%20-4%2060%20-37%20169%20-26%2084%20-48%20155%20-50%20157%20-2%202%20-28%20-8%20-58%20-22%20-104%20-48%20-217%20-25%20-255%2052%20-17%2035%20-19%2069%20-22%20391%20l-3%20352%20176%200%20175%200%200%20185%200%20185%20-175%200%20-175%200%200%20195%200%20195%20-205%200%20-205%200%20-1%20-187z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M1275%202687%20c-86%20-29%20-153%20-85%20-193%20-161%20-21%20-41%20-26%20-65%20-26%20-127%20-1%20-65%203%20-84%2029%20-134%2048%20-95%20164%20-165%20271%20-165%2095%200%20207%2070%20258%20160%2028%2050%2031%2063%2031%20140%200%2073%20-4%2092%20-27%20136%20-31%2059%20-84%20109%20-144%20135%20-56%2025%20-149%2032%20-199%2016z%22%20fill=%22%2316B6A5%22%20/%3E%3Cpath%20d=%22M7365%202519%20c-125%20-18%20-258%20-81%20-358%20-169%20-96%20-85%20-187%20-241%20-228%20-395%20-31%20-115%20-32%20-354%20-1%20-470%2038%20-141%2093%20-237%20191%20-335%20174%20-173%20351%20-238%20615%20-227%20209%209%20329%2053%20447%20165%2039%2036%2075%2074%2080%2084%208%2015%20-7%2038%20-92%20136%20-56%2064%20-106%20121%20-110%20126%20-4%204%20-31%20-11%20-60%20-34%20-107%20-85%20-212%20-118%20-340%20-107%20-81%207%20-174%2045%20-232%2096%20-36%2032%20-89%20128%20-101%20183%20l-6%2028%20512%202%20513%203%203%20100%20c2%2061%20-3%20139%20-13%20200%20-45%20266%20-168%20445%20-380%20551%20-138%2068%20-271%2087%20-440%2063z%20m244%20-363%20c69%20-35%20103%20-67%20135%20-126%2037%20-67%2059%20-149%2043%20-156%20-7%20-2%20-148%20-1%20-313%203%20l-302%208%2019%2061%20c33%20108%20105%20191%20194%20222%2017%206%2063%2011%20103%2011%2058%201%2082%20-4%20121%20-23z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M8886%202519%20c-166%20-22%20-284%20-70%20-376%20-156%20-105%20-97%20-150%20-200%20-150%20-343%200%20-137%2035%20-227%20116%20-300%2087%20-78%20178%20-114%20391%20-155%20229%20-44%20303%20-84%20303%20-163%200%20-86%20-76%20-128%20-230%20-126%20-139%202%20-283%2045%20-423%20126%20-26%2015%20-51%2028%20-55%2028%20-4%200%20-16%20-24%20-26%20-52%20-10%20-29%20-39%20-102%20-64%20-162%20l-45%20-109%2029%20-25%20c46%20-38%20201%20-108%20294%20-132%20122%20-31%20353%20-39%20475%20-16%20114%2022%20235%2079%20308%20146%20179%20164%20197%20478%2037%20638%20-85%2084%20-154%20113%20-401%20167%20-204%2045%20-283%2079%20-305%20131%20-23%2054%20-3%20101%2056%20134%2059%2032%20201%2040%20303%2016%2064%20-15%20177%20-64%20239%20-103%2015%20-10%2029%20-15%2031%20-13%207%209%20127%20328%20127%20339%200%2017%20-110%2068%20-203%2095%20-140%2041%20-290%2053%20-431%2035z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M12082%202509%20c-138%20-13%20-263%20-58%20-379%20-137%20-92%20-63%20-91%20-57%20-44%20-164%2060%20-135%2050%20-130%20124%20-62%20107%2097%20224%20144%20364%20144%20266%200%20401%20-139%20403%20-413%20l0%20-38%20-252%202%20c-321%202%20-407%20-12%20-532%20-85%20-63%20-37%20-141%20-127%20-168%20-194%20-19%20-49%20-23%20-75%20-23%20-182%200%20-158%2019%20-211%20107%20-306%20106%20-113%20244%20-160%20443%20-151%20181%209%20286%2054%20385%20165%20l50%2056%200%20-102%200%20-102%20121%200%20120%200%20-3%20543%20c-4%20519%20-5%20545%20-26%20620%20-83%20301%20-322%20441%20-690%20406z%20m314%20-869%20l154%200%200%20-58%20c0%20-140%20-41%20-254%20-120%20-332%20-75%20-76%20-142%20-103%20-264%20-108%20-227%20-10%20-349%2080%20-348%20256%201%20108%2052%20181%20154%20218%2053%2019%20169%2034%20227%2028%2024%20-2%20113%20-4%20197%20-4z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M17074%202509%20c-297%20-35%20-532%20-257%20-611%20-576%20-25%20-103%20-22%20-333%206%20-438%2099%20-376%20401%20-591%20801%20-572%20196%2010%20319%2062%20443%20189%2042%2043%2077%2083%2077%2088%200%205%20-35%2039%20-77%2075%20l-77%2065%20-40%20-41%20c-86%20-87%20-171%20-129%20-296%20-148%20-82%20-12%20-195%20-3%20-268%2022%20-98%2034%20-196%20111%20-256%20202%20-37%2055%20-86%20186%20-86%20229%20l0%2026%20584%200%20c523%200%20584%202%20590%2016%2010%2027%207%20124%20-9%20224%20-35%20239%20-144%20421%20-323%20540%20-81%2055%20-160%2083%20-277%2099%20-84%2012%20-79%2012%20-181%200z%20m249%20-240%20c162%20-60%20254%20-186%20286%20-391%20l8%20-48%20-464%200%20-463%200%206%2028%20c57%20259%20184%20400%20389%20432%2069%2010%20181%201%20238%20-21z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M13865%202496%20c-114%20-28%20-240%20-104%20-296%20-180%20l-29%20-40%200%20106%20c0%20124%208%20118%20-137%20118%20l-93%200%200%20-780%200%20-780%20120%200%20c107%200%20120%202%20121%2018%201%209%202%20215%204%20458%204%20476%208%20518%2061%20630%2038%2081%20121%20165%20196%20200%2057%2026%2073%2029%20173%2029%2098%200%20116%20-3%20165%20-26%20104%20-49%20160%20-118%20197%20-245%2015%20-51%2017%20-123%2021%20-561%20l3%20-503%20125%200%20124%200%200%20483%20c0%20523%20-6%20605%20-53%20729%20-67%20176%20-206%20306%20-367%20342%20-82%2019%20-262%2020%20-335%202z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M15472%202485%20c-107%20-32%20-151%20-55%20-239%20-122%20-197%20-149%20-307%20-414%20-290%20-697%208%20-135%2036%20-236%2099%20-358%2074%20-144%20169%20-238%20311%20-308%20211%20-103%20454%20-108%20645%20-14%2086%2042%20190%20141%20239%20227%20l31%2056%20-88%2060%20c-49%2034%20-92%2061%20-97%2061%20-5%200%20-16%20-13%20-26%20-29%20-37%20-62%20-109%20-131%20-170%20-160%20-176%20-86%20-386%20-50%20-531%2089%20-77%2074%20-119%20149%20-146%20261%20-78%20329%2076%20654%20345%20723%20195%2051%20404%20-24%20502%20-180%2016%20-24%2034%20-42%2040%20-39%2020%207%20163%20129%20163%20138%200%2017%20-62%2097%20-112%20147%20-63%2062%20-142%20111%20-228%20141%20-53%2018%20-92%2023%20-215%2026%20-137%203%20-157%201%20-233%20-22z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M18750%202494%20c-124%20-33%20-234%20-101%20-301%20-187%20l-39%20-49%200%20121%200%20121%20-115%200%20-115%200%200%20-780%200%20-780%20125%200%20125%200%200%20383%20c0%20530%2013%20624%20102%20758%2078%20117%20186%20177%20336%20186%20l82%206%200%20118%200%20119%20-72%20-1%20c-40%200%20-98%20-7%20-128%20-15z%22%20fill=%22%2316B6A5%22%20/%3E%3Cpath%20d=%22M820%202214%20c0%20-28%2056%20-212%2095%20-312%20186%20-474%20488%20-843%20930%20-1134%20286%20-189%20613%20-318%20975%20-384%20121%20-22%20542%20-26%20665%20-6%20563%2093%201113%20388%201472%20791%20139%20156%20335%20432%20319%20449%20-4%203%20-21%20-8%20-39%20-25%20-60%20-57%20-222%20-177%20-332%20-247%20-198%20-125%20-416%20-219%20-650%20-279%20-243%20-62%20-333%20-72%20-660%20-72%20-314%201%20-397%209%20-675%2066%20-421%2085%20-840%20237%20-1156%20419%20-306%20176%20-560%20367%20-796%20599%20-82%2079%20-148%20140%20-148%20135z%20m1103%20-1120%20c268%20-152%20640%20-284%201022%20-365%20l90%20-19%20-145%204%20c-233%208%20-478%2062%20-674%20151%20-119%2053%20-312%20179%20-443%20289%20-120%2099%20-129%20114%20-31%2050%2046%20-31%20127%20-80%20181%20-110z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M4633%202142%20c-155%20-124%20-549%20-308%20-844%20-393%20-304%20-87%20-711%20-138%20-1004%20-126%20-446%2020%20-1008%20144%20-1404%20311%20-47%2020%20-86%2034%20-88%2032%20-4%20-4%20182%20-143%20272%20-203%20269%20-180%20605%20-342%20845%20-407%20497%20-135%20982%20-84%201475%20153%20270%20130%20500%20309%20714%20556%20124%20143%20128%20152%2034%2077z%22%20fill=%22%23FFFFFF%22%20/%3E%3Cpath%20d=%22M18839%201395%20c-147%20-47%20-217%20-219%20-143%20-354%2061%20-113%20181%20-158%20306%20-115%20198%2067%20213%20356%2025%20449%20-66%2032%20-129%2039%20-188%2020z%22%20fill=%22%2316B6A5%22%20/%3E%3C/g%3E%3C/svg%3E" alt="Nestlancer" width="109" height="30">
+  </a>
+  <span class="mast-mid">F01 · V4 · Editorial</span>
+  <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.3 11.3 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <svg class="ic-moon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+
+<section class="hero" aria-label="Intro">
+  <span class="wm" aria-hidden="true">01</span>
+  <p class="kick rise d1">Nestlancer Admin — operator identity boundary</p>
+  <h1 class="display rise d2">The console door, kept <span class="kinetic-u">honest</span>.</h1>
+  <p class="lede rise d3">Built for internal operators — dense, auditable, and deliberately unfriendly to public portal branding. Credentials alone are not enough when MFA is challenged.</p>
+</section>
+
+<main class="spread" id="main-content">
+  <aside class="margin-col rise d3" aria-label="Access policy">
+    <div>
+      <h2>Posture · pre-auth</h2>
+      <ul class="ruled" style="margin-top:10px">
+        <li><span class="idx">a.</span><span class="t">Transport security</span><span class="badge badge-success">PASS</span></li>
+        <li><span class="idx">b.</span><span class="t">Network policy</span><span class="badge badge-success">PASS</span></li>
+        <li><span class="idx">c.</span><span class="t">Operator identity</span><span class="badge badge-warning">PENDING</span></li>
+      </ul>
+    </div>
+    <p>For Nestlancer administrators and internal operators only. Client accounts use the main app — client accounts cannot finish sign-in here.</p>
+    <p class="margin-note">access: operators only · ADMIN · TTL 8h / 30d · posture 2/3 ready<br><b>failed attempts rate-limited · IP + UA audited</b></p>
+  </aside>
+
+  <div class="sheet-col rise d3">
+    <section class="sheet" aria-label="Sign-in form">
+      <div class="sheet-head"><span>Ops form</span><span class="no">01 / SIGN-IN</span></div>
+      <div class="sheet-body">
+        <div class="steps-line" aria-hidden="true">
+          <span class="lbl on" id="lbl-1">1 · Sign-in</span><span class="seg on" id="seg-1"><i></i></span>
+          <span class="lbl" id="lbl-2">2 · Verify</span><span class="seg" id="seg-2"><i></i></span>
+        </div>
+
+        <div id="notice-zone" aria-live="polite"></div>
+
+        <div class="panels">
+          <div class="panel" id="panel-login">
+            <form id="login-form" class="form" method="post" action="/api/v1/auth/login" novalidate>
+              <div class="field">
+                <label for="admin-email">Work email</label>
+                <input class="input" id="admin-email" type="email" name="email" autocomplete="username" inputmode="email" required placeholder="you@company.com" enterkeyhint="next" aria-describedby="email-err" autofocus>
+                <p class="field-error hidden" id="email-err" role="alert">Enter your work email — the address you were given for the console.</p>
+              </div>
+              <div class="field">
+                <div class="label-row">
+                  <label for="current-password">Password</label>
+                  <button type="button" class="forgot linklike" id="forgot-btn">Forgot password?</button>
+                </div>
+                <div class="pw-row">
+                  <input class="input" id="current-password" type="password" name="password" autocomplete="current-password" required placeholder="Enter your password" enterkeyhint="done" aria-describedby="pw-err caps-hint">
+                  <button type="button" class="pw-toggle" id="pw-toggle" aria-pressed="false" aria-label="Show password">Show</button>
+                </div>
+                <p class="field-error hidden" id="pw-err" role="alert">Enter your password.</p>
+                <p class="caps-hint" id="caps-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> Caps Lock is on</p>
+              </div>
+              <div class="row-between">
+                <label class="remember"><span><input type="checkbox" name="rememberMe"> Keep me signed in</span><span class="hint">On a shared machine, leave this off — sessions still end at TTL 8h / 30d.</span></label>
+                <span class="alt-link">Client account? <a href="https://app.nestlancer.com/login">Client sign-in</a></span>
+              </div>
+              <button class="btn btn-primary btn-block" id="submit-btn" type="submit"><span class="spinner hidden" aria-hidden="true"></span><span id="submit-label">Enter console</span></button>
+              <p class="consent">By continuing, you agree to our <a href="https://app.nestlancer.com/terms">Terms</a> and <a href="https://app.nestlancer.com/privacy">Privacy Policy</a>.</p>
+            </form>
+          </div>
+          <div class="panel off" id="panel-twofa" aria-hidden="true">
+            <form id="twofa-form" class="form" method="post" action="/api/v1/auth/verify-2fa" novalidate aria-labelledby="twofa-h">
+              <h2 id="twofa-h" style="font-size:22px;font-weight:800;letter-spacing:-.02em">Two-factor challenge</h2>
+              <p class="sub" style="font-size:13px;color:var(--muted-foreground);margin:8px 0 0">Enter the 6-digit TOTP code (or an 8–10 character backup code). Session <span class="mono">auth_sess_12345678</span></p>
+              <div class="field">
+                <label for="totp-code">Verification code</label>
+                <input class="input mono" id="totp-code" type="text" inputmode="numeric" name="code" minlength="6" maxlength="10" required placeholder="123456" autocomplete="one-time-code" style="font-size:20px;letter-spacing:.3em">
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Verify and enter console</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-bar" role="group" aria-label="Demo state (lab affordance)">
+        <span>Demo:</span>
+        <button type="button" class="chip" data-state="default" aria-pressed="true">Sign-in</button>
+        <button type="button" class="chip" data-state="error" aria-pressed="false">Invalid</button>
+        <button type="button" class="chip" data-state="expired" aria-pressed="false">Expired</button>
+        <button type="button" class="chip" data-state="twofa" aria-pressed="false">2FA</button>
+        <button type="button" class="chip" data-state="reset" aria-pressed="false">Reset sent</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="colophon rise d4">
+  <span class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Secured · HTTPS</span>
+  <span class="mono">host · admin.nestlancer.com</span>
+  <span>© 2026 Nestlancer · <a href="https://app.nestlancer.com/terms">Terms</a> · <a href="https://app.nestlancer.com/privacy">Privacy</a></span>
+  <nav class="variant-nav" aria-label="Variants">
+    <a href="index.html">← Lab gallery</a>
+    <span><a href="../V3/index.html">← V3</a> &nbsp;·&nbsp; <a href="../V5/index.html">V5 →</a></span>
+  </nav>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+  var toggle=document.getElementById('theme-toggle');
+  function sync(){var d=root.classList.contains('dark');toggle.setAttribute('aria-pressed',String(d));toggle.querySelector('.ic-sun').classList.toggle('hidden',!d);toggle.querySelector('.ic-moon').classList.toggle('hidden',d);}
+  toggle.addEventListener('click',function(){root.classList.toggle('dark');try{localStorage.setItem('nl-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}sync();});
+  sync();
+
+  var pw=document.getElementById('current-password'),pt=document.getElementById('pw-toggle');
+  pt.addEventListener('click',function(){var s=pw.type==='password';pw.type=s?'text':'password';pt.setAttribute('aria-pressed',String(s));pt.setAttribute('aria-label',s?'Hide password':'Show password');pt.textContent=s?'Hide':'Show';pw.focus();});
+  var caps=document.getElementById('caps-hint');
+  function capsCheck(e){ if(e.getModifierState) caps.classList.toggle('on', e.getModifierState('CapsLock')); }
+  pw.addEventListener('keydown',capsCheck); pw.addEventListener('keyup',capsCheck); pw.addEventListener('blur',function(){caps.classList.remove('on')});
+
+  var pLogin=document.getElementById('panel-login'),pTwo=document.getElementById('panel-twofa');
+  var seg1=document.getElementById('seg-1'),seg2=document.getElementById('seg-2');
+  var lbl1=document.getElementById('lbl-1'),lbl2=document.getElementById('lbl-2');
+  function show(el,step){
+    [pLogin,pTwo].forEach(function(p){p.classList.add('off');p.classList.remove('back');p.setAttribute('aria-hidden','true');});
+    el.classList.remove('off'); el.setAttribute('aria-hidden','false');
+    seg1.classList.toggle('on',step>=1); seg2.classList.toggle('on',step>=2);
+    lbl1.classList.toggle('on',step===1); lbl2.classList.toggle('on',step===2);
+    var f=el.querySelector('input'); if(f)f.focus({preventScroll:true});
+  }
+  var email=document.getElementById('admin-email'),emailErr=document.getElementById('email-err'),pwErr=document.getElementById('pw-err');
+  document.getElementById('login-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true, ev=email.value.trim();
+    if(!ev||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)){email.setAttribute('aria-invalid','true');emailErr.classList.remove('hidden');ok=false;}else{email.removeAttribute('aria-invalid');emailErr.classList.add('hidden');}
+    if(!pw.value){pw.setAttribute('aria-invalid','true');pwErr.classList.remove('hidden');ok=false;}else{pw.removeAttribute('aria-invalid');pwErr.classList.add('hidden');}
+    if(!ok){(ev?pw:email).focus();return;}
+    var b=document.getElementById('submit-btn');b.disabled=true;b.setAttribute('aria-busy','true');b.querySelector('.spinner').classList.remove('hidden');document.getElementById('submit-label').textContent='Signing in\u2026';
+    setTimeout(function(){location.href='F02-dashboard-command-center__V3.html';},700);
+  });
+  document.getElementById('twofa-form').addEventListener('submit',function(e){e.preventDefault();});
+
+  var zone=document.getElementById('notice-zone');
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var ICONS={
+    error:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>',
+    info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+    success:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+  };
+  var MSG={
+    error:{cls:'notice-error',icon:ICONS.error,html:'<strong>Those credentials didn\u2019t match an operator account.</strong> Failed attempts are rate-limited and written to the audit log with IP and user-agent. Try again.',focus:true},
+    expired:{cls:'notice-info',icon:ICONS.info,html:'<strong>Your session expired — sign back in.</strong> Nothing was lost; your queues keep their place. (Refresh returned 409/503 mid-shift — finding #3.)',dismiss:true},
+    reset:{cls:'notice-success',icon:ICONS.success,html:'<strong>If an account exists with this email, you will receive password reset instructions.</strong> (Spec copy — POST /api/v1/auth/forgot-password.)',dismiss:true}
+  };
+  function notice(m){zone.innerHTML='';var d=document.createElement('div');d.className='notice '+m.cls;d.tabIndex=-1;d.innerHTML=m.icon+'<span>'+m.html+'</span>';if(m.dismiss){var b=document.createElement('button');b.type='button';b.className='dismiss';b.setAttribute('aria-label','Dismiss notice');b.textContent='\u00d7';b.addEventListener('click',function(){zone.innerHTML='';});d.appendChild(b);}zone.appendChild(d);if(m.focus)d.focus();}
+  function setState(s){
+    chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.state===s))});
+    if(MSG[s])notice(MSG[s]); else zone.innerHTML='';
+    if(s==='twofa')show(pTwo,2); else if(s==='default')show(pLogin,1);
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){setState(c.dataset.state)})});
+  document.getElementById('forgot-btn').addEventListener('click',function(){setState('reset');});
+})();
+</script>
+</body>
+</html>

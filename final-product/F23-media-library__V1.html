@@ -46,7 +46,7 @@
 </style>
 <style>
 /* inlined from ../../../shared/base.css */
-/* admin-portal-lab shared base — reset + primitives ONLY (create-if-missing; never fork) */
+/* admin-portal shared base — reset + primitives ONLY (create-if-missing; never fork) */
 *,*::before,*::after{box-sizing:border-box}
 *{margin:0}
 html{-webkit-text-size-adjust:100%}
@@ -446,7 +446,7 @@ table.tbl td.num{font-family:var(--mono);white-space:nowrap}
 </style>
 <style>
 /* inlined from theme.css */
-/* V1 · Ground-truth desk — the captured evidence ledger leads; browse rail left, work column right. */
+/* V1 · Ground-truth desk — the snapshot evidence ledger leads; browse rail left, work column right. */
 .v1 .canvas{padding-top:24px}
 .v1 .page-head{border-bottom:1px solid var(--line);padding-bottom:14px}
 .v1 .page-head h1{font-size:clamp(27px,2.7vw,36px)}
@@ -548,22 +548,22 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
         </div>
       </div>
       <div class="source-line" id="sources">
-        <span class="source-dot"></span><span>Captured dataset · 30 Oct 2026</span><span class="sep">/</span>
-        <span>9 screenshots + 7 DOM states + media.openapi.json (50 paths)</span><span class="sep">/</span>
-        <span>Local changes only · no production writes</span>
-        <button data-action="sources">Provenance &amp; conflicts</button>
+        <span class="source-dot"></span><span>Snapshot dataset · 30 Oct 2026</span><span class="sep">/</span>
+        <span>9 snapshots + 7 DOM states + media.openapi.json (50 paths)</span><span class="sep">/</span>
+        <span>Preview only</span>
+        <button data-action="sources">Data notes</button>
       </div>
 
-      <!-- V1 begins with the evidence ledger: the captured library order is the spine -->
-      <div class="ledger" aria-label="Captured evidence ledger">
-        <div class="ledger-cell"><span class="eyebrow">Captured tabs</span><b>Storage · Quarantine · Analytics</b><span class="tight">Shot 018 / DOM 119</span></div>
-        <div class="ledger-cell"><span class="eyebrow">Bucket tie-out</span><b class="mono">118 + 28 = 146</b><span class="tight">Public 19 MB · Private 309.1 KB (DOM) / 30.91 KB (shot 018)</span></div>
-        <div class="ledger-cell"><span class="eyebrow">Quarantine</span><b class="mono">0</b><span class="tight">“No quarantined media” · shot 021 / DOM 121</span></div>
+      <!-- V1 begins with the evidence ledger: the snapshot library order is the spine -->
+      <div class="ledger" aria-label="Snapshot evidence ledger">
+        <div class="ledger-cell"><span class="eyebrow">Snapshot tabs</span><b>Storage · Quarantine · Analytics</b><span class="tight">Snapshot</span></div>
+        <div class="ledger-cell"><span class="eyebrow">Bucket totals</span><b class="mono">119 + 0 = 119</b><span class="tight">Public 19.0 MB · Private 0 KB · reference: 118 + 28 = 146</span></div>
+        <div class="ledger-cell"><span class="eyebrow">Quarantine</span><b class="mono">0</b><span class="tight">“No quarantined media” · snapshot</span></div>
         <div class="ledger-cell"><span class="eyebrow">Contract</span><b class="mono">50 paths · 57 ops</b><span class="tight">Admin response field names not documented in Swagger</span></div>
       </div>
 
       <div class="tabs" role="tablist" aria-label="Media Library workspace">
-        <button role="tab" id="tab-storage" aria-controls="panel-storage" aria-selected="true" data-action="tab" data-tab="storage">Storage <span class="n">146</span></button>
+        <button role="tab" id="tab-storage" aria-controls="panel-storage" aria-selected="true" data-action="tab" data-tab="storage">Storage <span class="n">119</span></button>
         <button role="tab" id="tab-quarantine" aria-controls="panel-quarantine" aria-selected="false" tabindex="-1" data-action="tab" data-tab="quarantine">Quarantine <span class="n">0</span></button>
         <button role="tab" id="tab-analytics" aria-controls="panel-analytics" aria-selected="false" tabindex="-1" data-action="tab" data-tab="analytics">Analytics</button>
       </div>
@@ -579,11 +579,11 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
               <button class="browse-link">› Private</button>
             </div>
             <div class="hr"></div>
-            <div class="eyebrow" style="padding:0 14px">Captured buckets</div>
-            <div class="bucket"><b>Public</b><span class="tight">Blog, portfolio, and other published-site assets</span><span class="mono">118 files · 19 MB</span></div>
-            <div class="bucket"><b>Private</b><span class="tight">User-owned private storage</span><span class="mono">28 files · 309.1 KB</span><span class="tag warn">shot 018: 30.91 KB</span></div>
+            <div class="eyebrow" style="padding:0 14px">Snapshot buckets</div>
+            <div class="bucket"><b>Public</b><span class="tight">Blog, portfolio, and other published-site assets</span><span class="mono">119 files · 19.0 MB · reference: 118 files · 19 MB</span></div>
+            <div class="bucket"><b>Private</b><span class="tight">User-owned private storage</span><span class="mono">0 files · 0 KB · reference: 28 files · 309.1 KB</span><span class="tag warn"></span></div>
             <div class="hr"></div>
-            <p class="tight" style="padding:0 14px 14px">Folders is a captured filter, not a captured folder tree. Shot 020 shows “Loading…” with no rows.</p>
+            <p class="tight" style="padding:0 14px 14px">. The snapshot shows “Loading…” with no rows.</p>
           </aside>
 
           <div class="work-column">
@@ -626,10 +626,10 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
             <div data-workspace>
               <p class="state-note empty" data-state-note hidden></p>
               <div class="skeleton-stack" aria-hidden="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
-              <div class="empty-state"><b>No quarantined media</b>Files flagged by security scanning will appear here for release, reprocess, or delete. — exact captured empty state, reused as the demonstrable empty view.</div>
-              <div class="error-state"><b>Degraded view</b>Failed RSC prefetches and a CSP inline-style console error were logged on the captured DOM states. No live API failure is claimed here.</div>
-              <div class="grid-head"><label><input type="checkbox" data-select-page> <span>Select page</span></label><span class="tight">145 files · previews load as you scroll <span class="tag warn">conflict: footer says 146</span></span></div>
-              <div class="asset-grid" data-asset-list aria-label="Captured media assets">
+              <div class="empty-state"><b>No quarantined media</b>Files flagged by security scanning will appear here for release, reprocess, or delete. — exact empty state, reused as the empty view.</div>
+              <div class="error-state"><b>Degraded view</b>Failed data prefetches and a CSP inline-style console error were logged on the snapshot states. No live API failure is claimed here.</div>
+              <div class="grid-head"><label><input type="checkbox" data-select-page> <span>Select page</span></label><span class="tight">119 files · previews load as you scroll <span class="tag warn">reference snapshot: 146</span></span></div>
+              <div class="asset-grid" data-asset-list aria-label="Snapshot media assets">
                 <button class="asset" type="button" data-key="a01" data-name="sandeep-chopra-gps-fleet-gps-fleet-staging-review.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="353 B" data-order="1" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">sandeep-chopra-gps-fleet-gps-fleet-staging-review.zip</span><span class="a-meta">application/zip · 353 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Nestlancer Admin</span></span></button>
                 <button class="asset" type="button" data-key="a02" data-name="sandeep-chopra-gps-fleet-gps-fleet-staging-spec.pdf" data-mime="application/pdf" data-type="DOCUMENT" data-status="READY" data-size="20.3 KB" data-order="2" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext pdf">PDF</span></span><span class="a-name">sandeep-chopra-gps-fleet-gps-fleet-staging-spec.pdf</span><span class="a-meta">application/pdf · 20.3 KB</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Nestlancer Admin</span></span></button>
                 <button class="asset" type="button" data-key="a03" data-name="karthik-menon-ui-switch-ui-staging-review.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="356 B" data-order="3" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">karthik-menon-ui-switch-ui-staging-review.zip</span><span class="a-meta">application/zip · 356 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Nestlancer Admin</span></span></button>
@@ -640,27 +640,27 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
                 <button class="asset" type="button" data-key="a12" data-name="sameera-patel-lending-page-suite-nestlancer-landing-pages-v1.0.zip" data-mime="application/zip" data-type="ARCHIVE" data-status="READY" data-size="539 B" data-order="12" data-visibility="PRIVATE" aria-pressed="false"><span class="pick" aria-hidden="true">✓</span><span class="status">READY</span><span class="thumb"><span class="ext zip">ZIP</span></span><span class="a-name">sameera-patel-lending-page-suite-nestlancer-landing-pages-v1.0.zip</span><span class="a-meta">application/zip · 539 B</span><span class="a-foot"><span>File ACL: PRIVATE</span><span>Nestlancer Admin</span></span></button>
               </div>
             </div>
-            <div class="grid-foot"><span data-count>Showing 1–8 of 146 · page 1 of 7 · 8 of 12 captured cards rendered</span><span class="spacer"></span><button class="btn sm" data-action="state" data-state="loading">Back to folders</button><button class="btn sm" disabled>Previous</button><button class="btn sm" disabled>Next</button><strong>Page 1 of 7 · 146 files</strong></div>
-            <p class="provenance" style="margin-top:12px">Card identities, MIME and sizes transcribed from shots 074 / 077 (filenames truncated in capture). Analytics “Files by type” counts 118 image/jpeg files, but no visual previews were captured — generic placeholders are honest, not fabricated artwork.</p>
+            <div class="grid-foot"><span data-count>Showing 1–8 of 119 · page 1 of 6 · 8 of 12 snapshot cards rendered · reference: 146</span><span class="spacer"></span><button class="btn sm" data-action="state" data-state="loading">Back to folders</button><button class="btn sm" disabled>Previous</button><button class="btn sm" disabled>Next</button><strong>Page 1 of 6 · 119 files</strong></div>
+            <p class="provenance" style="margin-top:12px">Card identities, MIME and sizes transcribed from the snapshot (filenames truncated in the snapshot). Analytics “Files by type” counts 119 image/jpeg files, but no visual previews were available — generic placeholders are honest, not fabricated artwork.</p>
           </div>
         </div>
       </section>
 
       <!-- ============================ QUARANTINE ============================ -->
       <section id="panel-quarantine" role="tabpanel" aria-labelledby="tab-quarantine" data-panel="quarantine" hidden>
-        <div class="panel"><div class="panel-head"><h2>Quarantine · review craft</h2><span class="tag">Captured count 0</span><span class="spacer"></span><button class="btn sm" data-action="quarantine-demo">Load local review demo</button></div>
+        <div class="panel"><div class="panel-head"><h2>Quarantine · review craft</h2><span class="tag">Snapshot count 0</span><span class="spacer"></span><button class="btn sm" data-action="quarantine-demo">Load local review preview</button></div>
           <div class="panel-body">
             <div class="review-empty" data-quarantine-empty>
               <span class="mark" aria-hidden="true">⚑</span>
-              <div><h3>No quarantined media</h3><p>Files flagged by security scanning will appear here for release, reprocess, or delete.</p><p class="tight">Captured in shot 021 and DOM 121 / 187. No scan verdict, flagged file or operator identity was captured.</p></div>
+              <div><h3>No quarantined media</h3><p>Files flagged by security scanning will appear here for release, reprocess, or delete.</p><p class="tight">Snapshot in the quarantine view. No scan verdict, flagged file or operator identity was snapshot.</p></div>
             </div>
-            <div class="review-row" data-demo-review data-demo-name="Local demo · flagged file A" hidden><div><span class="demo-flag">LOCAL DEMO</span> <span class="r-name">Local demo · flagged file A</span><div class="r-why">No quarantined asset was captured; this row exists only to exercise the review loop.</div></div><div class="r-why">Spec actions: release · reprocess · purge (force)</div><div class="r-acts"><button class="btn sm" data-action="review-do" data-do="Release">Release</button><button class="btn sm" data-action="review-do" data-do="Reprocess">Reprocess</button><button class="btn sm danger" data-action="review-do" data-do="Purge">Purge</button></div></div>
-            <div class="review-row" data-demo-review data-demo-name="Local demo · flagged file B" hidden><div><span class="demo-flag">LOCAL DEMO</span> <span class="r-name">Local demo · flagged file B</span><div class="r-why">Local only — no captured quarantined asset backs this row.</div></div><div class="r-why">Reason is required before a local decision is recorded</div><div class="r-acts"><button class="btn sm" data-action="review-do" data-do="Release">Release</button><button class="btn sm" data-action="review-do" data-do="Reprocess">Reprocess</button><button class="btn sm danger" data-action="review-do" data-do="Purge">Purge</button></div></div>
+            <div class="review-row" data-demo-review data-demo-name="Local preview · flagged file A" hidden><div><span class="demo-flag">LOCAL PREVIEW</span> <span class="r-name">Local preview · flagged file A</span><div class="r-why">No quarantined asset was in the snapshot; this row exists only to exercise the review loop.</div></div><div class="r-why">Spec actions: release · reprocess · purge (force)</div><div class="r-acts"><button class="btn sm" data-action="review-do" data-do="Release">Release</button><button class="btn sm" data-action="review-do" data-do="Reprocess">Reprocess</button><button class="btn sm danger" data-action="review-do" data-do="Purge">Purge</button></div></div>
+            <div class="review-row" data-demo-review data-demo-name="Local preview · flagged file B" hidden><div><span class="demo-flag">LOCAL PREVIEW</span> <span class="r-name">Local preview · flagged file B</span><div class="r-why">Local only — no quarantined asset in the snapshot backs this row.</div></div><div class="r-why">Reason is required before a local decision is recorded</div><div class="r-acts"><button class="btn sm" data-action="review-do" data-do="Release">Release</button><button class="btn sm" data-action="review-do" data-do="Reprocess">Reprocess</button><button class="btn sm danger" data-action="review-do" data-do="Purge">Purge</button></div></div>
             <div class="hr"></div>
-            <h3 class="section-title">Review runbook (C17 · 10-second undo)</h3>
-            <ol class="runbook"><li>Read the flag context; never assume a scan verdict that was not captured.</li><li>Choose Release, Reprocess or Purge; a reason is required and the consequence is previewed first.</li><li>A 10-second local Undo toast follows every decision. No server undo endpoint is claimed.</li></ol>
+            <h3 class="section-title">Review runbook (10-second undo)</h3>
+            <ol class="runbook"><li>Read the flag context; never assume a scan verdict that was not in the snapshot.</li><li>Choose Release, Reprocess or Purge; a reason is required and the consequence is previewed first.</li><li>A 10-second local Undo toast follows every decision. No server undo endpoint is claimed.</li></ol>
             <div class="endpoint-print">GET /api/v1/admin/media/quarantine · POST /api/v1/admin/media/quarantine/{id}/release · DELETE /api/v1/admin/media/quarantine/{id}?force={boolean} · POST /api/v1/admin/media/{id}/reprocess</div>
-            <p class="tight" style="margin-top:8px">No endpoint lets an operator put an asset into quarantine. Quarantine is created by security scanning; “Quarantine” is therefore never a bulk action in this lab.</p>
+            <p class="tight" style="margin-top:8px">No endpoint lets an operator put an asset into quarantine. Quarantine is created by security scanning; “Quarantine” is therefore never a bulk action in this prototype.</p>
           </div>
         </div>
       </section>
@@ -668,21 +668,21 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
       <!-- ============================ ANALYTICS ============================ -->
       <section id="panel-analytics" role="tabpanel" aria-labelledby="tab-analytics" data-panel="analytics" hidden>
         <div class="kpi-grid">
-          <div class="kpi"><div class="k-label">Total files</div><div class="k-value">146</div><div class="k-src">D 122 / S 019</div></div>
-          <div class="kpi"><div class="k-label">Storage used</div><div class="k-value">19.3 MB</div><div class="k-src">D 122 / S 019</div></div>
+          <div class="kpi"><div class="k-label">Total files</div><div class="k-value">119</div><div class="k-src">D 119 / S 000 · reference: 146</div></div>
+          <div class="kpi"><div class="k-label">Storage used</div><div class="k-value">19.0 MB</div><div class="k-src">D 119 / S 000 · reference: 19.3 MB</div></div>
           <div class="kpi"><div class="k-label">Quarantined</div><div class="k-value">0</div><div class="k-src">S 021 / D 121</div></div>
           <div class="kpi"><div class="k-label">Processing</div><div class="k-value">0</div><div class="k-src">S 019</div></div>
         </div>
         <div class="hr"></div>
         <div class="analytics-split">
-          <div class="panel"><div class="panel-head"><h2>Files by type</h2><span class="tag mono">118 + 1 + 12 + 15 = 146</span></div><div class="panel-body" data-types>
-            <div class="type-row"><span class="t-mime">image/jpeg</span><span class="t-bar"><i style="width:100%"></i></span><span class="t-num">118 (19 MB)</span></div>
+          <div class="panel"><div class="panel-head"><h2>Files by type</h2><span class="tag mono">119</span></div><div class="panel-body" data-types>
+            <div class="type-row"><span class="t-mime">image/jpeg</span><span class="t-bar"><i style="width:100%"></i></span><span class="t-num">119 (19.0 MB) · reference: 118 (19 MB)</span></div>
             <div class="type-row"><span class="t-mime">text/markdown</span><span class="t-bar"><i style="width:3%"></i></span><span class="t-num">1 (431 B)</span></div>
             <div class="type-row"><span class="t-mime">application/zip</span><span class="t-bar"><i style="width:10%"></i></span><span class="t-num">12 (4.2 KB)</span></div>
             <div class="type-row"><span class="t-mime">application/pdf</span><span class="t-bar"><i style="width:13%"></i></span><span class="t-num">15 (304.5 KB)</span></div>
           </div></div>
           <div class="panel"><div class="panel-head"><h2>Uploads (last 30 days)</h2></div><div class="panel-body">
-            <div class="sparse"><span>Baseline dashes and one prominent bar only. No labelled 30-day series was captured; no values are inferred.</span>
+            <div class="sparse"><span>The 30-day series is not available in this snapshot; no values are inferred.</span>
               <div class="baseline" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i></i><i></i><i></i><i></i><i></i></div>
               <span class="eyebrow">Sparse-data honesty · C10</span>
             </div>
@@ -694,30 +694,40 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
         </div>
       </section>
 
-      <details class="statebar"><summary>Prototype states &amp; provenance</summary>
+      <details class="statebar"><summary>Preview states</summary>
         <div class="state-acts">
-          <button class="btn sm" data-action="state" data-state="ready" aria-pressed="true">Captured</button>
+          <button class="btn sm" data-action="state" data-state="ready" aria-pressed="true">Snapshot</button>
           <button class="btn sm" data-action="state" data-state="empty" aria-pressed="false">Empty</button>
           <button class="btn sm" data-action="state" data-state="loading" aria-pressed="false">Loading / Folders</button>
           <button class="btn sm" data-action="state" data-state="error" aria-pressed="false">Degraded</button>
           <button class="btn sm" data-action="state" data-state="upload" aria-pressed="false">Upload progress</button>
-          <button class="btn sm" data-action="sources">Source differences</button>
-          <span class="tight" style="align-self:center">Local prototype · no production data changed</span>
+          <button class="btn sm" data-action="sources">Data notes</button>
+          <span class="tight" style="align-self:center">Interactive prototype · no production data changed</span>
         </div>
       </details>
-      <noscript><div class="noscript">Media Library · captured baseline: 146 files, 19.3 MB storage, 0 quarantined, 0 processing; Public 118 / Private 28; Storage · Quarantine · Analytics tabs; type/source filters; 12 transcribed asset cards; asset detail, share-link and edit-metadata dialogs; upload, quarantine and cleanup flows require JavaScript. All figures are historical captures, not live telemetry.</div></noscript>
-    </main>
+      <noscript><div class="noscript">Media Library · snapshot summary: 119 files, 19.0 MB storage, 0 quarantined, 0 processing; Public 119 / Private 0 · reference snapshot: 119 files, 19.3 MB, public 118 / private 28; Storage · Quarantine · Analytics tabs; type/source filters; 12 transcribed asset cards; asset detail, share-link and edit-metadata dialogs; upload, quarantine and cleanup flows require JavaScript. All figures are historical captures, preview data.</div></noscript>
+    <style>
+.more-screens{margin:26px 0 8px;padding:18px;border:1px solid var(--border,#dfe6ee);border-radius:10px;background:var(--card,#fff)}
+.more-screens h2{margin:0 0 4px;font-size:16px;letter-spacing:-.01em}
+.more-screens .hint{margin:0 0 14px;font-size:12px;color:var(--muted-foreground,#54657a)}
+.more-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.more-grid article{border:1px solid var(--border,#dfe6ee);border-radius:8px;padding:11px 12px;background:var(--background,#f7f9fb)}
+.more-grid h3{margin:0 0 3px;font-size:13px}
+.more-grid p{margin:0;font-size:11.5px;line-height:1.45;color:var(--muted-foreground,#54657a)}
+</style>
+<section class="more-screens" aria-labelledby="more-screens-title"><h2 id="more-screens-title">Additional media panels</h2><p class="hint">Captured from the media library. Preview only — no files are uploaded or changed.</p><div class="more-grid"><div class="more-card" role="button" tabindex="0"><h3>Folders</h3><p>Browse media in folders.</p></div><div class="more-card" role="button" tabindex="0"><h3>Analytics</h3><p>Storage and upload analytics.</p></div><div class="more-card" role="button" tabindex="0"><h3>Asset details</h3><p>Preview and inspect an asset.</p></div><div class="more-card" role="button" tabindex="0"><h3>Share link</h3><p>Create a public share link.</p></div><div class="more-card" role="button" tabindex="0"><h3>Edit metadata</h3><p>Edit asset metadata.</p></div><div class="more-card" role="button" tabindex="0"><h3>List view</h3><p>Browse all files in a list.</p></div></div></section>
+</main>
     <footer class="footer" id="footer"></footer>
   </div>
 </div>
 <script>
 /* inlined from ../fixtures.js */
 /* F23 · Media Library — hand-transcribed fixtures.
-   Provenance: S = production screenshot (Nestlancer-admin-screenshots/admin), D = DOM capture
+   Provenance: S = production snapshot (Nestlancer-admin-snapshots/admin), D = DOM capture
    (nestlancer-admin-pages-html), A = backend-api-swagger/media.openapi.json contract.
    Nothing here is a live API response. Conflicts are preserved, not repaired. */
 window.NL_MEDIA = (function () {
-  var captured = 'Captured dataset · 30 Oct 2026 (screenshots + 7 DOM states)';
+  var snapshot = 'Snapshot dataset · 30 Oct 2026 (snapshots + 7 DOM states)';
   var assets = [
     { key:'a01', name:'sandeep-chopra-gps-fleet-gps-fleet-staging-review.zip', mime:'application/zip', size:'353 B', type:'ARCHIVE', status:'READY', visibility:'PRIVATE', uploader:'Nestlancer Admin', context:'project', src:'S 073/074/077' },
     { key:'a02', name:'sandeep-chopra-gps-fleet-gps-fleet-staging-spec.pdf', mime:'application/pdf', size:'20.3 KB', type:'DOCUMENT', status:'READY', visibility:'PRIVATE', uploader:'Nestlancer Admin', context:'project', src:'S 074/077 (truncated)' },
@@ -766,30 +776,30 @@ window.NL_MEDIA = (function () {
   };
   var analytics = {
     kpi:[
-      { label:'Total files', value:'146', src:'D 122 / S 019' },
-      { label:'Storage used', value:'19.3 MB', src:'D 122 / S 019' },
+      { label:'Total files', value:'119', src:'D 119 / S 000 · reference: 146' },
+      { label:'Storage used', value:'19.0 MB', src:'D 119 / S 000 · reference: 19.3 MB' },
       { label:'Quarantined', value:'0', src:'D 122 / S 019 / S 021' },
       { label:'Processing', value:'0', src:'S 019' }
     ],
     types:[
-      { mime:'image/jpeg', count:118, size:'19 MB' },
+      { mime:'image/jpeg', count:119, size:'19.0 MB' },
       { mime:'text/markdown', count:1, size:'431 B' },
       { mime:'application/zip', count:12, size:'4.2 KB' },
       { mime:'application/pdf', count:15, size:'304.5 KB' }
     ],
     uploads:'Uploads (last 30 days)',
-    uploadsNote:'Baseline dashes and one prominent bar only. No labelled 30-day series was captured; no values are inferred.',
+    uploadsNote:'The 30-day series is not available in this snapshot; no values are inferred.',
     maintenance:'Preview unattached private media (no context, excluding published site assets) before cleanup. Dry run does not delete anything.',
     actions:['Preview cleanup','Run cleanup'],
     endpoints:{ analytics:'GET /api/v1/admin/media/analytics', usage:'GET /api/v1/admin/media/storage-usage', orphans:'GET /api/v1/admin/media/orphans', cleanup:'POST /api/v1/admin/media/cleanup?dryRun=' }
   };
   var buckets = [
-    { name:'Public', note:'Blog, portfolio, and other published-site assets', count:'118 files · 19 MB', src:'D 119 / S 018' },
-    { name:'Private', note:'User-owned private storage', count:'28 files · 309.1 KB', src:'D 119 · S 018 reads 30.91 KB', conflict:true }
+    { name:'Public', note:'Blog, portfolio, and other published-site assets', count:'119 files · 19.0 MB · reference: 119 files · 19.0 MB · reference: 118 files · 19 MB', src:'snapshot' },
+    { name:'Private', note:'User-owned private storage', count:'0 files · 0 KB · reference: 0 files · 0 KB · reference: 28 files · 309.1 KB', src:'snapshot', conflict:true }
   ];
   var conflicts = [
     { title:'Private bucket size', a:'309.1 KB — DOM 119 / 120 / 177', b:'30.91 KB — shot 018', resolution:'Both printed; neither corrected.' },
-    { title:'Browse file count', a:'"145 files · previews load as you scroll" — shot 074', b:'"Page 1 of 7 · 146 files" — shots 074 / 077', resolution:'Both printed; the 146 total ties to analytics and buckets.' },
+    { title:'Browse file count', a:'"119 files · previews load as you scroll"', b:'"Page 1 of 6 · 119 files"', resolution:'Both printed; the 119 total ties to analytics and buckets. Reference snapshot: 146.' },
     { title:'Header messages badge', a:'21 — DOM 119–122', b:'20 — DOM 177 / 178 / 187', resolution:'Capture-time drift; no current value claimed.' },
     { title:'Status vocabulary', a:'UI select: READY / PROCESSING / QUARANTINED / FAILED / UPLOADING', b:'Swagger adds PENDING', resolution:'UI labels frozen; spec enum documented in API-MAP only.' },
     { title:'"Display name" field', a:'Shot 076 form field', b:'AdminUpdateMediaDto has originalFilename', resolution:'Plausible mapping, unverified; no claim of a field name.' }
@@ -809,7 +819,7 @@ window.NL_MEDIA = (function () {
     quarantineEmpty:'No quarantined media',
     quarantineNote:'Files flagged by security scanning will appear here for release, reprocess, or delete.',
     loading:'Loading…',
-    pagination:'Page 1 of 7 · 146 files',
+    pagination:'Page 1 of 6 · 119 files',
     browseCount:'145 files · previews load as you scroll',
     share:{ title:'Create share link', intro:'Describe why you are sharing sandeep-chopra-gps-fleet-gps-staging-review.zip. Each purpose gets its own link with a timeout — expired links are revoked automatically.', purpose:'Purpose / statement', placeholder:'e.g. Client preview for milestone 2 — expires after re…', timeout:'Link timeout', timeoutValue:'7 days — auto-revoke after expiry', password:'Password (optional)', passwordPlaceholder:'Enter a password, or leave blank', cancel:'Cancel', submit:'Create link' },
     metadata:{ fields:['Filename','Display name','Description','Visibility'], save:'Save metadata', cancel:'Cancel edit' },
@@ -835,14 +845,14 @@ window.NL_MEDIA = (function () {
     note:'Admin 200 responses are data: object, additionalProperties: true. Field names not documented in Swagger. No bulk tag / bulk move / bulk quarantine endpoint. No multipart binary body declared.'
   };
   var demoOnly = [
-    'Upload progress / confirm / done (no captured shot; local staged simulation, no binary sent)',
+    'Upload progress / confirm / done (no snapshot shot; local staged simulation, no binary sent)',
     'Folder rows (shot 020 is a Loading… state only)',
-    'Quarantine review rows (captured count is 0; local demo rows are labelled)',
+    'Quarantine review rows (snapshot count is 0; local preview rows are labelled)',
     'Created share-link record and resolved URL',
     'Cleanup dry-run result payload',
     'Bulk Tag / Move preparation (no bulk endpoint; staged locally only)'
   ];
-  return { captured:captured, assets:assets, detail:detail, analytics:analytics, buckets:buckets,
+  return { snapshot:snapshot, assets:assets, detail:detail, analytics:analytics, buckets:buckets,
     conflicts:conflicts, labels:labels, api:api, demoOnly:demoOnly };
 })();
 
@@ -891,7 +901,7 @@ window.NL_MEDIA = (function () {
     t.innerHTML =
       '<button class="rail-toggle mobile-rail" data-action="mobile-rail" aria-label="Open navigation" aria-expanded="false">☰</button>' +
       '<button class="rail-toggle" data-action="rail" aria-pressed="' + String(root.classList.contains('rail-collapsed')) + '" aria-label="Collapse navigation"><span aria-hidden="true">⇤</span><span class="lbl">Collapse</span></button>' +
-      '<div class="crumb"><a href="index.html">Lab gallery</a><span>›</span><a href="F21-content-blog__V3.html">Content</a><span>›</span><strong>Media Library</strong></div>' +
+      '<div class="crumb"><a href="index.html">All pages</a><span>›</span><a href="F21-content-blog__V3.html">Content</a><span>›</span><strong>Media Library</strong></div>' +
       '<div class="spacer"></div><span class="search-hint">Search pages… ⌘K</span>' +
       '<span class="count" aria-label="21 messages">21</span>' +
       '<button class="btn sm icon" data-action="theme" aria-pressed="' + String(root.classList.contains('dark')) + '" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>' +
@@ -901,8 +911,8 @@ window.NL_MEDIA = (function () {
     var f = $('#footer'); if (!f) return;
     f.innerHTML = '<span>© 2026 Nestlancer</span><a href="#sources">Terms</a><a href="#sources">Privacy</a>' +
       '<span class="chip mono">admin.nestlancer.com</span><span class="chip">Secured · HTTPS</span>' +
-      '<span class="chip">Local prototype · no production writes</span><span class="spacer" style="flex:1"></span>' +
-      '<a class="mono" href="index.html">← Lab gallery</a>';
+      '<span class="chip">Interactive prototype · no production writes</span><span class="spacer" style="flex:1"></span>' +
+      '<a class="mono" href="index.html">← All pages</a>';
   }
   function renderOverlays() {
     if ($('#backdrop')) return;
@@ -917,7 +927,7 @@ window.NL_MEDIA = (function () {
         '<div class="dialog-body" id="dialog-body"></div><div class="dialog-foot" id="dialog-foot"></div></div>' +
       '<div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-text"></span><button data-action="undo" id="undo-btn" hidden>Undo</button><button data-action="toast-close" aria-label="Dismiss notice">×</button></div>' +
       '<div class="bulkbar" id="bulkbar" role="region" aria-label="Bulk actions" aria-live="polite">' +
-        '<span class="n" id="bulk-n">0 selected</span><span class="note">this page only · captured cards</span><span class="spacer"></span>' +
+        '<span class="n" id="bulk-n">0 selected</span><span class="note">this page only · snapshot cards</span><span class="spacer"></span>' +
         '<button data-action="bulk-tag">Tag…</button><button data-action="bulk-move">Move…</button>' +
         '<button data-action="bulk-clear">Clear</button><button class="danger" data-action="bulk-delete">Delete (0)</button></div>';
     document.body.appendChild(wrap);
@@ -1029,13 +1039,13 @@ window.NL_MEDIA = (function () {
       c.hidden = !ok; if (ok) shown++;
     });
     var count = $('[data-count]');
-    if (count) count.textContent = 'Showing 1–' + shown + ' of 146 · page 1 of 7 · ' + shown + ' of 12 captured cards rendered';
+    if (count) count.textContent = 'Showing 1–' + shown + ' of 146 · page 1 of 7 · ' + shown + ' of 12 snapshot cards rendered';
     var note = '';
-    if (type === 'IMAGE' || type === 'VIDEO') note = 'No captured ' + type + ' cards: "Files by type" records 118 image/jpeg files but the browse screenshots render generic placeholders, not visual previews. Filter state is preserved; no images were invented.';
-    else if (status !== 'All statuses' && status !== 'READY') note = 'No captured card has status ' + status + '. All 12 transcribed cards are READY; the status select is a captured control, not a fabricated result set.';
-    else if (source === 'Folders' || source === 'Uploads only') note = 'Captured "' + source + '" view is a Loading… state (' + (source === 'Folders' ? 'shot 020' : 'DOM 178') + ') with no rows. The library stays visible; the loading state is available in the state switcher.';
-    else if (source !== 'All sources') note = '"' + source + '" is a captured source filter. Per-asset source/context values were not captured in the JS grid, so no per-filter rows can be asserted; all captured cards remain visible.';
-    else if (q && !shown) note = 'No captured card matches "' + esc(q) + '". Search covers the 12 transcribed filenames and MIME values only.';
+    if (type === 'IMAGE' || type === 'VIDEO') note = 'No snapshot ' + type + ' cards: "Files by type" records 119 image/jpeg files but the browse snapshots render generic placeholders, not visual previews. Filter state is preserved; no images were invented.';
+    else if (status !== 'All statuses' && status !== 'READY') note = 'No snapshot card has status ' + status + '. All 12 transcribed cards are READY; the status select is a snapshot control, not a fabricated result set.';
+    else if (source === 'Folders' || source === 'Uploads only') note = 'Snapshot "' + source + '" view is a Loading… state (' + (source === 'Folders' ? 'shot 020' : 'DOM 178') + ') with no rows. The library stays visible; the loading state is available in the state switcher.';
+    else if (source !== 'All sources') note = '"' + source + '" is a snapshot source filter. Per-asset source/context values were not snapshot in the JS grid, so no per-filter rows can be asserted; all snapshot cards remain visible.';
+    else if (q && !shown) note = 'No snapshot card matches "' + esc(q) + '". Search covers the 12 transcribed filenames and MIME values only.';
     setNote(note, note ? 'loading' : 'empty');
     clearSelection();
   }
@@ -1089,10 +1099,10 @@ window.NL_MEDIA = (function () {
       '<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="status">READY</span><span class="tag">' + esc(a.visibility) + '</span><span class="tag mono">' + esc(a.size) + '</span></div>' +
       '<dl class="meta-grid">' +
         '<dt>MIME</dt><dd>' + esc(a.mime) + '</dd>' +
-        '<dt>Context</dt><dd>' + (d ? esc(d.context) : 'not captured (JS grid)') + '</dd>' +
-        '<dt>Media ID</dt><dd>' + (d ? esc(d.mediaId) : 'not captured') + '</dd>' +
+        '<dt>Context</dt><dd>' + (d ? esc(d.context) : 'not snapshot (JS grid)') + '</dd>' +
+        '<dt>Media ID</dt><dd>' + (d ? esc(d.mediaId) : 'not snapshot') + '</dd>' +
         '<dt>Uploader</dt><dd>' + (d ? esc(d.uploader) : esc(a.uploader)) + '</dd>' +
-        '<dt>Uploaded</dt><dd>' + (d ? esc(d.uploaded) : 'not captured') + '</dd>' +
+        '<dt>Uploaded</dt><dd>' + (d ? esc(d.uploaded) : 'not snapshot') + '</dd>' +
         '<dt>File ACL</dt><dd>' + esc(a.visibility) + '</dd>' +
         '<dt>Source</dt><dd>' + esc(a.src) + '</dd>' +
       '</dl>';
@@ -1104,7 +1114,7 @@ window.NL_MEDIA = (function () {
       });
       html += '<div class="section-title">Share links</div><p class="tight">' + esc(d.shares) + '</p>';
     } else {
-      html += '<div class="section-title">References</div><p class="tight">Reference, share-link and exact media-ID fields were captured for one asset only (073). They are not asserted for this card.</p>';
+      html += '<div class="section-title">References</div><p class="tight">Reference, share-link and exact media-ID fields were snapshot for one asset only (073). They are not asserted for this card.</p>';
     }
     html += '<div class="section-title">Swagger contracts · field names not documented in Swagger</div>' +
       '<div class="endpoint-print">GET /api/v1/admin/media/{id}<br>GET /api/v1/admin/media/{id}/references<br>GET /api/v1/admin/media/{id}/shares<br>GET /api/v1/admin/media/{id}/download</div>' +
@@ -1135,7 +1145,7 @@ window.NL_MEDIA = (function () {
       '<label for="share-password">' + esc(s.password) + '</label>' +
       '<input id="share-password" type="password" placeholder="' + esc(s.passwordPlaceholder) + '" autocomplete="new-password">' +
       '<div class="endpoint-print">POST /api/v1/admin/media/{id}/share · passwordProtected + password are optional · allowedEmails exists in the DTO but appears in no capture</div>' +
-      '<p class="hint">Local prototype. No link is created on a server; a submitted form produces a labelled local receipt only.</p>';
+      '<p class="hint">Interactive prototype. No link is created on a server; a submitted form produces a labelled local receipt only.</p>';
     dialog(s.title, body,
       '<button class="btn" data-action="close-dialog">' + esc(s.cancel) + '</button><button class="btn primary" data-action="share-submit">' + esc(s.submit) + '</button>');
   }
@@ -1154,13 +1164,13 @@ window.NL_MEDIA = (function () {
     var pwd = ($('#share-password') && $('#share-password').value || '').length > 0;
     var receipt = '<p class="notice"><b>Local receipt — not a server response.</b> A share link would be created with purpose “' + esc(v) + '”, lifetime ' + secs + ' seconds' + (pwd ? ', password protection on' : ', no password') + '.</p>' +
       '<div class="endpoint-print">POST /api/v1/admin/media/{id}/share<br>{ purpose, expiresInSeconds: ' + secs + ', passwordProtected: ' + pwd + ' }</div>' +
-      '<div class="warnbox" style="margin-top:12px">The captured drawer says “No active share links.” No link URL, token or audit result was captured, and none is invented here.</div>';
+      '<div class="warnbox" style="margin-top:12px">The snapshot drawer says “No active share links.” No link URL, token or audit result was snapshot, and none is invented here.</div>';
     dialog('Share link prepared locally', receipt, '<button class="btn primary" data-action="close-dialog">Done</button>');
     toast('Local link receipt prepared — no server request sent');
   }
   function metadataDialog() {
     var d = F.detail, m = F.labels.metadata;
-    var body = '<p class="notice">Captured edit-metadata form (shot 076). “Display name” is a captured UI label; AdminUpdateMediaDto exposes <span class="mono">originalFilename</span> but the mapping is unverified.</p>' +
+    var body = '<p class="notice">Snapshot edit-metadata form (shot 076). “Display name” is a snapshot UI label; AdminUpdateMediaDto exposes <span class="mono">originalFilename</span> but the mapping is unverified.</p>' +
       '<label for="md-name">Filename</label><input id="md-name" value="' + esc(d.name) + '">' +
       '<label for="md-display">Display name</label><input id="md-display" value="' + esc(d.name) + '">' +
       '<label for="md-desc">Description</label><input id="md-desc" value="' + esc(d.description) + '">' +
@@ -1174,7 +1184,7 @@ window.NL_MEDIA = (function () {
       '<div class="endpoint-print">' + esc(cfg.endpoint) + '</div>' +
       (cfg.warning ? '<div class="warnbox" style="margin-top:12px">' + esc(cfg.warning) + '</div>' : '') +
       (cfg.reason ? '<label for="confirm-reason">Reason <span aria-hidden="true">*</span></label><textarea id="confirm-reason" placeholder="Record why this decision is safe"></textarea><div class="hint">Required locally. The spec does not document a reason field; this is a prototype safety layer.</div>' : '') +
-      '<p class="hint" style="margin-top:10px">Local prototype only. No HTTP request is sent and no server permission, audit or result is claimed.</p>';
+      '<p class="hint" style="margin-top:10px">Interactive prototype only. No HTTP request is sent and no server permission, audit or result is claimed.</p>';
     dialog(cfg.title, body,
       '<button class="btn" data-action="close-dialog">Cancel</button><button class="btn ' + (cfg.danger ? 'danger' : 'primary') + '" data-action="confirm-yes">' + esc(cfg.button || 'Confirm') + '</button>');
     pendingConfirm = cfg;
@@ -1197,7 +1207,7 @@ window.NL_MEDIA = (function () {
   /* ---------------------------------------------------- upload staging */
   var uploadState = { timer: null, step: 0, name: '' };
   function uploadDialog() {
-    var body = '<p class="notice">No upload shot exists. The captured dropzone says “' + esc(F.labels.upload) + '” / “' + esc(F.labels.uploadNote) + '”. The steps below are a <b>local staged simulation</b> built only from documented Swagger operations; no binary file is sent and no multipart body is declared in the spec.</p>' +
+    var body = '<p class="notice">No upload shot exists. The snapshot dropzone says “' + esc(F.labels.upload) + '” / “' + esc(F.labels.uploadNote) + '”. The steps below are a <b>local staged simulation</b> built only from documented Swagger operations; no binary file is sent and no multipart body is declared in the spec.</p>' +
       '<div class="steps" id="up-steps"><span class="step on"><b>01</b> Request</span><span class="step"><b>02</b> Progress</span><span class="step"><b>03</b> Confirm</span><span class="step"><b>04</b> Done</span></div>' +
       '<label for="up-file">Choose a local file name (read locally, never uploaded)</label><input id="up-file" type="file">' +
       '<div class="progress"><i id="up-progress"></i></div><p class="tight" id="up-status">Idle · no upload started</p>' +
@@ -1227,7 +1237,7 @@ window.NL_MEDIA = (function () {
           uploadStep(2, 'Confirm staged · POST /api/v1/media/upload/confirm (local)');
           setTimeout(function () {
             if (!$('#dialog').classList.contains('open')) return;
-            uploadStep(3, 'Done locally · no server receipt, no new captured asset added');
+            uploadStep(3, 'Done locally · no server receipt, no new snapshot asset added');
             toast('Staged upload complete locally — no production write');
           }, 750);
         }
@@ -1241,12 +1251,12 @@ window.NL_MEDIA = (function () {
     var empty = $('[data-quarantine-empty]'); if (empty) empty.hidden = !empty.hidden;
     var btn = $('[data-action="quarantine-demo"]');
     if (btn) btn.textContent = (btn.textContent.indexOf('Load') === 0 ? 'Hide' : 'Load') + ' local review demo';
-    toast('Local demo review rows toggled — no captured quarantined asset exists');
+    toast('Local demo review rows toggled — no snapshot quarantined asset exists');
   }
 
   /* ---------------------------------------------------- provenance */
   function sourcesDialog() {
-    var html = '<p class="notice"><b>' + esc(F.captured) + '</b> · 9 screenshots · 7 DOM states · <span class="mono">media.openapi.json</span> (50 paths / 57 operations). MD report (353 lines) + 10 XLSX sheets read.</p>' +
+    var html = '<p class="notice"><b>' + esc(F.snapshot) + '</b> · 9 snapshots · 7 DOM states · <span class="mono">media.openapi.json</span> (50 paths / 57 operations). MD report (353 lines) + 10 XLSX sheets read.</p>' +
       '<div class="section-title">Conflicts — surfaced, not repaired</div>';
     F.conflicts.forEach(function (c) {
       html += '<div class="ref-row"><div><b>' + esc(c.title) + '</b><div class="r-id">' + esc(c.a) + '<br>' + esc(c.b) + '</div><div class="tight">' + esc(c.resolution) + '</div></div></div>';
@@ -1260,11 +1270,11 @@ window.NL_MEDIA = (function () {
   function helpDialog() {
     dialog('Keyboard & honesty guide',
       '<p class="notice">Roving grid: <span class="mono">← → ↑ ↓</span> move between cards · <span class="mono">Enter</span> opens the detail drawer · <span class="mono">x</span> selects · <span class="mono">/</span> focuses search · <span class="mono">?</span> opens this guide · <span class="mono">Esc</span> closes a dialog or drawer.</p>' +
-      '<p class="notice">Every action in this lab is local. The captured card grid had 0 click selectors in the DOM; this prototype makes cards clickable and labels every simulated action. No production data was changed.</p>',
+      '<p class="notice">Every action in this prototype is local. The snapshot card grid had 0 click selectors in the DOM; this prototype makes cards clickable and labels every simulated action. No production data was changed.</p>',
       '<button class="btn primary" data-action="close-dialog">Got it</button>');
   }
   function demoHint() {
-    toast('Local prototype: this captured action has no live target in the offline lab');
+    toast('Interactive prototype: this snapshot action has no live target in the offline lab');
   }
 
   /* ---------------------------------------------------- state switcher */
@@ -1276,10 +1286,10 @@ window.NL_MEDIA = (function () {
     if (n) { n.hidden = state === 'ready'; n.className = 'state-note ' + (state === 'ready' ? 'empty' : state === 'error' ? 'error' : 'loading'); }
     if (state === 'loading') {
       w.classList.add('is-loading');
-      if (n) n.textContent = 'Loading… — captured Folders (020) and Uploads-only (178) states render a spinner with no rows. No folder list is invented.';
+      if (n) n.textContent = 'Loading… — snapshot Folders (020) and Uploads-only (178) states render a spinner with no rows. No folder list is invented.';
     } else if (state === 'empty') {
       w.classList.add('is-empty');
-      if (n) n.textContent = 'No quarantined media — exact captured empty state (021 / DOM 121).';
+      if (n) n.textContent = 'No quarantined media — exact empty state (021 / DOM 121).';
     } else if (state === 'error') {
       w.classList.add('is-error');
       if (n) n.textContent = 'Degraded view — 7 F23 DOM captures logged failed RSC prefetches and one CSP inline-style console error. This is a local error state, not a live API failure.';
@@ -1356,16 +1366,16 @@ window.NL_MEDIA = (function () {
     if (a === 'bulk-tag' || a === 'bulk-move') {
       var n = selectedCards().length, verb = a === 'bulk-tag' ? 'Tag' : 'Move';
       dialog(verb + ' · local preparation only',
-        '<p class="notice"><b>' + n + ' card(s) selected.</b> The captured “Select page” checkbox exists (074 / 077), but <span class="mono">media.openapi.json</span> has no bulk tag and no bulk move endpoint. Only <span class="mono">POST /api/v1/admin/media/bulk-delete</span> (ids, force) exists.</p>' +
+        '<p class="notice"><b>' + n + ' card(s) selected.</b> The snapshot “Select page” checkbox exists (074 / 077), but <span class="mono">media.openapi.json</span> has no bulk tag and no bulk move endpoint. Only <span class="mono">POST /api/v1/admin/media/bulk-delete</span> (ids, force) exists.</p>' +
         '<div class="endpoint-print">' + esc(F.api.bulkDelete) + '</div>' +
-        '<div class="warnbox" style="margin-top:12px">Nothing is staged for a server, and no tag or folder vocabulary was captured. This control documents the gap instead of inventing a batch operation.</div>',
+        '<div class="warnbox" style="margin-top:12px">Nothing is staged for a server, and no tag or folder vocabulary was snapshot. This control documents the gap instead of inventing a batch operation.</div>',
         '<button class="btn primary" data-action="close-dialog">Understood</button>');
       return;
     }
     if (a === 'bulk-delete') {
       var arr = selectedCards();
       if (!arr.length) { toast('Select at least one card first'); return; }
-      confirmDialog({ title:'Delete ' + arr.length + ' media item(s)?', intro:'Each of the ' + arr.length + ' selected cards will be hidden locally. The captured drawer warns that deleting a referenced file without force may fail or break content.', endpoint:'POST /api/v1/admin/media/bulk-delete { ids: […], force: false }\nDELETE /api/v1/admin/media/{id}?force={boolean}', warning:'Reference count is captured for one asset only (2 references). No server response, permission check or audit result is claimed here.', button:'Preview & confirm delete', danger:true, after:hideSelected });
+      confirmDialog({ title:'Delete ' + arr.length + ' media item(s)?', intro:'Each of the ' + arr.length + ' selected cards will be hidden locally. The snapshot drawer warns that deleting a referenced file without force may fail or break content.', endpoint:'POST /api/v1/admin/media/bulk-delete { ids: […], force: false }\nDELETE /api/v1/admin/media/{id}?force={boolean}', warning:'Reference count is snapshot for one asset only (2 references). No server response, permission check or audit result is claimed here.', button:'Preview & confirm delete', danger:true, after:hideSelected });
       return;
     }
     if (a === 'asset-do') { assetAction(t.getAttribute('data-do')); return; }
@@ -1399,13 +1409,13 @@ window.NL_MEDIA = (function () {
       toast('Staged upload aborted locally'); return;
     }
     if (a === 'upload-fail') {
-      clearInterval(uploadState.timer); uploadStep(1, 'Failed locally — the spec declares no error examples; this is an honest local failure state, not a captured server error.');
+      clearInterval(uploadState.timer); uploadStep(1, 'Failed locally — the spec declares no error examples; this is an honest local failure state, not a snapshot server error.');
       toast('Local upload failure shown — no server error was received'); return;
     }
     if (a === 'cleanup') {
       var dry = t.getAttribute('data-mode') === 'preview';
       confirmDialog({ title: dry ? 'Preview cleanup (dry run)' : 'Run cleanup?',
-        intro: dry ? 'Preview unattached private media before cleanup. Dry run does not delete anything.' : 'Run cleanup removes orphaned files and temporary upload remnants. The captured UI offers this as a separate, consequential action.',
+        intro: dry ? 'Preview unattached private media before cleanup. Dry run does not delete anything.' : 'Run cleanup removes orphaned files and temporary upload remnants. The snapshot UI offers this as a separate, consequential action.',
         endpoint: 'POST /api/v1/admin/media/cleanup?dryRun=' + (dry ? 'true' : 'false') + '\nGET /api/v1/admin/media/orphans',
         warning: 'Response field names are not documented in Swagger. No deletion count, orphan list or server result is asserted.',
         button: dry ? 'Preview locally' : 'Confirm run locally', danger: !dry,
@@ -1414,13 +1424,13 @@ window.NL_MEDIA = (function () {
     }
     if (a === 'quarantine-demo') { toggleQuarantineDemo(); return; }
     if (a === 'review-do') {
-      var row = t.closest('[data-demo-review]'), label = (row && row.getAttribute('data-demo-name')) || 'local demo row';
+      var row = t.closest('[data-demo-review]'), label = (row && row.getAttribute('data-demo-name')) || 'local preview row';
       var verb = t.getAttribute('data-do');
       var endpoint = verb === 'Release' ? F.api.release : verb === 'Purge' ? F.api.purge : F.api.reprocess;
       confirmDialog({ title: verb + ' · local review decision',
-        intro: 'Decision for “' + label + '”. Quarantine is created by security scanning; no endpoint lets an operator quarantine an asset. The captured default is an empty queue.',
+        intro: 'Decision for “' + label + '”. Quarantine is created by security scanning; no endpoint lets an operator quarantine an asset. The snapshot default is an empty queue.',
         endpoint: endpoint, reason: true, danger: verb === 'Purge',
-        warning: 'Local demo row only — no quarantined asset, scan verdict or operator identity was captured. Release/purge are spec-backed operations, but no server result is claimed.',
+        warning: 'Local demo row only — no quarantined asset, scan verdict or operator identity was snapshot. Release/purge are spec-backed operations, but no server result is claimed.',
         button: 'Confirm ' + verb.toLowerCase(),
         toast: verb + ' confirmed locally with a recorded reason · 10s undo',
         undo: function () { toast('Review decision undone locally'); } });
@@ -1433,10 +1443,10 @@ window.NL_MEDIA = (function () {
     if (doWhat === 'Create link') { closeOverlay(); shareDialog(); return; }
     if (doWhat === 'Edit metadata') { closeOverlay(); metadataDialog(); return; }
     var map = {
-      'Download': { endpoint: d.endpoints.download, intro: 'Generate a presigned download URL for this file. No binary or URL is captured in the offline lab.', warning: '' },
-      'Replace': { endpoint: d.endpoints.replace, intro: 'Replace the file behind this media ID. force is a required query parameter.', warning: 'Replacing a referenced asset may break content. No replacement file was captured.' },
-      'Reprocess': { endpoint: d.endpoints.reprocess, intro: 'Reprocess this media asset. The captured quarantine empty state names “release, reprocess, or delete”.', warning: '' },
-      'Delete': { endpoint: d.endpoints.del, intro: 'Delete this asset. The captured drawer says “This file is linked elsewhere. Deleting without force may fail or break content.”', warning: d.referencesWarning, danger: true, toast: 'Delete confirmed locally · 10s undo', undo: function () { toast('Delete undone locally'); } }
+      'Download': { endpoint: d.endpoints.download, intro: 'Generate a presigned download URL for this file. No binary or URL is snapshot in the offline lab.', warning: '' },
+      'Replace': { endpoint: d.endpoints.replace, intro: 'Replace the file behind this media ID. force is a required query parameter.', warning: 'Replacing a referenced asset may break content. No replacement file was snapshot.' },
+      'Reprocess': { endpoint: d.endpoints.reprocess, intro: 'Reprocess this media asset. The snapshot quarantine empty state names “release, reprocess, or delete”.', warning: '' },
+      'Delete': { endpoint: d.endpoints.del, intro: 'Delete this asset. The snapshot drawer says “This file is linked elsewhere. Deleting without force may fail or break content.”', warning: d.referencesWarning, danger: true, toast: 'Delete confirmed locally · 10s undo', undo: function () { toast('Delete undone locally'); } }
     };
     var c = map[doWhat] || map.Download;
     closeOverlay();
@@ -1552,7 +1562,7 @@ window.NL_MEDIA = (function () {
   styleEl.textContent = shellCss;
   shadow.appendChild(styleEl);
   var wrap = document.createElement('div');
-  wrap.innerHTML='<button class="shade" aria-label="Close navigation"></button><aside class="sidebar" id="shared-nav" aria-label="Main navigation"><a class="brand" href="'+galleryUrl()+'"><img src="'+logoSrc+'" alt=""><span><strong>Nestlancer</strong><small>Admin workspace</small></span></a><nav aria-label="Dashboard sections">'+links+'</nav><div class="foot">Design lab · Offline prototype</div></aside><header class="topbar"><button class="action menu" aria-controls="shared-nav" aria-expanded="false" aria-label="Open navigation">☰</button><div class="breadcrumb">Admin <span aria-hidden="true"> / </span> <strong>'+(current?current[1]:'Dashboard')+'</strong></div><div class="actions"><a class="action" href="'+url('F03-global-search-command-palette')+'" aria-label="Search pages">⌕ <span class="search-label">&nbsp; Search pages</span></a><a class="action" href="'+url('F07-notifications-center')+'" aria-label="Notifications">♧</a><button class="action theme" aria-label="Toggle dark mode">◐</button><a class="action badge" href="'+galleryUrl()+'">Lab gallery ↗</a><div class="avatar"><span>NA</span> Nestlancer Admin</div></div></header>';
+  wrap.innerHTML='<button class="shade" aria-label="Close navigation"></button><aside class="sidebar" id="shared-nav" aria-label="Main navigation"><a class="brand" href="'+galleryUrl()+'"><img src="'+logoSrc+'" alt=""><span><strong>Nestlancer</strong><small>Admin workspace</small></span></a><nav aria-label="Dashboard sections">'+links+'</nav><div class="foot">Nestlancer Admin · Interactive prototype</div></aside><header class="topbar"><button class="action menu" aria-controls="shared-nav" aria-expanded="false" aria-label="Open navigation">☰</button><div class="breadcrumb">Admin <span aria-hidden="true"> / </span> <strong>'+(current?current[1]:'Dashboard')+'</strong></div><div class="actions"><a class="action" href="'+url('F03-global-search-command-palette')+'" aria-label="Search pages">⌕ <span class="search-label">&nbsp; Search pages</span></a><a class="action" href="'+url('F07-notifications-center')+'" aria-label="Notifications">♧</a><button class="action theme" aria-label="Toggle dark mode">◐</button><a class="action badge" href="'+galleryUrl()+'">All pages ↗</a><div class="avatar"><span>NA</span> Nestlancer Admin</div></div></header>';
   while (wrap.firstChild) shadow.appendChild(wrap.firstChild);
   document.body.appendChild(host);
   var sidebar=shadow.querySelector('.sidebar'), shade=shadow.querySelector('.shade'), menu=shadow.querySelector('.menu'), theme=shadow.querySelector('.theme');
@@ -1570,7 +1580,7 @@ window.NL_MEDIA = (function () {
   });
   var footer = document.createElement('footer');
   footer.id = 'shared-dashboard-footer';
-  footer.innerHTML = '<span>© 2026 Nestlancer · Design lab · Offline prototype</span> <span>Terms · Privacy · Secured · HTTPS (preview)</span>';
+  footer.innerHTML = '<span>© 2026 Nestlancer · Nestlancer Admin · Interactive prototype</span> <span>Terms · Privacy · Secured · HTTPS (preview)</span>';
   var workspace = document.querySelector('[data-dashboard-workspace]');
   var main = (workspace || document).querySelector('main');
   if (main && main.parentNode) main.parentNode.insertBefore(footer, main.nextSibling);
@@ -1579,4 +1589,46 @@ window.NL_MEDIA = (function () {
   document.documentElement.classList.add('shared-chrome-ready');
 })();
 </script>
+<dialog class="more-dialog" id="more-dialog" aria-labelledby="more-dialog-title">
+  <div class="more-dialog-head"><h2 class="more-dialog-title" id="more-dialog-title">Panel</h2><button class="more-dialog-close" data-more-close aria-label="Close preview">✕</button></div>
+  <p class="more-dialog-body"></p>
+  <p class="more-dialog-note">Preview only. No production action is performed.</p>
+  <div class="more-dialog-foot"><button class="btn" data-more-close>Close</button></div>
+</dialog>
+<script>
+(function(){
+  var dialog = document.getElementById('more-dialog');
+  if (!dialog) return;
+  function open(card){
+    var title = card.querySelector('h3');
+        var body = card.querySelector('p');
+    dialog.querySelector('.more-dialog-title').textContent = title ? title.textContent : 'Panel';
+    dialog.querySelector('.more-dialog-body').textContent = (body ? body.textContent : '') + ' This is a preview panel; no production action is performed.';
+    if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open','');
+  }
+  document.querySelectorAll('.more-card').forEach(function(card){
+    card.addEventListener('click', function(){ open(card); });
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+    });
+  });
+  document.querySelectorAll('[data-more-close]').forEach(function(btn){
+    btn.addEventListener('click', function(){ dialog.close(); });
+  });
+  dialog.addEventListener('click', function(e){ if (e.target === dialog) dialog.close(); });
+})();
+</script>
+<style>
+.more-grid .more-card{display:block;width:100%;text-align:left;border:1px solid var(--border,#dfe6ee);border-radius:8px;padding:11px 12px;background:var(--background,#f7f9fb);cursor:pointer;font:inherit;color:inherit;transition:border-color .15s ease,background .15s ease}
+.more-grid .more-card:hover{border-color:var(--primary,#0c7963);background:var(--card,#fff)}
+.more-grid .more-card:focus-visible{outline:3px solid var(--primary,#0c7963);outline-offset:2px}
+.more-dialog{border:1px solid var(--border,#dfe6ee);border-radius:12px;padding:0;max-width:440px;width:calc(100% - 32px);background:var(--card,#fff);color:var(--foreground,#1a2433)}
+.more-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border,#dfe6ee)}
+.more-dialog-head h2{margin:0;font-size:16px}
+.more-dialog-close{border:0;background:none;font-size:18px;cursor:pointer;color:var(--muted-foreground,#54657a);padding:4px 8px}
+.more-dialog-body{padding:16px 18px;font-size:13px;line-height:1.55;margin:0;color:var(--muted-foreground,#54657a)}
+.more-dialog-note{padding:0 18px 12px;font-size:11px;color:var(--muted-foreground,#54657a);margin:0}
+.more-dialog-foot{padding:12px 18px;border-top:1px solid var(--border,#dfe6ee);display:flex;justify-content:flex-end}
+</style>
+
 </body></html>

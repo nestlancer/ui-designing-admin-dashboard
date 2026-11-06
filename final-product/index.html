@@ -3,57 +3,134 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nestlancer Admin · Final product</title>
-<meta http-equiv="refresh" content="0; url=F02-dashboard-command-center__V3.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' rx='8' fill='%230c7963'/%3E%3C/svg%3E">
+<title>Nestlancer Admin · Client review</title>
+<meta name="description" content="Nestlancer Admin — client review build. A historical snapshot of the admin workspace.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' rx='8' fill='%230c7963'/%3E%3Cpath d='M9 23V9l8 9.2V9' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M21 23V9' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-  :root { --bg:#f4f6f9; --ink:#1a2433; --muted:#54657a; --card:#fff; --line:#dfe6ee; --brand:#0c7963; }
-  * { box-sizing: border-box; }
-  body { margin:0; font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
-  header { padding:28px 24px 8px; max-width:1100px; margin:0 auto; }
-  header h1 { margin:0 0 6px; font-size:1.6rem; letter-spacing:-.02em; }
-  header p { margin:0; color:var(--muted); }
-  header a.primary { display:inline-block; margin-top:14px; padding:10px 14px; background:var(--brand); color:#fff; border-radius:8px; text-decoration:none; font-weight:650; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; padding:20px 24px 40px; max-width:1100px; margin:0 auto; }
-  .card { display:flex; flex-direction:column; gap:4px; padding:14px 14px 16px; background:var(--card); border:1px solid var(--line); border-radius:10px; text-decoration:none; color:inherit; }
-  .card:hover { border-color:var(--brand); }
-  .code { font-size:11px; font-weight:700; letter-spacing:.08em; color:var(--brand); text-transform:uppercase; }
-  .meta { font-size:12px; color:var(--muted); }
+  :root{
+    --bg:#f4f6f9; --ink:#1a2433; --muted:#54657a; --card:#fff; --line:#dfe6ee;
+    --brand:#0c7963; --brand-dark:#0a5f4e; --brand-tint:#e6f4ef; --radius:12px;
+    --shadow:0 1px 2px rgba(26,36,51,.05), 0 8px 24px rgba(26,36,51,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header{padding:40px 0 8px}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin:0 0 10px}
+  h1{margin:0 0 10px;font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.03em;font-weight:750}
+  .lede{margin:0;max-width:64ch;color:var(--muted);font-size:15px}
+  .hero{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:9px;font-weight:650;font-size:14px;text-decoration:none;border:1px solid transparent;transition:transform .15s ease, background .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-dark)}
+  .btn-ghost{background:var(--card);border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+  .notice{display:flex;gap:10px;align-items:flex-start;margin:22px 0 0;padding:12px 14px;background:var(--brand-tint);border:1px solid #cfe8df;border-radius:10px;color:#0a4f40;font-size:13px}
+  .notice strong{font-weight:700}
+  .section{padding:34px 0 0}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px}
+  h2{margin:0;font-size:18px;letter-spacing:-.01em;font-weight:700}
+  .section-head span{font-size:12px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px}
+  .card{display:flex;flex-direction:column;gap:5px;padding:15px 15px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);text-decoration:none;box-shadow:var(--shadow);transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease}
+  .card:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:0 4px 12px rgba(26,36,51,.07),0 12px 28px rgba(26,36,51,.07)}
+  .card:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+  .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .code{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--brand);background:var(--brand-tint);border-radius:5px;padding:3px 6px}
+  .card h3{margin:2px 0 0;font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .card p{margin:0;font-size:12.5px;line-height:1.45;color:var(--muted)}
+  .arrow{color:var(--brand);font-weight:700;font-size:14px;opacity:.55;transition:opacity .15s ease, transform .15s ease}
+  .card:hover .arrow{opacity:1;transform:translateX(2px)}
+  footer{margin:44px 0 0;border-top:1px solid var(--line);padding:20px 0 34px;color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+  footer .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px}
+  @media(max-width:600px){
+    .wrap{padding:0 16px}
+    header{padding:28px 0 4px}
+    .grid{grid-template-columns:1fr}
+    .hero-actions{width:100%}
+    .btn{flex:1;justify-content:center}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header>
-  <h1>Nestlancer Admin · final product</h1>
-  <p>50-method consensus winners. Sidebar links navigate across these pages.</p>
-  <a class="primary" href="F02-dashboard-command-center__V3.html">Open dashboard →</a>
-</header>
-<nav class="grid" aria-label="Winner pages">
-<a class="card" href="F01-auth-login__V4.html"><span class="code">F01</span><strong>Editorial index</strong><span class="meta">F01-auth-login · V4</span></a>
-<a class="card" href="F02-dashboard-command-center__V3.html"><span class="code">F02</span><strong>Queue Spine</strong><span class="meta">F02-dashboard-command-center · V3</span></a>
-<a class="card" href="F03-global-search-command-palette__V3.html"><span class="code">F03</span><strong>Dossier</strong><span class="meta">F03-global-search-command-palette · V3</span></a>
-<a class="card" href="F04-pipelines-stage-hub__V2.html"><span class="code">F04</span><strong>Current</strong><span class="meta">F04-pipelines-stage-hub · V2</span></a>
-<a class="card" href="F05-pipeline-user-project-hubs__V6.html"><span class="code">F05</span><strong>Evidence desk</strong><span class="meta">F05-pipeline-user-project-hubs · V6</span></a>
-<a class="card" href="F06-contact-inquiries__V1.html"><span class="code">F06</span><strong>Split triage</strong><span class="meta">F06-contact-inquiries · V1</span></a>
-<a class="card" href="F07-notifications-center__V3.html"><span class="code">F07</span><strong>Inbox spine</strong><span class="meta">F07-notifications-center · V3</span></a>
-<a class="card" href="F08-requests-triage__V4.html"><span class="code">F08</span><strong>Dense desk</strong><span class="meta">F08-requests-triage · V4</span></a>
-<a class="card" href="F09-quotes-list__V4.html"><span class="code">F09</span><strong>Ledger</strong><span class="meta">F09-quotes-list · V4</span></a>
-<a class="card" href="F10-quote-details-builder__V5.html"><span class="code">F10</span><strong>Review choreography</strong><span class="meta">F10-quote-details-builder · V5</span></a>
-<a class="card" href="F11-projects-list__V2.html"><span class="code">F11</span><strong>Status desk</strong><span class="meta">F11-projects-list · V2</span></a>
-<a class="card" href="F12-project-details-delivery__V2.html"><span class="code">F12</span><strong>Delivery casebook</strong><span class="meta">F12-project-details-delivery · V2</span></a>
-<a class="card" href="F13-payments-money-ops__V4.html"><span class="code">F13</span><strong>Money console</strong><span class="meta">F13-payments-money-ops · V4</span></a>
-<a class="card" href="F14-settlement-legal__V4.html"><span class="code">F14</span><strong>Settings workbench</strong><span class="meta">F14-settlement-legal · V4</span></a>
-<a class="card" href="F15-users-directory__V4.html"><span class="code">F15</span><strong>Operations register</strong><span class="meta">F15-users-directory · V4</span></a>
-<a class="card" href="F16-user-details-safety__V4.html"><span class="code">F16</span><strong>Account workbench</strong><span class="meta">F16-user-details-safety · V4</span></a>
-<a class="card" href="F17-messages-home__V4.html"><span class="code">F17</span><strong>Operations ledger</strong><span class="meta">F17-messages-home · V4</span></a>
-<a class="card" href="F18-messages-thread__V4.html"><span class="code">F18</span><strong>Message ledger</strong><span class="meta">F18-messages-thread · V4</span></a>
-<a class="card" href="F19-moderation-queue__V2.html"><span class="code">F19</span><strong>Context review</strong><span class="meta">F19-moderation-queue · V2</span></a>
-<a class="card" href="F20-analytics-hub__V4.html"><span class="code">F20</span><strong>Dense board</strong><span class="meta">F20-analytics-hub · V4</span></a>
-<a class="card" href="F21-content-blog__V3.html"><span class="code">F21</span><strong>Review desk</strong><span class="meta">F21-content-blog · V3</span></a>
-<a class="card" href="F22-portfolio-studio__V4.html"><span class="code">F22</span><strong>Operations register</strong><span class="meta">F22-portfolio-studio · V4</span></a>
-<a class="card" href="F23-media-library__V1.html"><span class="code">F23</span><strong>Ground-truth desk</strong><span class="meta">F23-media-library · V1</span></a>
-<a class="card" href="F24-system-config__V2.html"><span class="code">F24</span><strong>Service atlas</strong><span class="meta">F24-system-config · V2</span></a>
-<a class="card" href="F25-integrations-audit__V4.html"><span class="code">F25</span><strong>Trust ledger</strong><span class="meta">F25-integrations-audit · V4</span></a>
-</nav>
-<script>location.replace('F02-dashboard-command-center__V3.html');</script>
+<div class="wrap">
+  <header>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Nestlancer Admin</p>
+        <h1>Client review build</h1>
+        <p class="lede">A complete preview of the Nestlancer admin workspace — 25 screens across operations, content, payments and system settings. Open any page to explore the interface.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="F02-dashboard-command-center__V3.html">Open dashboard →</a>
+        <a class="btn btn-ghost" href="F01-auth-login__V4.html">Sign-in screen</a>
+      </div>
+    </div>
+    <div class="notice">
+      <span aria-hidden="true">◷</span>
+      <span><strong>Historical snapshot.</strong> Figures and records are snapshot from 30 October 2026 and are not live. Actions in this preview change local state only — no production connection is made.</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="overview">
+      <div class="section-head"><h2 id="overview">Overview</h2><span>4 pages</span></div>
+      <div class="grid">
+        <a class="card" href="F02-dashboard-command-center__V3.html"><div class="card-top"><span class="code">F02</span><span class="arrow">→</span></div><h3>Dashboard</h3><p>Command center with queues, priorities and recent activity.</p></a>
+        <a class="card" href="F03-global-search-command-palette__V3.html"><div class="card-top"><span class="code">F03</span><span class="arrow">→</span></div><h3>Global search</h3><p>Search pages, records and integration references from one palette.</p></a>
+        <a class="card" href="F04-pipelines-stage-hub__V2.html"><div class="card-top"><span class="code">F04</span><span class="arrow">→</span></div><h3>Pipelines</h3><p>Stage pipeline for platform-wide triage and handoffs.</p></a>
+        <a class="card" href="F05-pipeline-user-project-hubs__V6.html"><div class="card-top"><span class="code">F05</span><span class="arrow">→</span></div><h3>Client hub</h3><p>One client, every record — user and project hubs with clear data boundaries.</p></a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="operations">
+      <div class="section-head"><h2 id="operations">Operations</h2><span>13 pages</span></div>
+      <div class="grid">
+        <a class="card" href="F06-contact-inquiries__V1.html"><div class="card-top"><span class="code">F06</span><span class="arrow">→</span></div><h3>Inquiries</h3><p>Split triage for inbound conversations and replies.</p></a>
+        <a class="card" href="F07-notifications-center__V3.html"><div class="card-top"><span class="code">F07</span><span class="arrow">→</span></div><h3>Notifications</h3><p>Inbox spine for operational and system notifications.</p></a>
+        <a class="card" href="F08-requests-triage__V4.html"><div class="card-top"><span class="code">F08</span><span class="arrow">→</span></div><h3>Requests</h3><p>Dense desk for reviewing and routing incoming requests.</p></a>
+        <a class="card" href="F09-quotes-list__V4.html"><div class="card-top"><span class="code">F09</span><span class="arrow">→</span></div><h3>Quotes</h3><p>Ledger of quotes, totals and revenue context.</p></a>
+        <a class="card" href="F10-quote-details-builder__V5.html"><div class="card-top"><span class="code">F10</span><span class="arrow">→</span></div><h3>Quote builder</h3><p>Review choreography for quote line items and totals.</p></a>
+        <a class="card" href="F11-projects-list__V2.html"><div class="card-top"><span class="code">F11</span><span class="arrow">→</span></div><h3>Projects</h3><p>Status desk for every client project and its current state.</p></a>
+        <a class="card" href="F12-project-details-delivery__V2.html"><div class="card-top"><span class="code">F12</span><span class="arrow">→</span></div><h3>Project delivery</h3><p>Delivery casebook with milestones and progress.</p></a>
+        <a class="card" href="F13-payments-money-ops__V4.html"><div class="card-top"><span class="code">F13</span><span class="arrow">→</span></div><h3>Payments</h3><p>Money console for transactions, settlements and verification.</p></a>
+        <a class="card" href="F14-settlement-legal__V4.html"><div class="card-top"><span class="code">F14</span><span class="arrow">→</span></div><h3>Payment settings</h3><p>Settlement, legal and account configuration workbench.</p></a>
+        <a class="card" href="F15-users-directory__V4.html"><div class="card-top"><span class="code">F15</span><span class="arrow">→</span></div><h3>Users</h3><p>Operations register for all platform users.</p></a>
+        <a class="card" href="F16-user-details-safety__V4.html"><div class="card-top"><span class="code">F16</span><span class="arrow">→</span></div><h3>User details</h3><p>Account workbench for safety, roles and permissions.</p></a>
+        <a class="card" href="F17-messages-home__V4.html"><div class="card-top"><span class="code">F17</span><span class="arrow">→</span></div><h3>Messages</h3><p>Operations ledger for the team inbox.</p></a>
+        <a class="card" href="F18-messages-thread__V4.html"><div class="card-top"><span class="code">F18</span><span class="arrow">→</span></div><h3>Message thread</h3><p>Conversation view with participants and context.</p></a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="content">
+      <div class="section-head"><h2 id="content">Content</h2><span>3 pages</span></div>
+      <div class="grid">
+        <a class="card" href="F19-moderation-queue__V2.html"><div class="card-top"><span class="code">F19</span><span class="arrow">→</span></div><h3>Moderation</h3><p>Context review for flagged messages and moderation history.</p></a>
+        <a class="card" href="F20-analytics-hub__V4.html"><div class="card-top"><span class="code">F20</span><span class="arrow">→</span></div><h3>Analytics</h3><p>Dense board for revenue, users, projects and requests.</p></a>
+        <a class="card" href="F21-content-blog__V3.html"><div class="card-top"><span class="code">F21</span><span class="arrow">→</span></div><h3>Blog</h3><p>Review desk for posts, categories and editorial workflow.</p></a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="content-ops">
+      <div class="section-head"><h2 id="content-ops">Content &amp; system</h2><span>5 pages</span></div>
+      <div class="grid">
+        <a class="card" href="F22-portfolio-studio__V4.html"><div class="card-top"><span class="code">F22</span><span class="arrow">→</span></div><h3>Portfolio</h3><p>Operations register for case studies and portfolio items.</p></a>
+        <a class="card" href="F23-media-library__V1.html"><div class="card-top"><span class="code">F23</span><span class="arrow">→</span></div><h3>Media library</h3><p>Storage, folders, quarantine and upload review.</p></a>
+        <a class="card" href="F24-system-config__V2.html"><div class="card-top"><span class="code">F24</span><span class="arrow">→</span></div><h3>System configuration</h3><p>Service atlas for health, flags, jobs and templates.</p></a>
+        <a class="card" href="F25-integrations-audit__V4.html"><div class="card-top"><span class="code">F25</span><span class="arrow">→</span></div><h3>Integrations &amp; audit</h3><p>Trust ledger for webhooks, API keys and audit activity.</p></a>
+        <a class="card" href="F01-auth-login__V4.html"><div class="card-top"><span class="code">F01</span><span class="arrow">→</span></div><h3>Sign in</h3><p>Operator authentication and verification screen.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Nestlancer · Client review build</span>
+    <span class="mono">Historical snapshot · preview data · no production connection</span>
+  </footer>
+</div>
 </body>
 </html>

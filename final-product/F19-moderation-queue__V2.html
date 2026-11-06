@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Moderation · Context review · Nestlancer Admin</title>
-<meta name="description" content="F19 V2 — source-reconciled moderation queue with conversation-context review. Default captured empty state.">
+<meta name="description" content="F19 V2 — source-reconciled moderation queue with conversation-context review. Default snapshot empty state.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2032%2032%22%20fill=%22none%22%3E%3Crect%20x=%221%22%20y=%221%22%20width=%2230%22%20height=%2230%22%20rx=%228%22%20fill=%22%23465fff%22/%3E%3Cpath%20d=%22M9%2023V9l8%209.2V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20fill=%22none%22/%3E%3Cpath%20d=%22M21%2023V9%22%20stroke=%22%23ffffff%22%20stroke-width=%222.6%22%20stroke-linecap=%22round%22%20fill=%22none%22/%3E%3C/svg%3E" type="image/svg+xml">
 <script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('nl-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();</script>
 <style>
@@ -51,7 +51,7 @@
 </style>
 <style>
 /* inlined from ../../../shared/base.css */
-/* admin-portal-lab shared base — reset + primitives ONLY (create-if-missing; never fork) */
+/* admin-portal shared base — reset + primitives ONLY (create-if-missing; never fork) */
 *,*::before,*::after{box-sizing:border-box}
 *{margin:0}
 html{-webkit-text-size-adjust:100%}
@@ -456,7 +456,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
       </div>
       <div class="top-end">
         <button class="global-search" id="global-search" aria-label="Search this moderation workset"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg>Search pages… <kbd>⌘K</kbd></button>
-        <a class="icon-button" href="F07-notifications-center__V3.html" aria-label="188 unread notifications, captured badge 99+"><svg class="ic" aria-hidden="true"><use href="#i-bell"></use></svg><span class="top-badge">99+</span></a>
+        <a class="icon-button" href="F07-notifications-center__V3.html" aria-label="188 unread notifications, snapshot badge 99+"><svg class="ic" aria-hidden="true"><use href="#i-bell"></use></svg><span class="top-badge">99+</span></a>
         <a class="icon-button" href="F17-messages-home__V4.html" aria-label="21 unread messages"><svg class="ic" aria-hidden="true"><use href="#i-chat"></use></svg><span class="top-badge teal">21</span></a>
         <a class="icon-button" href="index.html" aria-label="Moderation"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg></a>
         <span class="operator"><span class="operator-mark" aria-hidden="true">NA</span><span class="operator-name">Nestlancer Admin</span></span>
@@ -470,8 +470,8 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
           <details class="preview-options">
             <summary><svg class="ic" aria-hidden="true"><use href="#i-eye"></use></svg>Preview options</summary>
             <div class="preview-panel">
-              <div class="preview-row"><span class="preview-label">Data source</span><div class="seg" role="group" aria-label="Data source"><button data-source="source" aria-pressed="true">Captured empty state</button><button data-source="demo" aria-pressed="false">Workflow demo</button></div></div>
-              <div class="preview-row"><span class="preview-label">Demo state</span><div class="seg" role="group" aria-label="Demo state"><button data-state="ready" aria-pressed="true">Ready</button><button data-state="loading" aria-pressed="false">Loading</button><button data-state="error" aria-pressed="false">Error</button><button data-state="empty" aria-pressed="false">Empty</button></div></div>
+              <div class="preview-row"><span class="preview-label">Data source</span><div class="seg" role="group" aria-label="Data source"><button data-source="source" aria-pressed="true">Empty state</button><button data-source="demo" aria-pressed="false">Workflow preview</button></div></div>
+              <div class="preview-row"><span class="preview-label">Preview state</span><div class="seg" role="group" aria-label="Preview state"><button data-state="ready" aria-pressed="true">Ready</button><button data-state="loading" aria-pressed="false">Loading</button><button data-state="error" aria-pressed="false">Error</button><button data-state="empty" aria-pressed="false">Empty</button></div></div>
               <p class="hint" id="scenario-boundary"></p>
               <button class="btn btn-secondary btn-sm" data-help>Keyboard help</button>
             </div>
@@ -500,9 +500,9 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
           <section class="review-pane" id="detail" aria-label="Selected message review" hidden></section>
           <aside class="guidance-pane" aria-label="Review guidance">
             <h2>Review guidance</h2>
-            <ol><li>Read the reported message in its captured context.</li><li>Choose Dismiss, Escalate or Remove based on the documented effect.</li><li>Restore only removed or escalated messages.</li></ol>
+            <ol><li>Read the reported message in its snapshot context.</li><li>Choose Dismiss, Escalate or Remove based on the documented effect.</li><li>Restore only removed or escalated messages.</li></ol>
             <p class="hint">Reporter, reason and age are not defined by the moderation Swagger contract and are not shown as product fields.</p>
-            <p class="hint"><a href="../docs/API-MAP.md">API boundaries</a></p>
+            <p class="hint">API reference</p>
           </aside>
         </div>
       </section>
@@ -515,8 +515,8 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
         <div id="history-list"></div>
         <div class="panel-footer" id="history-footer" hidden><span id="history-total"></span><div class="pager"><button class="btn btn-secondary btn-sm" id="history-prev" data-history-prev>Previous</button><span class="hint" id="history-page-info"></span><button class="btn btn-secondary btn-sm" id="history-next" data-history-next>Next</button></div></div>
       </section>
-      <section id="receipt" class="receipt" hidden aria-label="Local preview receipt"></section>
-      <section class="source-note"><p>Default view matches the captured empty moderation queue and history. The optional workflow demo reuses captured Nestlancer message text with synthetic flags; it does not represent production moderation records. <a href="../docs/SOURCE-RECONCILIATION.md">Source reconciliation</a> · <a href="../docs/API-MAP.md">API map</a> · <a href="index.html">Family gallery</a></p></section>
+      <section id="receipt" class="receipt" hidden aria-label="Preview receipt"></section>
+      <section class="source-note"><p>Default view matches the snapshot empty moderation queue and history. The optional workflow preview reuses snapshot Nestlancer message text with sample flags; it does not represent production moderation records. Data notes · API reference · <a href="index.html">All pages</a></p></section>
     </main>
     <footer class="footer">© 2026 Nestlancer Admin</footer>
   </div>
@@ -524,9 +524,9 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
 <script>
 /* inlined from ../fixtures.js */
 /* F19 revision 2 — source-reconciled fixtures.
-   Default UI state is the captured empty moderation queue/history.
-   Optional workflow demo reuses captured Nestlancer message text only.
-   Flags/escalations in the demo are synthetic; no production moderation record is implied. */
+   Default UI state is the snapshot empty moderation queue/history.
+   Optional workflow preview reuses snapshot Nestlancer message text only.
+   Flags/escalations in the demo are sample; no production moderation record is implied. */
 (function () {
   'use strict';
   const GROUP = 'Payments ops — Razorpay settlement and webhooks';
@@ -541,46 +541,46 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
   ];
   const cases = [
     {
-      key: 'F19-DEMO-01', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      key: 'F19-PREVIEW-01', messageId: null, threadId: null, projectId: null, type: 'TEXT',
       chat: 'Group', threadTitle: GROUP, sender: 'Karthik Menon', senderRole: 'Client',
       content: 'Useful. Our UPI adapter is still in staging; I want the same retry rules Ananya’s reconciliation service already uses for duplicate captures.',
-      timeLabel: 'Oct 5, 3:49 AM', provenance: '026-messages-thread-details.webp', status: 'Flagged', syntheticFlag: true,
-      context: groupContext, contextNote: 'Captured group thread snippet. The flag itself is synthetic.'
+      timeLabel: 'Oct 5, 3:49 AM', provenance: '026-messages-thread-details.webp', status: 'Flagged', sampleFlag: true,
+      context: groupContext, contextNote: 'Snapshot group thread snippet. The flag itself is sample.'
     },
     {
-      key: 'F19-DEMO-02', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      key: 'F19-PREVIEW-02', messageId: null, threadId: null, projectId: null, type: 'TEXT',
       chat: 'Group', threadTitle: GROUP, sender: 'Ananya Iyer', senderRole: 'Client',
       content: 'Happy to share the webhook idempotency notes. Duplicate payment refunds are the case we keep hitting on settlement day.',
-      timeLabel: 'Oct 5, 3:49 AM', provenance: '026-messages-thread-details.webp', status: 'Escalated', syntheticFlag: true,
-      context: groupContext.map(m => ({ ...m, reported: m.sender === 'Ananya Iyer' })), contextNote: 'Captured group thread snippet. Escalation is a synthetic preview state.'
+      timeLabel: 'Oct 5, 3:49 AM', provenance: '026-messages-thread-details.webp', status: 'Escalated', sampleFlag: true,
+      context: groupContext.map(m => ({ ...m, reported: m.sender === 'Ananya Iyer' })), contextNote: 'Snapshot group thread snippet. Escalation is a sample preview state.'
     },
     {
-      key: 'F19-DEMO-03', messageId: null, threadId: '01a10a2d-850b-7147-b023-efb5e17d8b73', projectId: null, type: 'TEXT',
+      key: 'F19-PREVIEW-03', messageId: null, threadId: '01a10a2d-850b-7147-b023-efb5e17d8b73', projectId: null, type: 'TEXT',
       chat: 'Direct', threadTitle: 'Amit Verma', sender: 'Amit Verma', senderRole: 'Client',
       content: 'Thanks — we’re Verma Properties based in Delhi. Looking forward to working together.',
-      timeLabel: 'Oct 5, 3:48 AM', provenance: '162-messages-thread.html', status: 'Flagged', syntheticFlag: true,
-      context: amitContext, contextNote: 'Captured direct thread. The flag itself is synthetic.'
+      timeLabel: 'Oct 5, 3:48 AM', provenance: '162-messages-thread.html', status: 'Flagged', sampleFlag: true,
+      context: amitContext, contextNote: 'Snapshot direct thread. The flag itself is sample.'
     },
     {
-      key: 'F19-DEMO-04', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      key: 'F19-PREVIEW-04', messageId: null, threadId: null, projectId: null, type: 'TEXT',
       chat: 'Direct', threadTitle: 'Sandeep Chopra', sender: 'Sandeep Chopra', senderRole: 'Client',
       content: 'Thanks — we’re Chopra Fleet Logistics based in Chandigarh. Looking forward to working together.',
-      timeLabel: '25 days ago · captured inbox', provenance: '85-messages-index.html / 168-messages-inbox.html', status: 'Flagged', syntheticFlag: true,
-      context: null, contextNote: 'Captured inbox preview only; the full thread was not opened in this source.'
+      timeLabel: '25 days ago · snapshot inbox', provenance: '85-messages-index.html / 168-messages-inbox.html', status: 'Flagged', sampleFlag: true,
+      context: null, contextNote: 'Snapshot inbox preview only; the full thread was not opened in this source.'
     },
     {
-      key: 'F19-DEMO-05', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      key: 'F19-PREVIEW-05', messageId: null, threadId: null, projectId: null, type: 'TEXT',
       chat: 'Direct', threadTitle: 'Ananya Iyer', sender: 'Ananya Iyer', senderRole: 'Client',
       content: 'Thanks. Our finance team confirmed the duplicate NEFT on their end too. Replay UI remains the priority for month-end.',
-      timeLabel: '25 days ago · captured inbox', provenance: '168-messages-inbox.html', status: 'Flagged', syntheticFlag: true,
-      context: null, contextNote: 'Captured inbox preview only; the full thread was not opened in this source.'
+      timeLabel: '25 days ago · snapshot inbox', provenance: '168-messages-inbox.html', status: 'Flagged', sampleFlag: true,
+      context: null, contextNote: 'Snapshot inbox preview only; the full thread was not opened in this source.'
     },
     {
-      key: 'F19-DEMO-06', messageId: null, threadId: null, projectId: null, type: 'TEXT',
+      key: 'F19-PREVIEW-06', messageId: null, threadId: null, projectId: null, type: 'TEXT',
       chat: 'Direct', threadTitle: 'Priya Nair', sender: 'Priya Nair', senderRole: 'Client',
       content: 'Understood. Subtitles stay in the current milestone. I’ll confirm the revised quote in writing before we invoice the next installment.',
-      timeLabel: '25 days ago · captured inbox', provenance: '168-messages-inbox.html', status: 'Flagged', syntheticFlag: true,
-      context: null, contextNote: 'Captured inbox preview only; the full thread was not opened in this source.'
+      timeLabel: '25 days ago · snapshot inbox', provenance: '168-messages-inbox.html', status: 'Flagged', sampleFlag: true,
+      context: null, contextNote: 'Snapshot inbox preview only; the full thread was not opened in this source.'
     }
   ];
   const source = {
@@ -599,7 +599,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
     historyEmpty: 'No moderation history yet.',
     historyFooter: '0 moderation history events'
   };
-  const demoNote = 'Workflow demo: captured Nestlancer message text with synthetic flags. No production moderation record, reporter, reason or audit event is implied.';
+  const demoNote = 'Workflow preview: snapshot Nestlancer message text with sample flags. No production moderation record, reporter, reason or audit event is implied.';
   window.F19Data = { source, cases, history: [], demoNote };
 })();
 
@@ -687,7 +687,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
 <script>
 /* inlined from ../moderation.js */
 /* F19 revision 2 — source-reconciled local runtime.
-   Default: captured empty moderation state. Optional demo uses captured message text with synthetic flags.
+   Default: snapshot empty moderation state. Optional demo uses snapshot message text with sample flags.
    No fetch/XHR, tokens, production mutation, permission check or audit write. */
 (function () {
   'use strict';
@@ -784,13 +784,13 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
     if (pq) pq.hidden = tab !== 'queue'; if (ph) ph.hidden = tab !== 'history';
     const notice = $('#demo-notice'); if (notice) { notice.hidden = !isDemo(); notice.textContent = isDemo() ? D.demoNote : ''; }
     const boundary = '#scenario-boundary'; const el = $(boundary);
-    if (el) el.textContent = isDemo() ? D.demoNote : 'Captured source · 30 Oct 2026 · queue 0 / history 0.';
+    if (el) el.textContent = isDemo() ? D.demoNote : 'Snapshot source · 30 Oct 2026 · queue 0 / history 0.';
   }
   function renderSummary() {
     const wrap = $('#summary-cards'); if (!wrap) return;
     const ac = activeCases();
     const vals = isDemo() ? [ac.length, ac.filter(c => c.status === 'Escalated').length, ac.filter(c => c.chat === 'Project').length] : [0, 0, 0];
-    const demoSubs = ['Synthetic flags on captured messages', 'Blurred in chat for senior review', 'No captured project-chat transcript'];
+    const demoSubs = ['Synthetic flags on snapshot messages', 'Blurred in chat for senior review', 'No snapshot project-chat transcript'];
     wrap.innerHTML = D.source.cards.map((c, i) => `<button class="summary-card" data-drill="${c.drill}" ${!isDemo() || preview !== 'ready' ? 'disabled' : ''}><span class="summary-label">${esc(c.label)}</span><strong class="summary-value">${vals[i]}</strong><span class="summary-sub">${esc(isDemo() ? demoSubs[i] : c.sub)}</span></button>`).join('');
   }
   function renderQueue() {
@@ -837,13 +837,13 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
         : `<tr class="${sel ? 'selected' : ''}"><td>${check}</td><td><button class="link-button case-link" data-case-open="${c.key}"><strong>${esc(c.sender)}</strong><span>${esc(c.content.slice(0, 120))}${c.content.length > 120 ? '…' : ''}</span></button></td><td>${esc(c.chat)}<small>${esc(c.threadTitle)}</small></td><td>${esc(c.timeLabel)}</td><td>${statusBadge(c.status)}</td><td><button class="btn btn-secondary btn-sm" data-case-open="${c.key}">Review</button></td></tr>`;
       return main + (dense && sel ? `<tr class="expanded-row"><td colspan="7">${renderDetail(c, true)}</td></tr>` : '');
     }).join('');
-    return `<div class="panel"><div class="table-wrap"><table class="data-table ${dense ? 'dense' : ''}"><caption class="visually-hidden">Demo moderation queue using captured message text</caption><thead><tr>${dense ? '<th scope="col"><span class="visually-hidden">Select</span></th><th scope="col">Demo key</th><th scope="col">Message</th><th scope="col">Sender</th><th scope="col">Chat</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Expand</span></th>' : '<th scope="col"><span class="visually-hidden">Select</span></th><th scope="col">Message</th><th scope="col">Chat / thread</th><th scope="col">Captured time</th><th scope="col">Status</th><th scope="col">Review</th>'}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    return `<div class="panel"><div class="table-wrap"><table class="data-table ${dense ? 'dense' : ''}"><caption class="visually-hidden">Demo moderation queue using snapshot message text</caption><thead><tr>${dense ? '<th scope="col"><span class="visually-hidden">Select</span></th><th scope="col">Demo key</th><th scope="col">Message</th><th scope="col">Sender</th><th scope="col">Chat</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Expand</span></th>' : '<th scope="col"><span class="visually-hidden">Select</span></th><th scope="col">Message</th><th scope="col">Chat / thread</th><th scope="col">Snapshot time</th><th scope="col">Status</th><th scope="col">Review</th>'}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
   }
   function renderDetail(c, inline) {
     if (!c) return '';
     const actions = allowedActions(c).map(a => `<button class="btn ${a === 'remove' ? 'btn-danger' : a === 'dismiss' ? 'btn-primary' : 'btn-secondary'}" data-action="${a}" data-id="${c.key}">${icon(a === 'remove' ? 'trash' : a === 'escalate' ? 'up' : a === 'restore' ? 'archive' : 'check')}${a === 'dismiss' ? 'Dismiss flag' : a === 'escalate' ? 'Escalate' : a === 'remove' ? 'Remove message' : 'Restore message'}</button>`).join('');
-    const context = c.context ? `<div class="context-block"><h3>Captured conversation context</h3><p class="hint">${esc(c.contextNote)}</p><ol class="context-list">${c.context.map(m => `<li class="${m.reported ? 'reported' : ''}"><span class="ctx-who">${esc(m.sender)} · ${esc(m.role)} · ${esc(m.timeLabel)}${m.reported ? ' · reported in demo' : ''}</span><p>${esc(m.content)}</p></li>`).join('')}</ol></div>` : `<p class="hint">${esc(c.contextNote)}</p>`;
-    return `<article class="evidence ${inline ? 'inline-evidence' : ''}" aria-label="Evidence for ${esc(c.key)}"><header class="evidence-head"><div><p class="eyebrow">${esc(c.key)} · synthetic flag</p><h2>${esc(c.threadTitle)}</h2></div>${statusBadge(c.status)}</header><blockquote class="reported-content">${esc(c.content)}</blockquote>${context}<dl class="meta-grid"><div><dt>Sender</dt><dd>${esc(c.sender)} · ${esc(c.senderRole)}</dd></div><div><dt>Chat type</dt><dd>${esc(c.chat)}</dd></div><div><dt>Message type</dt><dd>${esc(c.type)}</dd></div><div><dt>Captured time</dt><dd>${esc(c.timeLabel)}</dd></div><div><dt>Identifiers</dt><dd class="mono">${esc(idLine(c))}</dd></div><div><dt>Message source</dt><dd>${esc(c.provenance)}</dd></div></dl><div class="action-dock"><p class="hint">Guarded local preview. No request is sent. Reporter, reason and rationale fields are not defined by the moderation Swagger contract.</p><div class="action-row">${actions}</div></div></article>`;
+    const context = c.context ? `<div class="context-block"><h3>Snapshot conversation context</h3><p class="hint">${esc(c.contextNote)}</p><ol class="context-list">${c.context.map(m => `<li class="${m.reported ? 'reported' : ''}"><span class="ctx-who">${esc(m.sender)} · ${esc(m.role)} · ${esc(m.timeLabel)}${m.reported ? ' · reported in demo' : ''}</span><p>${esc(m.content)}</p></li>`).join('')}</ol></div>` : `<p class="hint">${esc(c.contextNote)}</p>`;
+    return `<article class="evidence ${inline ? 'inline-evidence' : ''}" aria-label="Evidence for ${esc(c.key)}"><header class="evidence-head"><div><p class="eyebrow">${esc(c.key)} · sample flag</p><h2>${esc(c.threadTitle)}</h2></div>${statusBadge(c.status)}</header><blockquote class="reported-content">${esc(c.content)}</blockquote>${context}<dl class="meta-grid"><div><dt>Sender</dt><dd>${esc(c.sender)} · ${esc(c.senderRole)}</dd></div><div><dt>Chat type</dt><dd>${esc(c.chat)}</dd></div><div><dt>Message type</dt><dd>${esc(c.type)}</dd></div><div><dt>Snapshot time</dt><dd>${esc(c.timeLabel)}</dd></div><div><dt>Identifiers</dt><dd class="mono">${esc(idLine(c))}</dd></div><div><dt>Message source</dt><dd>${esc(c.provenance)}</dd></div></dl><div class="action-dock"><p class="hint">Guarded local preview. No request is sent. Reporter, reason and rationale fields are not defined by the moderation Swagger contract.</p><div class="action-row">${actions}</div></div></article>`;
   }
   function renderHistory() {
     const list = $('#history-list'); if (!list) return;
@@ -855,7 +855,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
     const rows = items.map(e => {
       const open = historyOpen === e.id;
       const eligible = canRestore(e.key) && (e.action === 'Removed' || e.action === 'Escalated');
-      return `<tr><td>${statusBadge(e.action)}</td><td>${esc(e.content.slice(0, 100))}${e.content.length > 100 ? '…' : ''}<small>${esc(e.sender)} · ${esc(e.threadTitle)}</small></td><td>${esc(e.chat)}</td><td>${esc(e.actor)}</td><td class="mono">${esc(e.timeLabel)}</td><td><button class="btn btn-ghost btn-sm" data-history-open="${e.id}" aria-expanded="${open}">${open ? 'Hide' : 'Details'}</button></td></tr>${open ? `<tr class="expanded-row"><td colspan="6"><div class="history-detail"><h3>${esc(e.id)} · ${esc(e.action)}</h3><p><strong>Original content:</strong> ${esc(e.originalContent || e.content)}</p>${e.editedContent ? `<p><strong>Edited restoration text:</strong> ${esc(e.editedContent)}</p>` : ''}${e.note ? `<p><strong>Local note (not sent):</strong> ${esc(e.note)}</p>` : ''}<p class="hint">Local preview only — no request, permission check or audit write.</p>${eligible ? `<button class="btn btn-secondary" data-restore-message="${esc(e.key)}">${icon('archive')}Restore message</button>` : ''}</div></td></tr>` : ''}`;
+      return `<tr><td>${statusBadge(e.action)}</td><td>${esc(e.content.slice(0, 100))}${e.content.length > 100 ? '…' : ''}<small>${esc(e.sender)} · ${esc(e.threadTitle)}</small></td><td>${esc(e.chat)}</td><td>${esc(e.actor)}</td><td class="mono">${esc(e.timeLabel)}</td><td><button class="btn btn-ghost btn-sm" data-history-open="${e.id}" aria-expanded="${open}">${open ? 'Hide' : 'Details'}</button></td></tr>${open ? `<tr class="expanded-row"><td colspan="6"><div class="history-detail"><h3>${esc(e.id)} · ${esc(e.action)}</h3><p><strong>Original content:</strong> ${esc(e.originalContent || e.content)}</p>${e.editedContent ? `<p><strong>Edited restoration text:</strong> ${esc(e.editedContent)}</p>` : ''}${e.note ? `<p><strong>Local note (not sent):</strong> ${esc(e.note)}</p>` : ''}<p class="hint">Preview only — no request, permission check or audit write.</p>${eligible ? `<button class="btn btn-secondary" data-restore-message="${esc(e.key)}">${icon('archive')}Restore message</button>` : ''}</div></td></tr>` : ''}`;
     }).join('');
     list.innerHTML = `<div class="panel"><div class="table-wrap"><table class="data-table"><caption class="visually-hidden">Local moderation preview history</caption><thead><tr><th scope="col">Action</th><th scope="col">Message</th><th scope="col">Chat</th><th scope="col">Actor</th><th scope="col">When</th><th scope="col"><span class="visually-hidden">Details</span></th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
     setHistoryFooter(all.length);
@@ -920,7 +920,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
   }
   function openDialog(d) { opener = document.activeElement; ensureDialogs(); d.showModal(); }
   function openReview(action, keys) {
-    if (!isDemo() || preview !== 'ready') { announce('Open the workflow demo to preview actions.'); return; }
+    if (!isDemo() || preview !== 'ready') { announce('Open the workflow preview to preview actions.'); return; }
     const targets = keys.map(caseByKey).filter(Boolean); if (!targets.length) return;
     for (const c of targets) {
       if (action === 'restore') { if (!canRestore(c.key)) { announce('Only removed or escalated messages can be restored.'); return; } }
@@ -938,12 +938,12 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
     if (s.step === 1) {
       const options = s.bulk ? ['dismiss'] : (s.action === 'restore' || canRestore(s.targets[0].key) ? ['restore'] : allowedActions(s.targets[0]));
       const actionField = s.bulk ? `<p><strong>Action:</strong> Dismissed</p>` : `<div class="field"><label for="review-action">Action</label><select id="review-action" class="input">${options.map(a => `<option value="${a}" ${a === s.action ? 'selected' : ''}>${ACTION_LABEL[a]}</option>`).join('')}</select></div>`;
-      body.innerHTML = `<p class="modal-kicker">Local preview · no request sent</p>${actionField}<p class="notice notice-info">${icon('alert')}<span>${esc(EFFECT[s.action])}</span></p><h3>Message${s.targets.length > 1 ? 's' : ''}</h3><ul class="ref-list">${s.targets.map(c => `<li><span class="mono">${esc(c.key)}</span><p>${esc(c.content)}</p><small>${esc(c.sender)} · ${esc(c.chat)} · ${esc(c.threadTitle)} · ${esc(c.provenance)}</small></li>`).join('')}</ul>${s.targets[0].context ? `<details class="context-details" open><summary>Captured conversation context</summary><ol class="context-list">${s.targets[0].context.map(m => `<li class="${m.reported ? 'reported' : ''}"><span class="ctx-who">${esc(m.sender)} · ${esc(m.timeLabel)}</span><p>${esc(m.content)}</p></li>`).join('')}</ol></details>` : ''}<div class="field check-field"><label class="check"><input type="checkbox" id="review-ack" ${s.ack ? 'checked' : ''}><span>I have reviewed the message content${s.targets[0].context ? ' and available captured context' : ''}.</span></label></div><div class="field"><label for="review-note">Local note <span class="hint">(optional, not sent)</span></label><textarea id="review-note" class="input" rows="2" maxlength="500">${esc(s.note)}</textarea><p class="hint">Swagger does not define a moderation rationale field. This note stays in the browser preview only.</p></div>${s.action === 'restore' ? `<div class="field"><label for="restore-content">Restored text</label><textarea id="restore-content" class="input" rows="3" maxlength="5000">${esc(s.edited)}</textarea><p class="hint">Leave unchanged to restore original text. Optional body.content is described in Swagger but has no declared requestBody schema.</p></div>` : ''}<div id="review-errors" class="error-summary" role="alert" tabindex="-1" hidden></div>`;
+      body.innerHTML = `<p class="modal-kicker">Preview · no request sent</p>${actionField}<p class="notice notice-info">${icon('alert')}<span>${esc(EFFECT[s.action])}</span></p><h3>Message${s.targets.length > 1 ? 's' : ''}</h3><ul class="ref-list">${s.targets.map(c => `<li><span class="mono">${esc(c.key)}</span><p>${esc(c.content)}</p><small>${esc(c.sender)} · ${esc(c.chat)} · ${esc(c.threadTitle)} · ${esc(c.provenance)}</small></li>`).join('')}</ul>${s.targets[0].context ? `<details class="context-details" open><summary>Snapshot conversation context</summary><ol class="context-list">${s.targets[0].context.map(m => `<li class="${m.reported ? 'reported' : ''}"><span class="ctx-who">${esc(m.sender)} · ${esc(m.timeLabel)}</span><p>${esc(m.content)}</p></li>`).join('')}</ol></details>` : ''}<div class="field check-field"><label class="check"><input type="checkbox" id="review-ack" ${s.ack ? 'checked' : ''}><span>I have reviewed the message content${s.targets[0].context ? ' and available snapshot context' : ''}.</span></label></div><div class="field"><label for="review-note">Local note <span class="hint">(optional, not sent)</span></label><textarea id="review-note" class="input" rows="2" maxlength="500">${esc(s.note)}</textarea><p class="hint">Swagger does not define a moderation rationale field. This note stays in the browser preview only.</p></div>${s.action === 'restore' ? `<div class="field"><label for="restore-content">Restored text</label><textarea id="restore-content" class="input" rows="3" maxlength="5000">${esc(s.edited)}</textarea><p class="hint">Leave unchanged to restore original text. Optional body.content is described in Swagger but has no declared requestBody schema.</p></div>` : ''}<div id="review-errors" class="error-summary" role="alert" tabindex="-1" hidden></div>`;
       foot.innerHTML = `<button class="btn btn-secondary" data-close-dialog>Cancel</button><button class="btn btn-primary" id="review-next">Review confirmation</button>`;
       const act = $('#review-action'); if (act) act.addEventListener('change', () => { s.action = act.value; s.ack = $('#review-ack').checked; s.note = $('#review-note').value; if (s.action === 'restore') s.edited = s.targets[0].content; renderReview(); });
       $('#review-next').addEventListener('click', validateReview);
     } else {
-      body.innerHTML = `<p class="modal-kicker">Confirmation required</p><dl class="confirm-grid"><div><dt>Action</dt><dd>${esc(ACTION_LABEL[s.action])}</dd></div><div><dt>Demo keys</dt><dd class="mono">${s.targets.map(c => esc(c.key)).join(', ')}</dd></div>${s.note ? `<div><dt>Local note (not sent)</dt><dd>${esc(s.note)}</dd></div>` : ''}${s.action === 'restore' ? `<div><dt>Restored text</dt><dd>${esc(s.edited)}</dd></div>` : ''}</dl><p class="notice notice-warning">${icon('alert')}<span>${esc(EFFECT[s.action])} This updates only the local demo.</span></p><p class="hint">No production request, permission check, notification or audit record will be created.</p>`;
+      body.innerHTML = `<p class="modal-kicker">Confirmation required</p><dl class="confirm-grid"><div><dt>Action</dt><dd>${esc(ACTION_LABEL[s.action])}</dd></div><div><dt>Demo keys</dt><dd class="mono">${s.targets.map(c => esc(c.key)).join(', ')}</dd></div>${s.note ? `<div><dt>Local note (not sent)</dt><dd>${esc(s.note)}</dd></div>` : ''}${s.action === 'restore' ? `<div><dt>Restored text</dt><dd>${esc(s.edited)}</dd></div>` : ''}</dl><p class="notice notice-warning">${icon('alert')}<span>${esc(EFFECT[s.action])} This updates only the local preview.</span></p><p class="hint">No production request, permission check, notification or audit record will be created.</p>`;
       foot.innerHTML = `<button class="btn btn-secondary" id="review-back">Back</button><button class="btn btn-secondary" data-close-dialog>Cancel</button><button class="btn ${s.action === 'remove' ? 'btn-danger' : 'btn-primary'}" id="confirm-preview">Confirm preview</button>`;
       $('#review-back').addEventListener('click', () => { s.step = 1; renderReview(); });
       $('#confirm-preview').addEventListener('click', confirmReview);
@@ -974,7 +974,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
       else if (s.action === 'remove') { c.active = false; c.status = 'Removed'; }
       else if (s.action === 'restore') { c.active = false; c.status = 'Restored'; }
       const edited = s.action === 'restore' && s.edited !== c.content ? s.edited : null;
-      session.push({ id: 'LOCAL-' + String(seq).padStart(3, '0') + '-' + (i + 1), seq: Date.now() + i, key: c.key, action: ACTION_LABEL[s.action], content: edited || c.content, originalContent: c.content, editedContent: edited, sender: c.sender, threadTitle: c.threadTitle, chat: c.chat, actor: 'Local preview', timeLabel: now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' local', note: s.note.trim(), batchId });
+      session.push({ id: 'LOCAL-' + String(seq).padStart(3, '0') + '-' + (i + 1), seq: Date.now() + i, key: c.key, action: ACTION_LABEL[s.action], content: edited || c.content, originalContent: c.content, editedContent: edited, sender: c.sender, threadTitle: c.threadTitle, chat: c.chat, actor: 'Preview', timeLabel: now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' local', note: s.note.trim(), batchId });
       selected.delete(c.key);
     });
     const undoable = s.action === 'dismiss' || s.action === 'remove';
@@ -999,8 +999,8 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
     if (!undoState || Date.now() > undoState.expires) { announce('Undo window expired.'); return; }
     const u = undoState; u.items.forEach(it => { const c = caseByKey(it.key); if (c) { c.active = it.prevActive; c.status = it.prevStatus; } });
     session = session.filter(e => e.batchId !== u.batchId); undoState = null; clearInterval(undoTimer);
-    const r = $('#receipt'); if (r) r.innerHTML = `<div class="receipt-card" role="status"><div><strong>Undo applied — local demo restored</strong><p>Only the local preview was reversed.</p></div><button class="icon-button" data-dismiss-receipt aria-label="Dismiss receipt">${icon('x')}</button></div>`;
-    announce('Local preview undone.'); render();
+    const r = $('#receipt'); if (r) r.innerHTML = `<div class="receipt-card" role="status"><div><strong>Undo applied — local preview restored</strong><p>Only the local preview was reversed.</p></div><button class="icon-button" data-dismiss-receipt aria-label="Dismiss receipt">${icon('x')}</button></div>`;
+    announce('Preview undone.'); render();
   }
 
   function bind() {
@@ -1129,7 +1129,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
   styleEl.textContent = shellCss;
   shadow.appendChild(styleEl);
   var wrap = document.createElement('div');
-  wrap.innerHTML='<button class="shade" aria-label="Close navigation"></button><aside class="sidebar" id="shared-nav" aria-label="Main navigation"><a class="brand" href="'+galleryUrl()+'"><img src="'+logoSrc+'" alt=""><span><strong>Nestlancer</strong><small>Admin workspace</small></span></a><nav aria-label="Dashboard sections">'+links+'</nav><div class="foot">Design lab · Offline prototype</div></aside><header class="topbar"><button class="action menu" aria-controls="shared-nav" aria-expanded="false" aria-label="Open navigation">☰</button><div class="breadcrumb">Admin <span aria-hidden="true"> / </span> <strong>'+(current?current[1]:'Dashboard')+'</strong></div><div class="actions"><a class="action" href="'+url('F03-global-search-command-palette')+'" aria-label="Search pages">⌕ <span class="search-label">&nbsp; Search pages</span></a><a class="action" href="'+url('F07-notifications-center')+'" aria-label="Notifications">♧</a><button class="action theme" aria-label="Toggle dark mode">◐</button><a class="action badge" href="'+galleryUrl()+'">Lab gallery ↗</a><div class="avatar"><span>NA</span> Nestlancer Admin</div></div></header>';
+  wrap.innerHTML='<button class="shade" aria-label="Close navigation"></button><aside class="sidebar" id="shared-nav" aria-label="Main navigation"><a class="brand" href="'+galleryUrl()+'"><img src="'+logoSrc+'" alt=""><span><strong>Nestlancer</strong><small>Admin workspace</small></span></a><nav aria-label="Dashboard sections">'+links+'</nav><div class="foot">Nestlancer Admin · Interactive prototype</div></aside><header class="topbar"><button class="action menu" aria-controls="shared-nav" aria-expanded="false" aria-label="Open navigation">☰</button><div class="breadcrumb">Admin <span aria-hidden="true"> / </span> <strong>'+(current?current[1]:'Dashboard')+'</strong></div><div class="actions"><a class="action" href="'+url('F03-global-search-command-palette')+'" aria-label="Search pages">⌕ <span class="search-label">&nbsp; Search pages</span></a><a class="action" href="'+url('F07-notifications-center')+'" aria-label="Notifications">♧</a><button class="action theme" aria-label="Toggle dark mode">◐</button><a class="action badge" href="'+galleryUrl()+'">All pages ↗</a><div class="avatar"><span>NA</span> Nestlancer Admin</div></div></header>';
   while (wrap.firstChild) shadow.appendChild(wrap.firstChild);
   document.body.appendChild(host);
   var sidebar=shadow.querySelector('.sidebar'), shade=shadow.querySelector('.shade'), menu=shadow.querySelector('.menu'), theme=shadow.querySelector('.theme');
@@ -1147,7 +1147,7 @@ html.dark.shared-chrome-ready #shared-dashboard-footer {
   });
   var footer = document.createElement('footer');
   footer.id = 'shared-dashboard-footer';
-  footer.innerHTML = '<span>© 2026 Nestlancer · Design lab · Offline prototype</span> <span>Terms · Privacy · Secured · HTTPS (preview)</span>';
+  footer.innerHTML = '<span>© 2026 Nestlancer · Nestlancer Admin · Interactive prototype</span> <span>Terms · Privacy · Secured · HTTPS (preview)</span>';
   var workspace = document.querySelector('[data-dashboard-workspace]');
   var main = (workspace || document).querySelector('main');
   if (main && main.parentNode) main.parentNode.insertBefore(footer, main.nextSibling);
